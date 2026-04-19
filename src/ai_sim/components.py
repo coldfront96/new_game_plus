@@ -19,7 +19,7 @@ from typing import Dict, List, Optional
 # Position
 # ---------------------------------------------------------------------------
 
-@dataclass
+@dataclass(slots=True)
 class Position:
     """World-space voxel coordinates of an entity."""
 
@@ -35,7 +35,7 @@ class Position:
 # Health
 # ---------------------------------------------------------------------------
 
-@dataclass
+@dataclass(slots=True)
 class Health:
     """Hit-point pool for any entity that can receive damage."""
 
@@ -75,7 +75,7 @@ class NeedType(Enum):
     PURPOSE = auto()
 
 
-@dataclass
+@dataclass(slots=True)
 class Needs:
     """Colonist needs represented as values between 0 (critical) and 100 (satisfied)."""
 
@@ -118,7 +118,7 @@ class Needs:
 # Stats
 # ---------------------------------------------------------------------------
 
-@dataclass
+@dataclass(slots=True)
 class Stats:
     """Combat and skill stats for a colonist or creature."""
 
@@ -159,7 +159,7 @@ class Stats:
 # Inventory
 # ---------------------------------------------------------------------------
 
-@dataclass
+@dataclass(slots=True)
 class Inventory:
     """Simple slot-based inventory component."""
 

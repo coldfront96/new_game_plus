@@ -57,7 +57,7 @@ class Material(Enum):
 # Material property look-up table
 # ---------------------------------------------------------------------------
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, slots=True)
 class MaterialProps:
     """Immutable physical properties for a given material."""
 
@@ -101,7 +101,7 @@ MATERIAL_PROPS: dict[Material, MaterialProps] = {
 # Block
 # ---------------------------------------------------------------------------
 
-@dataclass
+@dataclass(slots=True)
 class Block:
     """A single voxel block within the New Game Plus world.
 

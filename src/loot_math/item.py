@@ -111,7 +111,7 @@ class Rarity(Enum):
 # Affix
 # ---------------------------------------------------------------------------
 
-@dataclass
+@dataclass(slots=True)
 class Affix:
     """A single modifier attached to an :class:`Item`.
 
@@ -160,7 +160,7 @@ class Affix:
 # Item
 # ---------------------------------------------------------------------------
 
-@dataclass
+@dataclass(slots=True)
 class Item:
     """Base item data class for the New Game Plus loot system.
 

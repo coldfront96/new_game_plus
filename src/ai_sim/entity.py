@@ -38,7 +38,7 @@ from typing import Any, Optional, Type, TypeVar
 T = TypeVar("T")
 
 
-@dataclass
+@dataclass(slots=True)
 class Entity:
     """Lightweight identity node in the ECS simulation.
 
