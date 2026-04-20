@@ -240,14 +240,136 @@ MAGE_ARMOR = Spell(
 )
 
 
+# ---------------------------------------------------------------------------
+# Divine spell effect callbacks
+# ---------------------------------------------------------------------------
+
+def _cure_light_wounds_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Cure Light Wounds: Cures 1d8 + caster level (max +5) hit points.
+
+    Positive energy heals living creatures, harms undead.
+    """
+    bonus = min(caster_level, 5)
+    return {
+        "healing": f"1d8+{bonus}",
+        "max_bonus": bonus,
+        "harms_undead": True,
+        "energy_type": "positive",
+    }
+
+
+def _bless_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Bless: +1 morale bonus on attack rolls and saves vs. fear.
+
+    Affects all allies within 50 ft. burst centred on caster.
+    Duration: 1 min/level.
+    """
+    return {
+        "attack_bonus": 1,
+        "bonus_type": "morale",
+        "save_vs_fear_bonus": 1,
+        "area": "50 ft. burst",
+        "duration_minutes": caster_level,
+    }
+
+
+def _bane_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Bane: -1 morale penalty on attack rolls and saves vs. fear for enemies.
+
+    Affects all enemies within 50 ft. burst centred on caster.
+    Duration: 1 min/level.
+    """
+    return {
+        "attack_penalty": -1,
+        "penalty_type": "morale",
+        "save_vs_fear_penalty": -1,
+        "area": "50 ft. burst",
+        "duration_minutes": caster_level,
+    }
+
+
+# ---------------------------------------------------------------------------
+# Divine spell definitions (SRD)
+# ---------------------------------------------------------------------------
+
+CURE_LIGHT_WOUNDS = Spell(
+    name="Cure Light Wounds",
+    level=1,
+    school=SpellSchool.CONJURATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Touch",
+    duration="Instantaneous",
+    effect_callback=_cure_light_wounds_effect,
+    description=(
+        "When laying your hand upon a living creature, you channel positive "
+        "energy that cures 1d8 points of damage +1 per caster level (maximum +5)."
+    ),
+    subschool="Healing",
+    descriptor=[],
+)
+
+BLESS = Spell(
+    name="Bless",
+    level=1,
+    school=SpellSchool.ENCHANTMENT,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.DIVINE_FOCUS],
+    range="50 ft.",
+    duration="1 min./level",
+    effect_callback=_bless_effect,
+    description=(
+        "Bless fills your allies with courage. Each ally gains a +1 morale "
+        "bonus on attack rolls and on saving throws against fear effects."
+    ),
+    subschool="Compulsion",
+    descriptor=["Mind-Affecting"],
+)
+
+BANE = Spell(
+    name="Bane",
+    level=1,
+    school=SpellSchool.ENCHANTMENT,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.DIVINE_FOCUS],
+    range="50 ft.",
+    duration="1 min./level",
+    effect_callback=_bane_effect,
+    description=(
+        "Bane fills your enemies with fear and doubt. Each affected creature "
+        "takes a -1 penalty on attack rolls and a -1 penalty on saving throws "
+        "against fear effects."
+    ),
+    subschool="Compulsion",
+    descriptor=["Fear", "Mind-Affecting"],
+)
+
+
+# ---------------------------------------------------------------------------
+# Cure spell lookup table for spontaneous casting (indexed by spell level)
+# ---------------------------------------------------------------------------
+
+CURE_SPELLS: Dict[int, str] = {
+    1: "Cure Light Wounds",
+    2: "Cure Moderate Wounds",
+    3: "Cure Serious Wounds",
+    4: "Cure Critical Wounds",
+    5: "Cure Light Wounds, Mass",
+    6: "Cure Moderate Wounds, Mass",
+    7: "Cure Serious Wounds, Mass",
+    8: "Cure Critical Wounds, Mass",
+    9: "Heal, Mass",
+}
+
+
 def create_default_registry() -> SpellRegistry:
     """Create a :class:`SpellRegistry` pre-loaded with SRD core spells.
 
     Returns:
-        A registry containing Magic Missile, Mage Armor, and other
-        foundational spells.
+        A registry containing Magic Missile, Mage Armor, Cure Light Wounds,
+        Bless, Bane, and other foundational spells.
     """
     registry = SpellRegistry()
     registry.register(MAGIC_MISSILE)
     registry.register(MAGE_ARMOR)
+    registry.register(CURE_LIGHT_WOUNDS)
+    registry.register(BLESS)
+    registry.register(BANE)
     return registry
