@@ -15,6 +15,8 @@ Systems
 * :class:`InteractionSystem` — listens for ``"mine_intent"`` events and
   applies mining damage to a :class:`Block` based on the character's
   Strength modifier and any equipped :class:`Item`.
+* :class:`BehaviorSystem` — updates entity FSMs each tick, driving
+  AI decisions based on needs and skill checks.
 """
 
 from __future__ import annotations
@@ -23,12 +25,14 @@ from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from typing import Any, List, Optional, Tuple
 
+from src.ai_sim.behavior import BehaviorFSM, BehaviorState, EntityTask, TaskType
 from src.ai_sim.components import Health, Needs, Position
 from src.ai_sim.entity import Entity
 from src.core.event_bus import EventBus
 from src.loot_math.item import Item, ItemType
 from src.rules_engine.character_35e import Character35e
 from src.rules_engine.combat import AttackResolver, CombatResult
+from src.rules_engine.skills import SkillSystem
 from src.terrain.block import Block
 
 
@@ -524,3 +528,221 @@ class NeedsSystem(System):
     def entity_count(self) -> int:
         """Number of entities registered for needs processing."""
         return len(self._entities)
+
+
+# ---------------------------------------------------------------------------
+# BehaviorSystem
+# ---------------------------------------------------------------------------
+
+# Hunger threshold below which an entity should forage
+_HUNGER_THRESHOLD: float = 30.0
+
+# Default DC for foraging (Survival check)
+_FORAGE_DC: int = 15
+
+
+@dataclass(slots=True)
+class EntityBehaviorEntry:
+    """Associates an entity with its behavior FSM, skill system, and character.
+
+    Attributes:
+        entity:       The ECS entity.
+        fsm:          The entity's behavioral state machine.
+        skill_system: The entity's 3.5e skill ranks.
+        character:    The entity's D&D 3.5e stat block.
+    """
+
+    entity: Entity
+    fsm: BehaviorFSM
+    skill_system: SkillSystem
+    character: Character35e
+
+
+class BehaviorSystem(System):
+    """Updates entity FSMs each simulation tick, driving AI decisions.
+
+    Logic per tick:
+        1. If entity is IDLE and hunger is low → assign a FORAGE task
+           (requires a Survival skill check).
+        2. If SEARCH_FOR_TASK → look for nearest food source and transition
+           to MOVE_TO_TARGET.
+        3. If MOVE_TO_TARGET → publish a move_intent event and wait for
+           arrival (transition to PERFORM_ACTION when at target).
+        4. If PERFORM_ACTION → perform the skill check and complete the task.
+
+    Args:
+        event_bus:      The :class:`EventBus` to publish movement/action events.
+        chunk_manager:  Optional chunk manager for pathfinding integration.
+    """
+
+    def __init__(
+        self,
+        event_bus: EventBus,
+        chunk_manager: Any = None,
+        food_sources: Optional[list] = None,
+    ) -> None:
+        self._event_bus = event_bus
+        self._chunk_manager = chunk_manager
+        self._entries: List[EntityBehaviorEntry] = []
+        self._food_sources: list = food_sources if food_sources is not None else []
+        self._event_bus.subscribe("move_complete", self._on_move_complete)
+
+    def register_entity(
+        self,
+        entity: Entity,
+        fsm: BehaviorFSM,
+        skill_system: SkillSystem,
+        character: Character35e,
+    ) -> None:
+        """Register an entity for behavior processing.
+
+        Args:
+            entity:       The ECS entity.
+            fsm:          The entity's FSM instance.
+            skill_system: The entity's skill system.
+            character:    The entity's 3.5e character stat block.
+        """
+        self._entries.append(
+            EntityBehaviorEntry(
+                entity=entity,
+                fsm=fsm,
+                skill_system=skill_system,
+                character=character,
+            )
+        )
+
+    def add_food_source(self, position: Tuple[int, int, int]) -> None:
+        """Register a food source location in the world.
+
+        Args:
+            position: (x, y, z) world coordinate of the food source.
+        """
+        self._food_sources.append(position)
+
+    def _on_move_complete(self, payload: Any) -> None:
+        """Handle move_complete events — transition entities to PERFORM_ACTION."""
+        if not isinstance(payload, dict):
+            return
+        entity_id = payload.get("entity_id")
+        for entry in self._entries:
+            if entry.entity.entity_id == entity_id:
+                if entry.fsm.state == BehaviorState.MOVE_TO_TARGET:
+                    entry.fsm.transition(BehaviorState.PERFORM_ACTION)
+                break
+
+    def update(self) -> None:
+        """Process all registered entities' behavioral logic for one tick."""
+        for entry in self._entries:
+            if not entry.entity.is_active:
+                continue
+            entry.fsm.tick()
+            self._process_entity(entry)
+
+    def _process_entity(self, entry: EntityBehaviorEntry) -> None:
+        """Run FSM logic for a single entity."""
+        state = entry.fsm.state
+
+        if state == BehaviorState.IDLE:
+            self._handle_idle(entry)
+        elif state == BehaviorState.SEARCH_FOR_TASK:
+            self._handle_search(entry)
+        elif state == BehaviorState.MOVE_TO_TARGET:
+            self._handle_move(entry)
+        elif state == BehaviorState.PERFORM_ACTION:
+            self._handle_action(entry)
+
+    def _handle_idle(self, entry: EntityBehaviorEntry) -> None:
+        """Check if the entity has a critical need and assign a task."""
+        needs = entry.entity.get_component(Needs)
+        if needs is None:
+            return
+
+        # If hunger is low, forage
+        if needs.hunger <= _HUNGER_THRESHOLD:
+            task = EntityTask(
+                task_type=TaskType.FORAGE,
+                skill_name="Survival",
+                dc=_FORAGE_DC,
+            )
+            entry.fsm.assign_task(task)
+
+    def _handle_search(self, entry: EntityBehaviorEntry) -> None:
+        """Find the nearest food source and set it as the target."""
+        if not self._food_sources:
+            # No food sources available — go back to idle
+            entry.fsm.transition(BehaviorState.IDLE)
+            return
+
+        pos = entry.entity.get_component(Position)
+        if pos is None:
+            entry.fsm.transition(BehaviorState.IDLE)
+            return
+
+        # Find nearest food source
+        entity_pos = (int(pos.x), int(pos.y), int(pos.z))
+        nearest = min(
+            self._food_sources,
+            key=lambda f: (
+                abs(f[0] - entity_pos[0])
+                + abs(f[1] - entity_pos[1])
+                + abs(f[2] - entity_pos[2])
+            ),
+        )
+
+        entry.fsm.current_task.target_position = nearest
+        entry.fsm.transition(BehaviorState.MOVE_TO_TARGET)
+
+        # Publish move intent so the MovementSystem can handle pathfinding
+        self._event_bus.publish("behavior_move_request", {
+            "entity_id": entry.entity.entity_id,
+            "target": nearest,
+        })
+
+    def _handle_move(self, entry: EntityBehaviorEntry) -> None:
+        """Wait for move_complete event (handled by _on_move_complete).
+
+        If the entity has been in this state too long, abort.
+        """
+        if entry.fsm.ticks_in_state > 100:
+            # Timeout — go back to idle
+            entry.fsm.transition(BehaviorState.IDLE)
+
+    def _handle_action(self, entry: EntityBehaviorEntry) -> None:
+        """Perform the task action (skill check) and complete."""
+        task = entry.fsm.current_task
+
+        if task.task_type == TaskType.FORAGE and task.skill_name:
+            # Perform Survival skill check
+            ability = entry.skill_system.get_key_ability(task.skill_name)
+            ability_mod = 0
+            if ability is not None:
+                ability_mod = (
+                    getattr(entry.character, f"{ability.value}_mod", 0)
+                )
+
+            result = entry.skill_system.check(
+                skill_name=task.skill_name,
+                ability_modifier=ability_mod,
+                dc=task.dc,
+            )
+
+            self._event_bus.publish("skill_check_result", {
+                "entity_id": entry.entity.entity_id,
+                "skill": task.skill_name,
+                "success": result.success,
+                "total": result.total,
+                "dc": task.dc,
+            })
+
+            if result.success:
+                # Successful forage — restore some hunger
+                needs = entry.entity.get_component(Needs)
+                if needs is not None:
+                    needs.hunger = min(100.0, needs.hunger + 30.0)
+
+        entry.fsm.complete_task()
+
+    @property
+    def entity_count(self) -> int:
+        """Number of entities registered for behavior processing."""
+        return len(self._entries)
