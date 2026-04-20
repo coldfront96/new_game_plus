@@ -26,7 +26,7 @@ Usage::
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import TYPE_CHECKING, Dict
+from typing import TYPE_CHECKING, Dict, Optional
 
 if TYPE_CHECKING:
     from src.rules_engine.character_35e import Character35e
@@ -221,3 +221,83 @@ class AbilityRegistry:
         if cls.has_uncanny_dodge(character):
             return UncannyDodge.get_flat_footed_ac(character)
         return character.flat_footed_ac
+
+
+# ---------------------------------------------------------------------------
+# Bardic Music
+# ---------------------------------------------------------------------------
+
+@dataclass(slots=True)
+class InspireCourageBonus:
+    """Result of an Inspire Courage activation.
+
+    Per 3.5e SRD: Inspire Courage grants a morale bonus on saving throws
+    against charm and fear effects, and a morale bonus on attack and weapon
+    damage rolls.
+
+    Attributes:
+        attack_bonus:  Morale bonus to attack rolls.
+        damage_bonus:  Morale bonus to weapon damage rolls.
+        save_bonus:    Morale bonus to saves vs. charm and fear.
+    """
+
+    attack_bonus: int = 1
+    damage_bonus: int = 1
+    save_bonus: int = 1
+
+
+@dataclass(slots=True)
+class BardicMusicManager:
+    """Manages Bardic Music uses per day for a Bard.
+
+    Per 3.5e SRD: A Bard can use Bardic Music a number of times per day
+    equal to their Bard level. Each use requires a Perform check and
+    expends one daily use.
+
+    Attributes:
+        uses_per_day: Maximum daily uses (equal to Bard level).
+        uses_remaining: Remaining uses for the current day.
+    """
+
+    uses_per_day: int
+    uses_remaining: int
+
+    @classmethod
+    def for_bard(cls, level: int) -> "BardicMusicManager":
+        """Create a BardicMusicManager for a Bard at the given level.
+
+        Args:
+            level: Bard class level (1–20).
+
+        Returns:
+            A configured :class:`BardicMusicManager`.
+        """
+        return cls(uses_per_day=level, uses_remaining=level)
+
+    def can_use(self) -> bool:
+        """Check if the Bard has remaining Bardic Music uses.
+
+        Returns:
+            ``True`` if at least one use remains.
+        """
+        return self.uses_remaining > 0
+
+    def inspire_courage(self) -> Optional[InspireCourageBonus]:
+        """Activate Inspire Courage, expending one Bardic Music use.
+
+        Per 3.5e SRD: An affected ally receives a +1 morale bonus on
+        saving throws against charm and fear effects and a +1 morale
+        bonus on attack and weapon damage rolls.
+
+        Returns:
+            An :class:`InspireCourageBonus` if activation succeeds,
+            ``None`` if no uses remain.
+        """
+        if not self.can_use():
+            return None
+        self.uses_remaining -= 1
+        return InspireCourageBonus(attack_bonus=1, damage_bonus=1, save_bonus=1)
+
+    def rest(self) -> None:
+        """Restore all Bardic Music uses (long rest / new day)."""
+        self.uses_remaining = self.uses_per_day
