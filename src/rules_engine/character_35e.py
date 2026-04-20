@@ -43,7 +43,10 @@ import json
 import uuid
 from dataclasses import dataclass, field
 from enum import Enum, auto
-from typing import Any, Dict, List, Optional
+from typing import TYPE_CHECKING, Any, Dict, List, Optional
+
+if TYPE_CHECKING:
+    from src.rules_engine.equipment import EquipmentManager
 
 
 # ---------------------------------------------------------------------------
@@ -213,6 +216,7 @@ class Character35e:
     feats: List[str] = field(default_factory=list)
     skills: Dict[str, int] = field(default_factory=dict)
     metadata: Dict[str, Any] = field(default_factory=dict)
+    equipment_manager: Optional["EquipmentManager"] = None
 
     # ------------------------------------------------------------------
     # Ability modifiers (SRD formula: (score - 10) // 2)
@@ -326,12 +330,16 @@ class Character35e:
 
     @property
     def armor_class(self) -> int:
-        """Armour class: ``10 + DEX mod + size modifier``.
+        """Armour class: ``10 + DEX mod + size modifier + armor bonus + shield bonus``.
 
-        Does not include armour/shield bonuses — those are resolved by
-        the equipment system at runtime.
+        Armor bonus and shield bonus are resolved from the
+        :class:`EquipmentManager` if one is attached.
         """
-        return 10 + self.dexterity_mod + self.size.value
+        ac = 10 + self.dexterity_mod + self.size.value
+        if self.equipment_manager is not None:
+            ac += self.equipment_manager.get_armor_bonus()
+            ac += self.equipment_manager.get_shield_bonus()
+        return ac
 
     @property
     def touch_ac(self) -> int:
@@ -354,13 +362,19 @@ class Character35e:
 
     @property
     def melee_attack(self) -> int:
-        """Melee attack bonus: ``BAB + STR mod + size mod``."""
-        return self.base_attack_bonus + self.strength_mod + self.size.value
+        """Melee attack bonus: ``BAB + STR mod + size mod + enhancement bonus``."""
+        bonus = self.base_attack_bonus + self.strength_mod + self.size.value
+        if self.equipment_manager is not None:
+            bonus += self.equipment_manager.get_weapon_enhancement_bonus()
+        return bonus
 
     @property
     def ranged_attack(self) -> int:
-        """Ranged attack bonus: ``BAB + DEX mod + size mod``."""
-        return self.base_attack_bonus + self.dexterity_mod + self.size.value
+        """Ranged attack bonus: ``BAB + DEX mod + size mod + enhancement bonus``."""
+        bonus = self.base_attack_bonus + self.dexterity_mod + self.size.value
+        if self.equipment_manager is not None:
+            bonus += self.equipment_manager.get_weapon_enhancement_bonus()
+        return bonus
 
     @property
     def grapple(self) -> int:
