@@ -983,7 +983,7 @@ class HarvestingSystem(System):
 
             # Create item matching the block material
             item = Item(
-                name=material_name.capitalize(),
+                name=material_name.replace("_", " ").title(),
                 item_type=ItemType.MATERIAL,
                 rarity=Rarity.COMMON,
                 base_damage=0,
@@ -1027,14 +1027,14 @@ class InventorySystem(System):
     Each tick, this system checks all entities that have both a
     :class:`Position` and an :class:`~src.ai_sim.components.Inventory`
     component against all entities tagged ``"item"``. If their positions
-    overlap (within a configurable radius), the item is added to the
+    are within range (Manhattan distance), the item is added to the
     entity's inventory and the item entity is destroyed.
 
     Args:
         event_bus:      The :class:`EventBus` to publish pickup events on.
         entities:       The shared entity list.
-        pickup_radius:  Maximum distance (in voxel units) for a pickup to
-                        trigger. Default is 1.5 blocks.
+        pickup_radius:  Maximum Manhattan distance (in voxel units) for a
+                        pickup to trigger. Default is 1.5 blocks.
     """
 
     def __init__(
