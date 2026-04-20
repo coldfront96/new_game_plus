@@ -32,6 +32,7 @@ from src.core.event_bus import EventBus
 from src.loot_math.item import Item, ItemType, Rarity
 from src.rules_engine.character_35e import Character35e
 from src.rules_engine.combat import AttackResolver, CombatResult
+from src.rules_engine.conditions import ConditionManager
 from src.rules_engine.equipment import EquipmentManager
 from src.rules_engine.progression import XPManager, level_up
 from src.rules_engine.skills import SkillSystem
@@ -1097,3 +1098,209 @@ class InventorySystem(System):
                             "item_entity_id": item_entity.entity_id,
                             "item_name": item_component.name,
                         })
+
+
+# ---------------------------------------------------------------------------
+# ConditionSystem
+# ---------------------------------------------------------------------------
+
+class ConditionSystem(System):
+    """Manages condition durations each tick, removing expired conditions.
+
+    Each tick, all tracked conditions have their duration decremented.
+    When a condition's duration reaches zero it is removed and a
+    ``"condition_expired"`` event is published.
+
+    Args:
+        event_bus:          The :class:`EventBus` instance to publish events on.
+        condition_manager:  The :class:`ConditionManager` that holds active
+                            conditions for all characters.
+    """
+
+    def __init__(
+        self,
+        event_bus: EventBus,
+        condition_manager: Optional[ConditionManager] = None,
+    ) -> None:
+        self._event_bus = event_bus
+        self._condition_manager = (
+            condition_manager
+            if condition_manager is not None
+            else ConditionManager(event_bus)
+        )
+
+    @property
+    def condition_manager(self) -> ConditionManager:
+        """Access the underlying condition manager."""
+        return self._condition_manager
+
+    def update(self) -> None:
+        """Tick all condition durations and remove expired ones."""
+        self._condition_manager.tick()
+
+
+# ---------------------------------------------------------------------------
+# AoOSystem (Attack of Opportunity)
+# ---------------------------------------------------------------------------
+
+@dataclass(slots=True)
+class ThreatEntry:
+    """Tracks an entity that threatens adjacent voxels.
+
+    Attributes:
+        entity:    The threatening entity.
+        character: The entity's 3.5e stat block.
+        position:  The entity's current position.
+    """
+
+    entity: Entity
+    character: Character35e
+    position: Tuple[int, int, int]
+
+
+class AoOSystem(System):
+    """Detects movement out of threatened voxels and triggers Attacks of Opportunity.
+
+    Per the 3.5e SRD, moving out of a threatened square (adjacent voxel)
+    without using a Withdraw action provokes an Attack of Opportunity from
+    the threatening creature.
+
+    The system tracks entity positions and, when a ``"move_complete"`` event
+    fires, checks whether the entity moved out of any threatened voxel
+    without a matching ``"withdraw_action"`` event. If so, an
+    ``"attack_intent"`` event is published for the threatening entity.
+
+    Args:
+        event_bus: The :class:`EventBus` to subscribe/publish on.
+    """
+
+    def __init__(self, event_bus: EventBus) -> None:
+        self._event_bus = event_bus
+        self._threats: List[ThreatEntry] = []
+        self._pending_aoo: List[AttackIntent] = []
+        self._withdrawing: set = set()  # entity IDs that used Withdraw
+        self._previous_positions: Dict[str, Tuple[int, int, int]] = {}
+
+        self._event_bus.subscribe("withdraw_action", self._on_withdraw)
+        self._event_bus.subscribe("entity_moved", self._on_entity_moved)
+
+    def register_threat(
+        self,
+        entity: Entity,
+        character: Character35e,
+        position: Tuple[int, int, int],
+    ) -> None:
+        """Register an entity as threatening adjacent voxels.
+
+        Args:
+            entity:    The threatening entity.
+            character: The entity's character stat block.
+            position:  The entity's voxel position (x, y, z).
+        """
+        self._threats.append(ThreatEntry(
+            entity=entity,
+            character=character,
+            position=position,
+        ))
+        self._previous_positions[entity.entity_id] = position
+
+    def update_threat_position(
+        self,
+        entity_id: str,
+        new_position: Tuple[int, int, int],
+    ) -> None:
+        """Update the recorded position of a threatening entity.
+
+        Args:
+            entity_id:    The entity's unique ID.
+            new_position: The new voxel position (x, y, z).
+        """
+        for threat in self._threats:
+            if threat.entity.entity_id == entity_id:
+                threat.position = new_position
+                break
+
+    def _on_withdraw(self, payload: Any) -> None:
+        """Mark an entity as using the Withdraw action (no AoO provoked)."""
+        if isinstance(payload, dict):
+            entity_id = payload.get("entity_id")
+            if entity_id:
+                self._withdrawing.add(entity_id)
+
+    def _on_entity_moved(self, payload: Any) -> None:
+        """Check if a moving entity leaves a threatened voxel.
+
+        Payload expected keys:
+            - entity_id: The moving entity's ID.
+            - character: The moving entity's Character35e stat block.
+            - from_position: Previous (x, y, z) tuple.
+            - to_position: New (x, y, z) tuple.
+        """
+        if not isinstance(payload, dict):
+            return
+
+        entity_id = payload.get("entity_id")
+        mover_character = payload.get("character")
+        from_pos = payload.get("from_position")
+        to_pos = payload.get("to_position")
+
+        if entity_id is None or from_pos is None or to_pos is None:
+            return
+        if mover_character is None:
+            return
+
+        # If entity used Withdraw, no AoO
+        if entity_id in self._withdrawing:
+            return
+
+        # Check all threats: was the mover adjacent to any threat at from_pos?
+        for threat in self._threats:
+            if threat.entity.entity_id == entity_id:
+                continue  # Can't threaten yourself
+            if not threat.entity.is_active:
+                continue
+
+            # Check adjacency (Chebyshev distance ≤ 1 = adjacent in 3D)
+            if self._is_adjacent(from_pos, threat.position):
+                # Entity was in a threatened voxel and moved out
+                if not self._is_adjacent(to_pos, threat.position):
+                    # Provokes AoO
+                    self._pending_aoo.append(AttackIntent(
+                        attacker=threat.character,
+                        defender=mover_character,
+                        use_ranged=False,
+                    ))
+
+    @staticmethod
+    def _is_adjacent(
+        pos_a: Tuple[int, int, int],
+        pos_b: Tuple[int, int, int],
+    ) -> bool:
+        """Check if two positions are adjacent (Chebyshev distance ≤ 1).
+
+        Args:
+            pos_a: First position (x, y, z).
+            pos_b: Second position (x, y, z).
+
+        Returns:
+            ``True`` if the positions are adjacent or the same.
+        """
+        dx = abs(pos_a[0] - pos_b[0])
+        dy = abs(pos_a[1] - pos_b[1])
+        dz = abs(pos_a[2] - pos_b[2])
+        return max(dx, dy, dz) <= 1
+
+    def update(self) -> None:
+        """Publish any pending Attacks of Opportunity as attack_intent events."""
+        intents = list(self._pending_aoo)
+        self._pending_aoo.clear()
+        # Clear withdraw flags at end of tick
+        self._withdrawing.clear()
+
+        for intent in intents:
+            self._event_bus.publish("attack_intent", intent)
+
+    @property
+    def pending_count(self) -> int:
+        """Number of pending AoO intents."""
+        return len(self._pending_aoo)

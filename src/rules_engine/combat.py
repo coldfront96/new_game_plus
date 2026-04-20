@@ -171,3 +171,96 @@ class AttackResolver:
             total_damage=total_damage,
             critical=critical,
         )
+
+
+# ---------------------------------------------------------------------------
+# TripResult
+# ---------------------------------------------------------------------------
+
+@dataclass(slots=True)
+class TripResult:
+    """Outcome of a Trip attempt.
+
+    Attributes:
+        success:          ``True`` if the trip succeeded (target is now Prone).
+        attacker_roll:    The attacker's opposed Strength check result.
+        defender_roll:    The defender's opposed Strength check result.
+        attacker_total:   Attacker's total (roll + STR mod + size modifier).
+        defender_total:   Defender's total (roll + STR or DEX mod + size modifier).
+    """
+
+    success: bool
+    attacker_roll: RollResult
+    defender_roll: RollResult
+    attacker_total: int
+    defender_total: int
+
+
+# ---------------------------------------------------------------------------
+# TripResolver
+# ---------------------------------------------------------------------------
+
+# 3.5e SRD special size modifiers for trip/grapple (larger = bonus)
+_TRIP_SIZE_MODIFIER = {
+    "FINE": -16,
+    "DIMINUTIVE": -12,
+    "TINY": -8,
+    "SMALL": -4,
+    "MEDIUM": 0,
+    "LARGE": 4,
+    "HUGE": 8,
+    "GARGANTUAN": 12,
+    "COLOSSAL": 16,
+}
+
+
+class TripResolver:
+    """Stateless resolver for D&D 3.5e Trip maneuver.
+
+    Per the 3.5e SRD, a Trip is resolved as an opposed Strength check:
+    1. Attacker rolls d20 + STR mod + special size modifier.
+    2. Defender rolls d20 + STR mod (or DEX mod, whichever is higher) +
+       special size modifier.
+    3. If the attacker's total meets or exceeds the defender's, the trip
+       succeeds and the target gains the Prone condition.
+
+    The special size modifier for trip uses +4 per size category above
+    Medium and -4 per size below (opposite of the AC size modifier).
+    """
+
+    @classmethod
+    def resolve_trip(
+        cls,
+        attacker: Character35e,
+        defender: Character35e,
+    ) -> TripResult:
+        """Resolve a Trip attempt between attacker and defender.
+
+        Args:
+            attacker: The character attempting the trip.
+            defender: The character being tripped.
+
+        Returns:
+            A :class:`TripResult` describing the outcome.
+        """
+        # Attacker: d20 + STR mod + trip size modifier
+        attacker_size_mod = _TRIP_SIZE_MODIFIER.get(attacker.size.name, 0)
+        attacker_modifier = attacker.strength_mod + attacker_size_mod
+        attacker_roll = roll_d20(modifier=attacker_modifier)
+
+        # Defender: d20 + max(STR mod, DEX mod) + trip size modifier
+        defender_size_mod = _TRIP_SIZE_MODIFIER.get(defender.size.name, 0)
+        defender_ability_mod = max(defender.strength_mod, defender.dexterity_mod)
+        defender_modifier = defender_ability_mod + defender_size_mod
+        defender_roll = roll_d20(modifier=defender_modifier)
+
+        # Opposed check: attacker wins ties
+        success = attacker_roll.total >= defender_roll.total
+
+        return TripResult(
+            success=success,
+            attacker_roll=attacker_roll,
+            defender_roll=defender_roll,
+            attacker_total=attacker_roll.total,
+            defender_total=defender_roll.total,
+        )
