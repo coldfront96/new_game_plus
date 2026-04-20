@@ -334,7 +334,7 @@ class TestCharacterSpellcasting:
         book.learn_spell(mm)
 
         wizard = Character35e(
-            name="Gandolf",
+            name="Gandalf",
             char_class="Wizard",
             level=1,
             intelligence=16,
@@ -347,7 +347,7 @@ class TestCharacterSpellcasting:
         """Verify Character35e can hold a SpellSlotManager."""
         slots = SpellSlotManager(caster_level=1, intelligence=16)
         wizard = Character35e(
-            name="Gandolf",
+            name="Gandalf",
             char_class="Wizard",
             level=1,
             intelligence=16,
@@ -364,7 +364,7 @@ class TestCharacterSpellcasting:
         slots = SpellSlotManager(caster_level=1, intelligence=16)
 
         wizard = Character35e(
-            name="Gandolf",
+            name="Gandalf",
             char_class="Wizard",
             level=1,
             intelligence=16,
