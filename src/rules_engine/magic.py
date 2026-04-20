@@ -346,6 +346,78 @@ BANE = Spell(
 # Cure spell lookup table for spontaneous casting (indexed by spell level)
 # ---------------------------------------------------------------------------
 
+# ---------------------------------------------------------------------------
+# Sorcerer "instinctive" spell definitions (SRD)
+# ---------------------------------------------------------------------------
+
+def _shield_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Shield: Invisible disc provides +4 shield bonus to AC.
+
+    Blocks Magic Missiles. Duration: 1 min./level.
+    """
+    return {
+        "ac_bonus": 4,
+        "bonus_type": "shield",
+        "blocks_magic_missile": True,
+        "duration_minutes": caster_level,
+        "force_effect": True,
+    }
+
+
+def _burning_hands_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Burning Hands: 1d4/level fire damage (max 5d4) in a 15-ft. cone.
+
+    Reflex save for half.
+    """
+    dice = min(caster_level, 5)
+    return {
+        "damage": f"{dice}d4",
+        "damage_type": "Fire",
+        "area": "15 ft. cone",
+        "save": "Reflex half",
+        "max_dice": 5,
+    }
+
+
+SHIELD = Spell(
+    name="Shield",
+    level=1,
+    school=SpellSchool.ABJURATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Personal",
+    duration="1 min./level",
+    effect_callback=_shield_effect,
+    description=(
+        "Shield creates an invisible, tower shield-sized mobile disk of "
+        "force that hovers in front of you. It negates magic missile attacks "
+        "directed at you and provides a +4 shield bonus to AC."
+    ),
+    subschool="",
+    descriptor=["Force"],
+)
+
+BURNING_HANDS = Spell(
+    name="Burning Hands",
+    level=1,
+    school=SpellSchool.EVOCATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="15 ft.",
+    duration="Instantaneous",
+    effect_callback=_burning_hands_effect,
+    description=(
+        "A cone of searing flame shoots from your fingertips. Any creature "
+        "in the area of the flames takes 1d4 points of fire damage per "
+        "caster level (maximum 5d4)."
+    ),
+    subschool="",
+    descriptor=["Fire"],
+)
+
+
+# ---------------------------------------------------------------------------
+# Cure spell lookup table for spontaneous casting (indexed by spell level)
+# ---------------------------------------------------------------------------
+
 CURE_SPELLS: Dict[int, str] = {
     1: "Cure Light Wounds",
     2: "Cure Moderate Wounds",
@@ -363,12 +435,15 @@ def create_default_registry() -> SpellRegistry:
     """Create a :class:`SpellRegistry` pre-loaded with SRD core spells.
 
     Returns:
-        A registry containing Magic Missile, Mage Armor, Cure Light Wounds,
-        Bless, Bane, and other foundational spells.
+        A registry containing Magic Missile, Mage Armor, Shield,
+        Burning Hands, Cure Light Wounds, Bless, Bane, and other
+        foundational spells.
     """
     registry = SpellRegistry()
     registry.register(MAGIC_MISSILE)
     registry.register(MAGE_ARMOR)
+    registry.register(SHIELD)
+    registry.register(BURNING_HANDS)
     registry.register(CURE_LIGHT_WOUNDS)
     registry.register(BLESS)
     registry.register(BANE)

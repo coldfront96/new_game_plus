@@ -119,8 +119,8 @@ class TestSpellRegistry:
 
     def test_count(self):
         registry = create_default_registry()
-        assert registry.count == 5
-        assert len(registry) == 5
+        assert registry.count == 7
+        assert len(registry) == 7
 
     def test_contains(self):
         registry = create_default_registry()
@@ -387,7 +387,8 @@ class TestCharacter35eSpellcasting:
         sorc.initialize_spellcasting()
 
         assert sorc.spell_slot_manager is not None
-        assert sorc.spellbook is not None
+        assert sorc.spells_known is not None
+        assert sorc.spontaneous_caster is not None
         assert sorc.spell_slot_manager.max_slots[0] == 5  # Sorcerer cantrips
         assert sorc.spell_slot_manager.max_slots[1] == 4  # 3 + 1 bonus
 

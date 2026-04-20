@@ -47,7 +47,12 @@ from typing import TYPE_CHECKING, Any, Dict, List, Optional
 
 if TYPE_CHECKING:
     from src.rules_engine.equipment import EquipmentManager
-    from src.rules_engine.spellcasting import SpellSlotManager, Spellbook
+    from src.rules_engine.spellcasting import (
+        SpellSlotManager,
+        Spellbook,
+        SpellsKnownManager,
+        SpontaneousCasterManager,
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -220,6 +225,8 @@ class Character35e:
     equipment_manager: Optional["EquipmentManager"] = None
     spell_slot_manager: Optional["SpellSlotManager"] = None
     spellbook: Optional["Spellbook"] = None
+    spells_known: Optional["SpellsKnownManager"] = None
+    spontaneous_caster: Optional["SpontaneousCasterManager"] = None
 
     # ------------------------------------------------------------------
     # Ability modifiers (SRD formula: (score - 10) // 2)
@@ -418,10 +425,15 @@ class Character35e:
 
         This must be called after construction to set up Vancian spellcasting
         components. Does nothing if the character is not a caster class.
+
+        For Sorcerers, sets up a :class:`SpontaneousCasterManager` with
+        Charisma-based bonus slots and a :class:`SpellsKnownManager`.
         """
         from src.rules_engine.spellcasting import (
             SpellSlotManager,
             Spellbook,
+            SpellsKnownManager,
+            SpontaneousCasterManager,
             is_caster_class,
             get_key_ability,
         )
@@ -435,7 +447,14 @@ class Character35e:
         self.spell_slot_manager = SpellSlotManager.for_class(
             self.char_class, self.level, ability_mod,
         )
-        self.spellbook = Spellbook()
+
+        if self.char_class == "Sorcerer":
+            self.spells_known = SpellsKnownManager.for_sorcerer(self.level)
+            self.spontaneous_caster = SpontaneousCasterManager.for_sorcerer(
+                self.level, ability_mod,
+            )
+        else:
+            self.spellbook = Spellbook()
 
     @property
     def is_caster(self) -> bool:
