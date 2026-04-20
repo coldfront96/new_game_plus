@@ -652,3 +652,241 @@ class DivineCasterManager:
         """Restore all spell slots and clear prepared spells (new day)."""
         self.slot_manager.rest()
         self.spellbook.unprepare_all()
+
+
+# ---------------------------------------------------------------------------
+# Sorcerer Spells Known Table (3.5e SRD)
+# ---------------------------------------------------------------------------
+
+# Maximum number of spells known per spell level by Sorcerer class level.
+# Index = spell level (0-9). -1 means not available at that class level.
+_SORCERER_SPELLS_KNOWN: Dict[int, List[int]] = {
+    1:  [4, 2, -1, -1, -1, -1, -1, -1, -1, -1],
+    2:  [5, 2, -1, -1, -1, -1, -1, -1, -1, -1],
+    3:  [5, 3, -1, -1, -1, -1, -1, -1, -1, -1],
+    4:  [6, 3, 1, -1, -1, -1, -1, -1, -1, -1],
+    5:  [6, 4, 2, -1, -1, -1, -1, -1, -1, -1],
+    6:  [7, 4, 2, 1, -1, -1, -1, -1, -1, -1],
+    7:  [7, 5, 3, 2, -1, -1, -1, -1, -1, -1],
+    8:  [8, 5, 3, 2, 1, -1, -1, -1, -1, -1],
+    9:  [8, 5, 4, 3, 2, -1, -1, -1, -1, -1],
+    10: [9, 5, 4, 3, 2, 1, -1, -1, -1, -1],
+    11: [9, 5, 5, 4, 3, 2, -1, -1, -1, -1],
+    12: [9, 5, 5, 4, 3, 2, 1, -1, -1, -1],
+    13: [9, 5, 5, 4, 4, 3, 2, -1, -1, -1],
+    14: [9, 5, 5, 4, 4, 3, 2, 1, -1, -1],
+    15: [9, 5, 5, 4, 4, 4, 3, 2, -1, -1],
+    16: [9, 5, 5, 4, 4, 4, 3, 2, 1, -1],
+    17: [9, 5, 5, 4, 4, 4, 3, 3, 2, -1],
+    18: [9, 5, 5, 4, 4, 4, 3, 3, 2, 1],
+    19: [9, 5, 5, 4, 4, 4, 3, 3, 3, 2],
+    20: [9, 5, 5, 4, 4, 4, 3, 3, 3, 3],
+}
+
+
+# ---------------------------------------------------------------------------
+# SpellsKnownManager
+# ---------------------------------------------------------------------------
+
+@dataclass(slots=True)
+class SpellsKnownManager:
+    """Tracks the limited list of spells a spontaneous caster (Sorcerer/Bard)
+    actually knows.
+
+    Unlike the Wizard's :class:`Spellbook`, a Sorcerer's spells known list is
+    strictly limited by class level. Spells known cannot be changed freely —
+    they represent innate mastery rather than scholarly study.
+
+    Attributes:
+        known_spells: Mapping of spell_level → set of known spell names.
+        max_known:    Maximum number of spells known per level (from SRD table).
+    """
+
+    known_spells: Dict[int, Set[str]] = field(
+        default_factory=lambda: {i: set() for i in range(10)}
+    )
+    max_known: List[int] = field(default_factory=lambda: [0] * 10)
+
+    @classmethod
+    def for_sorcerer(cls, level: int) -> "SpellsKnownManager":
+        """Create a SpellsKnownManager for a Sorcerer at the given level.
+
+        Args:
+            level: Sorcerer class level (1–20).
+
+        Returns:
+            A configured :class:`SpellsKnownManager` with correct caps.
+        """
+        table = _SORCERER_SPELLS_KNOWN.get(level, [0] * 10)
+        max_known = [max(0, v) for v in table]
+        return cls(
+            known_spells={i: set() for i in range(10)},
+            max_known=max_known,
+        )
+
+    def can_learn(self, spell_level: int) -> bool:
+        """Check if the caster can learn another spell at the given level.
+
+        Args:
+            spell_level: Spell level (0–9).
+
+        Returns:
+            ``True`` if there is room for another spell at that level.
+        """
+        if self.max_known[spell_level] <= 0:
+            return False
+        return len(self.known_spells[spell_level]) < self.max_known[spell_level]
+
+    def learn_spell(self, spell_name: str, spell_level: int) -> bool:
+        """Add a spell to the known list at the given level.
+
+        Args:
+            spell_name:  Name of the spell to learn.
+            spell_level: The spell's level (0–9).
+
+        Returns:
+            ``True`` if the spell was successfully learned, ``False`` if
+            the spell is already known or the known list is full.
+        """
+        if spell_name in self.known_spells[spell_level]:
+            return False
+        if not self.can_learn(spell_level):
+            return False
+        self.known_spells[spell_level].add(spell_name)
+        return True
+
+    def is_known(self, spell_name: str, spell_level: int) -> bool:
+        """Check if a spell is known at the given level.
+
+        Args:
+            spell_name:  Name of the spell.
+            spell_level: The spell's level (0–9).
+
+        Returns:
+            ``True`` if the spell is known at that level.
+        """
+        return spell_name in self.known_spells[spell_level]
+
+    def get_known(self, spell_level: int) -> Set[str]:
+        """Return the set of known spells at a given level.
+
+        Args:
+            spell_level: Spell level (0–9).
+
+        Returns:
+            Set of known spell names.
+        """
+        return set(self.known_spells[spell_level])
+
+    def total_known(self) -> int:
+        """Total number of spells known across all levels."""
+        return sum(len(s) for s in self.known_spells.values())
+
+
+# ---------------------------------------------------------------------------
+# SpontaneousCasterManager
+# ---------------------------------------------------------------------------
+
+@dataclass(slots=True)
+class SpontaneousCasterManager:
+    """Specialized slot manager for spontaneous casters (Sorcerer/Bard).
+
+    Unlike Wizards and Clerics who prepare specific spells into slots,
+    spontaneous casters can cast *any* spell they know using an available
+    slot of the appropriate level. This manager checks the
+    :class:`SpellsKnownManager` rather than a "Prepared" list.
+
+    Charisma is the key ability for Sorcerers: bonus spell slots are
+    computed from CHA modifier.
+
+    Attributes:
+        slot_manager:    The underlying :class:`SpellSlotManager`.
+        spells_known:    The :class:`SpellsKnownManager` tracking known spells.
+    """
+
+    slot_manager: SpellSlotManager
+    spells_known: SpellsKnownManager
+
+    @classmethod
+    def for_sorcerer(
+        cls,
+        level: int,
+        cha_mod: int,
+    ) -> "SpontaneousCasterManager":
+        """Create a SpontaneousCasterManager for a Sorcerer.
+
+        Uses Charisma for bonus spell slots per the 3.5e SRD.
+
+        Args:
+            level:   Sorcerer class level (1–20).
+            cha_mod: Charisma modifier.
+
+        Returns:
+            A configured :class:`SpontaneousCasterManager`.
+        """
+        slot_manager = SpellSlotManager.for_class("Sorcerer", level, cha_mod)
+        spells_known = SpellsKnownManager.for_sorcerer(level)
+        return cls(slot_manager=slot_manager, spells_known=spells_known)
+
+    def can_cast(self, spell_name: str, spell_level: int) -> bool:
+        """Check if a spell can be cast (is known and a slot is available).
+
+        Args:
+            spell_name:  Name of the spell.
+            spell_level: Spell level (0–9).
+
+        Returns:
+            ``True`` if the spell is known and a slot is available.
+        """
+        if not self.spells_known.is_known(spell_name, spell_level):
+            return False
+        return self.slot_manager.available(spell_level) > 0
+
+    def cast_spell(self, spell_name: str, spell_level: int) -> bool:
+        """Cast a known spell, expending a slot of the appropriate level.
+
+        Spontaneous casters do not need to prepare spells. They can cast
+        any known spell as long as a slot of the correct level remains.
+
+        Args:
+            spell_name:  Name of the spell to cast.
+            spell_level: Spell level of the slot to expend.
+
+        Returns:
+            ``True`` if the spell was successfully cast (known and slot
+            available), ``False`` otherwise.
+        """
+        if not self.spells_known.is_known(spell_name, spell_level):
+            return False
+        return self.slot_manager.expend(spell_level)
+
+    def rest(self) -> None:
+        """Restore all spell slots after a long rest (8 hours).
+
+        Note: Unlike Wizards, Sorcerers do not need to re-prepare spells.
+        Their known spells remain unchanged.
+        """
+        self.slot_manager.rest()
+
+    def available_slots(self, spell_level: int) -> int:
+        """Return remaining slots at the given level.
+
+        Args:
+            spell_level: Spell level (0–9).
+
+        Returns:
+            Number of available slots.
+        """
+        return self.slot_manager.available(spell_level)
+
+    def learn_spell(self, spell_name: str, spell_level: int) -> bool:
+        """Learn a new spell (delegate to SpellsKnownManager).
+
+        Args:
+            spell_name:  Name of the spell.
+            spell_level: Spell level (0–9).
+
+        Returns:
+            ``True`` if successfully learned.
+        """
+        return self.spells_known.learn_spell(spell_name, spell_level)
