@@ -1,392 +1,419 @@
 """
 tests/rules_engine/test_magic.py
 ---------------------------------
-Unit tests for the Wizardry Engine: magic.py and spellcasting.py.
+Unit tests for the D&D 3.5e spellcasting engine.
 
-Verifies:
-- Spell dataclass creation and validation.
-- SpellRegistry lookups.
-- Spellbook learning and querying.
-- SpellSlotManager slot calculations (base + bonus from Intelligence).
-- SpellResolver save DC calculations.
-- Character35e integration with spellcasting components.
+Verifies spell definitions, registry, slot management, spellbook,
+and casting math (DC, caster level).
 """
 
 import pytest
 
 from src.rules_engine.magic import (
+    MAGE_ARMOR,
+    MAGIC_MISSILE,
     Spell,
+    SpellComponent,
     SpellRegistry,
-    DEFAULT_SPELL_REGISTRY,
-    SPELL_SCHOOLS,
+    SpellSchool,
+    create_default_registry,
 )
 from src.rules_engine.spellcasting import (
     Spellbook,
-    SpellSlotManager,
     SpellResolver,
+    SpellSlotManager,
+    get_key_ability,
+    is_caster_class,
     _bonus_spells_for_level,
 )
 from src.rules_engine.character_35e import Character35e
 
 
 # ---------------------------------------------------------------------------
-# Spell Dataclass Tests
+# Spell dataclass tests
 # ---------------------------------------------------------------------------
 
-class TestSpell:
-    def test_create_spell(self):
-        spell = Spell(name="Test Spell", level=1, school="Evocation")
-        assert spell.name == "Test Spell"
-        assert spell.level == 1
-        assert spell.school == "Evocation"
+class TestSpellDataclass:
+    def test_magic_missile_attributes(self):
+        assert MAGIC_MISSILE.name == "Magic Missile"
+        assert MAGIC_MISSILE.level == 1
+        assert MAGIC_MISSILE.school == SpellSchool.EVOCATION
+        assert SpellComponent.VERBAL in MAGIC_MISSILE.components
+        assert SpellComponent.SOMATIC in MAGIC_MISSILE.components
+        assert "Force" in MAGIC_MISSILE.descriptor
 
-    def test_invalid_school_raises(self):
-        with pytest.raises(ValueError, match="Invalid spell school"):
-            Spell(name="Bad Spell", level=1, school="Pyromancy")
+    def test_mage_armor_attributes(self):
+        assert MAGE_ARMOR.name == "Mage Armor"
+        assert MAGE_ARMOR.level == 1
+        assert MAGE_ARMOR.school == SpellSchool.CONJURATION
+        assert MAGE_ARMOR.subschool == "Creation"
+        assert SpellComponent.FOCUS in MAGE_ARMOR.components
 
-    def test_invalid_level_raises(self):
-        with pytest.raises(ValueError, match="Spell level must be 0–9"):
-            Spell(name="Bad Spell", level=10, school="Evocation")
+    def test_spell_slots_true(self):
+        """Verify Spell uses __slots__ for memory efficiency."""
+        assert hasattr(Spell, "__slots__")
 
-    def test_negative_level_raises(self):
-        with pytest.raises(ValueError, match="Spell level must be 0–9"):
-            Spell(name="Bad Spell", level=-1, school="Evocation")
+    def test_magic_missile_effect_callback(self):
+        result = MAGIC_MISSILE.effect_callback(None, None, 1)
+        assert result["damage_type"] == "Force"
+        assert result["num_missiles"] == 1
+        assert result["auto_hit"] is True
 
-    def test_default_components_empty(self):
-        spell = Spell(name="Simple", level=0, school="Universal")
-        assert spell.components == []
+    def test_magic_missile_scales_with_caster_level(self):
+        # CL 3 => 2 missiles, CL 5 => 3, CL 9 => 5 (max)
+        result_cl3 = MAGIC_MISSILE.effect_callback(None, None, 3)
+        assert result_cl3["num_missiles"] == 2
 
-    def test_effect_callback_default_none(self):
-        spell = Spell(name="Simple", level=0, school="Universal")
-        assert spell.effect_callback is None
+        result_cl5 = MAGIC_MISSILE.effect_callback(None, None, 5)
+        assert result_cl5["num_missiles"] == 3
+
+        result_cl9 = MAGIC_MISSILE.effect_callback(None, None, 9)
+        assert result_cl9["num_missiles"] == 5
+
+        # CL 11 still capped at 5
+        result_cl11 = MAGIC_MISSILE.effect_callback(None, None, 11)
+        assert result_cl11["num_missiles"] == 5
+
+    def test_mage_armor_effect_callback(self):
+        result = MAGE_ARMOR.effect_callback(None, None, 5)
+        assert result["ac_bonus"] == 4
+        assert result["bonus_type"] == "armor"
+        assert result["duration_hours"] == 5
+        assert result["force_effect"] is True
 
 
 # ---------------------------------------------------------------------------
-# SpellRegistry Tests
+# SpellRegistry tests
 # ---------------------------------------------------------------------------
 
 class TestSpellRegistry:
     def test_register_and_get(self):
         registry = SpellRegistry()
-        spell = Spell(name="Fireball", level=3, school="Evocation")
-        registry.register(spell)
-        assert registry.get("Fireball") is spell
+        registry.register(MAGIC_MISSILE)
+        assert registry.get("Magic Missile") is MAGIC_MISSILE
 
     def test_get_nonexistent_returns_none(self):
         registry = SpellRegistry()
-        assert registry.get("Nonexistent") is None
+        assert registry.get("Nonexistent Spell") is None
 
     def test_duplicate_registration_raises(self):
         registry = SpellRegistry()
-        spell = Spell(name="Fireball", level=3, school="Evocation")
-        registry.register(spell)
+        registry.register(MAGIC_MISSILE)
         with pytest.raises(ValueError, match="already registered"):
-            registry.register(spell)
+            registry.register(MAGIC_MISSILE)
 
     def test_get_by_level(self):
-        registry = SpellRegistry()
-        s1 = Spell(name="Spell A", level=1, school="Evocation")
-        s2 = Spell(name="Spell B", level=1, school="Abjuration")
-        s3 = Spell(name="Spell C", level=2, school="Conjuration")
-        registry.register(s1)
-        registry.register(s2)
-        registry.register(s3)
+        registry = create_default_registry()
         level_1 = registry.get_by_level(1)
-        assert len(level_1) == 2
-        assert s1 in level_1
-        assert s2 in level_1
+        names = [s.name for s in level_1]
+        assert "Magic Missile" in names
+        assert "Mage Armor" in names
+
+    def test_get_by_school(self):
+        registry = create_default_registry()
+        evocations = registry.get_by_school(SpellSchool.EVOCATION)
+        assert any(s.name == "Magic Missile" for s in evocations)
+
+        conjurations = registry.get_by_school(SpellSchool.CONJURATION)
+        assert any(s.name == "Mage Armor" for s in conjurations)
+
+    def test_count(self):
+        registry = create_default_registry()
+        assert registry.count == 2
+        assert len(registry) == 2
 
     def test_contains(self):
-        registry = SpellRegistry()
-        spell = Spell(name="Shield", level=1, school="Abjuration")
-        registry.register(spell)
-        assert "Shield" in registry
-        assert "Nonexistent" not in registry
-
-    def test_len(self):
-        registry = SpellRegistry()
-        assert len(registry) == 0
-        registry.register(Spell(name="A", level=0, school="Universal"))
-        assert len(registry) == 1
-
-
-class TestDefaultSpellRegistry:
-    def test_magic_missile_exists(self):
-        mm = DEFAULT_SPELL_REGISTRY.get("Magic Missile")
-        assert mm is not None
-        assert mm.level == 1
-        assert mm.school == "Evocation"
-        assert "V" in mm.components
-        assert "S" in mm.components
-
-    def test_mage_armor_exists(self):
-        ma = DEFAULT_SPELL_REGISTRY.get("Mage Armor")
-        assert ma is not None
-        assert ma.level == 1
-        assert ma.school == "Conjuration"
-        assert "V" in ma.components
-        assert "S" in ma.components
-        assert "F" in ma.components
+        registry = create_default_registry()
+        assert "Magic Missile" in registry
+        assert "Fireball" not in registry
 
 
 # ---------------------------------------------------------------------------
-# Spellbook Tests
+# SpellSlotManager tests
+# ---------------------------------------------------------------------------
+
+class TestSpellSlotManager:
+    def test_wizard_level_1_base_slots(self):
+        """A Level 1 Wizard with INT 10 (mod 0) has 3 cantrips, 1 first-level."""
+        slots = SpellSlotManager.for_wizard(level=1, int_mod=0)
+        assert slots.max_slots[0] == 3  # 0-level (cantrips)
+        assert slots.max_slots[1] == 1  # 1st-level
+        assert slots.max_slots[2] == 0  # 2nd-level (not available)
+
+    def test_wizard_level_1_with_high_int(self):
+        """A Level 1 Wizard with INT 16 (mod +3) gets bonus 1st-level slots.
+
+        Per 3.5e SRD: bonus spells for level 1 with mod 3 = 1 + (3-1)//4 = 1.
+        So total 1st-level = 1 (base) + 1 (bonus) = 2.
+        """
+        slots = SpellSlotManager.for_wizard(level=1, int_mod=3)
+        assert slots.max_slots[0] == 3  # Cantrips: no bonus
+        assert slots.max_slots[1] == 2  # 1 base + 1 bonus
+
+    def test_wizard_level_1_base_slots_srd_verification(self):
+        """VERIFICATION TEST: Level 1 Wizard correctly has three 0-level
+        and one 1st-level spell slots (base, before bonus spells from INT).
+
+        Per 3.5e SRD Wizard table:
+        - Level 1: 3 cantrips (0-level), 1 first-level slot (base).
+        """
+        # Using INT 10 (mod 0) to test pure base slots
+        slots = SpellSlotManager.for_wizard(level=1, int_mod=0)
+        assert slots.max_slots[0] == 3, "Level 1 Wizard should have 3 cantrip slots"
+        assert slots.max_slots[1] == 1, "Level 1 Wizard should have 1 first-level slot"
+
+    def test_expend_and_available(self):
+        slots = SpellSlotManager.for_wizard(level=1, int_mod=0)
+        assert slots.available(1) == 1
+        assert slots.expend(1) is True
+        assert slots.available(1) == 0
+        assert slots.expend(1) is False  # No more slots
+
+    def test_rest_restores_slots(self):
+        slots = SpellSlotManager.for_wizard(level=1, int_mod=0)
+        slots.expend(0)
+        slots.expend(0)
+        slots.expend(1)
+        assert slots.available(0) == 1
+        assert slots.available(1) == 0
+
+        slots.rest()
+        assert slots.available(0) == 3
+        assert slots.available(1) == 1
+
+    def test_sorcerer_level_1_slots(self):
+        slots = SpellSlotManager.for_sorcerer(level=1, cha_mod=3)
+        assert slots.max_slots[0] == 5  # Cantrips
+        assert slots.max_slots[1] == 4  # 3 base + 1 bonus
+
+    def test_invalid_class_raises(self):
+        with pytest.raises(ValueError, match="not a recognised caster"):
+            SpellSlotManager.for_class("Fighter", 1, 0)
+
+    def test_total_max_and_available(self):
+        slots = SpellSlotManager.for_wizard(level=1, int_mod=0)
+        assert slots.total_max() == 4  # 3 + 1
+        assert slots.total_available() == 4
+        slots.expend(0)
+        assert slots.total_available() == 3
+
+    def test_slots_true_attribute(self):
+        """Verify SpellSlotManager uses __slots__."""
+        assert hasattr(SpellSlotManager, "__slots__")
+
+
+# ---------------------------------------------------------------------------
+# Spellbook tests
 # ---------------------------------------------------------------------------
 
 class TestSpellbook:
-    def test_learn_spell(self):
+    def test_add_and_check_known(self):
         book = Spellbook()
-        spell = Spell(name="Sleep", level=1, school="Enchantment")
-        assert book.learn_spell(spell) is True
-        assert book.knows_spell(spell) is True
+        book.add_known("Magic Missile", spell_level=1)
+        assert book.is_known("Magic Missile")
+        assert not book.is_known("Fireball")
 
-    def test_learn_duplicate_returns_false(self):
+    def test_remove_known(self):
         book = Spellbook()
-        spell = Spell(name="Sleep", level=1, school="Enchantment")
-        book.learn_spell(spell)
-        assert book.learn_spell(spell) is False
+        book.add_known("Magic Missile", spell_level=1)
+        book.remove_known("Magic Missile")
+        assert not book.is_known("Magic Missile")
 
-    def test_get_spells_by_level(self):
+    def test_prepare_known_spell(self):
         book = Spellbook()
-        s1 = Spell(name="Spell A", level=1, school="Evocation")
-        s2 = Spell(name="Spell B", level=2, school="Evocation")
-        book.learn_spell(s1)
-        book.learn_spell(s2)
-        assert len(book.get_spells_by_level(1)) == 1
-        assert len(book.get_spells_by_level(2)) == 1
-        assert len(book.get_spells_by_level(3)) == 0
+        book.add_known("Magic Missile", spell_level=1)
+        assert book.prepare("Magic Missile", spell_level=1) is True
+        assert "Magic Missile" in book.get_prepared(1)
 
-    def test_all_known(self):
+    def test_prepare_unknown_spell_fails(self):
         book = Spellbook()
-        s1 = Spell(name="A", level=0, school="Universal")
-        s2 = Spell(name="B", level=1, school="Evocation")
-        book.learn_spell(s1)
-        book.learn_spell(s2)
-        assert len(book.all_known()) == 2
+        assert book.prepare("Fireball", spell_level=3) is False
 
-    def test_serialization_roundtrip(self):
+    def test_unprepare_all(self):
         book = Spellbook()
-        mm = DEFAULT_SPELL_REGISTRY.get("Magic Missile")
-        book.learn_spell(mm)
-        data = book.to_dict()
-        restored = Spellbook.from_dict(data, DEFAULT_SPELL_REGISTRY)
-        assert restored.knows_spell(mm)
+        book.add_known("Magic Missile", spell_level=1)
+        book.prepare("Magic Missile", spell_level=1)
+        book.unprepare_all()
+        assert book.get_prepared(1) == []
+
+    def test_slots_true_attribute(self):
+        """Verify Spellbook uses __slots__."""
+        assert hasattr(Spellbook, "__slots__")
 
 
 # ---------------------------------------------------------------------------
-# Bonus Spells Calculation Tests
+# SpellResolver tests
+# ---------------------------------------------------------------------------
+
+class TestSpellResolver:
+    def test_spell_save_dc_wizard(self):
+        """DC = 10 + spell_level + INT mod.
+
+        Wizard with INT 16 (+3 mod) casting a 1st-level spell: DC = 14.
+        """
+        resolver = SpellResolver(caster_level=1, key_ability_mod=3)
+        assert resolver.spell_save_dc(spell_level=1) == 14
+
+    def test_spell_save_dc_cantrip(self):
+        """DC for a 0-level spell with +3 mod: 10 + 0 + 3 = 13."""
+        resolver = SpellResolver(caster_level=1, key_ability_mod=3)
+        assert resolver.spell_save_dc(spell_level=0) == 13
+
+    def test_spell_save_dc_high_level(self):
+        """DC for a 9th-level spell with +5 mod: 10 + 9 + 5 = 24."""
+        resolver = SpellResolver(caster_level=17, key_ability_mod=5)
+        assert resolver.spell_save_dc(spell_level=9) == 24
+
+    def test_caster_level(self):
+        resolver = SpellResolver(caster_level=5, key_ability_mod=3)
+        assert resolver.get_caster_level() == 5
+
+    def test_resolve_spell_magic_missile(self):
+        registry = create_default_registry()
+        resolver = SpellResolver(
+            caster_level=5, key_ability_mod=3, spell_registry=registry,
+        )
+        result = resolver.resolve_spell("Magic Missile")
+        assert result is not None
+        assert result["num_missiles"] == 3
+        assert result["damage_type"] == "Force"
+
+    def test_resolve_spell_not_found(self):
+        registry = create_default_registry()
+        resolver = SpellResolver(
+            caster_level=1, key_ability_mod=3, spell_registry=registry,
+        )
+        assert resolver.resolve_spell("Nonexistent") is None
+
+    def test_resolve_spell_no_registry(self):
+        resolver = SpellResolver(caster_level=1, key_ability_mod=3)
+        assert resolver.resolve_spell("Magic Missile") is None
+
+    def test_slots_true_attribute(self):
+        """Verify SpellResolver uses __slots__."""
+        assert hasattr(SpellResolver, "__slots__")
+
+
+# ---------------------------------------------------------------------------
+# Bonus spells helper tests
 # ---------------------------------------------------------------------------
 
 class TestBonusSpells:
     def test_no_bonus_for_cantrips(self):
-        assert _bonus_spells_for_level(20, 0) == 0
+        assert _bonus_spells_for_level(5, 0) == 0
 
-    def test_int_16_level_1_bonus(self):
-        # INT 16 → mod +3 → bonus for level 1 = (3 - 1) // 4 + 1 = 1
-        assert _bonus_spells_for_level(16, 1) == 1
+    def test_no_bonus_if_mod_less_than_level(self):
+        # Mod 2 cannot grant bonus for level 3+
+        assert _bonus_spells_for_level(2, 3) == 0
 
-    def test_int_16_level_2_bonus(self):
-        # INT 16 → mod +3 → bonus for level 2 = (3 - 2) // 4 + 1 = 1
-        assert _bonus_spells_for_level(16, 2) == 1
+    def test_mod_equals_level(self):
+        # Mod 1, level 1: 1 + (1-1)//4 = 1
+        assert _bonus_spells_for_level(1, 1) == 1
 
-    def test_int_16_level_3_bonus(self):
-        # INT 16 → mod +3 → bonus for level 3 = (3 - 3) // 4 + 1 = 1
-        assert _bonus_spells_for_level(16, 3) == 1
-
-    def test_int_16_level_4_no_bonus(self):
-        # INT 16 → mod +3 → mod < spell_level, no bonus
-        assert _bonus_spells_for_level(16, 4) == 0
-
-    def test_int_10_no_bonus(self):
-        # INT 10 → mod +0 → no bonus for any level
-        assert _bonus_spells_for_level(10, 1) == 0
-
-    def test_int_insufficient_for_spell_level(self):
-        # Need INT >= 10 + spell_level to cast. INT 11 < 12 (10+2)
-        assert _bonus_spells_for_level(11, 2) == 0
-
-    def test_int_20_level_1_bonus(self):
-        # INT 20 → mod +5 → bonus for level 1 = (5 - 1) // 4 + 1 = 2
-        assert _bonus_spells_for_level(20, 1) == 2
+    def test_high_mod_multiple_bonus(self):
+        # Mod 5, level 1: 1 + (5-1)//4 = 1 + 1 = 2
+        assert _bonus_spells_for_level(5, 1) == 2
 
 
 # ---------------------------------------------------------------------------
-# SpellSlotManager Tests
+# Character35e spellcasting integration tests
 # ---------------------------------------------------------------------------
 
-class TestSpellSlotManager:
-    def test_level_1_wizard_int_16_cantrips(self):
-        """A Level 1 Wizard with 16 INT has 3 cantrip slots (no bonus for 0-level)."""
-        mgr = SpellSlotManager(caster_level=1, intelligence=16)
-        assert mgr.get_total_slots(0) == 3
+class TestCharacter35eSpellcasting:
+    def test_wizard_is_caster(self):
+        wizard = Character35e(name="Gandalf", char_class="Wizard", level=1)
+        assert wizard.is_caster is True
 
-    def test_level_1_wizard_int_16_first_level(self):
-        """A Level 1 Wizard with 16 INT has 2 first-level slots (1 base + 1 bonus)."""
-        mgr = SpellSlotManager(caster_level=1, intelligence=16)
-        assert mgr.get_total_slots(1) == 2
-
-    def test_level_1_wizard_int_10(self):
-        """A Level 1 Wizard with 10 INT has 1 first-level slot (no bonus)."""
-        mgr = SpellSlotManager(caster_level=1, intelligence=10)
-        assert mgr.get_total_slots(0) == 3
-        assert mgr.get_total_slots(1) == 1
-
-    def test_no_second_level_at_caster_level_1(self):
-        """A Level 1 Wizard cannot cast 2nd-level spells."""
-        mgr = SpellSlotManager(caster_level=1, intelligence=16)
-        assert mgr.get_total_slots(2) == 0
-
-    def test_expend_slot(self):
-        mgr = SpellSlotManager(caster_level=1, intelligence=16)
-        assert mgr.get_remaining_slots(1) == 2
-        assert mgr.expend_slot(1) is True
-        assert mgr.get_remaining_slots(1) == 1
-        assert mgr.expend_slot(1) is True
-        assert mgr.get_remaining_slots(1) == 0
-        assert mgr.expend_slot(1) is False
-
-    def test_expend_slot_invalid_level(self):
-        mgr = SpellSlotManager(caster_level=1, intelligence=16)
-        assert mgr.expend_slot(9) is False
-
-    def test_prepare_spell(self):
-        mgr = SpellSlotManager(caster_level=1, intelligence=16)
-        mm = DEFAULT_SPELL_REGISTRY.get("Magic Missile")
-        assert mgr.prepare_spell(mm, 1) is True
-        assert mgr.prepare_spell(mm, 1) is True  # Can prepare same spell twice
-        assert mgr.prepare_spell(mm, 1) is False  # No more slots
-
-    def test_prepare_spell_invalid_level(self):
-        mgr = SpellSlotManager(caster_level=1, intelligence=16)
-        mm = DEFAULT_SPELL_REGISTRY.get("Magic Missile")
-        assert mgr.prepare_spell(mm, 5) is False
-
-    def test_rest_resets_slots(self):
-        mgr = SpellSlotManager(caster_level=1, intelligence=16)
-        mgr.expend_slot(1)
-        mgr.expend_slot(1)
-        assert mgr.get_remaining_slots(1) == 0
-        mgr.rest()
-        assert mgr.get_remaining_slots(1) == 2
-
-    def test_level_5_wizard_int_18(self):
-        """Level 5 Wizard with 18 INT: verify multiple levels of slots."""
-        mgr = SpellSlotManager(caster_level=5, intelligence=18)
-        # Level 0: 4 base + 0 bonus = 4
-        assert mgr.get_total_slots(0) == 4
-        # Level 1: 3 base + 1 bonus (mod 4, (4-1)//4+1=1) = 4
-        assert mgr.get_total_slots(1) == 4
-        # Level 2: 2 base + 1 bonus (mod 4, (4-2)//4+1=1) = 3
-        assert mgr.get_total_slots(2) == 3
-        # Level 3: 1 base + 1 bonus (mod 4, (4-3)//4+1=1) = 2
-        assert mgr.get_total_slots(3) == 2
-
-    def test_serialization_roundtrip(self):
-        mgr = SpellSlotManager(caster_level=1, intelligence=16)
-        mgr.expend_slot(1)
-        data = mgr.to_dict()
-        restored = SpellSlotManager.from_dict(data)
-        assert restored.caster_level == 1
-        assert restored.intelligence == 16
-        assert restored.get_remaining_slots(1) == 1
-
-
-# ---------------------------------------------------------------------------
-# SpellResolver Tests
-# ---------------------------------------------------------------------------
-
-class TestSpellResolver:
-    def test_save_dc_level_1_int_16(self):
-        """DC = 10 + 1 + 3 = 14 for a 1st-level spell with INT 16."""
-        resolver = SpellResolver(intelligence=16)
-        assert resolver.spell_save_dc(1) == 14
-
-    def test_save_dc_level_0_int_16(self):
-        """DC = 10 + 0 + 3 = 13 for a cantrip with INT 16."""
-        resolver = SpellResolver(intelligence=16)
-        assert resolver.spell_save_dc(0) == 13
-
-    def test_save_dc_level_9_int_20(self):
-        """DC = 10 + 9 + 5 = 24 for a 9th-level spell with INT 20."""
-        resolver = SpellResolver(intelligence=20)
-        assert resolver.spell_save_dc(9) == 24
-
-    def test_caster_level_check_success(self):
-        resolver = SpellResolver(intelligence=16, caster_level=5)
-        # d20 roll of 10 + caster level 5 = 15 >= DC 15
-        assert resolver.caster_level_check(dc=15, roll=10) is True
-
-    def test_caster_level_check_failure(self):
-        resolver = SpellResolver(intelligence=16, caster_level=5)
-        # d20 roll of 9 + caster level 5 = 14 < DC 15
-        assert resolver.caster_level_check(dc=15, roll=9) is False
-
-
-# ---------------------------------------------------------------------------
-# Character35e Integration Tests
-# ---------------------------------------------------------------------------
-
-class TestCharacterSpellcasting:
-    def test_wizard_with_spellbook(self):
-        """Verify Character35e can hold a Spellbook."""
-        book = Spellbook()
-        mm = DEFAULT_SPELL_REGISTRY.get("Magic Missile")
-        book.learn_spell(mm)
-
-        wizard = Character35e(
-            name="Gandalf",
-            char_class="Wizard",
-            level=1,
-            intelligence=16,
-            spellbook=book,
-        )
-        assert wizard.spellbook is not None
-        assert wizard.spellbook.knows_spell(mm)
-
-    def test_wizard_with_slot_manager(self):
-        """Verify Character35e can hold a SpellSlotManager."""
-        slots = SpellSlotManager(caster_level=1, intelligence=16)
-        wizard = Character35e(
-            name="Gandalf",
-            char_class="Wizard",
-            level=1,
-            intelligence=16,
-            spell_slot_manager=slots,
-        )
-        assert wizard.spell_slot_manager is not None
-        assert wizard.spell_slot_manager.get_total_slots(1) == 2
-
-    def test_wizard_serialization_roundtrip(self):
-        """Verify to_dict/from_dict preserves spellcasting components."""
-        book = Spellbook()
-        mm = DEFAULT_SPELL_REGISTRY.get("Magic Missile")
-        book.learn_spell(mm)
-        slots = SpellSlotManager(caster_level=1, intelligence=16)
-
-        wizard = Character35e(
-            name="Gandalf",
-            char_class="Wizard",
-            level=1,
-            intelligence=16,
-            spellbook=book,
-            spell_slot_manager=slots,
-        )
-
-        data = wizard.to_dict()
-        assert "spellbook" in data
-        assert "spell_slot_manager" in data
-
-        restored = Character35e.from_dict(data)
-        assert restored.spellbook is not None
-        assert restored.spellbook.knows_spell(mm)
-        assert restored.spell_slot_manager is not None
-        assert restored.spell_slot_manager.get_total_slots(1) == 2
-
-    def test_non_caster_has_no_spellbook(self):
-        """Non-caster characters have no spellbook or slots by default."""
+    def test_fighter_is_not_caster(self):
         fighter = Character35e(name="Conan", char_class="Fighter", level=5)
-        assert fighter.spellbook is None
+        assert fighter.is_caster is False
+
+    def test_wizard_caster_level(self):
+        wizard = Character35e(name="Gandalf", char_class="Wizard", level=5)
+        assert wizard.caster_level == 5
+
+    def test_fighter_caster_level_is_zero(self):
+        fighter = Character35e(name="Conan", char_class="Fighter", level=5)
+        assert fighter.caster_level == 0
+
+    def test_initialize_spellcasting_wizard(self):
+        wizard = Character35e(
+            name="Elminster",
+            char_class="Wizard",
+            level=1,
+            intelligence=16,  # +3 mod
+        )
+        wizard.initialize_spellcasting()
+
+        assert wizard.spell_slot_manager is not None
+        assert wizard.spellbook is not None
+        # Base: 3 cantrips, 1+1(bonus from INT 16)=2 first-level
+        assert wizard.spell_slot_manager.max_slots[0] == 3
+        assert wizard.spell_slot_manager.max_slots[1] == 2
+
+    def test_initialize_spellcasting_fighter_does_nothing(self):
+        fighter = Character35e(name="Conan", char_class="Fighter", level=5)
+        fighter.initialize_spellcasting()
         assert fighter.spell_slot_manager is None
-        data = fighter.to_dict()
-        assert "spellbook" not in data
-        assert "spell_slot_manager" not in data
+        assert fighter.spellbook is None
+
+    def test_wizard_level_1_base_slots_verification(self):
+        """VERIFICATION: A Level 1 Wizard correctly has three 0-level
+        and one 1st-level spell slots (base allocation per SRD table).
+        """
+        wizard = Character35e(
+            name="TestWizard",
+            char_class="Wizard",
+            level=1,
+            intelligence=10,  # +0 mod, no bonus spells
+        )
+        wizard.initialize_spellcasting()
+
+        assert wizard.spell_slot_manager is not None
+        assert wizard.spell_slot_manager.max_slots[0] == 3, (
+            "Level 1 Wizard must have 3 zero-level slots"
+        )
+        assert wizard.spell_slot_manager.max_slots[1] == 1, (
+            "Level 1 Wizard must have 1 first-level slot"
+        )
+
+    def test_sorcerer_initialize_spellcasting(self):
+        sorc = Character35e(
+            name="Hennet",
+            char_class="Sorcerer",
+            level=1,
+            charisma=16,  # +3 mod
+        )
+        sorc.initialize_spellcasting()
+
+        assert sorc.spell_slot_manager is not None
+        assert sorc.spellbook is not None
+        assert sorc.spell_slot_manager.max_slots[0] == 5  # Sorcerer cantrips
+        assert sorc.spell_slot_manager.max_slots[1] == 4  # 3 + 1 bonus
+
+
+# ---------------------------------------------------------------------------
+# Key ability helper tests
+# ---------------------------------------------------------------------------
+
+class TestKeyAbility:
+    def test_wizard_key_ability_is_intelligence(self):
+        assert get_key_ability("Wizard") == "intelligence"
+
+    def test_sorcerer_key_ability_is_charisma(self):
+        assert get_key_ability("Sorcerer") == "charisma"
+
+    def test_cleric_key_ability_is_wisdom(self):
+        assert get_key_ability("Cleric") == "wisdom"
+
+    def test_invalid_class_raises(self):
+        with pytest.raises(ValueError):
+            get_key_ability("Fighter")
+
+    def test_is_caster_class(self):
+        assert is_caster_class("Wizard") is True
+        assert is_caster_class("Sorcerer") is True
+        assert is_caster_class("Cleric") is True
+        assert is_caster_class("Druid") is True
+        assert is_caster_class("Fighter") is False
+        assert is_caster_class("Rogue") is False
