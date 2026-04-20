@@ -23,7 +23,7 @@ from __future__ import annotations
 
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
-from typing import Any, List, Optional, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 
 from src.ai_sim.behavior import BehaviorFSM, BehaviorState, EntityTask, TaskType
 from src.ai_sim.components import Health, Needs, Position
@@ -33,6 +33,7 @@ from src.loot_math.item import Item, ItemType
 from src.rules_engine.character_35e import Character35e
 from src.rules_engine.combat import AttackResolver, CombatResult
 from src.rules_engine.equipment import EquipmentManager
+from src.rules_engine.progression import XPManager, level_up
 from src.rules_engine.skills import SkillSystem
 from src.terrain.block import Block
 
@@ -766,3 +767,163 @@ class BehaviorSystem(System):
     def entity_count(self) -> int:
         """Number of entities registered for behavior processing."""
         return len(self._entries)
+
+
+# ---------------------------------------------------------------------------
+# ProgressionSystem
+# ---------------------------------------------------------------------------
+
+# CR-to-XP award table (simplified 3.5e SRD CR awards for a single character)
+_CR_XP_AWARD: Dict[int, int] = {
+    1: 300,
+    2: 600,
+    3: 900,
+    4: 1200,
+    5: 1500,
+    6: 1800,
+    7: 2100,
+    8: 2400,
+    9: 2700,
+    10: 3000,
+    11: 3300,
+    12: 3600,
+    13: 3900,
+    14: 4200,
+    15: 4500,
+    16: 4800,
+    17: 5100,
+    18: 5400,
+    19: 5700,
+    20: 6000,
+}
+
+
+def _xp_for_cr(cr: int) -> int:
+    """Return the XP award for defeating a creature of the given CR.
+
+    Uses the look-up table for CR 1–20; for CRs outside that range,
+    uses ``cr × 300`` as a linear approximation.
+
+    Args:
+        cr: Challenge Rating of the defeated creature.
+
+    Returns:
+        XP to award the victor.
+    """
+    return _CR_XP_AWARD.get(cr, cr * 300)
+
+
+class ProgressionSystem(System):
+    """Listens for ``"combat_result"`` and ``"skill_check_success"`` events
+    to award XP and trigger level-ups automatically.
+
+    When a ``"combat_result"`` event indicates a defender was defeated
+    (total_damage dealt, with optional ``defeated`` flag in payload), XP
+    is awarded to the attacker based on the defender's Challenge Rating.
+
+    When a ``"skill_check_success"`` event fires, a small fixed XP
+    reward is granted.
+
+    Args:
+        event_bus: The :class:`EventBus` instance to subscribe/publish on.
+    """
+
+    # Fixed XP reward for a successful skill check
+    SKILL_CHECK_XP: int = 50
+
+    def __init__(self, event_bus: EventBus) -> None:
+        self._event_bus = event_bus
+        self._xp_managers: Dict[str, XPManager] = {}
+        self._characters: Dict[str, Character35e] = {}
+        self._event_bus.subscribe("combat_result", self._on_combat_result)
+        self._event_bus.subscribe("skill_check_success", self._on_skill_check_success)
+
+    def register_character(
+        self, character: Character35e, xp_manager: Optional[XPManager] = None
+    ) -> None:
+        """Register a character for XP tracking.
+
+        Args:
+            character:  The character to track.
+            xp_manager: Optional pre-existing XPManager.  If ``None``, a new
+                        one is created at level/xp 0 matching the character.
+        """
+        if xp_manager is None:
+            xp_manager = XPManager(current_xp=0, current_level=character.level)
+        self._xp_managers[character.char_id] = xp_manager
+        self._characters[character.char_id] = character
+
+    def get_xp_manager(self, char_id: str) -> Optional[XPManager]:
+        """Retrieve the XPManager for a character by ID."""
+        return self._xp_managers.get(char_id)
+
+    def _on_combat_result(self, payload: Any) -> None:
+        """Handle combat_result events — award XP if defender is defeated."""
+        if not isinstance(payload, dict):
+            return
+
+        defeated = payload.get("defeated", False)
+        if not defeated:
+            return
+
+        attacker = payload.get("attacker")
+        defender = payload.get("defender")
+        if attacker is None or defender is None:
+            return
+
+        attacker_id = attacker.char_id if isinstance(attacker, Character35e) else None
+        if attacker_id is None or attacker_id not in self._xp_managers:
+            return
+
+        # Determine CR from defender's level (monsters use level as CR proxy)
+        cr = defender.level if isinstance(defender, Character35e) else 1
+        xp_award = _xp_for_cr(cr)
+
+        xp_mgr = self._xp_managers[attacker_id]
+        xp_mgr.award_xp(xp_award)
+        self._event_bus.publish("xp_awarded", {
+            "char_id": attacker_id,
+            "amount": xp_award,
+            "source": "combat",
+        })
+
+        self._try_level_up(attacker_id)
+
+    def _on_skill_check_success(self, payload: Any) -> None:
+        """Handle skill_check_success events — award fixed XP."""
+        if not isinstance(payload, dict):
+            return
+
+        char_id = payload.get("char_id")
+        if char_id is None or char_id not in self._xp_managers:
+            return
+
+        xp_mgr = self._xp_managers[char_id]
+        xp_mgr.award_xp(self.SKILL_CHECK_XP)
+        self._event_bus.publish("xp_awarded", {
+            "char_id": char_id,
+            "amount": self.SKILL_CHECK_XP,
+            "source": "skill_check",
+        })
+
+        self._try_level_up(char_id)
+
+    def _try_level_up(self, char_id: str) -> None:
+        """Check and apply level-up if XP threshold is met."""
+        xp_mgr = self._xp_managers.get(char_id)
+        character = self._characters.get(char_id)
+        if xp_mgr is None or character is None:
+            return
+
+        result = xp_mgr.check_level_up()
+        if result.leveled_up:
+            progression = level_up(character, xp_mgr)
+            self._event_bus.publish("level_up", {
+                "char_id": char_id,
+                "new_level": progression.new_level,
+                "hp_gained": progression.hp_gained,
+                "skill_points": progression.skill_points,
+            })
+
+    def update(self) -> None:
+        """No-op for ProgressionSystem — events are processed immediately."""
