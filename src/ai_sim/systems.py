@@ -227,3 +227,127 @@ class InteractionSystem(System):
     def pending_count(self) -> int:
         """Number of unprocessed mine intents."""
         return len(self._pending)
+
+
+# ---------------------------------------------------------------------------
+# PhysicsSystem
+# ---------------------------------------------------------------------------
+
+# Materials subject to gravity (falling behaviour)
+_GRAVITY_MATERIALS = frozenset({"SAND", "GRAVEL"})
+
+
+class PhysicsSystem(System):
+    """Processes block physics: gravity for fluids/loose materials and
+    structural support checks after block removal.
+
+    Gravity Logic:
+        If a block has the ``is_fluid`` property **or** its material is
+        SAND or GRAVEL, and the block directly beneath it is AIR (None),
+        the block falls to the lowest available empty position.
+
+    Structural Check:
+        When a ``"block_broken"`` event is received the system queues a
+        check on the six adjacent blocks.  Any adjacent block that is a
+        gravity-affected material and no longer supported will fall.
+
+    Args:
+        event_bus:      The :class:`EventBus` to subscribe/publish on.
+        chunk_manager:  The :class:`~src.terrain.chunk_manager.ChunkManager`
+                        used to read/write blocks in the world.
+    """
+
+    def __init__(self, event_bus: "EventBus", chunk_manager: Any) -> None:
+        self._event_bus = event_bus
+        self._chunk_manager = chunk_manager
+        self._pending_positions: List[tuple] = []
+        self._event_bus.subscribe("block_broken", self._on_block_broken)
+        self._event_bus.subscribe("block_modified", self._on_block_modified)
+
+    def _on_block_broken(self, payload: Any) -> None:
+        """When a block is broken, queue structural checks on its neighbours."""
+        if not isinstance(payload, dict):
+            return
+        wx = payload.get("world_x")
+        wy = payload.get("world_y")
+        wz = payload.get("world_z")
+        if wx is None or wy is None or wz is None:
+            return
+        # Queue the six adjacent positions for structural check
+        for dx, dy, dz in [(1, 0, 0), (-1, 0, 0),
+                           (0, 1, 0), (0, -1, 0),
+                           (0, 0, 1), (0, 0, -1)]:
+            nx, ny, nz = wx + dx, wy + dy, wz + dz
+            if 0 <= ny < 256:
+                self._pending_positions.append((nx, ny, nz))
+
+    def _on_block_modified(self, payload: Any) -> None:
+        """When a block is modified, check above it for falling blocks."""
+        if not isinstance(payload, dict):
+            return
+        wx = payload.get("world_x")
+        wy = payload.get("world_y")
+        wz = payload.get("world_z")
+        if wx is None or wy is None or wz is None:
+            return
+        # Check the block directly above the modified position
+        if wy + 1 < 256:
+            self._pending_positions.append((wx, wy + 1, wz))
+
+    def update(self) -> None:
+        """Process all pending gravity and structural checks."""
+        positions = list(self._pending_positions)
+        self._pending_positions.clear()
+
+        # De-duplicate positions
+        seen = set()
+        for pos in positions:
+            if pos not in seen:
+                seen.add(pos)
+                self._process_gravity(pos[0], pos[1], pos[2])
+
+    def _should_fall(self, block: "Block") -> bool:
+        """Determine whether a block is subject to gravity."""
+        if block.is_fluid:
+            return True
+        if block.material.name in _GRAVITY_MATERIALS:
+            return True
+        return False
+
+    def _process_gravity(self, wx: int, wy: int, wz: int) -> None:
+        """Check if the block at (wx, wy, wz) should fall, and drop it."""
+        block = self._chunk_manager.get_block_world(wx, wy, wz)
+        if block is None:
+            return
+        if not self._should_fall(block):
+            return
+
+        # Find lowest empty space beneath
+        target_y = wy
+        for y in range(wy - 1, -1, -1):
+            below = self._chunk_manager.get_block_world(wx, y, wz)
+            if below is None:
+                target_y = y
+            else:
+                break
+
+        if target_y == wy:
+            # No space to fall
+            return
+
+        # Move the block down
+        self._chunk_manager.set_block_world(wx, wy, wz, None)
+        self._chunk_manager.set_block_world(wx, target_y, wz, block)
+
+        self._event_bus.publish("block_fell", {
+            "world_x": wx,
+            "from_y": wy,
+            "to_y": target_y,
+            "world_z": wz,
+            "material": block.material.name,
+        })
+
+    @property
+    def pending_count(self) -> int:
+        """Number of unprocessed positions to check."""
+        return len(self._pending_positions)
