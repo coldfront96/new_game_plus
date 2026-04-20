@@ -12,10 +12,10 @@ events (``"condition_applied"``, ``"condition_expired"``).
 
 Usage::
 
-    from src.rules_engine.conditions import Condition, ConditionManager, BLINDED
+    from src.rules_engine.conditions import ConditionManager, create_blinded
 
     manager = ConditionManager()
-    manager.apply_condition(character, BLINDED, duration=5)
+    manager.apply_condition(character, create_blinded(duration=5))
     ac = manager.get_effective_ac(character)
 """
 
