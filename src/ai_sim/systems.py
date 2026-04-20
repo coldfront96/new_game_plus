@@ -21,7 +21,7 @@ from __future__ import annotations
 
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
-from typing import Any, List, Optional
+from typing import Any, List, Optional, Tuple
 
 from src.ai_sim.components import Health
 from src.core.event_bus import EventBus
@@ -260,7 +260,7 @@ class PhysicsSystem(System):
     def __init__(self, event_bus: "EventBus", chunk_manager: Any) -> None:
         self._event_bus = event_bus
         self._chunk_manager = chunk_manager
-        self._pending_positions: List[tuple] = []
+        self._pending_positions: List[Tuple[int, int, int]] = []
         self._event_bus.subscribe("block_broken", self._on_block_broken)
         self._event_bus.subscribe("block_modified", self._on_block_modified)
 
