@@ -330,15 +330,19 @@ class Character35e:
 
     @property
     def armor_class(self) -> int:
-        """Armour class: ``10 + DEX mod + size modifier + armor bonus + shield bonus``.
+        """Armour class: ``10 + DEX mod + size modifier + armor bonus + shield bonus + feat bonus``.
 
         Armor bonus and shield bonus are resolved from the
-        :class:`EquipmentManager` if one is attached.
+        :class:`EquipmentManager` if one is attached. Feat bonuses
+        are resolved from the :class:`FeatRegistry`.
         """
+        from src.rules_engine.feat_engine import FeatRegistry
+
         ac = 10 + self.dexterity_mod + self.size.value
         if self.equipment_manager is not None:
             ac += self.equipment_manager.get_armor_bonus()
             ac += self.equipment_manager.get_shield_bonus()
+        ac += FeatRegistry.get_ac_bonus(self)
         return ac
 
     @property
@@ -357,23 +361,35 @@ class Character35e:
 
     @property
     def initiative(self) -> int:
-        """Initiative modifier (DEX mod by default)."""
-        return self.dexterity_mod
+        """Initiative modifier: ``DEX mod + feat bonuses``.
+
+        Checks the FeatRegistry for any initiative bonuses granted by
+        feats (e.g. Improved Initiative provides +4).
+        """
+        from src.rules_engine.feat_engine import FeatRegistry
+
+        return self.dexterity_mod + FeatRegistry.get_initiative_bonus(self)
 
     @property
     def melee_attack(self) -> int:
-        """Melee attack bonus: ``BAB + STR mod + size mod + enhancement bonus``."""
+        """Melee attack bonus: ``BAB + STR mod + size mod + enhancement + feat bonus``."""
+        from src.rules_engine.feat_engine import FeatRegistry
+
         bonus = self.base_attack_bonus + self.strength_mod + self.size.value
         if self.equipment_manager is not None:
             bonus += self.equipment_manager.get_weapon_enhancement_bonus()
+        bonus += FeatRegistry.get_attack_bonus(self)
         return bonus
 
     @property
     def ranged_attack(self) -> int:
-        """Ranged attack bonus: ``BAB + DEX mod + size mod + enhancement bonus``."""
+        """Ranged attack bonus: ``BAB + DEX mod + size mod + enhancement + feat bonus``."""
+        from src.rules_engine.feat_engine import FeatRegistry
+
         bonus = self.base_attack_bonus + self.dexterity_mod + self.size.value
         if self.equipment_manager is not None:
             bonus += self.equipment_manager.get_weapon_enhancement_bonus()
+        bonus += FeatRegistry.get_attack_bonus(self)
         return bonus
 
     @property
