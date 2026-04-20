@@ -26,10 +26,10 @@ from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional, Tuple
 
 from src.ai_sim.behavior import BehaviorFSM, BehaviorState, EntityTask, TaskType
-from src.ai_sim.components import Health, Needs, Position
+from src.ai_sim.components import Health, Inventory, Needs, Position
 from src.ai_sim.entity import Entity
 from src.core.event_bus import EventBus
-from src.loot_math.item import Item, ItemType
+from src.loot_math.item import Item, ItemType, Rarity
 from src.rules_engine.character_35e import Character35e
 from src.rules_engine.combat import AttackResolver, CombatResult
 from src.rules_engine.equipment import EquipmentManager
@@ -233,7 +233,11 @@ class InteractionSystem(System):
         return max(1, damage)
 
     def update(self) -> None:
-        """Resolve all pending mine intents and publish results."""
+        """Resolve all pending mine intents and publish results.
+
+        When a block is destroyed, a ``"block_broken"`` event is also
+        published so that downstream systems (Physics, Harvesting) can react.
+        """
         intents = list(self._pending)
         self._pending.clear()
 
@@ -242,12 +246,20 @@ class InteractionSystem(System):
                 intent.character, intent.tool
             )
             remaining = intent.block.mine(damage)
+            destroyed = intent.block.is_destroyed()
             result = MineResult(
                 damage_dealt=damage,
                 remaining_durability=remaining,
-                block_destroyed=intent.block.is_destroyed(),
+                block_destroyed=destroyed,
             )
             self._event_bus.publish("mine_result", result)
+
+            if destroyed:
+                self._event_bus.publish("block_broken", {
+                    "material": intent.block.material.name,
+                    "block": intent.block,
+                    "character": intent.character,
+                })
 
     @property
     def pending_count(self) -> int:
@@ -927,3 +939,161 @@ class ProgressionSystem(System):
 
     def update(self) -> None:
         """No-op for ProgressionSystem — events are processed immediately."""
+
+
+# ---------------------------------------------------------------------------
+# HarvestingSystem
+# ---------------------------------------------------------------------------
+
+class HarvestingSystem(System):
+    """Listens for ``"block_broken"`` events and spawns item entities.
+
+    When a block is destroyed, the system creates a new :class:`Entity` with
+    a :class:`Position` component at the broken block's location and an
+    :class:`Item` component matching the block's material type.
+
+    The spawned entity is tagged ``"item"`` so that other systems
+    (e.g. :class:`InventorySystem`) can locate it for pickup.
+
+    Args:
+        event_bus:  The :class:`EventBus` to subscribe/publish on.
+        entities:   The shared entity list (typically ``SimulationEngine.entities``).
+    """
+
+    def __init__(self, event_bus: EventBus, entities: Optional[List[Entity]] = None) -> None:
+        self._event_bus = event_bus
+        self._entities: List[Entity] = entities if entities is not None else []
+        self._pending: List[Dict[str, Any]] = []
+        self._event_bus.subscribe("block_broken", self._on_block_broken)
+
+    def _on_block_broken(self, payload: Any) -> None:
+        """Buffer block_broken events for processing on the next tick."""
+        if isinstance(payload, dict):
+            self._pending.append(payload)
+
+    def update(self) -> None:
+        """Spawn item entities for all blocks broken this tick."""
+        events = list(self._pending)
+        self._pending.clear()
+
+        for event in events:
+            material_name = event.get("material")
+            if material_name is None:
+                continue
+
+            # Create item matching the block material
+            item = Item(
+                name=material_name.replace("_", " ").title(),
+                item_type=ItemType.MATERIAL,
+                rarity=Rarity.COMMON,
+                base_damage=0,
+            )
+
+            # Create the item entity
+            item_entity = Entity(name=f"drop_{material_name.lower()}")
+            item_entity.add_component(item)
+            item_entity.add_tag("item")
+
+            # Place at block position if available, else origin
+            world_x = event.get("world_x", 0)
+            world_y = event.get("world_y", 0)
+            world_z = event.get("world_z", 0)
+            item_entity.add_component(Position(
+                x=float(world_x),
+                y=float(world_y),
+                z=float(world_z),
+            ))
+
+            self._entities.append(item_entity)
+            self._event_bus.publish("item_spawned", {
+                "entity_id": item_entity.entity_id,
+                "material": material_name,
+                "position": (world_x, world_y, world_z),
+            })
+
+    @property
+    def pending_count(self) -> int:
+        """Number of unprocessed block_broken events."""
+        return len(self._pending)
+
+
+# ---------------------------------------------------------------------------
+# InventorySystem
+# ---------------------------------------------------------------------------
+
+class InventorySystem(System):
+    """Handles automatic item pickup when entity positions overlap.
+
+    Each tick, this system checks all entities that have both a
+    :class:`Position` and an :class:`~src.ai_sim.components.Inventory`
+    component against all entities tagged ``"item"``. If their positions
+    are within range (Manhattan distance), the item is added to the
+    entity's inventory and the item entity is destroyed.
+
+    Args:
+        event_bus:      The :class:`EventBus` to publish pickup events on.
+        entities:       The shared entity list.
+        pickup_radius:  Maximum Manhattan distance (in voxel units) for a
+                        pickup to trigger. Default is 1.5 blocks.
+    """
+
+    def __init__(
+        self,
+        event_bus: EventBus,
+        entities: Optional[List[Entity]] = None,
+        pickup_radius: float = 1.5,
+    ) -> None:
+        self._event_bus = event_bus
+        self._entities: List[Entity] = entities if entities is not None else []
+        self._pickup_radius = pickup_radius
+
+    def update(self) -> None:
+        """Check for overlapping item entities and perform pickups."""
+        # Separate items and collectors
+        items: List[Entity] = []
+        collectors: List[Entity] = []
+
+        for entity in self._entities:
+            if not entity.is_active:
+                continue
+            if entity.has_tag("item") and entity.has_component(Position):
+                items.append(entity)
+            elif (entity.has_component(Inventory)
+                  and entity.has_component(Position)):
+                collectors.append(entity)
+
+        # For each collector, check proximity to item entities
+        for collector in collectors:
+            col_pos = collector.get_component(Position)
+            inventory = collector.get_component(Inventory)
+            if col_pos is None or inventory is None:
+                continue
+            if inventory.is_full:
+                continue
+
+            for item_entity in items:
+                if not item_entity.is_active:
+                    continue
+                item_pos = item_entity.get_component(Position)
+                if item_pos is None:
+                    continue
+
+                # Distance check (Manhattan distance for performance)
+                dx = abs(col_pos.x - item_pos.x)
+                dy = abs(col_pos.y - item_pos.y)
+                dz = abs(col_pos.z - item_pos.z)
+                distance = dx + dy + dz
+
+                if distance <= self._pickup_radius:
+                    # Retrieve the Item component from the item entity
+                    item_component = item_entity.get_component(Item)
+                    if item_component is None:
+                        continue
+
+                    if inventory.add_item(item_component):
+                        item_entity.destroy()
+                        self._event_bus.publish("item_picked_up", {
+                            "collector_id": collector.entity_id,
+                            "item_entity_id": item_entity.entity_id,
+                            "item_name": item_component.name,
+                        })
