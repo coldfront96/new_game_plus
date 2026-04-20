@@ -420,16 +420,23 @@ class MovementSystem(System):
 
         steps = character.voxel_speed
         steps_taken = 0
+        last_index = 0
 
-        for waypoint in path:
+        for i, waypoint in enumerate(path):
             if steps_taken >= steps:
                 break
+            # Skip waypoints that match the entity's current position
+            if (float(waypoint[0]) == pos.x and float(waypoint[1]) == pos.y
+                    and float(waypoint[2]) == pos.z):
+                last_index = i
+                continue
             pos.x = float(waypoint[0])
             pos.y = float(waypoint[1])
             pos.z = float(waypoint[2])
             steps_taken += 1
+            last_index = i
 
-        remaining_path = path[steps_taken:]
+        remaining_path = path[last_index + 1:]
 
         if not remaining_path:
             # Entity reached destination

@@ -141,12 +141,15 @@ class TestVoxelPathfinderElevation:
         assert result.success is True
         assert result.path[-1] == (2, 64, 0)
 
-    def test_cannot_step_two_blocks(self, pathfinder, chunk_manager):
+    def test_cannot_step_two_blocks(self, chunk_manager):
         """Entity cannot step up 2 blocks (exceeds max_step=1).
 
         We create an isolated elevated platform that requires a 2-block
         jump to reach, with walls preventing any approach route.
         """
+        # Use a pathfinder with limited iterations to avoid long search
+        pf = VoxelPathfinder(chunk_manager=chunk_manager, max_iterations=500)
+
         # Create a 2-block-high wall at x=1 for all z in [-1, 0, 1]
         for dz in range(-1, 2):
             _set_solid(chunk_manager, 1, 65, dz)
@@ -172,9 +175,7 @@ class TestVoxelPathfinderElevation:
             _set_solid(chunk_manager, 3, 67, dz)
             _set_solid(chunk_manager, 3, 68, dz)
 
-        # Use a low max_iterations to prevent excessive search on open terrain
-        pathfinder.max_iterations = 500
-        result = pathfinder.find_path((0, 65, 0), (2, 67, 0))
+        result = pf.find_path((0, 65, 0), (2, 67, 0))
         assert result.success is False
 
 
