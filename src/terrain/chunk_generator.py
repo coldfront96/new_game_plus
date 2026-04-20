@@ -79,7 +79,8 @@ class ChunkGenerator:
             A populated :class:`Chunk` ready for use.
         """
         noise = OpenSimplex(seed=self.seed)
-        # Per-chunk deterministic RNG for ore placement
+        # Per-chunk deterministic RNG for ore placement.
+        # Large primes for spatial hashing ensure unique RNG sequences per chunk.
         ore_rng = random.Random(self.seed ^ (cx * 73856093) ^ (cz * 19349663))
 
         chunk = Chunk(cx=cx, cz=cz)
@@ -149,14 +150,13 @@ class ChunkGenerator:
         """
         roll = rng.random()
 
-        # Gold ore (rarer, deeper)
-        if GOLD_ORE_MIN_Y <= y <= GOLD_ORE_MAX_Y:
-            if roll < GOLD_ORE_CHANCE:
-                return Material.GOLD_ORE
+        # Gold ore (rarer, deeper) — checked first with exclusive range
+        if GOLD_ORE_MIN_Y <= y <= GOLD_ORE_MAX_Y and roll < GOLD_ORE_CHANCE:
+            return Material.GOLD_ORE
 
-        # Iron ore (more common, wider range)
+        # Iron ore (more common, wider range) — uses separate probability band
         if IRON_ORE_MIN_Y <= y <= IRON_ORE_MAX_Y:
-            if roll < IRON_ORE_CHANCE:
+            if GOLD_ORE_CHANCE <= roll < GOLD_ORE_CHANCE + IRON_ORE_CHANCE:
                 return Material.IRON_ORE
 
         return Material.STONE

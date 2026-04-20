@@ -152,12 +152,12 @@ class TestStratification:
         assert surface_block.material == Material.DIRT
         assert surface_block.metadata.get("grass") is True
 
-        # Below surface should be plain dirt
+        # Below surface should be plain dirt (no grass metadata)
         if surface_y > 1:
             dirt_block = chunk.get_block(x, surface_y - 1, z)
             assert dirt_block is not None
             assert dirt_block.material == Material.DIRT
-            assert dirt_block.metadata.get("grass") is not True
+            assert "grass" not in dirt_block.metadata
 
     def test_grass_metadata_on_surface(self, generator: ChunkGenerator) -> None:
         """The top block of each column has grass metadata."""
