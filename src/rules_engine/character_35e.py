@@ -188,6 +188,7 @@ class Character35e:
         intelligence:  INT ability score.
         wisdom:        WIS ability score.
         charisma:      CHA ability score.
+        base_speed:    Base land speed in feet (default 30 for Medium humanoids).
         equipment:     List of equipment names (simplified).
         feats:         List of feat names.
         skills:        Mapping of skill name → total bonus.
@@ -207,6 +208,7 @@ class Character35e:
     intelligence: int = 10
     wisdom: int = 10
     charisma: int = 10
+    base_speed: int = 30
     equipment: List[str] = field(default_factory=list)
     feats: List[str] = field(default_factory=list)
     skills: Dict[str, int] = field(default_factory=dict)
@@ -245,6 +247,19 @@ class Character35e:
     def charisma_mod(self) -> int:
         """Charisma modifier."""
         return _ability_modifier(self.charisma)
+
+    # ------------------------------------------------------------------
+    # Movement speed
+    # ------------------------------------------------------------------
+
+    @property
+    def voxel_speed(self) -> int:
+        """Movement speed converted to voxel units (5 ft = 1 block).
+
+        Returns:
+            Number of blocks the character can traverse per move action.
+        """
+        return self.base_speed // 5
 
     # ------------------------------------------------------------------
     # Hit die & hit points
@@ -370,6 +385,7 @@ class Character35e:
             "race": self.race,
             "alignment": self.alignment.value,
             "size": self.size.name,
+            "base_speed": self.base_speed,
             "strength": self.strength,
             "dexterity": self.dexterity,
             "constitution": self.constitution,
@@ -387,6 +403,7 @@ class Character35e:
             "fortitude_save": self.fortitude_save,
             "reflex_save": self.reflex_save,
             "will_save": self.will_save,
+            "voxel_speed": self.voxel_speed,
         }
 
     @classmethod
@@ -410,6 +427,7 @@ class Character35e:
             race=data.get("race", "Human"),
             alignment=Alignment(data["alignment"]) if "alignment" in data else Alignment.TRUE_NEUTRAL,
             size=Size[data["size"]] if "size" in data else Size.MEDIUM,
+            base_speed=data.get("base_speed", 30),
             strength=data.get("strength", 10),
             dexterity=data.get("dexterity", 10),
             constitution=data.get("constitution", 10),

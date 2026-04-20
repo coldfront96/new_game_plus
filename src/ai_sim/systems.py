@@ -23,7 +23,8 @@ from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from typing import Any, List, Optional, Tuple
 
-from src.ai_sim.components import Health
+from src.ai_sim.components import Health, Needs, Position
+from src.ai_sim.entity import Entity
 from src.core.event_bus import EventBus
 from src.loot_math.item import Item, ItemType
 from src.rules_engine.character_35e import Character35e
@@ -351,3 +352,175 @@ class PhysicsSystem(System):
     def pending_count(self) -> int:
         """Number of unprocessed positions to check."""
         return len(self._pending_positions)
+
+
+# ---------------------------------------------------------------------------
+# MovementSystem
+# ---------------------------------------------------------------------------
+
+@dataclass(slots=True)
+class MoveIntent:
+    """Payload published on the ``"move_intent"`` event channel.
+
+    Attributes:
+        entity:    The entity to move.
+        character: The entity's 3.5e stat block (provides voxel_speed).
+        path:      Ordered list of (x, y, z) waypoints to follow.
+    """
+
+    entity: Entity
+    character: Character35e
+    path: List[Tuple[int, int, int]]
+
+
+class MovementSystem(System):
+    """Processes ``"move_intent"`` events — spatial updates for entities.
+
+    Each tick, entities advance along their assigned path by a number of
+    steps equal to their 3.5e ``voxel_speed`` (base_speed // 5). The
+    entity's :class:`Position` component is updated to the new location.
+
+    When an entity reaches its destination, a ``"move_complete"`` event
+    is published.
+
+    Args:
+        event_bus: The :class:`EventBus` instance to subscribe/publish on.
+    """
+
+    def __init__(self, event_bus: EventBus) -> None:
+        self._event_bus = event_bus
+        self._pending: List[MoveIntent] = []
+        self._event_bus.subscribe("move_intent", self._on_move_intent)
+
+    def _on_move_intent(self, payload: Any) -> None:
+        """Buffer incoming move intents for processing on the next tick."""
+        if isinstance(payload, MoveIntent):
+            self._pending.append(payload)
+
+    def update(self) -> None:
+        """Advance all pending entities along their paths."""
+        intents = list(self._pending)
+        self._pending.clear()
+
+        for intent in intents:
+            self._process_movement(intent)
+
+    def _process_movement(self, intent: MoveIntent) -> None:
+        """Move an entity along its path up to voxel_speed steps."""
+        entity = intent.entity
+        character = intent.character
+        path = intent.path
+
+        if not path:
+            return
+
+        pos = entity.get_component(Position)
+        if pos is None:
+            return
+
+        steps = character.voxel_speed
+        steps_taken = 0
+        last_index = 0
+
+        for i, waypoint in enumerate(path):
+            if steps_taken >= steps:
+                break
+            # Skip waypoints that match the entity's current position
+            if (float(waypoint[0]) == pos.x and float(waypoint[1]) == pos.y
+                    and float(waypoint[2]) == pos.z):
+                last_index = i
+                continue
+            pos.x = float(waypoint[0])
+            pos.y = float(waypoint[1])
+            pos.z = float(waypoint[2])
+            steps_taken += 1
+            last_index = i
+
+        remaining_path = path[last_index + 1:]
+
+        if not remaining_path:
+            # Entity reached destination
+            self._event_bus.publish("move_complete", {
+                "entity_id": entity.entity_id,
+                "position": (pos.x, pos.y, pos.z),
+            })
+        else:
+            # Re-queue for the next tick with the remaining path
+            self._pending.append(MoveIntent(
+                entity=entity,
+                character=character,
+                path=remaining_path,
+            ))
+
+    @property
+    def pending_count(self) -> int:
+        """Number of unprocessed move intents."""
+        return len(self._pending)
+
+
+# ---------------------------------------------------------------------------
+# NeedsSystem
+# ---------------------------------------------------------------------------
+
+class NeedsSystem(System):
+    """Manages temporal decay of :class:`Needs` components on entities.
+
+    Each tick, all registered entities with a :class:`Needs` component
+    have their needs decayed by the configured ``delta_time``. When any
+    need drops to a critical threshold (≤ 10), a ``"need_critical"``
+    event is published.
+
+    Args:
+        event_bus:  The :class:`EventBus` instance to publish events on.
+        entities:   List of entities whose needs should be updated.
+        delta_time: Simulated seconds per tick (default 1.0).
+    """
+
+    CRITICAL_THRESHOLD: float = 10.0
+
+    def __init__(
+        self,
+        event_bus: EventBus,
+        entities: Optional[List[Entity]] = None,
+        delta_time: float = 1.0,
+    ) -> None:
+        self._event_bus = event_bus
+        self._entities: List[Entity] = entities if entities is not None else []
+        self._delta_time = delta_time
+
+    def add_entity(self, entity: Entity) -> None:
+        """Register an entity for needs processing."""
+        if entity not in self._entities:
+            self._entities.append(entity)
+
+    def remove_entity(self, entity: Entity) -> None:
+        """Unregister an entity from needs processing."""
+        if entity in self._entities:
+            self._entities.remove(entity)
+
+    def update(self) -> None:
+        """Decay all registered entities' needs and check for critical state."""
+        for entity in self._entities:
+            if not entity.is_active:
+                continue
+
+            needs = entity.get_component(Needs)
+            if needs is None:
+                continue
+
+            needs.tick(self._delta_time)
+
+            # Check for critical needs
+            for need_name in ("hunger", "rest", "safety", "social", "purpose"):
+                value = getattr(needs, need_name)
+                if value <= self.CRITICAL_THRESHOLD:
+                    self._event_bus.publish("need_critical", {
+                        "entity_id": entity.entity_id,
+                        "need": need_name,
+                        "value": value,
+                    })
+
+    @property
+    def entity_count(self) -> int:
+        """Number of entities registered for needs processing."""
+        return len(self._entities)
