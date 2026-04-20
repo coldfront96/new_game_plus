@@ -150,7 +150,7 @@ class TestSpellSlotManager:
         assert slots.max_slots[0] == 3  # Cantrips: no bonus
         assert slots.max_slots[1] == 2  # 1 base + 1 bonus
 
-    def test_wizard_level_1_int_mod_3_verification(self):
+    def test_wizard_level_1_base_slots_srd_verification(self):
         """VERIFICATION TEST: Level 1 Wizard correctly has three 0-level
         and one 1st-level spell slots (base, before bonus spells from INT).
 
