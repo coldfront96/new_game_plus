@@ -47,6 +47,7 @@ from typing import TYPE_CHECKING, Any, Dict, List, Optional
 
 if TYPE_CHECKING:
     from src.rules_engine.equipment import EquipmentManager
+    from src.rules_engine.spellcasting import SpellSlotManager, Spellbook
 
 
 # ---------------------------------------------------------------------------
@@ -217,6 +218,8 @@ class Character35e:
     skills: Dict[str, int] = field(default_factory=dict)
     metadata: Dict[str, Any] = field(default_factory=dict)
     equipment_manager: Optional["EquipmentManager"] = None
+    spell_slot_manager: Optional["SpellSlotManager"] = None
+    spellbook: Optional["Spellbook"] = None
 
     # ------------------------------------------------------------------
     # Ability modifiers (SRD formula: (score - 10) // 2)
@@ -400,6 +403,49 @@ class Character35e:
         modifier).
         """
         return self.base_attack_bonus + self.strength_mod - self.size.value
+
+    # ------------------------------------------------------------------
+    # Spellcasting
+    # ------------------------------------------------------------------
+
+    def initialize_spellcasting(self) -> None:
+        """Initialize spell slot manager and spellbook if this character is
+        a caster class (Wizard, Sorcerer, Cleric, Druid).
+
+        This must be called after construction to set up Vancian spellcasting
+        components. Does nothing if the character is not a caster class.
+        """
+        from src.rules_engine.spellcasting import (
+            SpellSlotManager,
+            Spellbook,
+            is_caster_class,
+            get_key_ability,
+        )
+
+        if not is_caster_class(self.char_class):
+            return
+
+        key_ability = get_key_ability(self.char_class)
+        ability_mod = _ability_modifier(getattr(self, key_ability))
+
+        self.spell_slot_manager = SpellSlotManager.for_class(
+            self.char_class, self.level, ability_mod,
+        )
+        self.spellbook = Spellbook()
+
+    @property
+    def is_caster(self) -> bool:
+        """Whether this character has spellcasting capability."""
+        from src.rules_engine.spellcasting import is_caster_class
+
+        return is_caster_class(self.char_class)
+
+    @property
+    def caster_level(self) -> int:
+        """Caster level (equals class level for single-class casters)."""
+        if not self.is_caster:
+            return 0
+        return self.level
 
     # ------------------------------------------------------------------
     # Serialisation
