@@ -30,6 +30,7 @@ from src.core.event_bus import EventBus
 from src.core.math_utils import chunk_coords, local_coords
 from src.terrain.block import Block, Material
 from src.terrain.chunk import Chunk, CHUNK_HEIGHT, CHUNK_WIDTH, CHUNK_DEPTH
+from src.terrain.chunk_generator import ChunkGenerator
 
 
 # Default save directory (relative to project root)
@@ -52,6 +53,7 @@ class ChunkManager:
     event_bus: EventBus
     cache_size: int = 64
     saves_dir: str = DEFAULT_SAVES_DIR
+    generator: Optional[ChunkGenerator] = None
     _cache: OrderedDict = field(default_factory=OrderedDict, repr=False)
 
     # ------------------------------------------------------------------
@@ -203,17 +205,21 @@ class ChunkManager:
         with open(path, "r") as f:
             return Chunk.from_json(f.read())
 
-    @staticmethod
-    def _generate_chunk(cx: int, cz: int) -> Chunk:
-        """Generate a default chunk with basic terrain layers.
+    def _generate_chunk(self, cx: int, cz: int) -> Chunk:
+        """Generate a chunk using the configured generator or default layers.
 
-        Terrain layout:
+        When a :class:`ChunkGenerator` is provided, delegates to it for
+        noise-based terrain. Otherwise falls back to flat terrain layers:
+
             y=0       → Bedrock (OBSIDIAN)
             y=1–59    → STONE
             y=60–63   → DIRT
             y=64      → DIRT (surface)
             y=65–255  → AIR (None / unset)
         """
+        if self.generator is not None:
+            return self.generator.generate_chunk(cx, cz)
+
         chunk = Chunk(cx=cx, cz=cz)
         for x in range(CHUNK_WIDTH):
             for z in range(CHUNK_DEPTH):
