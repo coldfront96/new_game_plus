@@ -32,6 +32,7 @@ from src.core.event_bus import EventBus
 from src.loot_math.item import Item, ItemType
 from src.rules_engine.character_35e import Character35e
 from src.rules_engine.combat import AttackResolver, CombatResult
+from src.rules_engine.equipment import EquipmentManager
 from src.rules_engine.skills import SkillSystem
 from src.terrain.block import Block
 
@@ -115,7 +116,13 @@ class CombatSystem(System):
             self._pending.append(payload)
 
     def update(self) -> None:
-        """Resolve all pending attack intents and publish results."""
+        """Resolve all pending attack intents and publish results.
+
+        If the attacker has an :class:`EquipmentManager` attached and no
+        explicit weapon was provided in the intent, the system automatically
+        pulls weapon damage dice and enhancement bonuses from the equipped
+        MAIN_HAND weapon.
+        """
         intents = list(self._pending)
         self._pending.clear()
 
@@ -124,8 +131,21 @@ class CombatSystem(System):
             dmg_count = 0
             dmg_sides = 0
             dmg_bonus = 0
-            if intent.weapon and intent.weapon.item_type == ItemType.WEAPON:
-                dmg_bonus = int(intent.weapon.effective_damage)
+
+            # Try to pull weapon from EquipmentManager if not explicitly set
+            weapon = intent.weapon
+            if weapon is None and intent.attacker.equipment_manager is not None:
+                weapon = intent.attacker.equipment_manager.get_weapon()
+
+            if weapon and weapon.item_type == ItemType.WEAPON:
+                # Pull damage dice from weapon metadata (3.5e style)
+                dmg_count = int(weapon.metadata.get("damage_dice_count", 0))
+                dmg_sides = int(weapon.metadata.get("damage_dice_sides", 0))
+                # Enhancement bonus adds to damage
+                dmg_bonus = int(weapon.metadata.get("enhancement_bonus", 0))
+                # Fall back to effective_damage if no dice metadata
+                if dmg_count == 0 or dmg_sides == 0:
+                    dmg_bonus += int(weapon.effective_damage)
 
             result = AttackResolver.resolve_attack(
                 attacker=intent.attacker,
