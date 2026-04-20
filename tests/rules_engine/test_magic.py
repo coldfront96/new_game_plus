@@ -119,8 +119,8 @@ class TestSpellRegistry:
 
     def test_count(self):
         registry = create_default_registry()
-        assert registry.count == 7
-        assert len(registry) == 7
+        assert registry.count == 10
+        assert len(registry) == 10
 
     def test_contains(self):
         registry = create_default_registry()

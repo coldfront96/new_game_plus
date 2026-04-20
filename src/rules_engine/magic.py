@@ -431,13 +431,117 @@ CURE_SPELLS: Dict[int, str] = {
 }
 
 
+# ---------------------------------------------------------------------------
+# Bard spell effect callbacks
+# ---------------------------------------------------------------------------
+
+def _sleep_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Sleep: Causes creatures with low HD to fall into a magical slumber.
+
+    Affects 4 HD of creatures. Does not affect undead or creatures with
+    more than 4 HD.
+    """
+    return {
+        "hit_dice_affected": 4,
+        "duration_minutes": caster_level,
+        "area": "Close (25 ft. + 5 ft./2 levels)",
+        "save": "Will negates",
+        "immune": ["undead", "creatures with 5+ HD"],
+    }
+
+
+def _identify_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Identify: Determines properties of a magic item.
+
+    Reveals all magic properties of a single item, including how to
+    activate the item's functions (if appropriate).
+    """
+    return {
+        "reveals_properties": True,
+        "reveals_activation": True,
+        "items_examined": 1,
+        "duration": "Instantaneous",
+        "material_cost_gp": 100,
+    }
+
+
+def _ghost_sound_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Ghost Sound: Figment sounds.
+
+    Creates the volume of sound that a group of four humans per caster
+    level could make (max 20 humans at caster level 5).
+    """
+    humans_equivalent = min(caster_level * 4, 20)
+    return {
+        "volume": f"{humans_equivalent} humans",
+        "duration_rounds": caster_level,
+        "save": "Will disbelief",
+        "figment": True,
+    }
+
+
+# ---------------------------------------------------------------------------
+# Bard spell definitions (SRD)
+# ---------------------------------------------------------------------------
+
+SLEEP = Spell(
+    name="Sleep",
+    level=1,
+    school=SpellSchool.ENCHANTMENT,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.MATERIAL],
+    range="Medium (100 ft. + 10 ft./level)",
+    duration="1 min./level",
+    effect_callback=_sleep_effect,
+    description=(
+        "A sleep spell causes a magical slumber to come upon 4 Hit Dice "
+        "of creatures. Creatures with the fewest HD are affected first."
+    ),
+    subschool="Compulsion",
+    descriptor=["Mind-Affecting"],
+)
+
+IDENTIFY = Spell(
+    name="Identify",
+    level=1,
+    school=SpellSchool.DIVINATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.MATERIAL],
+    range="Touch",
+    duration="Instantaneous",
+    effect_callback=_identify_effect,
+    description=(
+        "The spell determines all magic properties of a single magic item, "
+        "including how to activate those functions (if appropriate), and how "
+        "many charges are left (if any)."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+GHOST_SOUND = Spell(
+    name="Ghost Sound",
+    level=0,
+    school=SpellSchool.ILLUSION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.MATERIAL],
+    range="Close (25 ft. + 5 ft./2 levels)",
+    duration="1 round/level",
+    effect_callback=_ghost_sound_effect,
+    description=(
+        "Ghost sound allows you to create a volume of sound that rises, "
+        "recedes, approaches, or remains at a fixed place. You choose what "
+        "type of sound ghost sound creates when casting it."
+    ),
+    subschool="Figment",
+    descriptor=[],
+)
+
+
 def create_default_registry() -> SpellRegistry:
     """Create a :class:`SpellRegistry` pre-loaded with SRD core spells.
 
     Returns:
         A registry containing Magic Missile, Mage Armor, Shield,
         Burning Hands, Cure Light Wounds, Bless, Bane, and other
-        foundational spells.
+        foundational spells including Bard-specific spells.
     """
     registry = SpellRegistry()
     registry.register(MAGIC_MISSILE)
@@ -447,4 +551,7 @@ def create_default_registry() -> SpellRegistry:
     registry.register(CURE_LIGHT_WOUNDS)
     registry.register(BLESS)
     registry.register(BANE)
+    registry.register(SLEEP)
+    registry.register(IDENTIFY)
+    registry.register(GHOST_SOUND)
     return registry

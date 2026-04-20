@@ -117,12 +117,39 @@ _CLERIC_SLOTS: Dict[int, List[int]] = {
     20: [6, 5, 5, 5, 5, 5, 4, 4, 4, 4],
 }
 
+# Bard base spells per day (spontaneous, CHA-based).
+# From the 3.5e SRD Bard table. Bards cast up to 6th-level spells.
+# Index = spell level (0-6), padded to 10 with -1 for levels 7-9.
+_BARD_SLOTS: Dict[int, List[int]] = {
+    1:  [2, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    2:  [3, 0, -1, -1, -1, -1, -1, -1, -1, -1],
+    3:  [3, 1, -1, -1, -1, -1, -1, -1, -1, -1],
+    4:  [3, 2, 0, -1, -1, -1, -1, -1, -1, -1],
+    5:  [3, 3, 1, -1, -1, -1, -1, -1, -1, -1],
+    6:  [3, 3, 2, -1, -1, -1, -1, -1, -1, -1],
+    7:  [3, 3, 2, 0, -1, -1, -1, -1, -1, -1],
+    8:  [3, 3, 3, 1, -1, -1, -1, -1, -1, -1],
+    9:  [3, 3, 3, 2, -1, -1, -1, -1, -1, -1],
+    10: [3, 3, 3, 2, 0, -1, -1, -1, -1, -1],
+    11: [3, 3, 3, 3, 1, -1, -1, -1, -1, -1],
+    12: [3, 3, 3, 3, 2, -1, -1, -1, -1, -1],
+    13: [3, 3, 3, 3, 2, 0, -1, -1, -1, -1],
+    14: [4, 3, 3, 3, 3, 1, -1, -1, -1, -1],
+    15: [4, 4, 3, 3, 3, 2, -1, -1, -1, -1],
+    16: [4, 4, 4, 3, 3, 2, 0, -1, -1, -1],
+    17: [4, 4, 4, 4, 3, 3, 1, -1, -1, -1],
+    18: [4, 4, 4, 4, 4, 3, 2, -1, -1, -1],
+    19: [4, 4, 4, 4, 4, 4, 3, -1, -1, -1],
+    20: [4, 4, 4, 4, 4, 4, 4, -1, -1, -1],
+}
+
 # Mapping of caster class to their slot table and key ability.
 _CASTER_TABLES: Dict[str, Dict[str, Any]] = {
     "Wizard": {"table": _WIZARD_SLOTS, "key_ability": "intelligence"},
     "Sorcerer": {"table": _SORCERER_SLOTS, "key_ability": "charisma"},
     "Cleric": {"table": _CLERIC_SLOTS, "key_ability": "wisdom"},
     "Druid": {"table": _CLERIC_SLOTS, "key_ability": "wisdom"},
+    "Bard": {"table": _BARD_SLOTS, "key_ability": "charisma"},
 }
 
 
@@ -233,6 +260,21 @@ class SpellSlotManager:
             A :class:`SpellSlotManager` configured for a Sorcerer.
         """
         return cls.for_class("Sorcerer", level, cha_mod)
+
+    @classmethod
+    def for_bard(cls, level: int, cha_mod: int) -> "SpellSlotManager":
+        """Convenience factory for Bard spell slots.
+
+        Bards are spontaneous arcane casters using Charisma.
+
+        Args:
+            level:   Bard class level (1–20).
+            cha_mod: Charisma modifier.
+
+        Returns:
+            A :class:`SpellSlotManager` configured for a Bard.
+        """
+        return cls.for_class("Bard", level, cha_mod)
 
     def available(self, spell_level: int) -> int:
         """Return the number of remaining (un-expended) slots at a level.
@@ -685,6 +727,36 @@ _SORCERER_SPELLS_KNOWN: Dict[int, List[int]] = {
 
 
 # ---------------------------------------------------------------------------
+# Bard Spells Known Table (3.5e SRD)
+# ---------------------------------------------------------------------------
+
+# Maximum number of spells known per spell level by Bard class level.
+# Bards know up to 6th-level spells. Index = spell level (0-6), padded to 10.
+_BARD_SPELLS_KNOWN: Dict[int, List[int]] = {
+    1:  [4, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    2:  [5, 2, -1, -1, -1, -1, -1, -1, -1, -1],
+    3:  [6, 3, -1, -1, -1, -1, -1, -1, -1, -1],
+    4:  [6, 3, 2, -1, -1, -1, -1, -1, -1, -1],
+    5:  [6, 4, 3, -1, -1, -1, -1, -1, -1, -1],
+    6:  [6, 4, 3, -1, -1, -1, -1, -1, -1, -1],
+    7:  [6, 4, 4, 2, -1, -1, -1, -1, -1, -1],
+    8:  [6, 4, 4, 3, -1, -1, -1, -1, -1, -1],
+    9:  [6, 4, 4, 3, -1, -1, -1, -1, -1, -1],
+    10: [6, 4, 4, 4, 2, -1, -1, -1, -1, -1],
+    11: [6, 4, 4, 4, 3, -1, -1, -1, -1, -1],
+    12: [6, 4, 4, 4, 3, -1, -1, -1, -1, -1],
+    13: [6, 4, 4, 4, 4, 2, -1, -1, -1, -1],
+    14: [6, 4, 4, 4, 4, 3, -1, -1, -1, -1],
+    15: [6, 4, 4, 4, 4, 3, -1, -1, -1, -1],
+    16: [6, 5, 4, 4, 4, 4, 2, -1, -1, -1],
+    17: [6, 5, 5, 4, 4, 4, 3, -1, -1, -1],
+    18: [6, 5, 5, 5, 4, 4, 3, -1, -1, -1],
+    19: [6, 5, 5, 5, 5, 4, 4, -1, -1, -1],
+    20: [6, 5, 5, 5, 5, 5, 4, -1, -1, -1],
+}
+
+
+# ---------------------------------------------------------------------------
 # SpellsKnownManager
 # ---------------------------------------------------------------------------
 
@@ -718,6 +790,23 @@ class SpellsKnownManager:
             A configured :class:`SpellsKnownManager` with correct caps.
         """
         table = _SORCERER_SPELLS_KNOWN.get(level, [0] * 10)
+        max_known = [max(0, v) for v in table]
+        return cls(
+            known_spells={i: set() for i in range(10)},
+            max_known=max_known,
+        )
+
+    @classmethod
+    def for_bard(cls, level: int) -> "SpellsKnownManager":
+        """Create a SpellsKnownManager for a Bard at the given level.
+
+        Args:
+            level: Bard class level (1–20).
+
+        Returns:
+            A configured :class:`SpellsKnownManager` with correct caps.
+        """
+        table = _BARD_SPELLS_KNOWN.get(level, [0] * 10)
         max_known = [max(0, v) for v in table]
         return cls(
             known_spells={i: set() for i in range(10)},
@@ -826,6 +915,28 @@ class SpontaneousCasterManager:
         """
         slot_manager = SpellSlotManager.for_class("Sorcerer", level, cha_mod)
         spells_known = SpellsKnownManager.for_sorcerer(level)
+        return cls(slot_manager=slot_manager, spells_known=spells_known)
+
+    @classmethod
+    def for_bard(
+        cls,
+        level: int,
+        cha_mod: int,
+    ) -> "SpontaneousCasterManager":
+        """Create a SpontaneousCasterManager for a Bard.
+
+        Bards are spontaneous arcane casters using Charisma.
+        They cast up to 6th-level spells from a limited known list.
+
+        Args:
+            level:   Bard class level (1–20).
+            cha_mod: Charisma modifier.
+
+        Returns:
+            A configured :class:`SpontaneousCasterManager`.
+        """
+        slot_manager = SpellSlotManager.for_class("Bard", level, cha_mod)
+        spells_known = SpellsKnownManager.for_bard(level)
         return cls(slot_manager=slot_manager, spells_known=spells_known)
 
     def can_cast(self, spell_name: str, spell_level: int) -> bool:
