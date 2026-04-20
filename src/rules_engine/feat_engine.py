@@ -27,7 +27,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from enum import Enum, auto
-from typing import TYPE_CHECKING, Callable, Dict, List, Optional
+from typing import TYPE_CHECKING, Dict, Optional, Tuple
 
 if TYPE_CHECKING:
     from src.rules_engine.character_35e import Character35e
@@ -229,7 +229,7 @@ class FeatRegistry:
         cls,
         character: "Character35e",
         intent: PowerAttackIntent,
-    ) -> tuple:
+    ) -> Tuple[int, int]:
         """Compute attack and damage modifiers from Power Attack.
 
         Args:

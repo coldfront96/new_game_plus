@@ -26,7 +26,7 @@ Usage::
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import TYPE_CHECKING, Dict, FrozenSet
+from typing import TYPE_CHECKING, Dict
 
 if TYPE_CHECKING:
     from src.rules_engine.character_35e import Character35e
