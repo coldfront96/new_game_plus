@@ -47,6 +47,7 @@ from typing import TYPE_CHECKING, Any, Dict, List, Optional
 
 if TYPE_CHECKING:
     from src.rules_engine.equipment import EquipmentManager
+    from src.rules_engine.spellcasting import Spellbook, SpellSlotManager
 
 
 # ---------------------------------------------------------------------------
@@ -217,6 +218,8 @@ class Character35e:
     skills: Dict[str, int] = field(default_factory=dict)
     metadata: Dict[str, Any] = field(default_factory=dict)
     equipment_manager: Optional["EquipmentManager"] = None
+    spellbook: Optional["Spellbook"] = None
+    spell_slot_manager: Optional["SpellSlotManager"] = None
 
     # ------------------------------------------------------------------
     # Ability modifiers (SRD formula: (score - 10) // 2)
@@ -407,7 +410,7 @@ class Character35e:
 
     def to_dict(self) -> Dict[str, Any]:
         """Serialise to a plain dictionary (JSON-compatible)."""
-        return {
+        data = {
             "char_id": self.char_id,
             "name": self.name,
             "char_class": self.char_class,
@@ -435,6 +438,11 @@ class Character35e:
             "will_save": self.will_save,
             "voxel_speed": self.voxel_speed,
         }
+        if self.spellbook is not None:
+            data["spellbook"] = self.spellbook.to_dict()
+        if self.spell_slot_manager is not None:
+            data["spell_slot_manager"] = self.spell_slot_manager.to_dict()
+        return data
 
     @classmethod
     def from_dict(cls, data: Dict[str, Any]) -> "Character35e":
@@ -449,6 +457,17 @@ class Character35e:
         Returns:
             A new :class:`Character35e` instance.
         """
+        from src.rules_engine.spellcasting import Spellbook, SpellSlotManager
+        from src.rules_engine.magic import DEFAULT_SPELL_REGISTRY
+
+        spellbook = None
+        if "spellbook" in data:
+            spellbook = Spellbook.from_dict(data["spellbook"], DEFAULT_SPELL_REGISTRY)
+
+        spell_slot_manager = None
+        if "spell_slot_manager" in data:
+            spell_slot_manager = SpellSlotManager.from_dict(data["spell_slot_manager"])
+
         return cls(
             char_id=data["char_id"],
             name=data["name"],
@@ -468,6 +487,8 @@ class Character35e:
             feats=data.get("feats", []),
             skills=data.get("skills", {}),
             metadata=data.get("metadata", {}),
+            spellbook=spellbook,
+            spell_slot_manager=spell_slot_manager,
         )
 
     def to_json(self) -> str:
