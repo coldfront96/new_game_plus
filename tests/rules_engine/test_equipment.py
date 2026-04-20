@@ -149,10 +149,10 @@ class TestEquipmentManagerConstruction:
         mgr = EquipmentManager()
         assert mgr.event_bus is None
         # Should still function without events
-        sword = Item(name="Dagger", item_type=ItemType.WEAPON, base_damage=2,
-                     metadata={"damage_dice_count": 1, "damage_dice_sides": 4})
-        mgr.equip_item(sword, EquipmentSlot.MAIN_HAND)
-        assert mgr.get_item(EquipmentSlot.MAIN_HAND) is sword
+        dagger = Item(name="Dagger", item_type=ItemType.WEAPON, base_damage=2,
+                      metadata={"damage_dice_count": 1, "damage_dice_sides": 4})
+        mgr.equip_item(dagger, EquipmentSlot.MAIN_HAND)
+        assert mgr.get_item(EquipmentSlot.MAIN_HAND) is dagger
 
 
 # ---------------------------------------------------------------------------
