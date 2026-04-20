@@ -463,3 +463,192 @@ def is_caster_class(char_class: str) -> bool:
         ``True`` if the class has spellcasting capability.
     """
     return char_class in _CASTER_TABLES
+
+
+# ---------------------------------------------------------------------------
+# DivineCasterManager
+# ---------------------------------------------------------------------------
+
+@dataclass(slots=True)
+class DivineCasterManager:
+    """Specialized spell slot manager for divine casters (Cleric/Druid).
+
+    Extends the basic :class:`SpellSlotManager` with 3.5e divine-specific
+    mechanics:
+
+    - **Spontaneous Casting (Cure)**: A Good or Neutral-aligned Cleric can
+      lose any prepared non-domain spell to cast a Cure spell of the same
+      level (3.5e SRD p.32).
+    - **Wisdom-based bonus slots**: Bonus spells are computed from WIS.
+
+    Attributes:
+        slot_manager: The underlying :class:`SpellSlotManager`.
+        spellbook:    The :class:`Spellbook` tracking prepared spells.
+        alignment:    Cleric alignment ("good", "neutral", or "evil").
+        domain_spells: Set of spell names that are domain spells (cannot
+                       be spontaneously converted).
+    """
+
+    slot_manager: SpellSlotManager
+    spellbook: Spellbook
+    alignment: str = "good"
+    domain_spells: Set[str] = field(default_factory=set)
+
+    @classmethod
+    def for_cleric(
+        cls,
+        level: int,
+        wis_mod: int,
+        alignment: str = "good",
+    ) -> "DivineCasterManager":
+        """Create a DivineCasterManager for a Cleric.
+
+        Args:
+            level:     Cleric class level (1–20).
+            wis_mod:   Wisdom modifier.
+            alignment: "good", "neutral", or "evil".
+
+        Returns:
+            A configured :class:`DivineCasterManager`.
+        """
+        slot_manager = SpellSlotManager.for_class("Cleric", level, wis_mod)
+        spellbook = Spellbook()
+        return cls(
+            slot_manager=slot_manager,
+            spellbook=spellbook,
+            alignment=alignment,
+        )
+
+    @classmethod
+    def for_druid(
+        cls,
+        level: int,
+        wis_mod: int,
+    ) -> "DivineCasterManager":
+        """Create a DivineCasterManager for a Druid.
+
+        Args:
+            level:   Druid class level (1–20).
+            wis_mod: Wisdom modifier.
+
+        Returns:
+            A configured :class:`DivineCasterManager`.
+        """
+        slot_manager = SpellSlotManager.for_class("Druid", level, wis_mod)
+        spellbook = Spellbook()
+        return cls(
+            slot_manager=slot_manager,
+            spellbook=spellbook,
+            alignment="neutral",
+        )
+
+    def can_spontaneous_cure(self) -> bool:
+        """Whether this caster can spontaneously convert spells to Cure spells.
+
+        Per 3.5e SRD: Good-aligned and Neutral-aligned Clerics can
+        spontaneously cast Cure spells. Evil Clerics instead spontaneously
+        cast Inflict spells (not yet implemented).
+
+        Returns:
+            ``True`` if spontaneous Cure conversion is available.
+        """
+        return self.alignment in ("good", "neutral")
+
+    def convert_to_cure(self, prepared_spell: str) -> Optional[str]:
+        """Spontaneously convert a prepared non-domain spell into a Cure
+        spell of the same level (3.5e SRD Spontaneous Casting).
+
+        The prepared spell is consumed (removed from preparation and the
+        corresponding slot is expended). The Cure spell name for that level
+        is returned.
+
+        Rules enforced:
+        - Caster must be Good or Neutral aligned.
+        - The spell must be currently prepared.
+        - Domain spells cannot be spontaneously converted.
+        - The spell must be level 1–9 (cantrips cannot be converted).
+        - A slot of the spell's level must be available.
+
+        Args:
+            prepared_spell: Name of the prepared spell to sacrifice.
+
+        Returns:
+            The name of the Cure spell gained, or ``None`` if conversion
+            is not possible.
+        """
+        from src.rules_engine.magic import CURE_SPELLS
+
+        # Must be eligible for spontaneous cure casting
+        if not self.can_spontaneous_cure():
+            return None
+
+        # Domain spells cannot be spontaneously converted
+        if prepared_spell in self.domain_spells:
+            return None
+
+        # Find the spell level from prepared spells
+        spell_level: Optional[int] = None
+        for level in range(1, 10):
+            if prepared_spell in self.spellbook.prepared_spells.get(level, []):
+                spell_level = level
+                break
+
+        # Spell must be prepared and at level 1+
+        if spell_level is None:
+            return None
+
+        # Must have a slot available at that level
+        if self.slot_manager.available(spell_level) <= 0:
+            return None
+
+        # Look up the cure spell for this level
+        cure_spell_name = CURE_SPELLS.get(spell_level)
+        if cure_spell_name is None:
+            return None
+
+        # Consume: expend the slot and remove the prepared spell
+        self.slot_manager.expend(spell_level)
+        self.spellbook.prepared_spells[spell_level].remove(prepared_spell)
+
+        return cure_spell_name
+
+    def prepare_spell(self, spell_name: str, spell_level: int) -> bool:
+        """Prepare a spell into the divine caster's daily preparation.
+
+        Divine casters have access to their entire spell list, so this
+        does not check the known_spells set. Instead, it adds to known
+        and then prepares.
+
+        Args:
+            spell_name:  Name of the spell to prepare.
+            spell_level: Spell level (0–9).
+
+        Returns:
+            ``True`` if successfully prepared.
+        """
+        # Divine casters know all spells on their list
+        self.spellbook.add_known(spell_name, spell_level)
+        return self.spellbook.prepare(spell_name, spell_level)
+
+    def cast_spell(self, spell_name: str, spell_level: int) -> bool:
+        """Cast a prepared spell, expending the appropriate slot.
+
+        Args:
+            spell_name:  Name of the spell to cast.
+            spell_level: Spell level of the slot to expend.
+
+        Returns:
+            ``True`` if the spell was successfully cast (was prepared and
+            a slot was available), ``False`` otherwise.
+        """
+        if spell_name not in self.spellbook.prepared_spells.get(spell_level, []):
+            return False
+        if not self.slot_manager.expend(spell_level):
+            return False
+        self.spellbook.prepared_spells[spell_level].remove(spell_name)
+        return True
+
+    def rest(self) -> None:
+        """Restore all spell slots and clear prepared spells (new day)."""
+        self.slot_manager.rest()
+        self.spellbook.unprepare_all()

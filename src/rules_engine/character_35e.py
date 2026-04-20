@@ -333,11 +333,13 @@ class Character35e:
 
     @property
     def armor_class(self) -> int:
-        """Armour class: ``10 + DEX mod + size modifier + armor bonus + shield bonus + feat bonus``.
+        """Armour class: ``10 + DEX mod + size modifier + armor bonus + shield bonus + deflection bonus + feat bonus``.
 
         Armor bonus and shield bonus are resolved from the
-        :class:`EquipmentManager` if one is attached. Feat bonuses
-        are resolved from the :class:`FeatRegistry`.
+        :class:`EquipmentManager` if one is attached. Deflection bonuses
+        (e.g. from divine spells like Shield of Faith) are resolved from
+        the character's metadata. Feat bonuses are resolved from the
+        :class:`FeatRegistry`.
         """
         from src.rules_engine.feat_engine import FeatRegistry
 
@@ -345,6 +347,8 @@ class Character35e:
         if self.equipment_manager is not None:
             ac += self.equipment_manager.get_armor_bonus()
             ac += self.equipment_manager.get_shield_bonus()
+        # Deflection bonus from divine spells (e.g. Shield of Faith)
+        ac += self.metadata.get("deflection_bonus", 0)
         ac += FeatRegistry.get_ac_bonus(self)
         return ac
 
