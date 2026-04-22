@@ -190,23 +190,40 @@ class SkillSystem:
         ability_modifier: int = 0,
         dc: int = 10,
         misc_modifier: int = 0,
+        armor_check_penalty: int = 0,
     ) -> SkillCheckResult:
         """Resolve a skill check against a Difficulty Class.
 
-        Formula: ``d20 + rank + ability_modifier + misc_modifier`` vs DC.
+        Formula: ``d20 + rank + ability_modifier + misc_modifier - armor_check_penalty`` vs DC.
+
+        The *armor_check_penalty* is subtracted only for skills whose key
+        ability is Strength or Dexterity (per the 3.5e SRD).  For all other
+        skills the penalty is ignored.
 
         Args:
-            skill_name:       Name of the skill being checked.
-            ability_modifier: The relevant ability modifier (e.g. WIS mod
-                              for Survival).
-            dc:               Difficulty Class to beat (default 10).
-            misc_modifier:    Any additional circumstance or synergy bonuses.
+            skill_name:          Name of the skill being checked.
+            ability_modifier:    The relevant ability modifier (e.g. WIS mod
+                                 for Survival).
+            dc:                  Difficulty Class to beat (default 10).
+            misc_modifier:       Any additional circumstance or synergy bonuses.
+            armor_check_penalty: The total Armor Check Penalty from equipped
+                                 gear (non-negative integer; applied as a
+                                 penalty to STR- and DEX-based skills only).
 
         Returns:
             A :class:`SkillCheckResult` with the full outcome.
         """
         rank = self.get_rank(skill_name)
-        total_modifier = rank + ability_modifier + misc_modifier
+
+        # Apply ACP only to STR- and DEX-based skills (3.5e SRD rule)
+        key_ability = self.get_key_ability(skill_name)
+        acp_penalty = 0
+        if armor_check_penalty > 0 and key_ability in (
+            SkillAbility.STR, SkillAbility.DEX
+        ):
+            acp_penalty = armor_check_penalty
+
+        total_modifier = rank + ability_modifier + misc_modifier - acp_penalty
         roll = roll_d20(modifier=total_modifier)
         total = roll.total
         success = total >= dc

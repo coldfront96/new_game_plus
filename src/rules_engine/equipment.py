@@ -233,6 +233,81 @@ class EquipmentManager:
         """Return ``True`` if the specified slot has no item equipped."""
         return self.slots.get(slot) is None
 
+    def get_total_acp(self) -> int:
+        """Calculate the total Armor Check Penalty from all equipped armor.
+
+        In 3.5e SRD, each piece of armor and shield imposes an Armor Check
+        Penalty on Strength- and Dexterity-based skill checks.  The penalties
+        from multiple pieces of armor stack additively.
+
+        The ACP for each item is stored in the item's ``metadata`` dict under
+        the key ``"armor_check_penalty"`` as a non-negative integer (e.g. ``6``
+        for Full Plate).
+
+        Returns:
+            Total ACP (≥ 0) from all equipped armor items.
+        """
+        total = 0
+        for slot in (EquipmentSlot.TORSO, EquipmentSlot.HEAD,
+                     EquipmentSlot.OFF_HAND, EquipmentSlot.LEGS,
+                     EquipmentSlot.FEET):
+            item = self.slots.get(slot)
+            if item is not None and item.item_type == ItemType.ARMOUR:
+                total += int(item.metadata.get("armor_check_penalty", 0))
+        return total
+
+    def get_min_max_dex_bonus(self) -> Optional[int]:
+        """Return the lowest Max Dex Bonus from all equipped armor.
+
+        In 3.5e SRD, each piece of armor limits the wearer's Dexterity
+        modifier applied to AC.  When multiple pieces impose a cap, the
+        *lowest* (most restrictive) cap applies.
+
+        The cap for each item is stored in the item's ``metadata`` dict under
+        the key ``"max_dex_bonus"`` as a non-negative integer (e.g. ``1`` for
+        Full Plate).  Items with no cap set do not constrain the bonus.
+
+        Returns:
+            The most restrictive Max Dex Bonus across all equipped armor, or
+            ``None`` if no equipped item imposes a cap.
+        """
+        min_cap: Optional[int] = None
+        for slot in (EquipmentSlot.TORSO, EquipmentSlot.HEAD,
+                     EquipmentSlot.OFF_HAND, EquipmentSlot.LEGS,
+                     EquipmentSlot.FEET):
+            item = self.slots.get(slot)
+            if item is not None and item.item_type == ItemType.ARMOUR:
+                cap = item.metadata.get("max_dex_bonus")
+                if cap is not None:
+                    cap = int(cap)
+                    if min_cap is None or cap < min_cap:
+                        min_cap = cap
+        return min_cap
+
+    def get_armor_category(self) -> str:
+        """Return the heaviest armor category currently equipped.
+
+        In 3.5e SRD, the armor category (``"light"``, ``"medium"``,
+        ``"heavy"``, or ``"none"``) determines speed penalties and other
+        restrictions.  The category for each item is stored under the key
+        ``"armor_category"`` in the item's ``metadata`` dict.
+
+        Returns:
+            ``"heavy"``, ``"medium"``, ``"light"``, or ``"none"`` — reflecting
+            the most restrictive category from equipped armor pieces.
+        """
+        _CATEGORY_RANK = {"none": 0, "light": 1, "medium": 2, "heavy": 3}
+        heaviest = "none"
+        for slot in (EquipmentSlot.TORSO, EquipmentSlot.HEAD,
+                     EquipmentSlot.OFF_HAND, EquipmentSlot.LEGS,
+                     EquipmentSlot.FEET):
+            item = self.slots.get(slot)
+            if item is not None and item.item_type == ItemType.ARMOUR:
+                cat = str(item.metadata.get("armor_category", "none")).lower()
+                if _CATEGORY_RANK.get(cat, 0) > _CATEGORY_RANK.get(heaviest, 0):
+                    heaviest = cat
+        return heaviest
+
     def get_total_asf(self) -> int:
         """Calculate the total Arcane Spell Failure chance from all equipped armor.
 
