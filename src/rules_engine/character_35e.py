@@ -238,6 +238,7 @@ class Character35e:
     feats: List[str] = field(default_factory=list)
     skills: Dict[str, int] = field(default_factory=dict)
     metadata: Dict[str, Any] = field(default_factory=dict)
+    damage_reduction: str = ""
     equipment_manager: Optional["EquipmentManager"] = None
     spell_slot_manager: Optional["SpellSlotManager"] = None
     spellbook: Optional["Spellbook"] = None
@@ -245,38 +246,43 @@ class Character35e:
     spontaneous_caster: Optional["SpontaneousCasterManager"] = None
 
     # ------------------------------------------------------------------
-    # Ability modifiers (SRD formula: (score - 10) // 2)
+    # Ability modifiers (SRD formula: (score - 10) // 2 + racial bonus)
     # ------------------------------------------------------------------
+
+    def _racial_bonus(self, stat: str) -> int:
+        """Return the racial modifier for *stat* from the RaceRegistry."""
+        from src.rules_engine.race import RaceRegistry
+        return RaceRegistry.get(self.race).stat_modifiers.get(stat, 0)
 
     @property
     def strength_mod(self) -> int:
-        """Strength modifier."""
-        return _ability_modifier(self.strength)
+        """Strength modifier (includes racial modifier)."""
+        return _ability_modifier(self.strength) + self._racial_bonus("strength")
 
     @property
     def dexterity_mod(self) -> int:
-        """Dexterity modifier."""
-        return _ability_modifier(self.dexterity)
+        """Dexterity modifier (includes racial modifier)."""
+        return _ability_modifier(self.dexterity) + self._racial_bonus("dexterity")
 
     @property
     def constitution_mod(self) -> int:
-        """Constitution modifier."""
-        return _ability_modifier(self.constitution)
+        """Constitution modifier (includes racial modifier)."""
+        return _ability_modifier(self.constitution) + self._racial_bonus("constitution")
 
     @property
     def intelligence_mod(self) -> int:
-        """Intelligence modifier."""
-        return _ability_modifier(self.intelligence)
+        """Intelligence modifier (includes racial modifier)."""
+        return _ability_modifier(self.intelligence) + self._racial_bonus("intelligence")
 
     @property
     def wisdom_mod(self) -> int:
-        """Wisdom modifier."""
-        return _ability_modifier(self.wisdom)
+        """Wisdom modifier (includes racial modifier)."""
+        return _ability_modifier(self.wisdom) + self._racial_bonus("wisdom")
 
     @property
     def charisma_mod(self) -> int:
-        """Charisma modifier."""
-        return _ability_modifier(self.charisma)
+        """Charisma modifier (includes racial modifier)."""
+        return _ability_modifier(self.charisma) + self._racial_bonus("charisma")
 
     # ------------------------------------------------------------------
     # Movement speed
