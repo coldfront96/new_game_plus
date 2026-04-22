@@ -913,3 +913,8 @@ class TestFeatCatalog:
         prereq = FeatPrerequisite(min_str=13)
         assert not hasattr(prereq, "__dict__")
 
+    def test_feat_dataclass_slots(self):
+        from src.rules_engine.feat_engine import Feat
+        feat = Feat(name="Test Feat")
+        assert not hasattr(feat, "__dict__")
+
