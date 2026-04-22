@@ -161,6 +161,64 @@ class RaceRegistry:
             base_speed=30,
             size="Medium",
         ),
+
+        # -------------------------------------------------------------------
+        # Gnome: +2 CON, −2 STR.
+        # Traits: Small size, Low-Light Vision, +1 attack vs. kobolds and
+        #         goblinoids, +4 dodge AC vs. giants, +2 Listen, +2 Craft
+        #         (alchemy), spell-like abilities (dancing lights, ghost sound,
+        #         prestidigitation), +1 DC to illusion spells.
+        # -------------------------------------------------------------------
+        "Gnome": Race(
+            name="Gnome",
+            stat_modifiers={"constitution": 2, "strength": -2},
+            special_abilities=[
+                "Small Size",
+                "Low-Light Vision",
+                "Weapon Familiarity (Gnome)",
+                "Keen Senses",
+                "Illusion Aptitude",
+                "Spell-Like Abilities",
+            ],
+            base_speed=20,
+            size="Small",
+        ),
+
+        # -------------------------------------------------------------------
+        # Half-Elf: No fixed ability modifiers.
+        # Traits: Low-Light Vision, immunity to sleep spells, +2 saves vs.
+        #         enchantments, +1 Diplomacy and Gather Information, Elven
+        #         Blood (counts as both elf and human for prerequisites).
+        # -------------------------------------------------------------------
+        "Half-Elf": Race(
+            name="Half-Elf",
+            stat_modifiers={},
+            special_abilities=[
+                "Low-Light Vision",
+                "Elven Immunities",
+                "Adaptability",
+                "Elven Blood",
+                "Bonus Skill Points",
+            ],
+            base_speed=30,
+            size="Medium",
+        ),
+
+        # -------------------------------------------------------------------
+        # Half-Orc: +2 STR, −2 INT, −2 CHA.
+        # Traits: Darkvision 60 ft, Orc Blood (counts as both orc and human
+        #         for prerequisites).
+        # -------------------------------------------------------------------
+        "Half-Orc": Race(
+            name="Half-Orc",
+            stat_modifiers={"strength": 2, "intelligence": -2, "charisma": -2},
+            special_abilities=[
+                "Darkvision",
+                "Orc Blood",
+            ],
+            base_speed=30,
+            size="Medium",
+        ),
     }
 
     @classmethod
