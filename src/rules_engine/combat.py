@@ -60,6 +60,9 @@ class CombatResult:
         miss_chance_threshold:  The miss-chance percentage that applied (0, 20, or 50).
         miss_chance_triggered:  ``True`` if the miss-chance roll caused the attack to
                                 miss despite otherwise hitting AC.
+        sneak_attack_damage:    Extra damage dealt by a Rogue's Sneak Attack (0 if none).
+        smite_evil_damage:      Extra damage added by Paladin Smite Evil (0 if none).
+        favored_enemy_damage:   Extra damage added by Ranger Favored Enemy (0 if none).
     """
 
     hit: bool
@@ -74,6 +77,8 @@ class CombatResult:
     miss_chance_threshold: int = 0
     miss_chance_triggered: bool = False
     sneak_attack_damage: int = 0
+    smite_evil_damage: int = 0
+    favored_enemy_damage: int = 0
 
 
 # ---------------------------------------------------------------------------
@@ -145,11 +150,14 @@ class AttackResolver:
         defender_light_level: Optional["LightLevel"] = None,
         attacker_has_darkvision: bool = False,
         target_is_flat_footed: bool = False,
+        smite_evil_attack_bonus: int = 0,
+        smite_evil_damage_bonus: int = 0,
+        favored_enemy_damage_bonus: int = 0,
     ) -> CombatResult:
         """Resolve a single melee (or ranged) attack.
 
         Steps (per the 3.5e SRD):
-        1. Roll d20 + attack bonus.
+        1. Roll d20 + attack bonus (+ Smite Evil CHA bonus if active).
         2. Natural 1 → automatic miss.
         3. Compare total against defender's AC (hit or miss).
         4. Natural 20 or any roll ≥ *threat_range* is a *critical threat*.
@@ -161,7 +169,7 @@ class AttackResolver:
              attacker has Darkvision (within range).
            Roll d% (1–100); if the roll ≤ miss_chance the attack misses.
         7. On a hit, roll damage; multiply by *damage_multiplier* on a
-           confirmed critical.
+           confirmed critical.  Add Smite Evil and Favored Enemy bonuses.
         8. Subtract the defender's ``damage_reduction`` from the final damage.
            Minimum 1 damage on a hit (applied before DR has a floor of 0 net).
 
@@ -182,6 +190,18 @@ class AttackResolver:
                                    lighting modifier is applied (treat as BRIGHT).
             attacker_has_darkvision: If ``True`` the attacker has Darkvision and
                                    ignores the miss chance from DARKNESS.
+            target_is_flat_footed: If ``True`` and the attacker is a Rogue, Sneak
+                                   Attack damage is added (unless the defender has
+                                   Uncanny Dodge).
+            smite_evil_attack_bonus: Flat bonus added to the attack roll from a
+                                   Paladin's active Smite Evil (typically the
+                                   Paladin's CHA modifier).  Pass 0 if not smiting.
+            smite_evil_damage_bonus: Flat bonus added to damage from Smite Evil
+                                   (typically the Paladin's class level).  Only
+                                   applied on a hit.  Pass 0 if not smiting.
+            favored_enemy_damage_bonus: Flat damage bonus from a Ranger's Favored
+                                   Enemy feature against the current target's
+                                   creature type.  Pass 0 if not applicable.
 
         Returns:
             A :class:`CombatResult` describing the outcome.
@@ -191,6 +211,9 @@ class AttackResolver:
             attack_bonus = attacker.ranged_attack
         else:
             attack_bonus = attacker.melee_attack
+
+        # Smite Evil adds CHA modifier to the attack roll.
+        attack_bonus += smite_evil_attack_bonus
 
         # --- Attack roll (d20) ----------------------------------------------
         roll = roll_d20(modifier=attack_bonus)
@@ -323,6 +346,20 @@ class AttackResolver:
                 sneak_attack_damage = max(0, sa_roll.total)
                 total_damage += sneak_attack_damage
 
+        # --- Smite Evil (Paladin) -------------------------------------------
+        # Add Paladin level to damage when Smite Evil is active against an
+        # evil target.  The caller is responsible for checking alignment and
+        # passing a non-zero smite_evil_damage_bonus only when appropriate.
+        if smite_evil_damage_bonus:
+            total_damage += smite_evil_damage_bonus
+
+        # --- Favored Enemy (Ranger) -----------------------------------------
+        # Add the Favored Enemy damage bonus when the target matches a Ranger's
+        # Favored Enemy type.  The caller resolves the creature type and passes
+        # the pre-calculated bonus.
+        if favored_enemy_damage_bonus:
+            total_damage += favored_enemy_damage_bonus
+
         # Subtract defender's Damage Reduction.
         dr_value = cls._parse_damage_reduction(defender.damage_reduction)
         total_damage = max(0, total_damage - dr_value)
@@ -340,6 +377,8 @@ class AttackResolver:
             miss_chance_threshold=miss_chance_threshold,
             miss_chance_triggered=False,
             sneak_attack_damage=sneak_attack_damage,
+            smite_evil_damage=smite_evil_damage_bonus if smite_evil_damage_bonus else 0,
+            favored_enemy_damage=favored_enemy_damage_bonus if favored_enemy_damage_bonus else 0,
         )
 
 
