@@ -59,6 +59,19 @@ if TYPE_CHECKING:
 # Enumerations
 # ---------------------------------------------------------------------------
 
+_ALIGNMENT_FULL_NAMES: Dict[str, str] = {
+    "LG": "Lawful Good",
+    "NG": "Neutral Good",
+    "CG": "Chaotic Good",
+    "LN": "Lawful Neutral",
+    "N":  "True Neutral",
+    "CN": "Chaotic Neutral",
+    "LE": "Lawful Evil",
+    "NE": "Neutral Evil",
+    "CE": "Chaotic Evil",
+}
+
+
 class Alignment(Enum):
     """The nine D&D 3.5e alignments."""
 
@@ -71,6 +84,11 @@ class Alignment(Enum):
     LAWFUL_EVIL = "LE"
     NEUTRAL_EVIL = "NE"
     CHAOTIC_EVIL = "CE"
+
+    @property
+    def full_name(self) -> str:
+        """Return the full alignment name (e.g. ``"Lawful Good"``)."""
+        return _ALIGNMENT_FULL_NAMES[self.value]
 
 
 class Size(Enum):
@@ -246,6 +264,15 @@ class Character35e:
     spontaneous_caster: Optional["SpontaneousCasterManager"] = None
 
     # ------------------------------------------------------------------
+    # Alignment
+    # ------------------------------------------------------------------
+
+    @property
+    def alignment_str(self) -> str:
+        """Full alignment name (e.g. ``"Lawful Good"``, ``"Chaotic Neutral"``)."""
+        return self.alignment.full_name
+
+    # ------------------------------------------------------------------
     # Ability modifiers (SRD formula: (score - 10) // 2 + racial bonus)
     # ------------------------------------------------------------------
 
@@ -398,6 +425,10 @@ class Character35e:
         # Deflection bonus from divine spells (e.g. Shield of Faith)
         ac += self.metadata.get("deflection_bonus", 0)
         ac += FeatRegistry.get_ac_bonus(self)
+        # Monk Wisdom bonus to AC (3.5e SRD: Monk adds WIS bonus to AC even
+        # when flat-footed; only positive values apply).
+        if self.char_class == "Monk":
+            ac += max(0, self.wisdom_mod)
         return ac
 
     @property
@@ -407,8 +438,15 @@ class Character35e:
 
     @property
     def flat_footed_ac(self) -> int:
-        """Flat-footed AC (loses DEX bonus, keeps size modifier)."""
-        return 10 + self.size.value
+        """Flat-footed AC (loses DEX bonus, keeps size modifier).
+
+        For Monks, the Wisdom bonus is retained even when flat-footed,
+        per the 3.5e SRD.
+        """
+        ac = 10 + self.size.value
+        if self.char_class == "Monk":
+            ac += max(0, self.wisdom_mod)
+        return ac
 
     # ------------------------------------------------------------------
     # Combat

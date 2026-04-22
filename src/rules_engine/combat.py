@@ -73,6 +73,7 @@ class CombatResult:
     miss_chance_roll: Optional[int] = None
     miss_chance_threshold: int = 0
     miss_chance_triggered: bool = False
+    sneak_attack_damage: int = 0
 
 
 # ---------------------------------------------------------------------------
@@ -91,6 +92,31 @@ class AttackResolver:
 
     # Natural 1 is always a miss.
     _NATURAL_FUMBLE: int = 1
+
+    # 3.5e SRD Monk unarmed strike progression (Medium Monk).
+    # Maps minimum Monk level → (dice_count, dice_sides).
+    _MONK_UNARMED_TABLE: tuple = (
+        (16, 2, 8),   # Level 16+: 2d8
+        (12, 2, 6),   # Level 12+: 2d6
+        ( 8, 1, 10),  # Level  8+: 1d10
+        ( 4, 1,  8),  # Level  4+: 1d8
+        ( 1, 1,  6),  # Level  1+: 1d6
+    )
+
+    @classmethod
+    def _monk_unarmed_dice(cls, level: int) -> tuple:
+        """Return (count, sides) for a Monk's unarmed strike at *level*.
+
+        Args:
+            level: Monk class level (1–20).
+
+        Returns:
+            Tuple of ``(dice_count, dice_sides)``.
+        """
+        for min_level, count, sides in cls._MONK_UNARMED_TABLE:
+            if level >= min_level:
+                return count, sides
+        return 1, 6  # fallback (should not be reached)
 
     @classmethod
     def _parse_damage_reduction(cls, dr_str: str) -> int:
@@ -118,6 +144,7 @@ class AttackResolver:
         damage_multiplier: int = 2,
         defender_light_level: Optional["LightLevel"] = None,
         attacker_has_darkvision: bool = False,
+        target_is_flat_footed: bool = False,
     ) -> CombatResult:
         """Resolve a single melee (or ranged) attack.
 
@@ -258,9 +285,18 @@ class AttackResolver:
                     )
 
         # --- Damage ----------------------------------------------------------
-        # Determine damage dice
-        d_count = damage_dice_count if damage_dice_count > 0 else cls._UNARMED_DICE_COUNT
-        d_sides = damage_dice_sides if damage_dice_sides > 0 else cls._UNARMED_DICE_SIDES
+        # Monk unarmed progression: if the attacker is a Monk and no weapon
+        # dice were provided, use the 3.5e SRD Monk unarmed strike table
+        # instead of the default 1d3 unarmed damage.
+        if (
+            attacker.char_class == "Monk"
+            and damage_dice_count == 0
+            and damage_dice_sides == 0
+        ):
+            d_count, d_sides = cls._monk_unarmed_dice(attacker.level)
+        else:
+            d_count = damage_dice_count if damage_dice_count > 0 else cls._UNARMED_DICE_COUNT
+            d_sides = damage_dice_sides if damage_dice_sides > 0 else cls._UNARMED_DICE_SIDES
 
         # STR modifier applies to melee damage; ranged gets no STR bonus
         str_mod = attacker.strength_mod if not use_ranged else 0
@@ -274,6 +310,18 @@ class AttackResolver:
         # Apply critical multiplier on confirmed crits.
         if confirmed_critical:
             total_damage *= damage_multiplier
+
+        # --- Sneak Attack (Rogue) -------------------------------------------
+        # A Rogue deals bonus Sneak Attack damage when the target is denied
+        # its DEX bonus to AC (flat-footed) and does not have Uncanny Dodge.
+        sneak_attack_damage = 0
+        if attacker.char_class == "Rogue" and target_is_flat_footed:
+            from src.rules_engine.abilities import AbilityRegistry, SneakAttack  # noqa: PLC0415
+
+            if not AbilityRegistry.has_uncanny_dodge(defender):
+                sa_roll = SneakAttack.roll_damage(attacker.level)
+                sneak_attack_damage = max(0, sa_roll.total)
+                total_damage += sneak_attack_damage
 
         # Subtract defender's Damage Reduction.
         dr_value = cls._parse_damage_reduction(defender.damage_reduction)
@@ -291,6 +339,7 @@ class AttackResolver:
             miss_chance_roll=miss_chance_roll,
             miss_chance_threshold=miss_chance_threshold,
             miss_chance_triggered=False,
+            sneak_attack_damage=sneak_attack_damage,
         )
 
 

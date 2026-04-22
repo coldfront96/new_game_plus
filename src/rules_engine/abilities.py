@@ -25,11 +25,14 @@ Usage::
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import TYPE_CHECKING, Dict, Optional
+
+from src.rules_engine.dice import roll_dice
 
 if TYPE_CHECKING:
     from src.rules_engine.character_35e import Character35e
+    from src.rules_engine.dice import RollResult
 
 
 # ---------------------------------------------------------------------------
@@ -301,3 +304,155 @@ class BardicMusicManager:
     def rest(self) -> None:
         """Restore all Bardic Music uses (long rest / new day)."""
         self.uses_remaining = self.uses_per_day
+
+
+# ---------------------------------------------------------------------------
+# Barbarian Rage
+# ---------------------------------------------------------------------------
+
+@dataclass(slots=True)
+class RageState:
+    """Tracks the active modifiers applied during a Barbarian Rage.
+
+    Per 3.5e SRD: While raging a Barbarian gains +4 STR, +4 CON,
+    +2 morale bonus on Will saves, but suffers a -2 penalty to AC.
+    The CON increase generates temporary hit points (2 × character level).
+
+    Attributes:
+        active:      Whether the rage is currently in effect.
+        str_bonus:   STR score bonus while raging (+4).
+        con_bonus:   CON score bonus while raging (+4).
+        will_bonus:  Morale bonus to Will saves while raging (+2).
+        ac_penalty:  AC penalty while raging (stored as negative, -2).
+        temp_hp:     Temporary hit points gained from the CON increase.
+    """
+
+    active: bool = False
+    str_bonus: int = 0
+    con_bonus: int = 0
+    will_bonus: int = 0
+    ac_penalty: int = 0
+    temp_hp: int = 0
+
+
+@dataclass(slots=True)
+class RageManager:
+    """Manages Barbarian Rage uses per day and active rage state.
+
+    Per 3.5e SRD: A Barbarian can rage once per day at 1st level,
+    plus one additional time per day for every four levels thereafter
+    (2/day at 4th, 3/day at 8th, etc.).
+
+    Attributes:
+        uses_per_day:    Maximum daily rage uses.
+        uses_remaining:  Remaining uses for the current day.
+        state:           Current :class:`RageState` (active or inactive).
+    """
+
+    uses_per_day: int
+    uses_remaining: int
+    state: RageState = field(default_factory=RageState)
+
+    @classmethod
+    def for_barbarian(cls, level: int) -> "RageManager":
+        """Create a RageManager for a Barbarian at the given level.
+
+        Args:
+            level: Barbarian class level (1–20).
+
+        Returns:
+            A configured :class:`RageManager`.
+        """
+        # 1 use at level 1, +1 every 4 levels (1→1, 4→2, 8→3, 12→4…)
+        uses = 1 + level // 4
+        return cls(uses_per_day=uses, uses_remaining=uses)
+
+    def can_rage(self) -> bool:
+        """Check if the Barbarian can currently rage.
+
+        Returns:
+            ``True`` if there are uses remaining and rage is not active.
+        """
+        return self.uses_remaining > 0 and not self.state.active
+
+    def activate(self, character: "Character35e") -> Optional[RageState]:
+        """Activate Rage, applying all bonuses and penalties.
+
+        Per 3.5e SRD: +4 STR, +4 CON, +2 morale Will save, -2 AC.
+        The CON increase grants temporary hit points equal to 2 × level
+        (since +4 CON raises the CON modifier by +2, yielding 2 extra HP
+        per character level).
+
+        Args:
+            character: The Barbarian entering rage (used to compute temp HP).
+
+        Returns:
+            The updated :class:`RageState` if activation succeeds,
+            ``None`` if no uses remain or rage is already active.
+        """
+        if not self.can_rage():
+            return None
+        self.uses_remaining -= 1
+        self.state.active = True
+        self.state.str_bonus = 4
+        self.state.con_bonus = 4
+        self.state.will_bonus = 2
+        self.state.ac_penalty = -2
+        # +4 CON raises CON modifier by +2 → 2 temp HP per character level
+        self.state.temp_hp = 2 * character.level
+        return self.state
+
+    def deactivate(self) -> None:
+        """End the Rage, removing all temporary bonuses and penalties."""
+        self.state.active = False
+        self.state.str_bonus = 0
+        self.state.con_bonus = 0
+        self.state.will_bonus = 0
+        self.state.ac_penalty = 0
+        self.state.temp_hp = 0
+
+    def rest(self) -> None:
+        """Restore all Rage uses (long rest / new day)."""
+        self.uses_remaining = self.uses_per_day
+
+
+# ---------------------------------------------------------------------------
+# Sneak Attack
+# ---------------------------------------------------------------------------
+
+@dataclass(slots=True)
+class SneakAttack:
+    """3.5e Rogue Sneak Attack ability.
+
+    Per 3.5e SRD: A Rogue deals extra d6 damage whenever the target is
+    denied its Dexterity bonus to AC (flat-footed) or when the Rogue
+    flanks the target.  The bonus damage is +1d6 at 1st level, +2d6 at
+    3rd level, +3d6 at 5th level, and so on (every 2 Rogue levels).
+
+    This class is stateless; all methods are static.
+    """
+
+    @staticmethod
+    def dice_count(level: int) -> int:
+        """Return the number of d6 dice rolled for Sneak Attack at *level*.
+
+        Args:
+            level: Rogue class level (1–20).
+
+        Returns:
+            Number of d6 dice (1 at L1, 2 at L3, 3 at L5, …).
+        """
+        return (level + 1) // 2
+
+    @staticmethod
+    def roll_damage(level: int) -> "RollResult":
+        """Roll Sneak Attack bonus damage for a Rogue of *level*.
+
+        Args:
+            level: Rogue class level.
+
+        Returns:
+            A :class:`~src.rules_engine.dice.RollResult` for the bonus dice.
+        """
+        count = SneakAttack.dice_count(level)
+        return roll_dice(count, 6)
