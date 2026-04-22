@@ -233,6 +233,29 @@ class EquipmentManager:
         """Return ``True`` if the specified slot has no item equipped."""
         return self.slots.get(slot) is None
 
+    def get_total_asf(self) -> int:
+        """Calculate the total Arcane Spell Failure chance from all equipped armor.
+
+        In 3.5e SRD, each armor and shield contributes an ASF percentage that
+        applies when an arcane caster attempts a spell with a somatic component.
+        The chances from multiple pieces of armor stack additively.
+
+        The ASF percentage for each item is stored in the item's ``metadata``
+        dict under the key ``"asf_chance"`` as an integer (e.g., ``35`` for
+        Full Plate's 35% ASF).
+
+        Returns:
+            Total ASF percentage (0–100+) from all equipped armor items.
+        """
+        total = 0
+        for slot in (EquipmentSlot.TORSO, EquipmentSlot.HEAD,
+                     EquipmentSlot.OFF_HAND, EquipmentSlot.LEGS,
+                     EquipmentSlot.FEET):
+            item = self.slots.get(slot)
+            if item is not None and item.item_type == ItemType.ARMOUR:
+                total += int(item.metadata.get("asf_chance", 0))
+        return total
+
     def _publish_equipped(self, item: Item, slot: EquipmentSlot) -> None:
         """Publish an item_equipped event."""
         if self.event_bus is not None:

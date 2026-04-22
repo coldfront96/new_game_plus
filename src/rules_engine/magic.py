@@ -430,6 +430,22 @@ CURE_SPELLS: Dict[int, str] = {
     9: "Heal, Mass",
 }
 
+# ---------------------------------------------------------------------------
+# Summon Nature's Ally spell lookup table for Druid spontaneous casting
+# ---------------------------------------------------------------------------
+
+SUMMON_NATURES_ALLY_SPELLS: Dict[int, str] = {
+    1: "Summon Nature's Ally I",
+    2: "Summon Nature's Ally II",
+    3: "Summon Nature's Ally III",
+    4: "Summon Nature's Ally IV",
+    5: "Summon Nature's Ally V",
+    6: "Summon Nature's Ally VI",
+    7: "Summon Nature's Ally VII",
+    8: "Summon Nature's Ally VIII",
+    9: "Summon Nature's Ally IX",
+}
+
 
 # ---------------------------------------------------------------------------
 # Bard spell effect callbacks
@@ -535,6 +551,37 @@ GHOST_SOUND = Spell(
 )
 
 
+def _summon_natures_ally_i_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Summon Nature's Ally I: Summons a 1st-level creature to fight for the caster.
+
+    The summoned creature appears where the caster designates and acts on
+    the caster's turn. Duration: 1 round/level.
+    """
+    return {
+        "summoned_creature_level": 1,
+        "duration_rounds": caster_level,
+        "alignment_restrictions": "within one step of caster's alignment",
+    }
+
+
+SUMMON_NATURES_ALLY_I = Spell(
+    name="Summon Nature's Ally I",
+    level=1,
+    school=SpellSchool.CONJURATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.DIVINE_FOCUS],
+    range="Close (25 ft. + 5 ft./2 levels)",
+    duration="1 round/level",
+    effect_callback=_summon_natures_ally_i_effect,
+    description=(
+        "This spell summons a natural creature. It appears where you designate "
+        "and acts immediately, on your turn. It attacks your opponents to the best "
+        "of its ability. Duration: 1 round/level."
+    ),
+    subschool="Summoning",
+    descriptor=[],
+)
+
+
 def create_default_registry() -> SpellRegistry:
     """Create a :class:`SpellRegistry` pre-loaded with SRD core spells.
 
@@ -554,4 +601,5 @@ def create_default_registry() -> SpellRegistry:
     registry.register(SLEEP)
     registry.register(IDENTIFY)
     registry.register(GHOST_SOUND)
+    registry.register(SUMMON_NATURES_ALLY_I)
     return registry
