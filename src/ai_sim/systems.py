@@ -22,6 +22,7 @@ Systems
 from __future__ import annotations
 
 import math
+import random as _random
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional, Tuple
@@ -1670,10 +1671,8 @@ class TurnManagerSystem(System):
         event_bus: EventBus,
         aggro_range: float = DEFAULT_AGGRO_RANGE,
     ) -> None:
-        import random as _random
         self._event_bus = event_bus
         self._aggro_range = aggro_range
-        self._random = _random
 
         # Registered participants, split by faction
         self._allies: List[Tuple[Entity, Character35e]] = []
@@ -1736,7 +1735,7 @@ class TurnManagerSystem(System):
         Returns:
             Total initiative score.
         """
-        return self._random.randint(1, 20) + character.initiative
+        return _random.randint(1, 20) + character.initiative
 
     def start_combat(self) -> None:
         """Manually trigger combat: roll initiative and build the queue.
