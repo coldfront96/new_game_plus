@@ -813,7 +813,10 @@ class SmiteEvilManager:
     def for_paladin(cls, level: int, cha_mod: int) -> "SmiteEvilManager":
         """Create a SmiteEvilManager for a Paladin at the given level.
 
-        Per 3.5e SRD: 1 use at level 1, +1 per 5 levels (at 5, 10, 15, 20).
+        Per 3.5e SRD Smite Evil progression:
+        1/day at level 1, 2/day at level 5, 3/day at level 10,
+        4/day at level 15, 5/day at level 20.
+        Formula: ``1 + level // 5``.
 
         Args:
             level:   Paladin class level (1–20).
