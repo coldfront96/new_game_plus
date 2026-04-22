@@ -198,8 +198,8 @@ _ALIGNMENT_AXES: Dict[str, tuple] = {
 def _alignment_within_one_step(char_alignment: str, deity_alignment: str) -> bool:
     """Return ``True`` if *char_alignment* is within one step of *deity_alignment*.
 
-    "One step" means differing by at most 1 on the Law/Chaos axis OR at most 1
-    on the Good/Evil axis (not both simultaneously exceeding 1).
+    "One step" means differing by at most 1 on the Law/Chaos axis AND at most 1
+    on the Good/Evil axis (both axes must be within one position).
 
     Args:
         char_alignment:  Two-letter (or "N") alignment code of the character.

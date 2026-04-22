@@ -59,15 +59,17 @@ SKILL_SYNERGIES: Dict[str, List[str]] = {
     "Jump":           ["Tumble"],
     "Knowledge":      ["Bardic Knowledge"],  # Knowledge (any) synergy with Bardic Knowledge
     "Spellcraft":     ["Use Magic Device"],
-    "Survival":       ["Knowledge", "Survival"],  # Survival → Knowledge (Nature) tracked via Knowledge
+    "Survival":       ["Knowledge"],  # Survival → +2 to Knowledge (Nature) checks
     "Tumble":         ["Balance", "Jump"],
     "Use Magic Device": ["Spellcraft"],
     "Use Rope":       ["Climb", "Escape Artist"],
 }
 
-# Survival specifically grants +2 to Knowledge checks related to nature; we
-# use the skill name "Knowledge" as a proxy here. The engine consumer is
-# responsible for narrowing to the appropriate Knowledge sub-type if needed.
+# Note: In 3.5e, Knowledge is a family of specialized skills (e.g. Knowledge
+# (Nature), Knowledge (Arcana)).  The engine uses the generic "Knowledge" key
+# as a proxy; callers narrowing to a specific sub-type should verify whether
+# the synergy source is applicable (e.g. Survival only benefits Knowledge
+# (Nature)).  Bardic Knowledge similarly accepts the generic key.
 
 
 SKILL_DEFINITIONS: Dict[str, SkillAbility] = {
