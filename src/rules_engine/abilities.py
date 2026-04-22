@@ -456,3 +456,581 @@ class SneakAttack:
         """
         count = SneakAttack.dice_count(level)
         return roll_dice(count, 6)
+
+
+# ---------------------------------------------------------------------------
+# Turn Undead (Cleric / Paladin)
+# ---------------------------------------------------------------------------
+
+@dataclass(slots=True)
+class TurnUndeadResult:
+    """Outcome of a single Turn Undead attempt.
+
+    Attributes:
+        check_roll:       The d20 + CHA modifier turning check roll.
+        max_hd_affected:  Maximum Hit Dice of undead that can be turned or
+                          destroyed.  May be negative if the check is very low.
+        damage_roll:      The 2d6 + Cleric level + CHA modifier turning damage
+                          roll, which determines how many total HD worth of
+                          undead are affected.
+    """
+
+    check_roll: "RollResult"
+    max_hd_affected: int
+    damage_roll: "RollResult"
+
+
+@dataclass(slots=True)
+class TurnUndeadManager:
+    """Manages Turn Undead uses per day for a Cleric.
+
+    Per 3.5e SRD: A Cleric can attempt to turn undead a number of times
+    per day equal to 3 + their Charisma modifier.  Each attempt requires
+    a turning check (1d20 + CHA mod) to determine the maximum HD of undead
+    that can be affected, followed by a turning damage roll (2d6 + Cleric
+    level + CHA mod) to determine the total HD affected.
+
+    Attributes:
+        uses_per_day:    Maximum daily Turn Undead uses.
+        uses_remaining:  Remaining uses for the current day.
+        cleric_level:    The Cleric's class level (used in damage roll).
+        cha_mod:         The Cleric's Charisma modifier.
+    """
+
+    uses_per_day: int
+    uses_remaining: int
+    cleric_level: int
+    cha_mod: int
+
+    # 3.5e SRD turning check result → max HD offset from Cleric level.
+    # The check total (d20 + CHA mod) is mapped to an offset applied to
+    # cleric level to produce the maximum HD of undead affected.
+    _CHECK_TABLE: tuple = field(
+        default=(
+            (0,  -4),   # result ≤ 0   → cleric_level - 4
+            (3,  -3),   # result 1–3   → cleric_level - 3
+            (6,  -2),   # result 4–6   → cleric_level - 2
+            (9,  -1),   # result 7–9   → cleric_level - 1
+            (12,  0),   # result 10–12 → cleric_level
+            (15,  1),   # result 13–15 → cleric_level + 1
+            (18,  2),   # result 16–18 → cleric_level + 2
+            (21,  3),   # result 19–21 → cleric_level + 3
+            (999, 4),   # result ≥ 22  → cleric_level + 4
+        ),
+        init=False,
+        repr=False,
+    )
+
+    @classmethod
+    def for_cleric(cls, level: int, cha_mod: int) -> "TurnUndeadManager":
+        """Create a TurnUndeadManager for a Cleric at the given level.
+
+        Args:
+            level:   Cleric class level (1–20).
+            cha_mod: The Cleric's Charisma modifier.
+
+        Returns:
+            A configured :class:`TurnUndeadManager`.
+        """
+        uses = 3 + cha_mod
+        return cls(
+            uses_per_day=uses,
+            uses_remaining=uses,
+            cleric_level=level,
+            cha_mod=cha_mod,
+        )
+
+    def can_turn(self) -> bool:
+        """Check if any Turn Undead uses remain.
+
+        Returns:
+            ``True`` if at least one use is available.
+        """
+        return self.uses_remaining > 0
+
+    def attempt_turn(self) -> Optional["TurnUndeadResult"]:
+        """Attempt to turn undead, expending one daily use.
+
+        Per 3.5e SRD: Roll d20 + CHA mod for the turning check, map the
+        result to a maximum HD using the SRD table, then roll turning
+        damage (2d6 + Cleric level + CHA mod).
+
+        Returns:
+            A :class:`TurnUndeadResult` if a use was available,
+            ``None`` if no uses remain.
+        """
+        if not self.can_turn():
+            return None
+        self.uses_remaining -= 1
+        check_roll = roll_dice(1, 20, modifier=self.cha_mod)
+        max_hd = self._hd_from_check(check_roll.total)
+        damage_roll = roll_dice(2, 6, modifier=self.cleric_level + self.cha_mod)
+        return TurnUndeadResult(
+            check_roll=check_roll,
+            max_hd_affected=max_hd,
+            damage_roll=damage_roll,
+        )
+
+    def _hd_from_check(self, result: int) -> int:
+        """Map a turning check total to the maximum HD of undead affected.
+
+        Args:
+            result: The turning check total (d20 + CHA mod).
+
+        Returns:
+            Maximum Hit Dice of undead that can be turned or destroyed.
+        """
+        for threshold, offset in self._CHECK_TABLE:
+            if result <= threshold:
+                return self.cleric_level + offset
+        return self.cleric_level + 4  # fallback (unreachable with table above)
+
+    def rest(self) -> None:
+        """Restore all Turn Undead uses (long rest / new day)."""
+        self.uses_remaining = self.uses_per_day
+
+
+# ---------------------------------------------------------------------------
+# Wild Shape (Druid)
+# ---------------------------------------------------------------------------
+
+@dataclass(slots=True)
+class WildShapeForm:
+    """Template describing the physical stats of an animal form.
+
+    Attributes:
+        name:         Display name of the form (e.g. ``"Brown Bear"``).
+        size:         Size category name (e.g. ``"LARGE"``), matching the
+                      :class:`~src.rules_engine.character_35e.Size` enum key.
+        strength:     STR score of the animal form.
+        dexterity:    DEX score of the animal form.
+        constitution: CON score of the animal form.
+        natural_armor: Natural armor bonus granted by the animal form.
+    """
+
+    name: str
+    size: str
+    strength: int
+    dexterity: int
+    constitution: int
+    natural_armor: int
+
+
+@dataclass(slots=True)
+class WildShapeState:
+    """Tracks whether Wild Shape is active and preserves original stats.
+
+    Attributes:
+        active:               ``True`` while the Druid is in animal form.
+        original_str:         STR score before shifting.
+        original_dex:         DEX score before shifting.
+        original_con:         CON score before shifting.
+        original_size_name:   Size enum key (e.g. ``"MEDIUM"``) before shifting.
+        form_name:            Name of the current animal form.
+        natural_armor_bonus:  Natural armor bonus of the current form.
+    """
+
+    active: bool = False
+    original_str: int = 10
+    original_dex: int = 10
+    original_con: int = 10
+    original_size_name: str = "MEDIUM"
+    form_name: str = ""
+    natural_armor_bonus: int = 0
+
+
+@dataclass(slots=True)
+class WildShapeManager:
+    """Manages Wild Shape uses per day for a Druid.
+
+    Per 3.5e SRD: A Druid gains Wild Shape at 5th level with 1 use per
+    day, gaining additional uses at higher levels (see :meth:`for_druid`).
+
+    Attributes:
+        uses_per_day:    Maximum daily Wild Shape uses.
+        uses_remaining:  Remaining uses for the current day.
+        druid_level:     The Druid's class level.
+        state:           Current :class:`WildShapeState`.
+    """
+
+    uses_per_day: int
+    uses_remaining: int
+    druid_level: int
+    state: WildShapeState = field(default_factory=WildShapeState)
+
+    @classmethod
+    def for_druid(cls, level: int) -> "WildShapeManager":
+        """Create a WildShapeManager for a Druid at the given level.
+
+        Per 3.5e SRD Wild Shape progression::
+
+            Level 1–4:  no Wild Shape
+            Level 5:    1/day
+            Level 6:    2/day
+            Level 7–9:  3/day
+            Level 10–14: 4/day
+            Level 15–17: 5/day
+            Level 18–20: 6/day
+
+        Args:
+            level: Druid class level (1–20).
+
+        Returns:
+            A configured :class:`WildShapeManager`.
+        """
+        uses = cls._uses_from_level(level)
+        return cls(uses_per_day=uses, uses_remaining=uses, druid_level=level)
+
+    @staticmethod
+    def _uses_from_level(level: int) -> int:
+        """Return Wild Shape uses per day for the given Druid level."""
+        if level < 5:
+            return 0
+        elif level < 7:
+            return level - 4   # 5→1, 6→2
+        elif level < 10:
+            return 3           # 7→3, 8→3, 9→3
+        elif level < 15:
+            return 4           # 10→4 … 14→4
+        elif level < 18:
+            return 5           # 15→5 … 17→5
+        else:
+            return 6           # 18→6 … 20→6
+
+    def can_shape(self) -> bool:
+        """Check if the Druid can use Wild Shape right now.
+
+        Returns:
+            ``True`` if uses remain and Wild Shape is not already active.
+        """
+        return self.uses_remaining > 0 and not self.state.active
+
+    def shift(
+        self,
+        character: "Character35e",
+        form: WildShapeForm,
+    ) -> Optional[WildShapeState]:
+        """Shift the character into an animal *form*, expending one use.
+
+        Saves the character's original STR, DEX, CON, and size, then
+        applies the form's physical attributes.  Call :meth:`revert` to
+        restore the originals.
+
+        Args:
+            character: The Druid character to transform.
+            form:      The target :class:`WildShapeForm`.
+
+        Returns:
+            The updated :class:`WildShapeState` on success,
+            ``None`` if no uses remain or already in a form.
+        """
+        if not self.can_shape():
+            return None
+        self.uses_remaining -= 1
+
+        from src.rules_engine.character_35e import Size  # noqa: PLC0415
+
+        # Preserve original values.
+        self.state.original_str = character.strength
+        self.state.original_dex = character.dexterity
+        self.state.original_con = character.constitution
+        self.state.original_size_name = character.size.name
+        self.state.form_name = form.name
+        self.state.natural_armor_bonus = form.natural_armor
+
+        # Apply the animal form's attributes.
+        character.strength = form.strength
+        character.dexterity = form.dexterity
+        character.constitution = form.constitution
+        character.size = Size[form.size.upper()]
+        self.state.active = True
+        return self.state
+
+    def revert(self, character: "Character35e") -> None:
+        """Return the character to their natural form, restoring all stats.
+
+        Args:
+            character: The Druid character to revert.
+        """
+        if not self.state.active:
+            return
+        from src.rules_engine.character_35e import Size  # noqa: PLC0415
+
+        character.strength = self.state.original_str
+        character.dexterity = self.state.original_dex
+        character.constitution = self.state.original_con
+        character.size = Size[self.state.original_size_name]
+        self.state.active = False
+        self.state.natural_armor_bonus = 0
+        self.state.form_name = ""
+
+    def rest(self) -> None:
+        """Restore all Wild Shape uses (long rest / new day)."""
+        self.uses_remaining = self.uses_per_day
+
+
+# ---------------------------------------------------------------------------
+# Smite Evil (Paladin)
+# ---------------------------------------------------------------------------
+
+@dataclass(slots=True)
+class SmiteEvilResult:
+    """Bonuses granted by a single Smite Evil activation.
+
+    Attributes:
+        attack_bonus:  CHA modifier added to the attack roll.
+        damage_bonus:  Paladin level added to the damage roll.
+    """
+
+    attack_bonus: int
+    damage_bonus: int
+
+
+@dataclass(slots=True)
+class SmiteEvilManager:
+    """Manages Smite Evil uses per day for a Paladin.
+
+    Per 3.5e SRD: A Paladin can smite evil once per day at 1st level,
+    plus one additional time per day for every five levels thereafter
+    (2/day at 6th, 3/day at 11th, 4/day at 16th).
+
+    When smiting, the Paladin adds their Charisma modifier to the attack
+    roll and their Paladin level to the damage roll against an evil target.
+
+    Attributes:
+        uses_per_day:    Maximum daily Smite Evil uses.
+        uses_remaining:  Remaining uses for the current day.
+        paladin_level:   The Paladin's class level (used in damage bonus).
+        cha_mod:         The Paladin's Charisma modifier (used in attack bonus).
+    """
+
+    uses_per_day: int
+    uses_remaining: int
+    paladin_level: int
+    cha_mod: int
+
+    @classmethod
+    def for_paladin(cls, level: int, cha_mod: int) -> "SmiteEvilManager":
+        """Create a SmiteEvilManager for a Paladin at the given level.
+
+        Per 3.5e SRD: 1 use at level 1, +1 per 5 levels (at 5, 10, 15, 20).
+
+        Args:
+            level:   Paladin class level (1–20).
+            cha_mod: The Paladin's Charisma modifier.
+
+        Returns:
+            A configured :class:`SmiteEvilManager`.
+        """
+        uses = 1 + level // 5
+        return cls(
+            uses_per_day=uses,
+            uses_remaining=uses,
+            paladin_level=level,
+            cha_mod=cha_mod,
+        )
+
+    def can_smite(self) -> bool:
+        """Check if any Smite Evil uses remain.
+
+        Returns:
+            ``True`` if at least one use is available.
+        """
+        return self.uses_remaining > 0
+
+    def activate(self) -> Optional[SmiteEvilResult]:
+        """Activate Smite Evil, expending one daily use.
+
+        Returns:
+            A :class:`SmiteEvilResult` with the attack and damage bonuses,
+            or ``None`` if no uses remain.
+        """
+        if not self.can_smite():
+            return None
+        self.uses_remaining -= 1
+        return SmiteEvilResult(
+            attack_bonus=self.cha_mod,
+            damage_bonus=self.paladin_level,
+        )
+
+    def rest(self) -> None:
+        """Restore all Smite Evil uses (long rest / new day)."""
+        self.uses_remaining = self.uses_per_day
+
+
+# ---------------------------------------------------------------------------
+# Lay on Hands (Paladin)
+# ---------------------------------------------------------------------------
+
+@dataclass(slots=True)
+class LayOnHandsManager:
+    """Manages the Lay on Hands daily healing pool for a Paladin.
+
+    Per 3.5e SRD: A Paladin can heal a number of hit points equal to
+    their Paladin level multiplied by their Charisma modifier each day.
+    The pool may be split across multiple uses in any increment.
+
+    Attributes:
+        pool_max:       Maximum healing pool for the day.
+        pool_remaining: Healing points remaining in the current day's pool.
+    """
+
+    pool_max: int
+    pool_remaining: int
+
+    @classmethod
+    def for_paladin(cls, level: int, cha_mod: int) -> "LayOnHandsManager":
+        """Create a LayOnHandsManager for a Paladin at the given level.
+
+        Args:
+            level:   Paladin class level (1–20).
+            cha_mod: The Paladin's Charisma modifier.
+
+        Returns:
+            A configured :class:`LayOnHandsManager`.
+        """
+        pool = max(0, level * cha_mod)
+        return cls(pool_max=pool, pool_remaining=pool)
+
+    def can_heal(self, amount: int = 1) -> bool:
+        """Check if the pool has at least *amount* points remaining.
+
+        Args:
+            amount: Minimum healing desired (default 1).
+
+        Returns:
+            ``True`` if the pool can supply at least *amount* points.
+        """
+        return self.pool_remaining >= amount
+
+    def heal(self, amount: int) -> int:
+        """Draw *amount* points from the healing pool.
+
+        Draws up to *amount* points; will not overdraw the pool.
+
+        Args:
+            amount: Healing points requested.
+
+        Returns:
+            Actual healing provided (≤ *amount*, ≥ 0).
+        """
+        healed = min(amount, self.pool_remaining)
+        self.pool_remaining -= healed
+        return healed
+
+    def rest(self) -> None:
+        """Restore the full healing pool (long rest / new day)."""
+        self.pool_remaining = self.pool_max
+
+
+# ---------------------------------------------------------------------------
+# Favored Enemy (Ranger)
+# ---------------------------------------------------------------------------
+
+@dataclass(slots=True)
+class FavoredEnemyEntry:
+    """A single Favored Enemy entry with its associated bonus.
+
+    Attributes:
+        creature_type: The creature type string (e.g. ``"Undead"``,
+                       ``"Humanoid"``).
+        bonus:         The current bonus value (+2, +4, +6, etc.).
+    """
+
+    creature_type: str
+    bonus: int
+
+
+@dataclass(slots=True)
+class FavoredEnemyManager:
+    """Manages a Ranger's Favored Enemy list and bonuses.
+
+    Per 3.5e SRD: A Ranger gains a Favored Enemy at 1st level with a +2
+    bonus, plus an additional Favored Enemy at 5th level and every five
+    levels thereafter (5, 10, 15, 20).  Each time the Ranger gains a new
+    Favored Enemy, all existing bonuses increase by +2.
+
+    The bonus applies to weapon damage rolls and to the following skill
+    checks against the favored enemy type: Bluff, Listen, Sense Motive,
+    Spot, and Survival.
+
+    Attributes:
+        enemies: Ordered list of :class:`FavoredEnemyEntry` objects,
+                 starting with the primary (highest-bonus) enemy type.
+    """
+
+    enemies: list  # List[FavoredEnemyEntry]
+
+    @classmethod
+    def for_ranger(
+        cls,
+        level: int,
+        enemy_types: list,  # List[str]
+    ) -> "FavoredEnemyManager":
+        """Create a FavoredEnemyManager for a Ranger at the given level.
+
+        The first element of *enemy_types* is treated as the primary
+        (original) Favored Enemy type.  Additional types are added in
+        order as additional Favored Enemy choices.  Only as many types
+        as are available for the Ranger's level are used.
+
+        Bonus assignment (per SRD): the primary enemy always has the
+        highest bonus.  Each additional enemy has a bonus 2 points lower
+        than the previous one.
+
+        Args:
+            level:       Ranger class level (1–20).
+            enemy_types: Ordered list of chosen enemy type strings.
+
+        Returns:
+            A configured :class:`FavoredEnemyManager`.
+        """
+        # Number of available Favored Enemy slots at this level.
+        slots = 1 + level // 5
+        used_types = enemy_types[:slots]
+        num = len(used_types)
+
+        entries = []
+        for i, etype in enumerate(used_types):
+            # Primary enemy (i=0) gets the highest bonus.
+            # Each subsequent enemy is +2 lower.
+            bonus = 2 * num - 2 * i
+            entries.append(FavoredEnemyEntry(creature_type=etype, bonus=bonus))
+        return cls(enemies=entries)
+
+    def get_bonus(self, creature_type: str) -> int:
+        """Return the total Favored Enemy bonus for *creature_type*.
+
+        Args:
+            creature_type: The creature type to look up (case-insensitive).
+
+        Returns:
+            The bonus value, or ``0`` if the type is not a Favored Enemy.
+        """
+        lower = creature_type.lower()
+        for entry in self.enemies:
+            if entry.creature_type.lower() == lower:
+                return entry.bonus
+        return 0
+
+    def skill_bonus(self, creature_type: str) -> int:
+        """Skill check bonus (Listen, Spot, Survival, etc.) against *creature_type*.
+
+        Args:
+            creature_type: The creature type to look up.
+
+        Returns:
+            The bonus value, or ``0`` if not a favored enemy.
+        """
+        return self.get_bonus(creature_type)
+
+    def damage_bonus(self, creature_type: str) -> int:
+        """Weapon damage bonus against *creature_type*.
+
+        Args:
+            creature_type: The creature type to look up.
+
+        Returns:
+            The bonus value, or ``0`` if not a favored enemy.
+        """
+        return self.get_bonus(creature_type)
