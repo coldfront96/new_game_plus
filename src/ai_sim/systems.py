@@ -34,6 +34,7 @@ from src.rules_engine.character_35e import Character35e
 from src.rules_engine.combat import AttackResolver, CombatResult
 from src.rules_engine.conditions import ConditionManager
 from src.rules_engine.equipment import EquipmentManager
+from src.rules_engine.magic import SpellComponent, SpellRegistry
 from src.rules_engine.progression import XPManager, level_up
 from src.rules_engine.skills import SkillSystem
 from src.terrain.block import Block
@@ -1304,3 +1305,166 @@ class AoOSystem(System):
     def pending_count(self) -> int:
         """Number of pending AoO intents."""
         return len(self._pending_aoo)
+
+
+# ---------------------------------------------------------------------------
+# SpellIntent
+# ---------------------------------------------------------------------------
+
+# Arcane caster classes (3.5e SRD): spells require somatic component ASF check.
+_ARCANE_CASTER_CLASSES = frozenset({"Wizard", "Sorcerer", "Bard"})
+
+
+@dataclass(slots=True)
+class SpellIntent:
+    """Payload published on the ``"spell_intent"`` event channel.
+
+    Attributes:
+        caster:     The casting character's stat block.
+        spell_name: Name of the spell to cast (must exist in ``spell_registry``).
+        spell_level: Spell level of the slot to expend.
+        target:     Optional target character (for targeted spells).
+    """
+
+    caster: Character35e
+    spell_name: str
+    spell_level: int
+    target: Optional[Character35e] = None
+
+
+# ---------------------------------------------------------------------------
+# MagicSystem
+# ---------------------------------------------------------------------------
+
+class MagicSystem(System):
+    """Processes ``"spell_intent"`` events and resolves D&D 3.5e spellcasting.
+
+    Before resolving an arcane spell with a somatic component the system
+    rolls a d100. If the result is less than or equal to the caster's total
+    Arcane Spell Failure chance (from equipped armor), the spell fails and
+    the slot is still expended (3.5e SRD p.124).
+
+    Events published:
+    - ``"spell_cast"``  — a spell was resolved successfully.
+    - ``"spell_failed"`` — ASF caused the spell to fizzle.
+
+    Args:
+        event_bus:      Shared :class:`EventBus`.
+        spell_registry: Registry of known spell definitions.
+    """
+
+    def __init__(
+        self,
+        event_bus: EventBus,
+        spell_registry: SpellRegistry,
+    ) -> None:
+        self._event_bus = event_bus
+        self._spell_registry = spell_registry
+        self._pending: List[SpellIntent] = []
+        event_bus.subscribe("spell_intent", self._on_spell_intent)
+
+    # ------------------------------------------------------------------
+    # Internal helpers
+    # ------------------------------------------------------------------
+
+    def _on_spell_intent(self, payload: SpellIntent) -> None:
+        """Queue a spell intent for resolution during update()."""
+        self._pending.append(payload)
+
+    @staticmethod
+    def _roll_d100() -> int:
+        """Roll a d100 (1–100 inclusive)."""
+        import random
+        return random.randint(1, 100)
+
+    def _compute_asf(self, caster: Character35e) -> int:
+        """Return total ASF % for *caster* from their equipped armor."""
+        if caster.equipment_manager is None:
+            return 0
+        return caster.equipment_manager.get_total_asf()
+
+    def _is_arcane(self, caster: Character35e) -> bool:
+        """Return True if *caster* is an arcane spellcaster."""
+        return caster.char_class in _ARCANE_CASTER_CLASSES
+
+    def _has_somatic(self, spell_name: str) -> bool:
+        """Return True if the named spell has a somatic component."""
+        spell = self._spell_registry.get(spell_name)
+        if spell is None:
+            return False
+        return SpellComponent.SOMATIC in spell.components
+
+    # ------------------------------------------------------------------
+    # Public API
+    # ------------------------------------------------------------------
+
+    def resolve(self, intent: SpellIntent) -> Dict[str, Any]:
+        """Resolve a single spell intent, applying ASF if applicable.
+
+        Args:
+            intent: The :class:`SpellIntent` to resolve.
+
+        Returns:
+            A result dict with keys:
+            - ``"success"`` (bool): Whether the spell fired.
+            - ``"asf_roll"`` (int | None): The d100 roll, or ``None`` if no
+              ASF check was performed.
+            - ``"asf_chance"`` (int): The caster's total ASF percentage.
+            - ``"effect"`` (dict | None): The spell effect dict, or ``None``.
+        """
+        asf_roll: Optional[int] = None
+        asf_chance = 0
+        effect = None
+
+        # ASF check: arcane spells with somatic components only
+        if self._is_arcane(intent.caster) and self._has_somatic(intent.spell_name):
+            asf_chance = self._compute_asf(intent.caster)
+            if asf_chance > 0:
+                asf_roll = self._roll_d100()
+                if asf_roll <= asf_chance:
+                    # Spell fails; publish failure event
+                    result: Dict[str, Any] = {
+                        "success": False,
+                        "asf_roll": asf_roll,
+                        "asf_chance": asf_chance,
+                        "effect": None,
+                    }
+                    self._event_bus.publish("spell_failed", {
+                        "caster_name": intent.caster.name,
+                        "spell_name": intent.spell_name,
+                        "asf_roll": asf_roll,
+                        "asf_chance": asf_chance,
+                    })
+                    return result
+
+        # Resolve the spell effect
+        spell = self._spell_registry.get(intent.spell_name)
+        if spell is not None and spell.effect_callback is not None:
+            effect = spell.effect_callback(
+                intent.caster, intent.target, intent.caster.caster_level
+            )
+
+        result = {
+            "success": True,
+            "asf_roll": asf_roll,
+            "asf_chance": asf_chance,
+            "effect": effect,
+        }
+        self._event_bus.publish("spell_cast", {
+            "caster_name": intent.caster.name,
+            "spell_name": intent.spell_name,
+            "effect": effect,
+        })
+        return result
+
+    def update(self) -> None:
+        """Resolve all pending spell intents for this tick."""
+        intents = list(self._pending)
+        self._pending.clear()
+        for intent in intents:
+            self.resolve(intent)
+
+    @property
+    def pending_count(self) -> int:
+        """Number of pending spell intents."""
+        return len(self._pending)

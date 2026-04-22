@@ -143,6 +143,58 @@ _BARD_SLOTS: Dict[int, List[int]] = {
     20: [4, 4, 4, 4, 4, 4, 4, -1, -1, -1],
 }
 
+# Paladin base spells per day (half-caster, WIS-based, levels 1–20, spells 1–4).
+# Paladins gain spells at level 4 and cast up to 4th-level spells (3.5e SRD).
+# Index = spell level (0-9); index 0 always 0 (Paladins have no 0-level spells).
+_PALADIN_SLOTS: Dict[int, List[int]] = {
+    1:  [0, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    2:  [0, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    3:  [0, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    4:  [0,  0, -1, -1, -1, -1, -1, -1, -1, -1],
+    5:  [0,  0, -1, -1, -1, -1, -1, -1, -1, -1],
+    6:  [0,  1, -1, -1, -1, -1, -1, -1, -1, -1],
+    7:  [0,  1, -1, -1, -1, -1, -1, -1, -1, -1],
+    8:  [0,  1,  0, -1, -1, -1, -1, -1, -1, -1],
+    9:  [0,  1,  0, -1, -1, -1, -1, -1, -1, -1],
+    10: [0,  1,  1, -1, -1, -1, -1, -1, -1, -1],
+    11: [0,  1,  1,  0, -1, -1, -1, -1, -1, -1],
+    12: [0,  1,  1,  1, -1, -1, -1, -1, -1, -1],
+    13: [0,  1,  1,  1, -1, -1, -1, -1, -1, -1],
+    14: [0,  2,  1,  1,  0, -1, -1, -1, -1, -1],
+    15: [0,  2,  1,  1,  1, -1, -1, -1, -1, -1],
+    16: [0,  2,  2,  1,  1, -1, -1, -1, -1, -1],
+    17: [0,  2,  2,  2,  1, -1, -1, -1, -1, -1],
+    18: [0,  3,  2,  2,  1, -1, -1, -1, -1, -1],
+    19: [0,  3,  3,  3,  2, -1, -1, -1, -1, -1],
+    20: [0,  3,  3,  3,  3, -1, -1, -1, -1, -1],
+}
+
+# Ranger base spells per day (half-caster, WIS-based, levels 1–20, spells 1–4).
+# Rangers gain spells at level 4 and cast up to 4th-level spells (3.5e SRD).
+# Index = spell level (0-9); index 0 always 0 (Rangers have no 0-level spells).
+_RANGER_SLOTS: Dict[int, List[int]] = {
+    1:  [0, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    2:  [0, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    3:  [0, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    4:  [0,  0, -1, -1, -1, -1, -1, -1, -1, -1],
+    5:  [0,  0, -1, -1, -1, -1, -1, -1, -1, -1],
+    6:  [0,  1, -1, -1, -1, -1, -1, -1, -1, -1],
+    7:  [0,  1, -1, -1, -1, -1, -1, -1, -1, -1],
+    8:  [0,  1,  0, -1, -1, -1, -1, -1, -1, -1],
+    9:  [0,  1,  0, -1, -1, -1, -1, -1, -1, -1],
+    10: [0,  1,  1, -1, -1, -1, -1, -1, -1, -1],
+    11: [0,  1,  1,  0, -1, -1, -1, -1, -1, -1],
+    12: [0,  1,  1,  1, -1, -1, -1, -1, -1, -1],
+    13: [0,  1,  1,  1, -1, -1, -1, -1, -1, -1],
+    14: [0,  2,  1,  1,  0, -1, -1, -1, -1, -1],
+    15: [0,  2,  1,  1,  1, -1, -1, -1, -1, -1],
+    16: [0,  2,  2,  1,  1, -1, -1, -1, -1, -1],
+    17: [0,  2,  2,  2,  1, -1, -1, -1, -1, -1],
+    18: [0,  3,  2,  2,  1, -1, -1, -1, -1, -1],
+    19: [0,  3,  3,  3,  2, -1, -1, -1, -1, -1],
+    20: [0,  3,  3,  3,  3, -1, -1, -1, -1, -1],
+}
+
 # Mapping of caster class to their slot table and key ability.
 _CASTER_TABLES: Dict[str, Dict[str, Any]] = {
     "Wizard": {"table": _WIZARD_SLOTS, "key_ability": "intelligence"},
@@ -150,6 +202,8 @@ _CASTER_TABLES: Dict[str, Dict[str, Any]] = {
     "Cleric": {"table": _CLERIC_SLOTS, "key_ability": "wisdom"},
     "Druid": {"table": _CLERIC_SLOTS, "key_ability": "wisdom"},
     "Bard": {"table": _BARD_SLOTS, "key_ability": "charisma"},
+    "Paladin": {"table": _PALADIN_SLOTS, "key_ability": "wisdom"},
+    "Ranger": {"table": _RANGER_SLOTS, "key_ability": "wisdom"},
 }
 
 
@@ -535,6 +589,7 @@ class DivineCasterManager:
     spellbook: Spellbook
     alignment: str = "good"
     domain_spells: Set[str] = field(default_factory=set)
+    _is_druid: bool = field(default=False, repr=False)
 
     @classmethod
     def for_cleric(
@@ -582,6 +637,7 @@ class DivineCasterManager:
             slot_manager=slot_manager,
             spellbook=spellbook,
             alignment="neutral",
+            _is_druid=True,
         )
 
     def can_spontaneous_cure(self) -> bool:
@@ -653,6 +709,69 @@ class DivineCasterManager:
         self.spellbook.prepared_spells[spell_level].remove(prepared_spell)
 
         return cure_spell_name
+
+    def can_spontaneous_summon(self) -> bool:
+        """Whether this caster can spontaneously convert spells to Summon
+        Nature's Ally spells.
+
+        Per 3.5e SRD: Druids can spontaneously cast Summon Nature's Ally
+        spells of the same level as the sacrificed prepared spell.
+
+        Returns:
+            ``True`` if this manager was created via :meth:`for_druid`.
+        """
+        return self._is_druid
+
+    def convert_to_summon_natures_ally(self, prepared_spell: str) -> Optional[str]:
+        """Spontaneously convert a prepared non-domain spell into a Summon
+        Nature's Ally spell of the same level (3.5e SRD Spontaneous Casting).
+
+        The prepared spell is consumed (removed from preparation and the
+        corresponding slot is expended). The Summon Nature's Ally spell name
+        for that level is returned.
+
+        Rules enforced:
+        - Caster must be a Druid (``can_spontaneous_summon()`` returns True).
+        - The spell must be currently prepared.
+        - Domain spells cannot be spontaneously converted.
+        - The spell must be level 1–9 (cantrips cannot be converted).
+        - A slot of the spell's level must be available.
+
+        Args:
+            prepared_spell: Name of the prepared spell to sacrifice.
+
+        Returns:
+            The name of the Summon Nature's Ally spell gained, or ``None``
+            if conversion is not possible.
+        """
+        from src.rules_engine.magic import SUMMON_NATURES_ALLY_SPELLS
+
+        if not self.can_spontaneous_summon():
+            return None
+
+        if prepared_spell in self.domain_spells:
+            return None
+
+        spell_level: Optional[int] = None
+        for level in range(1, 10):
+            if prepared_spell in self.spellbook.prepared_spells.get(level, []):
+                spell_level = level
+                break
+
+        if spell_level is None:
+            return None
+
+        if self.slot_manager.available(spell_level) <= 0:
+            return None
+
+        summon_spell_name = SUMMON_NATURES_ALLY_SPELLS.get(spell_level)
+        if summon_spell_name is None:
+            return None
+
+        self.slot_manager.expend(spell_level)
+        self.spellbook.prepared_spells[spell_level].remove(prepared_spell)
+
+        return summon_spell_name
 
     def prepare_spell(self, spell_name: str, spell_level: int) -> bool:
         """Prepare a spell into the divine caster's daily preparation.
