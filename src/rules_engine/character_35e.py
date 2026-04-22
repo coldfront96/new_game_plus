@@ -64,7 +64,7 @@ _ALIGNMENT_FULL_NAMES: Dict[str, str] = {
     "NG": "Neutral Good",
     "CG": "Chaotic Good",
     "LN": "Lawful Neutral",
-    "N":  "True Neutral",
+    "N": "True Neutral",
     "CN": "Chaotic Neutral",
     "LE": "Lawful Evil",
     "NE": "Neutral Evil",
