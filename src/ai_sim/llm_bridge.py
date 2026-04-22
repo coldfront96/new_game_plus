@@ -94,6 +94,7 @@ class CognitiveState:
         character: Any,
         visible_entities: List[Dict[str, Any]],
         *,
+        current_hp: Optional[int] = None,
         conditions: Optional[List[str]] = None,
         action_tracker: Optional[Any] = None,
         memory_log: Optional[List[str]] = None,
@@ -105,6 +106,12 @@ class CognitiveState:
             character:        The 3.5e stat block to compress.
             visible_entities: Factual list of visible entity descriptors
                               (produced by the Vision system).
+            current_hp:       The entity's **current** HP at query time.
+                              Supply this from the entity's
+                              :class:`~src.ai_sim.components.Health` component
+                              so the LLM receives accurate damage information.
+                              When ``None``, the derived maximum from the stat
+                              block is used (assumes full health).
             conditions:       Optional list of active condition names.
             action_tracker:   Optional
                               :class:`~src.rules_engine.actions.ActionTracker`.
@@ -139,12 +146,15 @@ class CognitiveState:
                 "swift_used": False,
             }
 
+        max_hp_val = int(character.hit_points)
+        current_hp_val = int(current_hp) if current_hp is not None else max_hp_val
+
         return cls(
             character_name=character.name,
             char_class=character.char_class,
             level=character.level,
-            current_hp=int(character.hit_points),
-            max_hp=int(character.hit_points),
+            current_hp=current_hp_val,
+            max_hp=max_hp_val,
             conditions=list(conditions or []),
             known_spells=known,
             action_tracker=tracker_dict,

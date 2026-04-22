@@ -2060,7 +2060,7 @@ def _parse_llm_response(raw: str) -> Optional[LLMIntent]:
 
 
 def _extract_json_candidates(text: str) -> List[str]:
-    """Yield substrings of *text* that look like JSON objects.
+    """Return a list of substrings of *text* that look like JSON objects.
 
     Scans for ``{`` / ``}`` pairs at depth 1 to tolerate surrounding prose.
     """
@@ -2274,9 +2274,14 @@ class CognitionSystem(System):
     # ------------------------------------------------------------------
 
     def _get_or_create_loop(self) -> asyncio.AbstractEventLoop:
-        """Return the running event loop, or create a background one."""
+        """Return the running event loop, or create a new one if none exists.
+
+        Uses :func:`asyncio.get_running_loop` first (Python 3.7+); falls back
+        to creating a fresh loop so the system works both inside an existing
+        async context and from synchronous code.
+        """
         try:
-            return asyncio.get_event_loop()
+            return asyncio.get_running_loop()
         except RuntimeError:
             loop = asyncio.new_event_loop()
             asyncio.set_event_loop(loop)

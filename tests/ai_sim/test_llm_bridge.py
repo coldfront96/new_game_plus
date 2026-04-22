@@ -113,9 +113,17 @@ class TestCognitiveState:
         assert state.char_class == "Wizard"
         assert state.level == 5
         assert state.current_hp > 0
-        assert state.max_hp == state.current_hp
+        assert state.max_hp == state.current_hp  # defaults to max when not supplied
         assert state.conditions == []
         assert state.visible_entities == []
+
+    def test_from_character_current_hp_distinct_from_max(self, wizard):
+        max_hp = wizard.hit_points
+        state = CognitiveState.from_character(
+            wizard, visible_entities=[], current_hp=max_hp - 5
+        )
+        assert state.max_hp == max_hp
+        assert state.current_hp == max_hp - 5
 
     def test_action_tracker_all_available_by_default(self, wizard):
         state = CognitiveState.from_character(wizard, visible_entities=[])
