@@ -110,20 +110,10 @@ class TestCharacterRacialModifiers:
         elf = Character35e(name="Aelindra", race="Elf", dexterity=10)
         assert elf.dexterity_mod == 2  # (10-10)//2 + 2 = 0 + 2 = +2
 
-    def test_elf_dex_modifier_base10(self):
-        """An Elf with DEX 10: modifier = (10-10)//2 + 2 = +2."""
-        elf = Character35e(name="Aelindra", race="Elf", dexterity=10)
-        assert elf.dexterity_mod == 2
-
     def test_elf_con_modifier_includes_racial_penalty(self):
         """An Elf with base CON 12 should have constitution_mod == -1 (1 + -2)."""
         elf = Character35e(name="Aelindra", race="Elf", constitution=12)
         assert elf.constitution_mod == -1  # (12-10)//2=1, racial=-2 → -1
-
-    def test_elf_con_modifier_base12(self):
-        """An Elf with CON 12: modifier = (12-10)//2 + (-2) = 1 - 2 = -1."""
-        elf = Character35e(name="Aelindra", race="Elf", constitution=12)
-        assert elf.constitution_mod == -1
 
     def test_human_modifier_unchanged(self):
         """A Human with STR 14 should have strength_mod == +2 (no racial modifier)."""
