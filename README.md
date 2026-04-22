@@ -1,28 +1,27 @@
-# New Game Plus — Game & AI Design Document (GDD) v0.2
+# New Game Plus
 
-> **A Hybrid Simulation**: the emergent colony depth of *Dwarf Fortress* meets the voxel destruction of *Minecraft*, the ARPG loot progression of *Lootfiend*, and an autonomous AI-driven open world powered by **D&D 3.5e rules** — all orchestrated by a local multi-agent LLM pipeline running entirely on consumer hardware.
+> **A high-fidelity, original game engine and simulation built strictly on D&D 3.5e SRD mechanics, focused on autonomous AI agency within a deep, procedural voxel world.**
 
 ---
 
 ## Table of Contents
 
-1. [Vision & Elevator Pitch](#1-vision--elevator-pitch)
-2. [Core Gameplay Loop](#2-core-gameplay-loop)
+1. [Core Objective](#1-core-objective)
+2. [Design Philosophy](#2-design-philosophy)
 3. [Architectural Pillars](#3-architectural-pillars)
-   - [Voxel Terrain Engine](#31-voxel-terrain-engine)
-   - [Entity-Component-System (ECS)](#32-entity-component-system-ecs)
-   - [Loot & Progression Matrix](#33-loot--progression-matrix)
-   - [3.5e Ruleset Engine](#34-35e-ruleset-engine)
-   - [Multi-Agent Orchestration Layer](#35-multi-agent-orchestration-layer)
-   - [The Overseer Interface](#36-the-overseer-interface)
+   - [3.5e Ruleset Engine](#31-35e-ruleset-engine)
+   - [Voxel Terrain Engine](#32-voxel-terrain-engine)
+   - [Event-Driven ECS Simulation](#33-event-driven-ecs-simulation)
+   - [Autonomous LLM Agent Layer](#34-autonomous-llm-agent-layer)
+   - [Overseer Approval Interface](#35-overseer-approval-interface)
 4. [Autonomous Agent Core Loop](#4-autonomous-agent-core-loop)
 5. [Local LLM Integration Strategy](#5-local-llm-integration-strategy)
 6. [Repository Structure](#6-repository-structure)
 7. [Technical Stack](#7-technical-stack)
 8. [Target Hardware & Performance Budget](#8-target-hardware--performance-budget)
-9. [Data Models](#9-data-models)
-10. [Running the Project Locally](#10-running-the-project-locally)
-11. [Running the Multi-Agent System on Ubuntu](#11-running-the-multi-agent-system-on-ubuntu)
+9. [Visual Fidelity Goal](#9-visual-fidelity-goal)
+10. [Data Models](#10-data-models)
+11. [Running the Project Locally](#11-running-the-project-locally)
 12. [Testing](#12-testing)
 13. [Roadmap](#13-roadmap)
 14. [Contributing](#14-contributing)
@@ -30,65 +29,56 @@
 
 ---
 
-## 1. Vision & Elevator Pitch
+## 1. Core Objective
 
-**New Game Plus** is a colony-survival-RPG in which you guide an ever-growing band of adventurers through a fully destructible, procedurally generated voxel world. Every colonist is an independently simulated agent with needs, skills, and an inventory of procedurally generated loot. The world reacts — cave-ins, flooding, monster invasions, and economic shifts are all emergent consequences of the simulation running beneath the surface.
+Develop a high-fidelity, original game engine and simulation built strictly on **Dungeons & Dragons 3.5e SRD** mechanics. This is a standalone title focusing on **autonomous AI agency** within a deep, procedural voxel world.
 
-**What makes this different:** The game is driven by an **autonomous, offline multi-agent AI pipeline** built on local LLMs (DeepSeek, Llama) that generate dungeons, roll NPC stat blocks, write procedural lore, and even produce engine code — all governed by the **D&D 3.5e System Reference Document** as its canonical ruleset. A human **Overseer** approves, rejects, or tweaks every piece of AI-generated content before it enters the live world.
-
-**Key differentiators:**
-
-| Feature | Inspiration | Our Twist |
-|---|---|---|
-| Fully destructible voxel world | Minecraft | 3D noise layers + geological strata |
-| Colony AI with needs & jobs | Dwarf Fortress | ECS-driven state machines, 500+ simultaneous agents |
-| ARPG loot & class progression | Lootfiend | Procedural prefix/suffix item generation, stat scaling per class |
+Every NPC, creature, and character is an independently simulated agent governed by the full 3.5e ruleset — ability scores, BAB, AC, saving throws, spell slots, and skills all enforced by the engine as inviolable physical laws.
 
 ---
 
-## 2. Core Gameplay Loop
+## 2. Design Philosophy
 
-```
-  ┌─────────────────────────────────────────────────────────────────────────┐
-  │  MACRO LOOP (each in-game day)                                          │
-  │                                                                         │
-  │  ① Colonists wake → evaluate Needs (hunger, rest, safety, purpose)     │
-  │  ② AI Task Scheduler assigns Jobs from the Job Queue                   │
-  │  ③ Colonists execute Jobs (mine, build, craft, fight, rest, trade)     │
-  │  ④ Voxel world updates (block changes, physics, light propagation)     │
-  │  ⑤ Loot drops / crafting resolves → Progression Matrix updates stats  │
-  │  ⑥ World events fire (raids, floods, discoveries) based on sim state   │
-  │  ⑦ Player reviews colony state, adjusts priorities, sets new goals     │
-  └─────────────────────────────────────────────────────────────────────────┘
-```
+The D&D 3.5e SRD is the **single source of truth** for all game mechanics, functioning as the physical laws of the simulation rather than arbitrary designer choices. No mechanic may be hard-coded outside the SRD data files; the engine enforces rules purely by reading from `data/srd_3.5/`.
 
-### 2.1 Colonist Lifecycle
+**Key principles:**
 
-1. **Spawn** — Colonists arrive with a randomly rolled class, base stats, and a starter item.
-2. **Needs Loop** — A continuous priority queue manages: `Hunger → Rest → Safety → Social → Purpose`.
-3. **Job Queue** — The player designates zones and tasks; the AI scheduler assigns work tokens.
-4. **Combat** — Triggered by proximity to hostile entities; resolves via stat comparison + RNG.
-5. **Levelling** — XP from jobs and kills feeds the Progression Matrix, unlocking class perks.
-6. **Death / Legacy** — Colonists can die permanently; their loot persists in the world.
-
-### 2.2 World Lifecycle
-
-1. **Chunk Generation** — 16×16×256 voxel chunks generated on demand using 3D Perlin/Simplex noise.
-2. **Geological Layers** — Surface biome → Stone → Ore veins → Deep caverns → Magma layer.
-3. **Dynamic Events** — Collapses, water flow, fire spread, and seasonal changes alter the world.
-4. **Player Influence** — Mining, construction, farming, and magic reshape chunk data in real time.
+- **3.5e rules as physics** — BAB, AC, saving throws, and skill checks govern agent behaviour exactly as specified in the SRD.
+- **Autonomous agency** — Local LLM agents make in-world decisions, generate content, and write engine code without constant human direction.
+- **Memory efficiency first** — Every data model (`Block`, `Entity`, `Item`, `AgentTask`, `Character35e`) uses `@dataclass(slots=True)` to handle millions of instances within the 64 GB RAM budget.
+- **Event-driven ECS** — All inter-system communication flows through the `EventBus`; no system imports another directly.
 
 ---
 
 ## 3. Architectural Pillars
 
-### 3.1 Voxel Terrain Engine
+### 3.1 3.5e Ruleset Engine
+
+**Location:** `src/rules_engine/`
+
+The ruleset engine is the core of the simulation. It parses structured JSON files from `data/srd_3.5/` at startup and exposes SRD rules as validated Python objects.
+
+| Component | Responsibility |
+|---|---|
+| `character_35e.py` | `Character35e` base class — ability scores, HP, BAB, saves, AC (all SRD-derived) |
+| `ability_scores.py` | Modifier calculations, generation methods (4d6-drop-lowest, point-buy) |
+| `combat.py` | Attack rolls, damage, critical hits, initiative, AoO resolution |
+| `skills.py` | Skill check resolution, synergy bonuses, class/cross-class costs |
+| `spellcasting.py` | Spell slot management, Vancian/spontaneous casting, save DCs |
+| `magic.py` | Spell definitions and SpellRegistry |
+| `equipment.py` | Equipment slots, armour check penalties, ASF, max dex bonus |
+| `conditions.py` | SRD conditions (Blinded, Stunned, Prone) with duration tracking |
+| `srd_loader.py` | JSON/Markdown parser that hydrates the above from `data/srd_3.5/` |
+
+**Design Rule:** No game mechanic may be hard-coded. Everything is data-driven from the SRD files.
+
+### 3.2 Voxel Terrain Engine
 
 **Location:** `src/terrain/`
 
 | Component | Responsibility |
 |---|---|
-| `chunk_manager.py` | Loads/unloads chunks relative to active entities; LRU cache |
+| `chunk_manager.py` | Loads/unloads 16×16×256 chunks relative to active entities; LRU cache |
 | `chunk_generator.py` | Procedural generation via 3D Simplex noise; geological strata |
 | `block.py` | `Block` data class — id, material, durability, light emission |
 | `physics_engine.py` | Gravity, fluid simulation, structural integrity checks |
@@ -108,7 +98,7 @@ Apply geological layers (ore, cave carving)
 Serialise to disk + add to LRU cache → Return
 ```
 
-### 3.2 Entity-Component-System (ECS)
+### 3.3 Event-Driven ECS Simulation
 
 **Location:** `src/ai_sim/`
 
@@ -116,70 +106,14 @@ Serialise to disk + add to LRU cache → Return
 |---|---|
 | `entity.py` | `Entity` base class — UUID, components dict, tag set |
 | `components.py` | Pure data bags: `Position`, `Health`, `Needs`, `Inventory`, `Stats` |
-| `systems.py` | Stateless processors: `NeedsSystem`, `PathfindingSystem`, `CombatSystem` |
-| `state_machine.py` | Hierarchical FSM driving colonist behaviour |
-| `job_scheduler.py` | Priority queue matching colonists to pending jobs |
-| `pathfinding.py` | A* over voxel graph with dynamic obstacle updates |
+| `systems.py` | Stateless processors: `NeedsSystem`, `PathfindingSystem`, `CombatSystem`, `MagicSystem`, `AoOSystem` |
+| `state_machine.py` | Hierarchical FSM driving agent behaviour |
+| `job_scheduler.py` | Priority queue matching agents to pending jobs |
+| `pathfinding.py` | 3D A* over voxel graph with dynamic obstacle updates |
 
-**Entity State Machine (top-level states):**
+All systems communicate exclusively through the `EventBus` (pub/sub) defined in `src/core/`.
 
-```
-IDLE ──► NEEDS_CRITICAL ──► SEEK_RESOURCE
-  │                               │
-  ▼                               ▼
-ASSIGNED_JOB ◄───────────── RESOURCE_FOUND
-  │
-  ▼
-EXECUTING_JOB ──► COMBAT (if threatened)
-  │
-  ▼
-JOB_COMPLETE ──► IDLE
-```
-
-### 3.3 Loot & Progression Matrix
-
-**Location:** `src/loot_math/`
-
-| Component | Responsibility |
-|---|---|
-| `item.py` | `Item` base class — rarity, prefix, suffix, base stats |
-| `loot_table.py` | Weighted RNG tables per biome/enemy/chest tier |
-| `affix_registry.py` | All valid prefix/suffix modifiers and their stat formulae |
-| `progression.py` | XP curves, class stat scaling, perk trees |
-| `item_factory.py` | Composes full `Item` instances from loot tables + affixes |
-
-**Item Generation Pipeline:**
-
-```
-Roll base item type (weapon/armour/trinket)
-    ↓
-Determine rarity (Common → Uncommon → Rare → Legendary) via weighted RNG
-    ↓
-Select 0–2 prefixes + 0–2 suffixes from AffixRegistry
-    ↓
-Scale all stats by: base_value × rarity_multiplier × player_level_factor
-    ↓
-Return fully constructed Item instance
-```
-
-### 3.4 3.5e Ruleset Engine
-
-**Location:** `src/rules_engine/`
-
-The ruleset engine is the **single source of truth** for all game mechanics. It parses structured JSON files from `data/srd_3.5/` at startup and exposes the SRD rules as validated Python objects.
-
-| Component | Responsibility |
-|---|---|
-| `character_35e.py` | `Character35e` base class — ability scores, HP, BAB, saves, AC (all SRD-derived) |
-| `ability_scores.py` | Modifier calculations, generation methods (4d6-drop-lowest, point-buy) |
-| `combat.py` | Attack rolls, damage, critical hits, initiative, AoO resolution |
-| `skills.py` | Skill check resolution, synergy bonuses, class/cross-class costs |
-| `spells.py` | Spell slot management, save DCs, spell resistance |
-| `srd_loader.py` | JSON/Markdown parser that hydrates the above from `data/srd_3.5/` files |
-
-**Design Rule:** No game mechanic may be hard-coded. Everything is data-driven from the SRD files, so the engine can be extended to other d20 systems (Pathfinder, 5e) by swapping the data directory.
-
-### 3.5 Multi-Agent Orchestration Layer
+### 3.4 Autonomous LLM Agent Layer
 
 **Location:** `src/agent_orchestration/`
 
@@ -212,11 +146,11 @@ ResultParser validates output against expected schema
 Task marked COMPLETED (or FAILED → retry / escalate to Overseer)
 ```
 
-### 3.6 The Overseer Interface
+### 3.5 Overseer Approval Interface
 
 **Location:** `src/overseer_ui/`
 
-The Overseer is the human-in-the-loop control surface. It provides:
+The Overseer is the human-in-the-loop approval gate for all LLM-generated artefacts entering the live simulation. It ensures every autonomous agent decision is reviewed before affecting the world.
 
 | Component | Responsibility |
 |---|---|
@@ -240,8 +174,6 @@ EDIT    → Overseer modifies result inline, then approves
 ---
 
 ## 4. Autonomous Agent Core Loop
-
-The multi-agent system operates in a continuous cycle that mirrors the game's macro loop but runs asynchronously:
 
 ```
   ┌─────────────────────────────────────────────────────────────────────────────┐
@@ -277,7 +209,7 @@ The multi-agent system operates in a continuous cycle that mirrors the game's ma
 |---|---|---|
 | GPU | NVIDIA RTX 4070 Ti Super | **16 GB VRAM — hard cap** |
 | System RAM | 64 GB DDR5 | Shared between game sim + model inference |
-| OS | Ubuntu Linux 22.04+ | CUDA 12.x + cuDNN required |
+| OS | Windows (primary); Linux compatible | CUDA 12.x + cuDNN required |
 
 ### 5.2 Model Selection
 
@@ -292,7 +224,7 @@ The multi-agent system operates in a continuous cycle that mirrors the game's ma
 ### 5.3 Context-Window Management
 
 - **Max context per task:** configurable via `AgentTask.max_tokens` (default 2048).
-- **SRD injection:** the `PromptBuilder` selects only the SRD excerpts relevant to the task type (e.g. only weapon tables for an item generation task).
+- **SRD injection:** the `PromptBuilder` selects only the SRD excerpts relevant to the task type.
 - **Prompt chunking:** if the assembled prompt exceeds the model's native context window, the `ContextManager` splits it into sequential chunks with overlap, processes each, and stitches the results.
 
 ### 5.4 API Isolation
@@ -315,18 +247,18 @@ No game code ever calls a model directly. All inference requests flow through `A
 
 ```
 new_game_plus/
-├── README.md                  ← You are here (GDD + AI Design Doc)
-├── requirements.txt           ← Python runtime dependencies
+├── README.md                  ← Project overview and architecture
+├── PLANS.md                   ← Alignment plan and execution checklist
 ├── setup.py                   ← Package metadata
 ├── .gitignore
 │
 ├── src/                       ← All game source code
 │   ├── __init__.py
-│   ├── core/                  ← Shared utilities (logging, events, math helpers)
+│   ├── core/                  ← Shared utilities (event bus, math helpers)
 │   │   ├── __init__.py
 │   │   ├── event_bus.py
-│   │   ├── math_utils.py
-│   │   └── registry.py
+│   │   ├── engine.py
+│   │   └── math_utils.py
 │   │
 │   ├── terrain/               ← Voxel terrain engine
 │   │   ├── __init__.py
@@ -359,7 +291,10 @@ new_game_plus/
 │   │   ├── ability_scores.py
 │   │   ├── combat.py
 │   │   ├── skills.py
-│   │   ├── spells.py
+│   │   ├── spellcasting.py
+│   │   ├── magic.py
+│   │   ├── equipment.py
+│   │   ├── conditions.py
 │   │   └── srd_loader.py
 │   │
 │   ├── agent_orchestration/   ← Multi-agent LLM orchestration layer
@@ -390,28 +325,14 @@ new_game_plus/
 │       ├── equipment.json
 │       └── monsters.json
 │
-├── assets/                    ← Raw game assets (not processed by engine at runtime)
-│   ├── textures/              ← Block & entity sprite sheets
-│   ├── sounds/                ← SFX / ambient audio
-│   └── models/                ← 3D mesh sources
-│
-├── docs/                      ← Extended documentation
-│   ├── gdd/                   ← Detailed GDD chapters
-│   └── api/                   ← Auto-generated API reference
-│
 └── tests/                     ← Automated test suite (pytest)
     ├── __init__.py
     ├── core/
     ├── terrain/
-    │   └── test_block.py
     ├── ai_sim/
-    │   └── test_entity.py
     ├── loot_math/
-    │   └── test_item.py
     ├── rules_engine/
-    │   └── test_character_35e.py
     └── agent_orchestration/
-        └── test_agent_task.py
 ```
 
 ---
@@ -423,23 +344,24 @@ new_game_plus/
 | **Language** | Python 3.11+ | Rapid prototyping; easy FFI to C extensions later |
 | **Data models** | Python `dataclasses` + `uuid` | Zero-overhead POD structs, engine-agnostic |
 | **Memory opt.** | `@dataclass(slots=True)` | Prevents `__dict__` allocation on perf-critical models |
-| **Noise generation** | `noise` (Perlin/Simplex) | Battle-tested procedural generation |
-| **Pathfinding** | Custom A* on voxel graph | Full control over heuristics and dynamic obstacles |
+| **Noise generation** | `opensimplex` (Simplex) | Battle-tested procedural generation |
+| **Pathfinding** | Custom 3D A* on voxel graph | Full control over heuristics and dynamic obstacles |
 | **Serialisation** | `msgpack` / `json` | Fast chunk serialisation to disk |
 | **Testing** | `pytest` | Lightweight, discoverable unit tests |
 | **Local LLM inference** | `llama-cpp-python` / `vllm` | GGUF/GPTQ/AWQ model loading with CUDA acceleration |
 | **LLM models** | DeepSeek, Llama, Mistral | Offline, quantised to fit 16 GB VRAM |
-| **Prompt management** | Custom template engine | SRD context injection + token-budget chunking |
-| **Future rendering** | Godot 4 (GDExtension) or Unity DOTS | Swap rendering backend without touching simulation layer |
+| **Future rendering** | GPU-accelerated pipeline (Godot 4 / Unity DOTS) | Swap rendering backend without touching simulation layer |
 
 ---
 
 ## 8. Target Hardware & Performance Budget
 
+**Primary platform: Windows** (Linux compatible)
+
 | Resource | Target Spec | Budget |
 |---|---|---|
 | GPU | NVIDIA RTX 4070 Ti Super (16 GB VRAM) | Full GPU-driven chunk mesh upload |
-| System RAM | 64 GB | Up to 4 096 active chunks in LRU cache |
+| System RAM | 64 GB DDR5 | Up to 4 096 active chunks in LRU cache |
 | Storage | NVMe SSD | < 5 ms chunk load from disk |
 | CPU | High-end desktop (≥ 8 cores) | 500 simultaneous entity ticks at 20 TPS |
 
@@ -452,23 +374,29 @@ new_game_plus/
 
 ---
 
-## 9. Data Models
+## 9. Visual Fidelity Goal
 
-The five foundational data classes are located in:
+The simulation logic is implemented in Python; the long-term rendering goal is visual fidelity comparable to modern high-end titles (such as Baldur's Gate 3) through a **GPU-accelerated rendering pipeline** that visualises the complex underlying 3.5e data.
 
-| Class | File |
-|---|---|
-| `Block` | `src/terrain/block.py` |
-| `Entity` | `src/ai_sim/entity.py` |
-| `Item` | `src/loot_math/item.py` |
-| `AgentTask` | `src/agent_orchestration/agent_task.py` |
-| `Character35e` | `src/rules_engine/character_35e.py` |
-
-> **Memory Optimisation:** `AgentTask` and `Character35e` use `@dataclass(slots=True)` to prevent `__dict__` allocation, reducing per-instance RAM overhead during deep procedural generation ticks.
+The rendering backend is designed to be swappable (Godot 4 GDExtension or Unity DOTS) without touching the simulation layer.
 
 ---
 
-## 10. Running the Project Locally
+## 10. Data Models
+
+All foundational data classes use `@dataclass(slots=True)` to minimise per-instance RAM overhead.
+
+| Class | File | Notes |
+|---|---|---|
+| `Block` | `src/terrain/block.py` | Voxel block with material, durability, light emission |
+| `Entity` | `src/ai_sim/entity.py` | UUID + component dict + tag set |
+| `Item` | `src/loot_math/item.py` | Procedural prefix/suffix item with SRD stats |
+| `AgentTask` | `src/agent_orchestration/agent_task.py` | LLM task with priority and token budget |
+| `Character35e` | `src/rules_engine/character_35e.py` | Full 3.5e character: BAB, AC, saves, spell slots |
+
+---
+
+## 11. Running the Project Locally
 
 ### Prerequisites
 
@@ -476,22 +404,32 @@ The five foundational data classes are located in:
 - `pip` (comes with Python)
 - `git`
 
-### Setup
+### Setup (Windows — primary)
 
-```bash
+```powershell
 # 1. Clone the repository
 git clone https://github.com/coldfront96/new_game_plus.git
 cd new_game_plus
 
-# 2. Create and activate a virtual environment (recommended)
+# 2. Create and activate a virtual environment
 python -m venv .venv
-source .venv/bin/activate        # Linux / macOS
-# .venv\Scripts\activate         # Windows PowerShell
+.venv\Scripts\activate
 
-# 3. Install runtime and development dependencies
-pip install -r requirements.txt
+# 3. Install in editable mode
+pip install -e .
 
 # 4. Verify the installation by running the test suite
+pytest tests/ -v
+```
+
+### Setup (Linux — compatible)
+
+```bash
+git clone https://github.com/coldfront96/new_game_plus.git
+cd new_game_plus
+python -m venv .venv
+source .venv/bin/activate
+pip install -e .
 pytest tests/ -v
 ```
 
@@ -503,21 +441,20 @@ from src.ai_sim.entity import Entity
 from src.loot_math.item import Item, Rarity
 
 stone = Block(block_id=1, material=Material.STONE, durability=100)
-colonist = Entity(name="Aldric")
+agent = Entity(name="Aldric")
 sword = Item(name="Iron Sword", rarity=Rarity.COMMON, base_damage=12)
 
 print(stone)
-print(colonist)
+print(agent)
 print(sword)
 ```
 
-### Quick AI Smoke-Test
+### Quick 3.5e Character Smoke-Test
 
 ```python
 from src.agent_orchestration.agent_task import AgentTask, TaskStatus
 from src.rules_engine.character_35e import Character35e, Alignment
 
-# Create and process an agent task
 task = AgentTask(
     task_type="roll_npc_stats",
     prompt="Generate a level 5 Fighter NPC for a tavern encounter.",
@@ -525,9 +462,7 @@ task = AgentTask(
     priority=2,
 )
 print(task)
-print(f"VRAM estimate: {task.estimated_vram_mb:.4f} MiB")
 
-# Create a 3.5e character from SRD rules
 fighter = Character35e(
     name="Aldric the Bold",
     char_class="Fighter",
@@ -547,86 +482,14 @@ print(f"Fort={fighter.fortitude_save}, Ref={fighter.reflex_save}, Will={fighter.
 
 ---
 
-## 11. Running the Multi-Agent System on Ubuntu
-
-### Prerequisites
-
-- Ubuntu 22.04 LTS or later
-- Python 3.11+
-- NVIDIA RTX 4070 Ti Super (or equivalent with ≥ 16 GB VRAM)
-- CUDA 12.x + cuDNN
-- 64 GB system RAM (minimum 32 GB)
-
-### GPU & Driver Setup
-
-```bash
-# 1. Verify NVIDIA driver and CUDA are installed
-nvidia-smi
-nvcc --version
-
-# 2. If not installed, add the NVIDIA CUDA repository
-sudo apt update
-sudo apt install -y nvidia-driver-535 nvidia-cuda-toolkit
-
-# 3. Reboot and verify
-sudo reboot
-nvidia-smi  # Should show RTX 4070 Ti Super with 16 GB VRAM
-```
-
-### Model Download & Setup
-
-```bash
-# 1. Install the model inference backend (example: llama-cpp-python with CUDA)
-pip install llama-cpp-python --extra-index-url https://abetlen.github.io/llama-cpp-python/whl/cu121
-
-# 2. Create a local models directory (not tracked by git)
-mkdir -p ~/.local/share/new_game_plus/models
-
-# 3. Download quantised models (adjust URLs for your preferred sources)
-# Code generation model (~5 GB)
-# World generation model (~6 GB)
-# Lore generation model (~5 GB)
-# Place .gguf / .safetensors files in the models directory
-```
-
-### Running the System
-
-```bash
-# 1. Clone and install the project
-git clone https://github.com/coldfront96/new_game_plus.git
-cd new_game_plus
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-pip install -e .
-
-# 2. Verify all tests pass
-pytest tests/ -v
-
-# 3. Run the agent orchestration system (future — not yet implemented)
-# python -m src.agent_orchestration.scheduler --config config.yaml
-```
-
-### VRAM Budget Rules
-
-| Constraint | Value |
-|---|---|
-| Hard VRAM cap | 16 384 MiB |
-| Max models loaded simultaneously | 1 |
-| Default token budget per task | 2 048 tokens |
-| Model swap strategy | LRU eviction |
-| Context chunking threshold | Model's native context window size |
-
----
-
 ## 12. Testing
 
 ```bash
 # Run all tests
 pytest tests/ -v
 
-# Run only terrain tests
-pytest tests/terrain/ -v
+# Run only rules engine tests
+pytest tests/rules_engine/ -v
 
 # Run with coverage report
 pytest tests/ --cov=src --cov-report=term-missing
@@ -643,13 +506,13 @@ Tests live in `tests/` mirroring the `src/` module layout. Each module must main
 | **M0 — Foundation** | Repo scaffold, data models, test harness | ✅ Complete |
 | **M0.5 — 3.5e + AI Foundation** | Rules engine scaffold, agent orchestration, Overseer UI, SRD data dir | 🟡 In Progress |
 | **M1 — Terrain Alpha** | Chunk generation, block CRUD, basic physics | ⬜ Planned |
-| **M2 — ECS Alpha** | Entity ticking, needs loop, A* pathfinding | ⬜ Planned |
+| **M2 — ECS Alpha** | Entity ticking, needs loop, 3D A* pathfinding | ⬜ Planned |
 | **M3 — Loot Alpha** | Item generation pipeline, affix registry | ⬜ Planned |
 | **M4 — Rules Engine** | SRD loader, ability scores, combat resolution, skill checks | ⬜ Planned |
 | **M5 — Agent Pipeline** | Local LLM scheduler, prompt builder, result parser | ⬜ Planned |
 | **M6 — Overseer UI** | Dashboard, approval gate, parameter panel | ⬜ Planned |
-| **M7 — Integration** | Colony loop end-to-end, AI-generated content in live world | ⬜ Planned |
-| **M8 — Content** | Biomes, classes, enemy types, events | ⬜ Planned |
+| **M7 — Integration** | Full agent loop end-to-end, AI-generated content in live world | ⬜ Planned |
+| **M8 — Content** | Biomes, character classes, enemy types, world events | ⬜ Planned |
 
 ---
 
@@ -660,7 +523,7 @@ Tests live in `tests/` mirroring the `src/` module layout. Each module must main
 3. Ensure `pytest tests/` passes with zero failures.
 4. Open a pull request with a clear description referencing the relevant GDD section.
 
-Code style: [PEP 8](https://peps.python.org/pep-0008/) enforced via `flake8`.
+Code style: [PEP 8](https://peps.python.org/pep-0008/).
 
 ---
 

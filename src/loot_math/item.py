@@ -179,7 +179,7 @@ class Item:
         durability:   Current durability (0 = broken). ``None`` for items
                       that do not degrade (consumables, materials).
         max_durability: Maximum durability at full repair. ``None`` if N/A.
-        level_requirement: Minimum colonist level required to equip.
+        level_requirement: Minimum character level required to equip.
         prefixes:     List of prefix :class:`Affix` modifiers (≤ 2).
         suffixes:     List of suffix :class:`Affix` modifiers (≤ 2).
         metadata:     Free-form dict for game-specific extra data.
