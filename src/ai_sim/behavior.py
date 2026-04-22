@@ -7,6 +7,11 @@ Entities cycle through behavioral states to satisfy their needs:
 
     IDLE → SEARCH_FOR_TASK → MOVE_TO_TARGET → PERFORM_ACTION → IDLE
 
+Combat interrupts this cycle via the dedicated ``IN_COMBAT`` state.
+When in ``IN_COMBAT``, the entity delegates action allocation to the
+:class:`~src.ai_sim.tactics.TacticalEvaluator` each turn (driven by
+:class:`~src.ai_sim.systems.TurnManagerSystem`).
+
 The FSM integrates with the D&D 3.5e skill system — for example, a
 hungry entity uses a Survival skill check to forage for food.
 
@@ -17,6 +22,12 @@ Usage::
     fsm = BehaviorFSM()
     fsm.transition(BehaviorState.SEARCH_FOR_TASK)
     print(fsm.state)  # BehaviorState.SEARCH_FOR_TASK
+
+    # Enter combat
+    fsm.enter_combat()
+    print(fsm.state)  # BehaviorState.IN_COMBAT
+    fsm.exit_combat()
+    print(fsm.state)  # BehaviorState.IDLE
 """
 
 from __future__ import annotations
@@ -37,6 +48,7 @@ class BehaviorState(Enum):
     SEARCH_FOR_TASK = auto()
     MOVE_TO_TARGET = auto()
     PERFORM_ACTION = auto()
+    IN_COMBAT = auto()
 
 
 # ---------------------------------------------------------------------------
@@ -88,6 +100,10 @@ class BehaviorFSM:
     Implements the state cycle:
         IDLE → SEARCH_FOR_TASK → MOVE_TO_TARGET → PERFORM_ACTION → IDLE
 
+    Combat interrupts the normal cycle via the ``IN_COMBAT`` state.
+    Any non-combat state may transition to ``IN_COMBAT``; when combat
+    ends the FSM returns to ``IDLE``.
+
     The FSM enforces valid transitions and tracks the entity's current
     task assignment.
 
@@ -105,18 +121,25 @@ class BehaviorFSM:
     _VALID_TRANSITIONS = {
         BehaviorState.IDLE: {
             BehaviorState.SEARCH_FOR_TASK,
+            BehaviorState.IN_COMBAT,
         },
         BehaviorState.SEARCH_FOR_TASK: {
             BehaviorState.MOVE_TO_TARGET,
             BehaviorState.IDLE,  # No task found → back to idle
+            BehaviorState.IN_COMBAT,
         },
         BehaviorState.MOVE_TO_TARGET: {
             BehaviorState.PERFORM_ACTION,
             BehaviorState.IDLE,  # Path blocked or interrupted
+            BehaviorState.IN_COMBAT,
         },
         BehaviorState.PERFORM_ACTION: {
             BehaviorState.IDLE,  # Task completed or failed
             BehaviorState.SEARCH_FOR_TASK,  # Need another task immediately
+            BehaviorState.IN_COMBAT,
+        },
+        BehaviorState.IN_COMBAT: {
+            BehaviorState.IDLE,  # Combat ended
         },
     }
 
@@ -167,6 +190,30 @@ class BehaviorFSM:
     def is_idle(self) -> bool:
         """Return ``True`` if the entity is currently idle."""
         return self.state == BehaviorState.IDLE
+
+    @property
+    def is_in_combat(self) -> bool:
+        """Return ``True`` if the entity is currently in combat."""
+        return self.state == BehaviorState.IN_COMBAT
+
+    def enter_combat(self) -> bool:
+        """Transition to the ``IN_COMBAT`` state from any non-combat state.
+
+        Returns:
+            ``True`` if the transition was valid and performed;
+            ``False`` if already in ``IN_COMBAT`` or if the transition is
+            not permitted from the current state.
+        """
+        return self.transition(BehaviorState.IN_COMBAT)
+
+    def exit_combat(self) -> bool:
+        """Exit ``IN_COMBAT`` state and return to ``IDLE``.
+
+        Returns:
+            ``True`` if the transition was valid and performed;
+            ``False`` if not currently in ``IN_COMBAT``.
+        """
+        return self.transition(BehaviorState.IDLE)
 
     @property
     def has_task(self) -> bool:

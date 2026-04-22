@@ -30,6 +30,7 @@ from typing import Any, Dict, List, Optional, Tuple
 from src.ai_sim.behavior import BehaviorFSM, BehaviorState, EntityTask, TaskType
 from src.ai_sim.components import Health, Inventory, Needs, Position, Vision, VisionType
 from src.ai_sim.entity import Entity
+from src.ai_sim.tactics import TacticalDecision, TacticalEvaluator
 from src.core.event_bus import EventBus
 from src.loot_math.item import Item, ItemType, Rarity
 from src.rules_engine.actions import ActionTracker, ActionType
@@ -1801,6 +1802,7 @@ class TurnManagerSystem(System):
             "character_name": entry.character.name,
             "initiative_score": entry.initiative_score,
         })
+
         return entry
 
     def end_combat(self) -> None:
@@ -1809,6 +1811,69 @@ class TurnManagerSystem(System):
         self._queue.clear()
         self._current_index = 0
         self._event_bus.publish("combat_ended", {})
+
+    # ------------------------------------------------------------------
+    # AI turn execution
+    # ------------------------------------------------------------------
+
+    def _is_hostile_entry(self, entry: CombatantEntry) -> bool:
+        """Return ``True`` if *entry* belongs to a registered hostile entity.
+
+        Args:
+            entry: The combatant entry to test.
+
+        Returns:
+            ``True`` if the entity is in the hostile registry.
+        """
+        return any(e is entry.entity for e, _ in self._hostiles)
+
+    def _execute_ai_turn(self, entry: CombatantEntry) -> None:
+        """Execute an AI-controlled hostile's turn using :class:`TacticalEvaluator`.
+
+        Physical constraints are evaluated first:
+        1. Only active ally entities are considered as targets.
+        2. The actor's equipped main-hand weapon determines reach (via
+           ``equipment_manager.get_weapon()``); falls back to 5 ft.
+        3. A :class:`TacticalDecision` is obtained and the recommended
+           :class:`~src.rules_engine.actions.ActionType` is consumed from
+           *entry*'s :class:`~src.rules_engine.actions.ActionTracker`.
+        4. An ``"ai_action"`` event is published with the decision details.
+
+        Args:
+            entry: The hostile combatant whose turn is being executed.
+        """
+        # Allies are the targets for a hostile combatant
+        visible_targets: List[Tuple[Entity, Character35e]] = [
+            (e, c) for e, c in self._allies if e.is_active
+        ]
+
+        weapon = None
+        if entry.character.equipment_manager is not None:
+            weapon = entry.character.equipment_manager.get_weapon()
+
+        evaluator = TacticalEvaluator(
+            actor_entity=entry.entity,
+            actor_character=entry.character,
+            visible_hostiles=visible_targets,
+            weapon=weapon,
+        )
+        decision: Optional[TacticalDecision] = evaluator.evaluate()
+        if decision is None:
+            return
+
+        try:
+            entry.action_tracker.consume_action(decision.recommended_action)
+        except ValueError:
+            return
+
+        self._event_bus.publish("ai_action", {
+            "entity_id": entry.entity.entity_id,
+            "character_name": entry.character.name,
+            "action": decision.recommended_action.name,
+            "target_name": decision.primary_target_character.name,
+            "distance_ft": decision.distance_ft,
+            "reach_ft": decision.reach_ft,
+        })
 
     # ------------------------------------------------------------------
     # Aggro detection
@@ -1847,15 +1912,22 @@ class TurnManagerSystem(System):
     # ------------------------------------------------------------------
 
     def update(self) -> None:
-        """Per-tick update: detect aggro and manage the combat queue.
+        """Per-tick update: detect aggro, start combat, and execute AI turns.
 
         If combat is **not** active, check whether any hostile has entered
         aggro range of an ally; if so, :meth:`start_combat` is called.
 
-        If combat **is** active, this method is a no-op — callers must
-        explicitly call :meth:`advance_turn` to progress the queue (this
-        separates tick timing from turn pacing).
+        If combat **is** active, the current combatant's turn is processed:
+        if it belongs to a registered hostile (AI-controlled) entity,
+        :meth:`_execute_ai_turn` is called to consume their actions
+        mathematically via the :class:`~src.ai_sim.tactics.TacticalEvaluator`.
+        Ally/player turns are left for the caller to handle.
         """
         if not self._in_combat:
             if self._check_aggro():
                 self.start_combat()
+            return
+
+        entry = self.current_combatant
+        if entry is not None and entry.entity.is_active and self._is_hostile_entry(entry):
+            self._execute_ai_turn(entry)
