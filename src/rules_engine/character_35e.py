@@ -94,6 +94,22 @@ class Size(Enum):
 # SRD look-up tables
 # ---------------------------------------------------------------------------
 
+# 3.5e SRD armor speed reduction table (medium/heavy armor).
+# Maps base speed (ft) → reduced speed (ft) for medium and heavy armor.
+_ARMOR_SPEED_TABLE: Dict[int, int] = {
+    15: 10,
+    20: 15,
+    25: 20,
+    30: 20,
+    35: 25,
+    40: 30,
+    45: 30,
+    50: 35,
+    55: 40,
+    60: 40,
+}
+
+
 # Hit die by class name (from the 3.5e SRD).
 _HIT_DIE: Dict[str, int] = {
     "Barbarian": 12,
@@ -270,10 +286,19 @@ class Character35e:
     def voxel_speed(self) -> int:
         """Movement speed converted to voxel units (5 ft = 1 block).
 
+        Applies the 3.5e SRD armor speed reduction: medium and heavy armor
+        reduce a character's base speed using the standard lookup table
+        (e.g. 30 ft → 20 ft in heavy armor).
+
         Returns:
             Number of blocks the character can traverse per move action.
         """
-        return self.base_speed // 5
+        speed = self.base_speed
+        if self.equipment_manager is not None:
+            category = self.equipment_manager.get_armor_category()
+            if category in ("medium", "heavy"):
+                speed = _ARMOR_SPEED_TABLE.get(speed, max(speed * 2 // 3, 5))
+        return speed // 5
 
     # ------------------------------------------------------------------
     # Hit die & hit points
@@ -342,6 +367,10 @@ class Character35e:
     def armor_class(self) -> int:
         """Armour class: ``10 + DEX mod + size modifier + armor bonus + shield bonus + deflection bonus + feat bonus``.
 
+        The Dexterity modifier is capped by the lowest ``max_dex_bonus`` from
+        any equipped armor piece, following the 3.5e SRD rule (e.g. Full Plate
+        caps DEX bonus at +1).
+
         Armor bonus and shield bonus are resolved from the
         :class:`EquipmentManager` if one is attached. Deflection bonuses
         (e.g. from divine spells like Shield of Faith) are resolved from
@@ -350,7 +379,13 @@ class Character35e:
         """
         from src.rules_engine.feat_engine import FeatRegistry
 
-        ac = 10 + self.dexterity_mod + self.size.value
+        dex_mod = self.dexterity_mod
+        if self.equipment_manager is not None:
+            max_dex = self.equipment_manager.get_min_max_dex_bonus()
+            if max_dex is not None:
+                dex_mod = min(dex_mod, max_dex)
+
+        ac = 10 + dex_mod + self.size.value
         if self.equipment_manager is not None:
             ac += self.equipment_manager.get_armor_bonus()
             ac += self.equipment_manager.get_shield_bonus()
