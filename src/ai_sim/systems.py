@@ -31,6 +31,7 @@ from src.ai_sim.components import Health, Inventory, Needs, Position, Vision, Vi
 from src.ai_sim.entity import Entity
 from src.core.event_bus import EventBus
 from src.loot_math.item import Item, ItemType, Rarity
+from src.rules_engine.actions import ActionTracker, ActionType
 from src.rules_engine.character_35e import Character35e
 from src.rules_engine.combat import AttackResolver, CombatResult
 from src.rules_engine.conditions import ConditionManager
@@ -67,17 +68,22 @@ class AttackIntent:
     """Payload published on the ``"attack_intent"`` event channel.
 
     Attributes:
-        attacker:   The attacking character's stat block.
-        defender:   The defending character's stat block.
-        use_ranged: ``True`` for a ranged attack; ``False`` for melee.
-        weapon:     Optional equipped weapon :class:`Item` (overrides
-                    unarmed damage dice).
+        attacker:       The attacking character's stat block.
+        defender:       The defending character's stat block.
+        use_ranged:     ``True`` for a ranged attack; ``False`` for melee.
+        weapon:         Optional equipped weapon :class:`Item` (overrides
+                        unarmed damage dice).
+        action_tracker: Optional :class:`ActionTracker` for the attacker.
+                        When provided, a STANDARD action is consumed before
+                        the attack resolves; if no Standard action is
+                        available the attack is silently dropped.
     """
 
     attacker: Character35e
     defender: Character35e
     use_ranged: bool = False
     weapon: Optional[Item] = None
+    action_tracker: Optional[ActionTracker] = None
 
 
 @dataclass(slots=True)
@@ -127,11 +133,23 @@ class CombatSystem(System):
         explicit weapon was provided in the intent, the system automatically
         pulls weapon damage dice and enhancement bonuses from the equipped
         MAIN_HAND weapon.
+
+        When an :class:`ActionTracker` is included in the intent, a
+        STANDARD action is consumed before resolving the attack.  If the
+        Standard slot is already exhausted the intent is discarded
+        (the attack cannot legally occur this turn).
         """
         intents = list(self._pending)
         self._pending.clear()
 
         for intent in intents:
+            # --- Action economy gate -----------------------------------------
+            if intent.action_tracker is not None:
+                if not intent.action_tracker.has_action(ActionType.STANDARD):
+                    # No Standard action available — discard this intent.
+                    continue
+                intent.action_tracker.consume_action(ActionType.STANDARD)
+
             # Determine weapon damage dice overrides
             dmg_count = 0
             dmg_sides = 0
@@ -1600,3 +1618,245 @@ class VisionSystem(System):
 
     def update(self) -> None:
         """VisionSystem has no per-tick work; visibility is queried on demand."""
+
+
+# ---------------------------------------------------------------------------
+# TurnManagerSystem
+# ---------------------------------------------------------------------------
+
+@dataclass(slots=True)
+class CombatantEntry:
+    """A single combatant in the initiative queue.
+
+    Attributes:
+        entity:       The ECS entity.
+        character:    The entity's 3.5e stat block.
+        initiative_score: The initiative roll result (d20 + DEX mod + feat bonus).
+        action_tracker:   Per-turn action budget for this combatant.
+    """
+
+    entity: Entity
+    character: Character35e
+    initiative_score: int
+    action_tracker: ActionTracker
+
+
+class TurnManagerSystem(System):
+    """Detects hostile entities within aggro range, rolls initiative, and
+    manages a turn-ordered combat queue.
+
+    Combat is triggered when any registered *hostile* entity enters within
+    ``aggro_range`` voxels of a registered *player/ally* entity.  On trigger:
+
+    1. Initiative is rolled for every involved entity (d20 + ``character.initiative``).
+    2. Entities are sorted into a queue, highest initiative first.
+    3. Each call to :meth:`advance_turn` moves to the next combatant in the
+       queue, resets their :class:`ActionTracker`, and publishes a
+       ``"turn_start"`` event.
+
+    :meth:`update` automatically checks aggro conditions and advances
+    the queue each tick when combat is active.
+
+    Args:
+        event_bus:   Shared :class:`EventBus`.
+        aggro_range: Distance in voxels within which hostiles trigger combat.
+                     Default is 10 voxels (50 ft at 5 ft/voxel).
+    """
+
+    DEFAULT_AGGRO_RANGE: float = 10.0
+
+    def __init__(
+        self,
+        event_bus: EventBus,
+        aggro_range: float = DEFAULT_AGGRO_RANGE,
+    ) -> None:
+        import random as _random
+        self._event_bus = event_bus
+        self._aggro_range = aggro_range
+        self._random = _random
+
+        # Registered participants, split by faction
+        self._allies: List[Tuple[Entity, Character35e]] = []
+        self._hostiles: List[Tuple[Entity, Character35e]] = []
+
+        # Initiative queue (ordered, highest first)
+        self._queue: List[CombatantEntry] = []
+        self._current_index: int = 0
+        self._in_combat: bool = False
+
+    # ------------------------------------------------------------------
+    # Registration
+    # ------------------------------------------------------------------
+
+    def register_ally(self, entity: Entity, character: Character35e) -> None:
+        """Register a player or ally entity.
+
+        Args:
+            entity:    The ECS entity.
+            character: The entity's 3.5e stat block.
+        """
+        self._allies.append((entity, character))
+
+    def register_hostile(self, entity: Entity, character: Character35e) -> None:
+        """Register a hostile (enemy) entity.
+
+        Args:
+            entity:    The ECS entity.
+            character: The entity's 3.5e stat block.
+        """
+        self._hostiles.append((entity, character))
+
+    # ------------------------------------------------------------------
+    # Combat lifecycle
+    # ------------------------------------------------------------------
+
+    @property
+    def in_combat(self) -> bool:
+        """``True`` when a combat encounter is active."""
+        return self._in_combat
+
+    @property
+    def current_combatant(self) -> Optional[CombatantEntry]:
+        """The :class:`CombatantEntry` whose turn it currently is, or ``None``."""
+        if not self._queue:
+            return None
+        return self._queue[self._current_index % len(self._queue)]
+
+    @property
+    def initiative_queue(self) -> List[CombatantEntry]:
+        """Ordered (highest initiative first) snapshot of all combatants."""
+        return list(self._queue)
+
+    def _roll_initiative(self, character: Character35e) -> int:
+        """Roll d20 + ``character.initiative`` for *character*.
+
+        Args:
+            character: The character rolling initiative.
+
+        Returns:
+            Total initiative score.
+        """
+        return self._random.randint(1, 20) + character.initiative
+
+    def start_combat(self) -> None:
+        """Manually trigger combat: roll initiative and build the queue.
+
+        All currently registered allies **and** hostiles participate.
+        Ties are broken by insertion order (first registered wins).
+        """
+        all_participants: List[Tuple[Entity, Character35e]] = (
+            list(self._allies) + list(self._hostiles)
+        )
+
+        entries: List[CombatantEntry] = []
+        for entity, character in all_participants:
+            if not entity.is_active:
+                continue
+            score = self._roll_initiative(character)
+            entries.append(CombatantEntry(
+                entity=entity,
+                character=character,
+                initiative_score=score,
+                action_tracker=ActionTracker(),
+            ))
+
+        # Sort descending by initiative score; stable sort preserves insertion order on ties.
+        entries.sort(key=lambda e: e.initiative_score, reverse=True)
+        self._queue = entries
+        self._current_index = 0
+        self._in_combat = bool(self._queue)
+
+        self._event_bus.publish("combat_started", {
+            "combatant_count": len(self._queue),
+            "order": [e.character.name for e in self._queue],
+        })
+
+        if self._queue:
+            first = self._queue[0]
+            first.action_tracker.reset_turn()
+            self._event_bus.publish("turn_start", {
+                "entity_id": first.entity.entity_id,
+                "character_name": first.character.name,
+                "initiative_score": first.initiative_score,
+            })
+
+    def advance_turn(self) -> Optional[CombatantEntry]:
+        """End the current turn and move to the next combatant.
+
+        Resets the next combatant's :class:`ActionTracker` and publishes
+        a ``"turn_start"`` event for them.
+
+        Returns:
+            The :class:`CombatantEntry` whose turn is now active, or
+            ``None`` if there are no combatants.
+        """
+        if not self._queue:
+            return None
+
+        self._current_index = (self._current_index + 1) % len(self._queue)
+        entry = self._queue[self._current_index]
+        entry.action_tracker.reset_turn()
+
+        self._event_bus.publish("turn_start", {
+            "entity_id": entry.entity.entity_id,
+            "character_name": entry.character.name,
+            "initiative_score": entry.initiative_score,
+        })
+        return entry
+
+    def end_combat(self) -> None:
+        """Manually end the current combat encounter."""
+        self._in_combat = False
+        self._queue.clear()
+        self._current_index = 0
+        self._event_bus.publish("combat_ended", {})
+
+    # ------------------------------------------------------------------
+    # Aggro detection
+    # ------------------------------------------------------------------
+
+    @staticmethod
+    def _distance(pos_a: Position, pos_b: Position) -> float:
+        """Euclidean distance between two :class:`Position` components."""
+        dx = pos_a.x - pos_b.x
+        dy = pos_a.y - pos_b.y
+        dz = pos_a.z - pos_b.z
+        return math.sqrt(dx * dx + dy * dy + dz * dz)
+
+    def _check_aggro(self) -> bool:
+        """Return ``True`` if any hostile is within aggro range of any ally."""
+        for ally_entity, _ in self._allies:
+            if not ally_entity.is_active:
+                continue
+            ally_pos = ally_entity.get_component(Position)
+            if ally_pos is None:
+                continue
+
+            for hostile_entity, _ in self._hostiles:
+                if not hostile_entity.is_active:
+                    continue
+                hostile_pos = hostile_entity.get_component(Position)
+                if hostile_pos is None:
+                    continue
+
+                if self._distance(ally_pos, hostile_pos) <= self._aggro_range:
+                    return True
+        return False
+
+    # ------------------------------------------------------------------
+    # System.update
+    # ------------------------------------------------------------------
+
+    def update(self) -> None:
+        """Per-tick update: detect aggro and manage the combat queue.
+
+        If combat is **not** active, check whether any hostile has entered
+        aggro range of an ally; if so, :meth:`start_combat` is called.
+
+        If combat **is** active, this method is a no-op — callers must
+        explicitly call :meth:`advance_turn` to progress the queue (this
+        separates tick timing from turn pacing).
+        """
+        if not self._in_combat:
+            if self._check_aggro():
+                self.start_combat()
