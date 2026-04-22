@@ -11,6 +11,7 @@ import pytest
 from src.rules_engine.dice import RollResult
 from src.rules_engine.skills import (
     SKILL_DEFINITIONS,
+    SKILL_SYNERGIES,
     SkillAbility,
     SkillCheckResult,
     SkillSystem,
@@ -181,3 +182,112 @@ class TestSkillDefinitionsLookup:
     def test_all_standard_skills_have_abilities(self):
         for name, ability in SKILL_DEFINITIONS.items():
             assert isinstance(ability, SkillAbility), f"{name} missing ability"
+
+
+# ---------------------------------------------------------------------------
+# Skill Synergy Tests
+# ---------------------------------------------------------------------------
+
+class TestSkillSynergies:
+    """Tests for 3.5e Skill Synergy system (SKILL_SYNERGIES table + get_synergy_bonus)."""
+
+    def test_skill_synergies_is_dict(self):
+        assert isinstance(SKILL_SYNERGIES, dict)
+        assert len(SKILL_SYNERGIES) > 0
+
+    def test_tumble_grants_balance_and_jump(self):
+        assert "Balance" in SKILL_SYNERGIES["Tumble"]
+        assert "Jump" in SKILL_SYNERGIES["Tumble"]
+
+    def test_bluff_grants_diplomacy(self):
+        assert "Diplomacy" in SKILL_SYNERGIES["Bluff"]
+
+    def test_bluff_grants_intimidate(self):
+        assert "Intimidate" in SKILL_SYNERGIES["Bluff"]
+
+    def test_jump_grants_tumble(self):
+        assert "Tumble" in SKILL_SYNERGIES["Jump"]
+
+    def test_use_rope_grants_escape_artist(self):
+        assert "Escape Artist" in SKILL_SYNERGIES["Use Rope"]
+
+    # get_synergy_bonus ---------------------------------------------------
+
+    def test_no_synergy_when_ranks_below_5(self):
+        ss = SkillSystem()
+        ss.set_rank("Tumble", 4)
+        assert ss.get_synergy_bonus("Balance") == 0
+
+    def test_synergy_bonus_2_when_5_ranks(self):
+        ss = SkillSystem()
+        ss.set_rank("Tumble", 5)
+        assert ss.get_synergy_bonus("Balance") == 2
+
+    def test_synergy_bonus_2_when_more_than_5_ranks(self):
+        ss = SkillSystem()
+        ss.set_rank("Tumble", 10)
+        assert ss.get_synergy_bonus("Balance") == 2
+
+    def test_no_synergy_for_unrelated_skill(self):
+        ss = SkillSystem()
+        ss.set_rank("Tumble", 10)
+        assert ss.get_synergy_bonus("Diplomacy") == 0
+
+    def test_multiple_synergy_sources_stack(self):
+        """Bluff (5 ranks) and Decipher Script (5 ranks) both synergize with Use Magic Device."""
+        ss = SkillSystem()
+        ss.set_rank("Bluff", 5)
+        ss.set_rank("Decipher Script", 5)
+        # Bluff → Diplomacy/Intimidate/SoH/Disguise; Decipher Script → UMD; Spellcraft → UMD
+        # UMD benefits from Decipher Script and Spellcraft
+        ss.set_rank("Spellcraft", 5)
+        bonus = ss.get_synergy_bonus("Use Magic Device")
+        assert bonus == 4  # +2 from Decipher Script + +2 from Spellcraft
+
+    def test_tumble_synergy_jump(self):
+        ss = SkillSystem()
+        ss.set_rank("Tumble", 5)
+        assert ss.get_synergy_bonus("Jump") == 2
+
+    def test_bluff_synergy_diplomacy(self):
+        ss = SkillSystem()
+        ss.set_rank("Bluff", 5)
+        assert ss.get_synergy_bonus("Diplomacy") == 2
+
+    # check() with synergy -------------------------------------------------
+
+    def test_check_includes_synergy_by_default(self):
+        """check() should automatically add synergy bonus."""
+        ss = SkillSystem()
+        ss.set_rank("Tumble", 5)   # grants +2 to Balance
+        ss.set_rank("Balance", 3)
+
+        with patch("src.rules_engine.skills.roll_d20") as mock:
+            # total_modifier = 3 (rank) + 1 (ability) + 2 (synergy) = 6
+            mock.return_value = RollResult(raw=10, modifier=6, total=16)
+            result = ss.check("Balance", ability_modifier=1, dc=15)
+
+        assert result.success is True
+
+    def test_check_can_disable_synergy(self):
+        """check() with include_synergy=False should ignore synergy bonuses."""
+        ss = SkillSystem()
+        ss.set_rank("Tumble", 5)
+        ss.set_rank("Balance", 3)
+
+        with patch("src.rules_engine.skills.roll_d20") as mock:
+            # total_modifier = 3 (rank) + 1 (ability) + 0 (no synergy) = 4
+            mock.return_value = RollResult(raw=10, modifier=4, total=14)
+            result = ss.check("Balance", ability_modifier=1, dc=15, include_synergy=False)
+
+        assert result.success is False
+
+    def test_check_synergy_only_from_this_skill_system(self):
+        """Synergy is based on ranks in this SkillSystem, not global state."""
+        ss1 = SkillSystem()
+        ss2 = SkillSystem()
+        ss2.set_rank("Tumble", 5)
+
+        # ss1 has no Tumble ranks
+        assert ss1.get_synergy_bonus("Balance") == 0
+        assert ss2.get_synergy_bonus("Balance") == 2
