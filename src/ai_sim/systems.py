@@ -1864,6 +1864,9 @@ class TurnManagerSystem(System):
         try:
             entry.action_tracker.consume_action(decision.recommended_action)
         except ValueError:
+            # The recommended action was already consumed this turn (e.g. when
+            # update() is called multiple times before advance_turn() resets
+            # the tracker).  Silently skip to avoid double-execution.
             return
 
         self._event_bus.publish("ai_action", {
