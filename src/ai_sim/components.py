@@ -16,6 +16,27 @@ from typing import Dict, List, Optional
 
 
 # ---------------------------------------------------------------------------
+# VisionType
+# ---------------------------------------------------------------------------
+
+class VisionType(Enum):
+    """Racial vision types from the D&D 3.5e SRD.
+
+    Attributes:
+        NORMAL:           Standard human-range vision; requires light.
+        LOW_LIGHT_VISION: Doubles the effective radius of all light sources
+                          (Elf, Gnome, Half-Elf, etc.).
+        DARKVISION:       Sees in total darkness up to *range_ft* feet as
+                          if it were dim light; ignores the 50 % miss chance
+                          for darkness within that range (Dwarf, Orc, etc.).
+    """
+
+    NORMAL = auto()
+    LOW_LIGHT_VISION = auto()
+    DARKVISION = auto()
+
+
+# ---------------------------------------------------------------------------
 # Position
 # ---------------------------------------------------------------------------
 
@@ -206,3 +227,31 @@ class Inventory:
     @property
     def used_slots(self) -> int:
         return sum(1 for s in self._slots if s is not None)
+
+
+# ---------------------------------------------------------------------------
+# Vision
+# ---------------------------------------------------------------------------
+
+@dataclass(slots=True)
+class Vision:
+    """Tracks an entity's current vision capability.
+
+    Attributes:
+        vision_type: The entity's racial vision type (Normal, Low-Light, Darkvision).
+        range_ft:    Maximum vision range in feet.  Used as the Darkvision cap
+                     (typically 60 ft) and the general sight distance limit.
+    """
+
+    vision_type: VisionType = VisionType.NORMAL
+    range_ft: float = 60.0
+
+    @property
+    def has_darkvision(self) -> bool:
+        """``True`` if this entity has Darkvision."""
+        return self.vision_type == VisionType.DARKVISION
+
+    @property
+    def has_low_light_vision(self) -> bool:
+        """``True`` if this entity has Low-Light Vision."""
+        return self.vision_type == VisionType.LOW_LIGHT_VISION

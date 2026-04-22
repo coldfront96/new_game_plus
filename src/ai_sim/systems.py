@@ -21,12 +21,13 @@ Systems
 
 from __future__ import annotations
 
+import math
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional, Tuple
 
 from src.ai_sim.behavior import BehaviorFSM, BehaviorState, EntityTask, TaskType
-from src.ai_sim.components import Health, Inventory, Needs, Position
+from src.ai_sim.components import Health, Inventory, Needs, Position, Vision, VisionType
 from src.ai_sim.entity import Entity
 from src.core.event_bus import EventBus
 from src.loot_math.item import Item, ItemType, Rarity
@@ -38,6 +39,7 @@ from src.rules_engine.magic import SpellComponent, SpellRegistry
 from src.rules_engine.progression import XPManager, level_up
 from src.rules_engine.skills import SkillSystem
 from src.terrain.block import Block
+from src.terrain.lighting import LightLevel, LightSystem
 
 
 # ---------------------------------------------------------------------------
@@ -1468,3 +1470,133 @@ class MagicSystem(System):
     def pending_count(self) -> int:
         """Number of pending spell intents."""
         return len(self._pending)
+
+
+# ---------------------------------------------------------------------------
+# VisionSystem
+# ---------------------------------------------------------------------------
+
+@dataclass(slots=True)
+class VisibilityResult:
+    """Result of a visibility check between two entities.
+
+    Attributes:
+        visible:      ``True`` if the observer can perceive the target.
+        light_level:  The :class:`~src.terrain.lighting.LightLevel` at the
+                      target's position.
+        distance_ft:  Euclidean distance between observer and target in feet
+                      (1 voxel = 5 ft).
+        in_range:     ``True`` if the target is within the observer's vision
+                      range.
+        concealment:  Concealment miss-chance percentage (0, 20, or 50).
+    """
+
+    visible: bool
+    light_level: Optional[LightLevel]
+    distance_ft: float
+    in_range: bool
+    concealment: int
+
+
+class VisionSystem(System):
+    """Determines visibility between entity pairs based on distance and lighting.
+
+    Per the 3.5e SRD:
+    - An entity can see another if it is within its vision range **and** the
+      target is not in Total Concealment the observer cannot pierce (Darkness
+      without Darkvision).
+    - Low-Light Vision doubles light-source radii.
+    - Darkvision treats Darkness as Bright within 60 ft.
+
+    Args:
+        light_system: The :class:`~src.terrain.lighting.LightSystem` providing
+                      voxel light levels.
+    """
+
+    # 1 voxel = 5 feet (standard 3.5e grid scale)
+    VOXELS_TO_FEET: float = 5.0
+
+    def __init__(self, light_system: LightSystem) -> None:
+        self._light_system = light_system
+
+    def check_visibility(
+        self,
+        observer_entity: Entity,
+        target_entity: Entity,
+    ) -> VisibilityResult:
+        """Determine whether *observer_entity* can see *target_entity*.
+
+        Requires both entities to have :class:`~src.ai_sim.components.Position`
+        and :class:`~src.ai_sim.components.Vision` components attached.
+
+        Args:
+            observer_entity: The entity doing the looking.
+            target_entity:   The entity being looked at.
+
+        Returns:
+            A :class:`VisibilityResult` describing the outcome.
+        """
+        # --- Positions -------------------------------------------------------
+        obs_pos: Optional[Position] = observer_entity.get_component(Position)
+        tgt_pos: Optional[Position] = target_entity.get_component(Position)
+
+        if obs_pos is None or tgt_pos is None:
+            return VisibilityResult(
+                visible=False,
+                light_level=None,
+                distance_ft=0.0,
+                in_range=False,
+                concealment=100,
+            )
+
+        dx = obs_pos.x - tgt_pos.x
+        dy = obs_pos.y - tgt_pos.y
+        dz = obs_pos.z - tgt_pos.z
+        distance_voxels = math.sqrt(dx * dx + dy * dy + dz * dz)
+        distance_ft = distance_voxels * self.VOXELS_TO_FEET
+
+        # --- Observer vision -------------------------------------------------
+        obs_vision: Optional[Vision] = observer_entity.get_component(Vision)
+        vision_type = obs_vision.vision_type if obs_vision is not None else VisionType.NORMAL
+        vision_range_ft = obs_vision.range_ft if obs_vision is not None else 60.0
+
+        in_range = distance_ft <= vision_range_ft
+
+        # --- Light level at target -------------------------------------------
+        if vision_type == VisionType.LOW_LIGHT_VISION:
+            raw_level = self._light_system.get_light_level_for_vision(
+                tgt_pos.x, tgt_pos.y, tgt_pos.z, "Low-Light Vision"
+            )
+        else:
+            raw_level = self._light_system.get_light_level(
+                tgt_pos.x, tgt_pos.y, tgt_pos.z
+            )
+
+        # --- Darkvision override ---------------------------------------------
+        effective_level = raw_level
+        if vision_type == VisionType.DARKVISION and raw_level == LightLevel.DARKNESS:
+            darkvision_range_ft = obs_vision.range_ft if obs_vision is not None else 60.0
+            if distance_ft <= darkvision_range_ft:
+                effective_level = LightLevel.BRIGHT
+
+        # --- Concealment & visibility ----------------------------------------
+        if effective_level == LightLevel.BRIGHT:
+            concealment = 0
+        elif effective_level == LightLevel.DIM:
+            concealment = 20
+        else:
+            concealment = 50
+
+        # Entity is visible if in range AND not in impenetrable darkness
+        visible = in_range and concealment < 100
+
+        return VisibilityResult(
+            visible=visible,
+            light_level=effective_level,
+            distance_ft=distance_ft,
+            in_range=in_range,
+            concealment=concealment,
+        )
+
+    def update(self) -> None:
+        """VisionSystem has no per-tick work; visibility is queried on demand."""
