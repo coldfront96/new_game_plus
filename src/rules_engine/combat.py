@@ -26,12 +26,16 @@ Usage::
 
 from __future__ import annotations
 
+import random
 from dataclasses import dataclass
-from typing import Optional
+from typing import Optional, TYPE_CHECKING
 
 from src.rules_engine.character_35e import Character35e
 from src.rules_engine.dice import RollResult, roll_d20, roll_dice
 from src.loot_math.item import Item as _Item
+
+if TYPE_CHECKING:
+    from src.terrain.lighting import LightLevel
 
 
 # ---------------------------------------------------------------------------
@@ -51,6 +55,11 @@ class CombatResult:
         total_damage:           Final damage dealt after DR (0 on a miss, ≥ 1 on a hit).
         critical:               ``True`` if the attack was a confirmed critical hit.
         damage_reduction_applied: DR subtracted from the raw damage total (0 if none).
+        miss_chance_roll:       The d% roll used for concealment check (``None`` if no
+                                miss-chance check was performed).
+        miss_chance_threshold:  The miss-chance percentage that applied (0, 20, or 50).
+        miss_chance_triggered:  ``True`` if the miss-chance roll caused the attack to
+                                miss despite otherwise hitting AC.
     """
 
     hit: bool
@@ -61,6 +70,9 @@ class CombatResult:
     total_damage: int
     critical: bool
     damage_reduction_applied: int = 0
+    miss_chance_roll: Optional[int] = None
+    miss_chance_threshold: int = 0
+    miss_chance_triggered: bool = False
 
 
 # ---------------------------------------------------------------------------
@@ -104,6 +116,8 @@ class AttackResolver:
         damage_bonus: int = 0,
         threat_range: int = 20,
         damage_multiplier: int = 2,
+        defender_light_level: Optional["LightLevel"] = None,
+        attacker_has_darkvision: bool = False,
     ) -> CombatResult:
         """Resolve a single melee (or ranged) attack.
 
@@ -114,23 +128,33 @@ class AttackResolver:
         4. Natural 20 or any roll ≥ *threat_range* is a *critical threat*.
         5. On a critical threat, roll a second *confirmation* roll against AC.
            If the confirmation hits, the attack is a *confirmed critical*.
-        6. On a hit, roll damage; multiply by *damage_multiplier* on a
+        6. On a hit, check concealment miss chance from lighting:
+           - DIM light → 20 % miss chance (Concealment).
+           - DARKNESS → 50 % miss chance (Total Concealment) unless the
+             attacker has Darkvision (within range).
+           Roll d% (1–100); if the roll ≤ miss_chance the attack misses.
+        7. On a hit, roll damage; multiply by *damage_multiplier* on a
            confirmed critical.
-        7. Subtract the defender's ``damage_reduction`` from the final damage.
+        8. Subtract the defender's ``damage_reduction`` from the final damage.
            Minimum 1 damage on a hit (applied before DR has a floor of 0 net).
 
         Args:
-            attacker:          The attacking :class:`Character35e`.
-            defender:          The defending :class:`Character35e`.
-            use_ranged:        If ``True`` use DEX-based ranged attack bonus
-                               instead of STR-based melee.
-            damage_dice_count: Override number of damage dice (0 → unarmed).
-            damage_dice_sides: Override damage die size (0 → unarmed).
-            damage_bonus:      Extra flat damage added on top of STR modifier.
-            threat_range:      Minimum die face that generates a critical threat
-                               (default 20; weapons with 19-20 pass 19, etc.).
-            damage_multiplier: Damage multiplier applied on a confirmed critical
-                               (default ×2; greataxe uses ×3, etc.).
+            attacker:              The attacking :class:`Character35e`.
+            defender:              The defending :class:`Character35e`.
+            use_ranged:            If ``True`` use DEX-based ranged attack bonus
+                                   instead of STR-based melee.
+            damage_dice_count:     Override number of damage dice (0 → unarmed).
+            damage_dice_sides:     Override damage die size (0 → unarmed).
+            damage_bonus:          Extra flat damage added on top of STR modifier.
+            threat_range:          Minimum die face that generates a critical threat
+                                   (default 20; weapons with 19-20 pass 19, etc.).
+            damage_multiplier:     Damage multiplier applied on a confirmed critical
+                                   (default ×2; greataxe uses ×3, etc.).
+            defender_light_level:  The :class:`~src.terrain.lighting.LightLevel` at
+                                   the defender's position.  ``None`` means no
+                                   lighting modifier is applied (treat as BRIGHT).
+            attacker_has_darkvision: If ``True`` the attacker has Darkvision and
+                                   ignores the miss chance from DARKNESS.
 
         Returns:
             A :class:`CombatResult` describing the outcome.
@@ -186,6 +210,53 @@ class AttackResolver:
                 critical=False,
             )
 
+        # --- Concealment miss chance (3.5e SRD) --------------------------------
+        # Imported inline to avoid a circular import at module level.
+        miss_chance_roll: Optional[int] = None
+        miss_chance_threshold: int = 0
+        miss_chance_triggered: bool = False
+
+        if defender_light_level is not None:
+            from src.terrain.lighting import LightLevel  # noqa: PLC0415
+
+            if defender_light_level == LightLevel.DIM:
+                # Concealment: 20 % miss chance
+                miss_chance_threshold = 20
+                miss_chance_roll = random.randint(1, 100)
+                if miss_chance_roll <= miss_chance_threshold:
+                    miss_chance_triggered = True
+                    return CombatResult(
+                        hit=False,
+                        roll=roll,
+                        attack_bonus=attack_bonus,
+                        target_ac=target_ac,
+                        damage_roll=None,
+                        total_damage=0,
+                        critical=False,
+                        miss_chance_roll=miss_chance_roll,
+                        miss_chance_threshold=miss_chance_threshold,
+                        miss_chance_triggered=True,
+                    )
+
+            elif defender_light_level == LightLevel.DARKNESS and not attacker_has_darkvision:
+                # Total Concealment: 50 % miss chance
+                miss_chance_threshold = 50
+                miss_chance_roll = random.randint(1, 100)
+                if miss_chance_roll <= miss_chance_threshold:
+                    miss_chance_triggered = True
+                    return CombatResult(
+                        hit=False,
+                        roll=roll,
+                        attack_bonus=attack_bonus,
+                        target_ac=target_ac,
+                        damage_roll=None,
+                        total_damage=0,
+                        critical=False,
+                        miss_chance_roll=miss_chance_roll,
+                        miss_chance_threshold=miss_chance_threshold,
+                        miss_chance_triggered=True,
+                    )
+
         # --- Damage ----------------------------------------------------------
         # Determine damage dice
         d_count = damage_dice_count if damage_dice_count > 0 else cls._UNARMED_DICE_COUNT
@@ -217,6 +288,9 @@ class AttackResolver:
             total_damage=total_damage,
             critical=confirmed_critical,
             damage_reduction_applied=dr_value,
+            miss_chance_roll=miss_chance_roll,
+            miss_chance_threshold=miss_chance_threshold,
+            miss_chance_triggered=False,
         )
 
 
