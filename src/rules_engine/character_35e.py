@@ -347,15 +347,19 @@ class Character35e:
 
     @property
     def hit_points(self) -> int:
-        """Total hit points: ``HD_avg × level + CON-mod × level``.
+        """Total hit points: ``HD_avg × level + CON-mod × level + feat bonuses``.
 
         Uses the *average* hit die roll ``(HD/2 + 1)`` for deterministic
         stat blocks (standard for NPC generation in the SRD).  A minimum
         of 1 HP per level is enforced.
+
+        The Toughness feat adds a flat +3 HP on top of the level-based total.
         """
+        from src.rules_engine.feat_engine import FeatRegistry
+
         avg_roll = self.hit_die // 2 + 1
         hp_per_level = max(1, avg_roll + self.constitution_mod)
-        return hp_per_level * self.level
+        return hp_per_level * self.level + FeatRegistry.get_hp_bonus(self)
 
     # ------------------------------------------------------------------
     # Base attack bonus
@@ -373,24 +377,30 @@ class Character35e:
 
     @property
     def fortitude_save(self) -> int:
-        """Fortitude save = base + CON modifier."""
+        """Fortitude save = base + CON modifier + feat bonus (e.g. Great Fortitude)."""
+        from src.rules_engine.feat_engine import FeatRegistry
+
         good_saves = _GOOD_SAVES.get(self.char_class, [])
         base = _save_bonus(self.level, "fortitude" in good_saves)
-        return base + self.constitution_mod
+        return base + self.constitution_mod + FeatRegistry.get_fortitude_bonus(self)
 
     @property
     def reflex_save(self) -> int:
-        """Reflex save = base + DEX modifier."""
+        """Reflex save = base + DEX modifier + feat bonus (e.g. Lightning Reflexes)."""
+        from src.rules_engine.feat_engine import FeatRegistry
+
         good_saves = _GOOD_SAVES.get(self.char_class, [])
         base = _save_bonus(self.level, "reflex" in good_saves)
-        return base + self.dexterity_mod
+        return base + self.dexterity_mod + FeatRegistry.get_reflex_bonus(self)
 
     @property
     def will_save(self) -> int:
-        """Will save = base + WIS modifier."""
+        """Will save = base + WIS modifier + feat bonus (e.g. Iron Will)."""
+        from src.rules_engine.feat_engine import FeatRegistry
+
         good_saves = _GOOD_SAVES.get(self.char_class, [])
         base = _save_bonus(self.level, "will" in good_saves)
-        return base + self.wisdom_mod
+        return base + self.wisdom_mod + FeatRegistry.get_will_bonus(self)
 
     # ------------------------------------------------------------------
     # Armour class
