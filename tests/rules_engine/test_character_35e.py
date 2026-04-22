@@ -404,3 +404,243 @@ class TestEnums:
 
     def test_size_modifier_large(self):
         assert Size.LARGE.value == -1
+
+
+# ---------------------------------------------------------------------------
+# Alignment Restriction Validation (3.5e SRD)
+# ---------------------------------------------------------------------------
+
+from src.rules_engine.character_35e import _alignment_within_one_step
+
+
+class TestAlignmentWithinOneStep:
+    """Tests for the _alignment_within_one_step helper."""
+
+    def test_same_alignment_is_within_one_step(self):
+        assert _alignment_within_one_step("NG", "NG") is True
+
+    def test_adjacent_on_good_evil_axis(self):
+        assert _alignment_within_one_step("LG", "LN") is True
+
+    def test_adjacent_on_law_chaos_axis(self):
+        assert _alignment_within_one_step("NG", "LG") is True
+
+    def test_diagonal_step(self):
+        # LG to N: one step in each direction — still within one step
+        assert _alignment_within_one_step("LG", "N") is True
+
+    def test_two_steps_apart_fails(self):
+        # LG to CE: two steps in both axes
+        assert _alignment_within_one_step("LG", "CE") is False
+
+    def test_lg_to_ne_fails(self):
+        assert _alignment_within_one_step("LG", "NE") is False
+
+    def test_lg_to_ce_fails(self):
+        assert _alignment_within_one_step("LG", "CE") is False
+
+    def test_ng_pelor_allows_ng_cleric(self):
+        # NG deity (Pelor), NG cleric — same alignment
+        assert _alignment_within_one_step("NG", "NG") is True
+
+    def test_ng_deity_allows_lg_cleric(self):
+        assert _alignment_within_one_step("LG", "NG") is True
+
+    def test_ng_deity_allows_cg_cleric(self):
+        assert _alignment_within_one_step("CG", "NG") is True
+
+    def test_ng_deity_allows_n_cleric(self):
+        assert _alignment_within_one_step("N", "NG") is True
+
+    def test_ng_deity_disallows_le_cleric(self):
+        assert _alignment_within_one_step("LE", "NG") is False
+
+    def test_ng_deity_disallows_ce_cleric(self):
+        assert _alignment_within_one_step("CE", "NG") is False
+
+    def test_invalid_alignment_code_returns_false(self):
+        assert _alignment_within_one_step("XX", "NG") is False
+        assert _alignment_within_one_step("NG", "YY") is False
+
+
+class TestAlignmentRestrictions:
+    """Tests for Character35e.validate_alignment() method."""
+
+    # Barbarian ---------------------------------------------------------------
+
+    def test_barbarian_chaotic_neutral_valid(self):
+        barb = Character35e(name="Grog", char_class="Barbarian",
+                            alignment=Alignment.CHAOTIC_NEUTRAL)
+        barb.validate_alignment()  # Should not raise
+
+    def test_barbarian_chaotic_good_valid(self):
+        barb = Character35e(name="Grog", char_class="Barbarian",
+                            alignment=Alignment.CHAOTIC_GOOD)
+        barb.validate_alignment()
+
+    def test_barbarian_true_neutral_valid(self):
+        barb = Character35e(name="Grog", char_class="Barbarian",
+                            alignment=Alignment.TRUE_NEUTRAL)
+        barb.validate_alignment()
+
+    def test_barbarian_lawful_good_raises(self):
+        barb = Character35e(name="Grog", char_class="Barbarian",
+                            alignment=Alignment.LAWFUL_GOOD)
+        with pytest.raises(ValueError, match="Barbarian cannot be Lawful"):
+            barb.validate_alignment()
+
+    def test_barbarian_lawful_neutral_raises(self):
+        barb = Character35e(name="Grog", char_class="Barbarian",
+                            alignment=Alignment.LAWFUL_NEUTRAL)
+        with pytest.raises(ValueError, match="Barbarian cannot be Lawful"):
+            barb.validate_alignment()
+
+    def test_barbarian_lawful_evil_raises(self):
+        barb = Character35e(name="Grog", char_class="Barbarian",
+                            alignment=Alignment.LAWFUL_EVIL)
+        with pytest.raises(ValueError, match="Barbarian cannot be Lawful"):
+            barb.validate_alignment()
+
+    # Monk --------------------------------------------------------------------
+
+    def test_monk_lawful_good_valid(self):
+        monk = Character35e(name="Kira", char_class="Monk",
+                            alignment=Alignment.LAWFUL_GOOD)
+        monk.validate_alignment()
+
+    def test_monk_lawful_neutral_valid(self):
+        monk = Character35e(name="Kira", char_class="Monk",
+                            alignment=Alignment.LAWFUL_NEUTRAL)
+        monk.validate_alignment()
+
+    def test_monk_lawful_evil_valid(self):
+        monk = Character35e(name="Kira", char_class="Monk",
+                            alignment=Alignment.LAWFUL_EVIL)
+        monk.validate_alignment()
+
+    def test_monk_neutral_good_raises(self):
+        monk = Character35e(name="Kira", char_class="Monk",
+                            alignment=Alignment.NEUTRAL_GOOD)
+        with pytest.raises(ValueError, match="Monk must be Lawful"):
+            monk.validate_alignment()
+
+    def test_monk_chaotic_neutral_raises(self):
+        monk = Character35e(name="Kira", char_class="Monk",
+                            alignment=Alignment.CHAOTIC_NEUTRAL)
+        with pytest.raises(ValueError, match="Monk must be Lawful"):
+            monk.validate_alignment()
+
+    def test_monk_true_neutral_raises(self):
+        monk = Character35e(name="Kira", char_class="Monk",
+                            alignment=Alignment.TRUE_NEUTRAL)
+        with pytest.raises(ValueError, match="Monk must be Lawful"):
+            monk.validate_alignment()
+
+    # Paladin -----------------------------------------------------------------
+
+    def test_paladin_lawful_good_valid(self):
+        pal = Character35e(name="Aldric", char_class="Paladin",
+                           alignment=Alignment.LAWFUL_GOOD)
+        pal.validate_alignment()
+
+    def test_paladin_neutral_good_raises(self):
+        pal = Character35e(name="Aldric", char_class="Paladin",
+                           alignment=Alignment.NEUTRAL_GOOD)
+        with pytest.raises(ValueError, match="Paladin must be Lawful Good"):
+            pal.validate_alignment()
+
+    def test_paladin_lawful_neutral_raises(self):
+        pal = Character35e(name="Aldric", char_class="Paladin",
+                           alignment=Alignment.LAWFUL_NEUTRAL)
+        with pytest.raises(ValueError, match="Paladin must be Lawful Good"):
+            pal.validate_alignment()
+
+    def test_paladin_chaotic_good_raises(self):
+        pal = Character35e(name="Aldric", char_class="Paladin",
+                           alignment=Alignment.CHAOTIC_GOOD)
+        with pytest.raises(ValueError, match="Paladin must be Lawful Good"):
+            pal.validate_alignment()
+
+    def test_paladin_chaotic_evil_raises(self):
+        pal = Character35e(name="Aldric", char_class="Paladin",
+                           alignment=Alignment.CHAOTIC_EVIL)
+        with pytest.raises(ValueError, match="Paladin must be Lawful Good"):
+            pal.validate_alignment()
+
+    # Cleric / deity alignment ------------------------------------------------
+
+    def test_cleric_no_deity_skips_validation(self):
+        cleric = Character35e(name="Jozan", char_class="Cleric",
+                              alignment=Alignment.CHAOTIC_EVIL)
+        cleric.validate_alignment()  # No deity → no restriction
+
+    def test_cleric_pelor_ng_allows_ng(self):
+        cleric = Character35e(name="Jozan", char_class="Cleric",
+                              alignment=Alignment.NEUTRAL_GOOD, deity="Pelor")
+        cleric.validate_alignment()
+
+    def test_cleric_pelor_ng_allows_lg(self):
+        cleric = Character35e(name="Jozan", char_class="Cleric",
+                              alignment=Alignment.LAWFUL_GOOD, deity="Pelor")
+        cleric.validate_alignment()
+
+    def test_cleric_pelor_ng_allows_cg(self):
+        cleric = Character35e(name="Jozan", char_class="Cleric",
+                              alignment=Alignment.CHAOTIC_GOOD, deity="Pelor")
+        cleric.validate_alignment()
+
+    def test_cleric_pelor_ng_allows_true_neutral(self):
+        cleric = Character35e(name="Jozan", char_class="Cleric",
+                              alignment=Alignment.TRUE_NEUTRAL, deity="Pelor")
+        cleric.validate_alignment()
+
+    def test_cleric_pelor_ng_disallows_le(self):
+        cleric = Character35e(name="Jozan", char_class="Cleric",
+                              alignment=Alignment.LAWFUL_EVIL, deity="Pelor")
+        with pytest.raises(ValueError, match="not within one step"):
+            cleric.validate_alignment()
+
+    def test_cleric_pelor_ng_disallows_ce(self):
+        cleric = Character35e(name="Jozan", char_class="Cleric",
+                              alignment=Alignment.CHAOTIC_EVIL, deity="Pelor")
+        with pytest.raises(ValueError, match="not within one step"):
+            cleric.validate_alignment()
+
+    def test_cleric_hextor_le_allows_le(self):
+        cleric = Character35e(name="Hexite", char_class="Cleric",
+                              alignment=Alignment.LAWFUL_EVIL, deity="Hextor")
+        cleric.validate_alignment()
+
+    def test_cleric_hextor_le_allows_ln(self):
+        cleric = Character35e(name="Hexite", char_class="Cleric",
+                              alignment=Alignment.LAWFUL_NEUTRAL, deity="Hextor")
+        cleric.validate_alignment()
+
+    def test_cleric_hextor_le_allows_ne(self):
+        cleric = Character35e(name="Hexite", char_class="Cleric",
+                              alignment=Alignment.NEUTRAL_EVIL, deity="Hextor")
+        cleric.validate_alignment()
+
+    def test_cleric_hextor_le_disallows_cg(self):
+        cleric = Character35e(name="Hexite", char_class="Cleric",
+                              alignment=Alignment.CHAOTIC_GOOD, deity="Hextor")
+        with pytest.raises(ValueError, match="not within one step"):
+            cleric.validate_alignment()
+
+    def test_cleric_unknown_deity_skips_validation(self):
+        cleric = Character35e(name="Jozan", char_class="Cleric",
+                              alignment=Alignment.CHAOTIC_EVIL, deity="SomeFakeDiety")
+        cleric.validate_alignment()  # Unknown deity → skip
+
+    def test_non_restricted_class_no_error(self):
+        fighter = Character35e(name="Bob", char_class="Fighter",
+                               alignment=Alignment.CHAOTIC_EVIL)
+        fighter.validate_alignment()  # No restriction for Fighter
+
+    def test_character_has_deity_field(self):
+        c = Character35e(name="Jozan", char_class="Cleric", deity="Pelor")
+        assert c.deity == "Pelor"
+
+    def test_default_deity_is_none(self):
+        c = Character35e(name="Bob")
+        assert c.deity is None

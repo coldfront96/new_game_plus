@@ -6,6 +6,9 @@ D&D 3.5e Skill System for the New Game Plus engine.
 Implements skill ranks, ability modifiers, and the standard skill check
 mechanic: ``d20 + skill_rank + ability_modifier vs. DC``.
 
+Also implements 3.5e Skill Synergies: when a character has 5 or more ranks
+in certain skills, related skills gain a +2 competence bonus.
+
 Standard 3.5e skills tracked include Search, Survival, Craft, Listen,
 Spot, Heal, Hide, Move Silently, and others from the SRD.
 
@@ -23,7 +26,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from enum import Enum
-from typing import Dict, Optional
+from typing import Dict, List, Optional
 
 from src.rules_engine.dice import RollResult, roll_d20
 
@@ -43,7 +46,30 @@ class SkillAbility(Enum):
     CHA = "charisma"
 
 
-# Standard 3.5e skill list with their key ability
+# ---------------------------------------------------------------------------
+# Skill Synergy table (3.5e SRD p. 65)
+# Key: skill with 5+ ranks → Value: list of skills that receive +2 bonus
+# ---------------------------------------------------------------------------
+
+SKILL_SYNERGIES: Dict[str, List[str]] = {
+    "Bluff":          ["Diplomacy", "Intimidate", "Sleight of Hand", "Disguise"],
+    "Decipher Script": ["Use Magic Device"],
+    "Escape Artist":  ["Use Rope"],
+    "Handle Animal":  ["Ride"],
+    "Jump":           ["Tumble"],
+    "Knowledge":      ["Bardic Knowledge"],  # Knowledge (any) synergy with Bardic Knowledge
+    "Spellcraft":     ["Use Magic Device"],
+    "Survival":       ["Knowledge", "Survival"],  # Survival → Knowledge (Nature) tracked via Knowledge
+    "Tumble":         ["Balance", "Jump"],
+    "Use Magic Device": ["Spellcraft"],
+    "Use Rope":       ["Climb", "Escape Artist"],
+}
+
+# Survival specifically grants +2 to Knowledge checks related to nature; we
+# use the skill name "Knowledge" as a proxy here. The engine consumer is
+# responsible for narrowing to the appropriate Knowledge sub-type if needed.
+
+
 SKILL_DEFINITIONS: Dict[str, SkillAbility] = {
     "Appraise": SkillAbility.INT,
     "Balance": SkillAbility.DEX,
@@ -184,6 +210,26 @@ class SkillSystem:
         self.ranks[skill_name] = new_rank
         return new_rank
 
+    def get_synergy_bonus(self, skill_name: str) -> int:
+        """Return the total synergy bonus for *skill_name* from the 3.5e SRD
+        synergy table.
+
+        For each source skill that grants a bonus to *skill_name*, if this
+        SkillSystem has 5 or more ranks in that source skill, a +2 competence
+        bonus is added (bonuses from multiple sources stack).
+
+        Args:
+            skill_name: The target skill being checked for synergy bonuses.
+
+        Returns:
+            Total synergy bonus as a non-negative integer.
+        """
+        bonus = 0
+        for source_skill, benefiting_skills in SKILL_SYNERGIES.items():
+            if skill_name in benefiting_skills and self.get_rank(source_skill) >= 5:
+                bonus += 2
+        return bonus
+
     def check(
         self,
         skill_name: str,
@@ -191,14 +237,21 @@ class SkillSystem:
         dc: int = 10,
         misc_modifier: int = 0,
         armor_check_penalty: int = 0,
+        include_synergy: bool = True,
     ) -> SkillCheckResult:
         """Resolve a skill check against a Difficulty Class.
 
-        Formula: ``d20 + rank + ability_modifier + misc_modifier - armor_check_penalty`` vs DC.
+        Formula: ``d20 + rank + ability_modifier + misc_modifier + synergy_bonus
+        - armor_check_penalty`` vs DC.
 
         The *armor_check_penalty* is subtracted only for skills whose key
         ability is Strength or Dexterity (per the 3.5e SRD).  For all other
         skills the penalty is ignored.
+
+        Synergy bonuses (3.5e SRD p. 65) are automatically applied when
+        *include_synergy* is ``True`` (the default): if the character has 5 or
+        more ranks in qualifying source skills, a +2 competence bonus is added
+        to this check.
 
         Args:
             skill_name:          Name of the skill being checked.
@@ -209,6 +262,8 @@ class SkillSystem:
             armor_check_penalty: The total Armor Check Penalty from equipped
                                  gear (non-negative integer; applied as a
                                  penalty to STR- and DEX-based skills only).
+            include_synergy:     Whether to automatically apply synergy bonuses
+                                 from the SKILL_SYNERGIES table (default True).
 
         Returns:
             A :class:`SkillCheckResult` with the full outcome.
@@ -223,7 +278,9 @@ class SkillSystem:
         ):
             acp_penalty = armor_check_penalty
 
-        total_modifier = rank + ability_modifier + misc_modifier - acp_penalty
+        synergy_bonus = self.get_synergy_bonus(skill_name) if include_synergy else 0
+
+        total_modifier = rank + ability_modifier + misc_modifier + synergy_bonus - acp_penalty
         roll = roll_d20(modifier=total_modifier)
         total = roll.total
         success = total >= dc

@@ -179,6 +179,44 @@ def _ability_modifier(score: int) -> int:
     return (score - 10) // 2
 
 
+# Map alignment codes to (law_chaos, good_evil) integer positions.
+# Law/Chaos: Lawful=0, Neutral=1, Chaotic=2
+# Good/Evil: Good=0, Neutral=1, Evil=2
+_ALIGNMENT_AXES: Dict[str, tuple] = {
+    "LG": (0, 0),
+    "NG": (1, 0),
+    "CG": (2, 0),
+    "LN": (0, 1),
+    "N":  (1, 1),
+    "CN": (2, 1),
+    "LE": (0, 2),
+    "NE": (1, 2),
+    "CE": (2, 2),
+}
+
+
+def _alignment_within_one_step(char_alignment: str, deity_alignment: str) -> bool:
+    """Return ``True`` if *char_alignment* is within one step of *deity_alignment*.
+
+    "One step" means differing by at most 1 on the Law/Chaos axis OR at most 1
+    on the Good/Evil axis (not both simultaneously exceeding 1).
+
+    Args:
+        char_alignment:  Two-letter (or "N") alignment code of the character.
+        deity_alignment: Two-letter (or "N") alignment code of the deity.
+
+    Returns:
+        ``True`` if the alignments are compatible per the 3.5e SRD rule.
+    """
+    char_pos = _ALIGNMENT_AXES.get(char_alignment)
+    deity_pos = _ALIGNMENT_AXES.get(deity_alignment)
+    if char_pos is None or deity_pos is None:
+        return False
+    lc_diff = abs(char_pos[0] - deity_pos[0])
+    ge_diff = abs(char_pos[1] - deity_pos[1])
+    return lc_diff <= 1 and ge_diff <= 1
+
+
 def _bab_for_level(progression: str, level: int) -> int:
     """Return the base attack bonus for a given progression type and level.
 
@@ -262,6 +300,7 @@ class Character35e:
     spellbook: Optional["Spellbook"] = None
     spells_known: Optional["SpellsKnownManager"] = None
     spontaneous_caster: Optional["SpontaneousCasterManager"] = None
+    deity: Optional[str] = None
 
     # ------------------------------------------------------------------
     # Alignment
@@ -271,6 +310,57 @@ class Character35e:
     def alignment_str(self) -> str:
         """Full alignment name (e.g. ``"Lawful Good"``, ``"Chaotic Neutral"``)."""
         return self.alignment.full_name
+
+    # ------------------------------------------------------------------
+    # Alignment restriction validation (3.5e SRD)
+    # ------------------------------------------------------------------
+
+    def validate_alignment(self) -> None:
+        """Validate that this character's alignment meets class restrictions.
+
+        Enforces the following 3.5e SRD rules:
+
+        * **Barbarian** – cannot be Lawful (any Lawful alignment is forbidden).
+        * **Monk** – must be Lawful (Lawful Good, Lawful Neutral, or Lawful Evil).
+        * **Paladin** – must be Lawful Good.
+        * **Cleric** – must be within one alignment step of their chosen deity's
+          alignment on both the Law/Chaos and Good/Evil axes.
+
+        Raises:
+            ValueError: If the character's alignment violates their class
+                        restriction, with a descriptive error message.
+        """
+        al = self.alignment
+
+        if self.char_class == "Barbarian":
+            if al in (Alignment.LAWFUL_GOOD, Alignment.LAWFUL_NEUTRAL, Alignment.LAWFUL_EVIL):
+                raise ValueError(
+                    f"Barbarian cannot be Lawful; current alignment is {al.full_name}."
+                )
+
+        elif self.char_class == "Monk":
+            if al not in (Alignment.LAWFUL_GOOD, Alignment.LAWFUL_NEUTRAL, Alignment.LAWFUL_EVIL):
+                raise ValueError(
+                    f"Monk must be Lawful; current alignment is {al.full_name}."
+                )
+
+        elif self.char_class == "Paladin":
+            if al != Alignment.LAWFUL_GOOD:
+                raise ValueError(
+                    f"Paladin must be Lawful Good; current alignment is {al.full_name}."
+                )
+
+        elif self.char_class == "Cleric" and self.deity is not None:
+            from src.rules_engine.deities import DeityRegistry
+            try:
+                deity = DeityRegistry.get(self.deity)
+            except KeyError:
+                return  # Unknown deity; skip validation
+            if not _alignment_within_one_step(al.value, deity.alignment):
+                raise ValueError(
+                    f"Cleric alignment {al.full_name} is not within one step of "
+                    f"deity {self.deity!r} ({deity.alignment})."
+                )
 
     # ------------------------------------------------------------------
     # Ability modifiers (SRD formula: (score - 10) // 2 + racial bonus)
