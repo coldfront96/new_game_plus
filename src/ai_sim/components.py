@@ -66,7 +66,7 @@ class Health:
 # ---------------------------------------------------------------------------
 
 class NeedType(Enum):
-    """Enumeration of colonist basic needs."""
+    """Enumeration of agent/NPC basic needs."""
 
     HUNGER = auto()
     REST = auto()
@@ -77,7 +77,7 @@ class NeedType(Enum):
 
 @dataclass
 class Needs:
-    """Colonist needs represented as values between 0 (critical) and 100 (satisfied)."""
+    """Agent/NPC needs represented as values between 0 (critical) and 100 (satisfied)."""
 
     hunger: float = 100.0
     rest: float = 100.0
@@ -120,7 +120,7 @@ class Needs:
 
 @dataclass
 class Stats:
-    """Combat and skill stats for a colonist or creature."""
+    """Combat and skill stats for a character, NPC, or creature."""
 
     strength: int = 10
     dexterity: int = 10

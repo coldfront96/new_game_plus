@@ -11,21 +11,21 @@ Usage::
 
     from src.ai_sim.entity import Entity
 
-    colonist = Entity(name="Aldric")
-    colonist.add_tag("colonist")
-    colonist.add_tag("warrior")
+    agent = Entity(name="Aldric")
+    agent.add_tag("npc")
+    agent.add_tag("warrior")
 
     # Attach plain-data component objects
     from src.ai_sim.components import Position, Health
-    colonist.add_component(Position(x=10, y=64, z=10))
-    colonist.add_component(Health(current=100, maximum=100))
+    agent.add_component(Position(x=10, y=64, z=10))
+    agent.add_component(Health(current=100, maximum=100))
 
-    print(colonist)
-    pos = colonist.get_component(Position)
+    print(agent)
+    pos = agent.get_component(Position)
     print(pos.x, pos.y, pos.z)  # 10 64 10
 
-    colonist.remove_tag("warrior")
-    print(colonist.has_tag("warrior"))  # False
+    agent.remove_tag("warrior")
+    print(agent.has_tag("warrior"))  # False
 """
 
 from __future__ import annotations
@@ -45,11 +45,11 @@ class Entity:
     Attributes:
         entity_id: Globally unique identifier (UUID4). Auto-generated if
                    not supplied.
-        name:      Human-readable label (e.g. colonist name or creature type).
+        name:      Human-readable label (e.g. agent name or creature type).
         is_active: When ``False`` the entity is ignored by all Systems and
                    scheduled for removal at the end of the current tick.
         tags:      Unordered set of string labels used for fast category
-                   queries (e.g. ``"colonist"``, ``"hostile"``, ``"on_fire"``).
+                   queries (e.g. ``"npc"``, ``"hostile"``, ``"on_fire"``).
         _components: Internal mapping of ``type → component instance``.
                      Consumers should use :meth:`add_component`,
                      :meth:`get_component`, and :meth:`remove_component`.

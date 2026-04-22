@@ -13,7 +13,7 @@ from setuptools import setup, find_packages
 setup(
     name="new_game_plus",
     version="0.1.0",
-    description="Hybrid colony-simulation RPG engine — Dwarf Fortress × Minecraft × Lootfiend",
+    description="High-fidelity game engine and simulation built on D&D 3.5e SRD mechanics with autonomous AI agency in a procedural voxel world",
     author="New Game Plus Team",
     python_requires=">=3.11",
     packages=find_packages(exclude=["tests*"]),
