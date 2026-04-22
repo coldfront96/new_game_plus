@@ -43,13 +43,14 @@ class CombatResult:
     """Outcome of a single attack action.
 
     Attributes:
-        hit:           ``True`` if the attack met or exceeded the target AC.
-        roll:          The d20 :class:`RollResult` (includes raw die value).
-        attack_bonus:  Total attack modifier applied to the d20 roll.
-        target_ac:     Defender's Armour Class used for the comparison.
-        damage_roll:   Damage :class:`RollResult` (``None`` on a miss).
-        total_damage:  Final damage dealt (0 on a miss, ≥ 1 on a hit).
-        critical:      ``True`` if the attack was a natural 20 critical hit.
+        hit:                    ``True`` if the attack met or exceeded the target AC.
+        roll:                   The d20 :class:`RollResult` (includes raw die value).
+        attack_bonus:           Total attack modifier applied to the d20 roll.
+        target_ac:              Defender's Armour Class used for the comparison.
+        damage_roll:            Damage :class:`RollResult` (``None`` on a miss).
+        total_damage:           Final damage dealt after DR (0 on a miss, ≥ 1 on a hit).
+        critical:               ``True`` if the attack was a confirmed critical hit.
+        damage_reduction_applied: DR subtracted from the raw damage total (0 if none).
     """
 
     hit: bool
@@ -59,6 +60,7 @@ class CombatResult:
     damage_roll: Optional[RollResult]
     total_damage: int
     critical: bool
+    damage_reduction_applied: int = 0
 
 
 # ---------------------------------------------------------------------------
@@ -75,10 +77,20 @@ class AttackResolver:
     _UNARMED_DICE_COUNT: int = 1
     _UNARMED_DICE_SIDES: int = 3
 
-    # Natural 20 is always a hit and a potential critical.
-    _NATURAL_CRIT: int = 20
     # Natural 1 is always a miss.
     _NATURAL_FUMBLE: int = 1
+
+    @classmethod
+    def _parse_damage_reduction(cls, dr_str: str) -> int:
+        """Parse a DR string such as ``"5/Magic"`` or ``"3/-"`` and return
+        the numeric reduction amount.  Returns ``0`` for empty or invalid strings.
+        """
+        if not dr_str:
+            return 0
+        try:
+            return int(dr_str.split("/")[0])
+        except (ValueError, IndexError):
+            return 0
 
     @classmethod
     def resolve_attack(
@@ -90,15 +102,22 @@ class AttackResolver:
         damage_dice_count: int = 0,
         damage_dice_sides: int = 0,
         damage_bonus: int = 0,
+        threat_range: int = 20,
+        damage_multiplier: int = 2,
     ) -> CombatResult:
         """Resolve a single melee (or ranged) attack.
 
         Steps (per the 3.5e SRD):
         1. Roll d20 + attack bonus.
-        2. Compare against defender's AC.
-        3. On a hit, roll damage.
-        4. Natural 20 → automatic hit + double damage (simplified crit).
-        5. Natural 1 → automatic miss regardless of bonuses.
+        2. Natural 1 → automatic miss.
+        3. Compare total against defender's AC (hit or miss).
+        4. Natural 20 or any roll ≥ *threat_range* is a *critical threat*.
+        5. On a critical threat, roll a second *confirmation* roll against AC.
+           If the confirmation hits, the attack is a *confirmed critical*.
+        6. On a hit, roll damage; multiply by *damage_multiplier* on a
+           confirmed critical.
+        7. Subtract the defender's ``damage_reduction`` from the final damage.
+           Minimum 1 damage on a hit (applied before DR has a floor of 0 net).
 
         Args:
             attacker:          The attacking :class:`Character35e`.
@@ -108,6 +127,10 @@ class AttackResolver:
             damage_dice_count: Override number of damage dice (0 → unarmed).
             damage_dice_sides: Override damage die size (0 → unarmed).
             damage_bonus:      Extra flat damage added on top of STR modifier.
+            threat_range:      Minimum die face that generates a critical threat
+                               (default 20; weapons with 19-20 pass 19, etc.).
+            damage_multiplier: Damage multiplier applied on a confirmed critical
+                               (default ×2; greataxe uses ×3, etc.).
 
         Returns:
             A :class:`CombatResult` describing the outcome.
@@ -123,17 +146,35 @@ class AttackResolver:
         raw_d20 = roll.raw  # the actual die face (1–20)
 
         target_ac = defender.armor_class
-        critical = raw_d20 == cls._NATURAL_CRIT
 
         # --- Hit determination ----------------------------------------------
         if raw_d20 == cls._NATURAL_FUMBLE:
-            hit = False
-        elif critical:
-            hit = True
-        else:
-            hit = roll.total >= target_ac
+            return CombatResult(
+                hit=False,
+                roll=roll,
+                attack_bonus=attack_bonus,
+                target_ac=target_ac,
+                damage_roll=None,
+                total_damage=0,
+                critical=False,
+            )
 
-        # --- Damage ----------------------------------------------------------
+        hit = roll.total >= target_ac
+
+        # --- Critical threat & confirmation ---------------------------------
+        is_threat = raw_d20 >= threat_range
+        confirmed_critical = False
+        if is_threat and hit:
+            # Natural 20 is always a hit; confirm roll must also meet AC.
+            confirm_roll = roll_d20(modifier=attack_bonus)
+            confirmed_critical = confirm_roll.total >= target_ac
+        elif is_threat:
+            # Threat on a miss: confirmation would also need to beat AC.
+            confirm_roll = roll_d20(modifier=attack_bonus)
+            if confirm_roll.total >= target_ac:
+                hit = True
+                confirmed_critical = True
+
         if not hit:
             return CombatResult(
                 hit=False,
@@ -145,6 +186,7 @@ class AttackResolver:
                 critical=False,
             )
 
+        # --- Damage ----------------------------------------------------------
         # Determine damage dice
         d_count = damage_dice_count if damage_dice_count > 0 else cls._UNARMED_DICE_COUNT
         d_sides = damage_dice_sides if damage_dice_sides > 0 else cls._UNARMED_DICE_SIDES
@@ -158,10 +200,13 @@ class AttackResolver:
         # Minimum 1 damage on a hit (3.5e SRD rule)
         total_damage = max(1, damage_roll.total)
 
-        # Critical hit doubles damage (simplified — ignores crit multiplier
-        # variations by weapon type for now).
-        if critical:
-            total_damage *= 2
+        # Apply critical multiplier on confirmed crits.
+        if confirmed_critical:
+            total_damage *= damage_multiplier
+
+        # Subtract defender's Damage Reduction.
+        dr_value = cls._parse_damage_reduction(defender.damage_reduction)
+        total_damage = max(0, total_damage - dr_value)
 
         return CombatResult(
             hit=True,
@@ -170,7 +215,8 @@ class AttackResolver:
             target_ac=target_ac,
             damage_roll=damage_roll,
             total_damage=total_damage,
-            critical=critical,
+            critical=confirmed_critical,
+            damage_reduction_applied=dr_value,
         )
 
 
