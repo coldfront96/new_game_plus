@@ -21,12 +21,13 @@ Systems
 
 from __future__ import annotations
 
+import math
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional, Tuple
 
 from src.ai_sim.behavior import BehaviorFSM, BehaviorState, EntityTask, TaskType
-from src.ai_sim.components import Health, Inventory, Needs, Position
+from src.ai_sim.components import Health, Inventory, Needs, Position, Vision, VisionType
 from src.ai_sim.entity import Entity
 from src.core.event_bus import EventBus
 from src.loot_math.item import Item, ItemType, Rarity
@@ -38,6 +39,7 @@ from src.rules_engine.magic import SpellComponent, SpellRegistry
 from src.rules_engine.progression import XPManager, level_up
 from src.rules_engine.skills import SkillSystem
 from src.terrain.block import Block
+from src.terrain.lighting import LightLevel, LightSystem
 
 
 # ---------------------------------------------------------------------------
@@ -1490,7 +1492,7 @@ class VisibilityResult:
     """
 
     visible: bool
-    light_level: Any
+    light_level: Optional[LightLevel]
     distance_ft: float
     in_range: bool
     concealment: int
@@ -1514,7 +1516,7 @@ class VisionSystem(System):
     # 1 voxel = 5 feet (standard 3.5e grid scale)
     VOXELS_TO_FEET: float = 5.0
 
-    def __init__(self, light_system: Any) -> None:
+    def __init__(self, light_system: LightSystem) -> None:
         self._light_system = light_system
 
     def check_visibility(
@@ -1534,10 +1536,6 @@ class VisionSystem(System):
         Returns:
             A :class:`VisibilityResult` describing the outcome.
         """
-        import math
-        from src.ai_sim.components import Vision, VisionType
-        from src.terrain.lighting import LightLevel
-
         # --- Positions -------------------------------------------------------
         obs_pos: Optional[Position] = observer_entity.get_component(Position)
         tgt_pos: Optional[Position] = target_entity.get_component(Position)

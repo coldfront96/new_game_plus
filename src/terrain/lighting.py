@@ -304,7 +304,7 @@ class LightSystem:
 
         Vision type rules (3.5e SRD):
         - ``"Normal"``:         Standard light evaluation.
-        - ``"Low-Light Vision``: Doubles all light-source radii.
+        - ``"Low-Light Vision"``: Doubles all light-source radii.
         - ``"Darkvision"``:     Treats DARKNESS as BRIGHT within 60 ft of the
                                 viewer; normal light otherwise.  Callers should
                                 use :meth:`get_light_level` and handle darkvision
