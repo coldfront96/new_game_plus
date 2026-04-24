@@ -70,11 +70,11 @@ class TerrainType(Enum):
 
 @dataclass(slots=True)
 class WeatherPenalties:
-    ranged_attack_penalty: int     # negative = penalty to attack rolls
+    ranged_attack_penalty: int     # negative value; sum of precip + wind penalties
     visibility_ft: int             # max visibility distance in feet
     movement_penalty_pct: float    # fraction of normal movement (1.0 = no penalty)
-    listen_penalty: int            # penalty to Listen checks
-    spot_penalty: int              # penalty to Spot checks
+    listen_penalty: int            # negative value applied to Listen checks
+    spot_penalty: int              # negative value applied to Spot checks
     fort_dc_cold: int | None       # Fort save DC for cold damage (if applicable)
     fort_dc_heat: int | None       # Fort save DC for heat damage (if applicable)
     fort_dc_wind: int | None       # Fort save DC for wind effects (if applicable)
