@@ -163,6 +163,68 @@ from src.rules_engine.magic import (
     MARK_OF_JUSTICE,
     DISPEL_EVIL,
     HOLY_AURA,
+    # Phase 4 – Druid Level 0
+    FLARE,
+    KNOW_DIRECTION,
+    CURE_MINOR_WOUNDS,
+    DETECT_ANIMALS_OR_PLANTS,
+    SHILLELAGH,
+    MENDING,
+    # Phase 4 – Druid Level 1
+    ENTANGLE,
+    FAERIE_FIRE,
+    LONGSTRIDER,
+    SPEAK_WITH_ANIMALS,
+    ANIMAL_FRIENDSHIP,
+    PRODUCE_FLAME,
+    # Phase 4 – Druid Level 2
+    BARKSKIN,
+    CALL_LIGHTNING,
+    CHARM_ANIMAL,
+    WARP_WOOD,
+    FLAME_BLADE,
+    TREE_SHAPE,
+    # Phase 4 – Druid Level 3
+    CONTAGION,
+    WATER_BREATHING,
+    POISON,
+    SPIKE_GROWTH,
+    QUENCH,
+    # Phase 4 – Druid Level 4
+    RUSTING_GRASP,
+    COMMAND_PLANTS,
+    REINCARNATE,
+    REPEL_VERMIN,
+    # Phase 4 – Druid Level 5
+    ANIMAL_GROWTH,
+    AWAKEN,
+    WALL_OF_FIRE,
+    CALL_LIGHTNING_STORM,
+    # Phase 4 – Druid Level 6
+    ANTILIFE_SHELL,
+    LIVEOAK,
+    # Phase 4 – Druid Level 7
+    CONTROL_WEATHER,
+    # Phase 4 – Druid Level 8
+    EARTHQUAKE,
+    # Phase 4 – Druid Level 9
+    ELEMENTAL_SWARM,
+    STORM_OF_VENGEANCE,
+    # Phase 4 – Ranger Level 1
+    ALARM,
+    ANIMAL_MESSENGER,
+    JUMP,
+    # Phase 4 – Ranger Level 2
+    SNARE,
+    PASS_WITHOUT_TRACE,
+    WIND_WALL,
+    # Phase 4 – Ranger Level 3
+    HEAL_ANIMAL_COMPANION,
+    REMOVE_DISEASE,
+    # Phase 4 – Ranger Level 4
+    COMMUNE_WITH_NATURE,
+    TREE_STRIDE,
+    FIND_THE_PATH,
     Spell,
     SpellComponent,
     SpellRegistry,
@@ -270,8 +332,8 @@ class TestSpellRegistry:
 
     def test_count(self):
         registry = create_default_registry()
-        assert registry.count == 139
-        assert len(registry) == 139
+        assert registry.count == 187
+        assert len(registry) == 187
 
     def test_contains(self):
         registry = create_default_registry()
@@ -2317,3 +2379,644 @@ class TestPhase3ClericPaladinSpells:
         assert "Command" in enchantments
         assert "Aid" in enchantments
         assert "Prayer" in enchantments
+
+
+# ---------------------------------------------------------------------------
+# Phase 4 – Druid & Ranger Nature Spells
+# ---------------------------------------------------------------------------
+
+class TestPhase4DruidRangerSpells:
+
+    # ------------------------------------------------------------------ #
+    #  Registry membership                                                 #
+    # ------------------------------------------------------------------ #
+
+    def test_all_druid_orison_spells_in_registry(self):
+        registry = create_default_registry()
+        for name in (
+            "Flare", "Know Direction", "Cure Minor Wounds",
+            "Detect Animals or Plants", "Shillelagh", "Mending",
+        ):
+            assert name in registry, f"'{name}' missing from default registry"
+
+    def test_all_druid_level1_spells_in_registry(self):
+        registry = create_default_registry()
+        for name in (
+            "Entangle", "Faerie Fire", "Longstrider",
+            "Speak with Animals", "Animal Friendship", "Produce Flame",
+        ):
+            assert name in registry, f"'{name}' missing from default registry"
+
+    def test_all_druid_level2_spells_in_registry(self):
+        registry = create_default_registry()
+        for name in (
+            "Barkskin", "Call Lightning", "Charm Animal",
+            "Warp Wood", "Flame Blade", "Tree Shape",
+        ):
+            assert name in registry, f"'{name}' missing from default registry"
+
+    def test_all_druid_level3_spells_in_registry(self):
+        registry = create_default_registry()
+        for name in ("Contagion", "Water Breathing", "Poison", "Spike Growth", "Quench"):
+            assert name in registry, f"'{name}' missing from default registry"
+
+    def test_all_druid_level4_spells_in_registry(self):
+        registry = create_default_registry()
+        for name in ("Rusting Grasp", "Command Plants", "Reincarnate", "Repel Vermin"):
+            assert name in registry, f"'{name}' missing from default registry"
+
+    def test_all_druid_level5_spells_in_registry(self):
+        registry = create_default_registry()
+        for name in ("Animal Growth", "Awaken", "Wall of Fire", "Call Lightning Storm"):
+            assert name in registry, f"'{name}' missing from default registry"
+
+    def test_all_druid_high_level_spells_in_registry(self):
+        registry = create_default_registry()
+        for name in (
+            "Antilife Shell", "Liveoak",
+            "Control Weather",
+            "Earthquake",
+            "Elemental Swarm", "Storm of Vengeance",
+        ):
+            assert name in registry, f"'{name}' missing from default registry"
+
+    def test_all_ranger_spells_in_registry(self):
+        registry = create_default_registry()
+        for name in (
+            "Alarm", "Animal Messenger", "Jump",
+            "Snare", "Pass without Trace", "Wind Wall",
+            "Heal Animal Companion", "Remove Disease",
+            "Commune with Nature", "Tree Stride", "Find the Path",
+        ):
+            assert name in registry, f"'{name}' missing from default registry"
+
+    # ------------------------------------------------------------------ #
+    #  Druid orison level tests                                            #
+    # ------------------------------------------------------------------ #
+
+    def test_druid_orisons_are_level_0(self):
+        for spell in (
+            FLARE, KNOW_DIRECTION, CURE_MINOR_WOUNDS,
+            DETECT_ANIMALS_OR_PLANTS, SHILLELAGH, MENDING,
+        ):
+            assert spell.level == 0, f"{spell.name} should be level 0"
+
+    def test_druid_orisons_schools(self):
+        assert FLARE.school == SpellSchool.EVOCATION
+        assert KNOW_DIRECTION.school == SpellSchool.DIVINATION
+        assert CURE_MINOR_WOUNDS.school == SpellSchool.CONJURATION
+        assert DETECT_ANIMALS_OR_PLANTS.school == SpellSchool.DIVINATION
+        assert SHILLELAGH.school == SpellSchool.TRANSMUTATION
+        assert MENDING.school == SpellSchool.TRANSMUTATION
+
+    def test_shillelagh_uses_divine_focus(self):
+        assert SpellComponent.DIVINE_FOCUS in SHILLELAGH.components
+
+    # ------------------------------------------------------------------ #
+    #  Druid Level 1 attribute tests                                       #
+    # ------------------------------------------------------------------ #
+
+    def test_druid_level1_spells_have_correct_level(self):
+        for spell in (
+            ENTANGLE, FAERIE_FIRE, LONGSTRIDER,
+            SPEAK_WITH_ANIMALS, ANIMAL_FRIENDSHIP, PRODUCE_FLAME,
+        ):
+            assert spell.level == 1, f"{spell.name} should be level 1"
+
+    def test_entangle_uses_divine_focus(self):
+        assert SpellComponent.DIVINE_FOCUS in ENTANGLE.components
+
+    def test_faerie_fire_uses_divine_focus(self):
+        assert SpellComponent.DIVINE_FOCUS in FAERIE_FIRE.components
+
+    def test_produce_flame_descriptor(self):
+        assert "Fire" in PRODUCE_FLAME.descriptor
+
+    def test_animal_friendship_descriptor(self):
+        assert "Mind-Affecting" in ANIMAL_FRIENDSHIP.descriptor
+        assert "Animal" in ANIMAL_FRIENDSHIP.descriptor
+
+    # ------------------------------------------------------------------ #
+    #  Druid Level 2 attribute tests                                       #
+    # ------------------------------------------------------------------ #
+
+    def test_barkskin_uses_divine_focus(self):
+        assert SpellComponent.DIVINE_FOCUS in BARKSKIN.components
+
+    def test_flame_blade_uses_divine_focus(self):
+        assert SpellComponent.DIVINE_FOCUS in FLAME_BLADE.components
+
+    def test_charm_animal_school(self):
+        assert CHARM_ANIMAL.school == SpellSchool.ENCHANTMENT
+
+    def test_call_lightning_school(self):
+        assert CALL_LIGHTNING.school == SpellSchool.CONJURATION
+        assert "Electricity" in CALL_LIGHTNING.descriptor
+
+    # ------------------------------------------------------------------ #
+    #  Druid Level 3-4 attribute tests                                     #
+    # ------------------------------------------------------------------ #
+
+    def test_poison_uses_divine_focus(self):
+        assert SpellComponent.DIVINE_FOCUS in POISON.components
+
+    def test_spike_growth_uses_divine_focus(self):
+        assert SpellComponent.DIVINE_FOCUS in SPIKE_GROWTH.components
+
+    def test_quench_uses_divine_focus(self):
+        assert SpellComponent.DIVINE_FOCUS in QUENCH.components
+
+    def test_rusting_grasp_uses_divine_focus(self):
+        assert SpellComponent.DIVINE_FOCUS in RUSTING_GRASP.components
+
+    def test_reincarnate_uses_divine_focus(self):
+        assert SpellComponent.DIVINE_FOCUS in REINCARNATE.components
+
+    def test_repel_vermin_uses_divine_focus(self):
+        assert SpellComponent.DIVINE_FOCUS in REPEL_VERMIN.components
+
+    def test_contagion_school(self):
+        assert CONTAGION.school == SpellSchool.NECROMANCY
+
+    # ------------------------------------------------------------------ #
+    #  Druid Level 5+ attribute tests                                      #
+    # ------------------------------------------------------------------ #
+
+    def test_wall_of_fire_uses_divine_focus(self):
+        assert SpellComponent.DIVINE_FOCUS in WALL_OF_FIRE.components
+
+    def test_wall_of_fire_descriptor(self):
+        assert "Fire" in WALL_OF_FIRE.descriptor
+
+    def test_call_lightning_storm_school(self):
+        assert CALL_LIGHTNING_STORM.school == SpellSchool.CONJURATION
+        assert "Electricity" in CALL_LIGHTNING_STORM.descriptor
+
+    def test_antilife_shell_uses_divine_focus(self):
+        assert SpellComponent.DIVINE_FOCUS in ANTILIFE_SHELL.components
+
+    def test_earthquake_uses_divine_focus(self):
+        assert SpellComponent.DIVINE_FOCUS in EARTHQUAKE.components
+
+    def test_earthquake_level(self):
+        assert EARTHQUAKE.level == 8
+
+    def test_elemental_swarm_level(self):
+        assert ELEMENTAL_SWARM.level == 9
+
+    def test_storm_of_vengeance_level(self):
+        assert STORM_OF_VENGEANCE.level == 9
+
+    def test_control_weather_level(self):
+        assert CONTROL_WEATHER.level == 7
+
+    # ------------------------------------------------------------------ #
+    #  Ranger spell levels                                                 #
+    # ------------------------------------------------------------------ #
+
+    def test_ranger_level1_spells(self):
+        for spell in (ALARM, ANIMAL_MESSENGER, JUMP):
+            assert spell.level == 1, f"{spell.name} should be level 1"
+
+    def test_ranger_level2_spells(self):
+        for spell in (SNARE, PASS_WITHOUT_TRACE, WIND_WALL):
+            assert spell.level == 2, f"{spell.name} should be level 2"
+
+    def test_ranger_level3_spells(self):
+        for spell in (HEAL_ANIMAL_COMPANION, REMOVE_DISEASE):
+            assert spell.level == 3, f"{spell.name} should be level 3"
+
+    def test_ranger_level4_spells(self):
+        for spell in (COMMUNE_WITH_NATURE, TREE_STRIDE, FIND_THE_PATH):
+            assert spell.level == 4, f"{spell.name} should be level 4"
+
+    def test_snare_uses_divine_focus(self):
+        assert SpellComponent.DIVINE_FOCUS in SNARE.components
+
+    def test_pass_without_trace_uses_divine_focus(self):
+        assert SpellComponent.DIVINE_FOCUS in PASS_WITHOUT_TRACE.components
+
+    def test_wind_wall_uses_divine_focus(self):
+        assert SpellComponent.DIVINE_FOCUS in WIND_WALL.components
+
+    def test_tree_stride_uses_divine_focus(self):
+        assert SpellComponent.DIVINE_FOCUS in TREE_STRIDE.components
+
+    def test_wind_wall_descriptor(self):
+        assert "Air" in WIND_WALL.descriptor
+
+    def test_alarm_school(self):
+        assert ALARM.school == SpellSchool.ABJURATION
+
+    def test_tree_stride_school(self):
+        assert TREE_STRIDE.school == SpellSchool.CONJURATION
+        assert TREE_STRIDE.subschool == "Teleportation"
+
+    # ------------------------------------------------------------------ #
+    #  Effect callback tests – Barkskin scaling                           #
+    # ------------------------------------------------------------------ #
+
+    def test_barkskin_cl3_gives_plus2(self):
+        result = BARKSKIN.effect_callback(None, None, 3)
+        assert result["natural_armor_bonus"] == 2
+        assert result["bonus_type"] == "natural armor"
+
+    def test_barkskin_cl6_gives_plus3(self):
+        result = BARKSKIN.effect_callback(None, None, 6)
+        assert result["natural_armor_bonus"] == 3
+
+    def test_barkskin_cl9_gives_plus4(self):
+        result = BARKSKIN.effect_callback(None, None, 9)
+        assert result["natural_armor_bonus"] == 4
+
+    def test_barkskin_cl15_capped_at_plus5(self):
+        result = BARKSKIN.effect_callback(None, None, 15)
+        assert result["natural_armor_bonus"] == 5
+
+    def test_barkskin_cl20_still_capped_at_plus5(self):
+        result = BARKSKIN.effect_callback(None, None, 20)
+        assert result["natural_armor_bonus"] == 5
+
+    def test_barkskin_duration_scales(self):
+        result = BARKSKIN.effect_callback(None, None, 7)
+        assert result["duration_minutes"] == 70
+
+    # ------------------------------------------------------------------ #
+    #  Effect callback tests – Produce Flame scaling                      #
+    # ------------------------------------------------------------------ #
+
+    def test_produce_flame_cl1_bonus_is_1(self):
+        result = PRODUCE_FLAME.effect_callback(None, None, 1)
+        assert result["melee_bonus"] == 1
+        assert result["damage"] == "1d6+1"
+
+    def test_produce_flame_cl3_bonus_is_3(self):
+        result = PRODUCE_FLAME.effect_callback(None, None, 3)
+        assert result["melee_bonus"] == 3
+        assert result["damage"] == "1d6+3"
+
+    def test_produce_flame_cl5_bonus_is_5(self):
+        result = PRODUCE_FLAME.effect_callback(None, None, 5)
+        assert result["melee_bonus"] == 5
+        assert result["damage"] == "1d6+5"
+
+    def test_produce_flame_cl10_capped_at_5(self):
+        result = PRODUCE_FLAME.effect_callback(None, None, 10)
+        assert result["melee_bonus"] == 5
+        assert result["damage"] == "1d6+5"
+        assert result["damage_type"] == "Fire"
+
+    # ------------------------------------------------------------------ #
+    #  Effect callback tests – Quench scaling                             #
+    # ------------------------------------------------------------------ #
+
+    def test_quench_cl5_deals_5d6(self):
+        result = QUENCH.effect_callback(None, None, 5)
+        assert result["fire_creature_damage"] == "5d6"
+        assert result["extinguishes_fires"] is True
+
+    def test_quench_cl10_deals_10d6(self):
+        result = QUENCH.effect_callback(None, None, 10)
+        assert result["fire_creature_damage"] == "10d6"
+
+    def test_quench_cl15_capped_at_10d6(self):
+        result = QUENCH.effect_callback(None, None, 15)
+        assert result["fire_creature_damage"] == "10d6"
+
+    def test_quench_area(self):
+        result = QUENCH.effect_callback(None, None, 7)
+        assert result["area"] == "20-ft radius"
+
+    # ------------------------------------------------------------------ #
+    #  Effect callback tests – Call Lightning Storm                       #
+    # ------------------------------------------------------------------ #
+
+    def test_call_lightning_storm_damage_is_5d6(self):
+        result = CALL_LIGHTNING_STORM.effect_callback(None, None, 9)
+        assert result["damage_per_bolt"] == "5d6"
+        assert result["save"] == "Reflex half"
+
+    def test_call_lightning_storm_bolts_scale(self):
+        result = CALL_LIGHTNING_STORM.effect_callback(None, None, 10)
+        assert result["bolts_available"] == 10
+
+    def test_call_lightning_storm_duration_scales(self):
+        result = CALL_LIGHTNING_STORM.effect_callback(None, None, 9)
+        assert result["duration_minutes"] == 90
+
+    # ------------------------------------------------------------------ #
+    #  Effect callback tests – Storm of Vengeance phases                  #
+    # ------------------------------------------------------------------ #
+
+    def test_storm_of_vengeance_has_four_effect_phases(self):
+        result = STORM_OF_VENGEANCE.effect_callback(None, None, 18)
+        effects = result["effects"]
+        assert len(effects) == 4
+        assert "acid rain" in effects
+        assert "lightning" in effects
+        assert "hail" in effects
+        assert "divine fire" in effects
+
+    def test_storm_of_vengeance_area(self):
+        result = STORM_OF_VENGEANCE.effect_callback(None, None, 18)
+        assert result["area"] == "360-ft radius"
+        assert result["max_rounds"] == 10
+
+    # ------------------------------------------------------------------ #
+    #  Effect callback tests – miscellaneous                              #
+    # ------------------------------------------------------------------ #
+
+    def test_entangle_effect(self):
+        result = ENTANGLE.effect_callback(None, None, 5)
+        assert result["area"] == "40-ft radius"
+        assert result["save"] == "Reflex negates"
+        assert result["duration_minutes"] == 5
+
+    def test_flare_effect(self):
+        result = FLARE.effect_callback(None, None, 1)
+        assert result["penalty"] == -1
+        assert result["duration_minutes"] == 1
+        assert result["save"] == "Fortitude negates"
+
+    def test_know_direction_effect(self):
+        result = KNOW_DIRECTION.effect_callback(None, None, 1)
+        assert result["reveals"] == "north direction"
+
+    def test_cure_minor_wounds_effect(self):
+        result = CURE_MINOR_WOUNDS.effect_callback(None, None, 5)
+        assert result["healing"] == 1
+
+    def test_shillelagh_duration_scales(self):
+        result = SHILLELAGH.effect_callback(None, None, 7)
+        assert result["enhancement_bonus"] == 1
+        assert result["damage_die"] == "2d6"
+        assert result["duration_minutes"] == 7
+
+    def test_longstrider_effect(self):
+        result = LONGSTRIDER.effect_callback(None, None, 6)
+        assert result["speed_bonus_ft"] == 10
+        assert result["bonus_type"] == "enhancement"
+        assert result["duration_hours"] == 6
+
+    def test_call_lightning_effect(self):
+        result = CALL_LIGHTNING.effect_callback(None, None, 8)
+        assert result["damage_indoor"] == "3d6"
+        assert result["damage_outdoor"] == "3d10"
+        assert result["bolts_available"] == 8
+
+    def test_charm_animal_effect(self):
+        result = CHARM_ANIMAL.effect_callback(None, None, 5)
+        assert result["animal_only"] is True
+        assert result["duration_hours"] == 5
+        assert result["save"] == "Will negates"
+
+    def test_warp_wood_scales(self):
+        result = WARP_WOOD.effect_callback(None, None, 7)
+        assert result["cubic_feet"] == 7
+        assert result["destroys_wooden_weapons"] is True
+
+    def test_flame_blade_effect(self):
+        result = FLAME_BLADE.effect_callback(None, None, 4)
+        assert result["damage"] == "1d8+2"
+        assert result["damage_type"] == "Fire"
+
+    def test_flame_blade_capped_at_10(self):
+        result = FLAME_BLADE.effect_callback(None, None, 20)
+        assert result["damage"] == "1d8+10"
+
+    def test_water_breathing_duration_scales(self):
+        result = WATER_BREATHING.effect_callback(None, None, 8)
+        assert result["duration_hours"] == 16
+        assert result["targets"] == "1 creature/level"
+
+    def test_poison_effect(self):
+        result = POISON.effect_callback(None, None, 10)
+        assert result["initial_damage"] == "1d10 Con"
+        assert result["secondary_damage"] == "1d10 Con"
+        assert result["save"] == "Fortitude half"
+        assert result["attack"] == "touch"
+
+    def test_contagion_effect(self):
+        result = CONTAGION.effect_callback(None, None, 9)
+        assert result["save"] == "Fortitude negates"
+        assert result["disease"] == "one of 6 diseases"
+
+    def test_spike_growth_effect(self):
+        result = SPIKE_GROWTH.effect_callback(None, None, 6)
+        assert result["damage_per_5ft"] == "1d4"
+        assert result["speed_reduced"] is True
+        assert result["duration_hours"] == 6
+
+    def test_rusting_grasp_effect(self):
+        result = RUSTING_GRASP.effect_callback(None, None, 10)
+        assert result["destroys_metal"] is True
+        assert result["damage_to_creature"] == "3d6"
+        assert result["attack"] == "touch"
+
+    def test_command_plants_duration_scales(self):
+        result = COMMAND_PLANTS.effect_callback(None, None, 12)
+        assert result["duration_days"] == 12
+        assert result["save"] == "Will negates"
+
+    def test_reincarnate_effect(self):
+        result = REINCARNATE.effect_callback(None, None, 9)
+        assert result["new_body"] == "random race"
+        assert result["soul_restored"] is True
+        assert result["material_cost_gp"] == 1000
+
+    def test_repel_vermin_duration_scales(self):
+        result = REPEL_VERMIN.effect_callback(None, None, 8)
+        assert result["radius_ft"] == 10
+        assert result["duration_minutes"] == 80
+
+    def test_animal_growth_effect(self):
+        result = ANIMAL_GROWTH.effect_callback(None, None, 10)
+        assert result["str_bonus"] == 8
+        assert result["con_bonus"] == 4
+        assert result["natural_armor"] == 2
+        assert result["targets"] == "1 animal per 2 levels"
+
+    def test_awaken_effect(self):
+        result = AWAKEN.effect_callback(None, None, 11)
+        assert result["grants_intelligence"] is True
+        assert result["xp_cost"] == 1250
+        assert result["target"] == "animal or tree"
+
+    def test_wall_of_fire_effect(self):
+        result = WALL_OF_FIRE.effect_callback(None, None, 10)
+        assert result["proximity_10ft_damage"] == "2d4"
+        assert result["proximity_20ft_damage"] == "1d4"
+        assert result["pass_through_damage"] == "2d6+10"
+        assert result["damage_type"] == "Fire"
+
+    def test_wall_of_fire_capped_at_20(self):
+        result = WALL_OF_FIRE.effect_callback(None, None, 25)
+        assert result["pass_through_damage"] == "2d6+20"
+
+    def test_antilife_shell_effect(self):
+        result = ANTILIFE_SHELL.effect_callback(None, None, 12)
+        assert result["radius_ft"] == 10
+        assert result["excludes"] == "living creatures"
+        assert result["duration_minutes"] == 120
+
+    def test_liveoak_duration_scales(self):
+        result = LIVEOAK.effect_callback(None, None, 14)
+        assert result["animates_oak"] is True
+        assert result["sentry"] is True
+        assert result["duration_days"] == 14
+
+    def test_control_weather_effect(self):
+        result = CONTROL_WEATHER.effect_callback(None, None, 15)
+        assert result["radius_miles"] == 2
+        assert result["duration_hours"] == "4d12"
+        assert "hurricane" in result["weather_types"]
+
+    def test_earthquake_effect(self):
+        result = EARTHQUAKE.effect_callback(None, None, 15)
+        assert result["area"] == "80-ft radius"
+        assert result["collapses_structures"] is True
+        assert result["fissures"] is True
+
+    def test_elemental_swarm_effect(self):
+        result = ELEMENTAL_SWARM.effect_callback(None, None, 17)
+        assert result["phase_1"] == "2d4 Large elementals"
+        assert result["phase_2"] == "1d4 Huge elementals"
+        assert result["phase_3"] == "1 Elder elemental"
+        assert result["duration_minutes"] == 170
+
+    def test_alarm_effect(self):
+        result = ALARM.effect_callback(None, None, 5)
+        assert result["radius_ft"] == 20
+        assert result["mental_or_audible"] is True
+        assert result["duration_hours"] == 8
+
+    def test_animal_messenger_duration_scales(self):
+        result = ANIMAL_MESSENGER.effect_callback(None, None, 6)
+        assert result["animal_size"] == "Tiny"
+        assert result["duration_days"] == 6
+
+    def test_jump_effect_scaling(self):
+        # CL 1-3 → +10, CL 4-6 → +20, CL 7+ → +30
+        result_cl1 = JUMP.effect_callback(None, None, 1)
+        assert result_cl1["jump_bonus"] == 10
+
+        result_cl4 = JUMP.effect_callback(None, None, 4)
+        assert result_cl4["jump_bonus"] == 20
+
+        result_cl7 = JUMP.effect_callback(None, None, 7)
+        assert result_cl7["jump_bonus"] == 30
+
+        result_cl20 = JUMP.effect_callback(None, None, 20)
+        assert result_cl20["jump_bonus"] == 30
+
+    def test_snare_effect(self):
+        result = SNARE.effect_callback(None, None, 7)
+        assert result["reflex_dc"] == 23
+        assert result["holds_creature"] is True
+
+    def test_pass_without_trace_effect(self):
+        result = PASS_WITHOUT_TRACE.effect_callback(None, None, 8)
+        assert result["leaves_no_tracks"] is True
+        assert result["leaves_no_scent"] is True
+        assert result["duration_hours"] == 8
+
+    def test_wind_wall_duration_scales(self):
+        result = WIND_WALL.effect_callback(None, None, 9)
+        assert result["deflects_arrows"] is True
+        assert result["deflects_gases"] is True
+        assert result["deflects_tiny"] is True
+        assert result["duration_rounds"] == 9
+
+    def test_heal_animal_companion_scales(self):
+        result_cl5 = HEAL_ANIMAL_COMPANION.effect_callback(None, None, 5)
+        assert result_cl5["healing"] == 50
+        assert result_cl5["animal_companion_only"] is True
+
+        result_cl10 = HEAL_ANIMAL_COMPANION.effect_callback(None, None, 10)
+        assert result_cl10["healing"] == 100
+
+        result_cl20 = HEAL_ANIMAL_COMPANION.effect_callback(None, None, 20)
+        assert result_cl20["healing"] == 150  # max 150
+
+    def test_remove_disease_effect(self):
+        result = REMOVE_DISEASE.effect_callback(None, None, 7)
+        assert result["removes_disease"] is True
+        assert result["magical_diseases"] is True
+
+    def test_commune_with_nature_scales(self):
+        result = COMMUNE_WITH_NATURE.effect_callback(None, None, 10)
+        assert result["range_miles"] == 10
+        assert "terrain" in result["reveals"]
+        assert "animals" in result["reveals"]
+
+    def test_tree_stride_effect(self):
+        result = TREE_STRIDE.effect_callback(None, None, 8)
+        assert result["range_miles"] == 3
+        assert result["teleport_between_trees"] is True
+        assert result["duration_hours"] == 8
+
+    def test_find_the_path_duration_scales(self):
+        result = FIND_THE_PATH.effect_callback(None, None, 12)
+        assert result["shows_path"] is True
+        assert result["avoids_obstacles"] is True
+        assert result["duration_minutes"] == 120
+
+    # ------------------------------------------------------------------ #
+    #  School grouping tests                                               #
+    # ------------------------------------------------------------------ #
+
+    def test_transmutation_contains_nature_spells(self):
+        registry = create_default_registry()
+        transmutations = [s.name for s in registry.get_by_school(SpellSchool.TRANSMUTATION)]
+        for name in (
+            "Entangle", "Longstrider", "Barkskin", "Warp Wood", "Tree Shape",
+            "Water Breathing", "Spike Growth", "Quench",
+            "Rusting Grasp", "Command Plants", "Reincarnate",
+            "Animal Growth", "Awaken", "Liveoak", "Control Weather",
+            "Shillelagh", "Mending", "Snare", "Pass without Trace",
+        ):
+            assert name in transmutations, f"Expected {name!r} in Transmutation"
+
+    def test_evocation_contains_nature_spells(self):
+        registry = create_default_registry()
+        evocations = [s.name for s in registry.get_by_school(SpellSchool.EVOCATION)]
+        for name in ("Flare", "Faerie Fire", "Produce Flame", "Flame Blade",
+                     "Wall of Fire", "Earthquake", "Wind Wall"):
+            assert name in evocations, f"Expected {name!r} in Evocation"
+
+    def test_conjuration_contains_nature_spells(self):
+        registry = create_default_registry()
+        conjurations = [s.name for s in registry.get_by_school(SpellSchool.CONJURATION)]
+        for name in (
+            "Cure Minor Wounds", "Call Lightning",
+            "Call Lightning Storm", "Elemental Swarm", "Storm of Vengeance",
+            "Heal Animal Companion", "Remove Disease", "Tree Stride",
+        ):
+            assert name in conjurations, f"Expected {name!r} in Conjuration"
+
+    def test_divination_contains_nature_spells(self):
+        registry = create_default_registry()
+        divinations = [s.name for s in registry.get_by_school(SpellSchool.DIVINATION)]
+        for name in (
+            "Know Direction", "Detect Animals or Plants",
+            "Speak with Animals", "Commune with Nature", "Find the Path",
+        ):
+            assert name in divinations, f"Expected {name!r} in Divination"
+
+    def test_abjuration_contains_nature_spells(self):
+        registry = create_default_registry()
+        abjurations = [s.name for s in registry.get_by_school(SpellSchool.ABJURATION)]
+        for name in ("Antilife Shell", "Repel Vermin", "Alarm"):
+            assert name in abjurations, f"Expected {name!r} in Abjuration"
+
+    def test_necromancy_contains_nature_spells(self):
+        registry = create_default_registry()
+        necromancies = [s.name for s in registry.get_by_school(SpellSchool.NECROMANCY)]
+        for name in ("Contagion", "Poison"):
+            assert name in necromancies, f"Expected {name!r} in Necromancy"
+
+    def test_enchantment_contains_nature_spells(self):
+        registry = create_default_registry()
+        enchantments = [s.name for s in registry.get_by_school(SpellSchool.ENCHANTMENT)]
+        for name in ("Animal Friendship", "Charm Animal", "Animal Messenger"):
+            assert name in enchantments, f"Expected {name!r} in Enchantment"

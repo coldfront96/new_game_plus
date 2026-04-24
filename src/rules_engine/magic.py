@@ -4093,14 +4093,1037 @@ HOLY_AURA = Spell(
 )
 
 
+# ---------------------------------------------------------------------------
+# Phase 4: Druid & Ranger Nature Spells – effect callbacks
+# ---------------------------------------------------------------------------
+
+# -- Druid Level 0 --
+
+def _flare_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"penalty": -1, "duration_minutes": 1, "save": "Fortitude negates"}
+
+
+def _know_direction_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"reveals": "north direction"}
+
+
+def _cure_minor_wounds_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"healing": 1}
+
+
+def _detect_animals_or_plants_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"detects": ["animals", "plants"], "range_ft": 60}
+
+
+def _shillelagh_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"enhancement_bonus": 1, "damage_die": "2d6", "duration_minutes": caster_level}
+
+
+def _mending_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"repairs_hp": "1d4", "target": "object"}
+
+
+# -- Druid Level 1 --
+
+def _entangle_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "area": "40-ft radius",
+        "save": "Reflex negates",
+        "escape": "Strength or Escape Artist DC 20",
+        "duration_minutes": caster_level,
+    }
+
+
+def _faerie_fire_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "attack_bonus_against": 2,
+        "negates_invisibility": True,
+        "duration_minutes": caster_level,
+    }
+
+
+def _longstrider_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"speed_bonus_ft": 10, "bonus_type": "enhancement", "duration_hours": caster_level}
+
+
+def _speak_with_animals_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"communicates_with": "animals", "duration_minutes": caster_level}
+
+
+def _animal_friendship_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"animal_only": True, "max_hd": caster_level}
+
+
+def _produce_flame_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    bonus = min(caster_level, 5)
+    return {
+        "melee_bonus": bonus,
+        "damage": f"1d6+{bonus}",
+        "damage_type": "Fire",
+        "duration_minutes": caster_level,
+    }
+
+
+# -- Druid Level 2 --
+
+def _barkskin_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    bonus = min(2 + (caster_level - 3) // 3, 5)
+    return {
+        "natural_armor_bonus": bonus,
+        "bonus_type": "natural armor",
+        "duration_minutes": caster_level * 10,
+    }
+
+
+def _call_lightning_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "damage_indoor": "3d6",
+        "damage_outdoor": "3d10",
+        "bolts_available": caster_level,
+        "save": "Reflex half",
+    }
+
+
+def _charm_animal_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"animal_only": True, "duration_hours": caster_level, "save": "Will negates"}
+
+
+def _warp_wood_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"cubic_feet": caster_level, "destroys_wooden_weapons": True}
+
+
+def _flame_blade_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "damage": f"1d8+{min(caster_level // 2, 10)}",
+        "damage_type": "Fire",
+        "duration_minutes": caster_level,
+    }
+
+
+def _tree_shape_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"form": "Medium tree", "can_observe": True, "duration_hours": caster_level}
+
+
+# -- Druid Level 3 --
+
+def _contagion_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"disease": "one of 6 diseases", "incubation": "1d3 days", "save": "Fortitude negates"}
+
+
+def _water_breathing_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"targets": "1 creature/level", "duration_hours": caster_level * 2}
+
+
+def _poison_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "initial_damage": "1d10 Con",
+        "secondary_damage": "1d10 Con",
+        "save": "Fortitude half",
+        "attack": "touch",
+    }
+
+
+def _spike_growth_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "area_per_level": "20 sq ft",
+        "damage_per_5ft": "1d4",
+        "speed_reduced": True,
+        "duration_hours": caster_level,
+    }
+
+
+def _quench_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "extinguishes_fires": True,
+        "fire_creature_damage": f"{min(caster_level, 10)}d6",
+        "area": "20-ft radius",
+    }
+
+
+# -- Druid Level 4 --
+
+def _rusting_grasp_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"destroys_metal": True, "attack": "touch", "damage_to_creature": "3d6"}
+
+
+def _command_plants_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"targets": "plant creatures", "save": "Will negates", "duration_days": caster_level}
+
+
+def _reincarnate_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"new_body": "random race", "soul_restored": True, "material_cost_gp": 1000}
+
+
+def _repel_vermin_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "radius_ft": 10,
+        "save": "Will negates (intelligent)",
+        "duration_minutes": caster_level * 10,
+    }
+
+
+# -- Druid Level 5 --
+
+def _animal_growth_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "targets": "1 animal per 2 levels",
+        "str_bonus": 8,
+        "con_bonus": 4,
+        "natural_armor": 2,
+        "duration_minutes": caster_level,
+    }
+
+
+def _awaken_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"grants_intelligence": True, "xp_cost": 250 * 5, "target": "animal or tree"}
+
+
+def _wall_of_fire_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "proximity_10ft_damage": "2d4",
+        "proximity_20ft_damage": "1d4",
+        "pass_through_damage": f"2d6+{min(caster_level, 20)}",
+        "damage_type": "Fire",
+    }
+
+
+def _call_lightning_storm_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "damage_per_bolt": "5d6",
+        "save": "Reflex half",
+        "bolts_available": caster_level,
+        "duration_minutes": caster_level * 10,
+    }
+
+
+# -- Druid Level 6 --
+
+def _antilife_shell_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "radius_ft": 10,
+        "excludes": "living creatures",
+        "duration_minutes": caster_level * 10,
+    }
+
+
+def _liveoak_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"animates_oak": True, "sentry": True, "duration_days": caster_level}
+
+
+# -- Druid Level 7 --
+
+def _control_weather_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "radius_miles": 2,
+        "duration_hours": "4d12",
+        "weather_types": ["clear", "hot", "cold", "rain", "snow", "sleet", "hail", "hurricane"],
+    }
+
+
+# -- Druid Level 8 --
+
+def _earthquake_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "area": "80-ft radius",
+        "duration_rounds": 1,
+        "collapses_structures": True,
+        "fissures": True,
+    }
+
+
+# -- Druid Level 9 --
+
+def _elemental_swarm_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "phase_1": "2d4 Large elementals",
+        "phase_2": "1d4 Huge elementals",
+        "phase_3": "1 Elder elemental",
+        "duration_minutes": caster_level * 10,
+    }
+
+
+def _storm_of_vengeance_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "area": "360-ft radius",
+        "max_rounds": 10,
+        "effects": ["acid rain", "lightning", "hail", "divine fire"],
+    }
+
+
+# -- Ranger Level 1 --
+
+def _alarm_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"radius_ft": 20, "mental_or_audible": True, "duration_hours": 8}
+
+
+def _animal_messenger_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"animal_size": "Tiny", "duration_days": caster_level}
+
+
+def _jump_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"jump_bonus": min(10 * ((caster_level + 2) // 3), 30), "duration_minutes": caster_level}
+
+
+# -- Ranger Level 2 --
+
+def _snare_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"trigger": "touch", "reflex_dc": 23, "holds_creature": True}
+
+
+def _pass_without_trace_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"leaves_no_tracks": True, "leaves_no_scent": True, "duration_hours": caster_level}
+
+
+def _wind_wall_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "deflects_arrows": True,
+        "deflects_gases": True,
+        "deflects_tiny": True,
+        "duration_rounds": caster_level,
+    }
+
+
+# -- Ranger Level 3 --
+
+def _heal_animal_companion_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"healing": min(caster_level * 10, 150), "animal_companion_only": True}
+
+
+def _remove_disease_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"removes_disease": True, "magical_diseases": True}
+
+
+# -- Ranger Level 4 --
+
+def _commune_with_nature_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "range_miles": caster_level,
+        "reveals": ["terrain", "bodies of water", "plants", "animals", "minerals"],
+    }
+
+
+def _tree_stride_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"range_miles": 3, "teleport_between_trees": True, "duration_hours": caster_level}
+
+
+def _find_the_path_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"shows_path": True, "avoids_obstacles": True, "duration_minutes": caster_level * 10}
+
+
+# ---------------------------------------------------------------------------
+# Phase 4: Druid & Ranger Nature Spells – Spell constants
+# ---------------------------------------------------------------------------
+
+# -- Druid Level 0 (orisons) --
+
+FLARE = Spell(
+    name="Flare",
+    level=0,
+    school=SpellSchool.EVOCATION,
+    components=[SpellComponent.VERBAL],
+    range="Close (25 ft. + 5 ft./2 levels)",
+    duration="Instantaneous",
+    effect_callback=_flare_effect,
+    description=(
+        "Dazzles one creature, imposing a -1 penalty on attack rolls for 1 minute "
+        "(Fortitude negates)."
+    ),
+    subschool="",
+    descriptor=["Fire"],
+)
+
+KNOW_DIRECTION = Spell(
+    name="Know Direction",
+    level=0,
+    school=SpellSchool.DIVINATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Personal",
+    duration="Instantaneous",
+    effect_callback=_know_direction_effect,
+    description="You instantly know which direction is north.",
+    subschool="",
+    descriptor=[],
+)
+
+CURE_MINOR_WOUNDS = Spell(
+    name="Cure Minor Wounds",
+    level=0,
+    school=SpellSchool.CONJURATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Touch",
+    duration="Instantaneous",
+    effect_callback=_cure_minor_wounds_effect,
+    description="Cures 1 point of damage.",
+    subschool="Healing",
+    descriptor=[],
+)
+
+DETECT_ANIMALS_OR_PLANTS = Spell(
+    name="Detect Animals or Plants",
+    level=0,
+    school=SpellSchool.DIVINATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="60 ft. cone",
+    duration="Concentration, up to 10 min./level",
+    effect_callback=_detect_animals_or_plants_effect,
+    description="Detects kinds of animals or plants within a 60-ft. cone.",
+    subschool="",
+    descriptor=[],
+)
+
+SHILLELAGH = Spell(
+    name="Shillelagh",
+    level=0,
+    school=SpellSchool.TRANSMUTATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.DIVINE_FOCUS],
+    range="Touch",
+    duration="1 min./level",
+    effect_callback=_shillelagh_effect,
+    description="Your club or quarterstaff becomes +1 magical and deals 2d6 damage.",
+    subschool="",
+    descriptor=[],
+)
+
+MENDING = Spell(
+    name="Mending",
+    level=0,
+    school=SpellSchool.TRANSMUTATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="10 ft.",
+    duration="Instantaneous",
+    effect_callback=_mending_effect,
+    description="Repairs 1d4 hit points of damage to an object.",
+    subschool="",
+    descriptor=[],
+)
+
+# -- Druid Level 1 --
+
+ENTANGLE = Spell(
+    name="Entangle",
+    level=1,
+    school=SpellSchool.TRANSMUTATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.DIVINE_FOCUS],
+    range="Long (400 ft. + 40 ft./level)",
+    duration="1 min./level",
+    effect_callback=_entangle_effect,
+    description=(
+        "Plants entangle creatures in a 40-ft. radius (Reflex negates); "
+        "escape requires Strength or Escape Artist DC 20."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+FAERIE_FIRE = Spell(
+    name="Faerie Fire",
+    level=1,
+    school=SpellSchool.EVOCATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.DIVINE_FOCUS],
+    range="Long (400 ft. + 40 ft./level)",
+    duration="1 min./level",
+    effect_callback=_faerie_fire_effect,
+    description=(
+        "Outlines subjects with pale fire, granting +2 attack bonus against them "
+        "and negating invisibility."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+LONGSTRIDER = Spell(
+    name="Longstrider",
+    level=1,
+    school=SpellSchool.TRANSMUTATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.MATERIAL],
+    range="Personal",
+    duration="1 hour/level",
+    effect_callback=_longstrider_effect,
+    description="Your speed increases by 10 feet (enhancement bonus).",
+    subschool="",
+    descriptor=[],
+)
+
+SPEAK_WITH_ANIMALS = Spell(
+    name="Speak with Animals",
+    level=1,
+    school=SpellSchool.DIVINATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Personal",
+    duration="1 min./level",
+    effect_callback=_speak_with_animals_effect,
+    description="You can communicate verbally and mentally with animals.",
+    subschool="",
+    descriptor=[],
+)
+
+ANIMAL_FRIENDSHIP = Spell(
+    name="Animal Friendship",
+    level=1,
+    school=SpellSchool.ENCHANTMENT,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.MATERIAL],
+    range="Close (25 ft. + 5 ft./2 levels)",
+    duration="Instantaneous",
+    effect_callback=_animal_friendship_effect,
+    description="Makes an animal permanently friendly toward you.",
+    subschool="Charm",
+    descriptor=["Animal", "Mind-Affecting"],
+)
+
+PRODUCE_FLAME = Spell(
+    name="Produce Flame",
+    level=1,
+    school=SpellSchool.EVOCATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Personal",
+    duration="1 min./level",
+    effect_callback=_produce_flame_effect,
+    description="Flames appear in your hand; melee or thrown attack deals 1d6+min(CL,5) fire damage.",
+    subschool="",
+    descriptor=["Fire"],
+)
+
+# -- Druid Level 2 --
+
+BARKSKIN = Spell(
+    name="Barkskin",
+    level=2,
+    school=SpellSchool.TRANSMUTATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.DIVINE_FOCUS],
+    range="Touch",
+    duration="10 min./level",
+    effect_callback=_barkskin_effect,
+    description=(
+        "Grants +2 natural armor bonus, increasing by +1 per 3 caster levels above 3rd "
+        "(maximum +5)."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+CALL_LIGHTNING = Spell(
+    name="Call Lightning",
+    level=2,
+    school=SpellSchool.CONJURATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Medium (100 ft. + 10 ft./level)",
+    duration="1 min./level",
+    effect_callback=_call_lightning_effect,
+    description="Calls lightning bolts dealing 3d6 (indoors) or 3d10 (outdoors) per bolt.",
+    subschool="Summoning",
+    descriptor=["Electricity"],
+)
+
+CHARM_ANIMAL = Spell(
+    name="Charm Animal",
+    level=2,
+    school=SpellSchool.ENCHANTMENT,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Close (25 ft. + 5 ft./2 levels)",
+    duration="1 hour/level",
+    effect_callback=_charm_animal_effect,
+    description="Makes one animal your ally (Will negates).",
+    subschool="Charm",
+    descriptor=["Animal", "Mind-Affecting"],
+)
+
+WARP_WOOD = Spell(
+    name="Warp Wood",
+    level=2,
+    school=SpellSchool.TRANSMUTATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Close (25 ft. + 5 ft./2 levels)",
+    duration="Instantaneous",
+    effect_callback=_warp_wood_effect,
+    description="Bends and warps 1 cu. ft. of wood per caster level.",
+    subschool="",
+    descriptor=[],
+)
+
+FLAME_BLADE = Spell(
+    name="Flame Blade",
+    level=2,
+    school=SpellSchool.EVOCATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.DIVINE_FOCUS],
+    range="Personal",
+    duration="1 min./level",
+    effect_callback=_flame_blade_effect,
+    description="A blade of fire deals 1d8+min(CL/2,10) fire damage.",
+    subschool="",
+    descriptor=["Fire"],
+)
+
+TREE_SHAPE = Spell(
+    name="Tree Shape",
+    level=2,
+    school=SpellSchool.TRANSMUTATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.MATERIAL],
+    range="Personal",
+    duration="1 hour/level",
+    effect_callback=_tree_shape_effect,
+    description="You appear as a Medium tree while retaining the ability to observe your surroundings.",
+    subschool="",
+    descriptor=[],
+)
+
+# -- Druid Level 3 --
+
+CONTAGION = Spell(
+    name="Contagion",
+    level=3,
+    school=SpellSchool.NECROMANCY,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Touch",
+    duration="Instantaneous",
+    effect_callback=_contagion_effect,
+    description="Infects subject with a chosen disease (Fortitude negates).",
+    subschool="",
+    descriptor=["Evil"],
+)
+
+WATER_BREATHING = Spell(
+    name="Water Breathing",
+    level=3,
+    school=SpellSchool.TRANSMUTATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.MATERIAL],
+    range="Touch",
+    duration="2 hours/level",
+    effect_callback=_water_breathing_effect,
+    description="Touched subjects can breathe underwater.",
+    subschool="",
+    descriptor=[],
+)
+
+POISON = Spell(
+    name="Poison",
+    level=3,
+    school=SpellSchool.NECROMANCY,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.DIVINE_FOCUS],
+    range="Touch",
+    duration="Instantaneous",
+    effect_callback=_poison_effect,
+    description=(
+        "Touch attack deals 1d10 Constitution damage (Fortitude half), "
+        "with the same secondary damage 1 round later."
+    ),
+    subschool="",
+    descriptor=["Poison"],
+)
+
+SPIKE_GROWTH = Spell(
+    name="Spike Growth",
+    level=3,
+    school=SpellSchool.TRANSMUTATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.DIVINE_FOCUS],
+    range="Medium (100 ft. + 10 ft./level)",
+    duration="1 hour/level",
+    effect_callback=_spike_growth_effect,
+    description="Spikes on the ground deal 1d4 damage per 5 ft. moved through and slow movement.",
+    subschool="",
+    descriptor=["Force"],
+)
+
+QUENCH = Spell(
+    name="Quench",
+    level=3,
+    school=SpellSchool.TRANSMUTATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.DIVINE_FOCUS],
+    range="Medium (100 ft. + 10 ft./level)",
+    duration="Instantaneous",
+    effect_callback=_quench_effect,
+    description=(
+        "Extinguishes all nonmagical fires in a 20-ft. radius; "
+        "deals 1d6/level (max 10d6) to fire creatures."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+# -- Druid Level 4 --
+
+RUSTING_GRASP = Spell(
+    name="Rusting Grasp",
+    level=4,
+    school=SpellSchool.TRANSMUTATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.DIVINE_FOCUS],
+    range="Touch",
+    duration="See text",
+    effect_callback=_rusting_grasp_effect,
+    description="Destroys ferrous metal on touch; deals 3d6 to iron-based creatures.",
+    subschool="",
+    descriptor=[],
+)
+
+COMMAND_PLANTS = Spell(
+    name="Command Plants",
+    level=4,
+    school=SpellSchool.TRANSMUTATION,
+    components=[SpellComponent.VERBAL],
+    range="Close (25 ft. + 5 ft./2 levels)",
+    duration="1 day/level",
+    effect_callback=_command_plants_effect,
+    description="Controls the actions of plant creatures (Will negates).",
+    subschool="",
+    descriptor=["Plant", "Mind-Affecting"],
+)
+
+REINCARNATE = Spell(
+    name="Reincarnate",
+    level=4,
+    school=SpellSchool.TRANSMUTATION,
+    components=[
+        SpellComponent.VERBAL, SpellComponent.SOMATIC,
+        SpellComponent.MATERIAL, SpellComponent.DIVINE_FOCUS,
+    ],
+    range="Touch",
+    duration="Instantaneous",
+    effect_callback=_reincarnate_effect,
+    description="Returns a dead soul in a new body of a randomly determined race (1,000 gp material cost).",
+    subschool="",
+    descriptor=[],
+)
+
+REPEL_VERMIN = Spell(
+    name="Repel Vermin",
+    level=4,
+    school=SpellSchool.ABJURATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.DIVINE_FOCUS],
+    range="10 ft.",
+    duration="10 min./level",
+    effect_callback=_repel_vermin_effect,
+    description=(
+        "Insects, spiders, and other vermin cannot enter a 10-ft. radius "
+        "(Will negates for intelligent vermin)."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+# -- Druid Level 5 --
+
+ANIMAL_GROWTH = Spell(
+    name="Animal Growth",
+    level=5,
+    school=SpellSchool.TRANSMUTATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Medium (100 ft. + 10 ft./level)",
+    duration="1 min./level",
+    effect_callback=_animal_growth_effect,
+    description=(
+        "One animal per two levels grows one size category "
+        "(STR +8, CON +4, +2 natural armor)."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+AWAKEN = Spell(
+    name="Awaken",
+    level=5,
+    school=SpellSchool.TRANSMUTATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.MATERIAL],
+    range="Touch",
+    duration="Instantaneous",
+    effect_callback=_awaken_effect,
+    description="Bestows human-level intelligence on an animal or tree (250 XP per HD cost).",
+    subschool="",
+    descriptor=[],
+)
+
+WALL_OF_FIRE = Spell(
+    name="Wall of Fire",
+    level=5,
+    school=SpellSchool.EVOCATION,
+    components=[
+        SpellComponent.VERBAL, SpellComponent.SOMATIC,
+        SpellComponent.MATERIAL, SpellComponent.DIVINE_FOCUS,
+    ],
+    range="Medium (100 ft. + 10 ft./level)",
+    duration="Concentration + 1 round/level",
+    effect_callback=_wall_of_fire_effect,
+    description=(
+        "Wall of fire deals 2d4 fire within 10 ft., 1d4 within 20 ft., "
+        "and 2d6+CL to pass through."
+    ),
+    subschool="",
+    descriptor=["Fire"],
+)
+
+CALL_LIGHTNING_STORM = Spell(
+    name="Call Lightning Storm",
+    level=5,
+    school=SpellSchool.CONJURATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Medium (100 ft. + 10 ft./level)",
+    duration="10 min./level",
+    effect_callback=_call_lightning_storm_effect,
+    description="Like Call Lightning but deals 5d6 per bolt and works anywhere.",
+    subschool="Summoning",
+    descriptor=["Electricity"],
+)
+
+# -- Druid Level 6 --
+
+ANTILIFE_SHELL = Spell(
+    name="Antilife Shell",
+    level=6,
+    school=SpellSchool.ABJURATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.DIVINE_FOCUS],
+    range="10 ft.",
+    duration="10 min./level",
+    effect_callback=_antilife_shell_effect,
+    description="Keeps living creatures out of a 10-ft. radius.",
+    subschool="",
+    descriptor=[],
+)
+
+LIVEOAK = Spell(
+    name="Liveoak",
+    level=6,
+    school=SpellSchool.TRANSMUTATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Touch",
+    duration="1 day/level",
+    effect_callback=_liveoak_effect,
+    description="Imbues a Large oak tree with sentry power (animates like a treant).",
+    subschool="",
+    descriptor=[],
+)
+
+# -- Druid Level 7 --
+
+CONTROL_WEATHER = Spell(
+    name="Control Weather",
+    level=7,
+    school=SpellSchool.TRANSMUTATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="2 miles",
+    duration="4d12 hours",
+    effect_callback=_control_weather_effect,
+    description="Changes the weather in a 2-mile radius.",
+    subschool="",
+    descriptor=[],
+)
+
+# -- Druid Level 8 --
+
+EARTHQUAKE = Spell(
+    name="Earthquake",
+    level=8,
+    school=SpellSchool.EVOCATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.DIVINE_FOCUS],
+    range="Long (400 ft. + 40 ft./level)",
+    duration="1 round",
+    effect_callback=_earthquake_effect,
+    description=(
+        "Seismic disturbance in an 80-ft. radius collapses structures "
+        "and opens fissures for 1 round."
+    ),
+    subschool="",
+    descriptor=["Earth"],
+)
+
+# -- Druid Level 9 --
+
+ELEMENTAL_SWARM = Spell(
+    name="Elemental Swarm",
+    level=9,
+    school=SpellSchool.CONJURATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Medium (100 ft. + 10 ft./level)",
+    duration="10 min./level",
+    effect_callback=_elemental_swarm_effect,
+    description=(
+        "Summons 2d4 Large elementals, then 1d4 Huge elementals, "
+        "then 1 Elder elemental in sequence."
+    ),
+    subschool="Summoning",
+    descriptor=[],
+)
+
+STORM_OF_VENGEANCE = Spell(
+    name="Storm of Vengeance",
+    level=9,
+    school=SpellSchool.CONJURATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Long (400 ft. + 40 ft./level)",
+    duration="Concentration (maximum 10 rounds)",
+    effect_callback=_storm_of_vengeance_effect,
+    description=(
+        "Massive storm with escalating effects over 10 rounds: "
+        "acid rain, lightning, hail, and divine fire."
+    ),
+    subschool="Summoning",
+    descriptor=[],
+)
+
+# -- Ranger Level 1 --
+
+ALARM = Spell(
+    name="Alarm",
+    level=1,
+    school=SpellSchool.ABJURATION,
+    components=[
+        SpellComponent.VERBAL, SpellComponent.SOMATIC,
+        SpellComponent.FOCUS, SpellComponent.MATERIAL,
+    ],
+    range="Close (25 ft. + 5 ft./2 levels)",
+    duration="8 hours",
+    effect_callback=_alarm_effect,
+    description="Wards an area to sound a mental or audible alarm when entered.",
+    subschool="",
+    descriptor=[],
+)
+
+ANIMAL_MESSENGER = Spell(
+    name="Animal Messenger",
+    level=1,
+    school=SpellSchool.ENCHANTMENT,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.MATERIAL],
+    range="Close (25 ft. + 5 ft./2 levels)",
+    duration="1 day/level",
+    effect_callback=_animal_messenger_effect,
+    description="Sends a Tiny animal to deliver your message.",
+    subschool="Compulsion",
+    descriptor=["Animal", "Mind-Affecting"],
+)
+
+JUMP = Spell(
+    name="Jump",
+    level=1,
+    school=SpellSchool.TRANSMUTATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.MATERIAL],
+    range="Touch",
+    duration="1 min./level",
+    effect_callback=_jump_effect,
+    description="Subject gains an enhancement bonus on Jump checks (up to +30).",
+    subschool="",
+    descriptor=[],
+)
+
+# -- Ranger Level 2 --
+
+SNARE = Spell(
+    name="Snare",
+    level=2,
+    school=SpellSchool.TRANSMUTATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.DIVINE_FOCUS],
+    range="Touch",
+    duration="Until triggered",
+    effect_callback=_snare_effect,
+    description="Creates a vine or rope snare (Reflex DC 23 or creature is held).",
+    subschool="",
+    descriptor=[],
+)
+
+PASS_WITHOUT_TRACE = Spell(
+    name="Pass without Trace",
+    level=2,
+    school=SpellSchool.TRANSMUTATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.DIVINE_FOCUS],
+    range="Touch",
+    duration="1 hour/level",
+    effect_callback=_pass_without_trace_effect,
+    description="One creature per level leaves no tracks or scent.",
+    subschool="",
+    descriptor=[],
+)
+
+WIND_WALL = Spell(
+    name="Wind Wall",
+    level=2,
+    school=SpellSchool.EVOCATION,
+    components=[
+        SpellComponent.VERBAL, SpellComponent.SOMATIC,
+        SpellComponent.MATERIAL, SpellComponent.DIVINE_FOCUS,
+    ],
+    range="Medium (100 ft. + 10 ft./level)",
+    duration="1 round/level",
+    effect_callback=_wind_wall_effect,
+    description="Wall of wind deflects arrows, gas clouds, and Tiny or smaller creatures.",
+    subschool="",
+    descriptor=["Air"],
+)
+
+# -- Ranger Level 3 --
+
+HEAL_ANIMAL_COMPANION = Spell(
+    name="Heal Animal Companion",
+    level=3,
+    school=SpellSchool.CONJURATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Touch",
+    duration="Instantaneous",
+    effect_callback=_heal_animal_companion_effect,
+    description="Heals 10 hit points per caster level (maximum 150) to an animal companion.",
+    subschool="Healing",
+    descriptor=[],
+)
+
+REMOVE_DISEASE = Spell(
+    name="Remove Disease",
+    level=3,
+    school=SpellSchool.CONJURATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.MATERIAL],
+    range="Touch",
+    duration="Instantaneous",
+    effect_callback=_remove_disease_effect,
+    description="Cures all diseases affecting subject, including magical diseases.",
+    subschool="Healing",
+    descriptor=[],
+)
+
+# -- Ranger Level 4 --
+
+COMMUNE_WITH_NATURE = Spell(
+    name="Commune with Nature",
+    level=4,
+    school=SpellSchool.DIVINATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Personal",
+    duration="Instantaneous",
+    effect_callback=_commune_with_nature_effect,
+    description="Learn about terrain features (terrain, water, plants, animals, minerals) in a 1 mile/level radius.",
+    subschool="",
+    descriptor=[],
+)
+
+TREE_STRIDE = Spell(
+    name="Tree Stride",
+    level=4,
+    school=SpellSchool.CONJURATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.DIVINE_FOCUS],
+    range="Personal",
+    duration="1 hour/level",
+    effect_callback=_tree_stride_effect,
+    description="Step into one tree and emerge from another of the same species within 3 miles.",
+    subschool="Teleportation",
+    descriptor=[],
+)
+
+FIND_THE_PATH = Spell(
+    name="Find the Path",
+    level=4,
+    school=SpellSchool.DIVINATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.MATERIAL],
+    range="Personal or Touch",
+    duration="10 min./level",
+    effect_callback=_find_the_path_effect,
+    description="Shows the shortest, most direct route to a named location.",
+    subschool="",
+    descriptor=[],
+)
+
+
 def create_default_registry() -> SpellRegistry:
     """Create a :class:`SpellRegistry` pre-loaded with SRD core spells.
 
     Returns:
         A registry containing all Phase 0 foundational spells, the Phase 1
         Wizard/Sorcerer arcane spells (levels 0–3), the Phase 2
-        Wizard/Sorcerer arcane spells (levels 4–9), and the Phase 3
-        Cleric/Paladin divine spells, for a total of 139 registered spells.
+        Wizard/Sorcerer arcane spells (levels 4–9), the Phase 3
+        Cleric/Paladin divine spells, and the Phase 4 Druid/Ranger nature
+        spells, for a total of 187 registered spells.
     """
     registry = SpellRegistry()
 
@@ -4290,5 +5313,81 @@ def create_default_registry() -> SpellRegistry:
     registry.register(MARK_OF_JUSTICE)
     registry.register(DISPEL_EVIL)
     registry.register(HOLY_AURA)
+
+    # ---- Phase 4: Druid Level 0 orisons (6) ----
+    registry.register(FLARE)
+    registry.register(KNOW_DIRECTION)
+    registry.register(CURE_MINOR_WOUNDS)
+    registry.register(DETECT_ANIMALS_OR_PLANTS)
+    registry.register(SHILLELAGH)
+    registry.register(MENDING)
+
+    # ---- Phase 4: Druid Level 1 (6) ----
+    registry.register(ENTANGLE)
+    registry.register(FAERIE_FIRE)
+    registry.register(LONGSTRIDER)
+    registry.register(SPEAK_WITH_ANIMALS)
+    registry.register(ANIMAL_FRIENDSHIP)
+    registry.register(PRODUCE_FLAME)
+
+    # ---- Phase 4: Druid Level 2 (6) ----
+    registry.register(BARKSKIN)
+    registry.register(CALL_LIGHTNING)
+    registry.register(CHARM_ANIMAL)
+    registry.register(WARP_WOOD)
+    registry.register(FLAME_BLADE)
+    registry.register(TREE_SHAPE)
+
+    # ---- Phase 4: Druid Level 3 (5) ----
+    registry.register(CONTAGION)
+    registry.register(WATER_BREATHING)
+    registry.register(POISON)
+    registry.register(SPIKE_GROWTH)
+    registry.register(QUENCH)
+
+    # ---- Phase 4: Druid Level 4 (4) ----
+    registry.register(RUSTING_GRASP)
+    registry.register(COMMAND_PLANTS)
+    registry.register(REINCARNATE)
+    registry.register(REPEL_VERMIN)
+
+    # ---- Phase 4: Druid Level 5 (4) ----
+    registry.register(ANIMAL_GROWTH)
+    registry.register(AWAKEN)
+    registry.register(WALL_OF_FIRE)
+    registry.register(CALL_LIGHTNING_STORM)
+
+    # ---- Phase 4: Druid Level 6 (2) ----
+    registry.register(ANTILIFE_SHELL)
+    registry.register(LIVEOAK)
+
+    # ---- Phase 4: Druid Level 7 (1) ----
+    registry.register(CONTROL_WEATHER)
+
+    # ---- Phase 4: Druid Level 8 (1) ----
+    registry.register(EARTHQUAKE)
+
+    # ---- Phase 4: Druid Level 9 (2) ----
+    registry.register(ELEMENTAL_SWARM)
+    registry.register(STORM_OF_VENGEANCE)
+
+    # ---- Phase 4: Ranger Level 1 (3) ----
+    registry.register(ALARM)
+    registry.register(ANIMAL_MESSENGER)
+    registry.register(JUMP)
+
+    # ---- Phase 4: Ranger Level 2 (3) ----
+    registry.register(SNARE)
+    registry.register(PASS_WITHOUT_TRACE)
+    registry.register(WIND_WALL)
+
+    # ---- Phase 4: Ranger Level 3 (2) ----
+    registry.register(HEAL_ANIMAL_COMPANION)
+    registry.register(REMOVE_DISEASE)
+
+    # ---- Phase 4: Ranger Level 4 (3) ----
+    registry.register(COMMUNE_WITH_NATURE)
+    registry.register(TREE_STRIDE)
+    registry.register(FIND_THE_PATH)
 
     return registry
