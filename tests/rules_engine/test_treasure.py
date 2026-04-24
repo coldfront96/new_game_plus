@@ -179,13 +179,11 @@ class TestRollGemValue:
         return GemEntry("Test Gem", GemGrade.SEMIPRECIOUS, 50, (20, 80))
 
     def test_normal_range(self):
-        rng = random.Random(999)
+        # Try many seeds; collect values that fall in the gem's normal range (no multiplier applied).
         gem = self._sample_gem()
-        # Override to always give d% = 50 (normal range)
         values = []
         for seed in range(100, 200):
             r = random.Random(seed)
-            # patch out exceptional results by trying many seeds
             v = roll_gem_value(gem, r)
             if 20 <= v <= 80:
                 values.append(v)

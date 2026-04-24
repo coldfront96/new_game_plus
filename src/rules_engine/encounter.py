@@ -103,7 +103,7 @@ def xp_per_character(
     base_xp = xp_for_cr(cr)
     per_char = base_xp / party_size
 
-    diff = apl - cr  # positive = party higher level (easier)
+    diff = apl - int(cr)  # positive = party higher level (easier)
 
     if diff >= 5:
         mult = 0.0
