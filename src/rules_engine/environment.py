@@ -274,3 +274,317 @@ def terrain_hide_bonus(terrain: TerrainType) -> int:
 def terrain_listen_penalty(terrain: TerrainType) -> int:
     """Return penalty to Listen checks (positive = harder to hear)."""
     return _TERRAIN_LISTEN[terrain]
+
+
+# ---------------------------------------------------------------------------
+# T-036 Underwater Combat Modifier Engine
+# ---------------------------------------------------------------------------
+
+import random as _random
+
+
+@dataclass(slots=True)
+class UnderwaterModifiers:
+    attack_penalty: int         # penalty to attack rolls
+    ranged_range_ft: int | None # None = cannot use ranged weapons
+    fire_damage_multiplier: float   # 0.0 = no effect
+    electricity_multiplier: float   # 1.5 if both attacker and target underwater
+
+class WeaponType(Enum):
+    SLASHING = "slashing"
+    BLUDGEONING = "bludgeoning"
+    PIERCING = "piercing"
+    CROSSBOW = "crossbow"
+    THROWN = "thrown"
+    NATURAL = "natural"
+
+
+def apply_underwater_modifiers(weapon_type: WeaponType, both_underwater: bool = True) -> UnderwaterModifiers:
+    """Returns underwater combat modifiers per DMG Chapter 3.
+    
+    Slashing/bludgeoning: -2 attack
+    Piercing/natural: no penalty
+    Crossbow: -4 attack, range capped
+    Thrown: cannot be used underwater (attack_penalty=-999 marker, ranged_range_ft=0)
+    Fire damage: no effect (multiplier 0.0)
+    Electricity: +50% if both underwater
+    """
+    electricity_mult = 1.5 if both_underwater else 1.0
+
+    if weapon_type == WeaponType.THROWN:
+        return UnderwaterModifiers(
+            attack_penalty=0,
+            ranged_range_ft=0,  # cannot throw
+            fire_damage_multiplier=0.0,
+            electricity_multiplier=electricity_mult,
+        )
+    elif weapon_type == WeaponType.CROSSBOW:
+        return UnderwaterModifiers(
+            attack_penalty=-4,
+            ranged_range_ft=30,  # range capped at 30 ft
+            fire_damage_multiplier=0.0,
+            electricity_multiplier=electricity_mult,
+        )
+    elif weapon_type in (WeaponType.SLASHING, WeaponType.BLUDGEONING):
+        return UnderwaterModifiers(
+            attack_penalty=-2,
+            ranged_range_ft=None,
+            fire_damage_multiplier=0.0,
+            electricity_multiplier=electricity_mult,
+        )
+    else:  # PIERCING, NATURAL
+        return UnderwaterModifiers(
+            attack_penalty=0,
+            ranged_range_ft=None,
+            fire_damage_multiplier=0.0,
+            electricity_multiplier=electricity_mult,
+        )
+
+
+# ---------------------------------------------------------------------------
+# T-037 Aerial Combat Modifier Engine
+# ---------------------------------------------------------------------------
+
+class Maneuverability(Enum):
+    CLUMSY = "clumsy"
+    POOR = "poor"
+    AVERAGE = "average"
+    GOOD = "good"
+    PERFECT = "perfect"
+
+
+@dataclass(slots=True)
+class AerialModifiers:
+    attack_bonus: int                  # + or - to attack rolls
+    can_charge: bool                   # whether charging while flying is allowed
+    can_attack_after_direction_change: bool  # Clumsy: no
+    min_forward_movement: bool         # must move forward each round (Clumsy/Poor)
+    dive_attack_bonus: int             # bonus when diving (altitude_delta negative)
+
+
+def apply_aerial_modifiers(
+    maneuverability: Maneuverability,
+    altitude_delta_ft: int = 0,
+) -> AerialModifiers:
+    """Returns aerial combat modifiers per DMG Chapter 3.
+
+    altitude_delta_ft: negative = diving (attacker descends), positive = ascending
+    """
+    attack_bonus = 0
+    if altitude_delta_ft < 0:  # diving
+        attack_bonus += 1
+    elif altitude_delta_ft > 0:  # ascending/upward attack
+        attack_bonus -= 1
+
+    can_charge = maneuverability in (Maneuverability.AVERAGE, Maneuverability.GOOD, Maneuverability.PERFECT)
+    can_attack_after_dir = maneuverability != Maneuverability.CLUMSY
+    min_forward = maneuverability in (Maneuverability.CLUMSY, Maneuverability.POOR)
+
+    return AerialModifiers(
+        attack_bonus=attack_bonus,
+        can_charge=can_charge,
+        can_attack_after_direction_change=can_attack_after_dir,
+        min_forward_movement=min_forward,
+        dive_attack_bonus=1 if altitude_delta_ft < 0 else 0,
+    )
+
+
+# ---------------------------------------------------------------------------
+# T-038 Weather State Machine (Escalation)
+# ---------------------------------------------------------------------------
+
+@dataclass
+class WeatherStateMachine:
+    precipitation: Precipitation
+    wind: WindStrength
+    temperature: Temperature
+
+    def advance(self, hours: int = 1, climate: TerrainType = TerrainType.PLAINS, rng: _random.Random | None = None) -> "WeatherStateMachine":
+        """Advance weather state by given hours, applying escalation/de-escalation probabilities."""
+        if rng is None:
+            rng = _random.Random()
+
+        precip = self.precipitation
+        wind = self.wind
+        temp = self.temperature
+
+        storm_climate = climate in (TerrainType.MARSH, TerrainType.MOUNTAINS, TerrainType.ARCTIC)
+        escalate_prob = 0.15 if storm_climate else 0.10
+        deescalate_prob = 0.10 if storm_climate else 0.15
+
+        precip_order = [Precipitation.NONE, Precipitation.LIGHT, Precipitation.HEAVY, Precipitation.TORRENTIAL]
+        wind_order = [WindStrength.CALM, WindStrength.LIGHT, WindStrength.MODERATE, WindStrength.STRONG, WindStrength.SEVERE, WindStrength.WINDSTORM, WindStrength.HURRICANE, WindStrength.TORNADO]
+
+        for _ in range(hours):
+            pi = precip_order.index(precip)
+            roll = rng.random()
+            if roll < escalate_prob and pi < len(precip_order) - 1:
+                precip = precip_order[pi + 1]
+            elif roll > 1 - deescalate_prob and pi > 0:
+                precip = precip_order[pi - 1]
+
+            wi = wind_order.index(wind)
+            roll = rng.random()
+            if roll < escalate_prob and wi < len(wind_order) - 1:
+                wind = wind_order[wi + 1]
+            elif roll > 1 - deescalate_prob and wi > 0:
+                wind = wind_order[wi - 1]
+
+        return WeatherStateMachine(precipitation=precip, wind=wind, temperature=temp)
+
+    def get_penalties(self) -> WeatherPenalties:
+        """Get current weather penalties."""
+        return apply_weather_penalties(self.precipitation, self.wind, self.temperature)
+
+
+def generate_weather(
+    climate: TerrainType,
+    season: str = "temperate",
+    rng: _random.Random | None = None,
+) -> WeatherStateMachine:
+    """Generate a starting weather state based on climate and season."""
+    if rng is None:
+        rng = _random.Random()
+
+    if climate == TerrainType.ARCTIC:
+        temp = Temperature.EXTREME_COLD if season in ("winter", "autumn") else Temperature.COLD
+        precip_choices = [Precipitation.LIGHT, Precipitation.HEAVY, Precipitation.NONE]
+        wind_choices = [WindStrength.MODERATE, WindStrength.STRONG, WindStrength.SEVERE]
+    elif climate == TerrainType.DESERT:
+        temp = Temperature.EXTREME_HEAT if season == "summer" else Temperature.HOT
+        precip_choices = [Precipitation.NONE, Precipitation.NONE, Precipitation.LIGHT]
+        wind_choices = [WindStrength.CALM, WindStrength.LIGHT, WindStrength.MODERATE]
+    elif climate == TerrainType.MOUNTAINS:
+        temp = Temperature.COLD if season in ("winter", "autumn") else Temperature.TEMPERATE
+        precip_choices = [Precipitation.NONE, Precipitation.LIGHT, Precipitation.HEAVY]
+        wind_choices = [WindStrength.MODERATE, WindStrength.STRONG, WindStrength.SEVERE]
+    elif climate == TerrainType.MARSH:
+        temp = Temperature.TEMPERATE
+        precip_choices = [Precipitation.LIGHT, Precipitation.HEAVY, Precipitation.NONE]
+        wind_choices = [WindStrength.CALM, WindStrength.LIGHT, WindStrength.MODERATE]
+    else:
+        temp = Temperature.TEMPERATE if season not in ("winter",) else Temperature.COLD
+        precip_choices = [Precipitation.NONE, Precipitation.LIGHT, Precipitation.NONE]
+        wind_choices = [WindStrength.CALM, WindStrength.LIGHT, WindStrength.MODERATE]
+
+    return WeatherStateMachine(
+        precipitation=rng.choice(precip_choices),
+        wind=rng.choice(wind_choices),
+        temperature=temp,
+    )
+
+
+# ---------------------------------------------------------------------------
+# T-046 Dungeon Dressing Generator
+# ---------------------------------------------------------------------------
+
+class AirQuality(Enum):
+    FRESH = "fresh"
+    SMOKY = "smoky"
+    MUSTY = "musty"
+    DAMP = "damp"
+    FOULED = "fouled"
+
+
+@dataclass(slots=True)
+class DungeonDressingResult:
+    air_quality: AirQuality
+    smells: str
+    sounds: str
+    general_features: str
+
+
+_AIR_QUALITY_TABLE = [
+    (1, 6, AirQuality.FRESH),
+    (7, 10, AirQuality.DAMP),
+    (11, 14, AirQuality.MUSTY),
+    (15, 17, AirQuality.SMOKY),
+    (18, 19, AirQuality.FOULED),
+    (20, 20, AirQuality.FOULED),
+]
+
+_SMELL_TABLE = [
+    "Earthy", "Musty", "Damp stone", "Rot and decay", "Sulfur",
+    "Fresh air", "Smoke", "Incense", "Blood", "Mold",
+    "Brine", "Charcoal", "Animal musk", "Burnt wood", "Herbs",
+    "Wet metal", "Stale air", "Sewage", "Fungal spores", "Nothing notable",
+]
+
+_SOUND_TABLE = [
+    "Silence", "Dripping water", "Distant footsteps", "Creaking", "Wind howling",
+    "Rattling chains", "Scratching", "Faint moaning", "Distant roar", "Rushing water",
+    "Crumbling stone", "Insect buzzing", "Faint chanting", "Metal on stone", "Splashing",
+    "Distant screaming", "Echoing laughter", "Nothing", "Clicking", "Grinding stone",
+]
+
+_FEATURE_TABLE = [
+    "Rubble on the floor", "Cobwebs in corners", "Old torch brackets", "Carved stone reliefs",
+    "Cracked flagstones", "Damp walls with moss", "Scattered bones", "Dust-covered surfaces",
+    "Ancient graffiti", "Empty iron rings in walls", "Mysterious stains", "Broken pottery shards",
+    "Faded tapestry remnants", "Old campfire ashes", "Collapsed section of ceiling",
+    "Puddles of stagnant water", "Crude wooden furniture remains", "Rusted iron door hinges",
+    "Etched symbols on walls", "Fresh claw marks",
+]
+
+
+def generate_dungeon_dressing(rng: _random.Random | None = None) -> DungeonDressingResult:
+    """Generate dungeon dressing from DMG Chapter 4 d20 sub-tables."""
+    if rng is None:
+        rng = _random.Random()
+
+    roll = rng.randint(1, 20)
+    air = AirQuality.FRESH
+    for low, high, quality in _AIR_QUALITY_TABLE:
+        if low <= roll <= high:
+            air = quality
+            break
+
+    smell = rng.choice(_SMELL_TABLE)
+    sound = rng.choice(_SOUND_TABLE)
+    feature = rng.choice(_FEATURE_TABLE)
+
+    return DungeonDressingResult(
+        air_quality=air,
+        smells=smell,
+        sounds=sound,
+        general_features=feature,
+    )
+
+
+# ---------------------------------------------------------------------------
+# T-053 Compound Weather + Terrain Integration
+# ---------------------------------------------------------------------------
+
+@dataclass(slots=True)
+class EnvironmentResult:
+    movement_multiplier: float
+    ranged_attack_penalty: int
+    visibility_ft: int
+    passive_perception_penalty: int    # combined spot/listen penalty
+    fort_dc_cold: int | None
+    fort_dc_heat: int | None
+
+
+def apply_environment(
+    weather: WeatherStateMachine,
+    terrain: TerrainType,
+    mounted: bool = False,
+) -> EnvironmentResult:
+    """Combine weather and terrain into a single EnvironmentResult."""
+    penalties = weather.get_penalties()
+    move_mult = terrain_movement_cost(terrain, mount=mounted)
+
+    weather_move = penalties.movement_penalty_pct
+    combined_move = move_mult * weather_move
+
+    perception_penalty = max(penalties.listen_penalty, penalties.spot_penalty)
+    perception_penalty += terrain_listen_penalty(terrain)
+
+    return EnvironmentResult(
+        movement_multiplier=combined_move,
+        ranged_attack_penalty=penalties.ranged_attack_penalty,
+        visibility_ft=penalties.visibility_ft,
+        passive_perception_penalty=perception_penalty,
+        fort_dc_cold=penalties.fort_dc_cold,
+        fort_dc_heat=penalties.fort_dc_heat,
+    )
