@@ -102,6 +102,67 @@ from src.rules_engine.magic import (
     SHAPECHANGE,
     GATE,
     FORESIGHT,
+    # Phase 3 – Cleric Level 0
+    GUIDANCE,
+    VIRTUE,
+    INFLICT_MINOR_WOUNDS,
+    DETECT_UNDEAD,
+    CREATE_WATER,
+    PURIFY_FOOD_AND_DRINK,
+    # Phase 3 – Cleric Level 1
+    COMMAND,
+    SANCTUARY,
+    DIVINE_FAVOR,
+    DOOM,
+    ENTROPIC_SHIELD,
+    # Phase 3 – Cleric Level 2
+    CURE_MODERATE_WOUNDS,
+    SILENCE,
+    SPIRITUAL_WEAPON,
+    CONSECRATE,
+    AID,
+    DESECRATE,
+    BLINDNESS_DEAFNESS,
+    # Phase 3 – Cleric Level 3
+    CURE_SERIOUS_WOUNDS,
+    PRAYER,
+    SEARING_LIGHT,
+    SPEAK_WITH_DEAD,
+    INFLICT_SERIOUS_WOUNDS,
+    # Phase 3 – Cleric Level 4
+    CURE_CRITICAL_WOUNDS,
+    DIVINE_POWER,
+    FREEDOM_OF_MOVEMENT,
+    NEUTRALIZE_POISON,
+    RESTORATION,
+    # Phase 3 – Cleric Level 5
+    FLAME_STRIKE,
+    INSECT_PLAGUE,
+    RIGHTEOUS_MIGHT,
+    BREAK_ENCHANTMENT,
+    # Phase 3 – Cleric Level 6
+    BLADE_BARRIER,
+    WORD_OF_RECALL,
+    # Phase 3 – Cleric Level 7
+    RESURRECTION,
+    # Phase 3 – Cleric Level 9
+    MASS_HEAL,
+    # Phase 3 – Paladin Level 1
+    DETECT_EVIL,
+    PROTECTION_FROM_EVIL,
+    BLESS_WEAPON,
+    # Phase 3 – Paladin Level 2
+    DELAY_POISON,
+    SHIELD_OTHER,
+    OWLS_WISDOM,
+    # Phase 3 – Paladin Level 3
+    DAYLIGHT,
+    REMOVE_BLINDNESS_DEAFNESS,
+    # Phase 3 – Paladin Level 4
+    HOLY_SWORD,
+    MARK_OF_JUSTICE,
+    DISPEL_EVIL,
+    HOLY_AURA,
     Spell,
     SpellComponent,
     SpellRegistry,
@@ -209,8 +270,8 @@ class TestSpellRegistry:
 
     def test_count(self):
         registry = create_default_registry()
-        assert registry.count == 91
-        assert len(registry) == 91
+        assert registry.count == 139
+        assert len(registry) == 139
 
     def test_contains(self):
         registry = create_default_registry()
@@ -1723,3 +1784,536 @@ class TestPhase2WizardSorcererSpells:
         assert "Permanency" in universals
         assert "Limited Wish" in universals
         assert "Wish" in universals
+
+
+# ---------------------------------------------------------------------------
+# Phase 3 – Cleric / Paladin Divine Spells
+# ---------------------------------------------------------------------------
+
+class TestPhase3ClericPaladinSpells:
+
+    # ------------------------------------------------------------------ #
+    #  Registry membership                                                 #
+    # ------------------------------------------------------------------ #
+
+    def test_all_48_phase3_spells_in_registry(self):
+        registry = create_default_registry()
+        phase3_spells = [
+            # Cleric Level 0
+            "Guidance", "Virtue", "Inflict Minor Wounds", "Detect Undead",
+            "Create Water", "Purify Food and Drink",
+            # Cleric Level 1
+            "Command", "Sanctuary", "Divine Favor", "Doom", "Entropic Shield",
+            # Cleric Level 2
+            "Cure Moderate Wounds", "Silence", "Spiritual Weapon",
+            "Consecrate", "Aid", "Desecrate", "Blindness/Deafness",
+            # Cleric Level 3
+            "Cure Serious Wounds", "Prayer", "Searing Light",
+            "Speak with Dead", "Inflict Serious Wounds",
+            # Cleric Level 4
+            "Cure Critical Wounds", "Divine Power", "Freedom of Movement",
+            "Neutralize Poison", "Restoration",
+            # Cleric Level 5
+            "Flame Strike", "Insect Plague", "Righteous Might",
+            "Break Enchantment",
+            # Cleric Level 6
+            "Blade Barrier", "Word of Recall",
+            # Cleric Level 7
+            "Resurrection",
+            # Cleric Level 9
+            "Mass Heal",
+            # Paladin Level 1
+            "Detect Evil", "Protection from Evil", "Bless Weapon",
+            # Paladin Level 2
+            "Delay Poison", "Shield Other", "Owl's Wisdom",
+            # Paladin Level 3
+            "Daylight", "Remove Blindness/Deafness",
+            # Paladin Level 4
+            "Holy Sword", "Mark of Justice", "Dispel Evil", "Holy Aura",
+        ]
+        for name in phase3_spells:
+            assert name in registry, f"'{name}' missing from default registry"
+
+    # ------------------------------------------------------------------ #
+    #  Level grouping tests                                                #
+    # ------------------------------------------------------------------ #
+
+    def test_cleric_level_0_spells(self):
+        registry = create_default_registry()
+        level_0 = [s.name for s in registry.get_by_level(0)]
+        for name in ("Guidance", "Virtue", "Inflict Minor Wounds",
+                     "Detect Undead", "Create Water", "Purify Food and Drink"):
+            assert name in level_0, f"'{name}' not in level 0"
+
+    def test_cleric_level_1_spells(self):
+        registry = create_default_registry()
+        level_1 = [s.name for s in registry.get_by_level(1)]
+        for name in ("Command", "Sanctuary", "Divine Favor", "Doom",
+                     "Entropic Shield", "Detect Evil", "Protection from Evil",
+                     "Bless Weapon"):
+            assert name in level_1, f"'{name}' not in level 1"
+
+    def test_cleric_level_2_spells(self):
+        registry = create_default_registry()
+        level_2 = [s.name for s in registry.get_by_level(2)]
+        for name in ("Cure Moderate Wounds", "Silence", "Spiritual Weapon",
+                     "Consecrate", "Aid", "Desecrate", "Blindness/Deafness",
+                     "Delay Poison", "Shield Other", "Owl's Wisdom"):
+            assert name in level_2, f"'{name}' not in level 2"
+
+    def test_cleric_level_3_spells(self):
+        registry = create_default_registry()
+        level_3 = [s.name for s in registry.get_by_level(3)]
+        for name in ("Cure Serious Wounds", "Prayer", "Searing Light",
+                     "Speak with Dead", "Inflict Serious Wounds",
+                     "Daylight", "Remove Blindness/Deafness"):
+            assert name in level_3, f"'{name}' not in level 3"
+
+    def test_cleric_level_4_spells(self):
+        registry = create_default_registry()
+        level_4 = [s.name for s in registry.get_by_level(4)]
+        for name in ("Cure Critical Wounds", "Divine Power",
+                     "Freedom of Movement", "Neutralize Poison", "Restoration",
+                     "Holy Sword", "Mark of Justice", "Dispel Evil", "Holy Aura"):
+            assert name in level_4, f"'{name}' not in level 4"
+
+    def test_cleric_level_5_spells(self):
+        registry = create_default_registry()
+        level_5 = [s.name for s in registry.get_by_level(5)]
+        for name in ("Flame Strike", "Insect Plague", "Righteous Might",
+                     "Break Enchantment"):
+            assert name in level_5, f"'{name}' not in level 5"
+
+    def test_cleric_level_6_spells(self):
+        registry = create_default_registry()
+        level_6 = [s.name for s in registry.get_by_level(6)]
+        assert "Blade Barrier" in level_6
+        assert "Word of Recall" in level_6
+
+    def test_cleric_level_7_spells(self):
+        registry = create_default_registry()
+        level_7 = [s.name for s in registry.get_by_level(7)]
+        assert "Resurrection" in level_7
+
+    def test_cleric_level_9_spells(self):
+        registry = create_default_registry()
+        level_9 = [s.name for s in registry.get_by_level(9)]
+        assert "Mass Heal" in level_9
+
+    # ------------------------------------------------------------------ #
+    #  Attribute tests                                                     #
+    # ------------------------------------------------------------------ #
+
+    def test_guidance_attributes(self):
+        assert GUIDANCE.level == 0
+        assert GUIDANCE.school == SpellSchool.DIVINATION
+        assert SpellComponent.VERBAL in GUIDANCE.components
+        assert SpellComponent.SOMATIC in GUIDANCE.components
+
+    def test_virtue_attributes(self):
+        assert VIRTUE.level == 0
+        assert VIRTUE.school == SpellSchool.TRANSMUTATION
+        assert SpellComponent.DIVINE_FOCUS in VIRTUE.components
+
+    def test_inflict_minor_wounds_attributes(self):
+        assert INFLICT_MINOR_WOUNDS.level == 0
+        assert INFLICT_MINOR_WOUNDS.school == SpellSchool.NECROMANCY
+
+    def test_command_attributes(self):
+        assert COMMAND.level == 1
+        assert COMMAND.school == SpellSchool.ENCHANTMENT
+        assert COMMAND.subschool == "Compulsion"
+        assert "Mind-Affecting" in COMMAND.descriptor
+
+    def test_sanctuary_attributes(self):
+        assert SANCTUARY.level == 1
+        assert SANCTUARY.school == SpellSchool.ABJURATION
+        assert SpellComponent.DIVINE_FOCUS in SANCTUARY.components
+
+    def test_divine_favor_attributes(self):
+        assert DIVINE_FAVOR.level == 1
+        assert DIVINE_FAVOR.school == SpellSchool.EVOCATION
+        assert SpellComponent.DIVINE_FOCUS in DIVINE_FAVOR.components
+
+    def test_doom_attributes(self):
+        assert DOOM.level == 1
+        assert DOOM.school == SpellSchool.NECROMANCY
+        assert "Fear" in DOOM.descriptor
+        assert "Mind-Affecting" in DOOM.descriptor
+
+    def test_cure_moderate_wounds_attributes(self):
+        assert CURE_MODERATE_WOUNDS.level == 2
+        assert CURE_MODERATE_WOUNDS.school == SpellSchool.CONJURATION
+        assert CURE_MODERATE_WOUNDS.subschool == "Healing"
+
+    def test_spiritual_weapon_attributes(self):
+        assert SPIRITUAL_WEAPON.level == 2
+        assert SPIRITUAL_WEAPON.school == SpellSchool.EVOCATION
+        assert "Force" in SPIRITUAL_WEAPON.descriptor
+        assert SpellComponent.DIVINE_FOCUS in SPIRITUAL_WEAPON.components
+
+    def test_consecrate_attributes(self):
+        assert CONSECRATE.level == 2
+        assert CONSECRATE.school == SpellSchool.EVOCATION
+        assert "Good" in CONSECRATE.descriptor
+
+    def test_desecrate_attributes(self):
+        assert DESECRATE.level == 2
+        assert DESECRATE.school == SpellSchool.EVOCATION
+        assert "Evil" in DESECRATE.descriptor
+
+    def test_blindness_deafness_attributes(self):
+        assert BLINDNESS_DEAFNESS.level == 2
+        assert BLINDNESS_DEAFNESS.school == SpellSchool.NECROMANCY
+
+    def test_cure_serious_wounds_attributes(self):
+        assert CURE_SERIOUS_WOUNDS.level == 3
+        assert CURE_SERIOUS_WOUNDS.school == SpellSchool.CONJURATION
+        assert CURE_SERIOUS_WOUNDS.subschool == "Healing"
+
+    def test_flame_strike_attributes(self):
+        assert FLAME_STRIKE.level == 5
+        assert FLAME_STRIKE.school == SpellSchool.EVOCATION
+        assert "Fire" in FLAME_STRIKE.descriptor
+        assert SpellComponent.DIVINE_FOCUS in FLAME_STRIKE.components
+
+    def test_blade_barrier_attributes(self):
+        assert BLADE_BARRIER.level == 6
+        assert BLADE_BARRIER.school == SpellSchool.EVOCATION
+        assert "Force" in BLADE_BARRIER.descriptor
+
+    def test_mass_heal_attributes(self):
+        assert MASS_HEAL.level == 9
+        assert MASS_HEAL.school == SpellSchool.CONJURATION
+        assert MASS_HEAL.subschool == "Healing"
+
+    def test_detect_evil_attributes(self):
+        assert DETECT_EVIL.level == 1
+        assert DETECT_EVIL.school == SpellSchool.DIVINATION
+        assert SpellComponent.DIVINE_FOCUS in DETECT_EVIL.components
+
+    def test_protection_from_evil_attributes(self):
+        assert PROTECTION_FROM_EVIL.level == 1
+        assert PROTECTION_FROM_EVIL.school == SpellSchool.ABJURATION
+        assert "Good" in PROTECTION_FROM_EVIL.descriptor
+
+    def test_bless_weapon_attributes(self):
+        assert BLESS_WEAPON.level == 1
+        assert BLESS_WEAPON.school == SpellSchool.TRANSMUTATION
+        assert "Good" in BLESS_WEAPON.descriptor
+
+    def test_holy_sword_attributes(self):
+        assert HOLY_SWORD.level == 4
+        assert HOLY_SWORD.school == SpellSchool.EVOCATION
+        assert "Good" in HOLY_SWORD.descriptor
+
+    def test_mark_of_justice_attributes(self):
+        assert MARK_OF_JUSTICE.level == 4
+        assert MARK_OF_JUSTICE.school == SpellSchool.NECROMANCY
+        assert SpellComponent.DIVINE_FOCUS in MARK_OF_JUSTICE.components
+
+    def test_dispel_evil_attributes(self):
+        assert DISPEL_EVIL.level == 4
+        assert DISPEL_EVIL.school == SpellSchool.ABJURATION
+        assert "Good" in DISPEL_EVIL.descriptor
+
+    def test_holy_aura_attributes(self):
+        assert HOLY_AURA.level == 4
+        assert HOLY_AURA.school == SpellSchool.ABJURATION
+        assert "Good" in HOLY_AURA.descriptor
+
+    # ------------------------------------------------------------------ #
+    #  Effect callback scaling tests                                       #
+    # ------------------------------------------------------------------ #
+
+    def test_cure_moderate_wounds_scaling(self):
+        result_cl5 = CURE_MODERATE_WOUNDS.effect_callback(None, None, 5)
+        assert result_cl5["healing"] == "2d8+5"
+        result_cl15 = CURE_MODERATE_WOUNDS.effect_callback(None, None, 15)
+        assert result_cl15["healing"] == "2d8+10"
+        result_cl20 = CURE_MODERATE_WOUNDS.effect_callback(None, None, 20)
+        assert result_cl20["healing"] == "2d8+10"
+
+    def test_cure_serious_wounds_scaling(self):
+        result_cl5 = CURE_SERIOUS_WOUNDS.effect_callback(None, None, 5)
+        assert result_cl5["healing"] == "3d8+5"
+        result_cl15 = CURE_SERIOUS_WOUNDS.effect_callback(None, None, 15)
+        assert result_cl15["healing"] == "3d8+15"
+        result_cl20 = CURE_SERIOUS_WOUNDS.effect_callback(None, None, 20)
+        assert result_cl20["healing"] == "3d8+15"
+
+    def test_cure_critical_wounds_scaling(self):
+        result_cl5 = CURE_CRITICAL_WOUNDS.effect_callback(None, None, 5)
+        assert result_cl5["healing"] == "4d8+5"
+        result_cl20 = CURE_CRITICAL_WOUNDS.effect_callback(None, None, 20)
+        assert result_cl20["healing"] == "4d8+20"
+        result_cl25 = CURE_CRITICAL_WOUNDS.effect_callback(None, None, 25)
+        assert result_cl25["healing"] == "4d8+20"
+
+    def test_searing_light_scaling(self):
+        result_cl4 = SEARING_LIGHT.effect_callback(None, None, 4)
+        assert result_cl4["damage"] == "2d8"
+        result_cl10 = SEARING_LIGHT.effect_callback(None, None, 10)
+        assert result_cl10["damage"] == "5d8"
+        result_cl20 = SEARING_LIGHT.effect_callback(None, None, 20)
+        assert result_cl20["damage"] == "5d8"
+
+    def test_searing_light_undead_damage(self):
+        result_cl4 = SEARING_LIGHT.effect_callback(None, None, 4)
+        assert result_cl4["undead_damage"] == "4d8"
+        result_cl10 = SEARING_LIGHT.effect_callback(None, None, 10)
+        assert result_cl10["undead_damage"] == "10d8"
+        result_cl12 = SEARING_LIGHT.effect_callback(None, None, 12)
+        assert result_cl12["undead_damage"] == "10d8"
+
+    def test_flame_strike_scaling(self):
+        result_cl5 = FLAME_STRIKE.effect_callback(None, None, 5)
+        assert result_cl5["damage"] == "5d6"
+        result_cl15 = FLAME_STRIKE.effect_callback(None, None, 15)
+        assert result_cl15["damage"] == "15d6"
+        result_cl20 = FLAME_STRIKE.effect_callback(None, None, 20)
+        assert result_cl20["damage"] == "15d6"
+
+    def test_flame_strike_damage_types(self):
+        result = FLAME_STRIKE.effect_callback(None, None, 10)
+        assert result["fire_half"] is True
+        assert result["divine_half"] is True
+        assert result["save"] == "Reflex half"
+
+    def test_blade_barrier_scaling(self):
+        result_cl10 = BLADE_BARRIER.effect_callback(None, None, 10)
+        assert result_cl10["damage"] == "10d6"
+        result_cl20 = BLADE_BARRIER.effect_callback(None, None, 20)
+        assert result_cl20["damage"] == "20d6"
+        result_cl25 = BLADE_BARRIER.effect_callback(None, None, 25)
+        assert result_cl25["damage"] == "20d6"
+
+    def test_divine_favor_scaling(self):
+        result_cl1 = DIVINE_FAVOR.effect_callback(None, None, 1)
+        assert result_cl1["attack_bonus"] == 1
+        result_cl6 = DIVINE_FAVOR.effect_callback(None, None, 6)
+        assert result_cl6["attack_bonus"] == 2
+        result_cl9 = DIVINE_FAVOR.effect_callback(None, None, 9)
+        assert result_cl9["attack_bonus"] == 3
+        result_cl20 = DIVINE_FAVOR.effect_callback(None, None, 20)
+        assert result_cl20["attack_bonus"] == 3
+
+    def test_mass_heal_scaling(self):
+        result_cl10 = MASS_HEAL.effect_callback(None, None, 10)
+        assert result_cl10["healing"] == 100
+        result_cl25 = MASS_HEAL.effect_callback(None, None, 25)
+        assert result_cl25["healing"] == 250
+        result_cl30 = MASS_HEAL.effect_callback(None, None, 30)
+        assert result_cl30["healing"] == 250
+
+    def test_sanctuary_scaling(self):
+        result_cl5 = SANCTUARY.effect_callback(None, None, 5)
+        assert result_cl5["duration_rounds"] == 5
+
+    def test_doom_duration_scaling(self):
+        result_cl7 = DOOM.effect_callback(None, None, 7)
+        assert result_cl7["duration_minutes"] == 7
+        assert result_cl7["condition"] == "shaken"
+        assert result_cl7["penalty"] == -2
+
+    def test_create_water_scaling(self):
+        result_cl5 = CREATE_WATER.effect_callback(None, None, 5)
+        assert result_cl5["gallons"] == 10
+        result_cl10 = CREATE_WATER.effect_callback(None, None, 10)
+        assert result_cl10["gallons"] == 20
+
+    def test_guidance_effect(self):
+        result = GUIDANCE.effect_callback(None, None, 1)
+        assert result["bonus"] == 1
+        assert result["bonus_type"] == "competence"
+
+    def test_virtue_effect(self):
+        result = VIRTUE.effect_callback(None, None, 5)
+        assert result["temp_hp"] == 1
+
+    def test_inflict_minor_wounds_effect(self):
+        result = INFLICT_MINOR_WOUNDS.effect_callback(None, None, 3)
+        assert result["damage"] == 1
+        assert result["heals_undead"] is True
+
+    def test_detect_undead_effect(self):
+        result = DETECT_UNDEAD.effect_callback(None, None, 5)
+        assert result["detects_undead"] is True
+        assert result["range_ft"] == 60
+
+    def test_spiritual_weapon_scaling(self):
+        result_cl3 = SPIRITUAL_WEAPON.effect_callback(None, None, 3)
+        assert result_cl3["enhancement"] == 2
+        result_cl15 = SPIRITUAL_WEAPON.effect_callback(None, None, 15)
+        assert result_cl15["enhancement"] == 5
+
+    def test_freedom_of_movement_effect(self):
+        result = FREEDOM_OF_MOVEMENT.effect_callback(None, None, 8)
+        assert result["ignore_grapple"] is True
+        assert result["ignore_entangle"] is True
+        assert result["move_underwater"] is True
+        assert result["duration_minutes"] == 80
+
+    def test_restoration_effect(self):
+        result = RESTORATION.effect_callback(None, None, 10)
+        assert result["removes_ability_damage"] is True
+        assert result["removes_negative_levels"] is True
+        assert result["material_cost_gp"] == 100
+
+    def test_resurrection_scaling(self):
+        result_cl10 = RESURRECTION.effect_callback(None, None, 10)
+        assert result_cl10["max_years_dead"] == 100
+        assert result_cl10["material_cost_gp"] == 10000
+
+    def test_holy_sword_effect(self):
+        result = HOLY_SWORD.effect_callback(None, None, 10)
+        assert result["enhancement_bonus"] == 5
+        assert result["holy_damage"] == "2d6"
+        assert result["vs_evil_only"] is True
+        assert result["duration_rounds"] == 10
+
+    def test_dispel_evil_effect(self):
+        result = DISPEL_EVIL.effect_callback(None, None, 8)
+        assert result["ac_bonus_vs_evil"] == 4
+        assert result["dispel_evil_spell"] is True
+        assert result["banish_evil_extraplanar"] is True
+        assert result["duration_rounds"] == 8
+
+    def test_holy_aura_effect(self):
+        result = HOLY_AURA.effect_callback(None, None, 12)
+        assert result["deflection_bonus"] == 4
+        assert result["resistance_bonus"] == 4
+        assert result["spell_resistance"] == 25
+        assert result["blinds_evil_attackers"] is True
+        assert result["duration_rounds"] == 12
+
+    def test_protection_from_evil_effect(self):
+        result = PROTECTION_FROM_EVIL.effect_callback(None, None, 5)
+        assert result["ac_bonus"] == 2
+        assert result["save_bonus"] == 2
+        assert result["blocks_possession"] is True
+        assert result["duration_minutes"] == 5
+
+    def test_bless_weapon_effect(self):
+        result = BLESS_WEAPON.effect_callback(None, None, 7)
+        assert result["enhancement_bonus"] == 1
+        assert result["bypasses_dr_vs_evil_outsiders"] is True
+
+    def test_owls_wisdom_effect(self):
+        result = OWLS_WISDOM.effect_callback(None, None, 6)
+        assert result["wis_bonus"] == 4
+        assert result["bonus_type"] == "enhancement"
+        assert result["duration_minutes"] == 6
+
+    def test_daylight_effect(self):
+        result = DAYLIGHT.effect_callback(None, None, 5)
+        assert result["bright_radius_ft"] == 60
+        assert result["shadowy_radius_ft"] == 60
+        assert result["dispels_darkness_level"] == 3
+        assert result["duration_minutes"] == 50
+
+    def test_remove_blindness_deafness_effect(self):
+        result = REMOVE_BLINDNESS_DEAFNESS.effect_callback(None, None, 7)
+        assert result["removes_blindness"] is True
+        assert result["removes_deafness"] is True
+
+    def test_delay_poison_effect(self):
+        result = DELAY_POISON.effect_callback(None, None, 6)
+        assert result["suspends_poison"] is True
+        assert result["duration_hours"] == 6
+
+    def test_shield_other_effect(self):
+        result = SHIELD_OTHER.effect_callback(None, None, 5)
+        assert result["damage_split"] is True
+        assert result["save_bonus"] == 1
+        assert result["ac_bonus"] == 1
+
+    def test_mark_of_justice_effect(self):
+        result = MARK_OF_JUSTICE.effect_callback(None, None, 10)
+        assert result["permanent"] is True
+        assert result["triggered_curse"] is True
+
+    # ------------------------------------------------------------------ #
+    #  Divine Focus component tests                                        #
+    # ------------------------------------------------------------------ #
+
+    def test_divine_spells_use_divine_focus(self):
+        """Key Cleric spells should use the Divine Focus (DF) component."""
+        for spell in (VIRTUE, DOOM, DIVINE_FAVOR, SPIRITUAL_WEAPON,
+                      CONSECRATE, DESECRATE, PRAYER, SPEAK_WITH_DEAD,
+                      DIVINE_POWER, FREEDOM_OF_MOVEMENT, NEUTRALIZE_POISON,
+                      FLAME_STRIKE, INSECT_PLAGUE, RIGHTEOUS_MIGHT,
+                      RESURRECTION, DETECT_EVIL, MARK_OF_JUSTICE,
+                      DISPEL_EVIL):
+            assert SpellComponent.DIVINE_FOCUS in spell.components, (
+                f"Expected {spell.name} to have DIVINE_FOCUS component"
+            )
+
+    # ------------------------------------------------------------------ #
+    #  School grouping tests                                               #
+    # ------------------------------------------------------------------ #
+
+    def test_conjuration_contains_divine_spells(self):
+        registry = create_default_registry()
+        conjurations = [s.name for s in registry.get_by_school(SpellSchool.CONJURATION)]
+        assert "Cure Moderate Wounds" in conjurations
+        assert "Cure Serious Wounds" in conjurations
+        assert "Cure Critical Wounds" in conjurations
+        assert "Mass Heal" in conjurations
+        assert "Neutralize Poison" in conjurations
+        assert "Restoration" in conjurations
+        assert "Resurrection" in conjurations
+        assert "Create Water" in conjurations
+        assert "Word of Recall" in conjurations
+
+    def test_evocation_contains_divine_spells(self):
+        registry = create_default_registry()
+        evocations = [s.name for s in registry.get_by_school(SpellSchool.EVOCATION)]
+        assert "Divine Favor" in evocations
+        assert "Spiritual Weapon" in evocations
+        assert "Flame Strike" in evocations
+        assert "Blade Barrier" in evocations
+        assert "Holy Sword" in evocations
+
+    def test_abjuration_contains_divine_spells(self):
+        registry = create_default_registry()
+        abjurations = [s.name for s in registry.get_by_school(SpellSchool.ABJURATION)]
+        assert "Sanctuary" in abjurations
+        assert "Entropic Shield" in abjurations
+        assert "Freedom of Movement" in abjurations
+        assert "Protection from Evil" in abjurations
+        assert "Dispel Evil" in abjurations
+        assert "Holy Aura" in abjurations
+
+    def test_necromancy_contains_divine_spells(self):
+        registry = create_default_registry()
+        necromancies = [s.name for s in registry.get_by_school(SpellSchool.NECROMANCY)]
+        assert "Inflict Minor Wounds" in necromancies
+        assert "Doom" in necromancies
+        assert "Inflict Serious Wounds" in necromancies
+        assert "Blindness/Deafness" in necromancies
+        assert "Speak with Dead" in necromancies
+        assert "Mark of Justice" in necromancies
+
+    def test_transmutation_contains_divine_spells(self):
+        registry = create_default_registry()
+        transmutations = [s.name for s in registry.get_by_school(SpellSchool.TRANSMUTATION)]
+        assert "Virtue" in transmutations
+        assert "Purify Food and Drink" in transmutations
+        assert "Righteous Might" in transmutations
+        assert "Bless Weapon" in transmutations
+        assert "Owl's Wisdom" in transmutations
+
+    def test_divination_contains_divine_spells(self):
+        registry = create_default_registry()
+        divinations = [s.name for s in registry.get_by_school(SpellSchool.DIVINATION)]
+        assert "Guidance" in divinations
+        assert "Detect Undead" in divinations
+        assert "Detect Evil" in divinations
+
+    def test_enchantment_contains_divine_spells(self):
+        registry = create_default_registry()
+        enchantments = [s.name for s in registry.get_by_school(SpellSchool.ENCHANTMENT)]
+        assert "Command" in enchantments
+        assert "Aid" in enchantments
+        assert "Prayer" in enchantments

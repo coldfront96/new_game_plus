@@ -2838,14 +2838,1269 @@ FORESIGHT = Spell(
 )
 
 
+# ---------------------------------------------------------------------------
+# Phase 3: Cleric / Paladin divine spell effect callbacks
+# ---------------------------------------------------------------------------
+
+# -- Level 0 --
+
+def _guidance_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"bonus": 1, "bonus_type": "competence", "save": "until discharged"}
+
+
+def _virtue_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"temp_hp": 1, "duration_minutes": 1}
+
+
+def _inflict_minor_wounds_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"damage": 1, "attack": "touch", "heals_undead": True}
+
+
+def _detect_undead_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"range_ft": 60, "detects_undead": True, "can_determine_strength": True}
+
+
+def _create_water_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"gallons": caster_level * 2, "maximum": None}
+
+
+def _purify_food_and_drink_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"cubic_feet": caster_level}
+
+
+# -- Level 1 --
+
+def _command_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "save": "Will negates",
+        "duration_rounds": 1,
+        "commands": ["approach", "drop", "fall", "flee", "halt"],
+    }
+
+
+def _sanctuary_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"save_to_attack": "Will DC", "duration_rounds": caster_level}
+
+
+def _divine_favor_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    bonus = min(max(1, caster_level // 3), 3)
+    return {
+        "attack_bonus": bonus,
+        "damage_bonus": bonus,
+        "bonus_type": "luck",
+        "duration_minutes": 1,
+    }
+
+
+def _doom_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "penalty": -2,
+        "condition": "shaken",
+        "save": "Will negates",
+        "duration_minutes": caster_level,
+    }
+
+
+def _entropic_shield_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"ranged_miss_chance": 0.20, "duration_minutes": caster_level}
+
+
+# -- Level 2 --
+
+def _cure_moderate_wounds_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "healing": f"2d8+{min(caster_level, 10)}",
+        "harms_undead": True,
+        "energy_type": "positive",
+    }
+
+
+def _silence_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "area": "20-ft radius emanation",
+        "save": "Will negates (creature)",
+        "negates_verbal": True,
+        "duration_rounds": caster_level,
+    }
+
+
+def _spiritual_weapon_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "damage": "1d8",
+        "enhancement": min(1 + caster_level // 3, 5),
+        "bab": caster_level,
+        "duration_rounds": caster_level,
+    }
+
+
+def _consecrate_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "area": "20-ft radius burst",
+        "undead_penalty": -1,
+        "positive_channeling_bonus": True,
+        "duration_hours": caster_level * 2,
+    }
+
+
+def _aid_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "attack_bonus": 1,
+        "save_vs_fear_bonus": 1,
+        "temp_hp": f"1d8+{min(caster_level, 10)}",
+        "duration_minutes": caster_level,
+    }
+
+
+def _desecrate_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "area": "20-ft radius burst",
+        "undead_bonus": 1,
+        "undead_hp_per_hd": 1,
+        "duration_hours": caster_level * 2,
+    }
+
+
+def _blindness_deafness_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"save": "Fortitude negates", "permanent": True, "target_sense": "choice"}
+
+
+# -- Level 3 --
+
+def _cure_serious_wounds_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "healing": f"3d8+{min(caster_level, 15)}",
+        "harms_undead": True,
+    }
+
+
+def _prayer_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "ally_bonus": 1,
+        "enemy_penalty": -1,
+        "bonus_type": "luck",
+        "area": "40-ft burst",
+        "duration_rounds": caster_level,
+    }
+
+
+def _searing_light_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "damage": f"{min(caster_level // 2, 5)}d8",
+        "undead_damage": f"{min(caster_level, 10)}d8",
+        "damage_type": "Light/Radiant",
+        "attack": "ranged touch",
+    }
+
+
+def _speak_with_dead_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "max_questions": min(caster_level // 2, 6),
+        "duration_minutes": caster_level * 10,
+    }
+
+
+def _inflict_serious_wounds_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "damage": f"3d8+{min(caster_level, 15)}",
+        "heals_undead": True,
+        "attack": "touch",
+    }
+
+
+# -- Level 4 --
+
+def _cure_critical_wounds_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "healing": f"4d8+{min(caster_level, 20)}",
+        "harms_undead": True,
+    }
+
+
+def _divine_power_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "bab_set_to": caster_level,
+        "str_bonus": 6,
+        "bonus_hp": caster_level,
+        "duration_rounds": caster_level,
+    }
+
+
+def _freedom_of_movement_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "ignore_grapple": True,
+        "ignore_entangle": True,
+        "move_underwater": True,
+        "duration_minutes": caster_level * 10,
+    }
+
+
+def _neutralize_poison_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "neutralizes_active_poison": True,
+        "detoxify_duration_minutes": caster_level * 10,
+    }
+
+
+def _restoration_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "removes_ability_damage": True,
+        "removes_negative_levels": True,
+        "removes_magical_aging": False,
+        "material_cost_gp": 100,
+    }
+
+
+# -- Level 5 --
+
+def _flame_strike_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "damage": f"{min(caster_level, 15)}d6",
+        "fire_half": True,
+        "divine_half": True,
+        "area": "10-ft radius, 40-ft high column",
+        "save": "Reflex half",
+    }
+
+
+def _insect_plague_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "swarms": min(caster_level // 3, 6),
+        "damage_per_swarm": "1d6",
+        "distraction": True,
+        "duration_minutes": caster_level,
+    }
+
+
+def _righteous_might_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "str_bonus": 8,
+        "con_bonus": 4,
+        "natural_armor_bonus": 2,
+        "size_increase": 1,
+        "dr": "3/evil",
+        "duration_rounds": caster_level,
+    }
+
+
+def _break_enchantment_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "max_targets": caster_level,
+        "removes_enchantment": True,
+        "removes_curse": True,
+        "removes_petrification": True,
+    }
+
+
+# -- Level 6 --
+
+def _blade_barrier_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "damage": f"{min(caster_level, 20)}d6",
+        "save": "Reflex half",
+        "duration_minutes": caster_level * 10,
+    }
+
+
+def _word_of_recall_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"teleports_to": "pre-designated sanctuary", "willing_only": True}
+
+
+# -- Level 7 --
+
+def _resurrection_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "max_years_dead": caster_level * 10,
+        "restores_1_negative_level": True,
+        "material_cost_gp": 10000,
+    }
+
+
+# -- Level 9 --
+
+def _mass_heal_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "healing": min(caster_level * 10, 250),
+        "area": "30-ft burst",
+        "harms_undead": True,
+    }
+
+
+# -- Paladin Level 1 --
+
+def _detect_evil_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "detects_alignment": "evil",
+        "range_ft": 60,
+        "duration_concentration": True,
+    }
+
+
+def _protection_from_evil_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "ac_bonus": 2,
+        "save_bonus": 2,
+        "bonus_type": "deflection/resistance",
+        "blocks_possession": True,
+        "duration_minutes": caster_level,
+    }
+
+
+def _bless_weapon_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "enhancement_bonus": 1,
+        "bypasses_dr_vs_evil_outsiders": True,
+        "bypasses_dr_vs_undead": True,
+        "duration_minutes": caster_level,
+    }
+
+
+# -- Paladin Level 2 --
+
+def _delay_poison_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"suspends_poison": True, "duration_hours": caster_level}
+
+
+def _shield_other_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "damage_split": True,
+        "save_bonus": 1,
+        "ac_bonus": 1,
+        "duration_hours": caster_level,
+    }
+
+
+def _owls_wisdom_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"wis_bonus": 4, "bonus_type": "enhancement", "duration_minutes": caster_level}
+
+
+# -- Paladin Level 3 --
+
+def _daylight_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "bright_radius_ft": 60,
+        "shadowy_radius_ft": 60,
+        "dispels_darkness_level": 3,
+        "duration_minutes": caster_level * 10,
+    }
+
+
+def _remove_blindness_deafness_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"removes_blindness": True, "removes_deafness": True, "save": "none"}
+
+
+# -- Paladin Level 4 --
+
+def _holy_sword_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "enhancement_bonus": 5,
+        "holy_damage": "2d6",
+        "vs_evil_only": True,
+        "duration_rounds": caster_level,
+    }
+
+
+def _mark_of_justice_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "permanent": True,
+        "triggered_curse": True,
+        "remove_with": "break enchantment or remove curse",
+    }
+
+
+def _dispel_evil_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "ac_bonus_vs_evil": 4,
+        "dispel_evil_spell": True,
+        "banish_evil_extraplanar": True,
+        "duration_rounds": caster_level,
+    }
+
+
+def _holy_aura_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {
+        "deflection_bonus": 4,
+        "resistance_bonus": 4,
+        "spell_resistance": 25,
+        "blinds_evil_attackers": True,
+        "duration_rounds": caster_level,
+    }
+
+
+# ---------------------------------------------------------------------------
+# Phase 3: Cleric / Paladin divine spell constants
+# ---------------------------------------------------------------------------
+
+# -- Cleric Level 0 --
+
+GUIDANCE = Spell(
+    name="Guidance",
+    level=0,
+    school=SpellSchool.DIVINATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Touch",
+    duration="1 minute or until discharged",
+    effect_callback=_guidance_effect,
+    description=(
+        "This spell imbues the subject with a touch of divine guidance. The "
+        "creature gets a +1 competence bonus on a single attack roll, saving "
+        "throw, or skill check."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+VIRTUE = Spell(
+    name="Virtue",
+    level=0,
+    school=SpellSchool.TRANSMUTATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.DIVINE_FOCUS],
+    range="Touch",
+    duration="1 minute",
+    effect_callback=_virtue_effect,
+    description=(
+        "The subject gains 1 temporary hit point."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+INFLICT_MINOR_WOUNDS = Spell(
+    name="Inflict Minor Wounds",
+    level=0,
+    school=SpellSchool.NECROMANCY,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Touch",
+    duration="Instantaneous",
+    effect_callback=_inflict_minor_wounds_effect,
+    description=(
+        "When laying your hand upon a creature, you channel negative energy "
+        "that deals 1 point of damage. Since undead are powered by negative "
+        "energy, this spell cures such a creature of 1 point of damage."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+DETECT_UNDEAD = Spell(
+    name="Detect Undead",
+    level=0,
+    school=SpellSchool.DIVINATION,
+    components=[
+        SpellComponent.VERBAL, SpellComponent.SOMATIC,
+        SpellComponent.MATERIAL, SpellComponent.DIVINE_FOCUS,
+    ],
+    range="60 ft.",
+    duration="Concentration, up to 1 min./level",
+    effect_callback=_detect_undead_effect,
+    description=(
+        "You can detect the aura that surrounds undead creatures. The amount "
+        "of information revealed depends on how long you study a particular "
+        "area or subject."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+CREATE_WATER = Spell(
+    name="Create Water",
+    level=0,
+    school=SpellSchool.CONJURATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Close (25 ft. + 5 ft./2 levels)",
+    duration="Instantaneous",
+    effect_callback=_create_water_effect,
+    description=(
+        "This spell generates wholesome, drinkable water, just like clean "
+        "rain water. Water can be created in an area as small as will actually "
+        "contain the liquid, or in an area three times as large (up to 2 gallons/level)."
+    ),
+    subschool="Creation",
+    descriptor=["Water"],
+)
+
+PURIFY_FOOD_AND_DRINK = Spell(
+    name="Purify Food and Drink",
+    level=0,
+    school=SpellSchool.TRANSMUTATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="10 ft.",
+    duration="Instantaneous",
+    effect_callback=_purify_food_and_drink_effect,
+    description=(
+        "This spell makes spoiled, rotten, diseased, or otherwise contaminated "
+        "food and water pure and suitable for eating and drinking."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+# -- Cleric Level 1 --
+
+COMMAND = Spell(
+    name="Command",
+    level=1,
+    school=SpellSchool.ENCHANTMENT,
+    components=[SpellComponent.VERBAL],
+    range="Close (25 ft. + 5 ft./2 levels)",
+    duration="1 round",
+    effect_callback=_command_effect,
+    description=(
+        "You give the subject a single command, which it obeys to the best "
+        "of its ability at its earliest opportunity."
+    ),
+    subschool="Compulsion",
+    descriptor=["Language-Dependent", "Mind-Affecting"],
+)
+
+SANCTUARY = Spell(
+    name="Sanctuary",
+    level=1,
+    school=SpellSchool.ABJURATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.DIVINE_FOCUS],
+    range="Touch",
+    duration="1 round/level",
+    effect_callback=_sanctuary_effect,
+    description=(
+        "Any opponent attempting to strike or otherwise directly attack the "
+        "warded creature, even with a targeted spell, must attempt a Will save. "
+        "If the save succeeds, the opponent can attack normally and is unaffected "
+        "by that casting of the spell."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+DIVINE_FAVOR = Spell(
+    name="Divine Favor",
+    level=1,
+    school=SpellSchool.EVOCATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.DIVINE_FOCUS],
+    range="Personal",
+    duration="1 minute",
+    effect_callback=_divine_favor_effect,
+    description=(
+        "Calling upon the strength and wisdom of a deity, you gain a +1 luck "
+        "bonus on attack and weapon damage rolls for every three caster levels "
+        "you have (at least +1, maximum +3)."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+DOOM = Spell(
+    name="Doom",
+    level=1,
+    school=SpellSchool.NECROMANCY,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.DIVINE_FOCUS],
+    range="Medium (100 ft. + 10 ft./level)",
+    duration="1 min./level",
+    effect_callback=_doom_effect,
+    description=(
+        "This spell fills a single subject with a feeling of horrible dread "
+        "that causes it to become shaken."
+    ),
+    subschool="",
+    descriptor=["Fear", "Mind-Affecting"],
+)
+
+ENTROPIC_SHIELD = Spell(
+    name="Entropic Shield",
+    level=1,
+    school=SpellSchool.ABJURATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Personal",
+    duration="1 min./level",
+    effect_callback=_entropic_shield_effect,
+    description=(
+        "A magical field appears around you, glowing with a chaotic blast of "
+        "multicolored hues. This field deflects incoming arrows, rays, and other "
+        "ranged attacks, giving ranged attacks a 20% miss chance."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+# -- Cleric Level 2 --
+
+CURE_MODERATE_WOUNDS = Spell(
+    name="Cure Moderate Wounds",
+    level=2,
+    school=SpellSchool.CONJURATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Touch",
+    duration="Instantaneous",
+    effect_callback=_cure_moderate_wounds_effect,
+    description=(
+        "When laying your hand upon a living creature, you channel positive "
+        "energy that cures 2d8 points of damage +1 per caster level (maximum +10)."
+    ),
+    subschool="Healing",
+    descriptor=[],
+)
+
+SILENCE = Spell(
+    name="Silence",
+    level=2,
+    school=SpellSchool.ILLUSION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Long (400 ft. + 40 ft./level)",
+    duration="1 round/level",
+    effect_callback=_silence_effect,
+    description=(
+        "Upon the casting of this spell, complete silence prevails in the "
+        "affected area. All sound is stopped: Conversation is impossible, "
+        "spells with verbal components cannot be cast, and no noise whatsoever issues from, travels into, or through the area."
+    ),
+    subschool="Glamer",
+    descriptor=[],
+)
+
+SPIRITUAL_WEAPON = Spell(
+    name="Spiritual Weapon",
+    level=2,
+    school=SpellSchool.EVOCATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.DIVINE_FOCUS],
+    range="Medium (100 ft. + 10 ft./level)",
+    duration="1 round/level",
+    effect_callback=_spiritual_weapon_effect,
+    description=(
+        "A weapon made of pure force springs into existence and attacks "
+        "opponents at a distance, as you direct it, dealing 1d8 force damage "
+        "per hit, +1 per three caster levels (maximum +5)."
+    ),
+    subschool="",
+    descriptor=["Force"],
+)
+
+CONSECRATE = Spell(
+    name="Consecrate",
+    level=2,
+    school=SpellSchool.EVOCATION,
+    components=[
+        SpellComponent.VERBAL, SpellComponent.SOMATIC,
+        SpellComponent.MATERIAL, SpellComponent.DIVINE_FOCUS,
+    ],
+    range="Close (25 ft. + 5 ft./2 levels)",
+    duration="2 hours/level",
+    effect_callback=_consecrate_effect,
+    description=(
+        "This spell blesses an area with positive energy. The DC to turn "
+        "undead increases by +3, and undead in the area suffer a -1 penalty "
+        "on attack rolls, damage rolls, and saving throws."
+    ),
+    subschool="",
+    descriptor=["Good"],
+)
+
+AID = Spell(
+    name="Aid",
+    level=2,
+    school=SpellSchool.ENCHANTMENT,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.DIVINE_FOCUS],
+    range="Touch",
+    duration="1 min./level",
+    effect_callback=_aid_effect,
+    description=(
+        "Aid grants the target a +1 morale bonus on attack rolls and saves "
+        "against fear effects, plus temporary hit points equal to 1d8 + "
+        "caster level (maximum +10)."
+    ),
+    subschool="Compulsion",
+    descriptor=["Mind-Affecting"],
+)
+
+DESECRATE = Spell(
+    name="Desecrate",
+    level=2,
+    school=SpellSchool.EVOCATION,
+    components=[
+        SpellComponent.VERBAL, SpellComponent.SOMATIC,
+        SpellComponent.MATERIAL, SpellComponent.DIVINE_FOCUS,
+    ],
+    range="Close (25 ft. + 5 ft./2 levels)",
+    duration="2 hours/level",
+    effect_callback=_desecrate_effect,
+    description=(
+        "This spell imbues an area with negative energy. Undead created within "
+        "or summoned into such an area gain +1 hit point per HD."
+    ),
+    subschool="",
+    descriptor=["Evil"],
+)
+
+BLINDNESS_DEAFNESS = Spell(
+    name="Blindness/Deafness",
+    level=2,
+    school=SpellSchool.NECROMANCY,
+    components=[SpellComponent.VERBAL],
+    range="Medium (100 ft. + 10 ft./level)",
+    duration="Permanent",
+    effect_callback=_blindness_deafness_effect,
+    description=(
+        "You call upon the powers of unlife to render the subject blinded or "
+        "deafened, as you choose."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+# -- Cleric Level 3 --
+
+CURE_SERIOUS_WOUNDS = Spell(
+    name="Cure Serious Wounds",
+    level=3,
+    school=SpellSchool.CONJURATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Touch",
+    duration="Instantaneous",
+    effect_callback=_cure_serious_wounds_effect,
+    description=(
+        "When laying your hand upon a living creature, you channel positive "
+        "energy that cures 3d8 points of damage +1 per caster level (maximum +15)."
+    ),
+    subschool="Healing",
+    descriptor=[],
+)
+
+PRAYER = Spell(
+    name="Prayer",
+    level=3,
+    school=SpellSchool.ENCHANTMENT,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.DIVINE_FOCUS],
+    range="40 ft.",
+    duration="1 round/level",
+    effect_callback=_prayer_effect,
+    description=(
+        "You bring special favor upon yourself and your allies while bringing "
+        "discord to your enemies. Each round, all allies within the area receive "
+        "a +1 luck bonus on attack rolls, weapon damage rolls, saves, and skill "
+        "checks, while each enemy suffers a -1 penalty."
+    ),
+    subschool="Compulsion",
+    descriptor=["Mind-Affecting"],
+)
+
+SEARING_LIGHT = Spell(
+    name="Searing Light",
+    level=3,
+    school=SpellSchool.EVOCATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Medium (100 ft. + 10 ft./level)",
+    duration="Instantaneous",
+    effect_callback=_searing_light_effect,
+    description=(
+        "Focusing divine power like a ray of the sun, you project a blast of "
+        "light from your open palm. You must succeed on a ranged touch attack "
+        "to strike your target. A creature struck by this ray of light takes "
+        "1d8 points of damage per two caster levels (maximum 5d8)."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+SPEAK_WITH_DEAD = Spell(
+    name="Speak with Dead",
+    level=3,
+    school=SpellSchool.NECROMANCY,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.DIVINE_FOCUS],
+    range="10 ft.",
+    duration="10 min./level",
+    effect_callback=_speak_with_dead_effect,
+    description=(
+        "You grant the semblance of life and intelligence to a corpse, allowing "
+        "it to answer several questions that you put to it. You may ask one "
+        "question per two caster levels (maximum six questions)."
+    ),
+    subschool="",
+    descriptor=["Language-Dependent"],
+)
+
+INFLICT_SERIOUS_WOUNDS = Spell(
+    name="Inflict Serious Wounds",
+    level=3,
+    school=SpellSchool.NECROMANCY,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Touch",
+    duration="Instantaneous",
+    effect_callback=_inflict_serious_wounds_effect,
+    description=(
+        "When laying your hand upon a creature, you channel negative energy "
+        "that deals 3d8 points of damage +1 per caster level (maximum +15)."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+# -- Cleric Level 4 --
+
+CURE_CRITICAL_WOUNDS = Spell(
+    name="Cure Critical Wounds",
+    level=4,
+    school=SpellSchool.CONJURATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Touch",
+    duration="Instantaneous",
+    effect_callback=_cure_critical_wounds_effect,
+    description=(
+        "When laying your hand upon a living creature, you channel positive "
+        "energy that cures 4d8 points of damage +1 per caster level (maximum +20)."
+    ),
+    subschool="Healing",
+    descriptor=[],
+)
+
+DIVINE_POWER = Spell(
+    name="Divine Power",
+    level=4,
+    school=SpellSchool.EVOCATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.DIVINE_FOCUS],
+    range="Personal",
+    duration="1 round/level",
+    effect_callback=_divine_power_effect,
+    description=(
+        "Calling upon the divine power of your patron, you imbue yourself with "
+        "strength and skill in combat. Your base attack bonus equals your caster "
+        "level, you gain a +6 enhancement bonus to Strength, and you gain 1 "
+        "temporary hit point per caster level."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+FREEDOM_OF_MOVEMENT = Spell(
+    name="Freedom of Movement",
+    level=4,
+    school=SpellSchool.ABJURATION,
+    components=[
+        SpellComponent.VERBAL, SpellComponent.SOMATIC,
+        SpellComponent.MATERIAL, SpellComponent.DIVINE_FOCUS,
+    ],
+    range="Personal or Touch",
+    duration="10 min./level",
+    effect_callback=_freedom_of_movement_effect,
+    description=(
+        "This spell enables you or a creature you touch to move and attack "
+        "normally for the duration of the spell, even under the influence of "
+        "magic that usually impedes movement."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+NEUTRALIZE_POISON = Spell(
+    name="Neutralize Poison",
+    level=4,
+    school=SpellSchool.CONJURATION,
+    components=[
+        SpellComponent.VERBAL, SpellComponent.SOMATIC,
+        SpellComponent.MATERIAL, SpellComponent.DIVINE_FOCUS,
+    ],
+    range="Touch",
+    duration="10 min./level",
+    effect_callback=_neutralize_poison_effect,
+    description=(
+        "You detoxify any sort of venom in the creature or object touched. "
+        "A poisoned creature suffers no additional effects from the poison, "
+        "and any temporary effects are ended."
+    ),
+    subschool="Healing",
+    descriptor=[],
+)
+
+RESTORATION = Spell(
+    name="Restoration",
+    level=4,
+    school=SpellSchool.CONJURATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.MATERIAL],
+    range="Touch",
+    duration="Instantaneous",
+    effect_callback=_restoration_effect,
+    description=(
+        "This spell functions like lesser restoration, except that it also "
+        "dispels negative energy levels and restores one experience level to "
+        "a creature who has had a level drained."
+    ),
+    subschool="Healing",
+    descriptor=[],
+)
+
+# -- Cleric Level 5 --
+
+FLAME_STRIKE = Spell(
+    name="Flame Strike",
+    level=5,
+    school=SpellSchool.EVOCATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.DIVINE_FOCUS],
+    range="Medium (100 ft. + 10 ft./level)",
+    duration="Instantaneous",
+    effect_callback=_flame_strike_effect,
+    description=(
+        "A flame strike produces a vertical column of divine fire roaring "
+        "downward. The spell deals 1d6 points of damage per caster level "
+        "(maximum 15d6). Half the damage is fire damage, but the other half "
+        "results directly from divine power and is therefore not subject to "
+        "being reduced by resistance to fire-based attacks."
+    ),
+    subschool="",
+    descriptor=["Fire"],
+)
+
+INSECT_PLAGUE = Spell(
+    name="Insect Plague",
+    level=5,
+    school=SpellSchool.CONJURATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.DIVINE_FOCUS],
+    range="Long (400 ft. + 40 ft./level)",
+    duration="1 min./level",
+    effect_callback=_insect_plague_effect,
+    description=(
+        "You summon a number of swarms of locusts (maximum 6 swarms, 1 per "
+        "3 levels). The swarms spread out in a cloud that covers a 60-foot "
+        "diameter area."
+    ),
+    subschool="Summoning",
+    descriptor=[],
+)
+
+RIGHTEOUS_MIGHT = Spell(
+    name="Righteous Might",
+    level=5,
+    school=SpellSchool.TRANSMUTATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.DIVINE_FOCUS],
+    range="Personal",
+    duration="1 round/level",
+    effect_callback=_righteous_might_effect,
+    description=(
+        "Your height doubles, and your weight increases by a factor of eight. "
+        "Your size category changes to the next larger size. You gain a +8 "
+        "size bonus to Strength, a +4 size bonus to Constitution, and a +2 "
+        "size bonus to natural armor."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+BREAK_ENCHANTMENT = Spell(
+    name="Break Enchantment",
+    level=5,
+    school=SpellSchool.ABJURATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Close (25 ft. + 5 ft./2 levels)",
+    duration="Instantaneous",
+    effect_callback=_break_enchantment_effect,
+    description=(
+        "This spell frees victims from enchantments, transmutations, and curses. "
+        "Break enchantment can reverse even an instantaneous effect."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+# -- Cleric Level 6 --
+
+BLADE_BARRIER = Spell(
+    name="Blade Barrier",
+    level=6,
+    school=SpellSchool.EVOCATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Medium (100 ft. + 10 ft./level)",
+    duration="10 min./level",
+    effect_callback=_blade_barrier_effect,
+    description=(
+        "An immobile, vertical curtain of whirling blades shaped of pure force "
+        "springs into existence. Any creature passing through the wall takes "
+        "1d6 points of damage per caster level (maximum 20d6), with a Reflex "
+        "save for half damage."
+    ),
+    subschool="",
+    descriptor=["Force"],
+)
+
+WORD_OF_RECALL = Spell(
+    name="Word of Recall",
+    level=6,
+    school=SpellSchool.CONJURATION,
+    components=[SpellComponent.VERBAL],
+    range="Unlimited",
+    duration="Instantaneous",
+    effect_callback=_word_of_recall_effect,
+    description=(
+        "Word of recall teleports you instantly back to your sanctuary when "
+        "the word is uttered."
+    ),
+    subschool="Teleportation",
+    descriptor=[],
+)
+
+# -- Cleric Level 7 --
+
+RESURRECTION = Spell(
+    name="Resurrection",
+    level=7,
+    school=SpellSchool.CONJURATION,
+    components=[
+        SpellComponent.VERBAL, SpellComponent.SOMATIC,
+        SpellComponent.MATERIAL, SpellComponent.DIVINE_FOCUS,
+    ],
+    range="Touch",
+    duration="Instantaneous",
+    effect_callback=_resurrection_effect,
+    description=(
+        "This spell functions like raise dead, except that you are able to "
+        "restore life to any deceased creature. The creature can have been "
+        "dead for as long as 10 years per caster level."
+    ),
+    subschool="Healing",
+    descriptor=[],
+)
+
+# -- Cleric Level 9 --
+
+MASS_HEAL = Spell(
+    name="Mass Heal",
+    level=9,
+    school=SpellSchool.CONJURATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Close (25 ft. + 5 ft./2 levels)",
+    duration="Instantaneous",
+    effect_callback=_mass_heal_effect,
+    description=(
+        "This spell functions like heal, except that it affects multiple "
+        "creatures, and the maximum number of hit points restored to each "
+        "is 250."
+    ),
+    subschool="Healing",
+    descriptor=[],
+)
+
+# -- Paladin Level 1 --
+
+DETECT_EVIL = Spell(
+    name="Detect Evil",
+    level=1,
+    school=SpellSchool.DIVINATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.DIVINE_FOCUS],
+    range="60 ft.",
+    duration="Concentration, up to 10 min./level",
+    effect_callback=_detect_evil_effect,
+    description=(
+        "You can sense the presence of evil. The amount of information revealed "
+        "depends on how long you study a particular area or subject."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+PROTECTION_FROM_EVIL = Spell(
+    name="Protection from Evil",
+    level=1,
+    school=SpellSchool.ABJURATION,
+    components=[
+        SpellComponent.VERBAL, SpellComponent.SOMATIC,
+        SpellComponent.MATERIAL, SpellComponent.DIVINE_FOCUS,
+    ],
+    range="Touch",
+    duration="1 min./level",
+    effect_callback=_protection_from_evil_effect,
+    description=(
+        "This spell wards a creature from attacks by evil creatures, from "
+        "mental control, and from summoned creatures. It creates a magical "
+        "barrier around the subject at a distance of 1 foot."
+    ),
+    subschool="",
+    descriptor=["Good"],
+)
+
+BLESS_WEAPON = Spell(
+    name="Bless Weapon",
+    level=1,
+    school=SpellSchool.TRANSMUTATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Touch",
+    duration="1 min./level",
+    effect_callback=_bless_weapon_effect,
+    description=(
+        "This transmutation makes a weapon strike true against evil foes. "
+        "The weapon is treated as having a +1 enhancement bonus for the "
+        "purpose of bypassing the damage reduction of evil creatures."
+    ),
+    subschool="",
+    descriptor=["Good"],
+)
+
+# -- Paladin Level 2 --
+
+DELAY_POISON = Spell(
+    name="Delay Poison",
+    level=2,
+    school=SpellSchool.CONJURATION,
+    components=[
+        SpellComponent.VERBAL, SpellComponent.SOMATIC,
+        SpellComponent.MATERIAL, SpellComponent.DIVINE_FOCUS,
+    ],
+    range="Touch",
+    duration="1 hour/level",
+    effect_callback=_delay_poison_effect,
+    description=(
+        "The subject becomes temporarily immune to poison. Any poison in its "
+        "system or any poison to which it is exposed during the spell's duration "
+        "does not affect the subject until the spell's duration has expired."
+    ),
+    subschool="Healing",
+    descriptor=[],
+)
+
+SHIELD_OTHER = Spell(
+    name="Shield Other",
+    level=2,
+    school=SpellSchool.ABJURATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.FOCUS],
+    range="Close (25 ft. + 5 ft./2 levels)",
+    duration="1 hour/level",
+    effect_callback=_shield_other_effect,
+    description=(
+        "This spell wards the subject and creates a mystic connection between "
+        "you and the subject so that some of its wounds are transferred to you. "
+        "The subject gains a +1 deflection bonus to AC and a +1 resistance "
+        "bonus on saves."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+OWLS_WISDOM = Spell(
+    name="Owl's Wisdom",
+    level=2,
+    school=SpellSchool.TRANSMUTATION,
+    components=[
+        SpellComponent.VERBAL, SpellComponent.SOMATIC,
+        SpellComponent.MATERIAL, SpellComponent.DIVINE_FOCUS,
+    ],
+    range="Touch",
+    duration="1 min./level",
+    effect_callback=_owls_wisdom_effect,
+    description=(
+        "The transmuted creature becomes wiser. The spell grants a +4 "
+        "enhancement bonus to Wisdom, adding the usual benefits to Wisdom-related skills."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+# -- Paladin Level 3 --
+
+DAYLIGHT = Spell(
+    name="Daylight",
+    level=3,
+    school=SpellSchool.EVOCATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Touch",
+    duration="10 min./level",
+    effect_callback=_daylight_effect,
+    description=(
+        "The object touched sheds light as bright as full daylight in a "
+        "60-foot radius, and dim light for an additional 60 feet beyond that. "
+        "Creatures that take penalties in bright light also take them while "
+        "within the radius of this magical light."
+    ),
+    subschool="",
+    descriptor=["Light"],
+)
+
+REMOVE_BLINDNESS_DEAFNESS = Spell(
+    name="Remove Blindness/Deafness",
+    level=3,
+    school=SpellSchool.CONJURATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Touch",
+    duration="Instantaneous",
+    effect_callback=_remove_blindness_deafness_effect,
+    description=(
+        "Remove blindness/deafness cures blindness or deafness (your choice), "
+        "whether the effect is normal or magical in nature."
+    ),
+    subschool="Healing",
+    descriptor=[],
+)
+
+# -- Paladin Level 4 --
+
+HOLY_SWORD = Spell(
+    name="Holy Sword",
+    level=4,
+    school=SpellSchool.EVOCATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Touch",
+    duration="1 round/level",
+    effect_callback=_holy_sword_effect,
+    description=(
+        "This spell allows you to channel holy power into your sword, or any "
+        "other melee weapon you choose. The weapon acts as a +5 holy weapon "
+        "(+2d6 damage against evil creatures)."
+    ),
+    subschool="",
+    descriptor=["Good"],
+)
+
+MARK_OF_JUSTICE = Spell(
+    name="Mark of Justice",
+    level=4,
+    school=SpellSchool.NECROMANCY,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.DIVINE_FOCUS],
+    range="Touch",
+    duration="Permanent",
+    effect_callback=_mark_of_justice_effect,
+    description=(
+        "You draw a visible mark on the subject and state some behavior on "
+        "the part of the subject that will activate the mark."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+DISPEL_EVIL = Spell(
+    name="Dispel Evil",
+    level=4,
+    school=SpellSchool.ABJURATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.DIVINE_FOCUS],
+    range="Personal",
+    duration="1 round/level or until expended",
+    effect_callback=_dispel_evil_effect,
+    description=(
+        "Shimmering, white holy energy surrounds you. This energy has three "
+        "effects. First, you gain a +4 deflection bonus to AC against attacks "
+        "by evil creatures."
+    ),
+    subschool="",
+    descriptor=["Good"],
+)
+
+HOLY_AURA = Spell(
+    name="Holy Aura",
+    level=4,
+    school=SpellSchool.ABJURATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.FOCUS],
+    range="20 ft.",
+    duration="1 round/level",
+    effect_callback=_holy_aura_effect,
+    description=(
+        "A brilliant divine radiance surrounds the subjects, protecting them "
+        "from attacks, granting them resistance to spells cast by evil creatures, "
+        "and causing evil creatures to become blinded when they strike the subjects."
+    ),
+    subschool="",
+    descriptor=["Good"],
+)
+
+
 def create_default_registry() -> SpellRegistry:
     """Create a :class:`SpellRegistry` pre-loaded with SRD core spells.
 
     Returns:
         A registry containing all Phase 0 foundational spells, the Phase 1
-        Wizard/Sorcerer arcane spells (levels 0–3), and the Phase 2
-        Wizard/Sorcerer arcane spells (levels 4–9), for a total of 91
-        registered spells.
+        Wizard/Sorcerer arcane spells (levels 0–3), the Phase 2
+        Wizard/Sorcerer arcane spells (levels 4–9), and the Phase 3
+        Cleric/Paladin divine spells, for a total of 139 registered spells.
     """
     registry = SpellRegistry()
 
@@ -2961,5 +4216,79 @@ def create_default_registry() -> SpellRegistry:
     registry.register(SHAPECHANGE)
     registry.register(GATE)
     registry.register(FORESIGHT)
+
+    # ---- Phase 3: Cleric Level 0 (6) ----
+    registry.register(GUIDANCE)
+    registry.register(VIRTUE)
+    registry.register(INFLICT_MINOR_WOUNDS)
+    registry.register(DETECT_UNDEAD)
+    registry.register(CREATE_WATER)
+    registry.register(PURIFY_FOOD_AND_DRINK)
+
+    # ---- Phase 3: Cleric Level 1 (5) ----
+    registry.register(COMMAND)
+    registry.register(SANCTUARY)
+    registry.register(DIVINE_FAVOR)
+    registry.register(DOOM)
+    registry.register(ENTROPIC_SHIELD)
+
+    # ---- Phase 3: Cleric Level 2 (7) ----
+    registry.register(CURE_MODERATE_WOUNDS)
+    registry.register(SILENCE)
+    registry.register(SPIRITUAL_WEAPON)
+    registry.register(CONSECRATE)
+    registry.register(AID)
+    registry.register(DESECRATE)
+    registry.register(BLINDNESS_DEAFNESS)
+
+    # ---- Phase 3: Cleric Level 3 (5) ----
+    registry.register(CURE_SERIOUS_WOUNDS)
+    registry.register(PRAYER)
+    registry.register(SEARING_LIGHT)
+    registry.register(SPEAK_WITH_DEAD)
+    registry.register(INFLICT_SERIOUS_WOUNDS)
+
+    # ---- Phase 3: Cleric Level 4 (5) ----
+    registry.register(CURE_CRITICAL_WOUNDS)
+    registry.register(DIVINE_POWER)
+    registry.register(FREEDOM_OF_MOVEMENT)
+    registry.register(NEUTRALIZE_POISON)
+    registry.register(RESTORATION)
+
+    # ---- Phase 3: Cleric Level 5 (4) ----
+    registry.register(FLAME_STRIKE)
+    registry.register(INSECT_PLAGUE)
+    registry.register(RIGHTEOUS_MIGHT)
+    registry.register(BREAK_ENCHANTMENT)
+
+    # ---- Phase 3: Cleric Level 6 (2) ----
+    registry.register(BLADE_BARRIER)
+    registry.register(WORD_OF_RECALL)
+
+    # ---- Phase 3: Cleric Level 7 (1) ----
+    registry.register(RESURRECTION)
+
+    # ---- Phase 3: Cleric Level 9 (1) ----
+    registry.register(MASS_HEAL)
+
+    # ---- Phase 3: Paladin Level 1 (3) ----
+    registry.register(DETECT_EVIL)
+    registry.register(PROTECTION_FROM_EVIL)
+    registry.register(BLESS_WEAPON)
+
+    # ---- Phase 3: Paladin Level 2 (3) ----
+    registry.register(DELAY_POISON)
+    registry.register(SHIELD_OTHER)
+    registry.register(OWLS_WISDOM)
+
+    # ---- Phase 3: Paladin Level 3 (2) ----
+    registry.register(DAYLIGHT)
+    registry.register(REMOVE_BLINDNESS_DEAFNESS)
+
+    # ---- Phase 3: Paladin Level 4 (4) ----
+    registry.register(HOLY_SWORD)
+    registry.register(MARK_OF_JUSTICE)
+    registry.register(DISPEL_EVIL)
+    registry.register(HOLY_AURA)
 
     return registry
