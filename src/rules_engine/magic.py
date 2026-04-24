@@ -1311,7 +1311,7 @@ def _hold_person_effect(caster: Any, target: Any, caster_level: int) -> Dict[str
 
 
 def _fly_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
-    """Fly: fly speed 60 ft (poor), 40 ft in medium/heavy armor."""
+    """Fly: fly speed 60 ft (good maneuverability), 40 ft in medium/heavy armor."""
     return {
         "fly_speed_ft": 60,
         "fly_speed_encumbered_ft": 40,
