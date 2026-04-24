@@ -85,17 +85,17 @@ class TrapBase:
 # T-016: Trap search resolvers
 # ---------------------------------------------------------------------------
 
-def resolve_trap_search(trap: TrapBase, searcher_spot_total: int) -> bool:
+def resolve_trap_search(trap: TrapBase, searcher_search_modifier: int) -> bool:
     """Passive detection check (10 + Search modifier vs. search_dc).
 
     Args:
-        trap:                 The trap being searched for.
-        searcher_spot_total:  Total Search modifier (Spot used as proxy).
+        trap:                     The trap being searched for.
+        searcher_search_modifier: Total Search skill modifier.
 
     Returns:
         ``True`` if the passive check meets or exceeds the trap's search DC.
     """
-    passive = 10 + searcher_spot_total
+    passive = 10 + searcher_search_modifier
     return passive >= trap.search_dc
 
 

@@ -108,32 +108,32 @@ class TestResolvePassiveSearch:
     def test_passive_exactly_meets_dc(self):
         trap = _make_trap(search_dc=20)
         # 10 + 10 = 20 ≥ 20
-        assert resolve_trap_search(trap, searcher_spot_total=10) is True
+        assert resolve_trap_search(trap, searcher_search_modifier=10) is True
 
     def test_passive_exceeds_dc(self):
         trap = _make_trap(search_dc=15)
-        assert resolve_trap_search(trap, searcher_spot_total=10) is True
+        assert resolve_trap_search(trap, searcher_search_modifier=10) is True
 
     def test_passive_below_dc(self):
         trap = _make_trap(search_dc=25)
-        assert resolve_trap_search(trap, searcher_spot_total=10) is False
+        assert resolve_trap_search(trap, searcher_search_modifier=10) is False
 
     def test_passive_zero_modifier_just_meets(self):
         trap = _make_trap(search_dc=10)
-        assert resolve_trap_search(trap, searcher_spot_total=0) is True
+        assert resolve_trap_search(trap, searcher_search_modifier=0) is True
 
     def test_passive_zero_modifier_misses(self):
         trap = _make_trap(search_dc=11)
-        assert resolve_trap_search(trap, searcher_spot_total=0) is False
+        assert resolve_trap_search(trap, searcher_search_modifier=0) is False
 
     def test_very_high_search_dc(self):
         trap = _make_trap(search_dc=35)
-        assert resolve_trap_search(trap, searcher_spot_total=20) is False
+        assert resolve_trap_search(trap, searcher_search_modifier=20) is False
 
     def test_negative_modifier_fails(self):
         trap = _make_trap(search_dc=15)
         # 10 + (-2) = 8 < 15
-        assert resolve_trap_search(trap, searcher_spot_total=-2) is False
+        assert resolve_trap_search(trap, searcher_search_modifier=-2) is False
 
 
 # ---------------------------------------------------------------------------
