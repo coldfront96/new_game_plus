@@ -196,4 +196,6 @@ class TestDistributeXp:
         party = [5]
         result = distribute_xp(encounter_el=5.0, party_levels=party)
         assert 0 in result
-        assert result[0] == CR_TO_XP[5]
+        # single character at APL == EL → 1.0× of full hoard XP
+        expected = CR_TO_XP[_nearest_cr(5.0)] // 1
+        assert result[0] == expected

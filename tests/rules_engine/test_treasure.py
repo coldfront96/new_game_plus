@@ -288,6 +288,33 @@ class TestGenerateTreasureHoard:
         for gem in hoard.gems:
             assert isinstance(gem, GemEntry)
 
+    def test_gem_entries_have_consistent_base_and_range(self):
+        """Each GemEntry in GEM_TABLE has base_value_gp within its declared value_range_gp."""
+        from src.rules_engine.treasure import GEM_TABLE
+        for gem in GEM_TABLE:
+            lo, hi = gem.value_range_gp
+            assert lo <= gem.base_value_gp <= hi, (
+                f"{gem.name}: base_value_gp {gem.base_value_gp} outside range {lo}–{hi}"
+            )
+
+    def test_roll_gem_value_normal_result_within_range(self):
+        """roll_gem_value normal results land within the gem's declared value_range_gp."""
+        from src.rules_engine.treasure import roll_gem_value, GEM_TABLE
+        gem = next(g for g in GEM_TABLE if g.grade == GemGrade.SEMIPRECIOUS)
+
+        class NormalRollRNG:
+            """Forces base roll = midpoint and d% = 50 (no exceptional modifier)."""
+            _calls = 0
+            def randint(self, a, b):
+                self._calls += 1
+                if self._calls == 1:
+                    return (a + b) // 2   # mid-range base roll
+                return 50                 # d% 50 → normal range
+
+        result = roll_gem_value(gem, NormalRollRNG())  # type: ignore
+        lo, hi = gem.value_range_gp
+        assert lo <= result <= hi
+
     def test_art_objects_are_art_entries(self):
         rng = random.Random(7)
         hoard = generate_treasure_hoard(cr=5.0, rng=rng)
