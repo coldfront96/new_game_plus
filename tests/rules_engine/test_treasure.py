@@ -8,6 +8,7 @@ from src.rules_engine.treasure import (
     GemGrade, GemEntry, ArtObjectCategory, ArtObjectEntry,
     CoinRoll, TreasureTypeEntry, TreasureHoard,
     GEM_TABLE, ART_OBJECT_TABLE, TREASURE_TYPE_TABLES, CR_TO_TREASURE_TYPE,
+    COIN_TO_GP,
     roll_gem_value, roll_art_object, generate_treasure_hoard,
 )
 
@@ -365,7 +366,7 @@ class TestGenerateTreasureHoard:
         gem_value = sum(g.base_value_gp for g in hoard.gems)
         art_value = sum(a.value_gp for a in hoard.art_objects)
         coin_value = sum(
-            amt * {"cp": 0.01, "sp": 0.1, "gp": 1.0, "pp": 10.0}.get(c, 1.0)
+            amt * COIN_TO_GP.get(c, 1.0)
             for c, amt in hoard.coins.items()
         )
         assert abs(hoard.total_value_gp - (gem_value + art_value + coin_value)) < 0.01

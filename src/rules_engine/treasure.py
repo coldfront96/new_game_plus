@@ -45,6 +45,10 @@ class ArtObjectCategory(Enum):
     EXOTIC = "exotic"
 
 
+# GP conversion rates for each coin type.
+COIN_TO_GP: dict[str, float] = {"cp": 0.01, "sp": 0.1, "gp": 1.0, "pp": 10.0}
+
+
 # ---------------------------------------------------------------------------
 # Dataclasses
 # ---------------------------------------------------------------------------
@@ -620,7 +624,7 @@ def generate_treasure_hoard(
         magic_item_count = _roll_dice_str(entry.magic_item_count_dice, rng)
 
     # --- Total value ---
-    gp_per_coin = {"cp": 0.01, "sp": 0.1, "gp": 1.0, "pp": 10.0}
+    gp_per_coin = COIN_TO_GP
     total_value = sum(amt * gp_per_coin.get(coin, 1.0) for coin, amt in coins.items())
     for gem in gems:
         total_value += gem.base_value_gp
