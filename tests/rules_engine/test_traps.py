@@ -203,3 +203,353 @@ class TestResolveTrapDisable:
         assert resolve_trap_disable(trap, disable_roll=30) == DisableResult.DISABLED
         assert resolve_trap_disable(trap, disable_roll=27) == DisableResult.FAILED
         assert resolve_trap_disable(trap, disable_roll=25) == DisableResult.TRIGGERED
+
+
+# ---------------------------------------------------------------------------
+# T-040: MechanicalTrap creation
+# ---------------------------------------------------------------------------
+
+from src.rules_engine.traps import (
+    MechanicalTrap,
+    MagicalTrap,
+    RoomContents,
+    DungeonLevel,
+    generate_mechanical_trap,
+    generate_magical_trap,
+    roll_room_contents,
+    generate_dungeon_level,
+)
+
+import random
+
+
+class TestMechanicalTrapCreation:
+    def _make(self, **kwargs) -> MechanicalTrap:
+        defaults = dict(
+            name="Spear Trap",
+            cr=1.0,
+            trap_type=TrapType.MECHANICAL,
+            trigger=TriggerType.LOCATION,
+            reset=ResetType.AUTOMATIC,
+            search_dc=20,
+            disable_dc=20,
+            damage_dice="1d8",
+            attack_bonus=10,
+            save_type=None,
+            save_dc=None,
+            reflex_negates=False,
+        )
+        defaults.update(kwargs)
+        return MechanicalTrap(**defaults)
+
+    def test_basic_instantiation(self):
+        t = self._make()
+        assert t.name == "Spear Trap"
+        assert t.cr == 1.0
+        assert t.damage_dice == "1d8"
+        assert t.attack_bonus == 10
+        assert t.save_type is None
+        assert t.save_dc is None
+        assert t.reflex_negates is False
+
+    def test_save_type_reflex(self):
+        t = self._make(attack_bonus=None, save_type="Reflex", save_dc=20, reflex_negates=True)
+        assert t.save_type == "Reflex"
+        assert t.save_dc == 20
+        assert t.reflex_negates is True
+
+    def test_slots_no_dict(self):
+        t = self._make()
+        assert not hasattr(t, "__dict__")
+
+    def test_trap_type_is_mechanical(self):
+        t = self._make()
+        assert t.trap_type == TrapType.MECHANICAL
+
+    def test_damage_dice_is_str(self):
+        t = self._make(damage_dice="2d6+5")
+        assert isinstance(t.damage_dice, str)
+
+    def test_fractional_cr(self):
+        t = self._make(cr=0.5)
+        assert t.cr == 0.5
+
+    def test_none_attack_bonus(self):
+        t = self._make(attack_bonus=None)
+        assert t.attack_bonus is None
+
+    def test_fort_save_type(self):
+        t = self._make(save_type="Fort", save_dc=15)
+        assert t.save_type == "Fort"
+
+
+class TestGenerateMechanicalTrap:
+    def test_cr1_returns_mechanical_trap(self):
+        rng = random.Random(42)
+        t = generate_mechanical_trap(1.0, rng)
+        assert isinstance(t, MechanicalTrap)
+
+    def test_cr1_trap_type_mechanical(self):
+        rng = random.Random(1)
+        t = generate_mechanical_trap(1.0, rng)
+        assert t.trap_type == TrapType.MECHANICAL
+
+    def test_cr1_damage_dice_is_str(self):
+        rng = random.Random(7)
+        t = generate_mechanical_trap(1.0, rng)
+        assert isinstance(t.damage_dice, str)
+        assert len(t.damage_dice) > 0
+
+    def test_cr1_fields_set(self):
+        rng = random.Random(99)
+        t = generate_mechanical_trap(1.0, rng)
+        assert t.name
+        assert t.cr > 0
+        assert t.search_dc > 0
+        assert t.disable_dc > 0
+
+    def test_cr5_returns_trap(self):
+        rng = random.Random(5)
+        t = generate_mechanical_trap(5.0, rng)
+        assert isinstance(t, MechanicalTrap)
+
+    def test_cr10_returns_trap(self):
+        rng = random.Random(10)
+        t = generate_mechanical_trap(10.0, rng)
+        assert isinstance(t, MechanicalTrap)
+
+    def test_cr_out_of_range_falls_back(self):
+        rng = random.Random(0)
+        t = generate_mechanical_trap(99.0, rng)
+        assert isinstance(t, MechanicalTrap)
+
+    def test_no_rng_still_works(self):
+        t = generate_mechanical_trap(2.0)
+        assert isinstance(t, MechanicalTrap)
+
+    def test_cr2_within_range(self):
+        rng = random.Random(42)
+        t = generate_mechanical_trap(2.0, rng)
+        assert abs(t.cr - 2.0) <= 1.0
+
+    def test_reflex_negates_is_bool(self):
+        rng = random.Random(13)
+        t = generate_mechanical_trap(1.0, rng)
+        assert isinstance(t.reflex_negates, bool)
+
+
+# ---------------------------------------------------------------------------
+# T-041: MagicalTrap creation
+# ---------------------------------------------------------------------------
+
+class TestMagicalTrapCreation:
+    def _make(self, **kwargs) -> MagicalTrap:
+        defaults = dict(
+            name="Fire Trap",
+            cr=2.0,
+            trap_type=TrapType.MAGIC,
+            trigger=TriggerType.TOUCH,
+            reset=ResetType.NO_RESET,
+            search_dc=26,
+            disable_dc=26,
+            spell_effect="fire trap",
+            caster_level=3,
+            save_dc=13,
+            aoe="5 ft radius",
+        )
+        defaults.update(kwargs)
+        return MagicalTrap(**defaults)
+
+    def test_basic_instantiation(self):
+        t = self._make()
+        assert t.name == "Fire Trap"
+        assert t.spell_effect == "fire trap"
+        assert t.caster_level == 3
+        assert t.save_dc == 13
+        assert t.aoe == "5 ft radius"
+
+    def test_slots_no_dict(self):
+        t = self._make()
+        assert not hasattr(t, "__dict__")
+
+    def test_trap_type_is_magic(self):
+        t = self._make()
+        assert t.trap_type == TrapType.MAGIC
+
+    def test_none_save_dc(self):
+        t = self._make(save_dc=None, aoe=None)
+        assert t.save_dc is None
+        assert t.aoe is None
+
+    def test_caster_level_is_int(self):
+        t = self._make()
+        assert isinstance(t.caster_level, int)
+
+
+class TestGenerateMagicalTrap:
+    def test_cr1_returns_magical_trap(self):
+        rng = random.Random(42)
+        t = generate_magical_trap(1.0, rng)
+        assert isinstance(t, MagicalTrap)
+
+    def test_cr1_trap_type_magic(self):
+        rng = random.Random(1)
+        t = generate_magical_trap(1.0, rng)
+        assert t.trap_type == TrapType.MAGIC
+
+    def test_cr5_returns_trap(self):
+        rng = random.Random(5)
+        t = generate_magical_trap(5.0, rng)
+        assert isinstance(t, MagicalTrap)
+
+    def test_cr10_returns_trap(self):
+        rng = random.Random(10)
+        t = generate_magical_trap(10.0, rng)
+        assert isinstance(t, MagicalTrap)
+
+    def test_spell_effect_is_str(self):
+        rng = random.Random(7)
+        t = generate_magical_trap(3.0, rng)
+        assert isinstance(t.spell_effect, str)
+        assert len(t.spell_effect) > 0
+
+    def test_caster_level_positive(self):
+        rng = random.Random(99)
+        t = generate_magical_trap(5.0, rng)
+        assert t.caster_level > 0
+
+    def test_no_rng_still_works(self):
+        t = generate_magical_trap(2.0)
+        assert isinstance(t, MagicalTrap)
+
+    def test_cr_out_of_range_falls_back(self):
+        rng = random.Random(0)
+        t = generate_magical_trap(99.0, rng)
+        assert isinstance(t, MagicalTrap)
+
+    def test_cr1_alarm_trap_possible(self):
+        # With a seeded rng the only CR-1 template is "Alarm Trap"
+        rng = random.Random(42)
+        t = generate_magical_trap(1.0, rng)
+        assert t.name == "Alarm Trap"
+
+    def test_search_dc_positive(self):
+        rng = random.Random(3)
+        t = generate_magical_trap(3.0, rng)
+        assert t.search_dc > 0
+
+
+# ---------------------------------------------------------------------------
+# T-047: RoomContents creation and roll_room_contents
+# ---------------------------------------------------------------------------
+
+class TestRoomContentsCreation:
+    def test_all_true(self):
+        rc = RoomContents(monster=True, trap=True, treasure=True, empty=False)
+        assert rc.monster is True
+        assert rc.trap is True
+        assert rc.treasure is True
+        assert rc.empty is False
+
+    def test_empty_room(self):
+        rc = RoomContents(monster=False, trap=False, treasure=False, empty=True)
+        assert rc.empty is True
+
+    def test_slots_no_dict(self):
+        rc = RoomContents(monster=False, trap=False, treasure=False, empty=True)
+        assert not hasattr(rc, "__dict__")
+
+
+class TestRollRoomContents:
+    def test_returns_room_contents(self):
+        rng = random.Random(42)
+        rc = roll_room_contents(1, rng)
+        assert isinstance(rc, RoomContents)
+
+    def test_boolean_fields(self):
+        rng = random.Random(1)
+        rc = roll_room_contents(1, rng)
+        for field in (rc.monster, rc.trap, rc.treasure, rc.empty):
+            assert isinstance(field, bool)
+
+    def test_empty_correct_when_nothing_set(self):
+        # Force a seed that produces an empty room
+        for seed in range(200):
+            rng = random.Random(seed)
+            rc = roll_room_contents(1, rng)
+            if not rc.monster and not rc.trap and not rc.treasure:
+                assert rc.empty is True
+                break
+
+    def test_deep_levels_higher_monster_rate(self):
+        """Level 10 should produce more monsters than level 1 (statistical)."""
+        rng1 = random.Random(0)
+        rng10 = random.Random(0)
+        n = 1000
+        low = sum(roll_room_contents(1, rng1).monster for _ in range(n))
+        high = sum(roll_room_contents(10, rng10).monster for _ in range(n))
+        assert high > low
+
+    def test_no_rng_still_works(self):
+        rc = roll_room_contents(1)
+        assert isinstance(rc, RoomContents)
+
+
+# ---------------------------------------------------------------------------
+# T-057: DungeonLevel creation and generate_dungeon_level
+# ---------------------------------------------------------------------------
+
+class TestDungeonLevelCreation:
+    def test_basic_instantiation(self):
+        rooms = [RoomContents(monster=False, trap=False, treasure=False, empty=True)]
+        dl = DungeonLevel(rooms=rooms)
+        assert len(dl.rooms) == 1
+
+    def test_slots_no_dict(self):
+        dl = DungeonLevel(rooms=[])
+        assert not hasattr(dl, "__dict__")
+
+
+class TestGenerateDungeonLevel:
+    def test_correct_number_of_rooms(self):
+        rng = random.Random(42)
+        dl = generate_dungeon_level(1, 10, rng)
+        assert len(dl.rooms) == 10
+
+    def test_returns_dungeon_level(self):
+        rng = random.Random(1)
+        dl = generate_dungeon_level(1, 5, rng)
+        assert isinstance(dl, DungeonLevel)
+
+    def test_rooms_are_room_contents(self):
+        rng = random.Random(7)
+        dl = generate_dungeon_level(2, 8, rng)
+        for room in dl.rooms:
+            assert isinstance(room, RoomContents)
+
+    def test_trap_rooms_not_empty(self):
+        rng = random.Random(99)
+        dl = generate_dungeon_level(3, 20, rng)
+        for room in dl.rooms:
+            if room.trap:
+                assert room.empty is False
+
+    def test_zero_rooms(self):
+        rng = random.Random(0)
+        dl = generate_dungeon_level(1, 0, rng)
+        assert dl.rooms == []
+
+    def test_no_rng_still_works(self):
+        dl = generate_dungeon_level(1, 3)
+        assert len(dl.rooms) == 3
+
+    def test_level1_vs_level8_trap_ratio(self):
+        """Statistical: level 8 dungeons should have at least as many traps as level 1."""
+        n_rooms = 500
+        rng1 = random.Random(0)
+        rng8 = random.Random(0)
+        dl1 = generate_dungeon_level(1, n_rooms, rng1)
+        dl8 = generate_dungeon_level(8, n_rooms, rng8)
+        traps1 = sum(r.trap for r in dl1.rooms)
+        traps8 = sum(r.trap for r in dl8.rooms)
+        assert traps8 >= traps1
