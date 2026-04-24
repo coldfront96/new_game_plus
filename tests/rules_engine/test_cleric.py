@@ -18,6 +18,7 @@ from src.rules_engine.magic import (
     BLESS,
     CURE_LIGHT_WOUNDS,
     CURE_SPELLS,
+    SUMMON_NATURES_ALLY_SPELLS,
     Spell,
     SpellComponent,
     SpellSchool,
@@ -262,6 +263,117 @@ class TestSpontaneousCasting:
         for level in range(1, 10):
             assert level in CURE_SPELLS
             assert isinstance(CURE_SPELLS[level], str)
+
+
+# ---------------------------------------------------------------------------
+# Druid spontaneous Summon Nature's Ally conversion (spellcasting.py 747–774)
+# ---------------------------------------------------------------------------
+
+class TestDruidSpontaneousSummonConversion:
+    """Druids can spontaneously sacrifice a prepared non-domain spell to cast
+    a Summon Nature's Ally spell of the same level (3.5e SRD p.35)."""
+
+    def test_can_spontaneous_summon_is_true_for_druid(self):
+        mgr = DivineCasterManager.for_druid(level=5, wis_mod=3)
+        assert mgr.can_spontaneous_summon() is True
+
+    def test_can_spontaneous_summon_is_false_for_cleric(self):
+        mgr = DivineCasterManager.for_cleric(level=5, wis_mod=3, alignment="good")
+        assert mgr.can_spontaneous_summon() is False
+
+    def test_druid_converts_prepared_spell_to_summon_i(self):
+        """A Level 1 Druid sacrificing a prepared 1st-level non-domain spell
+        receives Summon Nature's Ally I and consumes a slot."""
+        mgr = DivineCasterManager.for_druid(level=1, wis_mod=2)
+        mgr.prepare_spell("Entangle", 1)
+
+        initial_slots = mgr.slot_manager.available(1)
+        summon_name = mgr.convert_to_summon_natures_ally("Entangle")
+
+        assert summon_name == "Summon Nature's Ally I"
+        assert "Entangle" not in mgr.spellbook.get_prepared(1)
+        assert mgr.slot_manager.available(1) == initial_slots - 1
+
+    def test_druid_converts_level_3_spell_to_summon_iii(self):
+        """A higher-level Druid sacrificing a 3rd-level spell gets
+        Summon Nature's Ally III."""
+        mgr = DivineCasterManager.for_druid(level=5, wis_mod=3)
+        mgr.prepare_spell("Call Lightning", 3)
+
+        summon_name = mgr.convert_to_summon_natures_ally("Call Lightning")
+
+        assert summon_name == "Summon Nature's Ally III"
+        assert "Call Lightning" not in mgr.spellbook.get_prepared(3)
+
+    def test_cleric_cannot_spontaneously_summon(self):
+        """A Cleric (not a Druid) cannot convert to Summon Nature's Ally."""
+        mgr = DivineCasterManager.for_cleric(level=5, wis_mod=3, alignment="good")
+        mgr.prepare_spell("Bane", 1)
+
+        result = mgr.convert_to_summon_natures_ally("Bane")
+        assert result is None
+        # Spell remains prepared — nothing was consumed.
+        assert "Bane" in mgr.spellbook.get_prepared(1)
+
+    def test_druid_cannot_convert_domain_spell(self):
+        """Domain spells are excluded from spontaneous conversion."""
+        mgr = DivineCasterManager.for_druid(level=3, wis_mod=2)
+        mgr.domain_spells.add("Flame Strike")
+        mgr.prepare_spell("Flame Strike", 5)
+
+        result = mgr.convert_to_summon_natures_ally("Flame Strike")
+
+        assert result is None
+        assert "Flame Strike" in mgr.spellbook.get_prepared(5)
+
+    def test_druid_cannot_convert_spell_not_prepared(self):
+        """If the named spell isn't prepared at any level, conversion fails."""
+        mgr = DivineCasterManager.for_druid(level=3, wis_mod=2)
+
+        result = mgr.convert_to_summon_natures_ally("Entangle")
+        assert result is None
+
+    def test_druid_cannot_convert_when_no_slot_available(self):
+        """If the slot of that spell's level is fully expended, conversion fails."""
+        mgr = DivineCasterManager.for_druid(level=1, wis_mod=2)
+        mgr.prepare_spell("Entangle", 1)
+
+        # Expend every 1st-level slot
+        for _ in range(mgr.slot_manager.max_slots[1]):
+            mgr.slot_manager.expend(1)
+
+        result = mgr.convert_to_summon_natures_ally("Entangle")
+        assert result is None
+        # Spell remains prepared — nothing was consumed.
+        assert "Entangle" in mgr.spellbook.get_prepared(1)
+
+    def test_druid_cannot_convert_cantrip(self):
+        """Cantrips (level 0) cannot be spontaneously converted: level 0
+        is not in range(1, 10), so the search finds no matching level."""
+        mgr = DivineCasterManager.for_druid(level=1, wis_mod=2)
+        mgr.prepare_spell("Create Water", 0)
+
+        result = mgr.convert_to_summon_natures_ally("Create Water")
+        assert result is None
+
+    def test_summon_natures_ally_spells_table_completeness(self):
+        """Table must contain entries for spell levels 1–9."""
+        for level in range(1, 10):
+            assert level in SUMMON_NATURES_ALLY_SPELLS
+            assert SUMMON_NATURES_ALLY_SPELLS[level].startswith("Summon Nature's Ally")
+
+    def test_multiple_conversions_consume_distinct_slots(self):
+        """Each conversion consumes one slot at that level."""
+        mgr = DivineCasterManager.for_druid(level=3, wis_mod=4)  # more slots
+        mgr.prepare_spell("Entangle", 1)
+        mgr.prepare_spell("Faerie Fire", 1)
+
+        start = mgr.slot_manager.available(1)
+        mgr.convert_to_summon_natures_ally("Entangle")
+        mgr.convert_to_summon_natures_ally("Faerie Fire")
+
+        assert mgr.slot_manager.available(1) == start - 2
+        assert mgr.spellbook.get_prepared(1) == []
 
 
 # ---------------------------------------------------------------------------
