@@ -21,6 +21,8 @@ Systems
 
 from __future__ import annotations
 
+import asyncio
+import json
 import math
 import random as _random
 from abc import ABC, abstractmethod
@@ -28,7 +30,7 @@ from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional, Tuple
 
 from src.ai_sim.behavior import BehaviorFSM, BehaviorState, EntityTask, TaskType
-from src.ai_sim.components import Health, Inventory, Needs, Position, Vision, VisionType
+from src.ai_sim.components import Health, Inventory, MemoryBank, Needs, Position, Vision, VisionType
 from src.ai_sim.entity import Entity
 from src.ai_sim.tactics import TacticalDecision, TacticalEvaluator
 from src.core.event_bus import EventBus
@@ -1934,3 +1936,401 @@ class TurnManagerSystem(System):
         entry = self.current_combatant
         if entry is not None and entry.entity.is_active and self._is_hostile_entry(entry):
             self._execute_ai_turn(entry)
+
+
+# ---------------------------------------------------------------------------
+# CognitionSystem
+# ---------------------------------------------------------------------------
+
+#: Intent verbs the LLM is permitted to emit.
+_VALID_INTENTS = frozenset({
+    "attack",
+    "cast_spell",
+    "move",
+    "use_item",
+    "withdraw",
+    "dodge",
+    "wait",
+})
+
+#: BehaviorStates that are considered "complex" and benefit from LLM guidance.
+_COMPLEX_STATES = frozenset({
+    BehaviorState.IN_COMBAT,
+    BehaviorState.PERFORM_ACTION,
+})
+
+
+@dataclass(slots=True)
+class LLMIntent:
+    """A structured action intent produced by the LLM and validated against
+    the 3.5e rules before injection into the entity's intent queue.
+
+    Attributes:
+        action:  One of the :data:`_VALID_INTENTS` verbs.
+        target:  Name of the target entity / spell, if applicable.
+        detail:  Free-form detail string (e.g. ``"swing with longsword"``).
+        raw:     The raw LLM response text (for diagnostics).
+    """
+
+    action: str
+    target: str = ""
+    detail: str = ""
+    raw: str = ""
+
+
+@dataclass(slots=True)
+class CognitionEntry:
+    """Tracks a single entity registered with the :class:`CognitionSystem`.
+
+    Attributes:
+        entity:         The ECS entity.
+        character:      The entity's 3.5e stat block.
+        memory_bank:    The entity's rolling memory log.
+        pending_intent: The most-recent :class:`LLMIntent` awaiting consumption
+                        (``None`` while no decision is pending).
+        querying:       ``True`` while an async LLM request is in flight.
+    """
+
+    entity: Entity
+    character: Character35e
+    memory_bank: MemoryBank
+    pending_intent: Optional[LLMIntent] = None
+    querying: bool = False
+
+
+def _parse_llm_response(raw: str) -> Optional[LLMIntent]:
+    """Parse a structured LLM response into a validated :class:`LLMIntent`.
+
+    The model is expected to return **either** a JSON object **or** an XML
+    ``<action>`` element.  Both formats are tried in order.
+
+    JSON format::
+
+        {"action": "attack", "target": "Orc", "detail": "melee longsword"}
+
+    XML format::
+
+        <action verb="attack" target="Orc">melee longsword</action>
+
+    If neither format is found, the raw text is inspected for the first
+    matching intent keyword as a last-resort fallback.
+
+    Args:
+        raw: The unprocessed text returned by the LLM.
+
+    Returns:
+        A :class:`LLMIntent` when a valid, recognised action is found;
+        ``None`` otherwise.
+    """
+    if not raw:
+        return None
+
+    stripped = raw.strip()
+
+    # 1. Try JSON parse -------------------------------------------------
+    # Accept both a top-level object and a JSON object embedded in the text.
+    for candidate in _extract_json_candidates(stripped):
+        try:
+            data = json.loads(candidate)
+        except (json.JSONDecodeError, ValueError):
+            continue
+        if not isinstance(data, dict):
+            continue
+        action = str(data.get("action", "")).lower().strip()
+        if action in _VALID_INTENTS:
+            return LLMIntent(
+                action=action,
+                target=str(data.get("target", "")),
+                detail=str(data.get("detail", "")),
+                raw=raw,
+            )
+
+    # 2. Try XML <action> element ----------------------------------------
+    xml_intent = _parse_xml_action(stripped, raw)
+    if xml_intent is not None:
+        return xml_intent
+
+    # 3. Keyword fallback ------------------------------------------------
+    lower = stripped.lower()
+    for verb in sorted(_VALID_INTENTS):  # sorted for determinism
+        if verb in lower:
+            return LLMIntent(action=verb, raw=raw)
+
+    return None
+
+
+def _extract_json_candidates(text: str) -> List[str]:
+    """Return a list of substrings of *text* that look like JSON objects.
+
+    Scans for ``{`` / ``}`` pairs at depth 1 to tolerate surrounding prose.
+    """
+    candidates: List[str] = [text]
+    depth = 0
+    start = -1
+    for i, ch in enumerate(text):
+        if ch == "{":
+            if depth == 0:
+                start = i
+            depth += 1
+        elif ch == "}":
+            depth -= 1
+            if depth == 0 and start != -1:
+                candidates.append(text[start : i + 1])
+                start = -1
+    return candidates
+
+
+def _parse_xml_action(text: str, raw: str) -> Optional[LLMIntent]:
+    """Extract an intent from an ``<action ...>`` XML element.
+
+    Handles both attribute-style (``verb="..."`` / ``action="..."``) and
+    text-body style.  Uses simple string scanning to avoid adding an XML
+    dependency.
+
+    Args:
+        text: Stripped LLM response text.
+        raw:  Original raw response (stored on the intent for diagnostics).
+
+    Returns:
+        A :class:`LLMIntent` when a valid element is found; ``None``
+        otherwise.
+    """
+    tag_open = text.find("<action")
+    if tag_open == -1:
+        return None
+
+    tag_close = text.find(">", tag_open)
+    if tag_close == -1:
+        return None
+
+    attrs_text = text[tag_open + 7 : tag_close].strip().rstrip("/")
+
+    # Extract verb/action attribute
+    action = _xml_attr(attrs_text, "verb") or _xml_attr(attrs_text, "action") or ""
+    action = action.lower().strip()
+    target = _xml_attr(attrs_text, "target") or ""
+
+    # Element body as detail
+    end_tag = text.find("</action>", tag_close)
+    if end_tag != -1:
+        detail = text[tag_close + 1 : end_tag].strip()
+    else:
+        detail = ""
+
+    if action in _VALID_INTENTS:
+        return LLMIntent(action=action, target=target, detail=detail, raw=raw)
+    return None
+
+
+def _xml_attr(attrs: str, name: str) -> str:
+    """Extract a named attribute value from an XML attribute string.
+
+    Returns an empty string if the attribute is absent.
+    """
+    key = f'{name}="'
+    idx = attrs.find(key)
+    if idx == -1:
+        key = f"{name}='"
+        idx = attrs.find(key)
+        if idx == -1:
+            return ""
+        quote = "'"
+    else:
+        quote = '"'
+    start = idx + len(key)
+    end = attrs.find(quote, start)
+    if end == -1:
+        return ""
+    return attrs[start:end]
+
+
+class CognitionSystem(System):
+    """Fires async LLM queries for entities in complex states.
+
+    The :class:`CognitionSystem` must be updated **before** the
+    :class:`BehaviorSystem` each tick so that resolved LLM intents are
+    ready for the behaviour layer to consume.
+
+    Logic per tick:
+
+    1. For each registered entity that is **active**, has a
+       :class:`~src.ai_sim.components.MemoryBank`, and whose FSM is in a
+       :data:`_COMPLEX_STATES` state:
+    2. If no query is already in flight (``querying=False``), schedule an
+       async task that calls :meth:`LLMClient.query_model`.
+    3. When the task completes, the response is parsed into an
+       :class:`LLMIntent` via :func:`_parse_llm_response` and stored on
+       the entry's ``pending_intent`` field.
+    4. Callers (or the :class:`BehaviorSystem`) may consume the pending
+       intent via :meth:`pop_intent`.
+
+    Args:
+        event_bus:  Shared :class:`EventBus` for publishing events.
+        llm_client: The :class:`~src.ai_sim.llm_bridge.LLMClient` to use.
+                    A default client targeting ``localhost:11434`` is created
+                    when ``None`` is passed.
+        system_prompt_template: Base system-prompt prefix. The entity's
+                                character class and name are appended.
+    """
+
+    _DEFAULT_SYSTEM_PROMPT = (
+        "You are an AI game-master assistant controlling a D&D 3.5e entity. "
+        "Respond ONLY with a single JSON object: "
+        '{"action": "<verb>", "target": "<name>", "detail": "<description>"}. '
+        "Valid verbs: attack, cast_spell, move, use_item, withdraw, dodge, wait."
+    )
+
+    def __init__(
+        self,
+        event_bus: EventBus,
+        llm_client: Optional[Any] = None,
+        system_prompt_template: str = _DEFAULT_SYSTEM_PROMPT,
+    ) -> None:
+        self._event_bus = event_bus
+        if llm_client is None:
+            from src.ai_sim.llm_bridge import LLMClient
+            llm_client = LLMClient()
+        self._llm_client = llm_client
+        self._system_prompt_template = system_prompt_template
+        self._entries: List[CognitionEntry] = []
+
+        # Running async tasks so we can track completion
+        self._loop: Optional[asyncio.AbstractEventLoop] = None
+
+    # ------------------------------------------------------------------
+    # Registration
+    # ------------------------------------------------------------------
+
+    def register_entity(
+        self,
+        entity: Entity,
+        character: Character35e,
+        memory_bank: MemoryBank,
+    ) -> None:
+        """Register an entity for LLM-driven cognition.
+
+        Args:
+            entity:      The ECS entity.
+            character:   The entity's 3.5e stat block.
+            memory_bank: The entity's :class:`~src.ai_sim.components.MemoryBank`.
+        """
+        self._entries.append(
+            CognitionEntry(
+                entity=entity,
+                character=character,
+                memory_bank=memory_bank,
+            )
+        )
+
+    # ------------------------------------------------------------------
+    # Intent access
+    # ------------------------------------------------------------------
+
+    def pop_intent(self, entity: Entity) -> Optional[LLMIntent]:
+        """Return and clear the pending :class:`LLMIntent` for *entity*.
+
+        Args:
+            entity: The entity to query.
+
+        Returns:
+            The :class:`LLMIntent` if one is ready; ``None`` otherwise.
+        """
+        for entry in self._entries:
+            if entry.entity is entity:
+                intent = entry.pending_intent
+                entry.pending_intent = None
+                return intent
+        return None
+
+    # ------------------------------------------------------------------
+    # System.update
+    # ------------------------------------------------------------------
+
+    def update(self) -> None:
+        """Schedule async LLM queries for entities in complex states.
+
+        This method is synchronous (it must satisfy the :class:`System`
+        contract) but it schedules non-blocking async tasks that resolve
+        in the background and store their results for the next tick.
+        """
+        loop = self._get_or_create_loop()
+
+        for entry in self._entries:
+            if not entry.entity.is_active:
+                continue
+            if entry.querying:
+                continue
+
+            # Only trigger LLM when the entity is in a complex state
+            fsm = entry.entity.get_component(BehaviorFSM)
+            if fsm is not None and fsm.state not in _COMPLEX_STATES:
+                continue
+
+            entry.querying = True
+            loop.create_task(self._query_and_store(entry))
+
+    # ------------------------------------------------------------------
+    # Internal helpers
+    # ------------------------------------------------------------------
+
+    def _get_or_create_loop(self) -> asyncio.AbstractEventLoop:
+        """Return the running event loop, or create a new one if none exists.
+
+        Uses :func:`asyncio.get_running_loop` first (Python 3.7+); falls back
+        to creating a fresh loop so the system works both inside an existing
+        async context and from synchronous code.
+        """
+        try:
+            return asyncio.get_running_loop()
+        except RuntimeError:
+            loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(loop)
+            return loop
+
+    async def _query_and_store(self, entry: CognitionEntry) -> None:
+        """Async task: query the LLM and store the parsed intent.
+
+        Args:
+            entry: The :class:`CognitionEntry` being processed.
+        """
+        try:
+            from src.ai_sim.llm_bridge import CognitiveState
+
+            # Build factual cognitive state
+            state = CognitiveState.from_character(
+                entry.character,
+                visible_entities=[],  # Populated by VisionSystem in production
+                memory_log=entry.memory_bank.recent(),
+            )
+
+            system_prompt = (
+                f"{self._system_prompt_template}\n"
+                f"You are playing {entry.character.name} "
+                f"({entry.character.char_class} level {entry.character.level})."
+            )
+            user_prompt = (
+                "Based on your current situation, what action do you take? "
+                "Respond with a single JSON object only."
+            )
+
+            raw = await self._llm_client.query_model(
+                system_prompt=system_prompt,
+                cognitive_state=state,
+                user_prompt=user_prompt,
+            )
+
+            intent = _parse_llm_response(raw)
+            if intent is not None:
+                entry.pending_intent = intent
+                self._event_bus.publish("llm_intent_ready", {
+                    "entity_id": entry.entity.entity_id,
+                    "action": intent.action,
+                    "target": intent.target,
+                })
+        finally:
+            entry.querying = False
+
+    @property
+    def entity_count(self) -> int:
+        """Number of entities registered with the cognition system."""
+        return len(self._entries)

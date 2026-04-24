@@ -255,3 +255,49 @@ class Vision:
     def has_low_light_vision(self) -> bool:
         """``True`` if this entity has Low-Light Vision."""
         return self.vision_type == VisionType.LOW_LIGHT_VISION
+
+
+# ---------------------------------------------------------------------------
+# MemoryBank
+# ---------------------------------------------------------------------------
+
+#: Maximum number of log entries retained in a :class:`MemoryBank`.
+_MEMORY_BANK_CAPACITY: int = 10
+
+
+@dataclass(slots=True)
+class MemoryBank:
+    """A short rolling log of narrative events for an entity.
+
+    The bank retains at most :data:`_MEMORY_BANK_CAPACITY` (10) entries in
+    chronological order, discarding the oldest when the limit is exceeded.
+    Entries are plain strings such as
+    ``"I took 5 damage from the Orc"`` or
+    ``"I successfully cast Mage Armor"``.
+
+    The contents are forwarded to the LLM context by
+    :class:`~src.ai_sim.systems.CognitionSystem` when the entity needs to
+    make a complex decision.
+
+    Attributes:
+        entries:  The ordered list of recent log-event strings.
+        capacity: Maximum number of entries to retain (default 10).
+    """
+
+    entries: List[str] = field(default_factory=list)
+    capacity: int = _MEMORY_BANK_CAPACITY
+
+    def record(self, event: str) -> None:
+        """Append *event* to the log, evicting the oldest entry if full.
+
+        Args:
+            event: A brief narrative description of what just happened
+                   (e.g. ``"I attacked the Goblin for 8 damage"``).
+        """
+        self.entries.append(event)
+        if len(self.entries) > self.capacity:
+            self.entries = self.entries[-self.capacity:]
+
+    def recent(self) -> List[str]:
+        """Return a copy of all retained log entries, oldest first."""
+        return list(self.entries)
