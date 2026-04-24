@@ -22,8 +22,11 @@ Usage::
 
 from __future__ import annotations
 
+import logging
 from collections import defaultdict
 from typing import Any, Callable, Dict, List, Optional
+
+_logger = logging.getLogger(__name__)
 
 
 class EventBus:
@@ -55,16 +58,26 @@ class EventBus:
     def publish(self, event: str, payload: Any = None) -> int:
         """Dispatch *payload* to all handlers subscribed to *event*.
 
+        A handler that raises is logged and skipped so that a single
+        misbehaving subscriber cannot crash the engine tick or prevent
+        other subscribers from running.
+
         Args:
             event:   String event name.
             payload: Arbitrary data forwarded to each handler.
 
         Returns:
-            Number of handlers invoked.
+            Number of handlers invoked (including those that raised).
         """
         handlers = list(self._handlers.get(event, []))
         for handler in handlers:
-            handler(payload)
+            try:
+                handler(payload)
+            except Exception:  # noqa: BLE001 — deliberately broad: isolate subscribers
+                _logger.exception(
+                    "EventBus handler %r raised while processing event %r",
+                    handler, event,
+                )
         return len(handlers)
 
     def clear(self, event: Optional[str] = None) -> None:
