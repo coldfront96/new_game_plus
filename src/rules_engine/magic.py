@@ -5115,6 +5115,749 @@ FIND_THE_PATH = Spell(
 )
 
 
+# ---------------------------------------------------------------------------
+# Phase 5: Bard Arcane Spells – effect callbacks
+# ---------------------------------------------------------------------------
+
+def _dancing_lights_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"lights": 4, "light_type": "torch or lantern", "duration_minutes": caster_level}
+
+
+def _lullaby_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"listen_penalty": -5, "will_vs_sleep_penalty": -2, "save": "Will negates",
+            "duration_minutes": caster_level}
+
+
+def _message_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"range": "Medium", "whisper_to_multiple": True,
+            "duration_minutes": caster_level * 10}
+
+
+def _open_close_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"opens": True, "closes": True, "max_weight_lbs": 30}
+
+
+def _summon_instrument_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"instrument_type": "any common instrument", "duration_minutes": caster_level}
+
+
+def _animate_rope_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"entangle": True, "rope_length_ft": caster_level, "duration_rounds": caster_level}
+
+
+def _comprehend_languages_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"understands_all_languages": True, "duration_minutes": caster_level * 10}
+
+
+def _expeditious_retreat_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"speed_bonus_ft": 30, "duration_minutes": caster_level}
+
+
+def _hypnotism_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"hd_affected": f"2d4+{caster_level}", "save": "Will negates", "duration_rounds": "2d4"}
+
+
+def _tashas_hideous_laughter_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"dex_penalty": -4, "incapacitated": True, "save": "Will negates",
+            "duration_rounds": caster_level}
+
+
+def _undetectable_alignment_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"conceals_alignment": True, "duration_hours": 24}
+
+
+def _ventriloquism_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"duration_minutes": caster_level, "will_disbelief": True}
+
+
+def _disguise_self_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"alters_appearance": True, "height_change_ft": 1,
+            "duration_minutes": caster_level * 10}
+
+
+def _alter_self_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"max_size": "Large", "gains_natural_armor": True,
+            "duration_minutes": caster_level * 10}
+
+
+def _cats_grace_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"dex_bonus": 4, "bonus_type": "enhancement", "duration_minutes": caster_level}
+
+
+def _eagles_splendor_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"cha_bonus": 4, "bonus_type": "enhancement", "duration_minutes": caster_level}
+
+
+def _enthrall_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"audience_enraptured": True, "save": "Will negates",
+            "duration": "until speech ends (max 1 hour)"}
+
+
+def _heroism_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"attack_bonus": 2, "save_bonus": 2, "skill_bonus": 2, "bonus_type": "morale",
+            "duration_minutes": caster_level * 10}
+
+
+def _locate_object_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"range": "Long (400 ft. + 40 ft./level)", "duration_minutes": caster_level}
+
+
+def _minor_image_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"includes_sound": True, "will_disbelief": True}
+
+
+def _misdirection_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"misleads_divination": True, "duration_hours": caster_level}
+
+
+def _whispering_wind_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"range_miles": caster_level, "message_words": 25}
+
+
+def _charm_monster_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"save": "Will negates", "duration_days": caster_level}
+
+
+def _clairaudience_clairvoyance_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"range": "Long (400 ft. + 40 ft./level)", "choose": "hearing or vision",
+            "duration_minutes": caster_level}
+
+
+def _gaseous_form_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"fly_speed_ft": 10, "maneuverability": "perfect", "immune_to_physical": True,
+            "duration_minutes": caster_level * 2}
+
+
+def _good_hope_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"bonus": 2, "bonus_type": "morale", "duration_minutes": caster_level}
+
+
+def _phantom_steed_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"hp": 7 + caster_level, "speed_ft": min(caster_level * 20, 240),
+            "duration_hours": caster_level}
+
+
+def _scrying_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"save": "Will negates (modified)", "duration_minutes": caster_level,
+            "remote_viewing": True}
+
+
+def _sculpt_sound_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"changes_sounds": True, "duration_hours": caster_level}
+
+
+def _shout_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"damage": "5d6", "damage_type": "Sonic", "area": "30-ft cone",
+            "save": "Reflex half", "deafen_rounds": "2d6"}
+
+
+def _zone_of_silence_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"radius_ft": 5, "silence_outward": True, "duration_minutes": caster_level * 10}
+
+
+def _modify_memory_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"memory_minutes": 5, "permanent": True, "save": "Will negates"}
+
+
+def _greater_heroism_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"attack_bonus": 4, "save_bonus": 4, "skill_bonus": 4, "bonus_type": "morale",
+            "temp_hp": caster_level, "immune_fear": True, "duration_minutes": caster_level}
+
+
+def _mass_suggestion_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"targets": caster_level, "save": "Will negates", "duration_hours": caster_level}
+
+
+def _mirage_arcana_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"area": "1-mile radius", "duration_hours": caster_level}
+
+
+def _shadow_walk_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"speed_miles_per_hour": 50, "plane": "Shadow", "duration_hours": caster_level}
+
+
+def _song_of_discord_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"area": "20-ft radius", "save": "Will negates", "attack_allies": True,
+            "duration_rounds": caster_level}
+
+
+def _greater_scrying_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"duration_hours": caster_level, "save": "Will negates (modified)",
+            "better_success": True}
+
+
+def _irresistible_dance_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"no_save": True, "duration_rounds": "1d4+1", "dancing": True}
+
+
+def _mass_charm_monster_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"targets": caster_level, "save": "Will negates", "duration_days": caster_level}
+
+
+def _sympathetic_vibration_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"damage_per_round": "2d10", "damage_type": "Sonic",
+            "target": "freestanding structure", "duration_rounds": caster_level}
+
+
+def _veil_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    return {"targets": caster_level, "will_disbelief": True, "duration_hours": caster_level}
+
+
+# ---------------------------------------------------------------------------
+# Phase 5: Bard Arcane Spells – Spell constants
+# ---------------------------------------------------------------------------
+
+DANCING_LIGHTS = Spell(
+    name="Dancing Lights",
+    level=0,
+    school=SpellSchool.EVOCATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Medium (100 ft. + 10 ft./level)",
+    duration="1 minute (D)",
+    effect_callback=_dancing_lights_effect,
+    description="Creates up to four lights resembling torches, lanterns, or glowing orbs.",
+    subschool="",
+    descriptor=["Light"],
+)
+
+LULLABY = Spell(
+    name="Lullaby",
+    level=0,
+    school=SpellSchool.ENCHANTMENT,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Medium (100 ft. + 10 ft./level)",
+    duration="Concentration + 1 round/level",
+    effect_callback=_lullaby_effect,
+    description="Makes subject drowsy; -5 on Listen checks, -2 on Will saves vs sleep.",
+    subschool="Compulsion",
+    descriptor=["Mind-Affecting"],
+)
+
+MESSAGE = Spell(
+    name="Message",
+    level=0,
+    school=SpellSchool.TRANSMUTATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.FOCUS],
+    range="Medium (100 ft. + 10 ft./level)",
+    duration="10 min./level",
+    effect_callback=_message_effect,
+    description="Whisper messages to designated creatures.",
+    subschool="",
+    descriptor=[],
+)
+
+OPEN_CLOSE = Spell(
+    name="Open/Close",
+    level=0,
+    school=SpellSchool.TRANSMUTATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.FOCUS],
+    range="Close (25 ft. + 5 ft./2 levels)",
+    duration="Instantaneous",
+    effect_callback=_open_close_effect,
+    description="Opens or closes small or light things.",
+    subschool="",
+    descriptor=[],
+)
+
+SUMMON_INSTRUMENT = Spell(
+    name="Summon Instrument",
+    level=0,
+    school=SpellSchool.CONJURATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="0 ft.",
+    duration="1 min./level (D)",
+    effect_callback=_summon_instrument_effect,
+    description="Summons a musical instrument to the caster's hands.",
+    subschool="Summoning",
+    descriptor=[],
+)
+
+ANIMATE_ROPE = Spell(
+    name="Animate Rope",
+    level=1,
+    school=SpellSchool.TRANSMUTATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Medium (100 ft. + 10 ft./level)",
+    duration="1 round/level",
+    effect_callback=_animate_rope_effect,
+    description="Makes a rope move at your command, entangling a target.",
+    subschool="",
+    descriptor=[],
+)
+
+COMPREHEND_LANGUAGES = Spell(
+    name="Comprehend Languages",
+    level=1,
+    school=SpellSchool.DIVINATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC,
+                SpellComponent.MATERIAL, SpellComponent.FOCUS],
+    range="Personal",
+    duration="10 min./level",
+    effect_callback=_comprehend_languages_effect,
+    description="You understand all spoken and written languages.",
+    subschool="",
+    descriptor=[],
+)
+
+EXPEDITIOUS_RETREAT = Spell(
+    name="Expeditious Retreat",
+    level=1,
+    school=SpellSchool.TRANSMUTATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Personal",
+    duration="1 min./level",
+    effect_callback=_expeditious_retreat_effect,
+    description="Your speed increases by 30 ft.",
+    subschool="",
+    descriptor=[],
+)
+
+HYPNOTISM = Spell(
+    name="Hypnotism",
+    level=1,
+    school=SpellSchool.ENCHANTMENT,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Close (25 ft. + 5 ft./2 levels)",
+    duration="2d4 rounds",
+    effect_callback=_hypnotism_effect,
+    description="Fascinates 2d4 HD of creatures.",
+    subschool="Compulsion",
+    descriptor=["Mind-Affecting"],
+)
+
+TASHAS_HIDEOUS_LAUGHTER = Spell(
+    name="Tasha's Hideous Laughter",
+    level=1,
+    school=SpellSchool.ENCHANTMENT,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.MATERIAL],
+    range="Close (25 ft. + 5 ft./2 levels)",
+    duration="1 round/level",
+    effect_callback=_tashas_hideous_laughter_effect,
+    description="Subject loses actions for 1 round/level due to uncontrollable laughter.",
+    subschool="Compulsion",
+    descriptor=["Mind-Affecting"],
+)
+
+UNDETECTABLE_ALIGNMENT = Spell(
+    name="Undetectable Alignment",
+    level=1,
+    school=SpellSchool.ABJURATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.MATERIAL],
+    range="Close (25 ft. + 5 ft./2 levels)",
+    duration="24 hours",
+    effect_callback=_undetectable_alignment_effect,
+    description="Conceals alignment for 24 hours.",
+    subschool="",
+    descriptor=[],
+)
+
+VENTRILOQUISM = Spell(
+    name="Ventriloquism",
+    level=1,
+    school=SpellSchool.ILLUSION,
+    components=[SpellComponent.VERBAL, SpellComponent.FOCUS],
+    range="Close (25 ft. + 5 ft./2 levels)",
+    duration="1 min./level (D)",
+    effect_callback=_ventriloquism_effect,
+    description="Throws voice for 1 min./level.",
+    subschool="Figment",
+    descriptor=[],
+)
+
+DISGUISE_SELF = Spell(
+    name="Disguise Self",
+    level=1,
+    school=SpellSchool.ILLUSION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Personal",
+    duration="10 min./level (D)",
+    effect_callback=_disguise_self_effect,
+    description="Changes your appearance.",
+    subschool="Glamer",
+    descriptor=[],
+)
+
+ALTER_SELF = Spell(
+    name="Alter Self",
+    level=2,
+    school=SpellSchool.TRANSMUTATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.MATERIAL],
+    range="Personal",
+    duration="10 min./level (D)",
+    effect_callback=_alter_self_effect,
+    description="Assume form of a similar creature.",
+    subschool="",
+    descriptor=[],
+)
+
+CATS_GRACE = Spell(
+    name="Cat's Grace",
+    level=2,
+    school=SpellSchool.TRANSMUTATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.MATERIAL],
+    range="Touch",
+    duration="1 min./level",
+    effect_callback=_cats_grace_effect,
+    description="Subject gains +4 to DEX for 1 min./level.",
+    subschool="",
+    descriptor=[],
+)
+
+EAGLES_SPLENDOR = Spell(
+    name="Eagle's Splendor",
+    level=2,
+    school=SpellSchool.TRANSMUTATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC,
+                SpellComponent.MATERIAL, SpellComponent.DIVINE_FOCUS],
+    range="Touch",
+    duration="1 min./level",
+    effect_callback=_eagles_splendor_effect,
+    description="Subject gains +4 to CHA for 1 min./level.",
+    subschool="",
+    descriptor=[],
+)
+
+ENTHRALL = Spell(
+    name="Enthrall",
+    level=2,
+    school=SpellSchool.ENCHANTMENT,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Medium (100 ft. + 10 ft./level)",
+    duration="1 hour or less",
+    effect_callback=_enthrall_effect,
+    description="Captivates all within 100 ft. + 10 ft./level.",
+    subschool="Charm",
+    descriptor=["Language-Dependent", "Mind-Affecting"],
+)
+
+HEROISM = Spell(
+    name="Heroism",
+    level=2,
+    school=SpellSchool.ENCHANTMENT,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Touch",
+    duration="10 min./level",
+    effect_callback=_heroism_effect,
+    description="Gives +2 morale bonus on attack rolls, saves, and skill checks.",
+    subschool="Compulsion",
+    descriptor=["Mind-Affecting"],
+)
+
+LOCATE_OBJECT = Spell(
+    name="Locate Object",
+    level=2,
+    school=SpellSchool.DIVINATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC,
+                SpellComponent.FOCUS, SpellComponent.DIVINE_FOCUS],
+    range="Long (400 ft. + 40 ft./level)",
+    duration="1 min./level",
+    effect_callback=_locate_object_effect,
+    description="Senses direction toward object (specific or type).",
+    subschool="",
+    descriptor=[],
+)
+
+MINOR_IMAGE = Spell(
+    name="Minor Image",
+    level=2,
+    school=SpellSchool.ILLUSION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.FOCUS],
+    range="Long (400 ft. + 40 ft./level)",
+    duration="Concentration + 2 rounds",
+    effect_callback=_minor_image_effect,
+    description="As Silent Image, plus some sound.",
+    subschool="Figment",
+    descriptor=[],
+)
+
+MISDIRECTION = Spell(
+    name="Misdirection",
+    level=2,
+    school=SpellSchool.ILLUSION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Close (25 ft. + 5 ft./2 levels)",
+    duration="1 hour/level",
+    effect_callback=_misdirection_effect,
+    description="Misleads divinations for one creature or object.",
+    subschool="Glamer",
+    descriptor=[],
+)
+
+WHISPERING_WIND = Spell(
+    name="Whispering Wind",
+    level=2,
+    school=SpellSchool.TRANSMUTATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="1 mile/level",
+    duration="No limit or until discharged",
+    effect_callback=_whispering_wind_effect,
+    description="Sends a short message 1 mile/level.",
+    subschool="",
+    descriptor=["Air"],
+)
+
+CHARM_MONSTER = Spell(
+    name="Charm Monster",
+    level=3,
+    school=SpellSchool.ENCHANTMENT,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Close (25 ft. + 5 ft./2 levels)",
+    duration="1 day/level",
+    effect_callback=_charm_monster_effect,
+    description="Makes monster believe it is your ally.",
+    subschool="Charm",
+    descriptor=["Mind-Affecting"],
+)
+
+CLAIRAUDIENCE_CLAIRVOYANCE = Spell(
+    name="Clairaudience/Clairvoyance",
+    level=3,
+    school=SpellSchool.DIVINATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.FOCUS],
+    range="Long (400 ft. + 40 ft./level)",
+    duration="1 min./level (D)",
+    effect_callback=_clairaudience_clairvoyance_effect,
+    description="Hear or see at a distance for 1 min./level.",
+    subschool="Scrying",
+    descriptor=[],
+)
+
+GASEOUS_FORM = Spell(
+    name="Gaseous Form",
+    level=3,
+    school=SpellSchool.TRANSMUTATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.MATERIAL],
+    range="Touch",
+    duration="2 min./level (D)",
+    effect_callback=_gaseous_form_effect,
+    description="Subject and gear become insubstantial, misty, and translucent.",
+    subschool="",
+    descriptor=[],
+)
+
+GOOD_HOPE = Spell(
+    name="Good Hope",
+    level=3,
+    school=SpellSchool.ENCHANTMENT,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Medium (100 ft. + 10 ft./level)",
+    duration="1 min./level",
+    effect_callback=_good_hope_effect,
+    description="Subjects gain +2 morale bonus on saving throws, attack rolls, ability checks, skill checks, and weapon damage rolls.",
+    subschool="Compulsion",
+    descriptor=["Mind-Affecting"],
+)
+
+PHANTOM_STEED = Spell(
+    name="Phantom Steed",
+    level=3,
+    school=SpellSchool.CONJURATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="0 ft.",
+    duration="1 hour/level",
+    effect_callback=_phantom_steed_effect,
+    description="Magic horse appears for 1 hour/level.",
+    subschool="Creation",
+    descriptor=[],
+)
+
+SCRYING = Spell(
+    name="Scrying",
+    level=3,
+    school=SpellSchool.DIVINATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC,
+                SpellComponent.MATERIAL, SpellComponent.FOCUS],
+    range="See text",
+    duration="1 min./level",
+    effect_callback=_scrying_effect,
+    description="Spies on subject from a distance.",
+    subschool="Scrying",
+    descriptor=[],
+)
+
+SCULPT_SOUND = Spell(
+    name="Sculpt Sound",
+    level=3,
+    school=SpellSchool.TRANSMUTATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Close (25 ft. + 5 ft./2 levels)",
+    duration="1 hour/level (D)",
+    effect_callback=_sculpt_sound_effect,
+    description="Creates new sounds or changes existing ones.",
+    subschool="",
+    descriptor=[],
+)
+
+SHOUT = Spell(
+    name="Shout",
+    level=4,
+    school=SpellSchool.EVOCATION,
+    components=[SpellComponent.VERBAL],
+    range="30 ft.",
+    duration="Instantaneous",
+    effect_callback=_shout_effect,
+    description="Deafens all within cone and deals 5d6 sonic damage.",
+    subschool="",
+    descriptor=["Sonic"],
+)
+
+ZONE_OF_SILENCE = Spell(
+    name="Zone of Silence",
+    level=4,
+    school=SpellSchool.ILLUSION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Personal",
+    duration="1 hour/level (D)",
+    effect_callback=_zone_of_silence_effect,
+    description="Keeps eavesdroppers from overhearing you.",
+    subschool="Glamer",
+    descriptor=[],
+)
+
+MODIFY_MEMORY = Spell(
+    name="Modify Memory",
+    level=4,
+    school=SpellSchool.ENCHANTMENT,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Close (25 ft. + 5 ft./2 levels)",
+    duration="Permanent",
+    effect_callback=_modify_memory_effect,
+    description="Changes 5 minutes of subject's memories.",
+    subschool="Compulsion",
+    descriptor=["Mind-Affecting"],
+)
+
+GREATER_HEROISM = Spell(
+    name="Greater Heroism",
+    level=5,
+    school=SpellSchool.ENCHANTMENT,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Touch",
+    duration="1 min./level",
+    effect_callback=_greater_heroism_effect,
+    description="Gives +4 morale bonus on attack rolls, saves, and skill checks, and 1 temporary HP/level; immunity to fear.",
+    subschool="Compulsion",
+    descriptor=["Mind-Affecting"],
+)
+
+MASS_SUGGESTION = Spell(
+    name="Mass Suggestion",
+    level=5,
+    school=SpellSchool.ENCHANTMENT,
+    components=[SpellComponent.VERBAL, SpellComponent.MATERIAL],
+    range="Medium (100 ft. + 10 ft./level)",
+    duration="1 hour/level or until completed",
+    effect_callback=_mass_suggestion_effect,
+    description="Compels subjects to follow stated course of action.",
+    subschool="Compulsion",
+    descriptor=["Language-Dependent", "Mind-Affecting"],
+)
+
+MIRAGE_ARCANA = Spell(
+    name="Mirage Arcana",
+    level=5,
+    school=SpellSchool.ILLUSION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Long (400 ft. + 40 ft./level)",
+    duration="Concentration + 1 hour/level (D)",
+    effect_callback=_mirage_arcana_effect,
+    description="Makes terrain look like other terrain.",
+    subschool="Glamer",
+    descriptor=[],
+)
+
+SHADOW_WALK = Spell(
+    name="Shadow Walk",
+    level=5,
+    school=SpellSchool.ILLUSION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Touch",
+    duration="1 hour/level (D)",
+    effect_callback=_shadow_walk_effect,
+    description="Step into shadow to travel rapidly.",
+    subschool="Shadow",
+    descriptor=[],
+)
+
+SONG_OF_DISCORD = Spell(
+    name="Song of Discord",
+    level=5,
+    school=SpellSchool.ENCHANTMENT,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Medium (100 ft. + 10 ft./level)",
+    duration="1 round/level",
+    effect_callback=_song_of_discord_effect,
+    description="Forces targets to attack each other.",
+    subschool="Compulsion",
+    descriptor=["Mind-Affecting"],
+)
+
+GREATER_SCRYING = Spell(
+    name="Greater Scrying",
+    level=6,
+    school=SpellSchool.DIVINATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="See text",
+    duration="1 hour/level",
+    effect_callback=_greater_scrying_effect,
+    description="As scrying, but faster and longer.",
+    subschool="Scrying",
+    descriptor=[],
+)
+
+IRRESISTIBLE_DANCE = Spell(
+    name="Irresistible Dance",
+    level=6,
+    school=SpellSchool.ENCHANTMENT,
+    components=[SpellComponent.VERBAL],
+    range="Touch",
+    duration="1d4+1 rounds",
+    effect_callback=_irresistible_dance_effect,
+    description="Forces subject to dance.",
+    subschool="Compulsion",
+    descriptor=["Mind-Affecting"],
+)
+
+MASS_CHARM_MONSTER = Spell(
+    name="Mass Charm Monster",
+    level=6,
+    school=SpellSchool.ENCHANTMENT,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Close (25 ft. + 5 ft./2 levels)",
+    duration="1 day/level",
+    effect_callback=_mass_charm_monster_effect,
+    description="As charm monster, but all within 30 ft.",
+    subschool="Charm",
+    descriptor=["Mind-Affecting"],
+)
+
+SYMPATHETIC_VIBRATION = Spell(
+    name="Sympathetic Vibration",
+    level=6,
+    school=SpellSchool.EVOCATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.FOCUS],
+    range="Touch",
+    duration="Up to 1 round/level",
+    effect_callback=_sympathetic_vibration_effect,
+    description="Deals 2d10 sonic damage per round to a freestanding structure.",
+    subschool="",
+    descriptor=["Sonic"],
+)
+
+VEIL = Spell(
+    name="Veil",
+    level=6,
+    school=SpellSchool.ILLUSION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Long (400 ft. + 40 ft./level)",
+    duration="Concentration + 1 hour/level (D)",
+    effect_callback=_veil_effect,
+    description="Changes appearance of a group of creatures.",
+    subschool="Glamer",
+    descriptor=[],
+)
+
+
 def create_default_registry() -> SpellRegistry:
     """Create a :class:`SpellRegistry` pre-loaded with SRD core spells.
 
@@ -5122,8 +5865,9 @@ def create_default_registry() -> SpellRegistry:
         A registry containing all Phase 0 foundational spells, the Phase 1
         Wizard/Sorcerer arcane spells (levels 0–3), the Phase 2
         Wizard/Sorcerer arcane spells (levels 4–9), the Phase 3
-        Cleric/Paladin divine spells, and the Phase 4 Druid/Ranger nature
-        spells, for a total of 187 registered spells.
+        Cleric/Paladin divine spells, the Phase 4 Druid/Ranger nature
+        spells, and the Phase 5 Bard arcane spells, for a total of 229
+        registered spells.
     """
     registry = SpellRegistry()
 
@@ -5389,5 +6133,61 @@ def create_default_registry() -> SpellRegistry:
     registry.register(COMMUNE_WITH_NATURE)
     registry.register(TREE_STRIDE)
     registry.register(FIND_THE_PATH)
+
+    # ---- Phase 5: Bard Level 0 (5) ----
+    registry.register(DANCING_LIGHTS)
+    registry.register(LULLABY)
+    registry.register(MESSAGE)
+    registry.register(OPEN_CLOSE)
+    registry.register(SUMMON_INSTRUMENT)
+
+    # ---- Phase 5: Bard Level 1 (8) ----
+    registry.register(ANIMATE_ROPE)
+    registry.register(COMPREHEND_LANGUAGES)
+    registry.register(EXPEDITIOUS_RETREAT)
+    registry.register(HYPNOTISM)
+    registry.register(TASHAS_HIDEOUS_LAUGHTER)
+    registry.register(UNDETECTABLE_ALIGNMENT)
+    registry.register(VENTRILOQUISM)
+    registry.register(DISGUISE_SELF)
+
+    # ---- Phase 5: Bard Level 2 (9) ----
+    registry.register(ALTER_SELF)
+    registry.register(CATS_GRACE)
+    registry.register(EAGLES_SPLENDOR)
+    registry.register(ENTHRALL)
+    registry.register(HEROISM)
+    registry.register(LOCATE_OBJECT)
+    registry.register(MINOR_IMAGE)
+    registry.register(MISDIRECTION)
+    registry.register(WHISPERING_WIND)
+
+    # ---- Phase 5: Bard Level 3 (7) ----
+    registry.register(CHARM_MONSTER)
+    registry.register(CLAIRAUDIENCE_CLAIRVOYANCE)
+    registry.register(GASEOUS_FORM)
+    registry.register(GOOD_HOPE)
+    registry.register(PHANTOM_STEED)
+    registry.register(SCRYING)
+    registry.register(SCULPT_SOUND)
+
+    # ---- Phase 5: Bard Level 4 (3) ----
+    registry.register(SHOUT)
+    registry.register(ZONE_OF_SILENCE)
+    registry.register(MODIFY_MEMORY)
+
+    # ---- Phase 5: Bard Level 5 (5) ----
+    registry.register(GREATER_HEROISM)
+    registry.register(MASS_SUGGESTION)
+    registry.register(MIRAGE_ARCANA)
+    registry.register(SHADOW_WALK)
+    registry.register(SONG_OF_DISCORD)
+
+    # ---- Phase 5: Bard Level 6 (5) ----
+    registry.register(GREATER_SCRYING)
+    registry.register(IRRESISTIBLE_DANCE)
+    registry.register(MASS_CHARM_MONSTER)
+    registry.register(SYMPATHETIC_VIBRATION)
+    registry.register(VEIL)
 
     return registry

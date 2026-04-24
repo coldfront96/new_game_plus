@@ -225,6 +225,55 @@ from src.rules_engine.magic import (
     COMMUNE_WITH_NATURE,
     TREE_STRIDE,
     FIND_THE_PATH,
+    # Phase 5 – Bard Level 0
+    DANCING_LIGHTS,
+    LULLABY,
+    MESSAGE,
+    OPEN_CLOSE,
+    SUMMON_INSTRUMENT,
+    # Phase 5 – Bard Level 1
+    ANIMATE_ROPE,
+    COMPREHEND_LANGUAGES,
+    EXPEDITIOUS_RETREAT,
+    HYPNOTISM,
+    TASHAS_HIDEOUS_LAUGHTER,
+    UNDETECTABLE_ALIGNMENT,
+    VENTRILOQUISM,
+    DISGUISE_SELF,
+    # Phase 5 – Bard Level 2
+    ALTER_SELF,
+    CATS_GRACE,
+    EAGLES_SPLENDOR,
+    ENTHRALL,
+    HEROISM,
+    LOCATE_OBJECT,
+    MINOR_IMAGE,
+    MISDIRECTION,
+    WHISPERING_WIND,
+    # Phase 5 – Bard Level 3
+    CHARM_MONSTER,
+    CLAIRAUDIENCE_CLAIRVOYANCE,
+    GASEOUS_FORM,
+    GOOD_HOPE,
+    PHANTOM_STEED,
+    SCRYING,
+    SCULPT_SOUND,
+    # Phase 5 – Bard Level 4
+    SHOUT,
+    ZONE_OF_SILENCE,
+    MODIFY_MEMORY,
+    # Phase 5 – Bard Level 5
+    GREATER_HEROISM,
+    MASS_SUGGESTION,
+    MIRAGE_ARCANA,
+    SHADOW_WALK,
+    SONG_OF_DISCORD,
+    # Phase 5 – Bard Level 6
+    GREATER_SCRYING,
+    IRRESISTIBLE_DANCE,
+    MASS_CHARM_MONSTER,
+    SYMPATHETIC_VIBRATION,
+    VEIL,
     Spell,
     SpellComponent,
     SpellRegistry,
@@ -332,8 +381,8 @@ class TestSpellRegistry:
 
     def test_count(self):
         registry = create_default_registry()
-        assert registry.count == 187
-        assert len(registry) == 187
+        assert registry.count == 229
+        assert len(registry) == 229
 
     def test_contains(self):
         registry = create_default_registry()
