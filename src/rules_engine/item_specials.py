@@ -10,7 +10,7 @@ Implements:
 - ARMOR_SPECIAL_ABILITY_REGISTRY (T-032)
 - WEAPON_SPECIAL_ABILITY_REGISTRY (T-033)
 - generate_magic_armor / generate_magic_weapon (T-042, T-043)
-- ARTIFACT_REGISTRY with 15 Minor + 12 Major Artifacts (T-044)
+- ARTIFACT_REGISTRY with 13 Minor + 13 Major Artifacts (T-044)
 """
 
 from __future__ import annotations
@@ -225,7 +225,7 @@ def generate_magic_weapon(
 
 
 # ---------------------------------------------------------------------------
-# T-044: ARTIFACT_REGISTRY — 15 Minor + 12 Major Artifacts
+# T-044: ARTIFACT_REGISTRY — 13 Minor + 13 Major Artifacts
 # ---------------------------------------------------------------------------
 
 ARTIFACT_REGISTRY: dict[str, ArtifactEntry] = {
