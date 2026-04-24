@@ -164,13 +164,16 @@ class EquipmentManager:
         """Calculate total armor bonus from the TORSO slot item.
 
         In 3.5e, the armor bonus to AC comes from body armor (TORSO).
+        Magic armor also adds its enhancement bonus on top of the base
+        armor bonus (stored in ``metadata["enhancement_bonus"]``).
 
         Returns:
-            Integer armor bonus (``base_armour`` of the TORSO item), or 0.
+            Integer armor bonus (``base_armour + enhancement_bonus``), or 0.
         """
         torso_item = self.slots.get(EquipmentSlot.TORSO)
         if torso_item is not None and torso_item.item_type == ItemType.ARMOUR:
-            return torso_item.base_armour
+            enhancement = int(torso_item.metadata.get("enhancement_bonus", 0))
+            return torso_item.base_armour + enhancement
         return 0
 
     def get_shield_bonus(self) -> int:
@@ -178,13 +181,15 @@ class EquipmentManager:
 
         In 3.5e, a shield equipped in the off-hand provides a shield
         bonus to AC (stored as ``base_armour`` on ARMOUR-type items).
+        Magic shields also add their enhancement bonus.
 
         Returns:
-            Integer shield bonus, or 0.
+            Integer shield bonus (``base_armour + enhancement_bonus``), or 0.
         """
         off_hand = self.slots.get(EquipmentSlot.OFF_HAND)
         if off_hand is not None and off_hand.item_type == ItemType.ARMOUR:
-            return off_hand.base_armour
+            enhancement = int(off_hand.metadata.get("enhancement_bonus", 0))
+            return off_hand.base_armour + enhancement
         return 0
 
     def get_weapon(self) -> Optional[Item]:
