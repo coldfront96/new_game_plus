@@ -47,6 +47,7 @@ from typing import TYPE_CHECKING, Any, Dict, List, Optional
 
 if TYPE_CHECKING:
     from src.rules_engine.equipment import EquipmentManager
+    from src.rules_engine.magic_items import MagicItemEngine
     from src.rules_engine.spellcasting import (
         SpellSlotManager,
         Spellbook,
@@ -296,6 +297,7 @@ class Character35e:
     metadata: Dict[str, Any] = field(default_factory=dict)
     damage_reduction: str = ""
     equipment_manager: Optional["EquipmentManager"] = None
+    magic_item_engine: Optional["MagicItemEngine"] = None
     spell_slot_manager: Optional["SpellSlotManager"] = None
     spellbook: Optional["Spellbook"] = None
     spells_known: Optional["SpellsKnownManager"] = None
@@ -371,35 +373,48 @@ class Character35e:
         from src.rules_engine.race import RaceRegistry
         return RaceRegistry.get(self.race).stat_modifiers.get(stat, 0)
 
+    def _magic_ability_mod(self, ability: str) -> int:
+        """Return the modifier contribution from magic item enhancement to *ability*.
+
+        Enhancement bonuses to an ability score are halved (floor) to produce
+        the modifier delta, exactly as the standard SRD formula applies:
+        ``modifier = (score - 10) // 2``, so a +4 enhancement to STR yields
+        a +2 delta to the modifier.
+        """
+        if self.magic_item_engine is None:
+            return 0
+        bonus = self.magic_item_engine.get_ability_enhancement(ability)
+        return bonus // 2
+
     @property
     def strength_mod(self) -> int:
-        """Strength modifier (includes racial modifier)."""
-        return _ability_modifier(self.strength) + self._racial_bonus("strength")
+        """Strength modifier (includes racial modifier and magic item bonus)."""
+        return _ability_modifier(self.strength) + self._racial_bonus("strength") + self._magic_ability_mod("strength")
 
     @property
     def dexterity_mod(self) -> int:
-        """Dexterity modifier (includes racial modifier)."""
-        return _ability_modifier(self.dexterity) + self._racial_bonus("dexterity")
+        """Dexterity modifier (includes racial modifier and magic item bonus)."""
+        return _ability_modifier(self.dexterity) + self._racial_bonus("dexterity") + self._magic_ability_mod("dexterity")
 
     @property
     def constitution_mod(self) -> int:
-        """Constitution modifier (includes racial modifier)."""
-        return _ability_modifier(self.constitution) + self._racial_bonus("constitution")
+        """Constitution modifier (includes racial modifier and magic item bonus)."""
+        return _ability_modifier(self.constitution) + self._racial_bonus("constitution") + self._magic_ability_mod("constitution")
 
     @property
     def intelligence_mod(self) -> int:
-        """Intelligence modifier (includes racial modifier)."""
-        return _ability_modifier(self.intelligence) + self._racial_bonus("intelligence")
+        """Intelligence modifier (includes racial modifier and magic item bonus)."""
+        return _ability_modifier(self.intelligence) + self._racial_bonus("intelligence") + self._magic_ability_mod("intelligence")
 
     @property
     def wisdom_mod(self) -> int:
-        """Wisdom modifier (includes racial modifier)."""
-        return _ability_modifier(self.wisdom) + self._racial_bonus("wisdom")
+        """Wisdom modifier (includes racial modifier and magic item bonus)."""
+        return _ability_modifier(self.wisdom) + self._racial_bonus("wisdom") + self._magic_ability_mod("wisdom")
 
     @property
     def charisma_mod(self) -> int:
-        """Charisma modifier (includes racial modifier)."""
-        return _ability_modifier(self.charisma) + self._racial_bonus("charisma")
+        """Charisma modifier (includes racial modifier and magic item bonus)."""
+        return _ability_modifier(self.charisma) + self._racial_bonus("charisma") + self._magic_ability_mod("charisma")
 
     # ------------------------------------------------------------------
     # Movement speed
@@ -467,30 +482,42 @@ class Character35e:
 
     @property
     def fortitude_save(self) -> int:
-        """Fortitude save = base + CON modifier + feat bonus (e.g. Great Fortitude)."""
+        """Fortitude save = base + CON modifier + feat bonus + resistance bonus."""
         from src.rules_engine.feat_engine import FeatRegistry
 
         good_saves = _GOOD_SAVES.get(self.char_class, [])
         base = _save_bonus(self.level, "fortitude" in good_saves)
-        return base + self.constitution_mod + FeatRegistry.get_fortitude_bonus(self)
+        resistance = (
+            self.magic_item_engine.get_save_bonus("fortitude")
+            if self.magic_item_engine is not None else 0
+        )
+        return base + self.constitution_mod + FeatRegistry.get_fortitude_bonus(self) + resistance
 
     @property
     def reflex_save(self) -> int:
-        """Reflex save = base + DEX modifier + feat bonus (e.g. Lightning Reflexes)."""
+        """Reflex save = base + DEX modifier + feat bonus + resistance bonus."""
         from src.rules_engine.feat_engine import FeatRegistry
 
         good_saves = _GOOD_SAVES.get(self.char_class, [])
         base = _save_bonus(self.level, "reflex" in good_saves)
-        return base + self.dexterity_mod + FeatRegistry.get_reflex_bonus(self)
+        resistance = (
+            self.magic_item_engine.get_save_bonus("reflex")
+            if self.magic_item_engine is not None else 0
+        )
+        return base + self.dexterity_mod + FeatRegistry.get_reflex_bonus(self) + resistance
 
     @property
     def will_save(self) -> int:
-        """Will save = base + WIS modifier + feat bonus (e.g. Iron Will)."""
+        """Will save = base + WIS modifier + feat bonus + resistance bonus."""
         from src.rules_engine.feat_engine import FeatRegistry
 
         good_saves = _GOOD_SAVES.get(self.char_class, [])
         base = _save_bonus(self.level, "will" in good_saves)
-        return base + self.wisdom_mod + FeatRegistry.get_will_bonus(self)
+        resistance = (
+            self.magic_item_engine.get_save_bonus("will")
+            if self.magic_item_engine is not None else 0
+        )
+        return base + self.wisdom_mod + FeatRegistry.get_will_bonus(self) + resistance
 
     # ------------------------------------------------------------------
     # Armour class
@@ -498,7 +525,7 @@ class Character35e:
 
     @property
     def armor_class(self) -> int:
-        """Armour class: ``10 + DEX mod + size modifier + armor bonus + shield bonus + deflection bonus + feat bonus``.
+        """Armour class: ``10 + DEX mod + size mod + armor + shield + deflection + natural armor + feat bonus``.
 
         The Dexterity modifier is capped by the lowest ``max_dex_bonus`` from
         any equipped armor piece, following the 3.5e SRD rule (e.g. Full Plate
@@ -506,9 +533,12 @@ class Character35e:
 
         Armor bonus and shield bonus are resolved from the
         :class:`EquipmentManager` if one is attached. Deflection bonuses
-        (e.g. from divine spells like Shield of Faith) are resolved from
-        the character's metadata. Feat bonuses are resolved from the
-        :class:`FeatRegistry`.
+        (e.g. from divine spells like Shield of Faith, or Ring of Protection)
+        are resolved first from :class:`MagicItemEngine`, then from the
+        character's ``metadata["deflection_bonus"]`` (highest wins per the
+        non-stacking rule). Natural armour bonuses (e.g. Amulet of Natural
+        Armor) are resolved from :class:`MagicItemEngine`. Feat bonuses are
+        resolved from the :class:`FeatRegistry`.
         """
         from src.rules_engine.feat_engine import FeatRegistry
 
@@ -522,8 +552,17 @@ class Character35e:
         if self.equipment_manager is not None:
             ac += self.equipment_manager.get_armor_bonus()
             ac += self.equipment_manager.get_shield_bonus()
-        # Deflection bonus from divine spells (e.g. Shield of Faith)
-        ac += self.metadata.get("deflection_bonus", 0)
+
+        # Deflection bonus: best of magic item engine and metadata
+        deflection = self.metadata.get("deflection_bonus", 0)
+        if self.magic_item_engine is not None:
+            deflection = max(deflection, self.magic_item_engine.get_deflection_bonus())
+        ac += deflection
+
+        # Natural armour bonus from magic items (e.g. Amulet of Natural Armor)
+        if self.magic_item_engine is not None:
+            ac += self.magic_item_engine.get_natural_armor_bonus()
+
         ac += FeatRegistry.get_ac_bonus(self)
         # Monk Wisdom bonus to AC (3.5e SRD: Monk adds WIS bonus to AC even
         # when flat-footed; only positive values apply).
@@ -533,19 +572,32 @@ class Character35e:
 
     @property
     def touch_ac(self) -> int:
-        """Touch AC (ignores armour/shield/natural armour)."""
-        return 10 + self.dexterity_mod + self.size.value
+        """Touch AC (ignores armour/shield/natural armour).
+
+        Includes deflection bonus from magic items (Ring of Protection etc.),
+        since deflection bonuses apply to touch AC per the 3.5e SRD.
+        """
+        deflection = self.metadata.get("deflection_bonus", 0)
+        if self.magic_item_engine is not None:
+            deflection = max(deflection, self.magic_item_engine.get_deflection_bonus())
+        return 10 + self.dexterity_mod + self.size.value + deflection
 
     @property
     def flat_footed_ac(self) -> int:
         """Flat-footed AC (loses DEX bonus, keeps size modifier).
 
         For Monks, the Wisdom bonus is retained even when flat-footed,
-        per the 3.5e SRD.
+        per the 3.5e SRD. Deflection and natural armour bonuses are retained
+        when flat-footed.
         """
         ac = 10 + self.size.value
         if self.char_class == "Monk":
             ac += max(0, self.wisdom_mod)
+        deflection = self.metadata.get("deflection_bonus", 0)
+        if self.magic_item_engine is not None:
+            deflection = max(deflection, self.magic_item_engine.get_deflection_bonus())
+            ac += self.magic_item_engine.get_natural_armor_bonus()
+        ac += deflection
         return ac
 
     # ------------------------------------------------------------------
