@@ -48,6 +48,60 @@ from src.rules_engine.magic import (
     FLY,
     SLOW,
     VAMPIRIC_TOUCH,
+    # Phase 2 – Level 4
+    DIMENSION_DOOR,
+    POLYMORPH,
+    GREATER_INVISIBILITY,
+    ICE_STORM,
+    STONESKIN,
+    CONFUSION,
+    ARCANE_EYE,
+    BLACK_TENTACLES,
+    # Phase 2 – Level 5
+    CONE_OF_COLD,
+    TELEKINESIS,
+    WALL_OF_FORCE,
+    CLOUDKILL,
+    DOMINATE_PERSON,
+    FEEBLEMIND,
+    PERMANENCY,
+    SENDING,
+    # Phase 2 – Level 6
+    DISINTEGRATE,
+    CHAIN_LIGHTNING,
+    GLOBE_OF_INVULNERABILITY,
+    TRUE_SEEING,
+    CONTINGENCY,
+    LEGEND_LORE,
+    REPULSION,
+    MISLEAD,
+    # Phase 2 – Level 7
+    FINGER_OF_DEATH,
+    POWER_WORD_BLIND,
+    SPELL_TURNING,
+    LIMITED_WISH,
+    PRISMATIC_SPRAY,
+    REVERSE_GRAVITY,
+    ETHEREAL_JAUNT,
+    MORDENKAINENS_SWORD,
+    # Phase 2 – Level 8
+    POWER_WORD_STUN,
+    MIND_BLANK,
+    PRISMATIC_WALL,
+    MAZE,
+    CLONE,
+    GREATER_PRYING_EYES,
+    SUNBURST,
+    POLAR_RAY,
+    # Phase 2 – Level 9
+    WISH,
+    TIME_STOP,
+    METEOR_SWARM,
+    WAIL_OF_THE_BANSHEE,
+    POWER_WORD_KILL,
+    SHAPECHANGE,
+    GATE,
+    FORESIGHT,
     Spell,
     SpellComponent,
     SpellRegistry,
@@ -155,13 +209,13 @@ class TestSpellRegistry:
 
     def test_count(self):
         registry = create_default_registry()
-        assert registry.count == 43
-        assert len(registry) == 43
+        assert registry.count == 91
+        assert len(registry) == 91
 
     def test_contains(self):
         registry = create_default_registry()
         assert "Magic Missile" in registry
-        assert "Wish" not in registry
+        assert "Bigby's Hand" not in registry
 
 
 # ---------------------------------------------------------------------------
@@ -928,3 +982,744 @@ class TestPhase1WizardSorcererSpells:
         # CL 22: still capped at 10d6
         result2 = VAMPIRIC_TOUCH.effect_callback(None, None, 22)
         assert result2["damage"] == "10d6"
+
+
+# ---------------------------------------------------------------------------
+# Phase 2 – Wizard/Sorcerer Arcane Spells (Levels 4–9)
+# ---------------------------------------------------------------------------
+
+class TestPhase2WizardSorcererSpells:
+
+    # ------------------------------------------------------------------ #
+    #  Registry membership – all 48 new spells                             #
+    # ------------------------------------------------------------------ #
+
+    def test_all_48_new_spells_in_registry(self):
+        registry = create_default_registry()
+        new_spells = [
+            # Level 4
+            "Dimension Door", "Polymorph", "Greater Invisibility", "Ice Storm",
+            "Stoneskin", "Confusion", "Arcane Eye", "Black Tentacles",
+            # Level 5
+            "Cone of Cold", "Telekinesis", "Wall of Force", "Cloudkill",
+            "Dominate Person", "Feeblemind", "Permanency", "Sending",
+            # Level 6
+            "Disintegrate", "Chain Lightning", "Globe of Invulnerability",
+            "True Seeing", "Contingency", "Legend Lore", "Repulsion", "Mislead",
+            # Level 7
+            "Finger of Death", "Power Word Blind", "Spell Turning", "Limited Wish",
+            "Prismatic Spray", "Reverse Gravity", "Ethereal Jaunt",
+            "Mordenkainen's Sword",
+            # Level 8
+            "Power Word Stun", "Mind Blank", "Prismatic Wall", "Maze", "Clone",
+            "Greater Prying Eyes", "Sunburst", "Polar Ray",
+            # Level 9
+            "Wish", "Time Stop", "Meteor Swarm", "Wail of the Banshee",
+            "Power Word Kill", "Shapechange", "Gate", "Foresight",
+        ]
+        for name in new_spells:
+            assert name in registry, f"'{name}' missing from default registry"
+
+    # ------------------------------------------------------------------ #
+    #  Level grouping tests                                                #
+    # ------------------------------------------------------------------ #
+
+    def test_level_4_spells_in_registry(self):
+        registry = create_default_registry()
+        names = [s.name for s in registry.get_by_level(4)]
+        for name in ("Dimension Door", "Polymorph", "Greater Invisibility",
+                     "Ice Storm", "Stoneskin", "Confusion", "Arcane Eye",
+                     "Black Tentacles"):
+            assert name in names
+
+    def test_level_5_spells_in_registry(self):
+        registry = create_default_registry()
+        names = [s.name for s in registry.get_by_level(5)]
+        for name in ("Cone of Cold", "Telekinesis", "Wall of Force", "Cloudkill",
+                     "Dominate Person", "Feeblemind", "Permanency", "Sending"):
+            assert name in names
+
+    def test_level_6_spells_in_registry(self):
+        registry = create_default_registry()
+        names = [s.name for s in registry.get_by_level(6)]
+        for name in ("Disintegrate", "Chain Lightning", "Globe of Invulnerability",
+                     "True Seeing", "Contingency", "Legend Lore", "Repulsion",
+                     "Mislead"):
+            assert name in names
+
+    def test_level_7_spells_in_registry(self):
+        registry = create_default_registry()
+        names = [s.name for s in registry.get_by_level(7)]
+        for name in ("Finger of Death", "Power Word Blind", "Spell Turning",
+                     "Limited Wish", "Prismatic Spray", "Reverse Gravity",
+                     "Ethereal Jaunt", "Mordenkainen's Sword"):
+            assert name in names
+
+    def test_level_8_spells_in_registry(self):
+        registry = create_default_registry()
+        names = [s.name for s in registry.get_by_level(8)]
+        for name in ("Power Word Stun", "Mind Blank", "Prismatic Wall", "Maze",
+                     "Clone", "Greater Prying Eyes", "Sunburst", "Polar Ray"):
+            assert name in names
+
+    def test_level_9_spells_in_registry(self):
+        registry = create_default_registry()
+        names = [s.name for s in registry.get_by_level(9)]
+        for name in ("Wish", "Time Stop", "Meteor Swarm", "Wail of the Banshee",
+                     "Power Word Kill", "Shapechange", "Gate", "Foresight"):
+            assert name in names
+
+    # ------------------------------------------------------------------ #
+    #  Attribute tests – Level 4                                           #
+    # ------------------------------------------------------------------ #
+
+    def test_dimension_door_attributes(self):
+        assert DIMENSION_DOOR.level == 4
+        assert DIMENSION_DOOR.school == SpellSchool.CONJURATION
+        assert DIMENSION_DOOR.subschool == "Teleportation"
+        assert SpellComponent.VERBAL in DIMENSION_DOOR.components
+
+    def test_polymorph_attributes(self):
+        assert POLYMORPH.level == 4
+        assert POLYMORPH.school == SpellSchool.TRANSMUTATION
+
+    def test_greater_invisibility_attributes(self):
+        assert GREATER_INVISIBILITY.level == 4
+        assert GREATER_INVISIBILITY.school == SpellSchool.ILLUSION
+        assert GREATER_INVISIBILITY.subschool == "Glamer"
+
+    def test_ice_storm_attributes(self):
+        assert ICE_STORM.level == 4
+        assert ICE_STORM.school == SpellSchool.EVOCATION
+        assert "Cold" in ICE_STORM.descriptor
+
+    def test_stoneskin_attributes(self):
+        assert STONESKIN.level == 4
+        assert STONESKIN.school == SpellSchool.ABJURATION
+
+    def test_confusion_attributes(self):
+        assert CONFUSION.level == 4
+        assert CONFUSION.school == SpellSchool.ENCHANTMENT
+        assert CONFUSION.subschool == "Compulsion"
+        assert "Mind-Affecting" in CONFUSION.descriptor
+
+    def test_arcane_eye_attributes(self):
+        assert ARCANE_EYE.level == 4
+        assert ARCANE_EYE.school == SpellSchool.DIVINATION
+        assert ARCANE_EYE.subschool == "Scrying"
+
+    def test_black_tentacles_attributes(self):
+        assert BLACK_TENTACLES.level == 4
+        assert BLACK_TENTACLES.school == SpellSchool.CONJURATION
+        assert BLACK_TENTACLES.subschool == "Creation"
+
+    # ------------------------------------------------------------------ #
+    #  Attribute tests – Level 5                                           #
+    # ------------------------------------------------------------------ #
+
+    def test_cone_of_cold_attributes(self):
+        assert CONE_OF_COLD.level == 5
+        assert CONE_OF_COLD.school == SpellSchool.EVOCATION
+        assert "Cold" in CONE_OF_COLD.descriptor
+
+    def test_telekinesis_attributes(self):
+        assert TELEKINESIS.level == 5
+        assert TELEKINESIS.school == SpellSchool.TRANSMUTATION
+
+    def test_wall_of_force_attributes(self):
+        assert WALL_OF_FORCE.level == 5
+        assert WALL_OF_FORCE.school == SpellSchool.EVOCATION
+        assert "Force" in WALL_OF_FORCE.descriptor
+
+    def test_cloudkill_attributes(self):
+        assert CLOUDKILL.level == 5
+        assert CLOUDKILL.school == SpellSchool.CONJURATION
+        assert CLOUDKILL.subschool == "Creation"
+
+    def test_dominate_person_attributes(self):
+        assert DOMINATE_PERSON.level == 5
+        assert DOMINATE_PERSON.school == SpellSchool.ENCHANTMENT
+        assert "Mind-Affecting" in DOMINATE_PERSON.descriptor
+
+    def test_feeblemind_attributes(self):
+        assert FEEBLEMIND.level == 5
+        assert FEEBLEMIND.school == SpellSchool.ENCHANTMENT
+        assert "Mind-Affecting" in FEEBLEMIND.descriptor
+
+    def test_permanency_attributes(self):
+        assert PERMANENCY.level == 5
+        assert PERMANENCY.school == SpellSchool.UNIVERSAL
+        assert SpellComponent.XP in PERMANENCY.components
+
+    def test_sending_attributes(self):
+        assert SENDING.level == 5
+        assert SENDING.school == SpellSchool.EVOCATION
+
+    # ------------------------------------------------------------------ #
+    #  Attribute tests – Level 6                                           #
+    # ------------------------------------------------------------------ #
+
+    def test_disintegrate_attributes(self):
+        assert DISINTEGRATE.level == 6
+        assert DISINTEGRATE.school == SpellSchool.TRANSMUTATION
+
+    def test_chain_lightning_attributes(self):
+        assert CHAIN_LIGHTNING.level == 6
+        assert CHAIN_LIGHTNING.school == SpellSchool.EVOCATION
+        assert "Electricity" in CHAIN_LIGHTNING.descriptor
+
+    def test_globe_of_invulnerability_attributes(self):
+        assert GLOBE_OF_INVULNERABILITY.level == 6
+        assert GLOBE_OF_INVULNERABILITY.school == SpellSchool.ABJURATION
+
+    def test_true_seeing_attributes(self):
+        assert TRUE_SEEING.level == 6
+        assert TRUE_SEEING.school == SpellSchool.DIVINATION
+
+    def test_contingency_attributes(self):
+        assert CONTINGENCY.level == 6
+        assert CONTINGENCY.school == SpellSchool.EVOCATION
+
+    def test_legend_lore_attributes(self):
+        assert LEGEND_LORE.level == 6
+        assert LEGEND_LORE.school == SpellSchool.DIVINATION
+
+    def test_repulsion_attributes(self):
+        assert REPULSION.level == 6
+        assert REPULSION.school == SpellSchool.ABJURATION
+
+    def test_mislead_attributes(self):
+        assert MISLEAD.level == 6
+        assert MISLEAD.school == SpellSchool.ILLUSION
+
+    # ------------------------------------------------------------------ #
+    #  Attribute tests – Level 7                                           #
+    # ------------------------------------------------------------------ #
+
+    def test_finger_of_death_attributes(self):
+        assert FINGER_OF_DEATH.level == 7
+        assert FINGER_OF_DEATH.school == SpellSchool.NECROMANCY
+        assert "Death" in FINGER_OF_DEATH.descriptor
+
+    def test_power_word_blind_attributes(self):
+        assert POWER_WORD_BLIND.level == 7
+        assert POWER_WORD_BLIND.school == SpellSchool.ENCHANTMENT
+        assert "Mind-Affecting" in POWER_WORD_BLIND.descriptor
+
+    def test_spell_turning_attributes(self):
+        assert SPELL_TURNING.level == 7
+        assert SPELL_TURNING.school == SpellSchool.ABJURATION
+
+    def test_limited_wish_attributes(self):
+        assert LIMITED_WISH.level == 7
+        assert LIMITED_WISH.school == SpellSchool.UNIVERSAL
+        assert SpellComponent.XP in LIMITED_WISH.components
+
+    def test_prismatic_spray_attributes(self):
+        assert PRISMATIC_SPRAY.level == 7
+        assert PRISMATIC_SPRAY.school == SpellSchool.EVOCATION
+
+    def test_reverse_gravity_attributes(self):
+        assert REVERSE_GRAVITY.level == 7
+        assert REVERSE_GRAVITY.school == SpellSchool.TRANSMUTATION
+
+    def test_ethereal_jaunt_attributes(self):
+        assert ETHEREAL_JAUNT.level == 7
+        assert ETHEREAL_JAUNT.school == SpellSchool.TRANSMUTATION
+
+    def test_mordenkainens_sword_attributes(self):
+        assert MORDENKAINENS_SWORD.level == 7
+        assert MORDENKAINENS_SWORD.school == SpellSchool.EVOCATION
+        assert "Force" in MORDENKAINENS_SWORD.descriptor
+
+    # ------------------------------------------------------------------ #
+    #  Attribute tests – Level 8                                           #
+    # ------------------------------------------------------------------ #
+
+    def test_power_word_stun_attributes(self):
+        assert POWER_WORD_STUN.level == 8
+        assert POWER_WORD_STUN.school == SpellSchool.ENCHANTMENT
+        assert "Mind-Affecting" in POWER_WORD_STUN.descriptor
+
+    def test_mind_blank_attributes(self):
+        assert MIND_BLANK.level == 8
+        assert MIND_BLANK.school == SpellSchool.ABJURATION
+
+    def test_prismatic_wall_attributes(self):
+        assert PRISMATIC_WALL.level == 8
+        assert PRISMATIC_WALL.school == SpellSchool.ABJURATION
+
+    def test_maze_attributes(self):
+        assert MAZE.level == 8
+        assert MAZE.school == SpellSchool.CONJURATION
+        assert MAZE.subschool == "Teleportation"
+
+    def test_clone_attributes(self):
+        assert CLONE.level == 8
+        assert CLONE.school == SpellSchool.NECROMANCY
+
+    def test_greater_prying_eyes_attributes(self):
+        assert GREATER_PRYING_EYES.level == 8
+        assert GREATER_PRYING_EYES.school == SpellSchool.DIVINATION
+        assert GREATER_PRYING_EYES.subschool == "Scrying"
+
+    def test_sunburst_attributes(self):
+        assert SUNBURST.level == 8
+        assert SUNBURST.school == SpellSchool.EVOCATION
+        assert "Light" in SUNBURST.descriptor
+
+    def test_polar_ray_attributes(self):
+        assert POLAR_RAY.level == 8
+        assert POLAR_RAY.school == SpellSchool.EVOCATION
+        assert "Cold" in POLAR_RAY.descriptor
+
+    # ------------------------------------------------------------------ #
+    #  Attribute tests – Level 9                                           #
+    # ------------------------------------------------------------------ #
+
+    def test_wish_attributes(self):
+        assert WISH.level == 9
+        assert WISH.school == SpellSchool.UNIVERSAL
+        assert SpellComponent.XP in WISH.components
+
+    def test_time_stop_attributes(self):
+        assert TIME_STOP.level == 9
+        assert TIME_STOP.school == SpellSchool.TRANSMUTATION
+        assert TIME_STOP.components == [SpellComponent.VERBAL]
+
+    def test_meteor_swarm_attributes(self):
+        assert METEOR_SWARM.level == 9
+        assert METEOR_SWARM.school == SpellSchool.EVOCATION
+        assert "Fire" in METEOR_SWARM.descriptor
+
+    def test_wail_of_the_banshee_attributes(self):
+        assert WAIL_OF_THE_BANSHEE.level == 9
+        assert WAIL_OF_THE_BANSHEE.school == SpellSchool.NECROMANCY
+        assert "Death" in WAIL_OF_THE_BANSHEE.descriptor
+        assert "Sonic" in WAIL_OF_THE_BANSHEE.descriptor
+
+    def test_power_word_kill_attributes(self):
+        assert POWER_WORD_KILL.level == 9
+        assert POWER_WORD_KILL.school == SpellSchool.ENCHANTMENT
+        assert "Death" in POWER_WORD_KILL.descriptor
+
+    def test_shapechange_attributes(self):
+        assert SHAPECHANGE.level == 9
+        assert SHAPECHANGE.school == SpellSchool.TRANSMUTATION
+
+    def test_gate_attributes(self):
+        assert GATE.level == 9
+        assert GATE.school == SpellSchool.CONJURATION
+
+    def test_foresight_attributes(self):
+        assert FORESIGHT.level == 9
+        assert FORESIGHT.school == SpellSchool.DIVINATION
+
+    # ------------------------------------------------------------------ #
+    #  Effect callback tests – mechanically interesting spells             #
+    # ------------------------------------------------------------------ #
+
+    def test_cone_of_cold_scaling_cl10(self):
+        result = CONE_OF_COLD.effect_callback(None, None, 10)
+        assert result["damage"] == "10d6"
+        assert result["damage_type"] == "Cold"
+        assert result["save"] == "Reflex half"
+
+    def test_cone_of_cold_scaling_max_cl20(self):
+        result = CONE_OF_COLD.effect_callback(None, None, 20)
+        assert result["damage"] == "15d6"
+
+    def test_cone_of_cold_scaling_cl15_exactly(self):
+        result = CONE_OF_COLD.effect_callback(None, None, 15)
+        assert result["damage"] == "15d6"
+
+    def test_disintegrate_damage_scaling_cl10(self):
+        result = DISINTEGRATE.effect_callback(None, None, 10)
+        assert result["damage"] == "20d6"
+        assert result["save_damage"] == "5d6"
+        assert result["dust_on_death"] is True
+
+    def test_disintegrate_damage_scaling_cl25_max(self):
+        result = DISINTEGRATE.effect_callback(None, None, 25)
+        assert result["damage"] == "40d6"
+
+    def test_chain_lightning_secondary_cl10(self):
+        result = CHAIN_LIGHTNING.effect_callback(None, None, 10)
+        assert result["primary_damage"] == "10d6"
+        assert result["max_secondary_targets"] == 10
+
+    def test_chain_lightning_secondary_max_cl25(self):
+        result = CHAIN_LIGHTNING.effect_callback(None, None, 25)
+        assert result["primary_damage"] == "20d6"
+        assert result["max_secondary_targets"] == 20
+
+    def test_stoneskin_absorption_cl10(self):
+        result = STONESKIN.effect_callback(None, None, 10)
+        assert result["max_absorption"] == 100
+        assert result["dr"] == "10/adamantine"
+
+    def test_stoneskin_absorption_max_cl15(self):
+        result = STONESKIN.effect_callback(None, None, 15)
+        assert result["max_absorption"] == 150
+
+    def test_stoneskin_absorption_cap_cl20(self):
+        result = STONESKIN.effect_callback(None, None, 20)
+        assert result["max_absorption"] == 150
+
+    def test_finger_of_death_save_damage_uses_caster_level(self):
+        result_cl10 = FINGER_OF_DEATH.effect_callback(None, None, 10)
+        assert result_cl10["save_damage"] == "3d6+10"
+        assert result_cl10["death_on_fail"] is True
+        result_cl15 = FINGER_OF_DEATH.effect_callback(None, None, 15)
+        assert result_cl15["save_damage"] == "3d6+15"
+
+    def test_wail_of_the_banshee_max_targets_equals_caster_level(self):
+        result = WAIL_OF_THE_BANSHEE.effect_callback(None, None, 12)
+        assert result["max_targets"] == 12
+        assert result["death_effect"] is True
+        assert result["save"] == "Fortitude negates"
+
+    def test_wail_of_the_banshee_max_targets_cl20(self):
+        result = WAIL_OF_THE_BANSHEE.effect_callback(None, None, 20)
+        assert result["max_targets"] == 20
+
+    def test_polar_ray_damage_cap_cl25(self):
+        result = POLAR_RAY.effect_callback(None, None, 25)
+        assert result["damage"] == "25d6"
+        assert result["dex_drain"] == "2d4"
+
+    def test_polar_ray_damage_cap_cl30(self):
+        result = POLAR_RAY.effect_callback(None, None, 30)
+        assert result["damage"] == "25d6"
+
+    def test_polar_ray_damage_cl10(self):
+        result = POLAR_RAY.effect_callback(None, None, 10)
+        assert result["damage"] == "10d6"
+        assert result["attack"] == "ranged touch"
+
+    def test_meteor_swarm_always_4_spheres(self):
+        result = METEOR_SWARM.effect_callback(None, None, 17)
+        assert result["spheres"] == 4
+        assert result["direct_hit_bludgeoning"] == "2d6"
+        assert result["direct_hit_fire"] == "6d6"
+        assert result["area_fire"] == "6d6"
+
+    def test_greater_invisibility_no_end_on_attack(self):
+        result = GREATER_INVISIBILITY.effect_callback(None, None, 8)
+        assert result["ends_on_attack"] is False
+        assert result["duration_rounds"] == 8
+
+    def test_dimension_door_effect(self):
+        result = DIMENSION_DOOR.effect_callback(None, None, 10)
+        assert result["can_bring_others"] is True
+        assert result["teleport_type"] == "short"
+        assert result["max_carry"] == "medium load"
+
+    def test_confusion_duration_scales(self):
+        result = CONFUSION.effect_callback(None, None, 7)
+        assert result["duration_rounds"] == 7
+        assert result["save"] == "Will negates"
+
+    def test_black_tentacles_effect(self):
+        result = BLACK_TENTACLES.effect_callback(None, None, 9)
+        assert result["grapple_bonus"] == 7
+        assert result["damage_per_round"] == "1d6+4"
+        assert result["duration_rounds"] == 9
+
+    def test_telekinesis_weight_cap(self):
+        result = TELEKINESIS.effect_callback(None, None, 15)
+        assert result["max_weight_lbs"] == 375
+        result2 = TELEKINESIS.effect_callback(None, None, 20)
+        assert result2["max_weight_lbs"] == 375
+
+    def test_telekinesis_weight_cl10(self):
+        result = TELEKINESIS.effect_callback(None, None, 10)
+        assert result["max_weight_lbs"] == 250
+
+    def test_contingency_max_spell_level(self):
+        result = CONTINGENCY.effect_callback(None, None, 12)
+        assert result["max_contingent_spell_level"] == 4
+        assert result["duration_days"] == 12
+
+    def test_repulsion_radius_scales(self):
+        result = REPULSION.effect_callback(None, None, 10)
+        assert result["radius_ft"] == 100
+        assert result["save"] == "Will negates"
+
+    def test_globe_of_invulnerability_blocks_low_levels(self):
+        result = GLOBE_OF_INVULNERABILITY.effect_callback(None, None, 6)
+        assert 0 in result["blocks_spell_levels"]
+        assert 4 in result["blocks_spell_levels"]
+        assert 5 not in result["blocks_spell_levels"]
+
+    def test_true_seeing_effect(self):
+        result = TRUE_SEEING.effect_callback(None, None, 10)
+        assert result["see_invisible"] is True
+        assert result["see_through_illusions"] is True
+        assert result["see_ethereal"] is True
+        assert result["range_ft"] == 120
+
+    def test_power_word_blind_no_save(self):
+        result = POWER_WORD_BLIND.effect_callback(None, None, 13)
+        assert result["no_save"] is True
+        assert result["threshold_permanent_hp"] == 50
+        assert result["threshold_short_hp"] == 100
+
+    def test_spell_turning_effect(self):
+        result = SPELL_TURNING.effect_callback(None, None, 13)
+        assert result["spell_levels_to_reflect"] == "1d4+6"
+        assert result["affects_area_spells"] is False
+        assert result["duration_minutes"] == 130
+
+    def test_mind_blank_effect(self):
+        result = MIND_BLANK.effect_callback(None, None, 15)
+        assert result["immune_mind_affecting"] is True
+        assert result["immune_divination"] is True
+        assert result["duration_hours"] == 24
+
+    def test_prismatic_wall_effect(self):
+        result = PRISMATIC_WALL.effect_callback(None, None, 15)
+        assert result["layers"] == 8
+        assert result["blinds_on_gaze"] is True
+        assert result["duration_minutes"] == 150
+
+    def test_maze_effect(self):
+        result = MAZE.effect_callback(None, None, 15)
+        assert result["exit_dc"] == 20
+        assert result["minotaur_escape"] is True
+
+    def test_sunburst_undead_damage_scales(self):
+        result = SUNBURST.effect_callback(None, None, 15)
+        assert result["damage"] == "6d6"
+        assert result["undead_damage"] == "15d6"
+        result2 = SUNBURST.effect_callback(None, None, 30)
+        assert result2["undead_damage"] == "25d6"
+
+    def test_wish_effect(self):
+        result = WISH.effect_callback(None, None, 20)
+        assert result["xp_cost"] == 5000
+        assert result["alters_reality"] is True
+        assert result["duplicates_any_arcane"] is True
+
+    def test_time_stop_effect(self):
+        result = TIME_STOP.effect_callback(None, None, 17)
+        assert result["duration_rounds"] == "1d4+1"
+        assert result["only_caster_acts"] is True
+
+    def test_shapechange_effect(self):
+        result = SHAPECHANGE.effect_callback(None, None, 18)
+        assert result["min_hd"] == 0.25
+        assert result["max_hd"] == 25
+        assert result["duration_minutes"] == 180
+        assert result["free_changes"] is True
+
+    def test_gate_effect(self):
+        result = GATE.effect_callback(None, None, 20)
+        assert result["portal"] is True
+        assert result["calling"] is True
+        assert result["duration_rounds"] == 20
+
+    def test_foresight_effect(self):
+        result = FORESIGHT.effect_callback(None, None, 18)
+        assert result["never_surprised"] is True
+        assert result["insight_ac_bonus"] == 2
+        assert result["insight_reflex_bonus"] == 2
+        assert result["duration_minutes"] == 180
+
+    def test_clone_maturation_time(self):
+        result = CLONE.effect_callback(None, None, 15)
+        assert result["soul_transfer"] is True
+        assert result["material_cost_gp"] == 1000
+        assert result["time_to_mature_days"] == 2 * (20 - 15)
+
+    def test_clone_maturation_time_at_or_above_20(self):
+        result = CLONE.effect_callback(None, None, 20)
+        assert result["time_to_mature_days"] == 0
+
+    def test_power_word_stun_effect(self):
+        result = POWER_WORD_STUN.effect_callback(None, None, 15)
+        assert result["no_save"] is True
+        assert result["threshold_4d4_hp"] == 50
+        assert result["threshold_2d4_hp"] == 100
+
+    def test_power_word_kill_effect(self):
+        result = POWER_WORD_KILL.effect_callback(None, None, 17)
+        assert result["no_save"] is True
+        assert result["max_hp_threshold"] == 100
+
+    def test_permanency_xp_cost_scales(self):
+        result = PERMANENCY.effect_callback(None, None, 15)
+        assert result["xp_cost"] == 500 + 15 * 100
+        assert "Detect Magic" in result["eligible_spells"]
+
+    def test_limited_wish_effect(self):
+        result = LIMITED_WISH.effect_callback(None, None, 14)
+        assert result["xp_cost"] == 300
+        assert result["undo_misfortune"] is True
+
+    def test_sending_effect(self):
+        result = SENDING.effect_callback(None, None, 10)
+        assert result["max_words"] == 25
+        assert result["reply_words"] == 25
+        assert result["range"] == "unlimited"
+
+    def test_arcane_eye_effect(self):
+        result = ARCANE_EYE.effect_callback(None, None, 8)
+        assert result["move_speed_ft"] == 30
+        assert result["concentration"] is True
+        assert result["can_see_magic"] is False
+
+    def test_polymorph_effect(self):
+        result = POLYMORPH.effect_callback(None, None, 10)
+        assert result["max_hd"] == 15
+        assert result["gains_physical_stats"] is True
+        assert result["retains_mental_stats"] is True
+        assert result["duration_minutes"] == 10
+
+    def test_cloudkill_effect(self):
+        result = CLOUDKILL.effect_callback(None, None, 10)
+        assert result["instant_death_hd"] == 3
+        assert result["fort_save_hd_threshold"] == 6
+        assert result["con_damage"] == "1d4"
+        assert result["move_ft_per_round"] == 10
+
+    def test_dominate_person_effect(self):
+        result = DOMINATE_PERSON.effect_callback(None, None, 12)
+        assert result["duration_days"] == 12
+        assert result["allows_new_save"] is True
+
+    def test_feeblemind_effect(self):
+        result = FEEBLEMIND.effect_callback(None, None, 10)
+        assert result["int_score"] == 1
+        assert result["cha_score"] == 1
+        assert result["harder_vs_arcane_casters"] is True
+
+    def test_wall_of_force_effect(self):
+        result = WALL_OF_FORCE.effect_callback(None, None, 10)
+        assert result["blocks_all"] is True
+        assert result["immune_to_dispel"] is True
+        assert result["vulnerable_to_disintegrate"] is True
+        assert result["duration_rounds"] == 10
+
+    def test_ice_storm_effect(self):
+        result = ICE_STORM.effect_callback(None, None, 8)
+        assert result["bludgeoning_damage"] == "3d6"
+        assert result["cold_damage"] == "2d6"
+        assert result["hampers_movement"] is True
+
+    def test_mislead_effect(self):
+        result = MISLEAD.effect_callback(None, None, 11)
+        assert result["caster_invisible"] is True
+        assert result["double_created"] is True
+        assert result["duration_rounds"] == 11
+
+    def test_legend_lore_effect(self):
+        result = LEGEND_LORE.effect_callback(None, None, 12)
+        assert result["reveals_legend"] is True
+        assert result["casting_time"] == "variable"
+
+    def test_ethereal_jaunt_effect(self):
+        result = ETHEREAL_JAUNT.effect_callback(None, None, 14)
+        assert result["ethereal"] is True
+        assert result["see_material_plane"] is True
+        assert result["duration_rounds"] == 14
+
+    def test_mordenkainens_sword_effect(self):
+        result = MORDENKAINENS_SWORD.effect_callback(None, None, 14)
+        assert result["attack_bonus"] == 3
+        assert result["damage"] == "4d6+3"
+        assert result["damage_type"] == "Force"
+        assert result["bab"] == 14
+        assert result["duration_rounds"] == 14
+
+    def test_reverse_gravity_effect(self):
+        result = REVERSE_GRAVITY.effect_callback(None, None, 13)
+        assert result["area"] == "20-ft radius, 40-ft high cylinder"
+        assert result["duration_rounds"] == 13
+
+    def test_prismatic_spray_effect(self):
+        result = PRISMATIC_SPRAY.effect_callback(None, None, 13)
+        assert result["effects"] == 7
+        assert result["area"] == "60-ft cone"
+        assert result["save"] == "varies"
+
+    def test_greater_prying_eyes_effect(self):
+        result = GREATER_PRYING_EYES.effect_callback(None, None, 15)
+        assert result["true_seeing"] is True
+        assert result["max_eyes"] == 20
+        assert result["speed_ft"] == 30
+
+    # ------------------------------------------------------------------ #
+    #  School grouping tests                                               #
+    # ------------------------------------------------------------------ #
+
+    def test_evocation_contains_new_spells(self):
+        registry = create_default_registry()
+        evocations = [s.name for s in registry.get_by_school(SpellSchool.EVOCATION)]
+        assert "Cone of Cold" in evocations
+        assert "Chain Lightning" in evocations
+        assert "Wall of Force" in evocations
+        assert "Meteor Swarm" in evocations
+
+    def test_transmutation_contains_new_spells(self):
+        registry = create_default_registry()
+        transmutations = [s.name for s in registry.get_by_school(SpellSchool.TRANSMUTATION)]
+        assert "Polymorph" in transmutations
+        assert "Disintegrate" in transmutations
+        assert "Reverse Gravity" in transmutations
+        assert "Time Stop" in transmutations
+        assert "Shapechange" in transmutations
+
+    def test_conjuration_contains_new_spells(self):
+        registry = create_default_registry()
+        conjurations = [s.name for s in registry.get_by_school(SpellSchool.CONJURATION)]
+        assert "Dimension Door" in conjurations
+        assert "Black Tentacles" in conjurations
+        assert "Cloudkill" in conjurations
+        assert "Gate" in conjurations
+
+    def test_abjuration_contains_new_spells(self):
+        registry = create_default_registry()
+        abjurations = [s.name for s in registry.get_by_school(SpellSchool.ABJURATION)]
+        assert "Stoneskin" in abjurations
+        assert "Globe of Invulnerability" in abjurations
+        assert "Spell Turning" in abjurations
+        assert "Mind Blank" in abjurations
+        assert "Prismatic Wall" in abjurations
+
+    def test_enchantment_contains_new_spells(self):
+        registry = create_default_registry()
+        enchantments = [s.name for s in registry.get_by_school(SpellSchool.ENCHANTMENT)]
+        assert "Confusion" in enchantments
+        assert "Dominate Person" in enchantments
+        assert "Power Word Blind" in enchantments
+        assert "Power Word Stun" in enchantments
+        assert "Power Word Kill" in enchantments
+
+    def test_necromancy_contains_new_spells(self):
+        registry = create_default_registry()
+        necromancies = [s.name for s in registry.get_by_school(SpellSchool.NECROMANCY)]
+        assert "Finger of Death" in necromancies
+        assert "Clone" in necromancies
+        assert "Wail of the Banshee" in necromancies
+
+    def test_divination_contains_new_spells(self):
+        registry = create_default_registry()
+        divinations = [s.name for s in registry.get_by_school(SpellSchool.DIVINATION)]
+        assert "Arcane Eye" in divinations
+        assert "True Seeing" in divinations
+        assert "Greater Prying Eyes" in divinations
+        assert "Foresight" in divinations
+
+    def test_illusion_contains_new_spells(self):
+        registry = create_default_registry()
+        illusions = [s.name for s in registry.get_by_school(SpellSchool.ILLUSION)]
+        assert "Greater Invisibility" in illusions
+        assert "Mislead" in illusions
+
+    def test_universal_contains_new_spells(self):
+        registry = create_default_registry()
+        universals = [s.name for s in registry.get_by_school(SpellSchool.UNIVERSAL)]
+        assert "Permanency" in universals
+        assert "Limited Wish" in universals
+        assert "Wish" in universals

@@ -31,7 +31,7 @@ from typing import Any, Callable, Dict, List, Optional
 # ---------------------------------------------------------------------------
 
 class SpellSchool(Enum):
-    """The eight schools of magic in D&D 3.5e."""
+    """The eight schools of magic in D&D 3.5e, plus Universal."""
 
     ABJURATION = "Abjuration"
     CONJURATION = "Conjuration"
@@ -41,6 +41,7 @@ class SpellSchool(Enum):
     ILLUSION = "Illusion"
     NECROMANCY = "Necromancy"
     TRANSMUTATION = "Transmutation"
+    UNIVERSAL = "Universal"
 
 
 class SpellComponent(Enum):
@@ -1485,13 +1486,1366 @@ VAMPIRIC_TOUCH = Spell(
 )
 
 
+# ---------------------------------------------------------------------------
+# Level 4 effect callbacks – Phase 2 additions
+# ---------------------------------------------------------------------------
+
+def _dimension_door_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Dimension Door: teleports caster (+ medium load) up to Long range."""
+    return {
+        "range": "Long (400 ft. + 40 ft./level)",
+        "can_bring_others": True,
+        "max_carry": "medium load",
+        "teleport_type": "short",
+    }
+
+
+def _polymorph_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Polymorph: transforms willing creature into animal/magical beast (1-15 HD)."""
+    return {
+        "max_hd": 15,
+        "gains_physical_stats": True,
+        "retains_mental_stats": True,
+        "duration_minutes": caster_level,
+    }
+
+
+def _greater_invisibility_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Greater Invisibility: invisible for 1 round/level; does NOT end on attack."""
+    return {
+        "ends_on_attack": False,
+        "duration_rounds": caster_level,
+    }
+
+
+def _ice_storm_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Ice Storm: 3d6 bludgeoning + 2d6 cold in 20-ft radius cylinder."""
+    return {
+        "bludgeoning_damage": "3d6",
+        "cold_damage": "2d6",
+        "area": "20-ft radius, 10-ft high cylinder",
+        "duration": "1 full round",
+        "hampers_movement": True,
+    }
+
+
+def _stoneskin_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Stoneskin: DR 10/adamantine, absorbs up to 10/level damage (max 150)."""
+    return {
+        "dr": "10/adamantine",
+        "max_absorption": min(caster_level * 10, 150),
+        "duration_minutes": caster_level * 10,
+    }
+
+
+def _confusion_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Confusion: 15-ft radius burst, Will negates, confused 1 round/level."""
+    return {
+        "area": "15-ft radius burst",
+        "save": "Will negates",
+        "duration_rounds": caster_level,
+    }
+
+
+def _arcane_eye_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Arcane Eye: invisible eye moves 30 ft/round, concentration up to 1 min/level."""
+    return {
+        "move_speed_ft": 30,
+        "fly_speed_ft": None,
+        "concentration": True,
+        "can_see_magic": False,
+    }
+
+
+def _black_tentacles_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Black Tentacles: 20-ft radius, tentacles +7 grapple, 1d6+4/round."""
+    return {
+        "area": "20-ft radius spread",
+        "grapple_bonus": 7,
+        "damage_per_round": "1d6+4",
+        "duration_rounds": caster_level,
+    }
+
+
+# ---------------------------------------------------------------------------
+# Level 4 spell constants – Phase 2 additions
+# ---------------------------------------------------------------------------
+
+DIMENSION_DOOR = Spell(
+    name="Dimension Door",
+    level=4,
+    school=SpellSchool.CONJURATION,
+    components=[SpellComponent.VERBAL],
+    range="Long (400 ft. + 40 ft./level)",
+    duration="Instantaneous",
+    effect_callback=_dimension_door_effect,
+    description=(
+        "You instantly transfer yourself from your current location to any other "
+        "spot within range. You always arrive at exactly the spot desired—whether "
+        "by simply visualizing the area or by stating direction and distance."
+    ),
+    subschool="Teleportation",
+    descriptor=[],
+)
+
+POLYMORPH = Spell(
+    name="Polymorph",
+    level=4,
+    school=SpellSchool.TRANSMUTATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.MATERIAL],
+    range="Touch",
+    duration="1 min./level",
+    effect_callback=_polymorph_effect,
+    description=(
+        "This spell transforms a willing creature into an animal or magical beast "
+        "with up to 15 Hit Dice. The subject gains the new form's physical "
+        "characteristics while retaining its own mental statistics."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+GREATER_INVISIBILITY = Spell(
+    name="Greater Invisibility",
+    level=4,
+    school=SpellSchool.ILLUSION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Personal or Touch",
+    duration="1 round/level (D)",
+    effect_callback=_greater_invisibility_effect,
+    description=(
+        "This spell functions like invisibility, except that it doesn't end if "
+        "the subject attacks."
+    ),
+    subschool="Glamer",
+    descriptor=[],
+)
+
+ICE_STORM = Spell(
+    name="Ice Storm",
+    level=4,
+    school=SpellSchool.EVOCATION,
+    components=[
+        SpellComponent.VERBAL, SpellComponent.SOMATIC,
+        SpellComponent.MATERIAL, SpellComponent.DIVINE_FOCUS,
+    ],
+    range="Long (400 ft. + 40 ft./level)",
+    duration="1 full round",
+    effect_callback=_ice_storm_effect,
+    description=(
+        "Great magical hailstones pound down for 1 full round, dealing 3d6 points "
+        "of bludgeoning damage and 2d6 points of cold damage to every creature in "
+        "the area."
+    ),
+    subschool="",
+    descriptor=["Cold"],
+)
+
+STONESKIN = Spell(
+    name="Stoneskin",
+    level=4,
+    school=SpellSchool.ABJURATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.MATERIAL],
+    range="Touch",
+    duration="10 min./level or until discharged",
+    effect_callback=_stoneskin_effect,
+    description=(
+        "The warded creature gains resistance to blows, cuts, stabs, and slashes. "
+        "The subject gains damage reduction 10/adamantine."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+CONFUSION = Spell(
+    name="Confusion",
+    level=4,
+    school=SpellSchool.ENCHANTMENT,
+    components=[
+        SpellComponent.VERBAL, SpellComponent.SOMATIC,
+        SpellComponent.MATERIAL, SpellComponent.DIVINE_FOCUS,
+    ],
+    range="Medium (100 ft. + 10 ft./level)",
+    duration="1 round/level",
+    effect_callback=_confusion_effect,
+    description=(
+        "This spell causes confusion in the targets, making them unable to "
+        "independently determine what they will do. Roll on the following table "
+        "each round to see what they do."
+    ),
+    subschool="Compulsion",
+    descriptor=["Mind-Affecting"],
+)
+
+ARCANE_EYE = Spell(
+    name="Arcane Eye",
+    level=4,
+    school=SpellSchool.DIVINATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.MATERIAL],
+    range="Unlimited",
+    duration="1 min./level (concentration)",
+    effect_callback=_arcane_eye_effect,
+    description=(
+        "You create an invisible magical sensor that sends you visual information. "
+        "The sensor moves at up to 30 feet per round and shares your vision."
+    ),
+    subschool="Scrying",
+    descriptor=[],
+)
+
+BLACK_TENTACLES = Spell(
+    name="Black Tentacles",
+    level=4,
+    school=SpellSchool.CONJURATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.MATERIAL],
+    range="Medium (100 ft. + 10 ft./level)",
+    duration="1 round/level",
+    effect_callback=_black_tentacles_effect,
+    description=(
+        "This spell conjures a field of rubbery black tentacles, each 10 feet "
+        "long. These tentacles grasp and squeeze any creature within the area, "
+        "dealing 1d6+4 points of bludgeoning damage each round."
+    ),
+    subschool="Creation",
+    descriptor=[],
+)
+
+
+# ---------------------------------------------------------------------------
+# Level 5 effect callbacks – Phase 2 additions
+# ---------------------------------------------------------------------------
+
+def _cone_of_cold_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Cone of Cold: 1d6/level cold damage (max 15d6) in 60-ft cone, Reflex half."""
+    return {
+        "damage": f"{min(caster_level, 15)}d6",
+        "damage_type": "Cold",
+        "area": "60-ft cone",
+        "save": "Reflex half",
+    }
+
+
+def _telekinesis_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Telekinesis: move up to 25 lb/level (max 375 lb) or violent thrust."""
+    return {
+        "max_weight_lbs": min(caster_level * 25, 375),
+        "violent_thrust_damage": "1d6 per 25 lbs",
+        "move_speed_ft": 20,
+    }
+
+
+def _wall_of_force_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Wall of Force: impenetrable wall, immune to dispel magic, 1 round/level."""
+    return {
+        "blocks_all": True,
+        "immune_to_dispel": True,
+        "vulnerable_to_disintegrate": True,
+        "duration_rounds": caster_level,
+    }
+
+
+def _cloudkill_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Cloudkill: 20-ft spread, kills <=3 HD, Fort for 4-6 HD, 1d4 CON for 7+."""
+    return {
+        "area": "20-ft spread",
+        "move_ft_per_round": 10,
+        "instant_death_hd": 3,
+        "fort_save_hd_threshold": 6,
+        "con_damage": "1d4",
+    }
+
+
+def _dominate_person_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Dominate Person: humanoid under caster control, 1 day/level (Will negates)."""
+    return {
+        "save": "Will negates",
+        "duration_days": caster_level,
+        "allows_new_save": True,
+    }
+
+
+def _feeblemind_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Feeblemind: INT and CHA drop to 1 (Will negates; +4 DC vs arcane casters)."""
+    return {
+        "int_score": 1,
+        "cha_score": 1,
+        "save": "Will negates",
+        "harder_vs_arcane_casters": True,
+    }
+
+
+def _permanency_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Permanency: makes certain spells permanent, costs XP."""
+    return {
+        "xp_cost": 500 + caster_level * 100,
+        "eligible_spells": ["Darkvision", "Detect Magic", "See Invisibility", "Tongues"],
+    }
+
+
+def _sending_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Sending: send 25-word message to any creature; recipient can reply."""
+    return {
+        "max_words": 25,
+        "range": "unlimited",
+        "reply_words": 25,
+    }
+
+
+# ---------------------------------------------------------------------------
+# Level 5 spell constants – Phase 2 additions
+# ---------------------------------------------------------------------------
+
+CONE_OF_COLD = Spell(
+    name="Cone of Cold",
+    level=5,
+    school=SpellSchool.EVOCATION,
+    components=[
+        SpellComponent.VERBAL, SpellComponent.SOMATIC,
+        SpellComponent.MATERIAL, SpellComponent.FOCUS,
+    ],
+    range="60-ft cone",
+    duration="Instantaneous",
+    effect_callback=_cone_of_cold_effect,
+    description=(
+        "Cone of cold creates an area of extreme cold, originating at your hand "
+        "and extending outward in a cone. It drains heat, dealing 1d6 points of "
+        "cold damage per caster level (maximum 15d6)."
+    ),
+    subschool="",
+    descriptor=["Cold"],
+)
+
+TELEKINESIS = Spell(
+    name="Telekinesis",
+    level=5,
+    school=SpellSchool.TRANSMUTATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Long (400 ft. + 40 ft./level)",
+    duration="Concentration, up to 1 round/level, or instantaneous",
+    effect_callback=_telekinesis_effect,
+    description=(
+        "You move objects or creatures by concentrating on them. You can move "
+        "up to 25 pounds per caster level (maximum 375 pounds) up to 20 feet "
+        "per round, or fling objects violently."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+WALL_OF_FORCE = Spell(
+    name="Wall of Force",
+    level=5,
+    school=SpellSchool.EVOCATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.MATERIAL],
+    range="Close (25 ft. + 5 ft./2 levels)",
+    duration="1 round/level (D)",
+    effect_callback=_wall_of_force_effect,
+    description=(
+        "A wall of force spell creates an invisible wall of pure force. The wall "
+        "cannot be broken, damaged, burned, melted, or destroyed by most magical "
+        "means. It is not affected by dispel magic."
+    ),
+    subschool="",
+    descriptor=["Force"],
+)
+
+CLOUDKILL = Spell(
+    name="Cloudkill",
+    level=5,
+    school=SpellSchool.CONJURATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Medium (100 ft. + 10 ft./level)",
+    duration="1 round/level",
+    effect_callback=_cloudkill_effect,
+    description=(
+        "This spell generates a bank of fog, similar to a fog cloud, except that "
+        "its vapors are yellowish green and poisonous. Creatures with 3 or fewer "
+        "HD are slain instantly, and those with 4–6 HD must make a Fortitude save."
+    ),
+    subschool="Creation",
+    descriptor=[],
+)
+
+DOMINATE_PERSON = Spell(
+    name="Dominate Person",
+    level=5,
+    school=SpellSchool.ENCHANTMENT,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Close (25 ft. + 5 ft./2 levels)",
+    duration="1 day/level",
+    effect_callback=_dominate_person_effect,
+    description=(
+        "You can control the actions of any humanoid creature through a telepathic "
+        "link that you establish with the subject's mind."
+    ),
+    subschool="Compulsion",
+    descriptor=["Mind-Affecting"],
+)
+
+FEEBLEMIND = Spell(
+    name="Feeblemind",
+    level=5,
+    school=SpellSchool.ENCHANTMENT,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.MATERIAL],
+    range="Medium (100 ft. + 10 ft./level)",
+    duration="Instantaneous",
+    effect_callback=_feeblemind_effect,
+    description=(
+        "If the target fails its Will save, its Intelligence and Charisma scores "
+        "each drop to 1. The affected creature is unable to use Intelligence- or "
+        "Charisma-based skills."
+    ),
+    subschool="Compulsion",
+    descriptor=["Mind-Affecting"],
+)
+
+PERMANENCY = Spell(
+    name="Permanency",
+    level=5,
+    school=SpellSchool.UNIVERSAL,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.XP],
+    range="See text",
+    duration="Permanent",
+    effect_callback=_permanency_effect,
+    description=(
+        "This spell makes certain other spells permanent. Casting permanency on "
+        "yourself requires an XP expenditure."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+SENDING = Spell(
+    name="Sending",
+    level=5,
+    school=SpellSchool.EVOCATION,
+    components=[
+        SpellComponent.VERBAL, SpellComponent.SOMATIC,
+        SpellComponent.MATERIAL, SpellComponent.DIVINE_FOCUS,
+    ],
+    range="See text",
+    duration="1 round",
+    effect_callback=_sending_effect,
+    description=(
+        "You contact a particular creature with which you are familiar and send "
+        "a short message of 25 words or less. The subject recognizes you if it "
+        "knows you. It can send a return message of 25 words or less."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+
+# ---------------------------------------------------------------------------
+# Level 6 effect callbacks – Phase 2 additions
+# ---------------------------------------------------------------------------
+
+def _disintegrate_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Disintegrate: ray, Fort partial; hit: 2d6/level (max 40d6) or dust; save: 5d6."""
+    return {
+        "damage": f"{min(caster_level * 2, 40)}d6",
+        "save_damage": "5d6",
+        "save": "Fortitude partial",
+        "dust_on_death": True,
+    }
+
+
+def _chain_lightning_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Chain Lightning: 1d6/level (max 20d6) primary, arcs to 1/level secondaries."""
+    return {
+        "primary_damage": f"{min(caster_level, 20)}d6",
+        "max_secondary_targets": min(caster_level, 20),
+        "secondary_damage": "half",
+        "save": "Reflex half",
+    }
+
+
+def _globe_of_invulnerability_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Globe of Invulnerability: blocks spell effects of 4th level or lower."""
+    return {
+        "blocks_spell_levels": [0, 1, 2, 3, 4],
+        "radius_ft": 10,
+        "duration_rounds": caster_level,
+    }
+
+
+def _true_seeing_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """True Seeing: see through disguises, illusions, invisible, ethereal."""
+    return {
+        "range_ft": 120,
+        "see_invisible": True,
+        "see_through_illusions": True,
+        "see_ethereal": True,
+        "see_true_form": True,
+    }
+
+
+def _contingency_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Contingency: sets trigger for another spell (max level = CL//3)."""
+    return {
+        "max_contingent_spell_level": caster_level // 3,
+        "duration_days": caster_level,
+    }
+
+
+def _legend_lore_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Legend Lore: gains information about person, place, or thing."""
+    return {
+        "reveals_legend": True,
+        "casting_time": "variable",
+    }
+
+
+def _repulsion_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Repulsion: creatures cannot approach within radius (Will negates)."""
+    return {
+        "radius_ft": caster_level * 10,
+        "save": "Will negates",
+        "duration_rounds": caster_level,
+    }
+
+
+def _mislead_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Mislead: caster becomes invisible; illusory double created."""
+    return {
+        "caster_invisible": True,
+        "double_created": True,
+        "duration_rounds": caster_level,
+    }
+
+
+# ---------------------------------------------------------------------------
+# Level 6 spell constants – Phase 2 additions
+# ---------------------------------------------------------------------------
+
+DISINTEGRATE = Spell(
+    name="Disintegrate",
+    level=6,
+    school=SpellSchool.TRANSMUTATION,
+    components=[
+        SpellComponent.VERBAL, SpellComponent.SOMATIC,
+        SpellComponent.MATERIAL, SpellComponent.FOCUS,
+    ],
+    range="Medium (100 ft. + 10 ft./level)",
+    duration="Instantaneous",
+    effect_callback=_disintegrate_effect,
+    description=(
+        "A thin, green ray springs from your pointing finger. You must make a "
+        "successful ranged touch attack to hit. Any creature struck by the ray "
+        "takes 2d6 points of damage per caster level (to a maximum of 40d6)."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+CHAIN_LIGHTNING = Spell(
+    name="Chain Lightning",
+    level=6,
+    school=SpellSchool.EVOCATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.FOCUS],
+    range="Long (400 ft. + 40 ft./level)",
+    duration="Instantaneous",
+    effect_callback=_chain_lightning_effect,
+    description=(
+        "This spell creates an electrical discharge that begins as a single stroke "
+        "of lightning, dealing 1d6 points of electricity damage per caster level "
+        "(maximum 20d6) to the primary target."
+    ),
+    subschool="",
+    descriptor=["Electricity"],
+)
+
+GLOBE_OF_INVULNERABILITY = Spell(
+    name="Globe of Invulnerability",
+    level=6,
+    school=SpellSchool.ABJURATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.MATERIAL],
+    range="10 ft.",
+    duration="1 round/level (D)",
+    effect_callback=_globe_of_invulnerability_effect,
+    description=(
+        "An immobile, faintly shimmering magical sphere surrounds you and excludes "
+        "all spell effects of 4th level or lower. The area or effect of any such "
+        "spells does not include the area of the globe."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+TRUE_SEEING = Spell(
+    name="True Seeing",
+    level=6,
+    school=SpellSchool.DIVINATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.MATERIAL],
+    range="Touch",
+    duration="1 min./level",
+    effect_callback=_true_seeing_effect,
+    description=(
+        "You confer on the subject the ability to notice spell effects, see the "
+        "true form of polymorphed, changed, or transmuted things, and see into "
+        "the Ethereal Plane."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+CONTINGENCY = Spell(
+    name="Contingency",
+    level=6,
+    school=SpellSchool.EVOCATION,
+    components=[
+        SpellComponent.VERBAL, SpellComponent.SOMATIC,
+        SpellComponent.MATERIAL, SpellComponent.FOCUS,
+    ],
+    range="Personal",
+    duration="1 day/level or until discharged",
+    effect_callback=_contingency_effect,
+    description=(
+        "You can place another spell upon your person so that it comes into effect "
+        "under some condition you dictate when casting contingency."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+LEGEND_LORE = Spell(
+    name="Legend Lore",
+    level=6,
+    school=SpellSchool.DIVINATION,
+    components=[
+        SpellComponent.VERBAL, SpellComponent.SOMATIC,
+        SpellComponent.MATERIAL, SpellComponent.FOCUS,
+    ],
+    range="Personal",
+    duration="See text",
+    effect_callback=_legend_lore_effect,
+    description=(
+        "Legend lore brings to your mind legends about an important person, place, "
+        "or thing. If the person or thing is at hand, the casting time is only 1d4x10 "
+        "minutes."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+REPULSION = Spell(
+    name="Repulsion",
+    level=6,
+    school=SpellSchool.ABJURATION,
+    components=[
+        SpellComponent.VERBAL, SpellComponent.SOMATIC,
+        SpellComponent.FOCUS, SpellComponent.DIVINE_FOCUS,
+    ],
+    range="10 ft.",
+    duration="1 round/level (D)",
+    effect_callback=_repulsion_effect,
+    description=(
+        "An invisible, mobile field surrounds you and prevents creatures from "
+        "approaching you. You decide how large the field is at the time of casting "
+        "(up to one 10-foot cube per level)."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+MISLEAD = Spell(
+    name="Mislead",
+    level=6,
+    school=SpellSchool.ILLUSION,
+    components=[SpellComponent.SOMATIC],
+    range="Close (25 ft. + 5 ft./2 levels)",
+    duration="1 round/level (concentration + 3 rounds)",
+    effect_callback=_mislead_effect,
+    description=(
+        "You become invisible and an illusory double of you appears. You are "
+        "invisible for 1 round per level, and the double lasts for the same "
+        "duration."
+    ),
+    subschool="Figment/Glamer",
+    descriptor=[],
+)
+
+
+# ---------------------------------------------------------------------------
+# Level 7 effect callbacks – Phase 2 additions
+# ---------------------------------------------------------------------------
+
+def _finger_of_death_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Finger of Death: Fort partial; fail: slain; save: 3d6+CL damage."""
+    return {
+        "save": "Fortitude partial",
+        "save_damage": f"3d6+{caster_level}",
+        "death_on_fail": True,
+    }
+
+
+def _power_word_blind_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Power Word Blind: blinds by HP total; no save."""
+    return {
+        "no_save": True,
+        "threshold_permanent_hp": 50,
+        "threshold_short_hp": 100,
+    }
+
+
+def _spell_turning_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Spell Turning: reflects 1d4+6 spell levels of targeted spells."""
+    return {
+        "spell_levels_to_reflect": "1d4+6",
+        "affects_area_spells": False,
+        "duration_minutes": caster_level * 10,
+    }
+
+
+def _limited_wish_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Limited Wish: alters reality within limits (costs 300 XP)."""
+    return {
+        "xp_cost": 300,
+        "partially_emulate_spells": True,
+        "undo_misfortune": True,
+    }
+
+
+def _prismatic_spray_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Prismatic Spray: 60-ft cone, 7 random effects per target."""
+    return {
+        "area": "60-ft cone",
+        "effects": 7,
+        "save": "varies",
+    }
+
+
+def _reverse_gravity_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Reverse Gravity: 20-ft radius, 40 ft high; creatures fall upward."""
+    return {
+        "area": "20-ft radius, 40-ft high cylinder",
+        "duration_rounds": caster_level,
+    }
+
+
+def _ethereal_jaunt_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Ethereal Jaunt: caster becomes ethereal for 1 round/level."""
+    return {
+        "ethereal": True,
+        "see_material_plane": True,
+        "duration_rounds": caster_level,
+    }
+
+
+def _mordenkainens_sword_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Mordenkainen's Sword: force longsword +3, 4d6+3 force damage, BAB=CL."""
+    return {
+        "attack_bonus": 3,
+        "damage": "4d6+3",
+        "damage_type": "Force",
+        "bab": caster_level,
+        "duration_rounds": caster_level,
+    }
+
+
+# ---------------------------------------------------------------------------
+# Level 7 spell constants – Phase 2 additions
+# ---------------------------------------------------------------------------
+
+FINGER_OF_DEATH = Spell(
+    name="Finger of Death",
+    level=7,
+    school=SpellSchool.NECROMANCY,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Close (25 ft. + 5 ft./2 levels)",
+    duration="Instantaneous",
+    effect_callback=_finger_of_death_effect,
+    description=(
+        "You can slay any living creature within range. The target is entitled "
+        "to a Fortitude saving throw to survive the attack. If the save is "
+        "successful, the creature instead takes 3d6 points of damage + 1 point "
+        "per caster level."
+    ),
+    subschool="",
+    descriptor=["Death"],
+)
+
+POWER_WORD_BLIND = Spell(
+    name="Power Word Blind",
+    level=7,
+    school=SpellSchool.ENCHANTMENT,
+    components=[SpellComponent.VERBAL],
+    range="Close (25 ft. + 5 ft./2 levels)",
+    duration="See text",
+    effect_callback=_power_word_blind_effect,
+    description=(
+        "You utter a single word of power that causes one creature of your "
+        "choice to become blinded, whether the creature can hear the word or not."
+    ),
+    subschool="Compulsion",
+    descriptor=["Mind-Affecting"],
+)
+
+SPELL_TURNING = Spell(
+    name="Spell Turning",
+    level=7,
+    school=SpellSchool.ABJURATION,
+    components=[
+        SpellComponent.VERBAL, SpellComponent.SOMATIC,
+        SpellComponent.MATERIAL, SpellComponent.FOCUS,
+    ],
+    range="Personal",
+    duration="Until expended, up to 10 min./level",
+    effect_callback=_spell_turning_effect,
+    description=(
+        "Spells and spell-like effects targeted on you are turned back upon the "
+        "original caster. The turning effect reflects 1d4+6 spell levels."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+LIMITED_WISH = Spell(
+    name="Limited Wish",
+    level=7,
+    school=SpellSchool.UNIVERSAL,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.XP],
+    range="See text",
+    duration="See text",
+    effect_callback=_limited_wish_effect,
+    description=(
+        "A limited wish lets you create nearly any type of effect. For example, "
+        "a limited wish can duplicate any spell of 7th level or lower, provided "
+        "the spell does not belong to one of your opposition schools."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+PRISMATIC_SPRAY = Spell(
+    name="Prismatic Spray",
+    level=7,
+    school=SpellSchool.EVOCATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="60-ft cone",
+    duration="Instantaneous",
+    effect_callback=_prismatic_spray_effect,
+    description=(
+        "This spell causes seven shimmering, intertwined, multicolored beams of "
+        "light to spray from your hand. Each beam has a different power and "
+        "purpose."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+REVERSE_GRAVITY = Spell(
+    name="Reverse Gravity",
+    level=7,
+    school=SpellSchool.TRANSMUTATION,
+    components=[
+        SpellComponent.VERBAL, SpellComponent.SOMATIC,
+        SpellComponent.MATERIAL, SpellComponent.FOCUS,
+    ],
+    range="Medium (100 ft. + 10 ft./level)",
+    duration="1 round/level (D)",
+    effect_callback=_reverse_gravity_effect,
+    description=(
+        "This spell reverses gravity in an area, causing all creatures and objects "
+        "not somehow anchored to the ground to fall upward and reach the top of "
+        "the area in 1 round."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+ETHEREAL_JAUNT = Spell(
+    name="Ethereal Jaunt",
+    level=7,
+    school=SpellSchool.TRANSMUTATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Personal",
+    duration="1 round/level (D)",
+    effect_callback=_ethereal_jaunt_effect,
+    description=(
+        "You become ethereal, along with your equipment. For the duration of the "
+        "spell, you are in the Ethereal Plane, which overlaps the Material Plane."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+MORDENKAINENS_SWORD = Spell(
+    name="Mordenkainen's Sword",
+    level=7,
+    school=SpellSchool.EVOCATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.FOCUS],
+    range="Close (25 ft. + 5 ft./2 levels)",
+    duration="1 round/level (D)",
+    effect_callback=_mordenkainens_sword_effect,
+    description=(
+        "You evoke a shimmering, sword-like plane of force that hovers near you "
+        "and attacks opponents as you direct. The sword attacks as a fighter equal "
+        "to your caster level."
+    ),
+    subschool="",
+    descriptor=["Force"],
+)
+
+
+# ---------------------------------------------------------------------------
+# Level 8 effect callbacks – Phase 2 additions
+# ---------------------------------------------------------------------------
+
+def _power_word_stun_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Power Word Stun: stuns by HP total; no save."""
+    return {
+        "no_save": True,
+        "threshold_4d4_hp": 50,
+        "threshold_2d4_hp": 100,
+    }
+
+
+def _mind_blank_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Mind Blank: immune to mind-affecting and divination for 24 hours."""
+    return {
+        "immune_mind_affecting": True,
+        "immune_divination": True,
+        "duration_hours": 24,
+    }
+
+
+def _prismatic_wall_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Prismatic Wall: 8-layer wall of magical effects, 10 min/level."""
+    return {
+        "layers": 8,
+        "blinds_on_gaze": True,
+        "duration_minutes": caster_level * 10,
+    }
+
+
+def _maze_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Maze: traps creature in extradimensional maze; exit on Int DC 20."""
+    return {
+        "save": "none",
+        "exit_dc": 20,
+        "minotaur_escape": True,
+    }
+
+
+def _clone_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Clone: exact duplicate; soul enters clone when original dies."""
+    return {
+        "soul_transfer": True,
+        "material_cost_gp": 1000,
+        "time_to_mature_days": 2 * (20 - caster_level) if caster_level < 20 else 0,
+    }
+
+
+def _greater_prying_eyes_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Greater Prying Eyes: 1d4+1/level eyes (max 20) with True Seeing."""
+    return {
+        "num_eyes": f"1d4+{min(caster_level, 20)}",
+        "max_eyes": 20,
+        "true_seeing": True,
+        "speed_ft": 30,
+    }
+
+
+def _sunburst_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Sunburst: 80-ft burst, 6d6 fire (Reflex half), blind; undead 1d6/level."""
+    return {
+        "damage": "6d6",
+        "blind_save": "Fortitude negates",
+        "area": "80-ft radius burst",
+        "undead_damage": f"{min(caster_level, 25)}d6",
+    }
+
+
+def _polar_ray_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Polar Ray: ranged touch, 1d6/level cold (max 25d6) + 2d4 DEX drain."""
+    return {
+        "damage": f"{min(caster_level, 25)}d6",
+        "damage_type": "Cold",
+        "dex_drain": "2d4",
+        "attack": "ranged touch",
+    }
+
+
+# ---------------------------------------------------------------------------
+# Level 8 spell constants – Phase 2 additions
+# ---------------------------------------------------------------------------
+
+POWER_WORD_STUN = Spell(
+    name="Power Word Stun",
+    level=8,
+    school=SpellSchool.ENCHANTMENT,
+    components=[SpellComponent.VERBAL],
+    range="Close (25 ft. + 5 ft./2 levels)",
+    duration="See text",
+    effect_callback=_power_word_stun_effect,
+    description=(
+        "You utter a single word of power that causes one creature of your choice "
+        "to become stunned, whether or not it can hear the word."
+    ),
+    subschool="Compulsion",
+    descriptor=["Mind-Affecting"],
+)
+
+MIND_BLANK = Spell(
+    name="Mind Blank",
+    level=8,
+    school=SpellSchool.ABJURATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Close (25 ft. + 5 ft./2 levels)",
+    duration="24 hours",
+    effect_callback=_mind_blank_effect,
+    description=(
+        "The subject is protected from all devices and spells that gather "
+        "information about the target through divination magic, and is immune "
+        "to all mind-affecting spells and effects."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+PRISMATIC_WALL = Spell(
+    name="Prismatic Wall",
+    level=8,
+    school=SpellSchool.ABJURATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Close (25 ft. + 5 ft./2 levels)",
+    duration="10 min./level (D)",
+    effect_callback=_prismatic_wall_effect,
+    description=(
+        "Prismatic wall creates a vertical, opaque wall—a shimmering, "
+        "multicolored plane of light that protects you from all forms of attack."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+MAZE = Spell(
+    name="Maze",
+    level=8,
+    school=SpellSchool.CONJURATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Close (25 ft. + 5 ft./2 levels)",
+    duration="See text",
+    effect_callback=_maze_effect,
+    description=(
+        "You banish the subject into an extradimensional labyrinth. Each round "
+        "on its turn, it may attempt to escape the labyrinth by making a DC 20 "
+        "Intelligence check."
+    ),
+    subschool="Teleportation",
+    descriptor=[],
+)
+
+CLONE = Spell(
+    name="Clone",
+    level=8,
+    school=SpellSchool.NECROMANCY,
+    components=[
+        SpellComponent.VERBAL, SpellComponent.SOMATIC,
+        SpellComponent.MATERIAL, SpellComponent.FOCUS,
+    ],
+    range="Touch",
+    duration="Instantaneous",
+    effect_callback=_clone_effect,
+    description=(
+        "This spell makes an inert duplicate of a creature. If the original "
+        "individual has been slain, its soul immediately transfers to the clone."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+GREATER_PRYING_EYES = Spell(
+    name="Greater Prying Eyes",
+    level=8,
+    school=SpellSchool.DIVINATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.MATERIAL],
+    range="One mile",
+    duration="1 hour/level",
+    effect_callback=_greater_prying_eyes_effect,
+    description=(
+        "This spell functions like prying eyes, except that the eyes can see "
+        "everything as if they had true seeing."
+    ),
+    subschool="Scrying",
+    descriptor=[],
+)
+
+SUNBURST = Spell(
+    name="Sunburst",
+    level=8,
+    school=SpellSchool.EVOCATION,
+    components=[
+        SpellComponent.VERBAL, SpellComponent.SOMATIC,
+        SpellComponent.MATERIAL, SpellComponent.DIVINE_FOCUS,
+    ],
+    range="Long (400 ft. + 40 ft./level)",
+    duration="Instantaneous",
+    effect_callback=_sunburst_effect,
+    description=(
+        "Sunburst causes a globe of searing radiance to explode silently from a "
+        "point you select. All creatures in the globe are blinded and take 6d6 "
+        "points of damage. Undead creatures take 1d6 points of damage per caster "
+        "level (maximum 25d6)."
+    ),
+    subschool="",
+    descriptor=["Light"],
+)
+
+POLAR_RAY = Spell(
+    name="Polar Ray",
+    level=8,
+    school=SpellSchool.EVOCATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.FOCUS],
+    range="Close (25 ft. + 5 ft./2 levels)",
+    duration="Instantaneous",
+    effect_callback=_polar_ray_effect,
+    description=(
+        "A blue-white ray of freezing air and ice springs from your hand. You "
+        "must succeed on a ranged touch attack with the ray to deal 1d6 points "
+        "of cold damage per caster level (maximum 25d6) and 2d4 points of "
+        "Dexterity drain."
+    ),
+    subschool="",
+    descriptor=["Cold"],
+)
+
+
+# ---------------------------------------------------------------------------
+# Level 9 effect callbacks – Phase 2 additions
+# ---------------------------------------------------------------------------
+
+def _wish_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Wish: most powerful arcane spell, alters reality (5000 XP cost)."""
+    return {
+        "xp_cost": 5000,
+        "duplicates_any_arcane": True,
+        "alters_reality": True,
+    }
+
+
+def _time_stop_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Time Stop: caster acts alone for 1d4+1 rounds while time is stopped."""
+    return {
+        "duration_rounds": "1d4+1",
+        "only_caster_acts": True,
+    }
+
+
+def _meteor_swarm_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Meteor Swarm: 4 spheres, each 40-ft radius, direct hit + area fire."""
+    return {
+        "spheres": 4,
+        "direct_hit_bludgeoning": "2d6",
+        "direct_hit_fire": "6d6",
+        "area_fire": "6d6",
+        "area": "40-ft radius per sphere",
+        "save": "Reflex half area",
+    }
+
+
+def _wail_of_the_banshee_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Wail of the Banshee: kills 1 creature/level in 40-ft spread (Fort negates)."""
+    return {
+        "max_targets": caster_level,
+        "area": "40-ft spread",
+        "save": "Fortitude negates",
+        "death_effect": True,
+    }
+
+
+def _power_word_kill_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Power Word Kill: kills creature with <=100 HP; no save."""
+    return {
+        "no_save": True,
+        "max_hp_threshold": 100,
+    }
+
+
+def _shapechange_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Shapechange: take form of any creature 1/4–25 HD, change freely."""
+    return {
+        "min_hd": 0.25,
+        "max_hd": 25,
+        "duration_minutes": caster_level * 10,
+        "free_changes": True,
+    }
+
+
+def _gate_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Gate: portal to another plane OR calls powerful extraplanar being."""
+    return {
+        "portal": True,
+        "calling": True,
+        "calls_cr": "up to caster_level",
+        "duration_rounds": caster_level,
+    }
+
+
+def _foresight_effect(caster: Any, target: Any, caster_level: int) -> Dict[str, Any]:
+    """Foresight: never surprised, +2 insight AC and Reflex, 10 min/level."""
+    return {
+        "never_surprised": True,
+        "never_flat_footed": True,
+        "insight_ac_bonus": 2,
+        "insight_reflex_bonus": 2,
+        "duration_minutes": caster_level * 10,
+    }
+
+
+# ---------------------------------------------------------------------------
+# Level 9 spell constants – Phase 2 additions
+# ---------------------------------------------------------------------------
+
+WISH = Spell(
+    name="Wish",
+    level=9,
+    school=SpellSchool.UNIVERSAL,
+    components=[SpellComponent.VERBAL, SpellComponent.XP],
+    range="Unlimited",
+    duration="See text",
+    effect_callback=_wish_effect,
+    description=(
+        "Wish is the mightiest spell a wizard or sorcerer can cast. By simply "
+        "speaking aloud, you can alter reality to better suit you."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+TIME_STOP = Spell(
+    name="Time Stop",
+    level=9,
+    school=SpellSchool.TRANSMUTATION,
+    components=[SpellComponent.VERBAL],
+    range="Personal",
+    duration="1d4+1 rounds (apparent time)",
+    effect_callback=_time_stop_effect,
+    description=(
+        "This spell seems to make time cease to flow for everyone but you. In "
+        "fact, you speed up so greatly that all other creatures seem frozen, though "
+        "they are actually still moving at their normal speeds."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+METEOR_SWARM = Spell(
+    name="Meteor Swarm",
+    level=9,
+    school=SpellSchool.EVOCATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Long (400 ft. + 40 ft./level)",
+    duration="Instantaneous",
+    effect_callback=_meteor_swarm_effect,
+    description=(
+        "Meteor swarm is a very powerful and spectacular spell that is similar "
+        "to fireball in many aspects. When you cast it, four 2-foot-diameter "
+        "spheres spring from your outstretched hand and streak in straight lines "
+        "to the spots you select."
+    ),
+    subschool="",
+    descriptor=["Fire"],
+)
+
+WAIL_OF_THE_BANSHEE = Spell(
+    name="Wail of the Banshee",
+    level=9,
+    school=SpellSchool.NECROMANCY,
+    components=[SpellComponent.VERBAL],
+    range="Close (25 ft. + 5 ft./2 levels)",
+    duration="Instantaneous",
+    effect_callback=_wail_of_the_banshee_effect,
+    description=(
+        "You emit a terrible, soul-chilling scream that possibly kills one "
+        "creature per caster level."
+    ),
+    subschool="",
+    descriptor=["Death", "Sonic"],
+)
+
+POWER_WORD_KILL = Spell(
+    name="Power Word Kill",
+    level=9,
+    school=SpellSchool.ENCHANTMENT,
+    components=[SpellComponent.VERBAL],
+    range="Close (25 ft. + 5 ft./2 levels)",
+    duration="Instantaneous",
+    effect_callback=_power_word_kill_effect,
+    description=(
+        "You utter a single word of power that instantly kills one creature of "
+        "your choice, whether or not it can hear the word. The creature can have "
+        "at most 100 hit points."
+    ),
+    subschool="Compulsion",
+    descriptor=["Death", "Mind-Affecting"],
+)
+
+SHAPECHANGE = Spell(
+    name="Shapechange",
+    level=9,
+    school=SpellSchool.TRANSMUTATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC, SpellComponent.FOCUS],
+    range="Personal",
+    duration="10 min./level (D)",
+    effect_callback=_shapechange_effect,
+    description=(
+        "This spell functions like polymorph, except that it enables you to "
+        "assume the form of any single nonunique creature (of any type) from "
+        "Fine to Colossal size."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+GATE = Spell(
+    name="Gate",
+    level=9,
+    school=SpellSchool.CONJURATION,
+    components=[SpellComponent.VERBAL, SpellComponent.SOMATIC],
+    range="Medium (100 ft. + 10 ft./level)",
+    duration="Concentration up to 1 round/level (D)",
+    effect_callback=_gate_effect,
+    description=(
+        "Casting a gate spell has two effects. First, it creates an interdimensional "
+        "connection between your plane of existence and a plane you specify, allowing "
+        "travel between those two planes. Second, you may call a particular individual "
+        "or kind of being to come through the gate."
+    ),
+    subschool="Creation",
+    descriptor=[],
+)
+
+FORESIGHT = Spell(
+    name="Foresight",
+    level=9,
+    school=SpellSchool.DIVINATION,
+    components=[
+        SpellComponent.VERBAL, SpellComponent.SOMATIC,
+        SpellComponent.MATERIAL, SpellComponent.FOCUS,
+    ],
+    range="Personal or Touch",
+    duration="10 min./level",
+    effect_callback=_foresight_effect,
+    description=(
+        "This powerful divination grants you a powerful sixth sense in relation "
+        "to yourself or another. Once foresight is cast, you receive instantaneous "
+        "warnings of impending danger or harm to the subject of the spell."
+    ),
+    subschool="",
+    descriptor=[],
+)
+
+
 def create_default_registry() -> SpellRegistry:
     """Create a :class:`SpellRegistry` pre-loaded with SRD core spells.
 
     Returns:
-        A registry containing all Phase 0 foundational spells plus the
-        Phase 1 Wizard/Sorcerer arcane spells (levels 0–3), for a total
-        of 43 registered spells.
+        A registry containing all Phase 0 foundational spells, the Phase 1
+        Wizard/Sorcerer arcane spells (levels 0–3), and the Phase 2
+        Wizard/Sorcerer arcane spells (levels 4–9), for a total of 91
+        registered spells.
     """
     registry = SpellRegistry()
 
@@ -1547,5 +2901,65 @@ def create_default_registry() -> SpellRegistry:
     registry.register(FLY)
     registry.register(SLOW)
     registry.register(VAMPIRIC_TOUCH)
+
+    # ---- Phase 2: Level 4 additions (8) ----
+    registry.register(DIMENSION_DOOR)
+    registry.register(POLYMORPH)
+    registry.register(GREATER_INVISIBILITY)
+    registry.register(ICE_STORM)
+    registry.register(STONESKIN)
+    registry.register(CONFUSION)
+    registry.register(ARCANE_EYE)
+    registry.register(BLACK_TENTACLES)
+
+    # ---- Phase 2: Level 5 additions (8) ----
+    registry.register(CONE_OF_COLD)
+    registry.register(TELEKINESIS)
+    registry.register(WALL_OF_FORCE)
+    registry.register(CLOUDKILL)
+    registry.register(DOMINATE_PERSON)
+    registry.register(FEEBLEMIND)
+    registry.register(PERMANENCY)
+    registry.register(SENDING)
+
+    # ---- Phase 2: Level 6 additions (8) ----
+    registry.register(DISINTEGRATE)
+    registry.register(CHAIN_LIGHTNING)
+    registry.register(GLOBE_OF_INVULNERABILITY)
+    registry.register(TRUE_SEEING)
+    registry.register(CONTINGENCY)
+    registry.register(LEGEND_LORE)
+    registry.register(REPULSION)
+    registry.register(MISLEAD)
+
+    # ---- Phase 2: Level 7 additions (8) ----
+    registry.register(FINGER_OF_DEATH)
+    registry.register(POWER_WORD_BLIND)
+    registry.register(SPELL_TURNING)
+    registry.register(LIMITED_WISH)
+    registry.register(PRISMATIC_SPRAY)
+    registry.register(REVERSE_GRAVITY)
+    registry.register(ETHEREAL_JAUNT)
+    registry.register(MORDENKAINENS_SWORD)
+
+    # ---- Phase 2: Level 8 additions (8) ----
+    registry.register(POWER_WORD_STUN)
+    registry.register(MIND_BLANK)
+    registry.register(PRISMATIC_WALL)
+    registry.register(MAZE)
+    registry.register(CLONE)
+    registry.register(GREATER_PRYING_EYES)
+    registry.register(SUNBURST)
+    registry.register(POLAR_RAY)
+
+    # ---- Phase 2: Level 9 additions (8) ----
+    registry.register(WISH)
+    registry.register(TIME_STOP)
+    registry.register(METEOR_SWARM)
+    registry.register(WAIL_OF_THE_BANSHEE)
+    registry.register(POWER_WORD_KILL)
+    registry.register(SHAPECHANGE)
+    registry.register(GATE)
+    registry.register(FORESIGHT)
 
     return registry
