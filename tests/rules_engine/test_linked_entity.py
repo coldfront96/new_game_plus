@@ -724,3 +724,13 @@ class TestResolveMinionTurns:
         tracker = self._make_tracker()
         state = resolve_minion_turns(tracker, {"round": 1}, random)
         assert state["round"] == 1
+
+    def test_full_integration_all_keys_present(self):
+        tracker = self._make_tracker()
+        state = resolve_minion_turns(tracker, {"round": 2}, random)
+        assert "initiative_map" in state
+        assert "move_action_spent" in state
+        assert "m1" in state["initiative_map"]
+        assert "f1" in state["initiative_map"]
+        assert "m1" in state["move_action_spent"]
+        assert state["round"] == 2
