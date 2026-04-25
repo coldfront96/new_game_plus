@@ -204,3 +204,106 @@ Existing dependencies that this document **leans on** (must remain stable):
 | **Total** | **67** | | |
 
 ---
+
+## 4. Dependency Graph
+
+```mermaid
+flowchart TD
+    %% Tier 0 — Base Schemas
+    E001[E-001 Item Weight & Load Category Enum]
+    E002[E-002 Carrying Capacity Row Schema]
+    E003[E-003 Master/Minion Link Schema]
+    E004[E-004 Familiar Base Schema]
+    E005[E-005 Animal Companion Base Schema]
+    E006[E-006 Paladin Special Mount Base Schema]
+    E007[E-007 Multiclass Class-Level Entry Schema]
+    E008[E-008 Favored Class Policy Enum]
+    E009[E-009 NPC Class Base Schema]
+    E010[E-010 Prestige Class Base Schema]
+    E011[E-011 Prerequisite Clause Schema]
+    E012[E-012 Community Size Enum & Base Schema]
+    E013[E-013 GP Limit & NPC Demographics Row Schema]
+    E014[E-014 Planar Trait Enum Set]
+    E015[E-015 Plane Base Schema]
+
+    %% Tier 1 — Core Mechanics
+    E016[E-016 Item Weight Aggregator]
+    E017[E-017 STR-Based Carrying Capacity Calculator]
+    E018[E-018 Load Category Resolver]
+    E019[E-019 Load Penalty Application]
+    E020[E-020 Voxel Speed Conversion]
+    E021[E-021 Familiar Intelligence Progression]
+    E022[E-022 Animal Companion Progression Formula]
+    E023[E-023 Paladin Mount Progression Formula]
+    E024[E-024 Multiclass XP Penalty Calculator]
+    E025[E-025 Favored Class Lookup by Race]
+    E026[E-026 NPC Class Advancement Formula]
+    E027[E-027 Prerequisite Verification Engine]
+    E028[E-028 Community GP Limit Lookup]
+    E029[E-029 Highest-Level NPC Class Formula]
+    E030[E-030 Gravity Trait Effect Resolver]
+    E031[E-031 Time Trait Effect Resolver]
+    E032[E-032 Magic Trait Effect Resolver]
+    E033[E-033 Elemental & Energy Dominance Resolver]
+
+    %% Tier 2 — Registries
+    E034[E-034 PHB Equipment Weight Registry]
+    E035[E-035 Carrying Capacity Lookup Table]
+    E036[E-036 PHB Familiar Registry]
+    E037[E-037 Druid Animal Companion Registry]
+    E038[E-038 Paladin Mount Stat Block Registry]
+    E039[E-039 Race Favored Class Registry]
+    E040[E-040 NPC Class Registry]
+    E041[E-041 DMG Prestige Class Registry]
+    E042[E-042 Community Type Registry]
+    E043[E-043 Power Center Registry]
+    E044[E-044 Inner Plane Registry]
+    E045[E-045 Outer Plane Registry]
+    E046[E-046 Transitive Plane Registry]
+
+    %% Tier 3 — Complex Generators
+    E047[E-047 Encumbered Character State Builder]
+    E048[E-048 Familiar Acquisition Engine]
+    E049[E-049 Animal Companion Acquisition Engine]
+    E050[E-050 Paladin Special Mount Summoning Engine]
+    E051[E-051 Multiclass Character Stat Builder]
+    E052[E-052 NPC Class Generator]
+    E053[E-053 Prestige Class Entry Validator + Progression]
+    E054[E-054 Settlement Generator]
+    E055[E-055 Planar Transition Engine]
+
+    %% Tier 4 — Compound Systems
+    E056[E-056 Master/Minion Turn Tracker]
+    E057[E-057 Familiar Share Spells & Empathic Link]
+    E058[E-058 Multiclass Spellcasting Adjudicator]
+    E059[E-059 Prestige Class Caster-Level Continuation]
+    E060[E-060 Settlement Magic Item Availability Roster]
+    E061[E-061 Planar Spell Modifier Engine]
+    E062[E-062 Planar Encounter Adapter]
+
+    %% Tier 5 — Final Integrators
+    E063[E-063 Encumbrance-Aware Combat & Movement]
+    E064[E-064 Master/Minion Combined Initiative Simulator]
+    E065[E-065 Unified Multiclass + Prestige Progression]
+    E066[E-066 Settlement-Aware Shopping Engine]
+    E067[E-067 Planar Travel + Encounter Generator]
+
+    %% EDGES_PLACEHOLDER
+
+    %% Style
+    classDef tier0 fill:#1a3a5c,color:#fff,stroke:#4a90d9
+    classDef tier1 fill:#1a4a2e,color:#fff,stroke:#4aad6f
+    classDef tier2 fill:#4a3a00,color:#fff,stroke:#c8a000
+    classDef tier3 fill:#4a1a00,color:#fff,stroke:#c85000
+    classDef tier4 fill:#3a004a,color:#fff,stroke:#9a00c8
+    classDef tier5 fill:#4a0020,color:#fff,stroke:#c80050
+
+    class E001,E002,E003,E004,E005,E006,E007,E008,E009,E010,E011,E012,E013,E014,E015 tier0
+    class E016,E017,E018,E019,E020,E021,E022,E023,E024,E025,E026,E027,E028,E029,E030,E031,E032,E033 tier1
+    class E034,E035,E036,E037,E038,E039,E040,E041,E042,E043,E044,E045,E046 tier2
+    class E047,E048,E049,E050,E051,E052,E053,E054,E055 tier3
+    class E056,E057,E058,E059,E060,E061,E062 tier4
+    class E063,E064,E065,E066,E067 tier5
+```
+
+---
