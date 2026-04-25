@@ -424,3 +424,106 @@ flowchart TD
 ```
 
 ---
+
+## 5. Architect Report
+
+### 5.1 Critical Path Analysis
+
+The longest single chain through the dependency graph runs **eight tiers
+deep** through the planar subsystem and ends at the Planar Travel +
+Encounter Generator:
+
+```
+E-014 (Planar Trait Enums, S)
+  → E-030/E-031/E-032/E-033 (Trait Resolvers, M)
+    → E-055 (Planar Transition Engine, L)
+      → E-061 (Planar Spell Modifier, L)
+        → E-062 (Planar Encounter Adapter, M)
+          → E-067 (Planar Travel + Encounter Generator, L)
+```
+
+A parallel L-effort chain runs through the prestige/multiclass subsystem
+and converges on the unified level-up integrator:
+
+```
+E-010 + E-011 (Prestige + Prereq Schemas, S)
+  → E-027 (Prerequisite Verification Engine, L)
+    → E-041 (DMG Prestige Class Registry, L)
+      → E-053 (Prestige Entry + Progression, L)
+        → E-059 (Caster-Level Continuation, L)
+          → E-065 (Unified Multiclass + Prestige Progression, L)
+```
+
+A third L-chain runs through the Master/Minion combined-initiative path:
+
+```
+E-003 (Master/Minion Schema, S)
+  → E-048/E-049/E-050 (Acquisition Engines, M)
+    → E-056 (Master/Minion Turn Tracker, L)
+      → E-064 (Combined Initiative Simulator, L)
+```
+
+**Total L-effort tasks: 13** — E-027, E-034, E-037, E-041, E-045, E-051,
+E-053, E-054, E-055, E-056, E-059, E-061, E-064, E-065, E-067 (the
+critical path is dominated by these).
+
+### 5.2 Risk Assessment
+
+| Risk | Tasks Affected | Complexity Driver |
+|------|---------------|-------------------|
+| **Prerequisite Verification Engine breadth** — DMG prestige classes use 8 distinct prereq clause subtypes (BAB, skill ranks, feats, alignment, class features, race, spellcasting level, ability score). Mis-routing a single subtype silently allows ineligible characters into a prestige class. | E-027, E-053 | Sealed-union dispatch logic; each subtype needs a dedicated validator with explicit unit tests against the registry |
+| **Carrying-Capacity ×4 rule for STR ≥30** — PHB Table 9-1 only lists STR 1–29 explicitly; the ×4-per-+10-STR rule is described in narrative form on the same page. Common bug: applying ×4 multiplicatively per row instead of per +10 band. | E-017, E-035, E-047 | Off-by-one risk in band detection; needs explicit STR 30/40/50 fixtures |
+| **Multiclass XP Penalty edge cases** — The "20% per level beyond 1 difference" rule has three interacting exemptions: favored class is ignored, prestige classes are ignored, and Humans/Half-Elves treat their highest-level class as favored. A character with Fighter 5 / Wizard 3 / Mystic Theurge 2 must compute correctly under all three exemptions simultaneously. | E-024, E-025, E-051, E-065 | Combinatorial state space; must enumerate exemption combinations explicitly |
+| **Master/Minion shared turn tracker** — Familiars roll initiative independently and act on their own count, but "command minion" consumes the master's Move action; familiar share-spells require the familiar to be within 5 ft at the moment of casting (not just at the start of the round). Easy to wire as a single composite turn rather than two interleaved turns. | E-056, E-057, E-064 | Action-economy double-booking risk; minions must consume their own action budget, never the master's |
+| **Outer Plane Registry coverage** — 17 Outer Planes × ~6 traits per plane = ~100 hand-encoded values. Every alignment-trait/magic-trait pair is consumed by E-061 to compute spell CL/DC modifiers. A single trait misencoding silently skews spell resolution on that plane. | E-045, E-061, E-067 | Volume of hand-transcribed source; needs cell-by-cell diff against DMG Ch 5 |
+| **Caster-Level Continuation for split-caster prestige classes** — Mystic Theurge advances *both* arcane and divine caster levels per its level (a unique double-track rule); Eldritch Knight advances arcane CL on every level except 1st; Archmage requires giving up spell slots in exchange for high-level abilities. Each requires its own continuation strategy in `apply_prestige_caster_continuation`. | E-059, E-065 | Per-prestige branching; cannot use a single linear formula |
+| **Settlement NPC class roster** — DMG Highest-Level NPC algorithm is "roll d4 + size modifier; for each lower level, double the count, capped at population". Subtle bug: the cap should apply per class, not across all classes combined; misreading allocates the entire population to one class. | E-029, E-054, E-066 | Allocation-cap interpretation; needs property-based tests across community sizes |
+| **Druid Companion alternative-list level offsets** — Bears, dire animals, and dinosaurs use offsets of −3/−6/−9/−12/−15 to effective druid level. Off-by-one risk in offset interpretation: is "level 4 list at druid 4" valid (effective druid level 1, companion exists) or invalid (effective <1)? | E-022, E-037, E-049 | Boundary-case rule reading; explicit fixtures per offset list |
+| **Voxel Speed double-application** — Both armor (medium/heavy) and load (Medium/Heavy) reduce base speed; PHB rule is they do *not* stack — only the worse of the two applies. Easy to wire as additive penalties and silently halve speed. | E-019, E-020, E-063 | Rule-merge logic; must be tested with armored-and-encumbered fixtures |
+
+### 5.3 Implementation Sequencing Recommendation
+
+1. **Phase E-A (Foundations)** — Land all 15 Tier 0 schemas in a single
+   pass. They are mutually independent and entirely S-effort. Pair the
+   schema landings with their dataclass-level unit tests so subsequent
+   tiers have a stable type surface.
+
+2. **Phase E-B (Encumbrance Spine)** — Implement the encumbrance chain
+   end-to-end first (E-016 → E-017 → E-018 → E-019 → E-020 → E-034 →
+   E-035 → E-047 → E-063). It has the cleanest dependency ladder and
+   produces the `EncumbranceState` snapshot that planar gravity (E-030)
+   and combat integration (E-063, E-067) both consume. Treat E-034
+   (PHB Equipment Weight Registry, L) as the single transcription
+   bottleneck — assign one engineer the full Ch 7 weight pass.
+
+3. **Phase E-C (Linked Entity Tracks)** — Run three parallel streams
+   for Familiars, Animal Companions, and Special Mounts (E-021 → E-036
+   → E-048; E-022 → E-037 → E-049; E-023 → E-038 → E-050). Converge
+   them at E-056 (Master/Minion Turn Tracker, L) and review the
+   action-economy semantics with the combat-engine owner before merging.
+
+4. **Phase E-D (Multiclass + Prestige)** — E-024/E-025 unblock E-051;
+   E-027 unblocks E-041 → E-053 → E-059. Land the Prerequisite
+   Verification Engine (E-027) early in this phase since it gates the
+   entire DMG Prestige Class Registry. Defer E-065 (Unified Progression)
+   to last in this phase — it is the convergence point for six upstream
+   tasks.
+
+5. **Phase E-E (Settlement Track)** — E-028 → E-042 → E-043 → E-052 →
+   E-054 → E-060 → E-066. Mostly independent of other tracks (only
+   leans on E-026/E-040 from the NPC class subsystem). Highest-Level
+   NPC formula (E-029) needs a dedicated property-based test sweep
+   across all 8 community sizes.
+
+6. **Phase E-F (Planar Track)** — Trait resolvers (E-030/E-031/E-032/
+   E-033) in parallel; then plane registries (E-044/E-045/E-046) in
+   parallel; converge at E-055 (Planar Transition Engine). E-061
+   (Planar Spell Modifier) requires the spell-engine owner's review for
+   integration with `magic.cast()`. Final integrator E-067 should be
+   reserved for a dedicated integration sprint with the encounter
+   generator already shipped via `DMG_BUILD_SITE.md` T-056.
+
+7. **Phase E-G (Final Integration)** — All Tier 5 tasks (E-063 through
+   E-067) wired together. Run the full regression suite — including
+   shipped Phase 1/2 hazard and magic-item modules — after each Tier 5
+   commit, since Tier 5 tasks reach back into shipped subsystems.
