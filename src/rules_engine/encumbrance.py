@@ -722,7 +722,7 @@ def compute_encumbrance_state(character: "Character35e") -> EncumbranceState:
     if load == LoadCategory.Overload:
         effective_speed_ft = 0
     elif armor_cat in ("medium", "heavy"):
-        # Armor already penalised speed — don't double-apply load speed table
+        # Armor already penalized speed — don't double-apply load speed table
         effective_speed_ft = base_speed_ft
     else:
         effective_speed_ft = penalties.speed_table.get(base_speed_ft, base_speed_ft)
