@@ -180,6 +180,9 @@ class Item:
                       that do not degrade (consumables, materials).
         max_durability: Maximum durability at full repair. ``None`` if N/A.
         level_requirement: Minimum character level required to equip.
+        weight_lb:    Item weight in pounds (PHB Ch 7). Used by the
+                      encumbrance subsystem to compute carried load.
+                      Defaults to ``0.0`` (weightless / not tracked).
         prefixes:     List of prefix :class:`Affix` modifiers (≤ 2).
         suffixes:     List of suffix :class:`Affix` modifiers (≤ 2).
         metadata:     Free-form dict for game-specific extra data.
@@ -195,6 +198,7 @@ class Item:
     durability: Optional[int] = None
     max_durability: Optional[int] = None
     level_requirement: int = 1
+    weight_lb: float = 0.0
     prefixes: List[Affix] = field(default_factory=list)
     suffixes: List[Affix] = field(default_factory=list)
     metadata: dict = field(default_factory=dict)
@@ -327,6 +331,7 @@ class Item:
             "durability": self.durability,
             "max_durability": self.max_durability,
             "level_requirement": self.level_requirement,
+            "weight_lb": self.weight_lb,
             "prefixes": [p.to_dict() for p in self.prefixes],
             "suffixes": [s.to_dict() for s in self.suffixes],
             "metadata": self.metadata,
@@ -353,6 +358,7 @@ class Item:
             durability=data.get("durability"),
             max_durability=data.get("max_durability"),
             level_requirement=data.get("level_requirement", 1),
+            weight_lb=data.get("weight_lb", 0.0),
             prefixes=[Affix.from_dict(p) for p in data.get("prefixes", [])],
             suffixes=[Affix.from_dict(s) for s in data.get("suffixes", [])],
             metadata=data.get("metadata", {}),
