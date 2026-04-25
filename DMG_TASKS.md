@@ -1,23 +1,102 @@
-# DMG Ingestion Task Tracker
+# Playability Milestone — Task Tracker
 
-Tracks progress of implementing D&D 3.5e Dungeon Master's Guide (DMG) core mechanics.
+Tracks the work needed to turn the existing 3.5e rules engine into something a
+human can actually sit down and play. The rules surface (combat, spells, feats,
+classes, hazards, magic items, treasure, encounters) is already complete and
+covered by 1900+ tests; what's missing is the runtime driver, content
+externalisation, and the autonomous-agent layer.
+
+Tasks are ordered by dependency. Tasks 1–6 are the playability milestone
+(2–5 depend on 1; 6 depends on 2–5). Task 7 is parallelisable. Task 8 should
+precede any new large rules work. Tasks 9–10 are the agent-layer follow-on.
 
 ---
 
-- [x] Phase 1: Environmental Hazards (Falling, Heat/Cold, Starvation) & Afflictions (Poisons/Diseases).
-  - Implemented `src/rules_engine/hazards.py`: falling damage (1d6/10ft, max 20d6, Jump/Tumble mitigation), HeatDanger, ColdDanger, StarvationTracker (all with escalating Fort DCs), Poison and Disease dataclasses with full two-save sequences, plus registries for 6 SRD poisons and 6 SRD diseases.
-  - 66 tests in `tests/rules_engine/test_hazards.py` — all pass. Full suite: 1748 tests pass.
+## Phase A — Playable Loop (Text Mode)
 
-- [x] Phase 2: Magic Item Engine (Enhancement bonuses, Wondrous Items).
-  - Implemented `src/rules_engine/magic_items.py`: `MagicItemCategory` enum (10 categories), `BonusType` enum (8 bonus types), `MagicBonus` / `WondrousItem` dataclasses (slots=True), `MagicItemEngine` (add/remove worn items, aggregates non-stacking bonuses), `make_magic_weapon()` / `make_magic_armor()` factory functions (enhancement +1–+5 with SRD price formulae), `WONDROUS_ITEM_REGISTRY` (29 SRD items: belts, gauntlets, gloves, headbands, periapts, cloaks, amulets, resistance cloaks), `RING_REGISTRY` (5 rings of protection).
-  - Updated `src/rules_engine/character_35e.py`: added `magic_item_engine` field; ability modifiers, AC (deflection + natural armor), and all three saves now incorporate `MagicItemEngine` bonuses while enforcing non-stacking rules.
-  - Updated `src/rules_engine/equipment.py`: `get_armor_bonus()` / `get_shield_bonus()` now include `metadata["enhancement_bonus"]` from magic armour.
-  - 113 tests in `tests/rules_engine/test_magic_items.py` — all pass. Full suite: 1861 tests pass.
+- [ ] Task 1: Scaffold `src/game/` package + `python -m new_game_plus` entry point.
+  - Add `src/game/__init__.py`, `src/game/__main__.py`, `src/game/cli.py`.
+  - argparse subcommands: `new-character`, `run-encounter`, `play`.
+  - Wire into `setup.py` `entry_points` so `new-game-plus` is on PATH.
 
-- [x] Phase 3: Treasure Hoard Generation Tables.
-  - Implemented `src/rules_engine/treasure.py`: `GemGrade` (6 grades) and `ArtObjectCategory` (4 categories) enums, `GemEntry`/`ArtObjectEntry`/`CoinRoll`/`TreasureTypeEntry`/`TreasureHoard` dataclasses (slots=True), `GEM_TABLE` (52 entries across 6 grades with value ranges), `ART_OBJECT_TABLE` (52 entries across 10 value bands from 10 gp to 7500 gp), `TREASURE_TYPE_TABLES` (all 26 types A–Z per DMG Table 7-1), `CR_TO_TREASURE_TYPE` mapping (CR 1–20 and 21+), `roll_gem_value` (with exceptional quality multipliers on d%), `roll_art_object`, `generate_treasure_hoard` (full coins/gems/art/magic item generation).
-  - 41 tests in `tests/rules_engine/test_treasure.py` — all pass. Full suite: 1936 tests pass.
+- [ ] Task 2: Text-mode character-creation wizard.
+  - Prompt flow: race → class → ability scores (4d6-drop-lowest **and**
+    point-buy) → skills → feats → starting equipment.
+  - All choices validated against existing `RaceRegistry`, class definitions,
+    `AbilityRegistry`, `SkillSystem`, `FeatEngine`, `EquipmentManager`.
+  - Output: a fully-populated `Character35e` instance.
 
-- [x] Phase 4: Encounter Calculator (CR, EL, and XP Distribution).
-  - Implemented `src/rules_engine/encounter.py`: `CR_TO_XP` table (fractional CRs 1/8–1/2 through CR 30 per DMG Table 2-1), `xp_for_cr` (nearest-key lookup), `xp_per_character` (APL-based multiplier: 0×–3× in 9 brackets), `calculate_el` (XP-sum algorithm: sum monster XP, find nearest CR), `distribute_xp` (per-character award with level-vs-APL adjustment).
-  - 34 tests in `tests/rules_engine/test_encounter.py` — all pass. Full suite: 1936 tests pass.
+- [ ] Task 3: Party / character persistence.
+  - JSON serializer/deserializer for `Character35e` (and dependent state:
+    `MagicItemEngine`, `ConditionManager`, `XPManager`).
+  - `saves/` directory; `load_party(name)` / `save_party(name, party)`.
+  - Round-trip test: save → load → assert equality on AC, HP, saves, slots.
+
+- [ ] Task 4: `TurnController` with initiative + action economy.
+  - Roll initiative for all combatants, build turn order.
+  - Per-turn loop using existing `ActionTracker` (standard / move / swift /
+    full-round / free) with proper reset on new turn.
+  - Round counter, condition duration tick, end-of-turn save handling.
+
+- [ ] Task 5: Wire combat event loop through `CombatSystem`.
+  - Player input → `AttackIntent` / spell-cast / move / use-item events on
+    the existing `EventBus`.
+  - Print per-turn results (hit/miss, damage, conditions, death).
+  - Detect victory / total-party-defeat / flee and exit cleanly.
+
+- [ ] Task 6: End-to-end party-vs-encounter integration test.
+  - Build a 4-character L3 party via Task 2 helpers.
+  - Generate an encounter via existing `build_encounter()`.
+  - Run full cycle: spell → attack → condition → death → XP award →
+    `generate_treasure_hoard()` → loot distribution.
+  - Assert the encounter terminates and XP/treasure are sane.
+
+---
+
+## Phase B — Content Externalisation
+
+- [ ] Task 7: Populate `data/srd_3.5/` with JSON + loader.
+  - Extract spell definitions from `src/rules_engine/magic.py` to
+    `data/srd_3.5/spells/*.json`.
+  - Same for feats, races, class progressions, monsters, magic items,
+    poisons/diseases, gems/art, encounter tables.
+  - Add `src/rules_engine/srd_loader.py` that builds the in-memory registries
+    from the JSON at import time.
+  - Existing tests must still pass unchanged.
+
+---
+
+## Phase C — Audit & Cleanup
+
+- [ ] Task 8: Audit `DMG_BUILD_SITE.md` Tier 0–3 against shipped modules.
+  - Cross-reference each `T-NNN` against `src/rules_engine/*.py`
+    (`objects.py`, `traps.py`, `consumables.py`, `item_specials.py`,
+    `environment.py`, `encounter_extended.py`, `magic_item_engine.py`).
+  - Mark shipped tasks `[x]` in `DMG_BUILD_SITE.md`; produce a residual list
+    of any Tier 0–3 tasks that are still actually missing.
+
+---
+
+## Phase D — Agent Layer
+
+- [ ] Task 9: Minimal terminal Overseer UI.
+  - Replace `src/overseer_ui/__init__.py` stub with a curses- or
+    prompt-toolkit-based approve/reject queue backed by real `AgentTask`
+    objects.
+  - Persistent session log to `logs/overseer-YYYY-MM-DD.jsonl`.
+
+- [ ] Task 10: Flesh out `src/agent_orchestration/`.
+  - `scheduler.py` — picks the next pending `AgentTask`, respects priority,
+    enforces concurrency cap.
+  - `prompt_builder.py` — composes prompts from task spec + 3.5e SRD context.
+  - `result_parser.py` — validates LLM output against expected schema,
+    surfaces parse failures back to the Overseer.
+  - Wire to existing `src/ai_sim/llm_bridge.py`.
+
+---
+
+## Completion Notes
+
+(Add a note per task as it lands, mirroring the format of the historical
+spell-ingestion notes in `SPELL_TASKS.md`: file paths touched, line counts,
+test counts, full-suite pass count.)
