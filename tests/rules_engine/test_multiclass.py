@@ -154,7 +154,7 @@ class TestFavoredClassFor:
 
     def test_unknown_race_returns_none(self):
         r = _record(("Fighter", 5))
-        assert favored_class_for("Tiefling", r) == None
+        assert favored_class_for("Tiefling", r) is None
 
     def test_highest_level_ignores_prestige(self):
         r = _prestige_record(("Wizard", 3), prestige_pairs=(("Arcane Trickster", 10),))
@@ -163,7 +163,7 @@ class TestFavoredClassFor:
 
     def test_empty_entries_returns_none(self):
         r = MulticlassRecord(entries=[], favored_class=None)
-        assert favored_class_for("Human", r) == None
+        assert favored_class_for("Human", r) is None
 
 
 # ---------------------------------------------------------------------------
