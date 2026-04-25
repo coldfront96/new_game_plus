@@ -1,0 +1,155 @@
+[
+  {
+    "name": "Control Weather",
+    "level": 7,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "2 miles",
+    "duration": "4d12 hours",
+    "subschool": "",
+    "descriptor": [],
+    "description": "Changes the weather in a 2-mile radius."
+  },
+  {
+    "name": "Ethereal Jaunt",
+    "level": 7,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Personal",
+    "duration": "1 round/level (D)",
+    "subschool": "",
+    "descriptor": [],
+    "description": "You become ethereal, along with your equipment. For the duration of the spell, you are in the Ethereal Plane, which overlaps the Material Plane."
+  },
+  {
+    "name": "Finger of Death",
+    "level": 7,
+    "school": "Necromancy",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "Instantaneous",
+    "subschool": "",
+    "descriptor": [
+      "Death"
+    ],
+    "description": "You can slay any living creature within range. The target is entitled to a Fortitude saving throw to survive the attack. If the save is successful, the creature instead takes 3d6 points of damage + 1 point per caster level."
+  },
+  {
+    "name": "Limited Wish",
+    "level": 7,
+    "school": "Universal",
+    "components": [
+      "V",
+      "S",
+      "XP"
+    ],
+    "range": "See text",
+    "duration": "See text",
+    "subschool": "",
+    "descriptor": [],
+    "description": "A limited wish lets you create nearly any type of effect. For example, a limited wish can duplicate any spell of 7th level or lower, provided the spell does not belong to one of your opposition schools."
+  },
+  {
+    "name": "Mordenkainen's Sword",
+    "level": 7,
+    "school": "Evocation",
+    "components": [
+      "V",
+      "S",
+      "F"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "1 round/level (D)",
+    "subschool": "",
+    "descriptor": [
+      "Force"
+    ],
+    "description": "You evoke a shimmering, sword-like plane of force that hovers near you and attacks opponents as you direct. The sword attacks as a fighter equal to your caster level."
+  },
+  {
+    "name": "Power Word Blind",
+    "level": 7,
+    "school": "Enchantment",
+    "components": [
+      "V"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "See text",
+    "subschool": "Compulsion",
+    "descriptor": [
+      "Mind-Affecting"
+    ],
+    "description": "You utter a single word of power that causes one creature of your choice to become blinded, whether the creature can hear the word or not."
+  },
+  {
+    "name": "Prismatic Spray",
+    "level": 7,
+    "school": "Evocation",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "60-ft cone",
+    "duration": "Instantaneous",
+    "subschool": "",
+    "descriptor": [],
+    "description": "This spell causes seven shimmering, intertwined, multicolored beams of light to spray from your hand. Each beam has a different power and purpose."
+  },
+  {
+    "name": "Resurrection",
+    "level": 7,
+    "school": "Conjuration",
+    "components": [
+      "V",
+      "S",
+      "M",
+      "DF"
+    ],
+    "range": "Touch",
+    "duration": "Instantaneous",
+    "subschool": "Healing",
+    "descriptor": [],
+    "description": "This spell functions like raise dead, except that you are able to restore life to any deceased creature. The creature can have been dead for as long as 10 years per caster level."
+  },
+  {
+    "name": "Reverse Gravity",
+    "level": 7,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S",
+      "M",
+      "F"
+    ],
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "duration": "1 round/level (D)",
+    "subschool": "",
+    "descriptor": [],
+    "description": "This spell reverses gravity in an area, causing all creatures and objects not somehow anchored to the ground to fall upward and reach the top of the area in 1 round."
+  },
+  {
+    "name": "Spell Turning",
+    "level": 7,
+    "school": "Abjuration",
+    "components": [
+      "V",
+      "S",
+      "M",
+      "F"
+    ],
+    "range": "Personal",
+    "duration": "Until expended, up to 10 min./level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "Spells and spell-like effects targeted on you are turned back upon the original caster. The turning effect reflects 1d4+6 spell levels."
+  }
+]

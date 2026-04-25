@@ -1,0 +1,330 @@
+[
+  {
+    "name": "Animal Growth",
+    "level": 5,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "duration": "1 min./level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "One animal per two levels grows one size category (STR +8, CON +4, +2 natural armor)."
+  },
+  {
+    "name": "Awaken",
+    "level": 5,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
+    "range": "Touch",
+    "duration": "Instantaneous",
+    "subschool": "",
+    "descriptor": [],
+    "description": "Bestows human-level intelligence on an animal or tree (250 XP per HD cost)."
+  },
+  {
+    "name": "Break Enchantment",
+    "level": 5,
+    "school": "Abjuration",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "Instantaneous",
+    "subschool": "",
+    "descriptor": [],
+    "description": "This spell frees victims from enchantments, transmutations, and curses. Break enchantment can reverse even an instantaneous effect."
+  },
+  {
+    "name": "Call Lightning Storm",
+    "level": 5,
+    "school": "Conjuration",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "duration": "10 min./level",
+    "subschool": "Summoning",
+    "descriptor": [
+      "Electricity"
+    ],
+    "description": "Like Call Lightning but deals 5d6 per bolt and works anywhere."
+  },
+  {
+    "name": "Cloudkill",
+    "level": 5,
+    "school": "Conjuration",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "duration": "1 round/level",
+    "subschool": "Creation",
+    "descriptor": [],
+    "description": "This spell generates a bank of fog, similar to a fog cloud, except that its vapors are yellowish green and poisonous. Creatures with 3 or fewer HD are slain instantly, and those with 4\u20136 HD must make a Fortitude save."
+  },
+  {
+    "name": "Cone of Cold",
+    "level": 5,
+    "school": "Evocation",
+    "components": [
+      "V",
+      "S",
+      "M",
+      "F"
+    ],
+    "range": "60-ft cone",
+    "duration": "Instantaneous",
+    "subschool": "",
+    "descriptor": [
+      "Cold"
+    ],
+    "description": "Cone of cold creates an area of extreme cold, originating at your hand and extending outward in a cone. It drains heat, dealing 1d6 points of cold damage per caster level (maximum 15d6)."
+  },
+  {
+    "name": "Dominate Person",
+    "level": 5,
+    "school": "Enchantment",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "1 day/level",
+    "subschool": "Compulsion",
+    "descriptor": [
+      "Mind-Affecting"
+    ],
+    "description": "You can control the actions of any humanoid creature through a telepathic link that you establish with the subject's mind."
+  },
+  {
+    "name": "Feeblemind",
+    "level": 5,
+    "school": "Enchantment",
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "duration": "Instantaneous",
+    "subschool": "Compulsion",
+    "descriptor": [
+      "Mind-Affecting"
+    ],
+    "description": "If the target fails its Will save, its Intelligence and Charisma scores each drop to 1. The affected creature is unable to use Intelligence- or Charisma-based skills."
+  },
+  {
+    "name": "Flame Strike",
+    "level": 5,
+    "school": "Evocation",
+    "components": [
+      "V",
+      "S",
+      "DF"
+    ],
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "duration": "Instantaneous",
+    "subschool": "",
+    "descriptor": [
+      "Fire"
+    ],
+    "description": "A flame strike produces a vertical column of divine fire roaring downward. The spell deals 1d6 points of damage per caster level (maximum 15d6). Half the damage is fire damage, but the other half results directly from divine power and is therefore not subject to being reduced by resistance to fire-based attacks."
+  },
+  {
+    "name": "Greater Heroism",
+    "level": 5,
+    "school": "Enchantment",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Touch",
+    "duration": "1 min./level",
+    "subschool": "Compulsion",
+    "descriptor": [
+      "Mind-Affecting"
+    ],
+    "description": "Gives +4 morale bonus on attack rolls, saves, and skill checks, and 1 temporary HP/level; immunity to fear."
+  },
+  {
+    "name": "Insect Plague",
+    "level": 5,
+    "school": "Conjuration",
+    "components": [
+      "V",
+      "S",
+      "DF"
+    ],
+    "range": "Long (400 ft. + 40 ft./level)",
+    "duration": "1 min./level",
+    "subschool": "Summoning",
+    "descriptor": [],
+    "description": "You summon a number of swarms of locusts (maximum 6 swarms, 1 per 3 levels). The swarms spread out in a cloud that covers a 60-foot diameter area."
+  },
+  {
+    "name": "Mass Suggestion",
+    "level": 5,
+    "school": "Enchantment",
+    "components": [
+      "V",
+      "M"
+    ],
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "duration": "1 hour/level or until completed",
+    "subschool": "Compulsion",
+    "descriptor": [
+      "Language-Dependent",
+      "Mind-Affecting"
+    ],
+    "description": "Compels subjects to follow stated course of action."
+  },
+  {
+    "name": "Mirage Arcana",
+    "level": 5,
+    "school": "Illusion",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Long (400 ft. + 40 ft./level)",
+    "duration": "Concentration + 1 hour/level (D)",
+    "subschool": "Glamer",
+    "descriptor": [],
+    "description": "Makes terrain look like other terrain."
+  },
+  {
+    "name": "Permanency",
+    "level": 5,
+    "school": "Universal",
+    "components": [
+      "V",
+      "S",
+      "XP"
+    ],
+    "range": "See text",
+    "duration": "Permanent",
+    "subschool": "",
+    "descriptor": [],
+    "description": "This spell makes certain other spells permanent. Casting permanency on yourself requires an XP expenditure."
+  },
+  {
+    "name": "Righteous Might",
+    "level": 5,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S",
+      "DF"
+    ],
+    "range": "Personal",
+    "duration": "1 round/level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "Your height doubles, and your weight increases by a factor of eight. Your size category changes to the next larger size. You gain a +8 size bonus to Strength, a +4 size bonus to Constitution, and a +2 size bonus to natural armor."
+  },
+  {
+    "name": "Sending",
+    "level": 5,
+    "school": "Evocation",
+    "components": [
+      "V",
+      "S",
+      "M",
+      "DF"
+    ],
+    "range": "See text",
+    "duration": "1 round",
+    "subschool": "",
+    "descriptor": [],
+    "description": "You contact a particular creature with which you are familiar and send a short message of 25 words or less. The subject recognizes you if it knows you. It can send a return message of 25 words or less."
+  },
+  {
+    "name": "Shadow Walk",
+    "level": 5,
+    "school": "Illusion",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Touch",
+    "duration": "1 hour/level (D)",
+    "subschool": "Shadow",
+    "descriptor": [],
+    "description": "Step into shadow to travel rapidly."
+  },
+  {
+    "name": "Song of Discord",
+    "level": 5,
+    "school": "Enchantment",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "duration": "1 round/level",
+    "subschool": "Compulsion",
+    "descriptor": [
+      "Mind-Affecting"
+    ],
+    "description": "Forces targets to attack each other."
+  },
+  {
+    "name": "Telekinesis",
+    "level": 5,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Long (400 ft. + 40 ft./level)",
+    "duration": "Concentration, up to 1 round/level, or instantaneous",
+    "subschool": "",
+    "descriptor": [],
+    "description": "You move objects or creatures by concentrating on them. You can move up to 25 pounds per caster level (maximum 375 pounds) up to 20 feet per round, or fling objects violently."
+  },
+  {
+    "name": "Wall of Fire",
+    "level": 5,
+    "school": "Evocation",
+    "components": [
+      "V",
+      "S",
+      "M",
+      "DF"
+    ],
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "duration": "Concentration + 1 round/level",
+    "subschool": "",
+    "descriptor": [
+      "Fire"
+    ],
+    "description": "Wall of fire deals 2d4 fire within 10 ft., 1d4 within 20 ft., and 2d6+CL to pass through."
+  },
+  {
+    "name": "Wall of Force",
+    "level": 5,
+    "school": "Evocation",
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "1 round/level (D)",
+    "subschool": "",
+    "descriptor": [
+      "Force"
+    ],
+    "description": "A wall of force spell creates an invisible wall of pure force. The wall cannot be broken, damaged, burned, melted, or destroyed by most magical means. It is not affected by dispel magic."
+  }
+]

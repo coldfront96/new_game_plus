@@ -1,0 +1,164 @@
+[
+  {
+    "name": "Elemental Swarm",
+    "level": 9,
+    "school": "Conjuration",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "duration": "10 min./level",
+    "subschool": "Summoning",
+    "descriptor": [],
+    "description": "Summons 2d4 Large elementals, then 1d4 Huge elementals, then 1 Elder elemental in sequence."
+  },
+  {
+    "name": "Foresight",
+    "level": 9,
+    "school": "Divination",
+    "components": [
+      "V",
+      "S",
+      "M",
+      "F"
+    ],
+    "range": "Personal or Touch",
+    "duration": "10 min./level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "This powerful divination grants you a powerful sixth sense in relation to yourself or another. Once foresight is cast, you receive instantaneous warnings of impending danger or harm to the subject of the spell."
+  },
+  {
+    "name": "Gate",
+    "level": 9,
+    "school": "Conjuration",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "duration": "Concentration up to 1 round/level (D)",
+    "subschool": "Creation",
+    "descriptor": [],
+    "description": "Casting a gate spell has two effects. First, it creates an interdimensional connection between your plane of existence and a plane you specify, allowing travel between those two planes. Second, you may call a particular individual or kind of being to come through the gate."
+  },
+  {
+    "name": "Mass Heal",
+    "level": 9,
+    "school": "Conjuration",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "Instantaneous",
+    "subschool": "Healing",
+    "descriptor": [],
+    "description": "This spell functions like heal, except that it affects multiple creatures, and the maximum number of hit points restored to each is 250."
+  },
+  {
+    "name": "Meteor Swarm",
+    "level": 9,
+    "school": "Evocation",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Long (400 ft. + 40 ft./level)",
+    "duration": "Instantaneous",
+    "subschool": "",
+    "descriptor": [
+      "Fire"
+    ],
+    "description": "Meteor swarm is a very powerful and spectacular spell that is similar to fireball in many aspects. When you cast it, four 2-foot-diameter spheres spring from your outstretched hand and streak in straight lines to the spots you select."
+  },
+  {
+    "name": "Power Word Kill",
+    "level": 9,
+    "school": "Enchantment",
+    "components": [
+      "V"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "Instantaneous",
+    "subschool": "Compulsion",
+    "descriptor": [
+      "Death",
+      "Mind-Affecting"
+    ],
+    "description": "You utter a single word of power that instantly kills one creature of your choice, whether or not it can hear the word. The creature can have at most 100 hit points."
+  },
+  {
+    "name": "Shapechange",
+    "level": 9,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S",
+      "F"
+    ],
+    "range": "Personal",
+    "duration": "10 min./level (D)",
+    "subschool": "",
+    "descriptor": [],
+    "description": "This spell functions like polymorph, except that it enables you to assume the form of any single nonunique creature (of any type) from Fine to Colossal size."
+  },
+  {
+    "name": "Storm of Vengeance",
+    "level": 9,
+    "school": "Conjuration",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Long (400 ft. + 40 ft./level)",
+    "duration": "Concentration (maximum 10 rounds)",
+    "subschool": "Summoning",
+    "descriptor": [],
+    "description": "Massive storm with escalating effects over 10 rounds: acid rain, lightning, hail, and divine fire."
+  },
+  {
+    "name": "Time Stop",
+    "level": 9,
+    "school": "Transmutation",
+    "components": [
+      "V"
+    ],
+    "range": "Personal",
+    "duration": "1d4+1 rounds (apparent time)",
+    "subschool": "",
+    "descriptor": [],
+    "description": "This spell seems to make time cease to flow for everyone but you. In fact, you speed up so greatly that all other creatures seem frozen, though they are actually still moving at their normal speeds."
+  },
+  {
+    "name": "Wail of the Banshee",
+    "level": 9,
+    "school": "Necromancy",
+    "components": [
+      "V"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "Instantaneous",
+    "subschool": "",
+    "descriptor": [
+      "Death",
+      "Sonic"
+    ],
+    "description": "You emit a terrible, soul-chilling scream that possibly kills one creature per caster level."
+  },
+  {
+    "name": "Wish",
+    "level": 9,
+    "school": "Universal",
+    "components": [
+      "V",
+      "XP"
+    ],
+    "range": "Unlimited",
+    "duration": "See text",
+    "subschool": "",
+    "descriptor": [],
+    "description": "Wish is the mightiest spell a wizard or sorcerer can cast. By simply speaking aloud, you can alter reality to better suit you."
+  }
+]

@@ -1,0 +1,495 @@
+[
+  {
+    "name": "Amulet of Health +2",
+    "category": "wondrous",
+    "slot": "neck",
+    "caster_level": 8,
+    "price_gp": 4000,
+    "weight_lb": 0.1,
+    "bonuses": [
+      {
+        "bonus_type": "enhancement",
+        "stat": "constitution",
+        "value": 2
+      }
+    ],
+    "aura": "moderate transmutation",
+    "description": "This amulet grants an enhancement bonus of +2 to Constitution."
+  },
+  {
+    "name": "Amulet of Health +4",
+    "category": "wondrous",
+    "slot": "neck",
+    "caster_level": 8,
+    "price_gp": 16000,
+    "weight_lb": 0.1,
+    "bonuses": [
+      {
+        "bonus_type": "enhancement",
+        "stat": "constitution",
+        "value": 4
+      }
+    ],
+    "aura": "moderate transmutation",
+    "description": "This amulet grants an enhancement bonus of +4 to Constitution."
+  },
+  {
+    "name": "Amulet of Health +6",
+    "category": "wondrous",
+    "slot": "neck",
+    "caster_level": 8,
+    "price_gp": 36000,
+    "weight_lb": 0.1,
+    "bonuses": [
+      {
+        "bonus_type": "enhancement",
+        "stat": "constitution",
+        "value": 6
+      }
+    ],
+    "aura": "strong transmutation",
+    "description": "This amulet grants an enhancement bonus of +6 to Constitution."
+  },
+  {
+    "name": "Amulet of Natural Armor +1",
+    "category": "wondrous",
+    "slot": "neck",
+    "caster_level": 5,
+    "price_gp": 2000,
+    "weight_lb": 0.1,
+    "bonuses": [
+      {
+        "bonus_type": "natural_armor",
+        "stat": "ac",
+        "value": 1
+      }
+    ],
+    "aura": "faint transmutation",
+    "description": "This amulet toughens the wearer's body and skin, granting a +1 enhancement bonus to the wearer's existing natural armour bonus."
+  },
+  {
+    "name": "Amulet of Natural Armor +2",
+    "category": "wondrous",
+    "slot": "neck",
+    "caster_level": 5,
+    "price_gp": 8000,
+    "weight_lb": 0.1,
+    "bonuses": [
+      {
+        "bonus_type": "natural_armor",
+        "stat": "ac",
+        "value": 2
+      }
+    ],
+    "aura": "faint transmutation",
+    "description": "This amulet toughens the wearer's body, granting a +2 enhancement bonus to natural armour."
+  },
+  {
+    "name": "Amulet of Natural Armor +3",
+    "category": "wondrous",
+    "slot": "neck",
+    "caster_level": 5,
+    "price_gp": 18000,
+    "weight_lb": 0.1,
+    "bonuses": [
+      {
+        "bonus_type": "natural_armor",
+        "stat": "ac",
+        "value": 3
+      }
+    ],
+    "aura": "moderate transmutation",
+    "description": "This amulet grants a +3 enhancement bonus to natural armour."
+  },
+  {
+    "name": "Amulet of Natural Armor +4",
+    "category": "wondrous",
+    "slot": "neck",
+    "caster_level": 5,
+    "price_gp": 32000,
+    "weight_lb": 0.1,
+    "bonuses": [
+      {
+        "bonus_type": "natural_armor",
+        "stat": "ac",
+        "value": 4
+      }
+    ],
+    "aura": "moderate transmutation",
+    "description": "This amulet grants a +4 enhancement bonus to natural armour."
+  },
+  {
+    "name": "Amulet of Natural Armor +5",
+    "category": "wondrous",
+    "slot": "neck",
+    "caster_level": 5,
+    "price_gp": 50000,
+    "weight_lb": 0.1,
+    "bonuses": [
+      {
+        "bonus_type": "natural_armor",
+        "stat": "ac",
+        "value": 5
+      }
+    ],
+    "aura": "strong transmutation",
+    "description": "This amulet grants a +5 enhancement bonus to natural armour."
+  },
+  {
+    "name": "Belt of Giant Strength +2",
+    "category": "wondrous",
+    "slot": "belt",
+    "caster_level": 8,
+    "price_gp": 4000,
+    "weight_lb": 1.0,
+    "bonuses": [
+      {
+        "bonus_type": "enhancement",
+        "stat": "strength",
+        "value": 2
+      }
+    ],
+    "aura": "moderate transmutation",
+    "description": "This wide belt grants the wearer an enhancement bonus of +2 to Strength."
+  },
+  {
+    "name": "Belt of Giant Strength +4",
+    "category": "wondrous",
+    "slot": "belt",
+    "caster_level": 8,
+    "price_gp": 16000,
+    "weight_lb": 1.0,
+    "bonuses": [
+      {
+        "bonus_type": "enhancement",
+        "stat": "strength",
+        "value": 4
+      }
+    ],
+    "aura": "moderate transmutation",
+    "description": "This wide belt grants the wearer an enhancement bonus of +4 to Strength."
+  },
+  {
+    "name": "Belt of Giant Strength +6",
+    "category": "wondrous",
+    "slot": "belt",
+    "caster_level": 8,
+    "price_gp": 36000,
+    "weight_lb": 1.0,
+    "bonuses": [
+      {
+        "bonus_type": "enhancement",
+        "stat": "strength",
+        "value": 6
+      }
+    ],
+    "aura": "strong transmutation",
+    "description": "This wide belt grants the wearer an enhancement bonus of +6 to Strength."
+  },
+  {
+    "name": "Cloak of Charisma +2",
+    "category": "wondrous",
+    "slot": "cloak",
+    "caster_level": 8,
+    "price_gp": 4000,
+    "weight_lb": 1.0,
+    "bonuses": [
+      {
+        "bonus_type": "enhancement",
+        "stat": "charisma",
+        "value": 2
+      }
+    ],
+    "aura": "moderate transmutation",
+    "description": "This cloak grants an enhancement bonus of +2 to Charisma."
+  },
+  {
+    "name": "Cloak of Charisma +4",
+    "category": "wondrous",
+    "slot": "cloak",
+    "caster_level": 8,
+    "price_gp": 16000,
+    "weight_lb": 1.0,
+    "bonuses": [
+      {
+        "bonus_type": "enhancement",
+        "stat": "charisma",
+        "value": 4
+      }
+    ],
+    "aura": "moderate transmutation",
+    "description": "This cloak grants an enhancement bonus of +4 to Charisma."
+  },
+  {
+    "name": "Cloak of Charisma +6",
+    "category": "wondrous",
+    "slot": "cloak",
+    "caster_level": 8,
+    "price_gp": 36000,
+    "weight_lb": 1.0,
+    "bonuses": [
+      {
+        "bonus_type": "enhancement",
+        "stat": "charisma",
+        "value": 6
+      }
+    ],
+    "aura": "strong transmutation",
+    "description": "This cloak grants an enhancement bonus of +6 to Charisma."
+  },
+  {
+    "name": "Cloak of Resistance +1",
+    "category": "wondrous",
+    "slot": "cloak",
+    "caster_level": 5,
+    "price_gp": 1000,
+    "weight_lb": 1.0,
+    "bonuses": [
+      {
+        "bonus_type": "resistance",
+        "stat": "all_saves",
+        "value": 1
+      }
+    ],
+    "aura": "faint abjuration",
+    "description": "This cloak of magical weave grants its wearer a +1 resistance bonus on all saving throws."
+  },
+  {
+    "name": "Cloak of Resistance +2",
+    "category": "wondrous",
+    "slot": "cloak",
+    "caster_level": 5,
+    "price_gp": 4000,
+    "weight_lb": 1.0,
+    "bonuses": [
+      {
+        "bonus_type": "resistance",
+        "stat": "all_saves",
+        "value": 2
+      }
+    ],
+    "aura": "faint abjuration",
+    "description": "This cloak grants a +2 resistance bonus on all saving throws."
+  },
+  {
+    "name": "Cloak of Resistance +3",
+    "category": "wondrous",
+    "slot": "cloak",
+    "caster_level": 5,
+    "price_gp": 9000,
+    "weight_lb": 1.0,
+    "bonuses": [
+      {
+        "bonus_type": "resistance",
+        "stat": "all_saves",
+        "value": 3
+      }
+    ],
+    "aura": "moderate abjuration",
+    "description": "This cloak grants a +3 resistance bonus on all saving throws."
+  },
+  {
+    "name": "Cloak of Resistance +4",
+    "category": "wondrous",
+    "slot": "cloak",
+    "caster_level": 5,
+    "price_gp": 16000,
+    "weight_lb": 1.0,
+    "bonuses": [
+      {
+        "bonus_type": "resistance",
+        "stat": "all_saves",
+        "value": 4
+      }
+    ],
+    "aura": "moderate abjuration",
+    "description": "This cloak grants a +4 resistance bonus on all saving throws."
+  },
+  {
+    "name": "Cloak of Resistance +5",
+    "category": "wondrous",
+    "slot": "cloak",
+    "caster_level": 5,
+    "price_gp": 25000,
+    "weight_lb": 1.0,
+    "bonuses": [
+      {
+        "bonus_type": "resistance",
+        "stat": "all_saves",
+        "value": 5
+      }
+    ],
+    "aura": "strong abjuration",
+    "description": "This cloak grants a +5 resistance bonus on all saving throws."
+  },
+  {
+    "name": "Gauntlets of Ogre Power",
+    "category": "wondrous",
+    "slot": "gloves",
+    "caster_level": 6,
+    "price_gp": 4000,
+    "weight_lb": 4.0,
+    "bonuses": [
+      {
+        "bonus_type": "enhancement",
+        "stat": "strength",
+        "value": 2
+      }
+    ],
+    "aura": "moderate transmutation",
+    "description": "These sturdy gauntlets grant an enhancement bonus of +2 to Strength."
+  },
+  {
+    "name": "Gloves of Dexterity +2",
+    "category": "wondrous",
+    "slot": "gloves",
+    "caster_level": 6,
+    "price_gp": 4000,
+    "weight_lb": 0.1,
+    "bonuses": [
+      {
+        "bonus_type": "enhancement",
+        "stat": "dexterity",
+        "value": 2
+      }
+    ],
+    "aura": "moderate transmutation",
+    "description": "These thin gloves grant an enhancement bonus of +2 to Dexterity."
+  },
+  {
+    "name": "Gloves of Dexterity +4",
+    "category": "wondrous",
+    "slot": "gloves",
+    "caster_level": 6,
+    "price_gp": 16000,
+    "weight_lb": 0.1,
+    "bonuses": [
+      {
+        "bonus_type": "enhancement",
+        "stat": "dexterity",
+        "value": 4
+      }
+    ],
+    "aura": "moderate transmutation",
+    "description": "These thin gloves grant an enhancement bonus of +4 to Dexterity."
+  },
+  {
+    "name": "Gloves of Dexterity +6",
+    "category": "wondrous",
+    "slot": "gloves",
+    "caster_level": 6,
+    "price_gp": 36000,
+    "weight_lb": 0.1,
+    "bonuses": [
+      {
+        "bonus_type": "enhancement",
+        "stat": "dexterity",
+        "value": 6
+      }
+    ],
+    "aura": "strong transmutation",
+    "description": "These thin gloves grant an enhancement bonus of +6 to Dexterity."
+  },
+  {
+    "name": "Headband of Intellect +2",
+    "category": "wondrous",
+    "slot": "head",
+    "caster_level": 8,
+    "price_gp": 4000,
+    "weight_lb": 0.1,
+    "bonuses": [
+      {
+        "bonus_type": "enhancement",
+        "stat": "intelligence",
+        "value": 2
+      }
+    ],
+    "aura": "moderate transmutation",
+    "description": "This device grants an enhancement bonus of +2 to Intelligence."
+  },
+  {
+    "name": "Headband of Intellect +4",
+    "category": "wondrous",
+    "slot": "head",
+    "caster_level": 8,
+    "price_gp": 16000,
+    "weight_lb": 0.1,
+    "bonuses": [
+      {
+        "bonus_type": "enhancement",
+        "stat": "intelligence",
+        "value": 4
+      }
+    ],
+    "aura": "moderate transmutation",
+    "description": "This device grants an enhancement bonus of +4 to Intelligence."
+  },
+  {
+    "name": "Headband of Intellect +6",
+    "category": "wondrous",
+    "slot": "head",
+    "caster_level": 8,
+    "price_gp": 36000,
+    "weight_lb": 0.1,
+    "bonuses": [
+      {
+        "bonus_type": "enhancement",
+        "stat": "intelligence",
+        "value": 6
+      }
+    ],
+    "aura": "strong transmutation",
+    "description": "This device grants an enhancement bonus of +6 to Intelligence."
+  },
+  {
+    "name": "Periapt of Wisdom +2",
+    "category": "wondrous",
+    "slot": "neck",
+    "caster_level": 8,
+    "price_gp": 4000,
+    "weight_lb": 0.1,
+    "bonuses": [
+      {
+        "bonus_type": "enhancement",
+        "stat": "wisdom",
+        "value": 2
+      }
+    ],
+    "aura": "moderate transmutation",
+    "description": "This gemstone grants an enhancement bonus of +2 to Wisdom."
+  },
+  {
+    "name": "Periapt of Wisdom +4",
+    "category": "wondrous",
+    "slot": "neck",
+    "caster_level": 8,
+    "price_gp": 16000,
+    "weight_lb": 0.1,
+    "bonuses": [
+      {
+        "bonus_type": "enhancement",
+        "stat": "wisdom",
+        "value": 4
+      }
+    ],
+    "aura": "moderate transmutation",
+    "description": "This gemstone grants an enhancement bonus of +4 to Wisdom."
+  },
+  {
+    "name": "Periapt of Wisdom +6",
+    "category": "wondrous",
+    "slot": "neck",
+    "caster_level": 8,
+    "price_gp": 36000,
+    "weight_lb": 0.1,
+    "bonuses": [
+      {
+        "bonus_type": "enhancement",
+        "stat": "wisdom",
+        "value": 6
+      }
+    ],
+    "aura": "strong transmutation",
+    "description": "This gemstone grants an enhancement bonus of +6 to Wisdom."
+  }
+]

@@ -1,0 +1,448 @@
+[
+  {
+    "name": "Charm Monster",
+    "level": 3,
+    "school": "Enchantment",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "1 day/level",
+    "subschool": "Charm",
+    "descriptor": [
+      "Mind-Affecting"
+    ],
+    "description": "Makes monster believe it is your ally."
+  },
+  {
+    "name": "Clairaudience/Clairvoyance",
+    "level": 3,
+    "school": "Divination",
+    "components": [
+      "V",
+      "S",
+      "F"
+    ],
+    "range": "Long (400 ft. + 40 ft./level)",
+    "duration": "1 min./level (D)",
+    "subschool": "Scrying",
+    "descriptor": [],
+    "description": "Hear or see at a distance for 1 min./level."
+  },
+  {
+    "name": "Contagion",
+    "level": 3,
+    "school": "Necromancy",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Touch",
+    "duration": "Instantaneous",
+    "subschool": "",
+    "descriptor": [
+      "Evil"
+    ],
+    "description": "Infects subject with a chosen disease (Fortitude negates)."
+  },
+  {
+    "name": "Cure Serious Wounds",
+    "level": 3,
+    "school": "Conjuration",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Touch",
+    "duration": "Instantaneous",
+    "subschool": "Healing",
+    "descriptor": [],
+    "description": "When laying your hand upon a living creature, you channel positive energy that cures 3d8 points of damage +1 per caster level (maximum +15)."
+  },
+  {
+    "name": "Daylight",
+    "level": 3,
+    "school": "Evocation",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Touch",
+    "duration": "10 min./level",
+    "subschool": "",
+    "descriptor": [
+      "Light"
+    ],
+    "description": "The object touched sheds light as bright as full daylight in a 60-foot radius, and dim light for an additional 60 feet beyond that. Creatures that take penalties in bright light also take them while within the radius of this magical light."
+  },
+  {
+    "name": "Dispel Magic",
+    "level": 3,
+    "school": "Abjuration",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "duration": "Instantaneous",
+    "subschool": "",
+    "descriptor": [],
+    "description": "You can use dispel magic to end ongoing spells that have been cast on a creature or object, to temporarily suppress the magical abilities of a magic item, or to counter another spellcaster's spell."
+  },
+  {
+    "name": "Fireball",
+    "level": 3,
+    "school": "Evocation",
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
+    "range": "Long (400 ft. + 40 ft./level)",
+    "duration": "Instantaneous",
+    "subschool": "",
+    "descriptor": [
+      "Fire"
+    ],
+    "description": "A fireball spell generates a searing explosion of flame that detonates with a low roar and deals 1d6 points of fire damage per caster level (maximum 10d6) to every creature within the area."
+  },
+  {
+    "name": "Fly",
+    "level": 3,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S",
+      "F"
+    ],
+    "range": "Touch",
+    "duration": "1 min./level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "The subject can fly at a speed of 60 feet (or 40 feet if it wears medium or heavy armor). The subject can fly up, down, and laterally. The subject gains a maneuverability of good."
+  },
+  {
+    "name": "Gaseous Form",
+    "level": 3,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
+    "range": "Touch",
+    "duration": "2 min./level (D)",
+    "subschool": "",
+    "descriptor": [],
+    "description": "Subject and gear become insubstantial, misty, and translucent."
+  },
+  {
+    "name": "Good Hope",
+    "level": 3,
+    "school": "Enchantment",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "duration": "1 min./level",
+    "subschool": "Compulsion",
+    "descriptor": [
+      "Mind-Affecting"
+    ],
+    "description": "Subjects gain +2 morale bonus on saving throws, attack rolls, ability checks, skill checks, and weapon damage rolls."
+  },
+  {
+    "name": "Haste",
+    "level": 3,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "1 round/level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "The transmuted creatures move and act more quickly than normal. This extra speed has several effects: each hasted creature may make one extra attack in any round when it takes a full attack action."
+  },
+  {
+    "name": "Heal Animal Companion",
+    "level": 3,
+    "school": "Conjuration",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Touch",
+    "duration": "Instantaneous",
+    "subschool": "Healing",
+    "descriptor": [],
+    "description": "Heals 10 hit points per caster level (maximum 150) to an animal companion."
+  },
+  {
+    "name": "Hold Person",
+    "level": 3,
+    "school": "Enchantment",
+    "components": [
+      "V",
+      "S",
+      "F",
+      "DF"
+    ],
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "duration": "1 round/level",
+    "subschool": "Compulsion",
+    "descriptor": [
+      "Mind-Affecting"
+    ],
+    "description": "The subject becomes paralyzed and freezes in place. It is aware and breathes normally but cannot take any actions, even speech."
+  },
+  {
+    "name": "Inflict Serious Wounds",
+    "level": 3,
+    "school": "Necromancy",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Touch",
+    "duration": "Instantaneous",
+    "subschool": "",
+    "descriptor": [],
+    "description": "When laying your hand upon a creature, you channel negative energy that deals 3d8 points of damage +1 per caster level (maximum +15)."
+  },
+  {
+    "name": "Lightning Bolt",
+    "level": 3,
+    "school": "Evocation",
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
+    "range": "120 ft.",
+    "duration": "Instantaneous",
+    "subschool": "",
+    "descriptor": [
+      "Electricity"
+    ],
+    "description": "You release a powerful stroke of electrical energy that deals 1d6 points of electricity damage per caster level (maximum 10d6) to each creature within its area."
+  },
+  {
+    "name": "Phantom Steed",
+    "level": 3,
+    "school": "Conjuration",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "0 ft.",
+    "duration": "1 hour/level",
+    "subschool": "Creation",
+    "descriptor": [],
+    "description": "Magic horse appears for 1 hour/level."
+  },
+  {
+    "name": "Poison",
+    "level": 3,
+    "school": "Necromancy",
+    "components": [
+      "V",
+      "S",
+      "DF"
+    ],
+    "range": "Touch",
+    "duration": "Instantaneous",
+    "subschool": "",
+    "descriptor": [
+      "Poison"
+    ],
+    "description": "Touch attack deals 1d10 Constitution damage (Fortitude half), with the same secondary damage 1 round later."
+  },
+  {
+    "name": "Prayer",
+    "level": 3,
+    "school": "Enchantment",
+    "components": [
+      "V",
+      "S",
+      "DF"
+    ],
+    "range": "40 ft.",
+    "duration": "1 round/level",
+    "subschool": "Compulsion",
+    "descriptor": [
+      "Mind-Affecting"
+    ],
+    "description": "You bring special favor upon yourself and your allies while bringing discord to your enemies. Each round, all allies within the area receive a +1 luck bonus on attack rolls, weapon damage rolls, saves, and skill checks, while each enemy suffers a -1 penalty."
+  },
+  {
+    "name": "Quench",
+    "level": 3,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S",
+      "DF"
+    ],
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "duration": "Instantaneous",
+    "subschool": "",
+    "descriptor": [],
+    "description": "Extinguishes all nonmagical fires in a 20-ft. radius; deals 1d6/level (max 10d6) to fire creatures."
+  },
+  {
+    "name": "Remove Blindness/Deafness",
+    "level": 3,
+    "school": "Conjuration",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Touch",
+    "duration": "Instantaneous",
+    "subschool": "Healing",
+    "descriptor": [],
+    "description": "Remove blindness/deafness cures blindness or deafness (your choice), whether the effect is normal or magical in nature."
+  },
+  {
+    "name": "Remove Disease",
+    "level": 3,
+    "school": "Conjuration",
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
+    "range": "Touch",
+    "duration": "Instantaneous",
+    "subschool": "Healing",
+    "descriptor": [],
+    "description": "Cures all diseases affecting subject, including magical diseases."
+  },
+  {
+    "name": "Scrying",
+    "level": 3,
+    "school": "Divination",
+    "components": [
+      "V",
+      "S",
+      "M",
+      "F"
+    ],
+    "range": "See text",
+    "duration": "1 min./level",
+    "subschool": "Scrying",
+    "descriptor": [],
+    "description": "Spies on subject from a distance."
+  },
+  {
+    "name": "Sculpt Sound",
+    "level": 3,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "1 hour/level (D)",
+    "subschool": "",
+    "descriptor": [],
+    "description": "Creates new sounds or changes existing ones."
+  },
+  {
+    "name": "Searing Light",
+    "level": 3,
+    "school": "Evocation",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "duration": "Instantaneous",
+    "subschool": "",
+    "descriptor": [],
+    "description": "Focusing divine power like a ray of the sun, you project a blast of light from your open palm. You must succeed on a ranged touch attack to strike your target. A creature struck by this ray of light takes 1d8 points of damage per two caster levels (maximum 5d8)."
+  },
+  {
+    "name": "Slow",
+    "level": 3,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "1 round/level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "An affected creature moves and attacks at a drastically slowed rate. A slowed creature can take only a single move action or standard action each turn, but not both (nor may it take full-round actions)."
+  },
+  {
+    "name": "Speak with Dead",
+    "level": 3,
+    "school": "Necromancy",
+    "components": [
+      "V",
+      "S",
+      "DF"
+    ],
+    "range": "10 ft.",
+    "duration": "10 min./level",
+    "subschool": "",
+    "descriptor": [
+      "Language-Dependent"
+    ],
+    "description": "You grant the semblance of life and intelligence to a corpse, allowing it to answer several questions that you put to it. You may ask one question per two caster levels (maximum six questions)."
+  },
+  {
+    "name": "Spike Growth",
+    "level": 3,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S",
+      "DF"
+    ],
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "duration": "1 hour/level",
+    "subschool": "",
+    "descriptor": [
+      "Force"
+    ],
+    "description": "Spikes on the ground deal 1d4 damage per 5 ft. moved through and slow movement."
+  },
+  {
+    "name": "Vampiric Touch",
+    "level": 3,
+    "school": "Necromancy",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Touch",
+    "duration": "Instantaneous/1 hour",
+    "subschool": "",
+    "descriptor": [],
+    "description": "You must succeed on a melee touch attack. Your touch deals 1d6 points of damage per two caster levels (maximum 10d6). You gain temporary hit points equal to the damage you deal. You cannot gain more than the subject's current hit points +10, which is enough to kill the subject."
+  },
+  {
+    "name": "Water Breathing",
+    "level": 3,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
+    "range": "Touch",
+    "duration": "2 hours/level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "Touched subjects can breathe underwater."
+  }
+]

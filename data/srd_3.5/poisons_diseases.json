@@ -1,0 +1,154 @@
+{
+  "poisons": [
+    {
+      "name": "Arsenic",
+      "dc": 13,
+      "initial_effect": "1 CON",
+      "secondary_effect": "1d8 CON",
+      "initial_ability_dmg": {
+        "CON": 1
+      },
+      "secondary_ability_dmg": {
+        "CON": 1
+      },
+      "secondary_delay_minutes": 1,
+      "delivery": "Ingested",
+      "price_gp": 120
+    },
+    {
+      "name": "Black Adder Venom",
+      "dc": 11,
+      "initial_effect": "1d6 CON",
+      "secondary_effect": "1d6 CON",
+      "initial_ability_dmg": {
+        "CON": 1
+      },
+      "secondary_ability_dmg": {
+        "CON": 1
+      },
+      "secondary_delay_minutes": 1,
+      "delivery": "Injury",
+      "price_gp": 120
+    },
+    {
+      "name": "Large Scorpion Venom",
+      "dc": 18,
+      "initial_effect": "1d6 STR",
+      "secondary_effect": "1d6 STR",
+      "initial_ability_dmg": {
+        "STR": 1
+      },
+      "secondary_ability_dmg": {
+        "STR": 1
+      },
+      "secondary_delay_minutes": 1,
+      "delivery": "Injury",
+      "price_gp": 200
+    },
+    {
+      "name": "Oil of Taggit",
+      "dc": 15,
+      "initial_effect": "Unconscious",
+      "secondary_effect": "2d6 WIS",
+      "initial_ability_dmg": {},
+      "secondary_ability_dmg": {
+        "WIS": 2
+      },
+      "secondary_delay_minutes": 1,
+      "delivery": "Ingested",
+      "price_gp": 90
+    },
+    {
+      "name": "Sassone Leaf Residue",
+      "dc": 16,
+      "initial_effect": "2d12 HP",
+      "secondary_effect": "1d6 CON",
+      "initial_ability_dmg": {},
+      "secondary_ability_dmg": {
+        "CON": 1
+      },
+      "secondary_delay_minutes": 1,
+      "delivery": "Contact",
+      "price_gp": 300
+    },
+    {
+      "name": "Wyvern Poison",
+      "dc": 17,
+      "initial_effect": "2d6 CON",
+      "secondary_effect": "2d6 CON",
+      "initial_ability_dmg": {
+        "CON": 2
+      },
+      "secondary_ability_dmg": {
+        "CON": 2
+      },
+      "secondary_delay_minutes": 1,
+      "delivery": "Injury",
+      "price_gp": 3000
+    }
+  ],
+  "diseases": [
+    {
+      "name": "Blinding Sickness",
+      "dc": 16,
+      "incubation_days": 1,
+      "effect": "1d4 STR; cumulative 4+ STR damage causes blindness",
+      "ability_dmg": {
+        "STR": 1
+      },
+      "disease_type": "INJURY"
+    },
+    {
+      "name": "Cackle Fever",
+      "dc": 16,
+      "incubation_days": 1,
+      "effect": "1d6 WIS",
+      "ability_dmg": {
+        "WIS": 1
+      },
+      "disease_type": "INHALED"
+    },
+    {
+      "name": "Filth Fever",
+      "dc": 12,
+      "incubation_days": 1,
+      "effect": "1d3 DEX and CON",
+      "ability_dmg": {
+        "DEX": 1,
+        "CON": 1
+      },
+      "disease_type": "INJURY"
+    },
+    {
+      "name": "Mummy Rot",
+      "dc": 20,
+      "incubation_days": 1,
+      "effect": "1d6 CON and CHA",
+      "ability_dmg": {
+        "CON": 1,
+        "CHA": 1
+      },
+      "disease_type": "CONTACT"
+    },
+    {
+      "name": "Red Ache",
+      "dc": 15,
+      "incubation_days": 3,
+      "effect": "1d6 STR",
+      "ability_dmg": {
+        "STR": 1
+      },
+      "disease_type": "INJURY"
+    },
+    {
+      "name": "Shakes",
+      "dc": 13,
+      "incubation_days": 1,
+      "effect": "1d8 DEX",
+      "ability_dmg": {
+        "DEX": 1
+      },
+      "disease_type": "CONTACT"
+    }
+  ]
+}

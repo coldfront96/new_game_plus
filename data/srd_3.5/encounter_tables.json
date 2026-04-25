@@ -1,0 +1,634 @@
+{
+  "dungeon": [
+    {
+      "d100_low": 1,
+      "d100_high": 10,
+      "monster_name": "Dire Rat",
+      "number_appearing": "2d4",
+      "cr": 0.33
+    },
+    {
+      "d100_low": 11,
+      "d100_high": 20,
+      "monster_name": "Skeleton",
+      "number_appearing": "1d6+1",
+      "cr": 0.33
+    },
+    {
+      "d100_low": 21,
+      "d100_high": 30,
+      "monster_name": "Zombie",
+      "number_appearing": "1d4",
+      "cr": 0.5
+    },
+    {
+      "d100_low": 31,
+      "d100_high": 40,
+      "monster_name": "Goblin",
+      "number_appearing": "2d4",
+      "cr": 0.33
+    },
+    {
+      "d100_low": 41,
+      "d100_high": 50,
+      "monster_name": "Orc",
+      "number_appearing": "2d4",
+      "cr": 0.5
+    },
+    {
+      "d100_low": 51,
+      "d100_high": 60,
+      "monster_name": "Gnoll",
+      "number_appearing": "1d4",
+      "cr": 1.0
+    },
+    {
+      "d100_low": 61,
+      "d100_high": 68,
+      "monster_name": "Hobgoblin",
+      "number_appearing": "1d6",
+      "cr": 0.5
+    },
+    {
+      "d100_low": 69,
+      "d100_high": 76,
+      "monster_name": "Ghoul",
+      "number_appearing": "1d4",
+      "cr": 1.0
+    },
+    {
+      "d100_low": 77,
+      "d100_high": 84,
+      "monster_name": "Wight",
+      "number_appearing": "1d3",
+      "cr": 3.0
+    },
+    {
+      "d100_low": 85,
+      "d100_high": 92,
+      "monster_name": "Troll",
+      "number_appearing": "1",
+      "cr": 5.0
+    },
+    {
+      "d100_low": 93,
+      "d100_high": 100,
+      "monster_name": "Wraith",
+      "number_appearing": "1d2",
+      "cr": 5.0
+    }
+  ],
+  "forest": [
+    {
+      "d100_low": 1,
+      "d100_high": 10,
+      "monster_name": "Wolf",
+      "number_appearing": "2d4",
+      "cr": 1.0
+    },
+    {
+      "d100_low": 11,
+      "d100_high": 20,
+      "monster_name": "Dire Wolf",
+      "number_appearing": "1d4",
+      "cr": 3.0
+    },
+    {
+      "d100_low": 21,
+      "d100_high": 30,
+      "monster_name": "Bear, Black",
+      "number_appearing": "1",
+      "cr": 2.0
+    },
+    {
+      "d100_low": 31,
+      "d100_high": 40,
+      "monster_name": "Goblin",
+      "number_appearing": "2d4",
+      "cr": 0.33
+    },
+    {
+      "d100_low": 41,
+      "d100_high": 50,
+      "monster_name": "Orc",
+      "number_appearing": "2d4",
+      "cr": 0.5
+    },
+    {
+      "d100_low": 51,
+      "d100_high": 58,
+      "monster_name": "Centaur",
+      "number_appearing": "1d4",
+      "cr": 3.0
+    },
+    {
+      "d100_low": 59,
+      "d100_high": 66,
+      "monster_name": "Treant",
+      "number_appearing": "1",
+      "cr": 8.0
+    },
+    {
+      "d100_low": 67,
+      "d100_high": 74,
+      "monster_name": "Owlbear",
+      "number_appearing": "1",
+      "cr": 4.0
+    },
+    {
+      "d100_low": 75,
+      "d100_high": 82,
+      "monster_name": "Dryad",
+      "number_appearing": "1d2",
+      "cr": 3.0
+    },
+    {
+      "d100_low": 83,
+      "d100_high": 90,
+      "monster_name": "Giant Spider",
+      "number_appearing": "1d3",
+      "cr": 1.0
+    },
+    {
+      "d100_low": 91,
+      "d100_high": 100,
+      "monster_name": "Green Dragon, Young",
+      "number_appearing": "1",
+      "cr": 9.0
+    }
+  ],
+  "plains": [
+    {
+      "d100_low": 1,
+      "d100_high": 10,
+      "monster_name": "Orc",
+      "number_appearing": "2d6",
+      "cr": 0.5
+    },
+    {
+      "d100_low": 11,
+      "d100_high": 20,
+      "monster_name": "Gnoll",
+      "number_appearing": "1d6",
+      "cr": 1.0
+    },
+    {
+      "d100_low": 21,
+      "d100_high": 30,
+      "monster_name": "Centaur",
+      "number_appearing": "1d4",
+      "cr": 3.0
+    },
+    {
+      "d100_low": 31,
+      "d100_high": 40,
+      "monster_name": "Lion",
+      "number_appearing": "1d2",
+      "cr": 5.0
+    },
+    {
+      "d100_low": 41,
+      "d100_high": 50,
+      "monster_name": "Dire Lion",
+      "number_appearing": "1",
+      "cr": 5.0
+    },
+    {
+      "d100_low": 51,
+      "d100_high": 60,
+      "monster_name": "Griffon",
+      "number_appearing": "1d3",
+      "cr": 4.0
+    },
+    {
+      "d100_low": 61,
+      "d100_high": 68,
+      "monster_name": "Wyvern",
+      "number_appearing": "1",
+      "cr": 7.0
+    },
+    {
+      "d100_low": 69,
+      "d100_high": 76,
+      "monster_name": "Manticore",
+      "number_appearing": "1",
+      "cr": 5.0
+    },
+    {
+      "d100_low": 77,
+      "d100_high": 84,
+      "monster_name": "Hobgoblin",
+      "number_appearing": "2d4",
+      "cr": 0.5
+    },
+    {
+      "d100_low": 85,
+      "d100_high": 92,
+      "monster_name": "Chimera",
+      "number_appearing": "1",
+      "cr": 7.0
+    },
+    {
+      "d100_low": 93,
+      "d100_high": 100,
+      "monster_name": "Roc",
+      "number_appearing": "1",
+      "cr": 9.0
+    }
+  ],
+  "desert": [
+    {
+      "d100_low": 1,
+      "d100_high": 10,
+      "monster_name": "Giant Scorpion",
+      "number_appearing": "1d3",
+      "cr": 3.0
+    },
+    {
+      "d100_low": 11,
+      "d100_high": 20,
+      "monster_name": "Mummy",
+      "number_appearing": "1d4",
+      "cr": 5.0
+    },
+    {
+      "d100_low": 21,
+      "d100_high": 30,
+      "monster_name": "Blue Dragon, Young",
+      "number_appearing": "1",
+      "cr": 9.0
+    },
+    {
+      "d100_low": 31,
+      "d100_high": 40,
+      "monster_name": "Gnoll",
+      "number_appearing": "1d6",
+      "cr": 1.0
+    },
+    {
+      "d100_low": 41,
+      "d100_high": 50,
+      "monster_name": "Dust Mephit",
+      "number_appearing": "1d3",
+      "cr": 3.0
+    },
+    {
+      "d100_low": 51,
+      "d100_high": 60,
+      "monster_name": "Basilisk",
+      "number_appearing": "1",
+      "cr": 5.0
+    },
+    {
+      "d100_low": 61,
+      "d100_high": 68,
+      "monster_name": "Lamia",
+      "number_appearing": "1",
+      "cr": 6.0
+    },
+    {
+      "d100_low": 69,
+      "d100_high": 76,
+      "monster_name": "Giant Ant",
+      "number_appearing": "2d4",
+      "cr": 1.0
+    },
+    {
+      "d100_low": 77,
+      "d100_high": 84,
+      "monster_name": "Giant Viper",
+      "number_appearing": "1d3",
+      "cr": 2.0
+    },
+    {
+      "d100_low": 85,
+      "d100_high": 92,
+      "monster_name": "Fire Mephit",
+      "number_appearing": "1d3",
+      "cr": 3.0
+    },
+    {
+      "d100_low": 93,
+      "d100_high": 100,
+      "monster_name": "Sphinx, Androsphinx",
+      "number_appearing": "1",
+      "cr": 9.0
+    }
+  ],
+  "hills": [
+    {
+      "d100_low": 1,
+      "d100_high": 10,
+      "monster_name": "Orc",
+      "number_appearing": "2d4",
+      "cr": 0.5
+    },
+    {
+      "d100_low": 11,
+      "d100_high": 20,
+      "monster_name": "Ogre",
+      "number_appearing": "1d3",
+      "cr": 3.0
+    },
+    {
+      "d100_low": 21,
+      "d100_high": 30,
+      "monster_name": "Troll",
+      "number_appearing": "1d2",
+      "cr": 5.0
+    },
+    {
+      "d100_low": 31,
+      "d100_high": 40,
+      "monster_name": "Hill Giant",
+      "number_appearing": "1",
+      "cr": 7.0
+    },
+    {
+      "d100_low": 41,
+      "d100_high": 50,
+      "monster_name": "Griffon",
+      "number_appearing": "1d3",
+      "cr": 4.0
+    },
+    {
+      "d100_low": 51,
+      "d100_high": 60,
+      "monster_name": "Hippogriff",
+      "number_appearing": "1d4",
+      "cr": 2.0
+    },
+    {
+      "d100_low": 61,
+      "d100_high": 68,
+      "monster_name": "Manticore",
+      "number_appearing": "1",
+      "cr": 5.0
+    },
+    {
+      "d100_low": 69,
+      "d100_high": 76,
+      "monster_name": "Ettin",
+      "number_appearing": "1",
+      "cr": 6.0
+    },
+    {
+      "d100_low": 77,
+      "d100_high": 84,
+      "monster_name": "Wyvern",
+      "number_appearing": "1",
+      "cr": 7.0
+    },
+    {
+      "d100_low": 85,
+      "d100_high": 92,
+      "monster_name": "Kobold",
+      "number_appearing": "2d6",
+      "cr": 0.25
+    },
+    {
+      "d100_low": 93,
+      "d100_high": 100,
+      "monster_name": "Bulette",
+      "number_appearing": "1",
+      "cr": 7.0
+    }
+  ],
+  "mountains": [
+    {
+      "d100_low": 1,
+      "d100_high": 10,
+      "monster_name": "Giant Eagle",
+      "number_appearing": "1d3",
+      "cr": 3.0
+    },
+    {
+      "d100_low": 11,
+      "d100_high": 20,
+      "monster_name": "Cloud Giant",
+      "number_appearing": "1",
+      "cr": 11.0
+    },
+    {
+      "d100_low": 21,
+      "d100_high": 30,
+      "monster_name": "Stone Giant",
+      "number_appearing": "1d2",
+      "cr": 8.0
+    },
+    {
+      "d100_low": 31,
+      "d100_high": 40,
+      "monster_name": "Red Dragon, Young",
+      "number_appearing": "1",
+      "cr": 10.0
+    },
+    {
+      "d100_low": 41,
+      "d100_high": 50,
+      "monster_name": "Roc",
+      "number_appearing": "1",
+      "cr": 9.0
+    },
+    {
+      "d100_low": 51,
+      "d100_high": 60,
+      "monster_name": "Wyvern",
+      "number_appearing": "1d2",
+      "cr": 7.0
+    },
+    {
+      "d100_low": 61,
+      "d100_high": 68,
+      "monster_name": "Frost Giant",
+      "number_appearing": "1",
+      "cr": 9.0
+    },
+    {
+      "d100_low": 69,
+      "d100_high": 76,
+      "monster_name": "Manticore",
+      "number_appearing": "1",
+      "cr": 5.0
+    },
+    {
+      "d100_low": 77,
+      "d100_high": 84,
+      "monster_name": "Troll",
+      "number_appearing": "1d3",
+      "cr": 5.0
+    },
+    {
+      "d100_low": 85,
+      "d100_high": 92,
+      "monster_name": "Chimera",
+      "number_appearing": "1",
+      "cr": 7.0
+    },
+    {
+      "d100_low": 93,
+      "d100_high": 100,
+      "monster_name": "Harpy",
+      "number_appearing": "1d4",
+      "cr": 4.0
+    }
+  ],
+  "marsh": [
+    {
+      "d100_low": 1,
+      "d100_high": 10,
+      "monster_name": "Crocodile",
+      "number_appearing": "1d3",
+      "cr": 2.0
+    },
+    {
+      "d100_low": 11,
+      "d100_high": 20,
+      "monster_name": "Giant Crocodile",
+      "number_appearing": "1",
+      "cr": 4.0
+    },
+    {
+      "d100_low": 21,
+      "d100_high": 30,
+      "monster_name": "Will-o'-Wisp",
+      "number_appearing": "1",
+      "cr": 6.0
+    },
+    {
+      "d100_low": 31,
+      "d100_high": 40,
+      "monster_name": "Hag, Sea Hag",
+      "number_appearing": "1",
+      "cr": 4.0
+    },
+    {
+      "d100_low": 41,
+      "d100_high": 50,
+      "monster_name": "Black Dragon, Young",
+      "number_appearing": "1",
+      "cr": 7.0
+    },
+    {
+      "d100_low": 51,
+      "d100_high": 60,
+      "monster_name": "Lizardfolk",
+      "number_appearing": "2d6",
+      "cr": 1.0
+    },
+    {
+      "d100_low": 61,
+      "d100_high": 68,
+      "monster_name": "Giant Frog",
+      "number_appearing": "1d4",
+      "cr": 1.0
+    },
+    {
+      "d100_low": 69,
+      "d100_high": 76,
+      "monster_name": "Bullywug",
+      "number_appearing": "2d4",
+      "cr": 0.5
+    },
+    {
+      "d100_low": 77,
+      "d100_high": 84,
+      "monster_name": "Hydra",
+      "number_appearing": "1",
+      "cr": 7.0
+    },
+    {
+      "d100_low": 85,
+      "d100_high": 92,
+      "monster_name": "Troll",
+      "number_appearing": "1d2",
+      "cr": 5.0
+    },
+    {
+      "d100_low": 93,
+      "d100_high": 100,
+      "monster_name": "Green Hag",
+      "number_appearing": "1",
+      "cr": 5.0
+    }
+  ],
+  "arctic": [
+    {
+      "d100_low": 1,
+      "d100_high": 10,
+      "monster_name": "Dire Wolf",
+      "number_appearing": "1d4",
+      "cr": 3.0
+    },
+    {
+      "d100_low": 11,
+      "d100_high": 20,
+      "monster_name": "Polar Bear",
+      "number_appearing": "1d2",
+      "cr": 4.0
+    },
+    {
+      "d100_low": 21,
+      "d100_high": 30,
+      "monster_name": "Winter Wolf",
+      "number_appearing": "1d4",
+      "cr": 5.0
+    },
+    {
+      "d100_low": 31,
+      "d100_high": 40,
+      "monster_name": "White Dragon, Young",
+      "number_appearing": "1",
+      "cr": 8.0
+    },
+    {
+      "d100_low": 41,
+      "d100_high": 50,
+      "monster_name": "Frost Giant",
+      "number_appearing": "1",
+      "cr": 9.0
+    },
+    {
+      "d100_low": 51,
+      "d100_high": 60,
+      "monster_name": "Ice Mephit",
+      "number_appearing": "1d4",
+      "cr": 3.0
+    },
+    {
+      "d100_low": 61,
+      "d100_high": 68,
+      "monster_name": "Remorhaz",
+      "number_appearing": "1",
+      "cr": 7.0
+    },
+    {
+      "d100_low": 69,
+      "d100_high": 76,
+      "monster_name": "Troll",
+      "number_appearing": "1d2",
+      "cr": 5.0
+    },
+    {
+      "d100_low": 77,
+      "d100_high": 84,
+      "monster_name": "Yeti",
+      "number_appearing": "1d2",
+      "cr": 3.0
+    },
+    {
+      "d100_low": 85,
+      "d100_high": 92,
+      "monster_name": "Snow Leopard",
+      "number_appearing": "1d3",
+      "cr": 2.0
+    },
+    {
+      "d100_low": 93,
+      "d100_high": 100,
+      "monster_name": "Mammoth",
+      "number_appearing": "1d3",
+      "cr": 8.0
+    }
+  ]
+}

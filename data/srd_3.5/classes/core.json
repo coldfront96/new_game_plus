@@ -1,0 +1,96 @@
+[
+  {
+    "name": "Barbarian",
+    "hit_die": 12,
+    "bab_progression": "full",
+    "good_saves": [
+      "fortitude"
+    ]
+  },
+  {
+    "name": "Bard",
+    "hit_die": 6,
+    "bab_progression": "three_quarter",
+    "good_saves": [
+      "reflex",
+      "will"
+    ]
+  },
+  {
+    "name": "Cleric",
+    "hit_die": 8,
+    "bab_progression": "three_quarter",
+    "good_saves": [
+      "fortitude",
+      "will"
+    ]
+  },
+  {
+    "name": "Druid",
+    "hit_die": 8,
+    "bab_progression": "three_quarter",
+    "good_saves": [
+      "fortitude",
+      "will"
+    ]
+  },
+  {
+    "name": "Fighter",
+    "hit_die": 10,
+    "bab_progression": "full",
+    "good_saves": [
+      "fortitude"
+    ]
+  },
+  {
+    "name": "Monk",
+    "hit_die": 8,
+    "bab_progression": "three_quarter",
+    "good_saves": [
+      "fortitude",
+      "reflex",
+      "will"
+    ]
+  },
+  {
+    "name": "Paladin",
+    "hit_die": 10,
+    "bab_progression": "full",
+    "good_saves": [
+      "fortitude"
+    ]
+  },
+  {
+    "name": "Ranger",
+    "hit_die": 8,
+    "bab_progression": "full",
+    "good_saves": [
+      "fortitude",
+      "reflex"
+    ]
+  },
+  {
+    "name": "Rogue",
+    "hit_die": 6,
+    "bab_progression": "three_quarter",
+    "good_saves": [
+      "reflex"
+    ]
+  },
+  {
+    "name": "Sorcerer",
+    "hit_die": 4,
+    "bab_progression": "half",
+    "good_saves": [
+      "will"
+    ]
+  },
+  {
+    "name": "Wizard",
+    "hit_die": 4,
+    "bab_progression": "half",
+    "good_saves": [
+      "will"
+    ]
+  }
+]

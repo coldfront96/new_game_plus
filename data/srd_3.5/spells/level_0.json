@@ -1,0 +1,389 @@
+[
+  {
+    "name": "Acid Splash",
+    "level": 0,
+    "school": "Conjuration",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "Instantaneous",
+    "subschool": "Creation",
+    "descriptor": [
+      "Acid"
+    ],
+    "description": "You fire a small orb of acid at the target. You must succeed on a ranged touch attack to hit your target. The orb deals 1d3 points of acid damage."
+  },
+  {
+    "name": "Create Water",
+    "level": 0,
+    "school": "Conjuration",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "Instantaneous",
+    "subschool": "Creation",
+    "descriptor": [
+      "Water"
+    ],
+    "description": "This spell generates wholesome, drinkable water, just like clean rain water. Water can be created in an area as small as will actually contain the liquid, or in an area three times as large (up to 2 gallons/level)."
+  },
+  {
+    "name": "Cure Minor Wounds",
+    "level": 0,
+    "school": "Conjuration",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Touch",
+    "duration": "Instantaneous",
+    "subschool": "Healing",
+    "descriptor": [],
+    "description": "Cures 1 point of damage."
+  },
+  {
+    "name": "Dancing Lights",
+    "level": 0,
+    "school": "Evocation",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "duration": "1 minute (D)",
+    "subschool": "",
+    "descriptor": [
+      "Light"
+    ],
+    "description": "Creates up to four lights resembling torches, lanterns, or glowing orbs."
+  },
+  {
+    "name": "Daze",
+    "level": 0,
+    "school": "Enchantment",
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "1 round",
+    "subschool": "Compulsion",
+    "descriptor": [
+      "Mind-Affecting"
+    ],
+    "description": "This enchantment clouds the mind of a humanoid creature with 4 or fewer Hit Dice, causing it to become dazed."
+  },
+  {
+    "name": "Detect Animals or Plants",
+    "level": 0,
+    "school": "Divination",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "60 ft. cone",
+    "duration": "Concentration, up to 10 min./level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "Detects kinds of animals or plants within a 60-ft. cone."
+  },
+  {
+    "name": "Detect Magic",
+    "level": 0,
+    "school": "Divination",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "Concentration, up to 1 min./level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "You detect magical auras. The amount of information revealed depends on how long you study a particular area or subject."
+  },
+  {
+    "name": "Detect Undead",
+    "level": 0,
+    "school": "Divination",
+    "components": [
+      "V",
+      "S",
+      "M",
+      "DF"
+    ],
+    "range": "60 ft.",
+    "duration": "Concentration, up to 1 min./level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "You can detect the aura that surrounds undead creatures. The amount of information revealed depends on how long you study a particular area or subject."
+  },
+  {
+    "name": "Flare",
+    "level": 0,
+    "school": "Evocation",
+    "components": [
+      "V"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "Instantaneous",
+    "subschool": "",
+    "descriptor": [
+      "Fire"
+    ],
+    "description": "Dazzles one creature, imposing a -1 penalty on attack rolls for 1 minute (Fortitude negates)."
+  },
+  {
+    "name": "Ghost Sound",
+    "level": 0,
+    "school": "Illusion",
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "1 round/level",
+    "subschool": "Figment",
+    "descriptor": [],
+    "description": "Ghost sound allows you to create a volume of sound that rises, recedes, approaches, or remains at a fixed place. You choose what type of sound ghost sound creates when casting it."
+  },
+  {
+    "name": "Guidance",
+    "level": 0,
+    "school": "Divination",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Touch",
+    "duration": "1 minute or until discharged",
+    "subschool": "",
+    "descriptor": [],
+    "description": "This spell imbues the subject with a touch of divine guidance. The creature gets a +1 competence bonus on a single attack roll, saving throw, or skill check."
+  },
+  {
+    "name": "Inflict Minor Wounds",
+    "level": 0,
+    "school": "Necromancy",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Touch",
+    "duration": "Instantaneous",
+    "subschool": "",
+    "descriptor": [],
+    "description": "When laying your hand upon a creature, you channel negative energy that deals 1 point of damage. Since undead are powered by negative energy, this spell cures such a creature of 1 point of damage."
+  },
+  {
+    "name": "Know Direction",
+    "level": 0,
+    "school": "Divination",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Personal",
+    "duration": "Instantaneous",
+    "subschool": "",
+    "descriptor": [],
+    "description": "You instantly know which direction is north."
+  },
+  {
+    "name": "Light",
+    "level": 0,
+    "school": "Evocation",
+    "components": [
+      "V",
+      "M"
+    ],
+    "range": "Touch",
+    "duration": "10 min./level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "This spell causes a touched object to glow like a torch, shedding bright light in a 20-foot radius and dim light for an additional 20 feet."
+  },
+  {
+    "name": "Lullaby",
+    "level": 0,
+    "school": "Enchantment",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "duration": "Concentration + 1 round/level",
+    "subschool": "Compulsion",
+    "descriptor": [
+      "Mind-Affecting"
+    ],
+    "description": "Makes subject drowsy; -5 on Listen checks, -2 on Will saves vs sleep."
+  },
+  {
+    "name": "Mage Hand",
+    "level": 0,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "Concentration",
+    "subschool": "",
+    "descriptor": [],
+    "description": "You point your finger at an object and can lift it and move it at will from a distance. The object can weigh no more than 5 pounds."
+  },
+  {
+    "name": "Mending",
+    "level": 0,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "10 ft.",
+    "duration": "Instantaneous",
+    "subschool": "",
+    "descriptor": [],
+    "description": "Repairs 1d4 hit points of damage to an object."
+  },
+  {
+    "name": "Message",
+    "level": 0,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S",
+      "F"
+    ],
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "duration": "10 min./level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "Whisper messages to designated creatures."
+  },
+  {
+    "name": "Open/Close",
+    "level": 0,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S",
+      "F"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "Instantaneous",
+    "subschool": "",
+    "descriptor": [],
+    "description": "Opens or closes small or light things."
+  },
+  {
+    "name": "Purify Food and Drink",
+    "level": 0,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "10 ft.",
+    "duration": "Instantaneous",
+    "subschool": "",
+    "descriptor": [],
+    "description": "This spell makes spoiled, rotten, diseased, or otherwise contaminated food and water pure and suitable for eating and drinking."
+  },
+  {
+    "name": "Ray of Frost",
+    "level": 0,
+    "school": "Evocation",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "Instantaneous",
+    "subschool": "",
+    "descriptor": [
+      "Cold"
+    ],
+    "description": "A ray of freezing air and ice projects from your pointing finger. You must succeed on a ranged touch attack with the ray to deal 1d3 points of cold damage."
+  },
+  {
+    "name": "Read Magic",
+    "level": 0,
+    "school": "Divination",
+    "components": [
+      "V",
+      "S",
+      "F"
+    ],
+    "range": "Personal",
+    "duration": "10 min./level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "By means of read magic, you can decipher magical inscriptions on objects\u2014books, scrolls, weapons, and the like\u2014that would otherwise be unintelligible."
+  },
+  {
+    "name": "Resistance",
+    "level": 0,
+    "school": "Abjuration",
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
+    "range": "Touch",
+    "duration": "1 minute",
+    "subschool": "",
+    "descriptor": [],
+    "description": "You imbue the subject with magical energy that protects it from harm, granting it a +1 resistance bonus on saves."
+  },
+  {
+    "name": "Shillelagh",
+    "level": 0,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S",
+      "DF"
+    ],
+    "range": "Touch",
+    "duration": "1 min./level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "Your club or quarterstaff becomes +1 magical and deals 2d6 damage."
+  },
+  {
+    "name": "Summon Instrument",
+    "level": 0,
+    "school": "Conjuration",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "0 ft.",
+    "duration": "1 min./level (D)",
+    "subschool": "Summoning",
+    "descriptor": [],
+    "description": "Summons a musical instrument to the caster's hands."
+  },
+  {
+    "name": "Virtue",
+    "level": 0,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S",
+      "DF"
+    ],
+    "range": "Touch",
+    "duration": "1 minute",
+    "subschool": "",
+    "descriptor": [],
+    "description": "The subject gains 1 temporary hit point."
+  }
+]
