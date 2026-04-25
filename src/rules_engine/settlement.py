@@ -131,8 +131,8 @@ DEMOGRAPHICS_TABLE: dict[CommunitySize, DemographicsRow] = {
     ),
     CommunitySize.LargeTown: DemographicsRow(
         community_size=CommunitySize.LargeTown,
-        gp_limit=3000,
-        total_assets_factor=3000 / 2 / 10,
+        gp_limit=3_000,
+        total_assets_factor=3_000 / 2 / 10,
         highest_pc_class_level_max=9,
         highest_npc_class_level_max=7,
     ),
