@@ -1,0 +1,142 @@
+[
+  {
+    "name": "Clone",
+    "level": 8,
+    "school": "Necromancy",
+    "components": [
+      "V",
+      "S",
+      "M",
+      "F"
+    ],
+    "range": "Touch",
+    "duration": "Instantaneous",
+    "subschool": "",
+    "descriptor": [],
+    "description": "This spell makes an inert duplicate of a creature. If the original individual has been slain, its soul immediately transfers to the clone."
+  },
+  {
+    "name": "Earthquake",
+    "level": 8,
+    "school": "Evocation",
+    "components": [
+      "V",
+      "S",
+      "DF"
+    ],
+    "range": "Long (400 ft. + 40 ft./level)",
+    "duration": "1 round",
+    "subschool": "",
+    "descriptor": [
+      "Earth"
+    ],
+    "description": "Seismic disturbance in an 80-ft. radius collapses structures and opens fissures for 1 round."
+  },
+  {
+    "name": "Greater Prying Eyes",
+    "level": 8,
+    "school": "Divination",
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
+    "range": "One mile",
+    "duration": "1 hour/level",
+    "subschool": "Scrying",
+    "descriptor": [],
+    "description": "This spell functions like prying eyes, except that the eyes can see everything as if they had true seeing."
+  },
+  {
+    "name": "Maze",
+    "level": 8,
+    "school": "Conjuration",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "See text",
+    "subschool": "Teleportation",
+    "descriptor": [],
+    "description": "You banish the subject into an extradimensional labyrinth. Each round on its turn, it may attempt to escape the labyrinth by making a DC 20 Intelligence check."
+  },
+  {
+    "name": "Mind Blank",
+    "level": 8,
+    "school": "Abjuration",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "24 hours",
+    "subschool": "",
+    "descriptor": [],
+    "description": "The subject is protected from all devices and spells that gather information about the target through divination magic, and is immune to all mind-affecting spells and effects."
+  },
+  {
+    "name": "Polar Ray",
+    "level": 8,
+    "school": "Evocation",
+    "components": [
+      "V",
+      "S",
+      "F"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "Instantaneous",
+    "subschool": "",
+    "descriptor": [
+      "Cold"
+    ],
+    "description": "A blue-white ray of freezing air and ice springs from your hand. You must succeed on a ranged touch attack with the ray to deal 1d6 points of cold damage per caster level (maximum 25d6) and 2d4 points of Dexterity drain."
+  },
+  {
+    "name": "Power Word Stun",
+    "level": 8,
+    "school": "Enchantment",
+    "components": [
+      "V"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "See text",
+    "subschool": "Compulsion",
+    "descriptor": [
+      "Mind-Affecting"
+    ],
+    "description": "You utter a single word of power that causes one creature of your choice to become stunned, whether or not it can hear the word."
+  },
+  {
+    "name": "Prismatic Wall",
+    "level": 8,
+    "school": "Abjuration",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "10 min./level (D)",
+    "subschool": "",
+    "descriptor": [],
+    "description": "Prismatic wall creates a vertical, opaque wall\u2014a shimmering, multicolored plane of light that protects you from all forms of attack."
+  },
+  {
+    "name": "Sunburst",
+    "level": 8,
+    "school": "Evocation",
+    "components": [
+      "V",
+      "S",
+      "M",
+      "DF"
+    ],
+    "range": "Long (400 ft. + 40 ft./level)",
+    "duration": "Instantaneous",
+    "subschool": "",
+    "descriptor": [
+      "Light"
+    ],
+    "description": "Sunburst causes a globe of searing radiance to explode silently from a point you select. All creatures in the globe are blinded and take 6d6 points of damage. Undead creatures take 1d6 points of damage per caster level (maximum 25d6)."
+  }
+]

@@ -1,0 +1,372 @@
+"""
+src/game/session.py
+-------------------
+High-level play session — wires the :class:`~src.game.turn_controller.TurnController`
+into the existing combat resolver and prints a running narrative.
+
+Design (Task 5)
+~~~~~~~~~~~~~~~
+* Build monster stat blocks from a blueprint returned by
+  :func:`~src.rules_engine.encounter_extended.build_encounter`.
+* Create a ``current_hp`` entry in each combatant's ``metadata`` so we can
+  track death without mutating the derived :attr:`Character35e.hit_points`
+  property.
+* Attach an :class:`~src.core.event_bus.EventBus` so combat publishes
+  ``attack_resolved`` / ``combatant_defeated`` events that the CLI
+  subscribes to for narration.
+* On each turn, the default AI simply full-attacks the nearest living
+  opposing combatant (this is a *playability* milestone, not a tactical
+  AI milestone).
+* Exit the loop when one side is wiped, the combatant list flees, or the
+  safety cap on rounds is reached.
+"""
+
+from __future__ import annotations
+
+import random
+import sys
+from dataclasses import dataclass, field
+from typing import Callable, Dict, List, Optional, Sequence, TextIO, Tuple
+
+from src.core.event_bus import EventBus
+from src.game.turn_controller import TurnController
+from src.rules_engine.actions import ActionTracker, ActionType
+from src.rules_engine.character_35e import Alignment, Character35e, Size
+from src.rules_engine.combat import AttackResolver, CombatResult
+from src.rules_engine.conditions import ConditionManager
+from src.rules_engine.encounter import distribute_xp
+from src.rules_engine.encounter_extended import (
+    EncounterBlueprint,
+    EncounterDifficulty,
+    build_encounter,
+)
+from src.rules_engine.progression import XPManager
+from src.rules_engine.treasure import (
+    TreasureHoard,
+    generate_treasure_hoard,
+    _cr_to_treasure_letter,
+)
+
+
+# ---------------------------------------------------------------------------
+# Combatant bookkeeping
+# ---------------------------------------------------------------------------
+
+HP_KEY = "current_hp"
+SIDE_KEY = "side"          # "party" or "enemy"
+DEAD_KEY = "dead"
+
+
+def _ensure_hp(character: Character35e) -> None:
+    """Ensure ``metadata['current_hp']`` is initialised to max HP."""
+    if HP_KEY not in character.metadata:
+        character.metadata[HP_KEY] = character.hit_points
+    character.metadata.setdefault(DEAD_KEY, False)
+
+
+def current_hp(character: Character35e) -> int:
+    """Return the combatant's current hit points (initialises if missing)."""
+    _ensure_hp(character)
+    return int(character.metadata[HP_KEY])
+
+
+def apply_damage(character: Character35e, amount: int) -> int:
+    """Reduce *character*'s ``current_hp`` by *amount* (floored at −10).
+
+    Returns the remaining hit points.
+    """
+    _ensure_hp(character)
+    new_hp = int(character.metadata[HP_KEY]) - max(0, amount)
+    new_hp = max(-10, new_hp)
+    character.metadata[HP_KEY] = new_hp
+    if new_hp <= 0:
+        character.metadata[DEAD_KEY] = True
+    return new_hp
+
+
+def is_alive(character: Character35e) -> bool:
+    """Return ``True`` if *character* is still combat-capable."""
+    _ensure_hp(character)
+    return current_hp(character) > 0 and not character.metadata.get(DEAD_KEY, False)
+
+
+# ---------------------------------------------------------------------------
+# Monster factory
+# ---------------------------------------------------------------------------
+
+def build_monsters_from_blueprint(
+    blueprint: EncounterBlueprint,
+) -> List[Character35e]:
+    """Instantiate simple :class:`Character35e` stand-ins for the blueprint.
+
+    The encounter system exposes monsters as ``(name, count, cr)`` triples;
+    we need them as combatant objects.  We approximate each monster with a
+    Fighter-class NPC whose level is ``max(1, int(cr))`` so the existing
+    combat resolver can work on them.  This is a playability seed — the
+    Monster Manual import (separate milestone) will replace it with SRD
+    stat blocks.
+    """
+    monsters: List[Character35e] = []
+    for name, count, cr in blueprint.monsters:
+        level = max(1, int(round(cr)))
+        for idx in range(count):
+            mon = Character35e(
+                name=f"{name} #{idx + 1}" if count > 1 else name,
+                char_class="Fighter",
+                level=level,
+                race="Human",
+                alignment=Alignment.CHAOTIC_EVIL,
+                size=Size.MEDIUM,
+                strength=12 + min(4, level),
+                dexterity=12,
+                constitution=12 + min(4, level),
+                intelligence=8,
+                wisdom=10,
+                charisma=8,
+            )
+            mon.metadata[SIDE_KEY] = "enemy"
+            mon.metadata["cr"] = cr
+            monsters.append(mon)
+    return monsters
+
+
+# ---------------------------------------------------------------------------
+# Session report
+# ---------------------------------------------------------------------------
+
+@dataclass
+class SessionReport:
+    """Outcome of a single play session.
+
+    Attributes:
+        outcome:           ``"victory"``, ``"defeat"``, or ``"stalemate"``.
+        rounds:            Number of combat rounds that elapsed.
+        blueprint:         The encounter blueprint used.
+        xp_awarded:        Mapping ``char_id → XP`` awarded.
+        treasure:          Generated :class:`TreasureHoard` (empty on defeat).
+        survivors:         List of still-alive party members at end of combat.
+        casualties:        List of defeated party members.
+        log:               Chronological list of human-readable log lines.
+    """
+
+    outcome: str
+    rounds: int
+    blueprint: EncounterBlueprint
+    xp_awarded: Dict[str, int] = field(default_factory=dict)
+    treasure: Optional[TreasureHoard] = None
+    survivors: List[Character35e] = field(default_factory=list)
+    casualties: List[Character35e] = field(default_factory=list)
+    log: List[str] = field(default_factory=list)
+
+
+# ---------------------------------------------------------------------------
+# Default target selection + attack action
+# ---------------------------------------------------------------------------
+
+def _pick_target(
+    attacker: Character35e,
+    combatants: Sequence[Character35e],
+) -> Optional[Character35e]:
+    """Pick the first living opposite-side combatant as the target."""
+    attacker_side = attacker.metadata.get(SIDE_KEY, "party")
+    for c in combatants:
+        if c is attacker:
+            continue
+        if not is_alive(c):
+            continue
+        if c.metadata.get(SIDE_KEY) != attacker_side:
+            return c
+    return None
+
+
+def _weapon_damage_dice(character: Character35e) -> Tuple[int, int]:
+    """Return ``(count, sides)`` for this character's main-hand weapon.
+
+    Falls back to unarmed (handled by :class:`AttackResolver` → 1d3) when
+    no :class:`EquipmentManager` is attached.
+    """
+    if character.equipment_manager is not None:
+        count, sides = character.equipment_manager.get_weapon_damage_dice()
+        if count > 0 and sides > 0:
+            return count, sides
+    return 0, 0
+
+
+# ---------------------------------------------------------------------------
+# play_session — the end-to-end glue
+# ---------------------------------------------------------------------------
+
+def play_session(
+    party: Sequence[Character35e],
+    *,
+    apl: int,
+    terrain: str,
+    difficulty: str = "average",
+    rng: Optional[random.Random] = None,
+    max_rounds: int = 20,
+    stdout: Optional[TextIO] = None,
+    blueprint: Optional[EncounterBlueprint] = None,
+) -> SessionReport:
+    """Run a full party-vs-encounter session.
+
+    Args:
+        party:       Pre-built list of player :class:`Character35e`.
+        apl:         Average party level.
+        terrain:     Terrain key (e.g. ``"dungeon"``).
+        difficulty:  One of ``easy|average|challenging|hard|overwhelming``.
+        rng:         RNG for determinism.
+        max_rounds:  Hard cap on rounds to prevent infinite loops.
+        stdout:      Optional output stream for narration (defaults to
+                     :data:`sys.stdout`).  Pass ``None`` → stdout; pass
+                     ``open(os.devnull, "w")`` to silence.
+        blueprint:   Optionally pre-computed encounter blueprint; when
+                     ``None`` one is built from the APL/terrain inputs.
+
+    Returns:
+        A :class:`SessionReport`.
+    """
+    out = stdout if stdout is not None else sys.stdout
+    rng = rng or random.Random()
+
+    if blueprint is None:
+        blueprint = build_encounter(
+            apl, EncounterDifficulty(difficulty), terrain, rng
+        )
+
+    monsters = build_monsters_from_blueprint(blueprint)
+    for pc in party:
+        _ensure_hp(pc)
+        pc.metadata.setdefault(SIDE_KEY, "party")
+    for m in monsters:
+        _ensure_hp(m)
+
+    combatants: List[Character35e] = list(party) + list(monsters)
+
+    event_bus = EventBus()
+    conditions = ConditionManager(event_bus=event_bus)
+    log: List[str] = []
+
+    def _log(msg: str) -> None:
+        log.append(msg)
+        print(msg, file=out)
+
+    def _on_turn_start(payload):
+        _log(
+            f"  -- {payload['name']} (round {payload['round']}, "
+            f"init {payload['initiative']}) --"
+        )
+
+    event_bus.subscribe("turn_started", _on_turn_start)
+
+    controller = TurnController.from_combatants(
+        combatants,
+        rng=rng,
+        condition_manager=conditions,
+        event_bus=event_bus,
+    )
+
+    _log("=" * 60)
+    _log(f"Encounter EL {blueprint.actual_el} — {difficulty} @ {terrain}")
+    for name, count, cr in blueprint.monsters:
+        _log(f"  • {count}× {name} (CR {cr})")
+    _log("Initiative order:")
+    for entry in controller.order:
+        side = entry.combatant.metadata.get(SIDE_KEY, "?")
+        _log(
+            f"  {entry.initiative:>3}  {entry.combatant.name} ({side}, "
+            f"{entry.combatant.char_class} L{entry.combatant.level})"
+        )
+    _log("=" * 60)
+
+    def _attack_action(
+        attacker: Character35e, tracker: ActionTracker
+    ) -> bool:
+        if not is_alive(attacker):
+            return False
+        target = _pick_target(attacker, combatants)
+        if target is None:
+            return True  # nothing to fight — end the round early
+        if not tracker.has_action(ActionType.STANDARD):
+            return False
+        tracker.consume_action(ActionType.STANDARD)
+        dice_count, dice_sides = _weapon_damage_dice(attacker)
+        result = AttackResolver.resolve_attack(
+            attacker,
+            target,
+            damage_dice_count=dice_count,
+            damage_dice_sides=dice_sides,
+        )
+        event_bus.publish("attack_resolved", {
+            "attacker": attacker.char_id,
+            "defender": target.char_id,
+            "hit": result.hit,
+            "damage": result.total_damage,
+            "critical": result.critical,
+        })
+        if result.hit:
+            remaining = apply_damage(target, result.total_damage)
+            crit = " (CRITICAL!)" if result.critical else ""
+            _log(
+                f"    {attacker.name} hits {target.name} for "
+                f"{result.total_damage} damage{crit}  [{target.name} HP: "
+                f"{remaining}]"
+            )
+            if remaining <= 0:
+                _log(f"    {target.name} is defeated!")
+                event_bus.publish("combatant_defeated", {
+                    "char_id": target.char_id,
+                    "name": target.name,
+                })
+        else:
+            _log(
+                f"    {attacker.name} misses {target.name} "
+                f"(rolled {result.roll.total} vs AC {result.target_ac})"
+            )
+        return False
+
+    # --- Main combat loop -------------------------------------------------
+    outcome = "stalemate"
+    for _ in range(max_rounds):
+        controller.run_round(_attack_action)
+        party_alive = any(is_alive(c) for c in party)
+        enemies_alive = any(is_alive(m) for m in monsters)
+        if not enemies_alive and party_alive:
+            outcome = "victory"
+            break
+        if not party_alive:
+            outcome = "defeat"
+            break
+        if not enemies_alive and not party_alive:
+            outcome = "mutual"
+            break
+
+    # --- XP + treasure ----------------------------------------------------
+    xp_awarded: Dict[str, int] = {}
+    treasure: Optional[TreasureHoard] = None
+    if outcome == "victory":
+        awards = distribute_xp(
+            blueprint.actual_el,
+            [c.level for c in party],
+        )
+        for idx, pc in enumerate(party):
+            xp_awarded[pc.char_id] = awards.get(idx, 0)
+            _log(f"  XP awarded to {pc.name}: {awards.get(idx, 0)}")
+        treasure = generate_treasure_hoard(blueprint.actual_el, rng=rng)
+        _log(
+            f"  Treasure (type {_cr_to_treasure_letter(blueprint.actual_el)}):"
+            f" {treasure.total_value_gp:.0f} gp value"
+        )
+
+    survivors = [c for c in party if is_alive(c)]
+    casualties = [c for c in party if not is_alive(c)]
+
+    return SessionReport(
+        outcome=outcome,
+        rounds=controller.round_counter,
+        blueprint=blueprint,
+        xp_awarded=xp_awarded,
+        treasure=treasure,
+        survivors=survivors,
+        casualties=casualties,
+        log=log,
+    )

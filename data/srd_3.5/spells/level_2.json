@@ -1,0 +1,563 @@
+[
+  {
+    "name": "Aid",
+    "level": 2,
+    "school": "Enchantment",
+    "components": [
+      "V",
+      "S",
+      "DF"
+    ],
+    "range": "Touch",
+    "duration": "1 min./level",
+    "subschool": "Compulsion",
+    "descriptor": [
+      "Mind-Affecting"
+    ],
+    "description": "Aid grants the target a +1 morale bonus on attack rolls and saves against fear effects, plus temporary hit points equal to 1d8 + caster level (maximum +10)."
+  },
+  {
+    "name": "Alter Self",
+    "level": 2,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
+    "range": "Personal",
+    "duration": "10 min./level (D)",
+    "subschool": "",
+    "descriptor": [],
+    "description": "Assume form of a similar creature."
+  },
+  {
+    "name": "Barkskin",
+    "level": 2,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S",
+      "DF"
+    ],
+    "range": "Touch",
+    "duration": "10 min./level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "Grants +2 natural armor bonus, increasing by +1 per 3 caster levels above 3rd (maximum +5)."
+  },
+  {
+    "name": "Bear's Endurance",
+    "level": 2,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S",
+      "M",
+      "DF"
+    ],
+    "range": "Touch",
+    "duration": "1 min./level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "The affected creature gains enhanced physical stamina. The spell grants the subject a +4 enhancement bonus to Constitution, which adds the usual benefits to hit points, Fortitude saves, and so forth."
+  },
+  {
+    "name": "Blindness/Deafness",
+    "level": 2,
+    "school": "Necromancy",
+    "components": [
+      "V"
+    ],
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "duration": "Permanent",
+    "subschool": "",
+    "descriptor": [],
+    "description": "You call upon the powers of unlife to render the subject blinded or deafened, as you choose."
+  },
+  {
+    "name": "Blur",
+    "level": 2,
+    "school": "Illusion",
+    "components": [
+      "V"
+    ],
+    "range": "Personal or Touch",
+    "duration": "1 min./level",
+    "subschool": "Glamer",
+    "descriptor": [],
+    "description": "The subject's outline appears blurred, shifting, and wavery. This distortion grants the subject concealment (20% miss chance). A see invisibility spell does not counteract the blur effect."
+  },
+  {
+    "name": "Bull's Strength",
+    "level": 2,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S",
+      "M",
+      "DF"
+    ],
+    "range": "Touch",
+    "duration": "1 min./level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "The subject becomes stronger. The spell grants a +4 enhancement bonus to Strength, adding the usual benefits to melee attack rolls, melee damage rolls, and other uses of the Strength modifier."
+  },
+  {
+    "name": "Call Lightning",
+    "level": 2,
+    "school": "Conjuration",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "duration": "1 min./level",
+    "subschool": "Summoning",
+    "descriptor": [
+      "Electricity"
+    ],
+    "description": "Calls lightning bolts dealing 3d6 (indoors) or 3d10 (outdoors) per bolt."
+  },
+  {
+    "name": "Cat's Grace",
+    "level": 2,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
+    "range": "Touch",
+    "duration": "1 min./level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "Subject gains +4 to DEX for 1 min./level."
+  },
+  {
+    "name": "Charm Animal",
+    "level": 2,
+    "school": "Enchantment",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "1 hour/level",
+    "subschool": "Charm",
+    "descriptor": [
+      "Animal",
+      "Mind-Affecting"
+    ],
+    "description": "Makes one animal your ally (Will negates)."
+  },
+  {
+    "name": "Consecrate",
+    "level": 2,
+    "school": "Evocation",
+    "components": [
+      "V",
+      "S",
+      "M",
+      "DF"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "2 hours/level",
+    "subschool": "",
+    "descriptor": [
+      "Good"
+    ],
+    "description": "This spell blesses an area with positive energy. The DC to turn undead increases by +3, and undead in the area suffer a -1 penalty on attack rolls, damage rolls, and saving throws."
+  },
+  {
+    "name": "Cure Moderate Wounds",
+    "level": 2,
+    "school": "Conjuration",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Touch",
+    "duration": "Instantaneous",
+    "subschool": "Healing",
+    "descriptor": [],
+    "description": "When laying your hand upon a living creature, you channel positive energy that cures 2d8 points of damage +1 per caster level (maximum +10)."
+  },
+  {
+    "name": "Delay Poison",
+    "level": 2,
+    "school": "Conjuration",
+    "components": [
+      "V",
+      "S",
+      "M",
+      "DF"
+    ],
+    "range": "Touch",
+    "duration": "1 hour/level",
+    "subschool": "Healing",
+    "descriptor": [],
+    "description": "The subject becomes temporarily immune to poison. Any poison in its system or any poison to which it is exposed during the spell's duration does not affect the subject until the spell's duration has expired."
+  },
+  {
+    "name": "Desecrate",
+    "level": 2,
+    "school": "Evocation",
+    "components": [
+      "V",
+      "S",
+      "M",
+      "DF"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "2 hours/level",
+    "subschool": "",
+    "descriptor": [
+      "Evil"
+    ],
+    "description": "This spell imbues an area with negative energy. Undead created within or summoned into such an area gain +1 hit point per HD."
+  },
+  {
+    "name": "Eagle's Splendor",
+    "level": 2,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S",
+      "M",
+      "DF"
+    ],
+    "range": "Touch",
+    "duration": "1 min./level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "Subject gains +4 to CHA for 1 min./level."
+  },
+  {
+    "name": "Enthrall",
+    "level": 2,
+    "school": "Enchantment",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "duration": "1 hour or less",
+    "subschool": "Charm",
+    "descriptor": [
+      "Language-Dependent",
+      "Mind-Affecting"
+    ],
+    "description": "Captivates all within 100 ft. + 10 ft./level."
+  },
+  {
+    "name": "Flame Blade",
+    "level": 2,
+    "school": "Evocation",
+    "components": [
+      "V",
+      "S",
+      "DF"
+    ],
+    "range": "Personal",
+    "duration": "1 min./level",
+    "subschool": "",
+    "descriptor": [
+      "Fire"
+    ],
+    "description": "A blade of fire deals 1d8+min(CL/2,10) fire damage."
+  },
+  {
+    "name": "Heroism",
+    "level": 2,
+    "school": "Enchantment",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Touch",
+    "duration": "10 min./level",
+    "subschool": "Compulsion",
+    "descriptor": [
+      "Mind-Affecting"
+    ],
+    "description": "Gives +2 morale bonus on attack rolls, saves, and skill checks."
+  },
+  {
+    "name": "Invisibility",
+    "level": 2,
+    "school": "Illusion",
+    "components": [
+      "V",
+      "S",
+      "M",
+      "F"
+    ],
+    "range": "Personal or Touch",
+    "duration": "1 min./level (D)",
+    "subschool": "Glamer",
+    "descriptor": [],
+    "description": "The creature or object touched becomes invisible, vanishing from sight, even from darkvision. If the recipient is a creature carrying gear, that vanishes, too. The spell ends if the subject attacks any creature."
+  },
+  {
+    "name": "Locate Object",
+    "level": 2,
+    "school": "Divination",
+    "components": [
+      "V",
+      "S",
+      "F",
+      "DF"
+    ],
+    "range": "Long (400 ft. + 40 ft./level)",
+    "duration": "1 min./level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "Senses direction toward object (specific or type)."
+  },
+  {
+    "name": "Minor Image",
+    "level": 2,
+    "school": "Illusion",
+    "components": [
+      "V",
+      "S",
+      "F"
+    ],
+    "range": "Long (400 ft. + 40 ft./level)",
+    "duration": "Concentration + 2 rounds",
+    "subschool": "Figment",
+    "descriptor": [],
+    "description": "As Silent Image, plus some sound."
+  },
+  {
+    "name": "Mirror Image",
+    "level": 2,
+    "school": "Illusion",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Personal",
+    "duration": "1 min./level",
+    "subschool": "Figment",
+    "descriptor": [],
+    "description": "Several illusory duplicates of you pop into being, making it difficult for enemies to know which target to attack. The images mimic your actions, pretending to cast spells when you do."
+  },
+  {
+    "name": "Misdirection",
+    "level": 2,
+    "school": "Illusion",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "1 hour/level",
+    "subschool": "Glamer",
+    "descriptor": [],
+    "description": "Misleads divinations for one creature or object."
+  },
+  {
+    "name": "Owl's Wisdom",
+    "level": 2,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S",
+      "M",
+      "DF"
+    ],
+    "range": "Touch",
+    "duration": "1 min./level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "The transmuted creature becomes wiser. The spell grants a +4 enhancement bonus to Wisdom, adding the usual benefits to Wisdom-related skills."
+  },
+  {
+    "name": "Pass without Trace",
+    "level": 2,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S",
+      "DF"
+    ],
+    "range": "Touch",
+    "duration": "1 hour/level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "One creature per level leaves no tracks or scent."
+  },
+  {
+    "name": "Resist Energy",
+    "level": 2,
+    "school": "Abjuration",
+    "components": [
+      "V",
+      "S",
+      "DF"
+    ],
+    "range": "Touch",
+    "duration": "10 min./level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "This abjuration grants a creature limited protection from damage of whichever one of five energy types you select: acid, cold, electricity, fire, or sonic. The subject gains resist energy 10 against the chosen energy type."
+  },
+  {
+    "name": "Scorching Ray",
+    "level": 2,
+    "school": "Evocation",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "Instantaneous",
+    "subschool": "",
+    "descriptor": [
+      "Fire"
+    ],
+    "description": "You blast your enemies with fiery rays. You may fire one ray, plus one additional ray for every four levels beyond 3rd (to a maximum of three rays at 11th level). Each ray requires a ranged touch attack to hit and deals 4d6 points of fire damage."
+  },
+  {
+    "name": "Shield Other",
+    "level": 2,
+    "school": "Abjuration",
+    "components": [
+      "V",
+      "S",
+      "F"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "1 hour/level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "This spell wards the subject and creates a mystic connection between you and the subject so that some of its wounds are transferred to you. The subject gains a +1 deflection bonus to AC and a +1 resistance bonus on saves."
+  },
+  {
+    "name": "Silence",
+    "level": 2,
+    "school": "Illusion",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Long (400 ft. + 40 ft./level)",
+    "duration": "1 round/level",
+    "subschool": "Glamer",
+    "descriptor": [],
+    "description": "Upon the casting of this spell, complete silence prevails in the affected area. All sound is stopped: Conversation is impossible, spells with verbal components cannot be cast, and no noise whatsoever issues from, travels into, or through the area."
+  },
+  {
+    "name": "Snare",
+    "level": 2,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S",
+      "DF"
+    ],
+    "range": "Touch",
+    "duration": "Until triggered",
+    "subschool": "",
+    "descriptor": [],
+    "description": "Creates a vine or rope snare (Reflex DC 23 or creature is held)."
+  },
+  {
+    "name": "Spiritual Weapon",
+    "level": 2,
+    "school": "Evocation",
+    "components": [
+      "V",
+      "S",
+      "DF"
+    ],
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "duration": "1 round/level",
+    "subschool": "",
+    "descriptor": [
+      "Force"
+    ],
+    "description": "A weapon made of pure force springs into existence and attacks opponents at a distance, as you direct it, dealing 1d8 force damage per hit, +1 per three caster levels (maximum +5)."
+  },
+  {
+    "name": "Tree Shape",
+    "level": 2,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
+    "range": "Personal",
+    "duration": "1 hour/level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "You appear as a Medium tree while retaining the ability to observe your surroundings."
+  },
+  {
+    "name": "Warp Wood",
+    "level": 2,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "Instantaneous",
+    "subschool": "",
+    "descriptor": [],
+    "description": "Bends and warps 1 cu. ft. of wood per caster level."
+  },
+  {
+    "name": "Web",
+    "level": 2,
+    "school": "Conjuration",
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "duration": "10 min./level",
+    "subschool": "Creation",
+    "descriptor": [],
+    "description": "Web creates a many-layered mass of strong, sticky strands. These strands trap those caught in them. The strands are similar to spider webs but far larger and tougher."
+  },
+  {
+    "name": "Whispering Wind",
+    "level": 2,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "1 mile/level",
+    "duration": "No limit or until discharged",
+    "subschool": "",
+    "descriptor": [
+      "Air"
+    ],
+    "description": "Sends a short message 1 mile/level."
+  },
+  {
+    "name": "Wind Wall",
+    "level": 2,
+    "school": "Evocation",
+    "components": [
+      "V",
+      "S",
+      "M",
+      "DF"
+    ],
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "duration": "1 round/level",
+    "subschool": "",
+    "descriptor": [
+      "Air"
+    ],
+    "description": "Wall of wind deflects arrows, gas clouds, and Tiny or smaller creatures."
+  }
+]

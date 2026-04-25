@@ -1,0 +1,120 @@
+[
+  {
+    "name": "Dwarf",
+    "stat_modifiers": {
+      "constitution": 2,
+      "charisma": -2
+    },
+    "special_abilities": [
+      "Darkvision",
+      "Stonecunning",
+      "Weapon Familiarity (Dwarven)",
+      "Stability",
+      "Poison Resistance",
+      "Spell Resistance"
+    ],
+    "base_speed": 20,
+    "size": "Medium"
+  },
+  {
+    "name": "Elf",
+    "stat_modifiers": {
+      "dexterity": 2,
+      "constitution": -2
+    },
+    "special_abilities": [
+      "Low-Light Vision",
+      "Elven Immunities",
+      "Keen Senses",
+      "Weapon Proficiency (Elven)"
+    ],
+    "base_speed": 30,
+    "size": "Medium"
+  },
+  {
+    "name": "Gnome",
+    "stat_modifiers": {
+      "constitution": 2,
+      "strength": -2
+    },
+    "special_abilities": [
+      "Small Size",
+      "Low-Light Vision",
+      "Weapon Familiarity (Gnome)",
+      "Keen Senses",
+      "Illusion Aptitude",
+      "Spell-Like Abilities"
+    ],
+    "base_speed": 20,
+    "size": "Small"
+  },
+  {
+    "name": "Half-Elf",
+    "stat_modifiers": {},
+    "special_abilities": [
+      "Low-Light Vision",
+      "Elven Immunities",
+      "Adaptability",
+      "Elven Blood",
+      "Bonus Skill Points"
+    ],
+    "base_speed": 30,
+    "size": "Medium"
+  },
+  {
+    "name": "Half-Orc",
+    "stat_modifiers": {
+      "strength": 2,
+      "intelligence": -2,
+      "charisma": -2
+    },
+    "special_abilities": [
+      "Darkvision",
+      "Orc Blood"
+    ],
+    "base_speed": 30,
+    "size": "Medium"
+  },
+  {
+    "name": "Halfling",
+    "stat_modifiers": {
+      "dexterity": 2,
+      "strength": -2
+    },
+    "special_abilities": [
+      "Small Size",
+      "Lucky",
+      "Fearless",
+      "Keen Senses",
+      "Throwing Proficiency"
+    ],
+    "base_speed": 20,
+    "size": "Small"
+  },
+  {
+    "name": "Human",
+    "stat_modifiers": {},
+    "special_abilities": [
+      "Bonus Feat",
+      "Bonus Skill Points"
+    ],
+    "base_speed": 30,
+    "size": "Medium"
+  },
+  {
+    "name": "Orc",
+    "stat_modifiers": {
+      "strength": 4,
+      "intelligence": -2,
+      "wisdom": -2,
+      "charisma": -2
+    },
+    "special_abilities": [
+      "Darkvision",
+      "Light Sensitivity",
+      "Ferocity"
+    ],
+    "base_speed": 30,
+    "size": "Medium"
+  }
+]

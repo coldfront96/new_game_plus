@@ -1,9 +1,37 @@
 """
 src/agent_orchestration
 -----------------------
-Multi-agent orchestration layer for offline local LLM workflows.
+Multi-agent LLM orchestration layer.
 
-Manages task queuing, prompt chunking, context-window budgets, and
-structured result parsing for local AI models (e.g. DeepSeek, Llama)
-running within a strict 16 GB VRAM envelope.
+Public surface (Task 10):
+
+* :class:`AgentTask` / :class:`TaskStatus` — task data class.
+* :class:`Scheduler` — priority queue dispatcher with concurrency cap.
+* :class:`PromptBuilder` — composes prompts from task spec + 3.5e SRD context.
+* :class:`ResultParser` — validates LLM output against expected schemas.
+* :class:`LLMTaskRunner` — glue that pulls tasks off the :class:`Scheduler`,
+  invokes :class:`~src.ai_sim.llm_bridge.LLMClient`, and parses the
+  result, surfacing failures back to the Overseer.
 """
+
+from src.agent_orchestration.agent_task import AgentTask, TaskStatus, TaskType
+from src.agent_orchestration.prompt_builder import PromptBuilder
+from src.agent_orchestration.result_parser import (
+    ParseResult,
+    ResultParser,
+    SchemaError,
+)
+from src.agent_orchestration.scheduler import Scheduler
+from src.agent_orchestration.task_runner import LLMTaskRunner
+
+__all__ = [
+    "AgentTask",
+    "LLMTaskRunner",
+    "ParseResult",
+    "PromptBuilder",
+    "ResultParser",
+    "SchemaError",
+    "Scheduler",
+    "TaskStatus",
+    "TaskType",
+]

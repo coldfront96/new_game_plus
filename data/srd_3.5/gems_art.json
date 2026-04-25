@@ -1,0 +1,738 @@
+{
+  "gems": [
+    {
+      "name": "Azurite",
+      "grade": "ornamental",
+      "base_value_gp": 10,
+      "value_range_gp": [
+        4,
+        16
+      ]
+    },
+    {
+      "name": "Banded Agate",
+      "grade": "ornamental",
+      "base_value_gp": 10,
+      "value_range_gp": [
+        4,
+        16
+      ]
+    },
+    {
+      "name": "Blue Quartz",
+      "grade": "ornamental",
+      "base_value_gp": 10,
+      "value_range_gp": [
+        4,
+        16
+      ]
+    },
+    {
+      "name": "Eye Agate",
+      "grade": "ornamental",
+      "base_value_gp": 10,
+      "value_range_gp": [
+        4,
+        16
+      ]
+    },
+    {
+      "name": "Malachite",
+      "grade": "ornamental",
+      "base_value_gp": 10,
+      "value_range_gp": [
+        4,
+        16
+      ]
+    },
+    {
+      "name": "Moss Agate",
+      "grade": "ornamental",
+      "base_value_gp": 10,
+      "value_range_gp": [
+        4,
+        16
+      ]
+    },
+    {
+      "name": "Obsidian",
+      "grade": "ornamental",
+      "base_value_gp": 10,
+      "value_range_gp": [
+        4,
+        16
+      ]
+    },
+    {
+      "name": "Rhodonite",
+      "grade": "ornamental",
+      "base_value_gp": 10,
+      "value_range_gp": [
+        4,
+        16
+      ]
+    },
+    {
+      "name": "Tiger Eye",
+      "grade": "ornamental",
+      "base_value_gp": 10,
+      "value_range_gp": [
+        4,
+        16
+      ]
+    },
+    {
+      "name": "Turquoise",
+      "grade": "ornamental",
+      "base_value_gp": 10,
+      "value_range_gp": [
+        4,
+        16
+      ]
+    },
+    {
+      "name": "Bloodstone",
+      "grade": "semiprecious",
+      "base_value_gp": 50,
+      "value_range_gp": [
+        20,
+        80
+      ]
+    },
+    {
+      "name": "Carnelian",
+      "grade": "semiprecious",
+      "base_value_gp": 50,
+      "value_range_gp": [
+        20,
+        80
+      ]
+    },
+    {
+      "name": "Chalcedony",
+      "grade": "semiprecious",
+      "base_value_gp": 50,
+      "value_range_gp": [
+        20,
+        80
+      ]
+    },
+    {
+      "name": "Chrysoprase",
+      "grade": "semiprecious",
+      "base_value_gp": 50,
+      "value_range_gp": [
+        20,
+        80
+      ]
+    },
+    {
+      "name": "Citrine",
+      "grade": "semiprecious",
+      "base_value_gp": 50,
+      "value_range_gp": [
+        20,
+        80
+      ]
+    },
+    {
+      "name": "Iolite",
+      "grade": "semiprecious",
+      "base_value_gp": 50,
+      "value_range_gp": [
+        20,
+        80
+      ]
+    },
+    {
+      "name": "Jasper",
+      "grade": "semiprecious",
+      "base_value_gp": 50,
+      "value_range_gp": [
+        20,
+        80
+      ]
+    },
+    {
+      "name": "Moonstone",
+      "grade": "semiprecious",
+      "base_value_gp": 50,
+      "value_range_gp": [
+        20,
+        80
+      ]
+    },
+    {
+      "name": "Onyx",
+      "grade": "semiprecious",
+      "base_value_gp": 50,
+      "value_range_gp": [
+        20,
+        80
+      ]
+    },
+    {
+      "name": "Rock Crystal",
+      "grade": "semiprecious",
+      "base_value_gp": 50,
+      "value_range_gp": [
+        20,
+        80
+      ]
+    },
+    {
+      "name": "Sardonyx",
+      "grade": "semiprecious",
+      "base_value_gp": 50,
+      "value_range_gp": [
+        20,
+        80
+      ]
+    },
+    {
+      "name": "Rose Quartz",
+      "grade": "semiprecious",
+      "base_value_gp": 50,
+      "value_range_gp": [
+        20,
+        80
+      ]
+    },
+    {
+      "name": "Smoky Quartz",
+      "grade": "semiprecious",
+      "base_value_gp": 50,
+      "value_range_gp": [
+        20,
+        80
+      ]
+    },
+    {
+      "name": "Star Quartz",
+      "grade": "semiprecious",
+      "base_value_gp": 50,
+      "value_range_gp": [
+        20,
+        80
+      ]
+    },
+    {
+      "name": "Zircon",
+      "grade": "semiprecious",
+      "base_value_gp": 50,
+      "value_range_gp": [
+        20,
+        80
+      ]
+    },
+    {
+      "name": "Amber",
+      "grade": "fancy",
+      "base_value_gp": 100,
+      "value_range_gp": [
+        40,
+        160
+      ]
+    },
+    {
+      "name": "Amethyst",
+      "grade": "fancy",
+      "base_value_gp": 100,
+      "value_range_gp": [
+        40,
+        160
+      ]
+    },
+    {
+      "name": "Chrysoberyl",
+      "grade": "fancy",
+      "base_value_gp": 100,
+      "value_range_gp": [
+        40,
+        160
+      ]
+    },
+    {
+      "name": "Coral",
+      "grade": "fancy",
+      "base_value_gp": 100,
+      "value_range_gp": [
+        40,
+        160
+      ]
+    },
+    {
+      "name": "Red Garnet",
+      "grade": "fancy",
+      "base_value_gp": 100,
+      "value_range_gp": [
+        40,
+        160
+      ]
+    },
+    {
+      "name": "Jade",
+      "grade": "fancy",
+      "base_value_gp": 100,
+      "value_range_gp": [
+        40,
+        160
+      ]
+    },
+    {
+      "name": "Jet",
+      "grade": "fancy",
+      "base_value_gp": 100,
+      "value_range_gp": [
+        40,
+        160
+      ]
+    },
+    {
+      "name": "White Pearl",
+      "grade": "fancy",
+      "base_value_gp": 100,
+      "value_range_gp": [
+        40,
+        160
+      ]
+    },
+    {
+      "name": "Red Spinel",
+      "grade": "fancy",
+      "base_value_gp": 100,
+      "value_range_gp": [
+        40,
+        160
+      ]
+    },
+    {
+      "name": "Tourmaline",
+      "grade": "fancy",
+      "base_value_gp": 100,
+      "value_range_gp": [
+        40,
+        160
+      ]
+    },
+    {
+      "name": "Alexandrite",
+      "grade": "precious",
+      "base_value_gp": 500,
+      "value_range_gp": [
+        200,
+        800
+      ]
+    },
+    {
+      "name": "Aquamarine",
+      "grade": "precious",
+      "base_value_gp": 500,
+      "value_range_gp": [
+        200,
+        800
+      ]
+    },
+    {
+      "name": "Violet Garnet",
+      "grade": "precious",
+      "base_value_gp": 500,
+      "value_range_gp": [
+        200,
+        800
+      ]
+    },
+    {
+      "name": "Black Pearl",
+      "grade": "precious",
+      "base_value_gp": 500,
+      "value_range_gp": [
+        200,
+        800
+      ]
+    },
+    {
+      "name": "Deep Blue Spinel",
+      "grade": "precious",
+      "base_value_gp": 500,
+      "value_range_gp": [
+        200,
+        800
+      ]
+    },
+    {
+      "name": "Golden Yellow Topaz",
+      "grade": "precious",
+      "base_value_gp": 500,
+      "value_range_gp": [
+        200,
+        800
+      ]
+    },
+    {
+      "name": "Emerald",
+      "grade": "gemstone",
+      "base_value_gp": 1000,
+      "value_range_gp": [
+        500,
+        2000
+      ]
+    },
+    {
+      "name": "White Opal",
+      "grade": "gemstone",
+      "base_value_gp": 1000,
+      "value_range_gp": [
+        500,
+        2000
+      ]
+    },
+    {
+      "name": "Black Opal",
+      "grade": "gemstone",
+      "base_value_gp": 1000,
+      "value_range_gp": [
+        500,
+        2000
+      ]
+    },
+    {
+      "name": "Fire Opal",
+      "grade": "gemstone",
+      "base_value_gp": 1000,
+      "value_range_gp": [
+        500,
+        2000
+      ]
+    },
+    {
+      "name": "Blue Sapphire",
+      "grade": "gemstone",
+      "base_value_gp": 1000,
+      "value_range_gp": [
+        500,
+        2000
+      ]
+    },
+    {
+      "name": "Fiery Yellow Corundum",
+      "grade": "gemstone",
+      "base_value_gp": 1000,
+      "value_range_gp": [
+        500,
+        2000
+      ]
+    },
+    {
+      "name": "Bright Green Emerald",
+      "grade": "jewel",
+      "base_value_gp": 5000,
+      "value_range_gp": [
+        1000,
+        8000
+      ]
+    },
+    {
+      "name": "Blue-White Diamond",
+      "grade": "jewel",
+      "base_value_gp": 5000,
+      "value_range_gp": [
+        1000,
+        8000
+      ]
+    },
+    {
+      "name": "Canary Diamond",
+      "grade": "jewel",
+      "base_value_gp": 5000,
+      "value_range_gp": [
+        1000,
+        8000
+      ]
+    },
+    {
+      "name": "Pink Diamond",
+      "grade": "jewel",
+      "base_value_gp": 5000,
+      "value_range_gp": [
+        1000,
+        8000
+      ]
+    },
+    {
+      "name": "Blue Diamond",
+      "grade": "jewel",
+      "base_value_gp": 5000,
+      "value_range_gp": [
+        1000,
+        8000
+      ]
+    },
+    {
+      "name": "Jacinth",
+      "grade": "jewel",
+      "base_value_gp": 5000,
+      "value_range_gp": [
+        1000,
+        8000
+      ]
+    }
+  ],
+  "art_objects": [
+    {
+      "name": "Fur Pelt",
+      "category": "mundane",
+      "value_gp": 10
+    },
+    {
+      "name": "Carved Bone Statuette",
+      "category": "mundane",
+      "value_gp": 10
+    },
+    {
+      "name": "Small Bronze Mirror",
+      "category": "mundane",
+      "value_gp": 10
+    },
+    {
+      "name": "Painted Cloth",
+      "category": "mundane",
+      "value_gp": 10
+    },
+    {
+      "name": "Woven Basket",
+      "category": "mundane",
+      "value_gp": 10
+    },
+    {
+      "name": "Carved Ivory Statuette",
+      "category": "decorated",
+      "value_gp": 25
+    },
+    {
+      "name": "Silver Ewer",
+      "category": "decorated",
+      "value_gp": 25
+    },
+    {
+      "name": "Cloth-of-Gold Vestments",
+      "category": "decorated",
+      "value_gp": 25
+    },
+    {
+      "name": "Black Velvet Mask",
+      "category": "decorated",
+      "value_gp": 25
+    },
+    {
+      "name": "Copper Chalice",
+      "category": "decorated",
+      "value_gp": 25
+    },
+    {
+      "name": "Silver Comb with Moonstones",
+      "category": "decorated",
+      "value_gp": 50
+    },
+    {
+      "name": "Silver-Plated Steel Longsword",
+      "category": "decorated",
+      "value_gp": 50
+    },
+    {
+      "name": "Carved Harp",
+      "category": "decorated",
+      "value_gp": 50
+    },
+    {
+      "name": "Gold Idol",
+      "category": "decorated",
+      "value_gp": 50
+    },
+    {
+      "name": "Painted Portrait",
+      "category": "decorated",
+      "value_gp": 50
+    },
+    {
+      "name": "Gold Ring with Bloodstone",
+      "category": "masterwork",
+      "value_gp": 100
+    },
+    {
+      "name": "Carved Ivory Charm",
+      "category": "masterwork",
+      "value_gp": 100
+    },
+    {
+      "name": "Obsidian Statuette",
+      "category": "masterwork",
+      "value_gp": 100
+    },
+    {
+      "name": "Painted Gold Idol",
+      "category": "masterwork",
+      "value_gp": 100
+    },
+    {
+      "name": "Stitched Silk Tapestry",
+      "category": "masterwork",
+      "value_gp": 100
+    },
+    {
+      "name": "Golden Yellow Topaz Bracelet",
+      "category": "masterwork",
+      "value_gp": 250
+    },
+    {
+      "name": "Embroidered Silk Satin Cloak",
+      "category": "masterwork",
+      "value_gp": 250
+    },
+    {
+      "name": "Silver Necklace with Fire Opal",
+      "category": "masterwork",
+      "value_gp": 250
+    },
+    {
+      "name": "Carved Jade Figurine",
+      "category": "masterwork",
+      "value_gp": 250
+    },
+    {
+      "name": "Gold and Silver Brooch",
+      "category": "masterwork",
+      "value_gp": 250
+    },
+    {
+      "name": "Ivory and Gold Bracelet with Aquamarine",
+      "category": "masterwork",
+      "value_gp": 500
+    },
+    {
+      "name": "Silver and Gold Brooch",
+      "category": "masterwork",
+      "value_gp": 500
+    },
+    {
+      "name": "Onyx Goblet with Gold Filigree",
+      "category": "masterwork",
+      "value_gp": 500
+    },
+    {
+      "name": "Enameled Gold Locket",
+      "category": "masterwork",
+      "value_gp": 500
+    },
+    {
+      "name": "Amber and Gold Ring",
+      "category": "masterwork",
+      "value_gp": 500
+    },
+    {
+      "name": "Jeweled Silver Goblet",
+      "category": "masterwork",
+      "value_gp": 750
+    },
+    {
+      "name": "Platinum Comb with Sapphires",
+      "category": "masterwork",
+      "value_gp": 750
+    },
+    {
+      "name": "Jeweled Gold Crown",
+      "category": "exotic",
+      "value_gp": 1000
+    },
+    {
+      "name": "Jeweled Electrum Ring",
+      "category": "exotic",
+      "value_gp": 1000
+    },
+    {
+      "name": "Gold Music Box",
+      "category": "exotic",
+      "value_gp": 1000
+    },
+    {
+      "name": "Painted Silver Dragon Statuette",
+      "category": "exotic",
+      "value_gp": 1000
+    },
+    {
+      "name": "Sapphire Pendant on Gold Chain",
+      "category": "exotic",
+      "value_gp": 1000
+    },
+    {
+      "name": "Ruby-Inlaid Gold Chalice",
+      "category": "exotic",
+      "value_gp": 1500
+    },
+    {
+      "name": "Emerald-Set Platinum Brooch",
+      "category": "exotic",
+      "value_gp": 1500
+    },
+    {
+      "name": "Fine Gold Chain with Fire Opal",
+      "category": "exotic",
+      "value_gp": 2500
+    },
+    {
+      "name": "Ornate Gold Ring with Diamond",
+      "category": "exotic",
+      "value_gp": 2500
+    },
+    {
+      "name": "Jeweled Platinum Necklace",
+      "category": "exotic",
+      "value_gp": 2500
+    },
+    {
+      "name": "Diamond-Studded Gold Tiara",
+      "category": "exotic",
+      "value_gp": 2500
+    },
+    {
+      "name": "Ruby and Sapphire Medallion",
+      "category": "exotic",
+      "value_gp": 2500
+    },
+    {
+      "name": "Platinum and Diamond Bracelet",
+      "category": "exotic",
+      "value_gp": 3500
+    },
+    {
+      "name": "Gold Dragon Idol with Gem Eyes",
+      "category": "exotic",
+      "value_gp": 3500
+    },
+    {
+      "name": "Jeweled Platinum Crown",
+      "category": "exotic",
+      "value_gp": 5000
+    },
+    {
+      "name": "Marble Idol with Ruby Eyes",
+      "category": "exotic",
+      "value_gp": 5000
+    },
+    {
+      "name": "Ornate Platinum and Diamond Tiara",
+      "category": "exotic",
+      "value_gp": 5000
+    },
+    {
+      "name": "Jeweled Gold and Platinum Crown",
+      "category": "exotic",
+      "value_gp": 7500
+    },
+    {
+      "name": "Platinum Idol with Diamond and Sapphire Inlay",
+      "category": "exotic",
+      "value_gp": 7500
+    }
+  ]
+}

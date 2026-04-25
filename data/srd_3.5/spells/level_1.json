@@ -1,0 +1,673 @@
+[
+  {
+    "name": "Alarm",
+    "level": 1,
+    "school": "Abjuration",
+    "components": [
+      "V",
+      "S",
+      "F",
+      "M"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "8 hours",
+    "subschool": "",
+    "descriptor": [],
+    "description": "Wards an area to sound a mental or audible alarm when entered."
+  },
+  {
+    "name": "Animal Friendship",
+    "level": 1,
+    "school": "Enchantment",
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "Instantaneous",
+    "subschool": "Charm",
+    "descriptor": [
+      "Animal",
+      "Mind-Affecting"
+    ],
+    "description": "Makes an animal permanently friendly toward you."
+  },
+  {
+    "name": "Animal Messenger",
+    "level": 1,
+    "school": "Enchantment",
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "1 day/level",
+    "subschool": "Compulsion",
+    "descriptor": [
+      "Animal",
+      "Mind-Affecting"
+    ],
+    "description": "Sends a Tiny animal to deliver your message."
+  },
+  {
+    "name": "Animate Rope",
+    "level": 1,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "duration": "1 round/level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "Makes a rope move at your command, entangling a target."
+  },
+  {
+    "name": "Bane",
+    "level": 1,
+    "school": "Enchantment",
+    "components": [
+      "V",
+      "S",
+      "DF"
+    ],
+    "range": "50 ft.",
+    "duration": "1 min./level",
+    "subschool": "Compulsion",
+    "descriptor": [
+      "Fear",
+      "Mind-Affecting"
+    ],
+    "description": "Bane fills your enemies with fear and doubt. Each affected creature takes a -1 penalty on attack rolls and a -1 penalty on saving throws against fear effects."
+  },
+  {
+    "name": "Bless",
+    "level": 1,
+    "school": "Enchantment",
+    "components": [
+      "V",
+      "S",
+      "DF"
+    ],
+    "range": "50 ft.",
+    "duration": "1 min./level",
+    "subschool": "Compulsion",
+    "descriptor": [
+      "Mind-Affecting"
+    ],
+    "description": "Bless fills your allies with courage. Each ally gains a +1 morale bonus on attack rolls and on saving throws against fear effects."
+  },
+  {
+    "name": "Bless Weapon",
+    "level": 1,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Touch",
+    "duration": "1 min./level",
+    "subschool": "",
+    "descriptor": [
+      "Good"
+    ],
+    "description": "This transmutation makes a weapon strike true against evil foes. The weapon is treated as having a +1 enhancement bonus for the purpose of bypassing the damage reduction of evil creatures."
+  },
+  {
+    "name": "Burning Hands",
+    "level": 1,
+    "school": "Evocation",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "15 ft.",
+    "duration": "Instantaneous",
+    "subschool": "",
+    "descriptor": [
+      "Fire"
+    ],
+    "description": "A cone of searing flame shoots from your fingertips. Any creature in the area of the flames takes 1d4 points of fire damage per caster level (maximum 5d4)."
+  },
+  {
+    "name": "Cause Fear",
+    "level": 1,
+    "school": "Necromancy",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "1d4 rounds",
+    "subschool": "",
+    "descriptor": [
+      "Fear",
+      "Mind-Affecting"
+    ],
+    "description": "The affected creature becomes frightened. If the subject succeeds on a Will save, it is shaken for 1 round. Creatures with 6 or more HD are immune to this spell."
+  },
+  {
+    "name": "Charm Person",
+    "level": 1,
+    "school": "Enchantment",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "1 hour/level",
+    "subschool": "Compulsion",
+    "descriptor": [
+      "Mind-Affecting"
+    ],
+    "description": "This charm makes a humanoid creature regard you as its trusted friend and ally. The spell does not enable you to control the charmed person as if it were an automaton."
+  },
+  {
+    "name": "Color Spray",
+    "level": 1,
+    "school": "Illusion",
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
+    "range": "15-ft cone",
+    "duration": "Instantaneous",
+    "subschool": "Pattern",
+    "descriptor": [
+      "Mind-Affecting"
+    ],
+    "description": "A vivid cone of clashing colors springs from your hand, causing creatures to become stunned, blinded, or unconscious."
+  },
+  {
+    "name": "Command",
+    "level": 1,
+    "school": "Enchantment",
+    "components": [
+      "V"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "1 round",
+    "subschool": "Compulsion",
+    "descriptor": [
+      "Language-Dependent",
+      "Mind-Affecting"
+    ],
+    "description": "You give the subject a single command, which it obeys to the best of its ability at its earliest opportunity."
+  },
+  {
+    "name": "Comprehend Languages",
+    "level": 1,
+    "school": "Divination",
+    "components": [
+      "V",
+      "S",
+      "M",
+      "F"
+    ],
+    "range": "Personal",
+    "duration": "10 min./level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "You understand all spoken and written languages."
+  },
+  {
+    "name": "Cure Light Wounds",
+    "level": 1,
+    "school": "Conjuration",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Touch",
+    "duration": "Instantaneous",
+    "subschool": "Healing",
+    "descriptor": [],
+    "description": "When laying your hand upon a living creature, you channel positive energy that cures 1d8 points of damage +1 per caster level (maximum +5)."
+  },
+  {
+    "name": "Detect Evil",
+    "level": 1,
+    "school": "Divination",
+    "components": [
+      "V",
+      "S",
+      "DF"
+    ],
+    "range": "60 ft.",
+    "duration": "Concentration, up to 10 min./level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "You can sense the presence of evil. The amount of information revealed depends on how long you study a particular area or subject."
+  },
+  {
+    "name": "Disguise Self",
+    "level": 1,
+    "school": "Illusion",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Personal",
+    "duration": "10 min./level (D)",
+    "subschool": "Glamer",
+    "descriptor": [],
+    "description": "Changes your appearance."
+  },
+  {
+    "name": "Divine Favor",
+    "level": 1,
+    "school": "Evocation",
+    "components": [
+      "V",
+      "S",
+      "DF"
+    ],
+    "range": "Personal",
+    "duration": "1 minute",
+    "subschool": "",
+    "descriptor": [],
+    "description": "Calling upon the strength and wisdom of a deity, you gain a +1 luck bonus on attack and weapon damage rolls for every three caster levels you have (at least +1, maximum +3)."
+  },
+  {
+    "name": "Doom",
+    "level": 1,
+    "school": "Necromancy",
+    "components": [
+      "V",
+      "S",
+      "DF"
+    ],
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "duration": "1 min./level",
+    "subschool": "",
+    "descriptor": [
+      "Fear",
+      "Mind-Affecting"
+    ],
+    "description": "This spell fills a single subject with a feeling of horrible dread that causes it to become shaken."
+  },
+  {
+    "name": "Enlarge Person",
+    "level": 1,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "1 min./level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "This spell causes instant growth of a humanoid creature, doubling its height and multiplying its weight by 8. This increase changes the creature's size category to the next larger one."
+  },
+  {
+    "name": "Entangle",
+    "level": 1,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S",
+      "DF"
+    ],
+    "range": "Long (400 ft. + 40 ft./level)",
+    "duration": "1 min./level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "Plants entangle creatures in a 40-ft. radius (Reflex negates); escape requires Strength or Escape Artist DC 20."
+  },
+  {
+    "name": "Entropic Shield",
+    "level": 1,
+    "school": "Abjuration",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Personal",
+    "duration": "1 min./level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "A magical field appears around you, glowing with a chaotic blast of multicolored hues. This field deflects incoming arrows, rays, and other ranged attacks, giving ranged attacks a 20% miss chance."
+  },
+  {
+    "name": "Expeditious Retreat",
+    "level": 1,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Personal",
+    "duration": "1 min./level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "Your speed increases by 30 ft."
+  },
+  {
+    "name": "Faerie Fire",
+    "level": 1,
+    "school": "Evocation",
+    "components": [
+      "V",
+      "S",
+      "DF"
+    ],
+    "range": "Long (400 ft. + 40 ft./level)",
+    "duration": "1 min./level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "Outlines subjects with pale fire, granting +2 attack bonus against them and negating invisibility."
+  },
+  {
+    "name": "Feather Fall",
+    "level": 1,
+    "school": "Transmutation",
+    "components": [
+      "V"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "Until landing or 1 round/level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "The affected creatures or objects fall slowly. Feather fall instantly changes the rate at which the targets fall to a mere 60 feet per round (equivalent to the end of a fall from a few feet), with no damage upon landing while the spell is in effect."
+  },
+  {
+    "name": "Grease",
+    "level": 1,
+    "school": "Conjuration",
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "1 round/level",
+    "subschool": "Creation",
+    "descriptor": [],
+    "description": "A grease spell covers a solid surface with a layer of slippery grease. Any creature in the area when the spell is cast must make a successful Reflex save or fall."
+  },
+  {
+    "name": "Hypnotism",
+    "level": 1,
+    "school": "Enchantment",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "2d4 rounds",
+    "subschool": "Compulsion",
+    "descriptor": [
+      "Mind-Affecting"
+    ],
+    "description": "Fascinates 2d4 HD of creatures."
+  },
+  {
+    "name": "Identify",
+    "level": 1,
+    "school": "Divination",
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
+    "range": "Touch",
+    "duration": "Instantaneous",
+    "subschool": "",
+    "descriptor": [],
+    "description": "The spell determines all magic properties of a single magic item, including how to activate those functions (if appropriate), and how many charges are left (if any)."
+  },
+  {
+    "name": "Jump",
+    "level": 1,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
+    "range": "Touch",
+    "duration": "1 min./level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "Subject gains an enhancement bonus on Jump checks (up to +30)."
+  },
+  {
+    "name": "Longstrider",
+    "level": 1,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
+    "range": "Personal",
+    "duration": "1 hour/level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "Your speed increases by 10 feet (enhancement bonus)."
+  },
+  {
+    "name": "Mage Armor",
+    "level": 1,
+    "school": "Conjuration",
+    "components": [
+      "V",
+      "S",
+      "F"
+    ],
+    "range": "Touch",
+    "duration": "1 hour/level",
+    "subschool": "Creation",
+    "descriptor": [
+      "Force"
+    ],
+    "description": "An invisible but tangible field of force surrounds the subject of a mage armor spell, providing a +4 armor bonus to AC."
+  },
+  {
+    "name": "Magic Missile",
+    "level": 1,
+    "school": "Evocation",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "duration": "Instantaneous",
+    "subschool": "",
+    "descriptor": [
+      "Force"
+    ],
+    "description": "A missile of magical energy darts forth from your fingertip and strikes its target, dealing 1d4+1 points of force damage."
+  },
+  {
+    "name": "Produce Flame",
+    "level": 1,
+    "school": "Evocation",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Personal",
+    "duration": "1 min./level",
+    "subschool": "",
+    "descriptor": [
+      "Fire"
+    ],
+    "description": "Flames appear in your hand; melee or thrown attack deals 1d6+min(CL,5) fire damage."
+  },
+  {
+    "name": "Protection from Evil",
+    "level": 1,
+    "school": "Abjuration",
+    "components": [
+      "V",
+      "S",
+      "M",
+      "DF"
+    ],
+    "range": "Touch",
+    "duration": "1 min./level",
+    "subschool": "",
+    "descriptor": [
+      "Good"
+    ],
+    "description": "This spell wards a creature from attacks by evil creatures, from mental control, and from summoned creatures. It creates a magical barrier around the subject at a distance of 1 foot."
+  },
+  {
+    "name": "Ray of Enfeeblement",
+    "level": 1,
+    "school": "Necromancy",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "1 round/level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "A coruscating ray springs from your hand. You must succeed on a ranged touch attack to strike a target. The subject takes a penalty to Strength equal to 1d6+1 per two caster levels (maximum 1d6+5)."
+  },
+  {
+    "name": "Sanctuary",
+    "level": 1,
+    "school": "Abjuration",
+    "components": [
+      "V",
+      "S",
+      "DF"
+    ],
+    "range": "Touch",
+    "duration": "1 round/level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "Any opponent attempting to strike or otherwise directly attack the warded creature, even with a targeted spell, must attempt a Will save. If the save succeeds, the opponent can attack normally and is unaffected by that casting of the spell."
+  },
+  {
+    "name": "Shield",
+    "level": 1,
+    "school": "Abjuration",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Personal",
+    "duration": "1 min./level",
+    "subschool": "",
+    "descriptor": [
+      "Force"
+    ],
+    "description": "Shield creates an invisible, tower shield-sized mobile disk of force that hovers in front of you. It negates magic missile attacks directed at you and provides a +4 shield bonus to AC."
+  },
+  {
+    "name": "Sleep",
+    "level": 1,
+    "school": "Enchantment",
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "duration": "1 min./level",
+    "subschool": "Compulsion",
+    "descriptor": [
+      "Mind-Affecting"
+    ],
+    "description": "A sleep spell causes a magical slumber to come upon 4 Hit Dice of creatures. Creatures with the fewest HD are affected first."
+  },
+  {
+    "name": "Speak with Animals",
+    "level": 1,
+    "school": "Divination",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Personal",
+    "duration": "1 min./level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "You can communicate verbally and mentally with animals."
+  },
+  {
+    "name": "Summon Nature's Ally I",
+    "level": 1,
+    "school": "Conjuration",
+    "components": [
+      "V",
+      "S",
+      "DF"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "1 round/level",
+    "subschool": "Summoning",
+    "descriptor": [],
+    "description": "This spell summons a natural creature. It appears where you designate and acts immediately, on your turn. It attacks your opponents to the best of its ability. Duration: 1 round/level."
+  },
+  {
+    "name": "Tasha's Hideous Laughter",
+    "level": 1,
+    "school": "Enchantment",
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "1 round/level",
+    "subschool": "Compulsion",
+    "descriptor": [
+      "Mind-Affecting"
+    ],
+    "description": "Subject loses actions for 1 round/level due to uncontrollable laughter."
+  },
+  {
+    "name": "True Strike",
+    "level": 1,
+    "school": "Divination",
+    "components": [
+      "V",
+      "F"
+    ],
+    "range": "Personal",
+    "duration": "See text",
+    "subschool": "",
+    "descriptor": [],
+    "description": "You gain temporary, intuitive insight into the immediate future during your next attack. Your next single attack roll gains a +20 insight bonus. Additionally, you are not affected by the miss chance that applies to attacks made against a concealed target."
+  },
+  {
+    "name": "Undetectable Alignment",
+    "level": 1,
+    "school": "Abjuration",
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "24 hours",
+    "subschool": "",
+    "descriptor": [],
+    "description": "Conceals alignment for 24 hours."
+  },
+  {
+    "name": "Ventriloquism",
+    "level": 1,
+    "school": "Illusion",
+    "components": [
+      "V",
+      "F"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "1 min./level (D)",
+    "subschool": "Figment",
+    "descriptor": [],
+    "description": "Throws voice for 1 min./level."
+  }
+]

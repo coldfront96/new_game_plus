@@ -1,0 +1,417 @@
+[
+  {
+    "name": "Arcane Eye",
+    "level": 4,
+    "school": "Divination",
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
+    "range": "Unlimited",
+    "duration": "1 min./level (concentration)",
+    "subschool": "Scrying",
+    "descriptor": [],
+    "description": "You create an invisible magical sensor that sends you visual information. The sensor moves at up to 30 feet per round and shares your vision."
+  },
+  {
+    "name": "Black Tentacles",
+    "level": 4,
+    "school": "Conjuration",
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "duration": "1 round/level",
+    "subschool": "Creation",
+    "descriptor": [],
+    "description": "This spell conjures a field of rubbery black tentacles, each 10 feet long. These tentacles grasp and squeeze any creature within the area, dealing 1d6+4 points of bludgeoning damage each round."
+  },
+  {
+    "name": "Command Plants",
+    "level": 4,
+    "school": "Transmutation",
+    "components": [
+      "V"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "1 day/level",
+    "subschool": "",
+    "descriptor": [
+      "Plant",
+      "Mind-Affecting"
+    ],
+    "description": "Controls the actions of plant creatures (Will negates)."
+  },
+  {
+    "name": "Commune with Nature",
+    "level": 4,
+    "school": "Divination",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Personal",
+    "duration": "Instantaneous",
+    "subschool": "",
+    "descriptor": [],
+    "description": "Learn about terrain features (terrain, water, plants, animals, minerals) in a 1 mile/level radius."
+  },
+  {
+    "name": "Confusion",
+    "level": 4,
+    "school": "Enchantment",
+    "components": [
+      "V",
+      "S",
+      "M",
+      "DF"
+    ],
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "duration": "1 round/level",
+    "subschool": "Compulsion",
+    "descriptor": [
+      "Mind-Affecting"
+    ],
+    "description": "This spell causes confusion in the targets, making them unable to independently determine what they will do. Roll on the following table each round to see what they do."
+  },
+  {
+    "name": "Cure Critical Wounds",
+    "level": 4,
+    "school": "Conjuration",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Touch",
+    "duration": "Instantaneous",
+    "subschool": "Healing",
+    "descriptor": [],
+    "description": "When laying your hand upon a living creature, you channel positive energy that cures 4d8 points of damage +1 per caster level (maximum +20)."
+  },
+  {
+    "name": "Dimension Door",
+    "level": 4,
+    "school": "Conjuration",
+    "components": [
+      "V"
+    ],
+    "range": "Long (400 ft. + 40 ft./level)",
+    "duration": "Instantaneous",
+    "subschool": "Teleportation",
+    "descriptor": [],
+    "description": "You instantly transfer yourself from your current location to any other spot within range. You always arrive at exactly the spot desired\u2014whether by simply visualizing the area or by stating direction and distance."
+  },
+  {
+    "name": "Dispel Evil",
+    "level": 4,
+    "school": "Abjuration",
+    "components": [
+      "V",
+      "S",
+      "DF"
+    ],
+    "range": "Personal",
+    "duration": "1 round/level or until expended",
+    "subschool": "",
+    "descriptor": [
+      "Good"
+    ],
+    "description": "Shimmering, white holy energy surrounds you. This energy has three effects. First, you gain a +4 deflection bonus to AC against attacks by evil creatures."
+  },
+  {
+    "name": "Divine Power",
+    "level": 4,
+    "school": "Evocation",
+    "components": [
+      "V",
+      "S",
+      "DF"
+    ],
+    "range": "Personal",
+    "duration": "1 round/level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "Calling upon the divine power of your patron, you imbue yourself with strength and skill in combat. Your base attack bonus equals your caster level, you gain a +6 enhancement bonus to Strength, and you gain 1 temporary hit point per caster level."
+  },
+  {
+    "name": "Find the Path",
+    "level": 4,
+    "school": "Divination",
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
+    "range": "Personal or Touch",
+    "duration": "10 min./level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "Shows the shortest, most direct route to a named location."
+  },
+  {
+    "name": "Freedom of Movement",
+    "level": 4,
+    "school": "Abjuration",
+    "components": [
+      "V",
+      "S",
+      "M",
+      "DF"
+    ],
+    "range": "Personal or Touch",
+    "duration": "10 min./level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "This spell enables you or a creature you touch to move and attack normally for the duration of the spell, even under the influence of magic that usually impedes movement."
+  },
+  {
+    "name": "Greater Invisibility",
+    "level": 4,
+    "school": "Illusion",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Personal or Touch",
+    "duration": "1 round/level (D)",
+    "subschool": "Glamer",
+    "descriptor": [],
+    "description": "This spell functions like invisibility, except that it doesn't end if the subject attacks."
+  },
+  {
+    "name": "Holy Aura",
+    "level": 4,
+    "school": "Abjuration",
+    "components": [
+      "V",
+      "S",
+      "F"
+    ],
+    "range": "20 ft.",
+    "duration": "1 round/level",
+    "subschool": "",
+    "descriptor": [
+      "Good"
+    ],
+    "description": "A brilliant divine radiance surrounds the subjects, protecting them from attacks, granting them resistance to spells cast by evil creatures, and causing evil creatures to become blinded when they strike the subjects."
+  },
+  {
+    "name": "Holy Sword",
+    "level": 4,
+    "school": "Evocation",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Touch",
+    "duration": "1 round/level",
+    "subschool": "",
+    "descriptor": [
+      "Good"
+    ],
+    "description": "This spell allows you to channel holy power into your sword, or any other melee weapon you choose. The weapon acts as a +5 holy weapon (+2d6 damage against evil creatures)."
+  },
+  {
+    "name": "Ice Storm",
+    "level": 4,
+    "school": "Evocation",
+    "components": [
+      "V",
+      "S",
+      "M",
+      "DF"
+    ],
+    "range": "Long (400 ft. + 40 ft./level)",
+    "duration": "1 full round",
+    "subschool": "",
+    "descriptor": [
+      "Cold"
+    ],
+    "description": "Great magical hailstones pound down for 1 full round, dealing 3d6 points of bludgeoning damage and 2d6 points of cold damage to every creature in the area."
+  },
+  {
+    "name": "Mark of Justice",
+    "level": 4,
+    "school": "Necromancy",
+    "components": [
+      "V",
+      "S",
+      "DF"
+    ],
+    "range": "Touch",
+    "duration": "Permanent",
+    "subschool": "",
+    "descriptor": [],
+    "description": "You draw a visible mark on the subject and state some behavior on the part of the subject that will activate the mark."
+  },
+  {
+    "name": "Modify Memory",
+    "level": 4,
+    "school": "Enchantment",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "Permanent",
+    "subschool": "Compulsion",
+    "descriptor": [
+      "Mind-Affecting"
+    ],
+    "description": "Changes 5 minutes of subject's memories."
+  },
+  {
+    "name": "Neutralize Poison",
+    "level": 4,
+    "school": "Conjuration",
+    "components": [
+      "V",
+      "S",
+      "M",
+      "DF"
+    ],
+    "range": "Touch",
+    "duration": "10 min./level",
+    "subschool": "Healing",
+    "descriptor": [],
+    "description": "You detoxify any sort of venom in the creature or object touched. A poisoned creature suffers no additional effects from the poison, and any temporary effects are ended."
+  },
+  {
+    "name": "Polymorph",
+    "level": 4,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
+    "range": "Touch",
+    "duration": "1 min./level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "This spell transforms a willing creature into an animal or magical beast with up to 15 Hit Dice. The subject gains the new form's physical characteristics while retaining its own mental statistics."
+  },
+  {
+    "name": "Reincarnate",
+    "level": 4,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S",
+      "M",
+      "DF"
+    ],
+    "range": "Touch",
+    "duration": "Instantaneous",
+    "subschool": "",
+    "descriptor": [],
+    "description": "Returns a dead soul in a new body of a randomly determined race (1,000 gp material cost)."
+  },
+  {
+    "name": "Repel Vermin",
+    "level": 4,
+    "school": "Abjuration",
+    "components": [
+      "V",
+      "S",
+      "DF"
+    ],
+    "range": "10 ft.",
+    "duration": "10 min./level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "Insects, spiders, and other vermin cannot enter a 10-ft. radius (Will negates for intelligent vermin)."
+  },
+  {
+    "name": "Restoration",
+    "level": 4,
+    "school": "Conjuration",
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
+    "range": "Touch",
+    "duration": "Instantaneous",
+    "subschool": "Healing",
+    "descriptor": [],
+    "description": "This spell functions like lesser restoration, except that it also dispels negative energy levels and restores one experience level to a creature who has had a level drained."
+  },
+  {
+    "name": "Rusting Grasp",
+    "level": 4,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S",
+      "DF"
+    ],
+    "range": "Touch",
+    "duration": "See text",
+    "subschool": "",
+    "descriptor": [],
+    "description": "Destroys ferrous metal on touch; deals 3d6 to iron-based creatures."
+  },
+  {
+    "name": "Shout",
+    "level": 4,
+    "school": "Evocation",
+    "components": [
+      "V"
+    ],
+    "range": "30 ft.",
+    "duration": "Instantaneous",
+    "subschool": "",
+    "descriptor": [
+      "Sonic"
+    ],
+    "description": "Deafens all within cone and deals 5d6 sonic damage."
+  },
+  {
+    "name": "Stoneskin",
+    "level": 4,
+    "school": "Abjuration",
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
+    "range": "Touch",
+    "duration": "10 min./level or until discharged",
+    "subschool": "",
+    "descriptor": [],
+    "description": "The warded creature gains resistance to blows, cuts, stabs, and slashes. The subject gains damage reduction 10/adamantine."
+  },
+  {
+    "name": "Tree Stride",
+    "level": 4,
+    "school": "Conjuration",
+    "components": [
+      "V",
+      "S",
+      "DF"
+    ],
+    "range": "Personal",
+    "duration": "1 hour/level",
+    "subschool": "Teleportation",
+    "descriptor": [],
+    "description": "Step into one tree and emerge from another of the same species within 3 miles."
+  },
+  {
+    "name": "Zone of Silence",
+    "level": 4,
+    "school": "Illusion",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Personal",
+    "duration": "1 hour/level (D)",
+    "subschool": "Glamer",
+    "descriptor": [],
+    "description": "Keeps eavesdroppers from overhearing you."
+  }
+]

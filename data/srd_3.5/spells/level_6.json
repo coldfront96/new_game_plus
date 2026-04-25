@@ -1,0 +1,260 @@
+[
+  {
+    "name": "Antilife Shell",
+    "level": 6,
+    "school": "Abjuration",
+    "components": [
+      "V",
+      "S",
+      "DF"
+    ],
+    "range": "10 ft.",
+    "duration": "10 min./level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "Keeps living creatures out of a 10-ft. radius."
+  },
+  {
+    "name": "Blade Barrier",
+    "level": 6,
+    "school": "Evocation",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "duration": "10 min./level",
+    "subschool": "",
+    "descriptor": [
+      "Force"
+    ],
+    "description": "An immobile, vertical curtain of whirling blades shaped of pure force springs into existence. Any creature passing through the wall takes 1d6 points of damage per caster level (maximum 20d6), with a Reflex save for half damage."
+  },
+  {
+    "name": "Chain Lightning",
+    "level": 6,
+    "school": "Evocation",
+    "components": [
+      "V",
+      "S",
+      "F"
+    ],
+    "range": "Long (400 ft. + 40 ft./level)",
+    "duration": "Instantaneous",
+    "subschool": "",
+    "descriptor": [
+      "Electricity"
+    ],
+    "description": "This spell creates an electrical discharge that begins as a single stroke of lightning, dealing 1d6 points of electricity damage per caster level (maximum 20d6) to the primary target."
+  },
+  {
+    "name": "Contingency",
+    "level": 6,
+    "school": "Evocation",
+    "components": [
+      "V",
+      "S",
+      "M",
+      "F"
+    ],
+    "range": "Personal",
+    "duration": "1 day/level or until discharged",
+    "subschool": "",
+    "descriptor": [],
+    "description": "You can place another spell upon your person so that it comes into effect under some condition you dictate when casting contingency."
+  },
+  {
+    "name": "Disintegrate",
+    "level": 6,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S",
+      "M",
+      "F"
+    ],
+    "range": "Medium (100 ft. + 10 ft./level)",
+    "duration": "Instantaneous",
+    "subschool": "",
+    "descriptor": [],
+    "description": "A thin, green ray springs from your pointing finger. You must make a successful ranged touch attack to hit. Any creature struck by the ray takes 2d6 points of damage per caster level (to a maximum of 40d6)."
+  },
+  {
+    "name": "Globe of Invulnerability",
+    "level": 6,
+    "school": "Abjuration",
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
+    "range": "10 ft.",
+    "duration": "1 round/level (D)",
+    "subschool": "",
+    "descriptor": [],
+    "description": "An immobile, faintly shimmering magical sphere surrounds you and excludes all spell effects of 4th level or lower. The area or effect of any such spells does not include the area of the globe."
+  },
+  {
+    "name": "Greater Scrying",
+    "level": 6,
+    "school": "Divination",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "See text",
+    "duration": "1 hour/level",
+    "subschool": "Scrying",
+    "descriptor": [],
+    "description": "As scrying, but faster and longer."
+  },
+  {
+    "name": "Irresistible Dance",
+    "level": 6,
+    "school": "Enchantment",
+    "components": [
+      "V"
+    ],
+    "range": "Touch",
+    "duration": "1d4+1 rounds",
+    "subschool": "Compulsion",
+    "descriptor": [
+      "Mind-Affecting"
+    ],
+    "description": "Forces subject to dance."
+  },
+  {
+    "name": "Legend Lore",
+    "level": 6,
+    "school": "Divination",
+    "components": [
+      "V",
+      "S",
+      "M",
+      "F"
+    ],
+    "range": "Personal",
+    "duration": "See text",
+    "subschool": "",
+    "descriptor": [],
+    "description": "Legend lore brings to your mind legends about an important person, place, or thing. If the person or thing is at hand, the casting time is only 1d4x10 minutes."
+  },
+  {
+    "name": "Liveoak",
+    "level": 6,
+    "school": "Transmutation",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Touch",
+    "duration": "1 day/level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "Imbues a Large oak tree with sentry power (animates like a treant)."
+  },
+  {
+    "name": "Mass Charm Monster",
+    "level": 6,
+    "school": "Enchantment",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "1 day/level",
+    "subschool": "Charm",
+    "descriptor": [
+      "Mind-Affecting"
+    ],
+    "description": "As charm monster, but all within 30 ft."
+  },
+  {
+    "name": "Mislead",
+    "level": 6,
+    "school": "Illusion",
+    "components": [
+      "S"
+    ],
+    "range": "Close (25 ft. + 5 ft./2 levels)",
+    "duration": "1 round/level (concentration + 3 rounds)",
+    "subschool": "Figment/Glamer",
+    "descriptor": [],
+    "description": "You become invisible and an illusory double of you appears. You are invisible for 1 round per level, and the double lasts for the same duration."
+  },
+  {
+    "name": "Repulsion",
+    "level": 6,
+    "school": "Abjuration",
+    "components": [
+      "V",
+      "S",
+      "F",
+      "DF"
+    ],
+    "range": "10 ft.",
+    "duration": "1 round/level (D)",
+    "subschool": "",
+    "descriptor": [],
+    "description": "An invisible, mobile field surrounds you and prevents creatures from approaching you. You decide how large the field is at the time of casting (up to one 10-foot cube per level)."
+  },
+  {
+    "name": "Sympathetic Vibration",
+    "level": 6,
+    "school": "Evocation",
+    "components": [
+      "V",
+      "S",
+      "F"
+    ],
+    "range": "Touch",
+    "duration": "Up to 1 round/level",
+    "subschool": "",
+    "descriptor": [
+      "Sonic"
+    ],
+    "description": "Deals 2d10 sonic damage per round to a freestanding structure."
+  },
+  {
+    "name": "True Seeing",
+    "level": 6,
+    "school": "Divination",
+    "components": [
+      "V",
+      "S",
+      "M"
+    ],
+    "range": "Touch",
+    "duration": "1 min./level",
+    "subschool": "",
+    "descriptor": [],
+    "description": "You confer on the subject the ability to notice spell effects, see the true form of polymorphed, changed, or transmuted things, and see into the Ethereal Plane."
+  },
+  {
+    "name": "Veil",
+    "level": 6,
+    "school": "Illusion",
+    "components": [
+      "V",
+      "S"
+    ],
+    "range": "Long (400 ft. + 40 ft./level)",
+    "duration": "Concentration + 1 hour/level (D)",
+    "subschool": "Glamer",
+    "descriptor": [],
+    "description": "Changes appearance of a group of creatures."
+  },
+  {
+    "name": "Word of Recall",
+    "level": 6,
+    "school": "Conjuration",
+    "components": [
+      "V"
+    ],
+    "range": "Unlimited",
+    "duration": "Instantaneous",
+    "subschool": "Teleportation",
+    "descriptor": [],
+    "description": "Word of recall teleports you instantly back to your sanctuary when the word is uttered."
+  }
+]
