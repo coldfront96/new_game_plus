@@ -190,3 +190,17 @@ Existing dependencies that this document **leans on** (must remain stable):
 | E-067 | Planar Travel + Encounter Generator | planar | Function `run_planar_excursion(party: list[Character35e], itinerary: list[str], rng) -> ExcursionReport`; iterates planes in order; for each: `transition_plane()` → `apply_encumbrance_to_combat_state()` (gravity recompute) → roll planar encounter via `adapt_encounter_for_plane()` → resolve any planar spells via `resolve_spell_in_plane()` → accumulate temporal dilation per `apply_time_trait()`; final report includes total prime-material time elapsed, XP earned, and any catastrophic-ageing Fort saves required | E-055, E-061, E-062, E-063 | L |
 
 ---
+
+## 3. Summary by Tier
+
+| Tier | Task Count | Focus | Key Output |
+|------|-----------|-------|------------|
+| 0 | 15 | Base schemas, enums, dependency-free dataclasses | `Item.weight_lb`, `CarryingCapacityRow`, `MasterMinionLink`, `FamiliarBase`, `AnimalCompanionBase`, `SpecialMountBase`, `MulticlassRecord`, `RaceFavoredClass`, `NPCClassBase`, `PrestigeClassBase`, `PrerequisiteClause`, `CommunityBase`, `DemographicsRow`, planar trait enums, `PlaneBase` |
+| 1 | 18 | Core formulas & resolvers | Carrying-capacity calculator, load-category & penalty resolver, voxel-speed conversion, familiar/companion/mount progression formulas, multiclass XP penalty, favored-class lookup, NPC class advancement, prerequisite verification engine, GP-limit lookup, highest-level NPC formula, gravity/time/magic/elemental trait resolvers |
+| 2 | 13 | Registries & intermediate generators | `EQUIPMENT_WEIGHT_REGISTRY`, `CARRYING_CAPACITY_TABLE`, `FAMILIAR_REGISTRY`, `ANIMAL_COMPANION_REGISTRY`, `PALADIN_MOUNT_REGISTRY`, `FAVORED_CLASS_REGISTRY`, `NPC_CLASS_REGISTRY`, `PRESTIGE_CLASS_REGISTRY`, `COMMUNITY_REGISTRY`, `POWER_CENTER_REGISTRY`, `INNER_PLANE_REGISTRY`, `OUTER_PLANE_REGISTRY`, `TRANSITIVE_PLANE_REGISTRY` |
+| 3 | 9 | Complex single-system generators | Encumbered character state builder, familiar/companion/paladin-mount acquisition engines, multiclass stat builder, NPC generator, prestige entry+progression engine, settlement generator, planar transition engine |
+| 4 | 7 | Cross-system compound systems | Master/Minion turn tracker, familiar share-spells & empathic link, multiclass spellcasting adjudicator, prestige caster-level continuation, settlement magic-item availability roster, planar spell modifier engine, planar encounter adapter |
+| 5 | 5 | Final integrators | Encumbrance-aware combat & movement, Master/Minion combined initiative simulator, unified multiclass+prestige progression, settlement-aware shopping engine, planar travel + encounter generator |
+| **Total** | **67** | | |
+
+---
