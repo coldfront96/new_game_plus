@@ -203,7 +203,7 @@ _CLASS_STATS: dict[str, dict] = {
     "Wizard":     {"bab": "half",           "fort": "poor", "ref": "poor", "will": "good", "hd": 4},
     # NPC classes
     "Commoner":   {"bab": "half",           "fort": "poor", "ref": "poor", "will": "poor", "hd": 4},
-    "Expert":     {"bab": "half",           "fort": "poor", "ref": "poor", "will": "good", "hd": 6},
+    "Expert":     {"bab": "three_quarters", "fort": "poor", "ref": "poor", "will": "good", "hd": 6},
     "Warrior":    {"bab": "full",           "fort": "good", "ref": "poor", "will": "poor", "hd": 8},
     "Adept":      {"bab": "half",           "fort": "poor", "ref": "poor", "will": "good", "hd": 6},
     "Aristocrat": {"bab": "three_quarters", "fort": "poor", "ref": "poor", "will": "good", "hd": 8},
