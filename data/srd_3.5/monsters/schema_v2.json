@@ -1,0 +1,129 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "srd35_monster_v2",
+  "title": "SRD 3.5e Monster Schema v2",
+  "description": "LW-011 — Adds ecology fields to the base monster stat block. All v1 fields remain required and backward-compatible.",
+  "type": "object",
+  "required": [
+    "name", "cr", "size", "type", "hit_dice", "initiative",
+    "speed", "armor_class", "base_attack", "grapple",
+    "attacks", "special_attacks", "special_qualities",
+    "saves", "abilities", "skills", "feats",
+    "alignment", "advancement",
+    "population_base", "allowed_biomes", "primary_biome"
+  ],
+  "properties": {
+    "name":              { "type": "string" },
+    "cr":                { "type": "number", "minimum": 0 },
+    "size":              { "type": "string", "enum": ["Fine","Diminutive","Tiny","Small","Medium","Large","Huge","Gargantuan","Colossal"] },
+    "type":              { "type": "string" },
+    "subtype":           { "type": ["string", "null"] },
+    "hit_dice":          { "type": "string", "description": "e.g. '6d8+18' or '12d10+60'" },
+    "hp_avg":            { "type": "integer", "minimum": 1 },
+    "initiative":        { "type": "integer" },
+    "speed": {
+      "type": "object",
+      "properties": {
+        "land":  { "type": "integer" },
+        "fly":   { "type": "integer" },
+        "swim":  { "type": "integer" },
+        "burrow":{ "type": "integer" },
+        "climb": { "type": "integer" }
+      }
+    },
+    "armor_class": {
+      "type": "object",
+      "required": ["total", "touch", "flat_footed"],
+      "properties": {
+        "total":       { "type": "integer" },
+        "touch":       { "type": "integer" },
+        "flat_footed": { "type": "integer" },
+        "components":  { "type": "string" }
+      }
+    },
+    "base_attack":   { "type": "integer" },
+    "grapple":       { "type": "integer" },
+    "attacks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "attack_bonus", "damage"],
+        "properties": {
+          "name":         { "type": "string" },
+          "attack_bonus": { "type": "string" },
+          "damage":       { "type": "string" },
+          "crit_range":   { "type": "string" },
+          "damage_type":  { "type": "string" }
+        }
+      }
+    },
+    "special_attacks": { "type": "array", "items": { "type": "string" } },
+    "special_qualities": { "type": "array", "items": { "type": "string" } },
+    "saves": {
+      "type": "object",
+      "required": ["fort", "ref", "will"],
+      "properties": {
+        "fort": { "type": "integer" },
+        "ref":  { "type": "integer" },
+        "will": { "type": "integer" }
+      }
+    },
+    "abilities": {
+      "type": "object",
+      "required": ["str", "dex", "con", "int", "wis", "cha"],
+      "properties": {
+        "str": { "type": ["integer", "null"] },
+        "dex": { "type": ["integer", "null"] },
+        "con": { "type": ["integer", "null"] },
+        "int": { "type": ["integer", "null"] },
+        "wis": { "type": "integer" },
+        "cha": { "type": "integer" }
+      }
+    },
+    "skills":    { "type": "object" },
+    "feats":     { "type": "array", "items": { "type": "string" } },
+    "alignment": { "type": "string" },
+    "advancement": { "type": ["string", "null"] },
+    "dr":        { "type": ["string", "null"], "description": "e.g. '10/Good' or '5/Cold Iron and Magic'" },
+    "sr":        { "type": ["integer", "null"] },
+    "regen":     { "type": ["integer", "null"] },
+    "fast_heal": { "type": ["integer", "null"] },
+    "elemental_weaknesses":  { "type": "array", "items": { "type": "string" } },
+    "alignment_weaknesses":  { "type": "array", "items": { "type": "string" } },
+    "passive_effects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["effect_type", "range_ft", "save_dc", "effect_on_fail"],
+        "properties": {
+          "effect_type":        { "type": "string" },
+          "range_ft":           { "type": "integer" },
+          "save_type":          { "type": ["string", "null"] },
+          "save_dc":            { "type": "integer" },
+          "effect_on_fail":     { "type": "string" },
+          "effect_on_pass":     { "type": ["string", "null"] },
+          "suppress_conditions":{ "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "population_base": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "LW-011 — World-generation starting count. 0 = unique singleton."
+    },
+    "allowed_biomes": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" },
+      "description": "LW-011 — Each string must resolve to a Biome enum name or 'Any'."
+    },
+    "primary_biome": {
+      "type": "string",
+      "description": "LW-011 — Dominant biome; must also appear in allowed_biomes."
+    },
+    "ecology_notes": {
+      "type": ["string", "null"],
+      "description": "LW-011 — Free-text passed verbatim to the LLM in anomaly lore prompts."
+    }
+  }
+}
