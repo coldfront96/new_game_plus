@@ -128,6 +128,41 @@ def _add_play_parser(subparsers: "argparse._SubParsersAction") -> None:
     )
 
 
+def _add_ui_parser(subparsers: "argparse._SubParsersAction") -> None:
+    parser = subparsers.add_parser(
+        "ui",
+        help="Launch the Textual TUI Overseer.",
+        description=(
+            "Open the graphical terminal interface: World viewport, "
+            "combat log, and Overseer command bar.  Requires the "
+            "'textual' package (pip install textual)."
+        ),
+    )
+    parser.add_argument(
+        "--seed",
+        type=int,
+        default=None,
+        help="World seed for terrain generation.  Omit to disable the viewport.",
+    )
+    parser.add_argument(
+        "--apl",
+        type=int,
+        default=3,
+        help="Default Average Party Level for 'play' sessions (default 3).",
+    )
+    parser.add_argument(
+        "--terrain",
+        default="dungeon",
+        help="Default terrain for 'play' sessions (default: dungeon).",
+    )
+    parser.add_argument(
+        "--cache-size",
+        type=int,
+        default=64,
+        help="Chunk cache size for the terrain manager (default 64).",
+    )
+
+
 def build_parser() -> argparse.ArgumentParser:
     """Construct the top-level ``argparse`` parser."""
     parser = argparse.ArgumentParser(
@@ -138,6 +173,7 @@ def build_parser() -> argparse.ArgumentParser:
     _add_new_character_parser(subparsers)
     _add_run_encounter_parser(subparsers)
     _add_play_parser(subparsers)
+    _add_ui_parser(subparsers)
     return parser
 
 
@@ -244,6 +280,46 @@ def _cmd_play(
     return 0 if report.outcome == "victory" else 1
 
 
+def _cmd_ui(args: argparse.Namespace) -> int:
+    try:
+        from textual.app import App as _TextualApp  # noqa: F401 — presence check
+    except ImportError:
+        print(
+            "error: 'textual' is not installed.\n"
+            "       Run:  pip install textual",
+            file=sys.stderr,
+        )
+        return 1
+
+    from src.overseer_ui.overseer import OverseerQueue
+    from src.overseer_ui.textual_app import OverseerApp
+
+    queue = OverseerQueue()
+
+    chunk_manager = None
+    if args.seed is not None:
+        from src.core.event_bus import EventBus
+        from src.terrain.chunk_generator import ChunkGenerator
+        from src.terrain.chunk_manager import ChunkManager
+
+        bus = EventBus()
+        generator = ChunkGenerator(seed=args.seed)
+        chunk_manager = ChunkManager(
+            event_bus=bus,
+            cache_size=args.cache_size,
+            generator=generator,
+        )
+
+    app = OverseerApp(
+        queue=queue,
+        chunk_manager=chunk_manager,
+        default_apl=args.apl,
+        default_terrain=args.terrain,
+    )
+    app.run()
+    return 0
+
+
 # ---------------------------------------------------------------------------
 # Entry point
 # ---------------------------------------------------------------------------
@@ -259,6 +335,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         return _cmd_run_encounter(args)
     if args.command == "play":
         return _cmd_play(args)
+    if args.command == "ui":
+        return _cmd_ui(args)
 
     parser.print_help()
     return 1

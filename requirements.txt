@@ -1,2 +1,4 @@
 pytest
 opensimplex
+textual>=0.60.0
+rich>=13.0.0
