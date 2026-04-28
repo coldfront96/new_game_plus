@@ -1,11 +1,25 @@
 """LW-044 — Wire all MM Physics subsystems into the CombatEngine turn loop.
 
 Integration points (called by CombatEngine or any turn-based orchestrator):
-  start_of_turn()   — aura passive effects for each entity with an Aura PassiveEffect.
-  after_attack()    — Improved Grab attempt; SR check before spell damage.
+  start_of_turn()   — aura passive effects + START_OF_TURN special ability callbacks.
+  after_attack()    — Improved Grab; SR check; AFTER_HIT special ability callbacks.
   apply_damage()    — DR applied to all physical damage.
   end_of_round()    — healing tick (Regen + Fast Heal precedence) for every RegenerationRecord.
   on_death()        — decrement species world count via SpawnDirector.
+
+Special-ability wiring
+~~~~~~~~~~~~~~~~~~~~~~
+Register a creature's abilities on ``MMPhysicsContext.special_abilities`` using the
+canonical names from ``src.rules_engine.monster_abilities.ABILITY_REGISTRY``::
+
+    ctx.special_abilities["vampire_001"] = [
+        "vampire_energy_drain",
+        "pit_fiend_fear_aura",   # stacks if the creature has both
+    ]
+
+``start_of_turn()`` then fires every ``AbilityTrigger.START_OF_TURN`` callback
+against each other combatant; ``after_attack()`` fires every
+``AbilityTrigger.AFTER_HIT`` callback when a hit is confirmed.
 """
 from __future__ import annotations
 
@@ -19,6 +33,7 @@ if TYPE_CHECKING:
     from src.rules_engine.mm_grapple import GrappleState
     from src.rules_engine.mm_immortal import RegenerationRecord, DamageEvent, HealingResult
     from src.rules_engine.mm_metaphysical import DRRecord, SRRecord, SRResult
+    from src.rules_engine.monster_abilities import AbilityResult
     from src.world_sim.spawn_director import SpawnDirector
 
 _log = logging.getLogger(__name__)
@@ -35,6 +50,10 @@ class MMPhysicsContext:
     aversion_states: dict[str, object]             = field(default_factory=dict)
     positions: dict[str, tuple[float, float, float]] = field(default_factory=dict)
     spawn_director: "SpawnDirector | None"         = None
+    # Maps char_id → list of ability names from monster_abilities.ABILITY_REGISTRY.
+    # Populated by the encounter builder when a creature with special abilities
+    # enters combat (e.g. ctx.special_abilities["vampire_42"] = ["vampire_energy_drain"]).
+    special_abilities: dict[str, list[str]]        = field(default_factory=dict)
 
 
 # ---------------------------------------------------------------------------
@@ -46,11 +65,44 @@ def start_of_turn(
     combat_state: "CombatState",
     ctx: MMPhysicsContext,
     tick: int,
-) -> list["EffectApplication"]:
-    """Process aura PassiveEffects for source at the start of its turn."""
-    from src.rules_engine.mm_passive import process_aura_effects
+) -> dict:
+    """Process aura PassiveEffects and START_OF_TURN special ability callbacks.
 
-    return process_aura_effects(source, combat_state, tick, positions=ctx.positions)
+    Returns a dict with keys:
+      'passive_effects'  — list[EffectApplication] from the passive-lethality system.
+      'ability_results'  — list[AbilityResult] from monster_abilities callbacks.
+    """
+    from src.rules_engine.mm_passive import process_aura_effects
+    from src.rules_engine.monster_abilities import (
+        AbilityTrigger,
+        get_abilities_for_trigger,
+        ABILITY_REGISTRY,
+    )
+
+    passive_effects = process_aura_effects(
+        source, combat_state, tick, positions=ctx.positions
+    )
+
+    ability_results: list["AbilityResult"] = []
+    source_ability_names = ctx.special_abilities.get(source.char_id, [])
+    start_abilities = get_abilities_for_trigger(
+        source_ability_names, AbilityTrigger.START_OF_TURN
+    )
+
+    if start_abilities:
+        for target in combat_state.entities:
+            if target.char_id == source.char_id:
+                continue
+            for ability in start_abilities:
+                result = ability.callback(source, target, tick)
+                ability_results.append(result)
+                _log.debug(
+                    "start_of_turn ability %s: %s → %s effect=%s",
+                    ability.name, source.char_id, target.char_id,
+                    result.effect_applied,
+                )
+
+    return {"passive_effects": passive_effects, "ability_results": ability_results}
 
 
 # ---------------------------------------------------------------------------
@@ -77,7 +129,17 @@ def after_attack(
     from src.rules_engine.mm_grapple import attempt_improved_grab
     from src.rules_engine.mm_metaphysical import apply_sr_interaction_rules
 
-    result: dict = {"grapple_state": None, "sr_result": None, "spell_blocked": False}
+    from src.rules_engine.monster_abilities import (
+        AbilityTrigger,
+        get_abilities_for_trigger,
+    )
+
+    result: dict = {
+        "grapple_state":   None,
+        "sr_result":       None,
+        "spell_blocked":   False,
+        "ability_results": [],
+    }
 
     # Improved Grab — only on confirmed natural attack hits
     if hit_confirmed and is_natural_attack:
@@ -96,6 +158,23 @@ def after_attack(
             )
             result["sr_result"] = sr_result
             result["spell_blocked"] = not sr_result.penetrated
+
+    # Special ability callbacks — fire on confirmed hits only
+    if hit_confirmed:
+        attacker_ability_names = ctx.special_abilities.get(attacker.char_id, [])
+        after_hit_abilities = get_abilities_for_trigger(
+            attacker_ability_names, AbilityTrigger.AFTER_HIT
+        )
+        ability_results = []
+        for ability in after_hit_abilities:
+            ab_result = ability.callback(attacker, target, tick)
+            ability_results.append(ab_result)
+            _log.debug(
+                "after_attack ability %s: %s → %s effect=%s",
+                ability.name, attacker.char_id, target.char_id,
+                ab_result.effect_applied,
+            )
+        result["ability_results"] = ability_results
 
     return result
 
