@@ -1,0 +1,450 @@
+[
+  {
+    "name": "Dryad",
+    "cr": 3,
+    "size": "Medium",
+    "type": "Fey",
+    "subtype": null,
+    "hit_dice": "4d6",
+    "hp_avg": 14,
+    "initiative": 3,
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 15,
+      "touch": 13,
+      "flat_footed": 12,
+      "components": "+3 Dex, +2 leather armor"
+    },
+    "base_attack": 2,
+    "grapple": 2,
+    "attacks": [
+      {
+        "name": "Dagger",
+        "attack_bonus": "+2",
+        "damage": "1d4",
+        "damage_type": "Piercing",
+        "crit_range": "19-20/x2"
+      },
+      {
+        "name": "Masterwork Dagger",
+        "attack_bonus": "+3",
+        "damage": "1d4",
+        "damage_type": "Piercing",
+        "crit_range": "19-20/x2"
+      }
+    ],
+    "special_attacks": [
+      "Spell-Like Abilities (charm person DC 15 Will, deep slumber, entangle, speak with plants, tree stride, wood shape)"
+    ],
+    "special_qualities": [
+      "DR 5/Cold Iron",
+      "Low-Light Vision",
+      "Tree Dependent",
+      "Wild Empathy +6"
+    ],
+    "saves": {
+      "fort": 1,
+      "ref": 7,
+      "will": 5
+    },
+    "abilities": {
+      "str": 10,
+      "dex": 17,
+      "con": 11,
+      "int": 14,
+      "wis": 15,
+      "cha": 18
+    },
+    "skills": {
+      "Escape Artist": 10,
+      "Handle Animal": 11,
+      "Hide": 10,
+      "Knowledge (nature)": 11,
+      "Listen": 9,
+      "Move Silently": 10,
+      "Ride": 5,
+      "Spot": 9,
+      "Survival": 9
+    },
+    "feats": [
+      "Alertness",
+      "Weapon Finesse"
+    ],
+    "alignment": "Usually Chaotic Good",
+    "advancement": "By character class",
+    "dr": "5/Cold Iron",
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 50,
+    "allowed_biomes": [
+      "Temperate_Forest",
+      "Warm_Forest"
+    ],
+    "primary_biome": "Temperate_Forest",
+    "ecology_notes": "Dryads are fey spirits bound to a specific tree. They never willingly travel more than 300 yards from their bonded tree, and dying if it is destroyed."
+  },
+  {
+    "name": "Nymph",
+    "cr": 7,
+    "size": "Medium",
+    "type": "Fey",
+    "subtype": null,
+    "hit_dice": "6d6",
+    "hp_avg": 21,
+    "initiative": 3,
+    "speed": {
+      "land": 30,
+      "swim": 20
+    },
+    "armor_class": {
+      "total": 17,
+      "touch": 15,
+      "flat_footed": 14,
+      "components": "+3 Dex, +2 leather armor, +2 CHA (Unearthly Grace)"
+    },
+    "base_attack": 3,
+    "grapple": 3,
+    "attacks": [
+      {
+        "name": "Dagger",
+        "attack_bonus": "+6",
+        "damage": "1d4",
+        "damage_type": "Piercing",
+        "crit_range": "19-20/x2"
+      }
+    ],
+    "special_attacks": [
+      "Blinding Beauty (DC 17 Fort, permanent blindness)",
+      "Spells (as cleric 3/druid 7)",
+      "Unearthly Grace (CHA to AC and saves)"
+    ],
+    "special_qualities": [
+      "DR 10/Cold Iron",
+      "Low-Light Vision",
+      "Wild Empathy +11"
+    ],
+    "saves": {
+      "fort": 7,
+      "ref": 8,
+      "will": 8
+    },
+    "abilities": {
+      "str": 10,
+      "dex": 17,
+      "con": 11,
+      "int": 16,
+      "wis": 17,
+      "cha": 19
+    },
+    "skills": {
+      "Concentration": 9,
+      "Diplomacy": 13,
+      "Escape Artist": 12,
+      "Handle Animal": 13,
+      "Heal": 12,
+      "Knowledge (nature)": 14,
+      "Listen": 14,
+      "Move Silently": 12,
+      "Sense Motive": 12,
+      "Spot": 14,
+      "Swim": 8
+    },
+    "feats": [
+      "Combat Casting",
+      "Dodge",
+      "Weapon Finesse"
+    ],
+    "alignment": "Always Chaotic Good",
+    "advancement": "By character class",
+    "dr": "10/Cold Iron",
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [
+      {
+        "effect_type": "blinding_beauty",
+        "range_ft": 30,
+        "save_type": "Fort",
+        "save_dc": 17,
+        "effect_on_fail": "Permanently blinded unless gaze averted (averting gives 50% miss chance for 1 round)",
+        "effect_on_pass": null,
+        "suppress_conditions": [
+          "Blinded"
+        ]
+      }
+    ],
+    "population_base": 20,
+    "allowed_biomes": [
+      "Temperate_Forest",
+      "Warm_Forest",
+      "Temperate_Aquatic"
+    ],
+    "primary_biome": "Temperate_Forest",
+    "ecology_notes": "Nymphs are the most beautiful of fey. Their unearthly grace adds their CHA bonus to all saves and AC. Their blinding beauty can permanently blind those who look upon them unveiled."
+  },
+  {
+    "name": "Pixie",
+    "cr": 4,
+    "size": "Small",
+    "type": "Fey",
+    "subtype": null,
+    "hit_dice": "1d6",
+    "hp_avg": 3,
+    "initiative": 4,
+    "speed": {
+      "land": 20,
+      "fly": 60
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 14,
+      "flat_footed": 14,
+      "components": "+4 Dex, +1 size, +1 natural"
+    },
+    "base_attack": 0,
+    "grapple": -6,
+    "attacks": [
+      {
+        "name": "Short Sword",
+        "attack_bonus": "+2",
+        "damage": "1d4-2",
+        "damage_type": "Piercing",
+        "crit_range": "19-20/x2"
+      },
+      {
+        "name": "+1 Longbow",
+        "attack_bonus": "+2 ranged",
+        "damage": "1d6-2",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Spell-Like Abilities (confusion DC 15 Will, dancing lights, detect chaos/evil/good/law, dispel magic, entangle DC 13 Ref, lesser confusion DC 14 Will, permanent invisibility on self)"
+    ],
+    "special_qualities": [
+      "DR 10/Cold Iron",
+      "Low-Light Vision",
+      "SR 15"
+    ],
+    "saves": {
+      "fort": 2,
+      "ref": 6,
+      "will": 4
+    },
+    "abilities": {
+      "str": 7,
+      "dex": 18,
+      "con": 11,
+      "int": 16,
+      "wis": 15,
+      "cha": 16
+    },
+    "skills": {
+      "Bluff": 9,
+      "Concentration": 4,
+      "Escape Artist": 10,
+      "Hide": 14,
+      "Listen": 10,
+      "Move Silently": 10,
+      "Ride": 8,
+      "Search": 9,
+      "Sense Motive": 8,
+      "Spot": 10
+    },
+    "feats": [
+      "Dodge",
+      "Weapon Finesse"
+    ],
+    "alignment": "Always Neutral Good",
+    "advancement": "2-3 HD (Small)",
+    "dr": "10/Cold Iron",
+    "sr": 15,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 60,
+    "allowed_biomes": [
+      "Temperate_Forest",
+      "Warm_Forest"
+    ],
+    "primary_biome": "Temperate_Forest",
+    "ecology_notes": "Pixies are mischievous fey who delight in playing pranks on larger creatures. Their spell-like abilities and natural invisibility make them elusive tricksters."
+  },
+  {
+    "name": "Satyr",
+    "cr": 4,
+    "size": "Medium",
+    "type": "Fey",
+    "subtype": null,
+    "hit_dice": "5d6+5",
+    "hp_avg": 22,
+    "initiative": 2,
+    "speed": {
+      "land": 40
+    },
+    "armor_class": {
+      "total": 15,
+      "touch": 12,
+      "flat_footed": 13,
+      "components": "+2 Dex, +3 natural"
+    },
+    "base_attack": 2,
+    "grapple": 3,
+    "attacks": [
+      {
+        "name": "Head Butt",
+        "attack_bonus": "+3",
+        "damage": "1d6+1",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Shortbow",
+        "attack_bonus": "+4 ranged",
+        "damage": "1d6",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Pipes (DC 13 Will, charm/sleep/fear/fleeing)"
+    ],
+    "special_qualities": [
+      "DR 5/Cold Iron",
+      "Low-Light Vision"
+    ],
+    "saves": {
+      "fort": 4,
+      "ref": 6,
+      "will": 4
+    },
+    "abilities": {
+      "str": 12,
+      "dex": 15,
+      "con": 13,
+      "int": 12,
+      "wis": 13,
+      "cha": 13
+    },
+    "skills": {
+      "Bluff": 9,
+      "Diplomacy": 3,
+      "Hide": 14,
+      "Knowledge (nature)": 11,
+      "Listen": 16,
+      "Move Silently": 14,
+      "Perform (pipes)": 11,
+      "Spot": 16
+    },
+    "feats": [
+      "Dodge",
+      "Mobility",
+      "Point Blank Shot"
+    ],
+    "alignment": "Usually Chaotic Neutral",
+    "advancement": "By character class",
+    "dr": "5/Cold Iron",
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 80,
+    "allowed_biomes": [
+      "Temperate_Forest",
+      "Warm_Forest"
+    ],
+    "primary_biome": "Temperate_Forest",
+    "ecology_notes": "Satyrs are hedonistic fey with the upper body of a man and the legs and horns of a goat. Their enchanted pipes can charm, terrify, or lull creatures to sleep."
+  },
+  {
+    "name": "Sprite",
+    "cr": 1,
+    "size": "Tiny",
+    "type": "Fey",
+    "subtype": null,
+    "hit_dice": "1d6",
+    "hp_avg": 3,
+    "initiative": 4,
+    "speed": {
+      "land": 10,
+      "fly": 40
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 14,
+      "flat_footed": 14,
+      "components": "+4 Dex, +2 natural"
+    },
+    "base_attack": 0,
+    "grapple": -8,
+    "attacks": [
+      {
+        "name": "Tiny Sword",
+        "attack_bonus": "+2",
+        "damage": "1d4-2",
+        "damage_type": "Slashing",
+        "crit_range": "19-20/x2"
+      }
+    ],
+    "special_attacks": [
+      "Spell-Like Abilities (detect evil 3/day, detect good, detect law, detect chaos, faerie fire, invisibility)"
+    ],
+    "special_qualities": [
+      "DR 5/Cold Iron",
+      "Low-Light Vision",
+      "SR 14"
+    ],
+    "saves": {
+      "fort": 2,
+      "ref": 6,
+      "will": 3
+    },
+    "abilities": {
+      "str": 6,
+      "dex": 18,
+      "con": 11,
+      "int": 12,
+      "wis": 13,
+      "cha": 14
+    },
+    "skills": {
+      "Craft (any)": 6,
+      "Escape Artist": 9,
+      "Hide": 20,
+      "Jump": -4,
+      "Listen": 4,
+      "Move Silently": 12,
+      "Spot": 4,
+      "Survival": 1
+    },
+    "feats": [
+      "Dodge"
+    ],
+    "alignment": "Always Neutral Good",
+    "advancement": "2-3 HD (Tiny)",
+    "dr": "5/Cold Iron",
+    "sr": 14,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 150,
+    "allowed_biomes": [
+      "Temperate_Forest",
+      "Warm_Forest"
+    ],
+    "primary_biome": "Temperate_Forest",
+    "ecology_notes": "Sprites are tiny winged fey who serve as guardians of unspoiled woodlands. They use detect evil to identify and drive away threats to their forest homes."
+  }
+]

@@ -1,0 +1,431 @@
+[
+  {
+    "name": "Assassin Vine",
+    "cr": 3,
+    "size": "Large",
+    "type": "Plant",
+    "subtype": null,
+    "hit_dice": "4d8+12",
+    "hp_avg": 30,
+    "initiative": -1,
+    "speed": {
+      "land": 5
+    },
+    "armor_class": {
+      "total": 15,
+      "touch": 9,
+      "flat_footed": 15,
+      "components": "-1 Dex, +7 natural, -1 size"
+    },
+    "base_attack": 3,
+    "grapple": 12,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+7",
+        "damage": "1d6+7",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Constrict 1d6+7",
+      "Entangle",
+      "Improved Grab"
+    ],
+    "special_qualities": [
+      "Blindsight 30 ft.",
+      "Low-Light Vision",
+      "Plant Traits",
+      "Immunity to Electricity",
+      "Resistance to Cold 20",
+      "Resistance to Fire 20"
+    ],
+    "saves": {
+      "fort": 7,
+      "ref": 0,
+      "will": 2
+    },
+    "abilities": {
+      "str": 20,
+      "dex": 8,
+      "con": 16,
+      "int": null,
+      "wis": 13,
+      "cha": 9
+    },
+    "skills": {},
+    "feats": [],
+    "alignment": "Always Neutral",
+    "advancement": "5-16 HD (Large); 17-32 HD (Huge)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 100,
+    "allowed_biomes": [
+      "Temperate_Forest",
+      "Warm_Forest",
+      "Any_Ruin"
+    ],
+    "primary_biome": "Temperate_Forest",
+    "ecology_notes": "Assassin vines lie dormant among normal vegetation, lashing out to constrict prey when creatures draw close. They use entangle to prevent escape."
+  },
+  {
+    "name": "Phantom Fungus",
+    "cr": 2,
+    "size": "Medium",
+    "type": "Plant",
+    "subtype": null,
+    "hit_dice": "2d8+6",
+    "hp_avg": 15,
+    "initiative": 0,
+    "speed": {
+      "land": 20
+    },
+    "armor_class": {
+      "total": 14,
+      "touch": 10,
+      "flat_footed": 14,
+      "components": "+4 natural"
+    },
+    "base_attack": 1,
+    "grapple": 3,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+3",
+        "damage": "1d6+3",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [],
+    "special_qualities": [
+      "Greater Invisibility (permanent)",
+      "Low-Light Vision",
+      "Plant Traits"
+    ],
+    "saves": {
+      "fort": 6,
+      "ref": 0,
+      "will": 1
+    },
+    "abilities": {
+      "str": 14,
+      "dex": 10,
+      "con": 16,
+      "int": 2,
+      "wis": 11,
+      "cha": 9
+    },
+    "skills": {
+      "Move Silently": 7
+    },
+    "feats": [
+      "Alertness"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "3-6 HD (Medium)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 40,
+    "allowed_biomes": [
+      "Underground",
+      "Underdark",
+      "Temperate_Forest"
+    ],
+    "primary_biome": "Underground",
+    "ecology_notes": "Phantom fungi are ambulatory mushrooms that are permanently invisible, making them difficult to detect before they strike."
+  },
+  {
+    "name": "Shrieker",
+    "cr": 1,
+    "size": "Medium",
+    "type": "Plant",
+    "subtype": null,
+    "hit_dice": "2d8+6",
+    "hp_avg": 15,
+    "initiative": -5,
+    "speed": {
+      "land": 0
+    },
+    "armor_class": {
+      "total": 13,
+      "touch": 8,
+      "flat_footed": 13,
+      "components": "-5 Dex, +8 natural"
+    },
+    "base_attack": 1,
+    "grapple": -4,
+    "attacks": [],
+    "special_attacks": [
+      "Shriek (60 ft., attracts monsters)"
+    ],
+    "special_qualities": [
+      "Low-Light Vision",
+      "Plant Traits"
+    ],
+    "saves": {
+      "fort": 6,
+      "ref": -4,
+      "will": 0
+    },
+    "abilities": {
+      "str": 1,
+      "dex": 1,
+      "con": 16,
+      "int": null,
+      "wis": 11,
+      "cha": 11
+    },
+    "skills": {},
+    "feats": [],
+    "alignment": "Always Neutral",
+    "advancement": "3-6 HD (Medium)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 120,
+    "allowed_biomes": [
+      "Underground",
+      "Underdark"
+    ],
+    "primary_biome": "Underground",
+    "ecology_notes": "Shriekers are stationary fungi that emit a piercing wail when light or movement comes within 10 feet, alerting nearby monsters to prey."
+  },
+  {
+    "name": "Tendriculos",
+    "cr": 6,
+    "size": "Huge",
+    "type": "Plant",
+    "subtype": null,
+    "hit_dice": "9d8+54",
+    "hp_avg": 94,
+    "initiative": -1,
+    "speed": {
+      "land": 20
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 8,
+      "flat_footed": 16,
+      "components": "-1 Dex, +9 natural, -2 size"
+    },
+    "base_attack": 6,
+    "grapple": 19,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+14",
+        "damage": "2d8+9",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Tentacle",
+        "attack_bonus": "+9/+9",
+        "damage": "1d6+4",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Acid (1d6/round while swallowed)",
+      "Improved Grab",
+      "Paralyzing Spores (DC 22 Fort, paralyzed 3d6 rounds)",
+      "Swallow Whole"
+    ],
+    "special_qualities": [
+      "Fast Healing 10",
+      "Low-Light Vision",
+      "Plant Traits"
+    ],
+    "saves": {
+      "fort": 12,
+      "ref": 2,
+      "will": 4
+    },
+    "abilities": {
+      "str": 28,
+      "dex": 9,
+      "con": 22,
+      "int": 3,
+      "wis": 8,
+      "cha": 3
+    },
+    "skills": {
+      "Listen": 3,
+      "Move Silently": 1,
+      "Spot": 3
+    },
+    "feats": [
+      "Alertness",
+      "Iron Will",
+      "Power Attack"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "10-16 HD (Huge); 17-27 HD (Gargantuan)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": 10,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 20,
+    "allowed_biomes": [
+      "Temperate_Forest",
+      "Warm_Forest",
+      "Temperate_Swamp"
+    ],
+    "primary_biome": "Temperate_Forest",
+    "ecology_notes": "The tendriculos is a massive ambulatory plant that resembles a tangle of vines and leaves. It envelops prey with paralyzing spores before swallowing them whole."
+  },
+  {
+    "name": "Violet Fungus",
+    "cr": 3,
+    "size": "Medium",
+    "type": "Plant",
+    "subtype": null,
+    "hit_dice": "2d8+6",
+    "hp_avg": 15,
+    "initiative": -2,
+    "speed": {
+      "land": 10
+    },
+    "armor_class": {
+      "total": 13,
+      "touch": 10,
+      "flat_footed": 13,
+      "components": "-2 Dex, +5 natural"
+    },
+    "base_attack": 1,
+    "grapple": 2,
+    "attacks": [
+      {
+        "name": "Tentacle (x4)",
+        "attack_bonus": "+2",
+        "damage": "1d4+1 plus rotting disease",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Rot (DC 14 Fort, 1d4 STR and 1d4 CON per round until cured)"
+    ],
+    "special_qualities": [
+      "Low-Light Vision",
+      "Plant Traits"
+    ],
+    "saves": {
+      "fort": 6,
+      "ref": -2,
+      "will": 2
+    },
+    "abilities": {
+      "str": 12,
+      "dex": 6,
+      "con": 16,
+      "int": null,
+      "wis": 11,
+      "cha": 9
+    },
+    "skills": {},
+    "feats": [],
+    "alignment": "Always Neutral",
+    "advancement": "3-6 HD (Medium)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 60,
+    "allowed_biomes": [
+      "Underground",
+      "Temperate_Forest"
+    ],
+    "primary_biome": "Underground",
+    "ecology_notes": "Violet fungi are ambulatory purple mushrooms whose tentacles spread a devastating rotting disease. They often cluster in dungeon areas with other fungi."
+  },
+  {
+    "name": "Yellow Musk Creeper",
+    "cr": 6,
+    "size": "Large",
+    "type": "Plant",
+    "subtype": null,
+    "hit_dice": "10d8+20",
+    "hp_avg": 65,
+    "initiative": -1,
+    "speed": {
+      "land": 5
+    },
+    "armor_class": {
+      "total": 15,
+      "touch": 9,
+      "flat_footed": 15,
+      "components": "-1 Dex, +7 natural, -1 size"
+    },
+    "base_attack": 7,
+    "grapple": 15,
+    "attacks": [
+      {
+        "name": "Tendril",
+        "attack_bonus": "+11",
+        "damage": "1d6+4 plus pollen",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Pollen (DC 16 Will, 1d3 INT drain; creates yellow musk zombie on death)"
+    ],
+    "special_qualities": [
+      "Low-Light Vision",
+      "Plant Traits"
+    ],
+    "saves": {
+      "fort": 9,
+      "ref": 2,
+      "will": 4
+    },
+    "abilities": {
+      "str": 19,
+      "dex": 8,
+      "con": 14,
+      "int": null,
+      "wis": 13,
+      "cha": 17
+    },
+    "skills": {},
+    "feats": [
+      "Alertness",
+      "Combat Reflexes"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "11-20 HD (Large); 21-30 HD (Huge)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 25,
+    "allowed_biomes": [
+      "Warm_Forest",
+      "Warm_Plain",
+      "Temperate_Forest"
+    ],
+    "primary_biome": "Warm_Forest",
+    "ecology_notes": "Yellow musk creepers lure creatures with their intoxicating pollen, draining their intelligence before converting them into yellow musk zombies that serve as guards and seed-spreaders."
+  }
+]
