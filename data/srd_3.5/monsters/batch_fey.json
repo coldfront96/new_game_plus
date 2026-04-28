@@ -207,7 +207,7 @@
       "total": 16,
       "touch": 14,
       "flat_footed": 14,
-      "components": "+4 Dex (after -2 Dex for size? no, +4 size) +2 natural, +1 size"
+      "components": "+4 Dex, +1 size, +1 natural"
     },
     "base_attack": 0,
     "grapple": -6,
