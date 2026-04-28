@@ -1,0 +1,879 @@
+[
+  {
+    "name": "Devil, Barbed (Hamatula)",
+    "cr": 11,
+    "size": "Medium",
+    "type": "Outsider",
+    "subtype": "Evil, Extraplanar, Lawful",
+    "hit_dice": "12d8+60",
+    "hp_avg": 114,
+    "initiative": 5,
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 30,
+      "touch": 15,
+      "flat_footed": 25,
+      "components": "+5 Dex, +15 natural"
+    },
+    "base_attack": 12,
+    "grapple": 16,
+    "attacks": [
+      {
+        "name": "Claw (\u00d72)",
+        "attack_bonus": "+16",
+        "damage": "1d8+4 plus barbs",
+        "damage_type": "Piercing and Slashing"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+11",
+        "damage": "1d8+2",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Barbs (any creature grappling the Hamatula takes 1d8+4 piercing damage each round)",
+      "Fear Aura (DC 21 Will, shaken while within 10 ft.)",
+      "Improved Grab",
+      "Spell-Like Abilities: hold person, summon monster IV (1/day each); major image, scorching ray (at will)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "DR 10/Good and Silver",
+      "Immunity to Fire and Poison",
+      "Resistance to Acid 10, Cold 10",
+      "See in Darkness",
+      "SR 22",
+      "Telepathy 100 ft."
+    ],
+    "saves": {
+      "fort": 13,
+      "ref": 13,
+      "will": 7
+    },
+    "abilities": {
+      "str": 19,
+      "dex": 21,
+      "con": 21,
+      "int": 12,
+      "wis": 12,
+      "cha": 12
+    },
+    "skills": {
+      "Bluff": 16,
+      "Climb": 19,
+      "Concentration": 20,
+      "Diplomacy": 5,
+      "Disguise": 1,
+      "Intimidate": 18,
+      "Knowledge (planes)": 16,
+      "Listen": 18,
+      "Search": 16,
+      "Spot": 18
+    },
+    "feats": [
+      "Alertness",
+      "Combat Reflexes",
+      "Iron Will",
+      "Point Blank Shot",
+      "Weapon Focus (claw)"
+    ],
+    "alignment": "Always Lawful Evil",
+    "advancement": null,
+    "dr": "10/Good and Silver",
+    "sr": 22,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [
+      "Good"
+    ],
+    "passive_effects": [],
+    "population_base": 0,
+    "allowed_biomes": [
+      "Any"
+    ],
+    "primary_biome": "Any",
+    "ecology_notes": "Hamatulas\u2014barbed devils\u2014are bristling, spine-covered fiends that serve as prison guards and tormentors in the Nine Hells. Their bodies are literally weapons: any creature grappling them is skewered by their barbs. They are meticulous record-keepers and contract enforcers for devil hierarchies, and on the Material Plane they are summoned to guard valuable locations or torture prisoners."
+  },
+  {
+    "name": "Devil, Bearded (Barbazu)",
+    "cr": 5,
+    "size": "Medium",
+    "type": "Outsider",
+    "subtype": "Evil, Extraplanar, Lawful",
+    "hit_dice": "6d8+18",
+    "hp_avg": 45,
+    "initiative": 6,
+    "speed": {
+      "land": 40
+    },
+    "armor_class": {
+      "total": 19,
+      "touch": 12,
+      "flat_footed": 17,
+      "components": "+2 Dex, +7 natural"
+    },
+    "base_attack": 6,
+    "grapple": 9,
+    "attacks": [
+      {
+        "name": "Glaive",
+        "attack_bonus": "+9",
+        "damage": "1d10+4",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Beard",
+        "attack_bonus": "+4",
+        "damage": "1d8+1 plus devil chills",
+        "damage_type": "Slashing"
+      }
+    ],
+    "special_attacks": [
+      "Devil Chills (beard, DC 14 Fortitude, 1d4 Str damage per day; requires 3 consecutive saves to cure)",
+      "Infernal Wound (glaive, 1 hp bleeding per round per wound until magically healed; DC 15 Heal to stop one wound)",
+      "Spell-Like Abilities: greater teleport (at will); magic missile (3/day)"
+    ],
+    "special_qualities": [
+      "Battle Frenzy (may enter a barbarian-like rage when below half hit points)",
+      "Darkvision 60 ft.",
+      "DR 5/Good and Silver",
+      "Immunity to Fire and Poison",
+      "Resistance to Acid 10, Cold 10",
+      "SR 16",
+      "Telepathy 100 ft."
+    ],
+    "saves": {
+      "fort": 8,
+      "ref": 7,
+      "will": 3
+    },
+    "abilities": {
+      "str": 17,
+      "dex": 15,
+      "con": 17,
+      "int": 10,
+      "wis": 12,
+      "cha": 10
+    },
+    "skills": {
+      "Climb": 12,
+      "Diplomacy": 2,
+      "Intimidate": 9,
+      "Listen": 12,
+      "Search": 9,
+      "Sense Motive": 10,
+      "Spot": 12
+    },
+    "feats": [
+      "Cleave",
+      "Improved Initiative",
+      "Power Attack"
+    ],
+    "alignment": "Always Lawful Evil",
+    "advancement": null,
+    "dr": "5/Good and Silver",
+    "sr": 16,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [
+      "Good"
+    ],
+    "passive_effects": [],
+    "population_base": 0,
+    "allowed_biomes": [
+      "Any"
+    ],
+    "primary_biome": "Any",
+    "ecology_notes": "Barbazus\u2014bearded devils\u2014are Avernus's front-line soldiers, aggressive and battle-hungry fiends that form the rank-and-file of infernal armies. Named for the writhing, filth-encrusted tentacles that hang from their jaws, they inflict cursed wounds that bleed endlessly. They relish melee combat and will enter a terrifying frenzy when wounded, making them unpredictable foes. On the Material Plane they are summoned for muscle and intimidation."
+  },
+  {
+    "name": "Devil, Bone (Osyluth)",
+    "cr": 9,
+    "size": "Large",
+    "type": "Outsider",
+    "subtype": "Evil, Extraplanar, Lawful",
+    "hit_dice": "10d8+30",
+    "hp_avg": 75,
+    "initiative": 7,
+    "speed": {
+      "land": 40,
+      "fly": 40
+    },
+    "armor_class": {
+      "total": 25,
+      "touch": 12,
+      "flat_footed": 22,
+      "components": "+3 Dex, -1 size, +13 natural"
+    },
+    "base_attack": 10,
+    "grapple": 18,
+    "attacks": [
+      {
+        "name": "Sting",
+        "attack_bonus": "+13",
+        "damage": "3d4+4 plus venom",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Claw (\u00d72)",
+        "attack_bonus": "+8/+8",
+        "damage": "1d4+2",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+8",
+        "damage": "1d6+2",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Poison (sting, DC 17 Fortitude, 1d6 Str primary/1d6 Str secondary)",
+      "Spell-Like Abilities: cause fear, greater teleport, invisibility (3/day each); magic circle against good, wall of ice (1/day each)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "DR 10/Good and Silver",
+      "Immunity to Fire and Poison",
+      "Resistance to Acid 10, Cold 10",
+      "See in Darkness",
+      "SR 20",
+      "Telepathy 100 ft."
+    ],
+    "saves": {
+      "fort": 10,
+      "ref": 10,
+      "will": 8
+    },
+    "abilities": {
+      "str": 19,
+      "dex": 17,
+      "con": 17,
+      "int": 14,
+      "wis": 14,
+      "cha": 14
+    },
+    "skills": {
+      "Bluff": 15,
+      "Diplomacy": 6,
+      "Disguise": 2,
+      "Hide": 12,
+      "Intimidate": 17,
+      "Listen": 15,
+      "Move Silently": 16,
+      "Search": 15,
+      "Spot": 15
+    },
+    "feats": [
+      "Combat Expertise",
+      "Dodge",
+      "Improved Initiative",
+      "Mobility"
+    ],
+    "alignment": "Always Lawful Evil",
+    "advancement": null,
+    "dr": "10/Good and Silver",
+    "sr": 20,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [
+      "Good"
+    ],
+    "passive_effects": [],
+    "population_base": 0,
+    "allowed_biomes": [
+      "Any"
+    ],
+    "primary_biome": "Any",
+    "ecology_notes": "Osyluths\u2014bone devils\u2014are the spies and tormentors of the Nine Hells, skeletal fiends with long scorpion-like tails and a burning hatred of all living things. They serve as interrogators, informants, and internal affairs officers in the infernal hierarchy, watching other devils for signs of disloyalty. On the Material Plane they are summoned as investigators and assassins, lurking invisibly while gathering information for their diabolical masters."
+  },
+  {
+    "name": "Devil, Chain (Kyton)",
+    "cr": 6,
+    "size": "Medium",
+    "type": "Outsider",
+    "subtype": "Evil, Extraplanar, Lawful",
+    "hit_dice": "8d8+16",
+    "hp_avg": 52,
+    "initiative": 6,
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 20,
+      "touch": 12,
+      "flat_footed": 18,
+      "components": "+2 Dex, +8 natural"
+    },
+    "base_attack": 8,
+    "grapple": 10,
+    "attacks": [
+      {
+        "name": "Chain (\u00d72)",
+        "attack_bonus": "+10",
+        "damage": "2d4+2",
+        "damage_type": "Slashing and Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Dancing Chains (animate and control up to 4 chains as free action; each chain attacks at +8 for 2d4+2 damage)",
+      "Unnerving Gaze (DC 13 Will or shaken for 1d4 rounds within 30 ft.)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "DR 5/Silver",
+      "Immunity to Cold",
+      "Regeneration 2 (fire damage and damage from good-aligned weapons deal normal damage)",
+      "Resistance to Fire 10",
+      "SR 18",
+      "Telepathy 100 ft."
+    ],
+    "saves": {
+      "fort": 8,
+      "ref": 8,
+      "will": 6
+    },
+    "abilities": {
+      "str": 15,
+      "dex": 15,
+      "con": 15,
+      "int": 6,
+      "wis": 10,
+      "cha": 12
+    },
+    "skills": {
+      "Craft (chainwork)": 12,
+      "Escape Artist": 13,
+      "Intimidate": 12,
+      "Listen": 11,
+      "Spot": 11
+    },
+    "feats": [
+      "Alertness",
+      "Combat Reflexes",
+      "Improved Initiative",
+      "Lightning Reflexes"
+    ],
+    "alignment": "Always Lawful Evil",
+    "advancement": null,
+    "dr": "5/Silver",
+    "sr": 18,
+    "regen": 2,
+    "fast_heal": null,
+    "elemental_weaknesses": [
+      "Fire"
+    ],
+    "alignment_weaknesses": [
+      "Good"
+    ],
+    "passive_effects": [],
+    "population_base": 0,
+    "allowed_biomes": [
+      "Any"
+    ],
+    "primary_biome": "Any",
+    "ecology_notes": "Kytons\u2014chain devils\u2014are bound entirely in writhing, animated chains that they wield as both armour and weapons. They dwell in the darkest pits of Stygia and Malbolge, where they serve as torturers and sadistic custodians. Kytons are unique among devils in their immunity to cold and vulnerability to fire. They are drawn to places of suffering and are occasionally summoned to restrain, torture, or guard prisoners on the Material Plane."
+  },
+  {
+    "name": "Devil, Erinyes",
+    "cr": 8,
+    "size": "Medium",
+    "type": "Outsider",
+    "subtype": "Evil, Extraplanar, Lawful",
+    "hit_dice": "9d8+27",
+    "hp_avg": 67,
+    "initiative": 5,
+    "speed": {
+      "land": 30,
+      "fly": 50
+    },
+    "armor_class": {
+      "total": 20,
+      "touch": 15,
+      "flat_footed": 15,
+      "components": "+5 Dex, +5 natural"
+    },
+    "base_attack": 9,
+    "grapple": 11,
+    "attacks": [
+      {
+        "name": "+1 Longsword",
+        "attack_bonus": "+12/+7",
+        "damage": "1d8+3",
+        "crit_range": "19-20/\u00d72",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "+1 Rope (Entangle)",
+        "attack_bonus": "+12",
+        "damage": "Entangle",
+        "damage_type": "Special"
+      }
+    ],
+    "special_attacks": [
+      "Entangle (rope, target must succeed on DC 19 Strength check or Escape Artist to free; trapped creatures can then be crushed for 1d6+2 per round)",
+      "Spell-Like Abilities: charm monster (DC 17), greater teleport, minor image (DC 14), unholy blight (DC 17, at will); teleport without error, true seeing (1/day each)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "DR 5/Good and Silver",
+      "Immunity to Fire and Poison",
+      "Resistance to Acid 10, Cold 10",
+      "SR 20",
+      "Telepathy 100 ft.",
+      "True Seeing"
+    ],
+    "saves": {
+      "fort": 9,
+      "ref": 11,
+      "will": 7
+    },
+    "abilities": {
+      "str": 15,
+      "dex": 21,
+      "con": 17,
+      "int": 14,
+      "wis": 14,
+      "cha": 20
+    },
+    "skills": {
+      "Bluff": 17,
+      "Concentration": 15,
+      "Diplomacy": 9,
+      "Disguise": 5,
+      "Escape Artist": 17,
+      "Hide": 17,
+      "Intimidate": 19,
+      "Listen": 16,
+      "Move Silently": 17,
+      "Search": 14,
+      "Sense Motive": 14,
+      "Spot": 16
+    },
+    "feats": [
+      "Agile",
+      "Dodge",
+      "Mobility",
+      "Point Blank Shot",
+      "Shot on the Run"
+    ],
+    "alignment": "Always Lawful Evil",
+    "advancement": null,
+    "dr": "5/Good and Silver",
+    "sr": 20,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [
+      "Good"
+    ],
+    "passive_effects": [],
+    "population_base": 0,
+    "allowed_biomes": [
+      "Any"
+    ],
+    "primary_biome": "Any",
+    "ecology_notes": "Erinyes are fallen celestials\u2014angelic figures of terrible beauty corrupted to serve the Nine Hells. Swift, winged hunters, they pursue escaped souls and oath-breakers across the planes wielding enchanted longswords and magical binding ropes. Their combination of supernatural flight, charm magic, and true seeing makes them nearly impossible to hide from. On the Material Plane they are often dispatched to enforce hellish contracts and retrieve defaulters."
+  },
+  {
+    "name": "Devil, Horned (Cornugon)",
+    "cr": 16,
+    "size": "Large",
+    "type": "Outsider",
+    "subtype": "Evil, Extraplanar, Lawful",
+    "hit_dice": "17d8+102",
+    "hp_avg": 178,
+    "initiative": 5,
+    "speed": {
+      "land": 40,
+      "fly": 60
+    },
+    "armor_class": {
+      "total": 35,
+      "touch": 14,
+      "flat_footed": 30,
+      "components": "+5 Dex, -1 size, +21 natural"
+    },
+    "base_attack": 17,
+    "grapple": 28,
+    "attacks": [
+      {
+        "name": "+1 Unholy Spiked Chain",
+        "attack_bonus": "+24/+19/+14/+9",
+        "damage": "2d4+14 plus 2d6 unholy",
+        "crit_range": "15-20/\u00d72",
+        "damage_type": "Piercing and Slashing"
+      },
+      {
+        "name": "Sting",
+        "attack_bonus": "+22",
+        "damage": "2d6+4 plus venom",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Fear Aura (DC 25 Will, shaken while within 10 ft.)",
+      "Improved Grab (sting)",
+      "Poison (sting, DC 23 Fortitude, 1d6 Con primary/2d6 Con secondary)",
+      "Stun (after three hits from spiked chain in one combat, DC 23 Fortitude or stunned 1 round)",
+      "Spell-Like Abilities: blasphemy (DC 22), charm monster (DC 19), desecrate, dispel chaos, fireball (DC 18), greater teleport, magic circle against good, mass hold monster (DC 24), meteor swarm (DC 24), summon monster VIII (at will)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "DR 10/Good and Silver",
+      "Immunity to Fire and Poison",
+      "Regeneration 5 (good-aligned weapons deal normal damage)",
+      "Resistance to Acid 10, Cold 10",
+      "SR 27",
+      "Telepathy 100 ft."
+    ],
+    "saves": {
+      "fort": 16,
+      "ref": 15,
+      "will": 12
+    },
+    "abilities": {
+      "str": 29,
+      "dex": 21,
+      "con": 23,
+      "int": 18,
+      "wis": 18,
+      "cha": 22
+    },
+    "skills": {
+      "Bluff": 26,
+      "Concentration": 26,
+      "Diplomacy": 10,
+      "Disguise": 6,
+      "Hide": 21,
+      "Intimidate": 28,
+      "Knowledge (planes)": 24,
+      "Listen": 26,
+      "Search": 24,
+      "Sense Motive": 24,
+      "Spot": 26
+    },
+    "feats": [
+      "Cleave",
+      "Great Cleave",
+      "Improved Initiative",
+      "Iron Will",
+      "Power Attack",
+      "Weapon Focus (spiked chain)"
+    ],
+    "alignment": "Always Lawful Evil",
+    "advancement": null,
+    "dr": "10/Good and Silver",
+    "sr": 27,
+    "regen": 5,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [
+      "Good"
+    ],
+    "passive_effects": [],
+    "population_base": 0,
+    "allowed_biomes": [
+      "Any"
+    ],
+    "primary_biome": "Any",
+    "ecology_notes": "Cornugons\u2014horned devils\u2014are towering, draconic fiends that serve as elite shock troops and generals in the infernal legions of the Nine Hells. Armoured in scales, armed with an unholy spiked chain and a venomous scorpion tail, they radiate an aura of terror that breaks lesser warriors before battle begins. Their regenerative bodies make them nearly impossible to slay without holy weapons. On the Material Plane they are summoned only for the most dire infernal missions."
+  },
+  {
+    "name": "Devil, Ice (Gelugon)",
+    "cr": 13,
+    "size": "Large",
+    "type": "Outsider",
+    "subtype": "Evil, Extraplanar, Lawful",
+    "hit_dice": "14d8+84",
+    "hp_avg": 147,
+    "initiative": 5,
+    "speed": {
+      "land": 40
+    },
+    "armor_class": {
+      "total": 32,
+      "touch": 14,
+      "flat_footed": 27,
+      "components": "+5 Dex, -1 size, +18 natural"
+    },
+    "base_attack": 14,
+    "grapple": 24,
+    "attacks": [
+      {
+        "name": "Spear",
+        "attack_bonus": "+20/+15/+10",
+        "damage": "2d6+10 plus 1d6 cold",
+        "damage_type": "Piercing and Cold"
+      },
+      {
+        "name": "Tail",
+        "attack_bonus": "+15",
+        "damage": "2d6+4 plus slow",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Slow (tail, DC 23 Fortitude or slowed for 1d6 rounds)",
+      "Spell-Like Abilities: cone of cold (DC 20), fly, greater teleport, ice storm, wall of ice (at will); summon monster VII (1/day)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "DR 10/Good and Silver",
+      "Immunity to Cold, Fire, and Poison",
+      "Resistance to Acid 10",
+      "See in Darkness",
+      "SR 22",
+      "Telepathy 100 ft."
+    ],
+    "saves": {
+      "fort": 15,
+      "ref": 14,
+      "will": 11
+    },
+    "abilities": {
+      "str": 25,
+      "dex": 21,
+      "con": 23,
+      "int": 22,
+      "wis": 20,
+      "cha": 20
+    },
+    "skills": {
+      "Bluff": 22,
+      "Concentration": 23,
+      "Diplomacy": 9,
+      "Hide": 18,
+      "Intimidate": 24,
+      "Knowledge (planes)": 23,
+      "Listen": 23,
+      "Move Silently": 22,
+      "Search": 23,
+      "Sense Motive": 22,
+      "Spot": 23
+    },
+    "feats": [
+      "Combat Expertise",
+      "Combat Reflexes",
+      "Improved Initiative",
+      "Iron Will",
+      "Multiattack"
+    ],
+    "alignment": "Always Lawful Evil",
+    "advancement": null,
+    "dr": "10/Good and Silver",
+    "sr": 22,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [
+      "Good"
+    ],
+    "passive_effects": [],
+    "population_base": 0,
+    "allowed_biomes": [
+      "Any"
+    ],
+    "primary_biome": "Any",
+    "ecology_notes": "Gelugons\u2014ice devils\u2014are the powerful, insectoid commanders of the Nine Hells, towering mantis-like fiends of supernatural cold who serve as generals and advisors in Cania, the eighth layer. Their spears deal numbing cold and their tails slow enemies to a crawl. Despite the irony of a fire-immune creature of ice, they are among the most strategically brilliant of all devils, and their summon ability lets them call powerful reinforcements at need."
+  },
+  {
+    "name": "Devil, Lemure",
+    "cr": 1,
+    "size": "Medium",
+    "type": "Outsider",
+    "subtype": "Evil, Extraplanar, Lawful",
+    "hit_dice": "2d8+2",
+    "hp_avg": 11,
+    "initiative": -1,
+    "speed": {
+      "land": 20
+    },
+    "armor_class": {
+      "total": 14,
+      "touch": 9,
+      "flat_footed": 14,
+      "components": "-1 Dex, +5 natural"
+    },
+    "base_attack": 1,
+    "grapple": 1,
+    "attacks": [
+      {
+        "name": "Claw (\u00d72)",
+        "attack_bonus": "+1",
+        "damage": "1d4",
+        "damage_type": "Slashing"
+      }
+    ],
+    "special_attacks": [],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "DR 5/Good and Silver",
+      "Immunity to Fire, Mind-Affecting Effects, and Poison",
+      "Resistance to Acid 10, Cold 10",
+      "SR 12"
+    ],
+    "saves": {
+      "fort": 3,
+      "ref": -1,
+      "will": 1
+    },
+    "abilities": {
+      "str": 11,
+      "dex": 9,
+      "con": 12,
+      "int": 3,
+      "wis": 11,
+      "cha": 5
+    },
+    "skills": {
+      "Listen": 4,
+      "Spot": 4
+    },
+    "feats": [
+      "Multiattack"
+    ],
+    "alignment": "Always Lawful Evil",
+    "advancement": null,
+    "dr": "5/Good and Silver",
+    "sr": 12,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [
+      "Good"
+    ],
+    "passive_effects": [],
+    "population_base": 20,
+    "allowed_biomes": [
+      "Any"
+    ],
+    "primary_biome": "Any",
+    "ecology_notes": "Lemures are the wretched, mindless masses of the Nine Hells\u2014the tormented souls of evil mortals that have been reshaped into blobs of protoplasmic flesh that vaguely resemble their former selves. They shuffle and claw feebly at the living, driven only by dim instinct. Lemures form in enormous numbers on Avernus and are fodder in the Blood War. Over millennia they can be promoted to higher devil forms as reward for service."
+  },
+  {
+    "name": "Devil, Pit Fiend",
+    "cr": 20,
+    "size": "Large",
+    "type": "Outsider",
+    "subtype": "Evil, Extraplanar, Lawful",
+    "hit_dice": "18d8+162",
+    "hp_avg": 243,
+    "initiative": 7,
+    "speed": {
+      "land": 40,
+      "fly": 60
+    },
+    "armor_class": {
+      "total": 40,
+      "touch": 16,
+      "flat_footed": 33,
+      "components": "+7 Dex, -1 size, +24 natural"
+    },
+    "base_attack": 18,
+    "grapple": 32,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+27",
+        "damage": "4d6+10 plus venom",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Claw (\u00d72)",
+        "attack_bonus": "+22/+22",
+        "damage": "2d8+5",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Wing (\u00d72)",
+        "attack_bonus": "+22/+22",
+        "damage": "2d6+5",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Tail Slap",
+        "attack_bonus": "+22",
+        "damage": "2d8+5",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Constrict 2d8+5 (tail)",
+      "Fear Aura (DC 27 Will, shaken while within 20 ft.)",
+      "Improved Grab (tail or bite)",
+      "Poison (bite, DC 26 Fortitude, 1d6 Con primary/2d6 Con secondary)",
+      "Spell-Like Abilities: blasphemy, charm monster, desecrate, fireball, greater dispel magic, greater teleport, hold monster, magic circle against good, mass hold monster, meteor swarm, power word stun, unholy aura, wish (at will)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "DR 15/Good and Silver",
+      "Immunity to Fire and Poison",
+      "Regeneration 5 (good-aligned weapons and spells deal normal damage)",
+      "Resistance to Acid 10, Cold 10",
+      "See in Darkness",
+      "SR 32",
+      "Telepathy 100 ft."
+    ],
+    "saves": {
+      "fort": 20,
+      "ref": 18,
+      "will": 18
+    },
+    "abilities": {
+      "str": 31,
+      "dex": 25,
+      "con": 29,
+      "int": 26,
+      "wis": 26,
+      "cha": 26
+    },
+    "skills": {
+      "Bluff": 29,
+      "Concentration": 30,
+      "Diplomacy": 35,
+      "Hide": 24,
+      "Intimidate": 31,
+      "Knowledge (arcana)": 29,
+      "Knowledge (planes)": 29,
+      "Listen": 31,
+      "Move Silently": 28,
+      "Search": 29,
+      "Sense Motive": 29,
+      "Spellcraft": 31,
+      "Spot": 31
+    },
+    "feats": [
+      "Cleave",
+      "Great Cleave",
+      "Improved Initiative",
+      "Iron Will",
+      "Multiattack",
+      "Power Attack",
+      "Weapon Focus (bite)"
+    ],
+    "alignment": "Always Lawful Evil",
+    "advancement": null,
+    "dr": "15/Good and Silver",
+    "sr": 32,
+    "regen": 5,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [
+      "Good"
+    ],
+    "passive_effects": [],
+    "population_base": 0,
+    "allowed_biomes": [
+      "Any"
+    ],
+    "primary_biome": "Any",
+    "ecology_notes": "Pit fiends are the supreme lords of the Nine Hells\u2014colossal, draconic devils of immense magical and physical power who serve as generals, governors, and right hands to the archdevils themselves. Armed with a dizzying array of spell-like abilities, devastating physical attacks, and wish-granting power, a pit fiend at full strength can challenge demigods. Their regenerating bodies, sky-high spell resistance, and fear aura make them among the most dangerous creatures in existence. A pit fiend's presence on the Material Plane is an event of world-shaking consequence."
+  }
+]

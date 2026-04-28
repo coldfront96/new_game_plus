@@ -1,0 +1,994 @@
+[
+  {
+    "name": "Babau",
+    "cr": 6,
+    "size": "Medium",
+    "type": "Outsider",
+    "subtype": "Chaotic, Evil, Extraplanar, Tanar'ri",
+    "hit_dice": "7d8+14",
+    "hp_avg": 45,
+    "initiative": 1,
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 19,
+      "touch": 11,
+      "flat_footed": 18,
+      "components": "+1 Dex, +8 natural"
+    },
+    "base_attack": 7,
+    "grapple": 10,
+    "attacks": [
+      {
+        "name": "Claw (\u00d72)",
+        "attack_bonus": "+10",
+        "damage": "1d6+3",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+5",
+        "damage": "1d6+1",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Sneak Attack +2d6",
+      "Spell-Like Abilities: darkness (at will); dispel magic, greater teleport, see invisibility, telekinesis (1/day each)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "DR 10/Good",
+      "Immunity to Electricity and Poison",
+      "Resistance to Acid 10, Cold 10, Fire 10",
+      "SR 14",
+      "Telepathy 100 ft."
+    ],
+    "saves": {
+      "fort": 7,
+      "ref": 6,
+      "will": 5
+    },
+    "abilities": {
+      "str": 17,
+      "dex": 13,
+      "con": 14,
+      "int": 14,
+      "wis": 13,
+      "cha": 10
+    },
+    "skills": {
+      "Climb": 13,
+      "Diplomacy": 2,
+      "Disable Device": 12,
+      "Escape Artist": 11,
+      "Hide": 15,
+      "Listen": 13,
+      "Move Silently": 15,
+      "Open Lock": 11,
+      "Search": 12,
+      "Sleight of Hand": 13,
+      "Spot": 13
+    },
+    "feats": [
+      "Alertness",
+      "Combat Reflexes",
+      "Dodge"
+    ],
+    "alignment": "Always Chaotic Evil",
+    "advancement": null,
+    "dr": "10/Good",
+    "sr": 14,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [
+      "Good"
+    ],
+    "passive_effects": [],
+    "population_base": 10,
+    "allowed_biomes": [
+      "Any"
+    ],
+    "primary_biome": "Any",
+    "ecology_notes": "Babaus are lean, predatory demons that serve as assassins and shock troops in the Abyss. Coated in a transparent crimson jelly that grants them uncanny stealth, they slip onto the Material Plane at the behest of greater demon lords to murder and sow chaos. Their elongated skulls and whip-thin frames belie a brutal cunning."
+  },
+  {
+    "name": "Balor",
+    "cr": 20,
+    "size": "Large",
+    "type": "Outsider",
+    "subtype": "Chaotic, Evil, Extraplanar, Tanar'ri",
+    "hit_dice": "20d8+200",
+    "hp_avg": 290,
+    "initiative": 11,
+    "speed": {
+      "land": 40,
+      "fly": 90
+    },
+    "armor_class": {
+      "total": 35,
+      "touch": 16,
+      "flat_footed": 28,
+      "components": "+7 Dex, -1 size, +19 natural"
+    },
+    "base_attack": 20,
+    "grapple": 33,
+    "attacks": [
+      {
+        "name": "+1 Vorpal Longsword",
+        "attack_bonus": "+31/+26/+21/+16",
+        "damage": "2d6+16",
+        "crit_range": "19-20/\u00d72",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "+1 Unholy Whip",
+        "attack_bonus": "+25",
+        "damage": "2d6+8 plus 1d6 unholy",
+        "damage_type": "Slashing"
+      }
+    ],
+    "special_attacks": [
+      "Death Throes (20 ft. burst, 100 hp fire damage, DC 28 Reflex half, on death)",
+      "Entangle (whip, target held)",
+      "Flaming Body (3d6 fire to any melee attacker, DC 25 Reflex negates)",
+      "Spell-Like Abilities: blasphemy, dominate monster, fire storm, greater dispel magic, greater teleport, implosion, insanity, power word stun, telekinesis, unholy aura, unholy blight, wish (at will)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "DR 15/Good and Cold Iron",
+      "Immunity to Electricity, Fire, and Poison",
+      "Resistance to Acid 10, Cold 10",
+      "SR 28",
+      "Telepathy 100 ft."
+    ],
+    "saves": {
+      "fort": 22,
+      "ref": 19,
+      "will": 17
+    },
+    "abilities": {
+      "str": 33,
+      "dex": 24,
+      "con": 31,
+      "int": 24,
+      "wis": 24,
+      "cha": 26
+    },
+    "skills": {
+      "Bluff": 31,
+      "Concentration": 33,
+      "Diplomacy": 35,
+      "Intimidate": 33,
+      "Knowledge (arcana)": 30,
+      "Knowledge (planes)": 30,
+      "Listen": 32,
+      "Move Silently": 28,
+      "Search": 30,
+      "Sense Motive": 30,
+      "Spellcraft": 32,
+      "Spot": 32
+    },
+    "feats": [
+      "Cleave",
+      "Dodge",
+      "Great Cleave",
+      "Improved Initiative",
+      "Mobility",
+      "Power Attack",
+      "Spring Attack",
+      "Weapon Focus (longsword)"
+    ],
+    "alignment": "Always Chaotic Evil",
+    "advancement": null,
+    "dr": "15/Good and Cold Iron",
+    "sr": 28,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [
+      "Good"
+    ],
+    "passive_effects": [
+      {
+        "effect_type": "aura_damage",
+        "range_ft": 0,
+        "save_type": "Reflex",
+        "save_dc": 25,
+        "effect_on_fail": "3d6 fire damage to any creature that strikes the Balor in melee",
+        "effect_on_pass": "No damage",
+        "suppress_conditions": []
+      }
+    ],
+    "population_base": 0,
+    "allowed_biomes": [
+      "Any"
+    ],
+    "primary_biome": "Any",
+    "ecology_notes": "Balors stand at the apex of tanar'ri society\u2014terrifying demon lords of fire and violence that command entire layers of the Abyss. Wreathed in unholy flame and wielding a vorpal sword paired with an entangling whip, a Balor commands legions and can lay waste to armies. Their very death is catastrophic: a Balor that falls explodes in a 20-foot blast of divine fire."
+  },
+  {
+    "name": "Dretch",
+    "cr": 2,
+    "size": "Small",
+    "type": "Outsider",
+    "subtype": "Chaotic, Evil, Extraplanar, Tanar'ri",
+    "hit_dice": "2d8+2",
+    "hp_avg": 11,
+    "initiative": 0,
+    "speed": {
+      "land": 20
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 11,
+      "flat_footed": 16,
+      "components": "+4 natural, +1 size"
+    },
+    "base_attack": 1,
+    "grapple": -3,
+    "attacks": [
+      {
+        "name": "Claw (\u00d72)",
+        "attack_bonus": "+2",
+        "damage": "1d4+1",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "-3",
+        "damage": "1d4",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Spell-Like Abilities: cause fear (DC 11, 1/day), scare (DC 12, 1/day), stinking cloud (DC 12, 1/day)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "DR 5/Good",
+      "Immunity to Electricity and Poison",
+      "Resistance to Acid 10, Cold 10, Fire 10",
+      "SR 11",
+      "Telepathy 100 ft. (limited to other dretches and tanar'ri)"
+    ],
+    "saves": {
+      "fort": 3,
+      "ref": 2,
+      "will": 2
+    },
+    "abilities": {
+      "str": 12,
+      "dex": 10,
+      "con": 12,
+      "int": 5,
+      "wis": 11,
+      "cha": 11
+    },
+    "skills": {
+      "Hide": 8,
+      "Listen": 4,
+      "Move Silently": 4,
+      "Search": 2,
+      "Spot": 4
+    },
+    "feats": [
+      "Multiattack"
+    ],
+    "alignment": "Always Chaotic Evil",
+    "advancement": null,
+    "dr": "5/Good",
+    "sr": 11,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [
+      "Good"
+    ],
+    "passive_effects": [],
+    "population_base": 30,
+    "allowed_biomes": [
+      "Any"
+    ],
+    "primary_biome": "Any",
+    "ecology_notes": "Dretches are the most wretched and numerous of the tanar'ri, little more than mindless cannon fodder in the vast demon armies of the Abyss. Bloated, foul-smelling, and feeble of mind, they are conjured in enormous numbers and hurled at enemies. Despite their weakness individually, dretches in large packs are a genuine threat, and their stinking cloud ability can neutralise far stronger foes."
+  },
+  {
+    "name": "Glabrezu",
+    "cr": 13,
+    "size": "Huge",
+    "type": "Outsider",
+    "subtype": "Chaotic, Evil, Extraplanar, Tanar'ri",
+    "hit_dice": "12d8+96",
+    "hp_avg": 150,
+    "initiative": 0,
+    "speed": {
+      "land": 40
+    },
+    "armor_class": {
+      "total": 27,
+      "touch": 8,
+      "flat_footed": 27,
+      "components": "-2 size, +19 natural"
+    },
+    "base_attack": 12,
+    "grapple": 30,
+    "attacks": [
+      {
+        "name": "Pincer (\u00d72)",
+        "attack_bonus": "+21",
+        "damage": "2d8+10",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+16",
+        "damage": "1d8+5",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Fist (\u00d72)",
+        "attack_bonus": "+16",
+        "damage": "1d4+5",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Improved Grab (pincers)",
+      "Spell-Like Abilities: chaos hammer, confusion (DC 18), dispel magic, greater teleport, power word stun, reverse gravity, unholy blight (DC 18), veil (at will); wish (1/week)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "DR 10/Good",
+      "Immunity to Electricity and Poison",
+      "Resistance to Acid 10, Cold 10, Fire 10",
+      "SR 21",
+      "Telepathy 100 ft.",
+      "True Seeing"
+    ],
+    "saves": {
+      "fort": 18,
+      "ref": 8,
+      "will": 10
+    },
+    "abilities": {
+      "str": 31,
+      "dex": 10,
+      "con": 27,
+      "int": 16,
+      "wis": 16,
+      "cha": 20
+    },
+    "skills": {
+      "Bluff": 22,
+      "Concentration": 23,
+      "Diplomacy": 9,
+      "Disguise": 5,
+      "Intimidate": 24,
+      "Knowledge (arcana)": 18,
+      "Listen": 20,
+      "Move Silently": 15,
+      "Search": 18,
+      "Sense Motive": 20,
+      "Spellcraft": 20,
+      "Spot": 20
+    },
+    "feats": [
+      "Cleave",
+      "Great Cleave",
+      "Multiattack",
+      "Persuasive",
+      "Power Attack"
+    ],
+    "alignment": "Always Chaotic Evil",
+    "advancement": null,
+    "dr": "10/Good",
+    "sr": 21,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [
+      "Good"
+    ],
+    "passive_effects": [],
+    "population_base": 0,
+    "allowed_biomes": [
+      "Any"
+    ],
+    "primary_biome": "Any",
+    "ecology_notes": "Glabrezus are towering, grotesque demons that combine brute force with cunning treachery. Standing four-armed and hulking\u2014two powerful pincers above and two smaller humanoid arms below\u2014they specialise in tempting mortals with the power of their wish ability, twisting desires into ruin. They act as tempters and deal-brokers across the planes, especially on the Material Plane where their veil magic allows them to hide their true form."
+  },
+  {
+    "name": "Hezrou",
+    "cr": 11,
+    "size": "Large",
+    "type": "Outsider",
+    "subtype": "Chaotic, Evil, Extraplanar, Tanar'ri",
+    "hit_dice": "10d8+80",
+    "hp_avg": 125,
+    "initiative": 0,
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 24,
+      "touch": 9,
+      "flat_footed": 24,
+      "components": "-1 size, +15 natural"
+    },
+    "base_attack": 10,
+    "grapple": 20,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+15",
+        "damage": "4d4+6",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Claw (\u00d72)",
+        "attack_bonus": "+10/+10",
+        "damage": "1d6+3",
+        "damage_type": "Slashing"
+      }
+    ],
+    "special_attacks": [
+      "Improved Grab",
+      "Stench (DC 14 Fortitude, nauseated for 10 rounds)",
+      "Spell-Like Abilities: blasphemy, chaos hammer, gaseous form, greater teleport, unholy blight (3/day each)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "DR 10/Good",
+      "Immunity to Electricity and Poison",
+      "Resistance to Acid 10, Cold 10, Fire 10",
+      "SR 19",
+      "Telepathy 100 ft."
+    ],
+    "saves": {
+      "fort": 15,
+      "ref": 7,
+      "will": 7
+    },
+    "abilities": {
+      "str": 23,
+      "dex": 10,
+      "con": 27,
+      "int": 14,
+      "wis": 14,
+      "cha": 18
+    },
+    "skills": {
+      "Climb": 19,
+      "Concentration": 21,
+      "Diplomacy": 6,
+      "Hide": 9,
+      "Listen": 17,
+      "Move Silently": 13,
+      "Search": 15,
+      "Spellcraft": 15,
+      "Spot": 17
+    },
+    "feats": [
+      "Blind-Fight",
+      "Cleave",
+      "Improved Grapple",
+      "Power Attack"
+    ],
+    "alignment": "Always Chaotic Evil",
+    "advancement": null,
+    "dr": "10/Good",
+    "sr": 19,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [
+      "Good"
+    ],
+    "passive_effects": [],
+    "population_base": 0,
+    "allowed_biomes": [
+      "Any"
+    ],
+    "primary_biome": "Any",
+    "ecology_notes": "Hezrous are toad-like brutes\u2014massive, squat demons that serve as shock infantry in demonic armies. Their overwhelming stench can incapacitate entire squads before combat even begins, and their powerful grapple makes them living restraints for prey. Found in fetid swamps and sewers of the Abyss, they are brutish but effective soldiers who respect only power."
+  },
+  {
+    "name": "Marilith",
+    "cr": 17,
+    "size": "Large",
+    "type": "Outsider",
+    "subtype": "Chaotic, Evil, Extraplanar, Tanar'ri",
+    "hit_dice": "16d8+128",
+    "hp_avg": 200,
+    "initiative": 4,
+    "speed": {
+      "land": 40
+    },
+    "armor_class": {
+      "total": 31,
+      "touch": 13,
+      "flat_footed": 27,
+      "components": "+4 Dex, -1 size, +18 natural"
+    },
+    "base_attack": 16,
+    "grapple": 25,
+    "attacks": [
+      {
+        "name": "+1 Longsword (\u00d76)",
+        "attack_bonus": "+22/+17/+12/+7",
+        "damage": "2d6+5",
+        "crit_range": "19-20/\u00d72",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Tail Slap",
+        "attack_bonus": "+20",
+        "damage": "1d8+2",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Constrict 1d8+2 (tail)",
+      "Improved Grab (tail)",
+      "Multiweapon Mastery (no penalty wielding six swords simultaneously)",
+      "Spell-Like Abilities: blade barrier, fly, magic weapon, mirror image, project image, telekinesis, greater teleport (at will); unholy aura (1/day)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "DR 15/Good and Cold Iron",
+      "Immunity to Electricity and Poison",
+      "Resistance to Acid 10, Cold 10, Fire 10",
+      "SR 25",
+      "Telepathy 100 ft."
+    ],
+    "saves": {
+      "fort": 18,
+      "ref": 14,
+      "will": 12
+    },
+    "abilities": {
+      "str": 21,
+      "dex": 19,
+      "con": 27,
+      "int": 18,
+      "wis": 18,
+      "cha": 26
+    },
+    "skills": {
+      "Bluff": 27,
+      "Concentration": 27,
+      "Diplomacy": 11,
+      "Hide": 19,
+      "Intimidate": 29,
+      "Listen": 25,
+      "Move Silently": 23,
+      "Search": 23,
+      "Sense Motive": 23,
+      "Spellcraft": 23,
+      "Spot": 25
+    },
+    "feats": [
+      "Combat Expertise",
+      "Combat Reflexes",
+      "Dodge",
+      "Improved Disarm",
+      "Mobility",
+      "Multiattack"
+    ],
+    "alignment": "Always Chaotic Evil",
+    "advancement": null,
+    "dr": "15/Good and Cold Iron",
+    "sr": 25,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [
+      "Good"
+    ],
+    "passive_effects": [],
+    "population_base": 0,
+    "allowed_biomes": [
+      "Any"
+    ],
+    "primary_biome": "Any",
+    "ecology_notes": "Mariliths are six-armed serpentine generals of the tanar'ri\u2014brilliant tacticians who command entire demonic armies from the field. Each arm wields a longsword with fearsome precision, and their serpentine lower body can constrict foes into submission. They are among the most intelligent of the tanar'ri and are feared as much for their strategic cunning as for their terrifying combat prowess."
+  },
+  {
+    "name": "Nalfeshnee",
+    "cr": 14,
+    "size": "Huge",
+    "type": "Outsider",
+    "subtype": "Chaotic, Evil, Extraplanar, Tanar'ri",
+    "hit_dice": "14d8+112",
+    "hp_avg": 175,
+    "initiative": 1,
+    "speed": {
+      "land": 30,
+      "fly": 40
+    },
+    "armor_class": {
+      "total": 27,
+      "touch": 9,
+      "flat_footed": 26,
+      "components": "+1 Dex, -2 size, +18 natural"
+    },
+    "base_attack": 14,
+    "grapple": 29,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+20",
+        "damage": "2d8+7",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Claw (\u00d72)",
+        "attack_bonus": "+15/+15",
+        "damage": "1d8+3",
+        "damage_type": "Slashing"
+      }
+    ],
+    "special_attacks": [
+      "Smite (once per round, one weapon attack deals +7d8 damage to target on hit, or radiates 13d8 holy damage in 60 ft. cone; unholy light)",
+      "Spell-Like Abilities: call lightning, feeblemind, greater dispel magic, greater teleport, slow, unholy aura (at will); divine favor, true seeing (1/day)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "DR 10/Good",
+      "Immunity to Electricity and Poison",
+      "Resistance to Acid 10, Cold 10, Fire 10",
+      "SR 22",
+      "Telepathy 100 ft."
+    ],
+    "saves": {
+      "fort": 17,
+      "ref": 10,
+      "will": 12
+    },
+    "abilities": {
+      "str": 25,
+      "dex": 13,
+      "con": 27,
+      "int": 22,
+      "wis": 22,
+      "cha": 20
+    },
+    "skills": {
+      "Bluff": 24,
+      "Concentration": 27,
+      "Diplomacy": 9,
+      "Hide": 12,
+      "Intimidate": 26,
+      "Knowledge (arcana)": 25,
+      "Listen": 27,
+      "Move Silently": 20,
+      "Search": 25,
+      "Sense Motive": 25,
+      "Spellcraft": 27,
+      "Spot": 27
+    },
+    "feats": [
+      "Cleave",
+      "Great Cleave",
+      "Improved Initiative",
+      "Iron Will",
+      "Power Attack"
+    ],
+    "alignment": "Always Chaotic Evil",
+    "advancement": null,
+    "dr": "10/Good",
+    "sr": 22,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [
+      "Good"
+    ],
+    "passive_effects": [],
+    "population_base": 0,
+    "allowed_biomes": [
+      "Any"
+    ],
+    "primary_biome": "Any",
+    "ecology_notes": "Nalfeshnees are obese, boar-headed demons of tremendous supernatural power who sit as judges and tyrants in the lower Abyss. Despite their hulking, ugly forms, they are wickedly intelligent and wield formidable magical abilities. Their Smite power\u2014a burst of unholy radiance\u2014can destroy entire parties of lesser adventurers. They serve as counsellors to demon princes and despise weakness in any form."
+  },
+  {
+    "name": "Quasit",
+    "cr": 2,
+    "size": "Tiny",
+    "type": "Outsider",
+    "subtype": "Chaotic, Evil, Extraplanar, Tanar'ri",
+    "hit_dice": "3d8",
+    "hp_avg": 13,
+    "initiative": 6,
+    "speed": {
+      "land": 20,
+      "fly": 50
+    },
+    "armor_class": {
+      "total": 18,
+      "touch": 18,
+      "flat_footed": 16,
+      "components": "+2 Dex, +2 size, +4 natural"
+    },
+    "base_attack": 3,
+    "grapple": -5,
+    "attacks": [
+      {
+        "name": "Claw (\u00d72)",
+        "attack_bonus": "+7",
+        "damage": "1d3-1 plus venom",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+2",
+        "damage": "1d4-1",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Poison (claw, DC 13 Fortitude, 1d4 Dex primary/2d4 Dex secondary)",
+      "Spell-Like Abilities: cause fear (DC 11, 1/day), detect good (at will), detect magic (at will), invisibility (at will); commune (1/week)"
+    ],
+    "special_qualities": [
+      "Alternate Form (bat, centipede, or toad at will)",
+      "Darkvision 60 ft.",
+      "DR 5/Cold Iron or Good",
+      "Fast Healing 2",
+      "Immunity to Poison",
+      "Resistance to Fire 10",
+      "SR 13",
+      "Telepathy 100 ft.",
+      "Vulnerability to Cold Iron (Cold Iron weapons deal normal damage despite DR)"
+    ],
+    "saves": {
+      "fort": 3,
+      "ref": 5,
+      "will": 4
+    },
+    "abilities": {
+      "str": 8,
+      "dex": 14,
+      "con": 11,
+      "int": 11,
+      "wis": 12,
+      "cha": 10
+    },
+    "skills": {
+      "Bluff": 6,
+      "Diplomacy": 2,
+      "Disguise": 0,
+      "Hide": 16,
+      "Intimidate": 2,
+      "Knowledge (arcana)": 6,
+      "Listen": 9,
+      "Move Silently": 8,
+      "Search": 6,
+      "Spot": 9
+    },
+    "feats": [
+      "Improved Initiative",
+      "Weapon Finesse"
+    ],
+    "alignment": "Always Chaotic Evil",
+    "advancement": null,
+    "dr": "5/Cold Iron or Good",
+    "sr": 13,
+    "regen": null,
+    "fast_heal": 2,
+    "elemental_weaknesses": [
+      "Cold Iron"
+    ],
+    "alignment_weaknesses": [
+      "Good"
+    ],
+    "passive_effects": [],
+    "population_base": 20,
+    "allowed_biomes": [
+      "Any"
+    ],
+    "primary_biome": "Any",
+    "ecology_notes": "Quasits are diminutive, imp-like demons often bound as familiars to chaotic evil spellcasters. Their small size and invisibility make them excellent spies and messengers across the planes. Despite being weak individually, their fast healing, venomous claws, and supernatural abilities make them surprisingly durable. Many operate as advisors, informants, and familiar-spies throughout the Material Plane."
+  },
+  {
+    "name": "Succubus",
+    "cr": 7,
+    "size": "Medium",
+    "type": "Outsider",
+    "subtype": "Chaotic, Evil, Extraplanar, Tanar'ri",
+    "hit_dice": "6d8+6",
+    "hp_avg": 33,
+    "initiative": 1,
+    "speed": {
+      "land": 30,
+      "fly": 50
+    },
+    "armor_class": {
+      "total": 20,
+      "touch": 11,
+      "flat_footed": 19,
+      "components": "+1 Dex, +9 natural"
+    },
+    "base_attack": 6,
+    "grapple": 8,
+    "attacks": [
+      {
+        "name": "Claw (\u00d72)",
+        "attack_bonus": "+8",
+        "damage": "1d6+2",
+        "damage_type": "Slashing"
+      }
+    ],
+    "special_attacks": [
+      "Energy Drain (kiss, DC 15 Fortitude, 2 negative levels on willing or grappled target)",
+      "Spell-Like Abilities: charm monster (DC 21), clairaudience/clairvoyance, detect good, detect thoughts, ethereal jaunt, greater teleport, suggestion (DC 19), tongues (at will); shape change (humanoid form)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "DR 10/Good",
+      "Immunity to Electricity and Poison",
+      "Resistance to Acid 10, Cold 10, Fire 10",
+      "SR 18",
+      "Telepathy 100 ft.",
+      "True Seeing"
+    ],
+    "saves": {
+      "fort": 6,
+      "ref": 6,
+      "will": 7
+    },
+    "abilities": {
+      "str": 13,
+      "dex": 13,
+      "con": 13,
+      "int": 16,
+      "wis": 14,
+      "cha": 26
+    },
+    "skills": {
+      "Bluff": 19,
+      "Concentration": 10,
+      "Diplomacy": 24,
+      "Disguise": 19,
+      "Escape Artist": 10,
+      "Hide": 10,
+      "Intimidate": 21,
+      "Knowledge (arcana)": 12,
+      "Knowledge (planes)": 12,
+      "Listen": 13,
+      "Move Silently": 10,
+      "Search": 12,
+      "Sense Motive": 13,
+      "Spot": 13
+    },
+    "feats": [
+      "Dodge",
+      "Mobility",
+      "Persuasive"
+    ],
+    "alignment": "Always Chaotic Evil",
+    "advancement": null,
+    "dr": "10/Good",
+    "sr": 18,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [
+      "Good"
+    ],
+    "passive_effects": [],
+    "population_base": 0,
+    "allowed_biomes": [
+      "Any"
+    ],
+    "primary_biome": "Any",
+    "ecology_notes": "Succubi are seductive demons who corrupt mortals through temptation, manipulation, and the fatal energy drain of their kiss. Masters of disguise and social manipulation, they infiltrate courts, temples, and households to corrupt powerful mortals to demonic service. A succubus rarely fights openly, preferring to charm, suggest, and drain victims in private. They report directly to demon lords and act as spies across the planes."
+  },
+  {
+    "name": "Vrock",
+    "cr": 9,
+    "size": "Large",
+    "type": "Outsider",
+    "subtype": "Chaotic, Evil, Extraplanar, Tanar'ri",
+    "hit_dice": "10d8+30",
+    "hp_avg": 75,
+    "initiative": 2,
+    "speed": {
+      "land": 30,
+      "fly": 50
+    },
+    "armor_class": {
+      "total": 22,
+      "touch": 11,
+      "flat_footed": 20,
+      "components": "+2 Dex, -1 size, +11 natural"
+    },
+    "base_attack": 10,
+    "grapple": 18,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+13",
+        "damage": "1d8+4",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Claw (\u00d72)",
+        "attack_bonus": "+8/+8",
+        "damage": "1d6+2",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Talon (\u00d72)",
+        "attack_bonus": "+8/+8",
+        "damage": "1d4+2",
+        "damage_type": "Slashing"
+      }
+    ],
+    "special_attacks": [
+      "Spores (DC 17 Reflex or fungal growth deals 1d10 per round for 10 rounds; remove curse or neutralize poison ends effect)",
+      "Stunning Screech (DC 17 Fortitude or stunned 1 round, 1/hour)",
+      "Spell-Like Abilities: darkness, desecrate, detect good, detect magic, greater teleport, mirror image, telekinesis, unholy blight (at will)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "DR 10/Good",
+      "Immunity to Electricity and Poison",
+      "Resistance to Acid 10, Cold 10, Fire 10",
+      "SR 17",
+      "Telepathy 100 ft."
+    ],
+    "saves": {
+      "fort": 10,
+      "ref": 9,
+      "will": 7
+    },
+    "abilities": {
+      "str": 18,
+      "dex": 15,
+      "con": 17,
+      "int": 14,
+      "wis": 16,
+      "cha": 16
+    },
+    "skills": {
+      "Concentration": 16,
+      "Diplomacy": 5,
+      "Hide": 11,
+      "Intimidate": 16,
+      "Knowledge (planes)": 15,
+      "Listen": 18,
+      "Move Silently": 15,
+      "Search": 15,
+      "Sense Motive": 16,
+      "Spot": 18
+    },
+    "feats": [
+      "Cleave",
+      "Combat Reflexes",
+      "Multiattack",
+      "Power Attack"
+    ],
+    "alignment": "Always Chaotic Evil",
+    "advancement": null,
+    "dr": "10/Good",
+    "sr": 17,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [
+      "Good"
+    ],
+    "passive_effects": [],
+    "population_base": 0,
+    "allowed_biomes": [
+      "Any"
+    ],
+    "primary_biome": "Any",
+    "ecology_notes": "Vrocks are vulture-headed, winged demons of chaos that serve as shock troops and scouts in demonic armies. Their combination of lethal fungal spores, deafening screeches, and devastating multi-attack makes them fearsome battlefield predators. They nest in the volcanic crags of the Abyss and are often summoned by chaotic evil spellcasters who need aerial firepower or intimidating guards."
+  }
+]
