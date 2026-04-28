@@ -1,0 +1,929 @@
+[
+  {
+    "name": "Bullywug",
+    "cr": 1,
+    "size": "Medium",
+    "type": "Humanoid",
+    "subtype": "Aquatic",
+    "hit_dice": "1d8+1",
+    "hp_avg": 5,
+    "initiative": -1,
+    "speed": {
+      "land": 15,
+      "swim": 30
+    },
+    "armor_class": {
+      "total": 15,
+      "touch": 9,
+      "flat_footed": 15,
+      "components": "-1 Dex, +3 natural, +3 hide armor"
+    },
+    "base_attack": 0,
+    "grapple": 1,
+    "attacks": [
+      {
+        "name": "Spear",
+        "attack_bonus": "+1",
+        "damage": "1d8+1",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "-1",
+        "damage": "1d4",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Marsh Move (can charge through difficult terrain in marshes without penalty)"
+    ],
+    "special_qualities": [
+      "Amphibious",
+      "Darkvision 60 ft."
+    ],
+    "saves": {
+      "fort": 3,
+      "ref": 1,
+      "will": -1
+    },
+    "abilities": {
+      "str": 12,
+      "dex": 9,
+      "con": 13,
+      "int": 7,
+      "wis": 8,
+      "cha": 6
+    },
+    "skills": {
+      "Hide": 2,
+      "Jump": -6,
+      "Listen": 2,
+      "Spot": 2,
+      "Swim": 9
+    },
+    "feats": [
+      "Alertness"
+    ],
+    "alignment": "Usually Neutral Evil",
+    "advancement": "By character class",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 80,
+    "allowed_biomes": [
+      "Temperate_Swamp",
+      "Warm_Swamp"
+    ],
+    "primary_biome": "Temperate_Swamp",
+    "ecology_notes": "Bullywugs are amphibious frog-like humanoids that lurk in marshes and swamps. They ambush prey from the water and are exceptionally mobile through boggy terrain, able to charge even when the ground would slow others."
+  },
+  {
+    "name": "Duergar",
+    "cr": 1,
+    "size": "Medium",
+    "type": "Humanoid",
+    "subtype": "Dwarf",
+    "hit_dice": "1d8+2",
+    "hp_avg": 6,
+    "initiative": 0,
+    "speed": {
+      "land": 20
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 10,
+      "flat_footed": 16,
+      "components": "+4 chain shirt, +2 natural"
+    },
+    "base_attack": 0,
+    "grapple": 1,
+    "attacks": [
+      {
+        "name": "Warhammer",
+        "attack_bonus": "+1",
+        "damage": "1d8+1",
+        "damage_type": "Bludgeoning",
+        "crit_range": "20/x3"
+      }
+    ],
+    "special_attacks": [
+      "Spell-like abilities: enlarge person 1/day, invisibility 1/day"
+    ],
+    "special_qualities": [
+      "Darkvision 120 ft.",
+      "Dwarf traits",
+      "Immunity to paralysis",
+      "Immunity to phantasms",
+      "Immunity to poison",
+      "Light sensitivity",
+      "SR 11"
+    ],
+    "saves": {
+      "fort": 4,
+      "ref": 0,
+      "will": 2
+    },
+    "abilities": {
+      "str": 12,
+      "dex": 10,
+      "con": 14,
+      "int": 10,
+      "wis": 14,
+      "cha": 4
+    },
+    "skills": {
+      "Appraise": 3,
+      "Craft (stonecutting)": 3,
+      "Listen": 3,
+      "Move Silently": 3,
+      "Spot": 3
+    },
+    "feats": [
+      "Alertness"
+    ],
+    "alignment": "Usually Lawful Evil",
+    "advancement": "By character class",
+    "dr": null,
+    "sr": 11,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 60,
+    "allowed_biomes": [
+      "Underground",
+      "Underdark"
+    ],
+    "primary_biome": "Underground",
+    "ecology_notes": "Duergar are gray dwarves who dwell deep underground, having been twisted by generations of servitude to mind flayers. They are ruthless slavers and miners who despise their surface-dwelling kin, possessing innate magical abilities to grow large or turn invisible."
+  },
+  {
+    "name": "Goblin",
+    "cr": 0.33,
+    "size": "Small",
+    "type": "Humanoid",
+    "subtype": "Goblinoid",
+    "hit_dice": "1d8+1",
+    "hp_avg": 5,
+    "initiative": 1,
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 15,
+      "touch": 12,
+      "flat_footed": 14,
+      "components": "+1 Dex, +1 natural, +2 leather armor, +1 size"
+    },
+    "base_attack": 0,
+    "grapple": -4,
+    "attacks": [
+      {
+        "name": "Morningstar",
+        "attack_bonus": "-1",
+        "damage": "1d6-1",
+        "damage_type": "Bludgeoning/Piercing"
+      },
+      {
+        "name": "Javelin (ranged)",
+        "attack_bonus": "+2",
+        "damage": "1d4-1",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [],
+    "special_qualities": [
+      "Darkvision 60 ft."
+    ],
+    "saves": {
+      "fort": 3,
+      "ref": 1,
+      "will": -1
+    },
+    "abilities": {
+      "str": 8,
+      "dex": 13,
+      "con": 12,
+      "int": 10,
+      "wis": 9,
+      "cha": 6
+    },
+    "skills": {
+      "Hide": 7,
+      "Listen": 2,
+      "Move Silently": 5,
+      "Ride": 6,
+      "Spot": 2
+    },
+    "feats": [
+      "Alertness"
+    ],
+    "alignment": "Usually Neutral Evil",
+    "advancement": "By character class",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 200,
+    "allowed_biomes": [
+      "Temperate_Forest",
+      "Underground",
+      "Any_Ruin"
+    ],
+    "primary_biome": "Temperate_Forest",
+    "ecology_notes": "Goblins are small, cowardly humanoids that congregate in large tribal bands. They excel at ambush tactics and prefer to strike from hiding, fleeing when outmatched. Goblin tribes frequently raid settlements and are commonly found serving as fodder in hobgoblin and bugbear warbands."
+  },
+  {
+    "name": "Grimlock",
+    "cr": 1,
+    "size": "Medium",
+    "type": "Monstrous Humanoid",
+    "subtype": null,
+    "hit_dice": "2d8+2",
+    "hp_avg": 11,
+    "initiative": 1,
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 13,
+      "touch": 11,
+      "flat_footed": 12,
+      "components": "+1 Dex, +2 natural"
+    },
+    "base_attack": 2,
+    "grapple": 4,
+    "attacks": [
+      {
+        "name": "Battleaxe",
+        "attack_bonus": "+4",
+        "damage": "1d8+3",
+        "damage_type": "Slashing",
+        "crit_range": "20/x3"
+      }
+    ],
+    "special_attacks": [],
+    "special_qualities": [
+      "Blindsight 40 ft.",
+      "Immunity to gaze attacks",
+      "Immunity to blindness",
+      "Immunity to sight-based illusions",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 1,
+      "ref": 3,
+      "will": 0
+    },
+    "abilities": {
+      "str": 15,
+      "dex": 13,
+      "con": 13,
+      "int": 10,
+      "wis": 8,
+      "cha": 6
+    },
+    "skills": {
+      "Climb": 10,
+      "Hide": 8,
+      "Listen": 4,
+      "Move Silently": 5
+    },
+    "feats": [
+      "Alertness",
+      "Track"
+    ],
+    "alignment": "Usually Neutral Evil",
+    "advancement": "By character class",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 80,
+    "allowed_biomes": [
+      "Underground",
+      "Underdark"
+    ],
+    "primary_biome": "Underground",
+    "ecology_notes": "Grimlocks are blind subterranean humanoids who navigate entirely by sound, scent, and touch. Their blindsight makes them immune to all gaze attacks and visual illusions. They are skilled hunters in the deep dark, preying on anything they can detect underground."
+  },
+  {
+    "name": "Kuo-Toa",
+    "cr": 2,
+    "size": "Medium",
+    "type": "Monstrous Humanoid",
+    "subtype": "Aquatic",
+    "hit_dice": "2d8+2",
+    "hp_avg": 11,
+    "initiative": 1,
+    "speed": {
+      "land": 20,
+      "swim": 50
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 11,
+      "flat_footed": 15,
+      "components": "+1 Dex, +5 natural"
+    },
+    "base_attack": 1,
+    "grapple": 2,
+    "attacks": [
+      {
+        "name": "Shortspear",
+        "attack_bonus": "+2",
+        "damage": "1d6+1",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Sticky Net (ranged)",
+        "attack_bonus": "+2",
+        "damage": "Entangle (DC 14 Str to break)",
+        "damage_type": "Special"
+      }
+    ],
+    "special_attacks": [
+      "Sticky Shield (DC 14 Str check to pull weapon free when blocked)"
+    ],
+    "special_qualities": [
+      "Amphibious",
+      "Darkvision 60 ft.",
+      "Immunity to poison",
+      "Immunity to paralysis",
+      "Keen sight (automatically detects invisible creatures within 30 ft.)",
+      "Light blindness (blinded for 1 round in sudden bright light)",
+      "Slippery (DC 25 grapple check to maintain hold)"
+    ],
+    "saves": {
+      "fort": 1,
+      "ref": 3,
+      "will": 5
+    },
+    "abilities": {
+      "str": 13,
+      "dex": 12,
+      "con": 12,
+      "int": 13,
+      "wis": 14,
+      "cha": 8
+    },
+    "skills": {
+      "Escape Artist": 13,
+      "Knowledge (religion)": 6,
+      "Listen": 10,
+      "Move Silently": 5,
+      "Search": 8,
+      "Spot": 12,
+      "Swim": 9
+    },
+    "feats": [
+      "Alertness",
+      "Blind-Fight"
+    ],
+    "alignment": "Usually Neutral Evil",
+    "advancement": "By character class",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 60,
+    "allowed_biomes": [
+      "Temperate_Aquatic",
+      "Underground"
+    ],
+    "primary_biome": "Temperate_Aquatic",
+    "ecology_notes": "Kuo-toa are degenerate fish-men who dwell in subterranean lakes and coastal sea caves, fanatically devoted to their dark deity Blibdoolpoolp. Their skin exudes a mucus that makes them incredibly hard to grapple, and their keen sight detects invisible intruders. They arm themselves with sticky nets and shields."
+  },
+  {
+    "name": "Locathah",
+    "cr": 1,
+    "size": "Medium",
+    "type": "Humanoid",
+    "subtype": "Aquatic",
+    "hit_dice": "1d8",
+    "hp_avg": 4,
+    "initiative": 1,
+    "speed": {
+      "land": 10,
+      "swim": 60
+    },
+    "armor_class": {
+      "total": 14,
+      "touch": 11,
+      "flat_footed": 13,
+      "components": "+1 Dex, +3 natural"
+    },
+    "base_attack": 0,
+    "grapple": 1,
+    "attacks": [
+      {
+        "name": "Longspear",
+        "attack_bonus": "+1",
+        "damage": "1d8+1",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Javelin (ranged, underwater)",
+        "attack_bonus": "+1",
+        "damage": "1d6+1",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [],
+    "special_qualities": [
+      "Darkvision 60 ft."
+    ],
+    "saves": {
+      "fort": 2,
+      "ref": 1,
+      "will": 0
+    },
+    "abilities": {
+      "str": 13,
+      "dex": 12,
+      "con": 10,
+      "int": 9,
+      "wis": 10,
+      "cha": 9
+    },
+    "skills": {
+      "Listen": 3,
+      "Profession (fishing)": 4,
+      "Spot": 3,
+      "Swim": 9
+    },
+    "feats": [
+      "Alertness"
+    ],
+    "alignment": "Usually Neutral",
+    "advancement": "By character class",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 80,
+    "allowed_biomes": [
+      "Temperate_Aquatic",
+      "Warm_Aquatic"
+    ],
+    "primary_biome": "Warm_Aquatic",
+    "ecology_notes": "Locathah are fish-like humanoids who dwell in shallow coastal waters and rivers. They are generally peaceful fisherfolk who trade with surface races but will defend their territories with longspears if threatened. They are poorly suited for land travel, moving slowly out of water."
+  },
+  {
+    "name": "Merfolk",
+    "cr": 0.5,
+    "size": "Medium",
+    "type": "Humanoid",
+    "subtype": "Aquatic",
+    "hit_dice": "1d8+2",
+    "hp_avg": 6,
+    "initiative": 1,
+    "speed": {
+      "land": 5,
+      "swim": 50
+    },
+    "armor_class": {
+      "total": 13,
+      "touch": 11,
+      "flat_footed": 12,
+      "components": "+1 Dex, +2 natural"
+    },
+    "base_attack": 0,
+    "grapple": 1,
+    "attacks": [
+      {
+        "name": "Trident",
+        "attack_bonus": "+1",
+        "damage": "1d8+1",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Heavy Crossbow (ranged)",
+        "attack_bonus": "+1",
+        "damage": "1d10",
+        "damage_type": "Piercing",
+        "crit_range": "19-20/x2"
+      }
+    ],
+    "special_attacks": [],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Amphibious"
+    ],
+    "saves": {
+      "fort": 4,
+      "ref": 1,
+      "will": 1
+    },
+    "abilities": {
+      "str": 13,
+      "dex": 13,
+      "con": 14,
+      "int": 10,
+      "wis": 12,
+      "cha": 11
+    },
+    "skills": {
+      "Listen": 4,
+      "Spot": 4,
+      "Swim": 9
+    },
+    "feats": [
+      "Alertness"
+    ],
+    "alignment": "Usually Neutral",
+    "advancement": "By character class",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 100,
+    "allowed_biomes": [
+      "Temperate_Aquatic",
+      "Cold_Aquatic"
+    ],
+    "primary_biome": "Temperate_Aquatic",
+    "ecology_notes": "Merfolk are aquatic humanoids with the upper body of a human and the lower body of a fish. They dwell in coastal shallows and shallow seas, building underwater cities and occasionally trading with surface races. They are nearly helpless on land but formidable defenders of their underwater homes."
+  },
+  {
+    "name": "Svirfneblin",
+    "cr": 1,
+    "size": "Small",
+    "type": "Humanoid",
+    "subtype": "Gnome",
+    "hit_dice": "1d8+1",
+    "hp_avg": 5,
+    "initiative": 2,
+    "speed": {
+      "land": 20
+    },
+    "armor_class": {
+      "total": 15,
+      "touch": 12,
+      "flat_footed": 14,
+      "components": "+2 Dex, +1 size, +2 natural"
+    },
+    "base_attack": 0,
+    "grapple": -4,
+    "attacks": [
+      {
+        "name": "Heavy Pick",
+        "attack_bonus": "-2",
+        "damage": "1d4-2",
+        "damage_type": "Piercing",
+        "crit_range": "20/x4"
+      },
+      {
+        "name": "Light Crossbow (ranged)",
+        "attack_bonus": "+3",
+        "damage": "1d6",
+        "damage_type": "Piercing",
+        "crit_range": "19-20/x2"
+      }
+    ],
+    "special_attacks": [
+      "Spell-like abilities: blindness/deafness (DC 13) 1/day, blur 1/day, disguise self 1/day"
+    ],
+    "special_qualities": [
+      "Darkvision 120 ft.",
+      "Gnome traits",
+      "Spell resistance 11 + class level",
+      "Stonecunning",
+      "Nondetection (constant, as the spell)"
+    ],
+    "saves": {
+      "fort": 1,
+      "ref": 2,
+      "will": 0
+    },
+    "abilities": {
+      "str": 6,
+      "dex": 14,
+      "con": 12,
+      "int": 13,
+      "wis": 11,
+      "cha": 9
+    },
+    "skills": {
+      "Craft (gemcutting)": 5,
+      "Hide": 10,
+      "Knowledge (dungeoneering)": 5,
+      "Listen": 2,
+      "Move Silently": 4,
+      "Search": 3,
+      "Spot": 2
+    },
+    "feats": [
+      "Alertness"
+    ],
+    "alignment": "Usually Neutral Good",
+    "advancement": "By character class",
+    "dr": null,
+    "sr": 11,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 50,
+    "allowed_biomes": [
+      "Underground",
+      "Underdark"
+    ],
+    "primary_biome": "Underdark",
+    "ecology_notes": "Svirfneblin, or deep gnomes, are a secretive gnomish people who dwell in the Underdark, carving out small communities in the hostile depths. They are master gem-cutters and stoneshapers. Their innate magical abilities help them hide and confuse enemies, and they are naturally resistant to magic thanks to their deep-stone heritage."
+  },
+  {
+    "name": "Troglodyte",
+    "cr": 1,
+    "size": "Medium",
+    "type": "Humanoid",
+    "subtype": "Reptilian",
+    "hit_dice": "2d8+4",
+    "hp_avg": 13,
+    "initiative": -1,
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 15,
+      "touch": 9,
+      "flat_footed": 15,
+      "components": "-1 Dex, +6 natural"
+    },
+    "base_attack": 1,
+    "grapple": 1,
+    "attacks": [
+      {
+        "name": "Club",
+        "attack_bonus": "+1",
+        "damage": "1d6",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "-1",
+        "damage": "1d4",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "-1",
+        "damage": "1d4",
+        "damage_type": "Slashing"
+      }
+    ],
+    "special_attacks": [
+      "Stench (DC 12 Fort, sickened for 10 rounds)"
+    ],
+    "special_qualities": [
+      "Darkvision 90 ft."
+    ],
+    "saves": {
+      "fort": 5,
+      "ref": -1,
+      "will": 0
+    },
+    "abilities": {
+      "str": 10,
+      "dex": 9,
+      "con": 14,
+      "int": 8,
+      "wis": 10,
+      "cha": 9
+    },
+    "skills": {
+      "Hide": 5,
+      "Listen": 3
+    },
+    "feats": [
+      "Multiattack"
+    ],
+    "alignment": "Usually Chaotic Evil",
+    "advancement": "By character class",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 120,
+    "allowed_biomes": [
+      "Underground",
+      "Temperate_Swamp"
+    ],
+    "primary_biome": "Underground",
+    "ecology_notes": "Troglodytes are primitive reptilian cave-dwellers notorious for the nauseating stench they can emit from their skin. They are territorial and aggressive, attacking intruders on sight. Troglodyte warrens can be detected by smell long before they are seen."
+  },
+  {
+    "name": "Yuan-ti Halfblood",
+    "cr": 5,
+    "size": "Medium",
+    "type": "Monstrous Humanoid",
+    "subtype": null,
+    "hit_dice": "9d8+18",
+    "hp_avg": 58,
+    "initiative": 1,
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 17,
+      "touch": 11,
+      "flat_footed": 16,
+      "components": "+1 Dex, +6 natural"
+    },
+    "base_attack": 9,
+    "grapple": 11,
+    "attacks": [
+      {
+        "name": "Scimitar",
+        "attack_bonus": "+11/+6",
+        "damage": "1d6+2",
+        "damage_type": "Slashing",
+        "crit_range": "18-20/x2"
+      }
+    ],
+    "special_attacks": [
+      "Constrict 1d6+2",
+      "Improved Grab",
+      "Spell-like abilities (as yuan-ti pureblood plus additional spells)"
+    ],
+    "special_qualities": [
+      "Alternate form (can assume snake or human form)",
+      "Chameleon power (+10 circumstance bonus to Hide)",
+      "Darkvision 60 ft.",
+      "Immunity to poison",
+      "Immunity to mind-affecting effects",
+      "SR 16"
+    ],
+    "saves": {
+      "fort": 7,
+      "ref": 7,
+      "will": 8
+    },
+    "abilities": {
+      "str": 15,
+      "dex": 13,
+      "con": 15,
+      "int": 17,
+      "wis": 18,
+      "cha": 18
+    },
+    "skills": {
+      "Concentration": 14,
+      "Hide": 13,
+      "Knowledge (arcana)": 15,
+      "Listen": 16,
+      "Spot": 16
+    },
+    "feats": [
+      "Alertness",
+      "Combat Expertise",
+      "Dodge",
+      "Improved Initiative"
+    ],
+    "alignment": "Always Chaotic Evil",
+    "advancement": "By character class",
+    "dr": null,
+    "sr": 16,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 25,
+    "allowed_biomes": [
+      "Warm_Forest",
+      "Warm_Swamp"
+    ],
+    "primary_biome": "Warm_Forest",
+    "ecology_notes": "Yuan-ti halfbloods are a more serpentine blend than purebloods, possessing obvious snake features such as a snake tail instead of legs, snake arms, or a snake head. They serve as warriors and priests within yuan-ti society and can shapeshift to infiltrate humanoid settlements."
+  },
+  {
+    "name": "Yuan-ti Abomination",
+    "cr": 7,
+    "size": "Large",
+    "type": "Monstrous Humanoid",
+    "subtype": null,
+    "hit_dice": "12d8+36",
+    "hp_avg": 90,
+    "initiative": 1,
+    "speed": {
+      "land": 30,
+      "swim": 20
+    },
+    "armor_class": {
+      "total": 19,
+      "touch": 10,
+      "flat_footed": 18,
+      "components": "+1 Dex, -1 size, +9 natural"
+    },
+    "base_attack": 12,
+    "grapple": 20,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+15",
+        "damage": "2d6+5",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Constrict",
+        "attack_bonus": "+15",
+        "damage": "1d8+5",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Talon",
+        "attack_bonus": "+10",
+        "damage": "1d6+2",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Talon",
+        "attack_bonus": "+10",
+        "damage": "1d6+2",
+        "damage_type": "Slashing"
+      }
+    ],
+    "special_attacks": [
+      "Constrict 1d8+5",
+      "Improved Grab",
+      "Spell-like abilities (all pureblood and halfblood spells plus additional)",
+      "Venom bite (DC 17 Fort, 1d6 CON primary and secondary)"
+    ],
+    "special_qualities": [
+      "Alternate form (can assume snake or human form)",
+      "Chameleon power (+10 circumstance bonus to Hide)",
+      "Darkvision 60 ft.",
+      "Immunity to poison",
+      "Immunity to mind-affecting effects",
+      "SR 18"
+    ],
+    "saves": {
+      "fort": 9,
+      "ref": 9,
+      "will": 10
+    },
+    "abilities": {
+      "str": 20,
+      "dex": 13,
+      "con": 17,
+      "int": 21,
+      "wis": 20,
+      "cha": 21
+    },
+    "skills": {
+      "Concentration": 18,
+      "Hide": 12,
+      "Knowledge (arcana)": 20,
+      "Listen": 22,
+      "Spot": 22
+    },
+    "feats": [
+      "Alertness",
+      "Combat Expertise",
+      "Combat Reflexes",
+      "Dodge",
+      "Multiattack"
+    ],
+    "alignment": "Always Chaotic Evil",
+    "advancement": "13-24 HD (Large); 25-36 HD (Huge)",
+    "dr": null,
+    "sr": 18,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 10,
+    "allowed_biomes": [
+      "Warm_Forest",
+      "Warm_Swamp"
+    ],
+    "primary_biome": "Warm_Forest",
+    "ecology_notes": "Yuan-ti abominations are the pinnacle of yuan-ti transformation — massive serpentine creatures with only vestigial humanoid features. They rule yuan-ti society as god-speakers and high priests, possessing formidable spellcasting ability, deadly venom, and the power to constrict prey. Their intelligence and magical ability make them among the most dangerous humanoid-type creatures."
+  }
+]

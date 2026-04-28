@@ -1,0 +1,2692 @@
+[
+  {
+    "name": "Small Air Elemental",
+    "cr": 1,
+    "size": "Small",
+    "type": "Elemental",
+    "subtype": "Air",
+    "hit_dice": "2d8",
+    "hp_avg": 9,
+    "initiative": 7,
+    "speed": {
+      "fly": 100
+    },
+    "armor_class": {
+      "total": 17,
+      "touch": 14,
+      "flat_footed": 14,
+      "components": "+3 Dex, +3 natural, +1 size"
+    },
+    "base_attack": 1,
+    "grapple": -3,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+4",
+        "damage": "1d4",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Whirlwind (DC 11 Ref, 5-ft. tall, 1d4 damage, lasts 1d4+1 rounds)"
+    ],
+    "special_qualities": [
+      "Air Mastery (+1 attack and damage when airborne foe is also airborne)",
+      "Elemental Traits",
+      "Darkvision 60 ft."
+    ],
+    "saves": {
+      "fort": 0,
+      "ref": 5,
+      "will": 0
+    },
+    "abilities": {
+      "str": 10,
+      "dex": 17,
+      "con": 10,
+      "int": 4,
+      "wis": 11,
+      "cha": 11
+    },
+    "skills": {},
+    "feats": [
+      "Flyby Attack",
+      "Improved Initiative"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": null,
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 40,
+    "allowed_biomes": [
+      "Any"
+    ],
+    "primary_biome": "Any",
+    "ecology_notes": "Small air elementals drift on currents of wind, lashing out with blasts of compressed air. Their whirlwind form can engulf and toss smaller creatures."
+  },
+  {
+    "name": "Medium Air Elemental",
+    "cr": 3,
+    "size": "Medium",
+    "type": "Elemental",
+    "subtype": "Air",
+    "hit_dice": "4d8",
+    "hp_avg": 18,
+    "initiative": 9,
+    "speed": {
+      "fly": 100
+    },
+    "armor_class": {
+      "total": 17,
+      "touch": 15,
+      "flat_footed": 12,
+      "components": "+5 Dex, +2 natural"
+    },
+    "base_attack": 3,
+    "grapple": 3,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+8",
+        "damage": "1d6+2",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Whirlwind (DC 13 Ref, 5-10 ft. tall, 2d6 damage)"
+    ],
+    "special_qualities": [
+      "Air Mastery (+1 attack and damage when airborne foe is also airborne)",
+      "Elemental Traits",
+      "Darkvision 60 ft."
+    ],
+    "saves": {
+      "fort": 1,
+      "ref": 9,
+      "will": 1
+    },
+    "abilities": {
+      "str": 14,
+      "dex": 21,
+      "con": 10,
+      "int": 4,
+      "wis": 11,
+      "cha": 11
+    },
+    "skills": {},
+    "feats": [
+      "Dodge",
+      "Flyby Attack",
+      "Improved Initiative",
+      "Weapon Finesse"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": null,
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 30,
+    "allowed_biomes": [
+      "Any"
+    ],
+    "primary_biome": "Any",
+    "ecology_notes": "Medium air elementals are mobile and difficult to hit, darting through combat and using their whirlwind to scatter opponents."
+  },
+  {
+    "name": "Large Air Elemental",
+    "cr": 5,
+    "size": "Large",
+    "type": "Elemental",
+    "subtype": "Air",
+    "hit_dice": "8d8",
+    "hp_avg": 36,
+    "initiative": 11,
+    "speed": {
+      "fly": 100
+    },
+    "armor_class": {
+      "total": 20,
+      "touch": 16,
+      "flat_footed": 13,
+      "components": "+6 Dex, +5 natural, -1 size"
+    },
+    "base_attack": 6,
+    "grapple": 11,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+12/+7",
+        "damage": "1d8+4",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Whirlwind (DC 16 Ref, 10-15 ft. tall, 2d8 damage)"
+    ],
+    "special_qualities": [
+      "Air Mastery (+1 attack and damage when airborne foe is also airborne)",
+      "Elemental Traits",
+      "Darkvision 60 ft."
+    ],
+    "saves": {
+      "fort": 2,
+      "ref": 12,
+      "will": 2
+    },
+    "abilities": {
+      "str": 18,
+      "dex": 23,
+      "con": 10,
+      "int": 6,
+      "wis": 11,
+      "cha": 11
+    },
+    "skills": {},
+    "feats": [
+      "Dodge",
+      "Flyby Attack",
+      "Improved Initiative",
+      "Weapon Finesse"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": null,
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 20,
+    "allowed_biomes": [
+      "Any"
+    ],
+    "primary_biome": "Any",
+    "ecology_notes": "Large air elementals command significant volumes of air, their whirlwinds capable of engulfing Medium creatures and flinging them aside."
+  },
+  {
+    "name": "Huge Air Elemental",
+    "cr": 7,
+    "size": "Huge",
+    "type": "Elemental",
+    "subtype": "Air",
+    "hit_dice": "16d8",
+    "hp_avg": 72,
+    "initiative": 13,
+    "speed": {
+      "fly": 100
+    },
+    "armor_class": {
+      "total": 21,
+      "touch": 16,
+      "flat_footed": 12,
+      "components": "+6 Dex, +7 natural, -2 size"
+    },
+    "base_attack": 12,
+    "grapple": 22,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+18/+13",
+        "damage": "2d8+6",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Whirlwind (DC 20 Ref, 10-20 ft. tall, 2d8 damage)"
+    ],
+    "special_qualities": [
+      "Air Mastery (+1 attack and damage when airborne foe is also airborne)",
+      "Elemental Traits",
+      "Darkvision 60 ft."
+    ],
+    "saves": {
+      "fort": 5,
+      "ref": 16,
+      "will": 5
+    },
+    "abilities": {
+      "str": 22,
+      "dex": 23,
+      "con": 10,
+      "int": 6,
+      "wis": 11,
+      "cha": 11
+    },
+    "skills": {},
+    "feats": [
+      "Combat Reflexes",
+      "Dodge",
+      "Flyby Attack",
+      "Improved Initiative",
+      "Weapon Finesse"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": null,
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 15,
+    "allowed_biomes": [
+      "Any"
+    ],
+    "primary_biome": "Any",
+    "ecology_notes": "Huge air elementals are living cyclones, their passage heralded by howling winds and debris. Their whirlwinds can menace entire adventuring parties."
+  },
+  {
+    "name": "Greater Air Elemental",
+    "cr": 9,
+    "size": "Huge",
+    "type": "Elemental",
+    "subtype": "Air",
+    "hit_dice": "21d8",
+    "hp_avg": 94,
+    "initiative": 14,
+    "speed": {
+      "fly": 100
+    },
+    "armor_class": {
+      "total": 27,
+      "touch": 17,
+      "flat_footed": 18,
+      "components": "+7 Dex, +12 natural, -2 size"
+    },
+    "base_attack": 15,
+    "grapple": 27,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+22/+17/+12",
+        "damage": "2d8+8",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Whirlwind (DC 24 Ref, 10-20 ft. tall, 2d8 damage)"
+    ],
+    "special_qualities": [
+      "Air Mastery (+1 attack and damage when airborne foe is also airborne)",
+      "Elemental Traits",
+      "Darkvision 60 ft."
+    ],
+    "saves": {
+      "fort": 7,
+      "ref": 19,
+      "will": 7
+    },
+    "abilities": {
+      "str": 26,
+      "dex": 25,
+      "con": 10,
+      "int": 6,
+      "wis": 11,
+      "cha": 11
+    },
+    "skills": {},
+    "feats": [
+      "Combat Reflexes",
+      "Dodge",
+      "Flyby Attack",
+      "Improved Initiative",
+      "Iron Will",
+      "Weapon Finesse"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": null,
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 10,
+    "allowed_biomes": [
+      "Any"
+    ],
+    "primary_biome": "Any",
+    "ecology_notes": "Greater air elementals are ancient tempestuous entities, manifesting as towering pillars of raging wind capable of tearing apart stone structures."
+  },
+  {
+    "name": "Elder Air Elemental",
+    "cr": 11,
+    "size": "Huge",
+    "type": "Elemental",
+    "subtype": "Air",
+    "hit_dice": "24d8",
+    "hp_avg": 108,
+    "initiative": 15,
+    "speed": {
+      "fly": 100
+    },
+    "armor_class": {
+      "total": 31,
+      "touch": 18,
+      "flat_footed": 23,
+      "components": "+8 Dex, +15 natural, -2 size"
+    },
+    "base_attack": 18,
+    "grapple": 31,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+26/+21/+16/+11",
+        "damage": "2d8+10",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Whirlwind (DC 27 Ref, 10-20 ft. tall, 2d8 damage)"
+    ],
+    "special_qualities": [
+      "Air Mastery (+1 attack and damage when airborne foe is also airborne)",
+      "Elemental Traits",
+      "Darkvision 60 ft."
+    ],
+    "saves": {
+      "fort": 8,
+      "ref": 22,
+      "will": 8
+    },
+    "abilities": {
+      "str": 30,
+      "dex": 27,
+      "con": 10,
+      "int": 8,
+      "wis": 11,
+      "cha": 11
+    },
+    "skills": {},
+    "feats": [
+      "Alertness",
+      "Combat Reflexes",
+      "Dodge",
+      "Flyby Attack",
+      "Improved Initiative",
+      "Iron Will",
+      "Weapon Finesse"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": null,
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 5,
+    "allowed_biomes": [
+      "Any"
+    ],
+    "primary_biome": "Any",
+    "ecology_notes": "Elder air elementals are the oldest and most powerful of their kind, living hurricanes whose very presence distorts weather patterns across hundreds of miles."
+  },
+  {
+    "name": "Small Earth Elemental",
+    "cr": 1,
+    "size": "Small",
+    "type": "Elemental",
+    "subtype": "Earth",
+    "hit_dice": "2d8+2",
+    "hp_avg": 11,
+    "initiative": -1,
+    "speed": {
+      "land": 20,
+      "burrow": 20
+    },
+    "armor_class": {
+      "total": 17,
+      "touch": 10,
+      "flat_footed": 17,
+      "components": "-1 Dex, +7 natural, +1 size"
+    },
+    "base_attack": 1,
+    "grapple": -1,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+3",
+        "damage": "1d6+4",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Push (on hit, Str check DC 13 or be pushed 5 ft.)"
+    ],
+    "special_qualities": [
+      "Earth Mastery (+1 attack and damage when both combatants on ground)",
+      "Elemental Traits",
+      "Darkvision 60 ft."
+    ],
+    "saves": {
+      "fort": 4,
+      "ref": -1,
+      "will": 0
+    },
+    "abilities": {
+      "str": 17,
+      "dex": 8,
+      "con": 13,
+      "int": 4,
+      "wis": 11,
+      "cha": 11
+    },
+    "skills": {},
+    "feats": [
+      "Power Attack"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": null,
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 40,
+    "allowed_biomes": [
+      "Mountain",
+      "Underground"
+    ],
+    "primary_biome": "Mountain",
+    "ecology_notes": "Small earth elementals burst from rocky ground to attack, using their surprising strength to shove opponents aside before retreating underground."
+  },
+  {
+    "name": "Medium Earth Elemental",
+    "cr": 3,
+    "size": "Medium",
+    "type": "Elemental",
+    "subtype": "Earth",
+    "hit_dice": "4d8+12",
+    "hp_avg": 30,
+    "initiative": -1,
+    "speed": {
+      "land": 20,
+      "burrow": 20
+    },
+    "armor_class": {
+      "total": 17,
+      "touch": 9,
+      "flat_footed": 17,
+      "components": "-1 Dex, +8 natural"
+    },
+    "base_attack": 3,
+    "grapple": 8,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+8",
+        "damage": "1d8+7",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Push (Str check DC 16 or be pushed 5 ft.)"
+    ],
+    "special_qualities": [
+      "Earth Mastery (+1 attack and damage when both combatants on ground)",
+      "Elemental Traits",
+      "Darkvision 60 ft."
+    ],
+    "saves": {
+      "fort": 7,
+      "ref": 0,
+      "will": 1
+    },
+    "abilities": {
+      "str": 21,
+      "dex": 8,
+      "con": 17,
+      "int": 4,
+      "wis": 11,
+      "cha": 11
+    },
+    "skills": {},
+    "feats": [
+      "Cleave",
+      "Power Attack"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": null,
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 30,
+    "allowed_biomes": [
+      "Mountain",
+      "Underground"
+    ],
+    "primary_biome": "Mountain",
+    "ecology_notes": "Medium earth elementals are patient hunters, lying dormant within stone until prey walks near. Their great strength allows them to cleave through multiple foes."
+  },
+  {
+    "name": "Large Earth Elemental",
+    "cr": 5,
+    "size": "Large",
+    "type": "Elemental",
+    "subtype": "Earth",
+    "hit_dice": "8d8+32",
+    "hp_avg": 68,
+    "initiative": -1,
+    "speed": {
+      "land": 20,
+      "burrow": 20
+    },
+    "armor_class": {
+      "total": 18,
+      "touch": 8,
+      "flat_footed": 18,
+      "components": "-1 Dex, +10 natural, -1 size"
+    },
+    "base_attack": 6,
+    "grapple": 15,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+11/+6",
+        "damage": "2d8+8",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Push (Str check DC 19 or be pushed 5 ft.)"
+    ],
+    "special_qualities": [
+      "Earth Mastery (+1 attack and damage when both combatants on ground)",
+      "Elemental Traits",
+      "Darkvision 60 ft."
+    ],
+    "saves": {
+      "fort": 10,
+      "ref": 1,
+      "will": 2
+    },
+    "abilities": {
+      "str": 25,
+      "dex": 8,
+      "con": 19,
+      "int": 6,
+      "wis": 11,
+      "cha": 11
+    },
+    "skills": {},
+    "feats": [
+      "Cleave",
+      "Great Cleave",
+      "Power Attack"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": null,
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 20,
+    "allowed_biomes": [
+      "Mountain",
+      "Underground"
+    ],
+    "primary_biome": "Mountain",
+    "ecology_notes": "Large earth elementals can move through solid rock as easily as water, making them formidable ambush predators in cavern environments."
+  },
+  {
+    "name": "Huge Earth Elemental",
+    "cr": 7,
+    "size": "Huge",
+    "type": "Elemental",
+    "subtype": "Earth",
+    "hit_dice": "16d8+80",
+    "hp_avg": 152,
+    "initiative": -1,
+    "speed": {
+      "land": 20,
+      "burrow": 20
+    },
+    "armor_class": {
+      "total": 18,
+      "touch": 7,
+      "flat_footed": 18,
+      "components": "-1 Dex, +11 natural, -2 size"
+    },
+    "base_attack": 12,
+    "grapple": 25,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+20/+15",
+        "damage": "2d10+11",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Push (Str check DC 25 or be pushed 10 ft.)"
+    ],
+    "special_qualities": [
+      "Earth Mastery (+1 attack and damage when both combatants on ground)",
+      "Elemental Traits",
+      "Darkvision 60 ft."
+    ],
+    "saves": {
+      "fort": 15,
+      "ref": 4,
+      "will": 5
+    },
+    "abilities": {
+      "str": 33,
+      "dex": 8,
+      "con": 21,
+      "int": 8,
+      "wis": 11,
+      "cha": 11
+    },
+    "skills": {},
+    "feats": [
+      "Cleave",
+      "Great Cleave",
+      "Improved Sunder",
+      "Power Attack"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": null,
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 15,
+    "allowed_biomes": [
+      "Mountain",
+      "Underground"
+    ],
+    "primary_biome": "Mountain",
+    "ecology_notes": "Huge earth elementals reshape the battlefield, smashing through walls and floors. Their push ability can send even armored warriors flying."
+  },
+  {
+    "name": "Greater Earth Elemental",
+    "cr": 9,
+    "size": "Huge",
+    "type": "Elemental",
+    "subtype": "Earth",
+    "hit_dice": "21d8+105",
+    "hp_avg": 199,
+    "initiative": -1,
+    "speed": {
+      "land": 20,
+      "burrow": 20
+    },
+    "armor_class": {
+      "total": 23,
+      "touch": 7,
+      "flat_footed": 23,
+      "components": "-1 Dex, +16 natural, -2 size"
+    },
+    "base_attack": 15,
+    "grapple": 31,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+26/+21/+16",
+        "damage": "2d10+13",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Push (Str check DC 29 or be pushed 10 ft.)"
+    ],
+    "special_qualities": [
+      "Earth Mastery (+1 attack and damage when both combatants on ground)",
+      "Elemental Traits",
+      "Darkvision 60 ft."
+    ],
+    "saves": {
+      "fort": 18,
+      "ref": 6,
+      "will": 7
+    },
+    "abilities": {
+      "str": 37,
+      "dex": 8,
+      "con": 21,
+      "int": 8,
+      "wis": 11,
+      "cha": 11
+    },
+    "skills": {},
+    "feats": [
+      "Cleave",
+      "Great Cleave",
+      "Improved Bull Rush",
+      "Improved Sunder",
+      "Power Attack"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": null,
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 10,
+    "allowed_biomes": [
+      "Mountain",
+      "Underground"
+    ],
+    "primary_biome": "Mountain",
+    "ecology_notes": "Greater earth elementals are ancient forces of geological power, able to trigger minor earthquakes with their movement and topple stone fortifications."
+  },
+  {
+    "name": "Elder Earth Elemental",
+    "cr": 11,
+    "size": "Huge",
+    "type": "Elemental",
+    "subtype": "Earth",
+    "hit_dice": "24d8+120",
+    "hp_avg": 228,
+    "initiative": -1,
+    "speed": {
+      "land": 20,
+      "burrow": 20
+    },
+    "armor_class": {
+      "total": 26,
+      "touch": 7,
+      "flat_footed": 26,
+      "components": "-1 Dex, +19 natural, -2 size"
+    },
+    "base_attack": 18,
+    "grapple": 35,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+30/+25/+20/+15",
+        "damage": "2d10+15",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Push (Str check DC 32 or be pushed 10 ft.)"
+    ],
+    "special_qualities": [
+      "Earth Mastery (+1 attack and damage when both combatants on ground)",
+      "Elemental Traits",
+      "Darkvision 60 ft."
+    ],
+    "saves": {
+      "fort": 20,
+      "ref": 7,
+      "will": 8
+    },
+    "abilities": {
+      "str": 41,
+      "dex": 8,
+      "con": 21,
+      "int": 10,
+      "wis": 11,
+      "cha": 11
+    },
+    "skills": {},
+    "feats": [
+      "Cleave",
+      "Great Cleave",
+      "Improved Bull Rush",
+      "Improved Sunder",
+      "Iron Will",
+      "Power Attack"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": null,
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 5,
+    "allowed_biomes": [
+      "Mountain",
+      "Underground"
+    ],
+    "primary_biome": "Mountain",
+    "ecology_notes": "Elder earth elementals are mountains given life, primordial entities of immeasurable strength whose movements cause avalanches and reshape terrain."
+  },
+  {
+    "name": "Small Fire Elemental",
+    "cr": 1,
+    "size": "Small",
+    "type": "Elemental",
+    "subtype": "Fire",
+    "hit_dice": "2d8",
+    "hp_avg": 9,
+    "initiative": 5,
+    "speed": {
+      "land": 50
+    },
+    "armor_class": {
+      "total": 15,
+      "touch": 14,
+      "flat_footed": 12,
+      "components": "+3 Dex, +1 natural, +1 size"
+    },
+    "base_attack": 1,
+    "grapple": -3,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+4",
+        "damage": "1d4 plus 1d4 fire",
+        "damage_type": "Bludgeoning + Fire"
+      }
+    ],
+    "special_attacks": [
+      "Burn (DC 11 Ref or catch fire, taking 1d4 fire damage/round until extinguished)"
+    ],
+    "special_qualities": [
+      "Fire Mastery (as air mastery but near open flame)",
+      "Elemental Traits",
+      "Darkvision 60 ft.",
+      "Immunity to Fire",
+      "Vulnerability to Cold"
+    ],
+    "saves": {
+      "fort": 0,
+      "ref": 5,
+      "will": 0
+    },
+    "abilities": {
+      "str": 10,
+      "dex": 17,
+      "con": 10,
+      "int": 4,
+      "wis": 11,
+      "cha": 11
+    },
+    "skills": {},
+    "feats": [
+      "Improved Initiative",
+      "Weapon Finesse"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": null,
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [
+      "Cold"
+    ],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 40,
+    "allowed_biomes": [
+      "Warm_Desert",
+      "Warm_Plain"
+    ],
+    "primary_biome": "Warm_Desert",
+    "ecology_notes": "Small fire elementals are sparks of living flame, dancing through combustible environments and setting fires wherever they go. They avoid cold and water."
+  },
+  {
+    "name": "Medium Fire Elemental",
+    "cr": 3,
+    "size": "Medium",
+    "type": "Elemental",
+    "subtype": "Fire",
+    "hit_dice": "4d8",
+    "hp_avg": 18,
+    "initiative": 9,
+    "speed": {
+      "land": 50
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 15,
+      "flat_footed": 11,
+      "components": "+5 Dex, +1 natural"
+    },
+    "base_attack": 3,
+    "grapple": 3,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+8",
+        "damage": "1d6+1 plus 1d6 fire",
+        "damage_type": "Bludgeoning + Fire"
+      }
+    ],
+    "special_attacks": [
+      "Burn (DC 13 Ref or catch fire, 1d6 fire damage/round)"
+    ],
+    "special_qualities": [
+      "Fire Mastery (as air mastery but near open flame)",
+      "Elemental Traits",
+      "Darkvision 60 ft.",
+      "Immunity to Fire",
+      "Vulnerability to Cold"
+    ],
+    "saves": {
+      "fort": 1,
+      "ref": 9,
+      "will": 1
+    },
+    "abilities": {
+      "str": 12,
+      "dex": 21,
+      "con": 10,
+      "int": 4,
+      "wis": 11,
+      "cha": 11
+    },
+    "skills": {},
+    "feats": [
+      "Dodge",
+      "Improved Initiative",
+      "Mobility",
+      "Weapon Finesse"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": null,
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [
+      "Cold"
+    ],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 30,
+    "allowed_biomes": [
+      "Warm_Desert",
+      "Warm_Plain"
+    ],
+    "primary_biome": "Warm_Desert",
+    "ecology_notes": "Medium fire elementals are roving columns of living fire, capable of igniting entire structures in moments. They pursue fleeing prey with relentless speed."
+  },
+  {
+    "name": "Large Fire Elemental",
+    "cr": 5,
+    "size": "Large",
+    "type": "Elemental",
+    "subtype": "Fire",
+    "hit_dice": "8d8",
+    "hp_avg": 36,
+    "initiative": 11,
+    "speed": {
+      "land": 50
+    },
+    "armor_class": {
+      "total": 18,
+      "touch": 16,
+      "flat_footed": 11,
+      "components": "+6 Dex, +3 natural, -1 size"
+    },
+    "base_attack": 6,
+    "grapple": 11,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+12/+7",
+        "damage": "1d8+4 plus 1d8 fire",
+        "damage_type": "Bludgeoning + Fire"
+      }
+    ],
+    "special_attacks": [
+      "Burn (DC 16 Ref or catch fire, 1d8 fire damage/round)"
+    ],
+    "special_qualities": [
+      "Fire Mastery (as air mastery but near open flame)",
+      "Elemental Traits",
+      "Darkvision 60 ft.",
+      "Immunity to Fire",
+      "Vulnerability to Cold"
+    ],
+    "saves": {
+      "fort": 2,
+      "ref": 12,
+      "will": 2
+    },
+    "abilities": {
+      "str": 18,
+      "dex": 23,
+      "con": 10,
+      "int": 6,
+      "wis": 11,
+      "cha": 11
+    },
+    "skills": {},
+    "feats": [
+      "Dodge",
+      "Improved Initiative",
+      "Mobility",
+      "Weapon Finesse"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": null,
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [
+      "Cold"
+    ],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 20,
+    "allowed_biomes": [
+      "Warm_Desert",
+      "Warm_Plain"
+    ],
+    "primary_biome": "Warm_Desert",
+    "ecology_notes": "Large fire elementals are devastating infernos in living form, capable of reducing entire villages to ash in minutes and melting through iron doors."
+  },
+  {
+    "name": "Huge Fire Elemental",
+    "cr": 7,
+    "size": "Huge",
+    "type": "Elemental",
+    "subtype": "Fire",
+    "hit_dice": "16d8",
+    "hp_avg": 72,
+    "initiative": 13,
+    "speed": {
+      "land": 50
+    },
+    "armor_class": {
+      "total": 19,
+      "touch": 16,
+      "flat_footed": 10,
+      "components": "+6 Dex, +5 natural, -2 size"
+    },
+    "base_attack": 12,
+    "grapple": 22,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+18/+13",
+        "damage": "2d8+6 plus 2d8 fire",
+        "damage_type": "Bludgeoning + Fire"
+      }
+    ],
+    "special_attacks": [
+      "Burn (DC 20 Ref or catch fire, 2d8 fire damage/round)"
+    ],
+    "special_qualities": [
+      "Fire Mastery (as air mastery but near open flame)",
+      "Elemental Traits",
+      "Darkvision 60 ft.",
+      "Immunity to Fire",
+      "Vulnerability to Cold"
+    ],
+    "saves": {
+      "fort": 5,
+      "ref": 16,
+      "will": 5
+    },
+    "abilities": {
+      "str": 22,
+      "dex": 23,
+      "con": 10,
+      "int": 6,
+      "wis": 11,
+      "cha": 11
+    },
+    "skills": {},
+    "feats": [
+      "Combat Reflexes",
+      "Dodge",
+      "Improved Initiative",
+      "Mobility",
+      "Weapon Finesse"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": null,
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [
+      "Cold"
+    ],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 15,
+    "allowed_biomes": [
+      "Warm_Desert",
+      "Warm_Plain"
+    ],
+    "primary_biome": "Warm_Desert",
+    "ecology_notes": "Huge fire elementals are massive conflagrations with a personality, drawn to destroy and consume. Their passage leaves scorched wastelands in their wake."
+  },
+  {
+    "name": "Greater Fire Elemental",
+    "cr": 9,
+    "size": "Huge",
+    "type": "Elemental",
+    "subtype": "Fire",
+    "hit_dice": "21d8",
+    "hp_avg": 94,
+    "initiative": 14,
+    "speed": {
+      "land": 60
+    },
+    "armor_class": {
+      "total": 25,
+      "touch": 17,
+      "flat_footed": 16,
+      "components": "+7 Dex, +10 natural, -2 size"
+    },
+    "base_attack": 15,
+    "grapple": 27,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+22/+17/+12",
+        "damage": "2d8+8 plus 2d8 fire",
+        "damage_type": "Bludgeoning + Fire"
+      }
+    ],
+    "special_attacks": [
+      "Burn (DC 24 Ref or catch fire, 2d8 fire damage/round)"
+    ],
+    "special_qualities": [
+      "Fire Mastery (as air mastery but near open flame)",
+      "Elemental Traits",
+      "Darkvision 60 ft.",
+      "Immunity to Fire",
+      "Vulnerability to Cold"
+    ],
+    "saves": {
+      "fort": 7,
+      "ref": 19,
+      "will": 7
+    },
+    "abilities": {
+      "str": 26,
+      "dex": 25,
+      "con": 10,
+      "int": 6,
+      "wis": 11,
+      "cha": 11
+    },
+    "skills": {},
+    "feats": [
+      "Combat Reflexes",
+      "Dodge",
+      "Improved Initiative",
+      "Iron Will",
+      "Mobility",
+      "Weapon Finesse"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": null,
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [
+      "Cold"
+    ],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 10,
+    "allowed_biomes": [
+      "Warm_Desert",
+      "Warm_Plain"
+    ],
+    "primary_biome": "Warm_Desert",
+    "ecology_notes": "Greater fire elementals are ancient pillars of living fire whose temperature exceeds the surface of suns. They leave glass where they walk."
+  },
+  {
+    "name": "Elder Fire Elemental",
+    "cr": 11,
+    "size": "Huge",
+    "type": "Elemental",
+    "subtype": "Fire",
+    "hit_dice": "24d8",
+    "hp_avg": 108,
+    "initiative": 15,
+    "speed": {
+      "land": 60
+    },
+    "armor_class": {
+      "total": 29,
+      "touch": 18,
+      "flat_footed": 21,
+      "components": "+8 Dex, +13 natural, -2 size"
+    },
+    "base_attack": 18,
+    "grapple": 31,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+26/+21/+16/+11",
+        "damage": "2d8+10 plus 2d8 fire",
+        "damage_type": "Bludgeoning + Fire"
+      }
+    ],
+    "special_attacks": [
+      "Burn (DC 27 Ref or catch fire, 2d8 fire damage/round)"
+    ],
+    "special_qualities": [
+      "Fire Mastery (as air mastery but near open flame)",
+      "Elemental Traits",
+      "Darkvision 60 ft.",
+      "Immunity to Fire",
+      "Vulnerability to Cold"
+    ],
+    "saves": {
+      "fort": 8,
+      "ref": 22,
+      "will": 8
+    },
+    "abilities": {
+      "str": 30,
+      "dex": 27,
+      "con": 10,
+      "int": 8,
+      "wis": 11,
+      "cha": 11
+    },
+    "skills": {},
+    "feats": [
+      "Alertness",
+      "Combat Reflexes",
+      "Dodge",
+      "Improved Initiative",
+      "Iron Will",
+      "Mobility",
+      "Weapon Finesse"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": null,
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [
+      "Cold"
+    ],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 5,
+    "allowed_biomes": [
+      "Warm_Desert",
+      "Warm_Plain"
+    ],
+    "primary_biome": "Warm_Desert",
+    "ecology_notes": "Elder fire elementals are the embodiment of primal flame, entities older than civilization whose very presence can set the sky ablaze."
+  },
+  {
+    "name": "Small Water Elemental",
+    "cr": 1,
+    "size": "Small",
+    "type": "Elemental",
+    "subtype": "Water",
+    "hit_dice": "2d8+2",
+    "hp_avg": 11,
+    "initiative": 0,
+    "speed": {
+      "land": 20,
+      "swim": 90
+    },
+    "armor_class": {
+      "total": 17,
+      "touch": 11,
+      "flat_footed": 17,
+      "components": "+5 natural, +1 size"
+    },
+    "base_attack": 1,
+    "grapple": -1,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+4",
+        "damage": "1d6+4",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Drench (extinguish non-magical fires on contact)",
+      "Water Mastery (+1 attack and damage when both in water)"
+    ],
+    "special_qualities": [
+      "Elemental Traits",
+      "Darkvision 60 ft.",
+      "Immunity to Cold"
+    ],
+    "saves": {
+      "fort": 4,
+      "ref": 0,
+      "will": 0
+    },
+    "abilities": {
+      "str": 16,
+      "dex": 10,
+      "con": 13,
+      "int": 4,
+      "wis": 11,
+      "cha": 11
+    },
+    "skills": {},
+    "feats": [
+      "Power Attack"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": null,
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 40,
+    "allowed_biomes": [
+      "Temperate_Aquatic",
+      "Warm_Aquatic",
+      "Cold_Aquatic"
+    ],
+    "primary_biome": "Temperate_Aquatic",
+    "ecology_notes": "Small water elementals are mobile waves of living water, prowling coastlines and rivers. They douse flames and overwhelm swimmers with their powerful slams."
+  },
+  {
+    "name": "Medium Water Elemental",
+    "cr": 3,
+    "size": "Medium",
+    "type": "Elemental",
+    "subtype": "Water",
+    "hit_dice": "4d8+12",
+    "hp_avg": 30,
+    "initiative": 1,
+    "speed": {
+      "land": 20,
+      "swim": 90
+    },
+    "armor_class": {
+      "total": 19,
+      "touch": 11,
+      "flat_footed": 18,
+      "components": "+1 Dex, +8 natural"
+    },
+    "base_attack": 3,
+    "grapple": 8,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+8",
+        "damage": "1d8+7",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Drench",
+      "Water Mastery"
+    ],
+    "special_qualities": [
+      "Elemental Traits",
+      "Darkvision 60 ft.",
+      "Immunity to Cold"
+    ],
+    "saves": {
+      "fort": 7,
+      "ref": 2,
+      "will": 1
+    },
+    "abilities": {
+      "str": 20,
+      "dex": 12,
+      "con": 17,
+      "int": 4,
+      "wis": 11,
+      "cha": 11
+    },
+    "skills": {},
+    "feats": [
+      "Cleave",
+      "Power Attack"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": null,
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 30,
+    "allowed_biomes": [
+      "Temperate_Aquatic",
+      "Warm_Aquatic",
+      "Cold_Aquatic"
+    ],
+    "primary_biome": "Temperate_Aquatic",
+    "ecology_notes": "Medium water elementals are aquatic terrors that drag prey beneath the surface. On land they are slower, but their slam attacks remain devastating."
+  },
+  {
+    "name": "Large Water Elemental",
+    "cr": 5,
+    "size": "Large",
+    "type": "Elemental",
+    "subtype": "Water",
+    "hit_dice": "8d8+32",
+    "hp_avg": 68,
+    "initiative": 2,
+    "speed": {
+      "land": 20,
+      "swim": 90
+    },
+    "armor_class": {
+      "total": 21,
+      "touch": 11,
+      "flat_footed": 19,
+      "components": "+2 Dex, +10 natural, -1 size"
+    },
+    "base_attack": 6,
+    "grapple": 15,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+11/+6",
+        "damage": "2d8+8",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Drench",
+      "Water Mastery"
+    ],
+    "special_qualities": [
+      "Elemental Traits",
+      "Darkvision 60 ft.",
+      "Immunity to Cold"
+    ],
+    "saves": {
+      "fort": 10,
+      "ref": 4,
+      "will": 2
+    },
+    "abilities": {
+      "str": 26,
+      "dex": 14,
+      "con": 19,
+      "int": 6,
+      "wis": 11,
+      "cha": 11
+    },
+    "skills": {},
+    "feats": [
+      "Cleave",
+      "Great Cleave",
+      "Power Attack"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": null,
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 20,
+    "allowed_biomes": [
+      "Temperate_Aquatic",
+      "Warm_Aquatic",
+      "Cold_Aquatic"
+    ],
+    "primary_biome": "Temperate_Aquatic",
+    "ecology_notes": "Large water elementals can overwhelm entire ships, capsizing vessels and drowning crews. They are near-unstoppable in aquatic environments."
+  },
+  {
+    "name": "Huge Water Elemental",
+    "cr": 7,
+    "size": "Huge",
+    "type": "Elemental",
+    "subtype": "Water",
+    "hit_dice": "16d8+80",
+    "hp_avg": 152,
+    "initiative": 2,
+    "speed": {
+      "land": 20,
+      "swim": 90
+    },
+    "armor_class": {
+      "total": 22,
+      "touch": 10,
+      "flat_footed": 20,
+      "components": "+2 Dex, +12 natural, -2 size"
+    },
+    "base_attack": 12,
+    "grapple": 25,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+20/+15",
+        "damage": "2d10+11",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Drench",
+      "Water Mastery"
+    ],
+    "special_qualities": [
+      "Elemental Traits",
+      "Darkvision 60 ft.",
+      "Immunity to Cold"
+    ],
+    "saves": {
+      "fort": 15,
+      "ref": 7,
+      "will": 5
+    },
+    "abilities": {
+      "str": 32,
+      "dex": 14,
+      "con": 21,
+      "int": 8,
+      "wis": 11,
+      "cha": 11
+    },
+    "skills": {},
+    "feats": [
+      "Cleave",
+      "Great Cleave",
+      "Improved Sunder",
+      "Power Attack"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": null,
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 15,
+    "allowed_biomes": [
+      "Temperate_Aquatic",
+      "Warm_Aquatic",
+      "Cold_Aquatic"
+    ],
+    "primary_biome": "Temperate_Aquatic",
+    "ecology_notes": "Huge water elementals are tsunamis given consciousness, capable of flooding coastal towns and shattering harbor fortifications."
+  },
+  {
+    "name": "Greater Water Elemental",
+    "cr": 9,
+    "size": "Huge",
+    "type": "Elemental",
+    "subtype": "Water",
+    "hit_dice": "21d8+105",
+    "hp_avg": 199,
+    "initiative": 2,
+    "speed": {
+      "land": 20,
+      "swim": 90
+    },
+    "armor_class": {
+      "total": 26,
+      "touch": 10,
+      "flat_footed": 24,
+      "components": "+2 Dex, +16 natural, -2 size"
+    },
+    "base_attack": 15,
+    "grapple": 31,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+26/+21/+16",
+        "damage": "2d10+13",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Drench",
+      "Water Mastery"
+    ],
+    "special_qualities": [
+      "Elemental Traits",
+      "Darkvision 60 ft.",
+      "Immunity to Cold"
+    ],
+    "saves": {
+      "fort": 18,
+      "ref": 9,
+      "will": 7
+    },
+    "abilities": {
+      "str": 36,
+      "dex": 14,
+      "con": 21,
+      "int": 8,
+      "wis": 11,
+      "cha": 11
+    },
+    "skills": {},
+    "feats": [
+      "Cleave",
+      "Great Cleave",
+      "Improved Bull Rush",
+      "Improved Sunder",
+      "Power Attack"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": null,
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 10,
+    "allowed_biomes": [
+      "Temperate_Aquatic",
+      "Warm_Aquatic",
+      "Cold_Aquatic"
+    ],
+    "primary_biome": "Temperate_Aquatic",
+    "ecology_notes": "Greater water elementals are the spirits of great oceans and deep rivers, their power sufficient to shatter stone seawalls and flood entire valleys."
+  },
+  {
+    "name": "Elder Water Elemental",
+    "cr": 11,
+    "size": "Huge",
+    "type": "Elemental",
+    "subtype": "Water",
+    "hit_dice": "24d8+120",
+    "hp_avg": 228,
+    "initiative": 2,
+    "speed": {
+      "land": 20,
+      "swim": 90
+    },
+    "armor_class": {
+      "total": 30,
+      "touch": 10,
+      "flat_footed": 28,
+      "components": "+2 Dex, +20 natural, -2 size"
+    },
+    "base_attack": 18,
+    "grapple": 35,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+30/+25/+20/+15",
+        "damage": "2d10+15",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Drench",
+      "Water Mastery"
+    ],
+    "special_qualities": [
+      "Elemental Traits",
+      "Darkvision 60 ft.",
+      "Immunity to Cold"
+    ],
+    "saves": {
+      "fort": 20,
+      "ref": 10,
+      "will": 8
+    },
+    "abilities": {
+      "str": 40,
+      "dex": 14,
+      "con": 21,
+      "int": 10,
+      "wis": 11,
+      "cha": 11
+    },
+    "skills": {},
+    "feats": [
+      "Cleave",
+      "Great Cleave",
+      "Improved Bull Rush",
+      "Improved Sunder",
+      "Iron Will",
+      "Power Attack"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": null,
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 5,
+    "allowed_biomes": [
+      "Temperate_Aquatic",
+      "Warm_Aquatic",
+      "Cold_Aquatic"
+    ],
+    "primary_biome": "Temperate_Aquatic",
+    "ecology_notes": "Elder water elementals are primordial ocean entities that have existed since the seas first formed. Their wrath can raise tidal waves that drown whole coastlines."
+  },
+  {
+    "name": "Mephit, Air",
+    "cr": 3,
+    "size": "Small",
+    "type": "Outsider",
+    "subtype": "Air",
+    "hit_dice": "3d8",
+    "hp_avg": 13,
+    "initiative": 7,
+    "speed": {
+      "land": 30,
+      "fly": 40
+    },
+    "armor_class": {
+      "total": 17,
+      "touch": 14,
+      "flat_footed": 14,
+      "components": "+3 Dex, +3 natural, +1 size"
+    },
+    "base_attack": 2,
+    "grapple": -2,
+    "attacks": [
+      {
+        "name": "Claw",
+        "attack_bonus": "+5",
+        "damage": "1d3",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+5",
+        "damage": "1d3",
+        "damage_type": "Slashing"
+      }
+    ],
+    "special_attacks": [
+      "Breath Weapon (cone 15 ft., DC 12 Fort, 1d8 choking gust; recharge 1d4 rounds)",
+      "Spell-Like Abilities (blur 1/day, wind wall 1/day; CL 6th)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "DR 5/Magic",
+      "Elemental Traits",
+      "Fast Healing 2 (in windy conditions or on Elemental Plane of Air)",
+      "Summon Mephit (15% chance, 1 mephit of same type)"
+    ],
+    "saves": {
+      "fort": 3,
+      "ref": 5,
+      "will": 3
+    },
+    "abilities": {
+      "str": 10,
+      "dex": 17,
+      "con": 10,
+      "int": 6,
+      "wis": 11,
+      "cha": 15
+    },
+    "skills": {
+      "Bluff": 8,
+      "Diplomacy": 2,
+      "Hide": 12,
+      "Listen": 6,
+      "Move Silently": 8,
+      "Spot": 6
+    },
+    "feats": [
+      "Improved Initiative",
+      "Toughness"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "None",
+    "dr": "5/Magic",
+    "sr": null,
+    "regen": null,
+    "fast_heal": 2,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 10,
+    "allowed_biomes": [
+      "Any"
+    ],
+    "primary_biome": "Any",
+    "ecology_notes": "Air mephits are mischievous minor elementals that delight in pranks and chaos. They serve more powerful air creatures as scouts and messengers."
+  },
+  {
+    "name": "Mephit, Dust",
+    "cr": 3,
+    "size": "Small",
+    "type": "Outsider",
+    "subtype": "Air",
+    "hit_dice": "3d8",
+    "hp_avg": 13,
+    "initiative": 7,
+    "speed": {
+      "land": 30,
+      "fly": 40
+    },
+    "armor_class": {
+      "total": 17,
+      "touch": 14,
+      "flat_footed": 14,
+      "components": "+3 Dex, +3 natural, +1 size"
+    },
+    "base_attack": 2,
+    "grapple": -2,
+    "attacks": [
+      {
+        "name": "Claw",
+        "attack_bonus": "+5",
+        "damage": "1d3",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+5",
+        "damage": "1d3",
+        "damage_type": "Slashing"
+      }
+    ],
+    "special_attacks": [
+      "Breath Weapon (cone 10 ft., DC 12 Ref or blinded 3 rounds; recharge 1d4 rounds)",
+      "Spell-Like Abilities (blur 1/day, wind wall 1/day; CL 6th)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "DR 5/Magic",
+      "Elemental Traits",
+      "Fast Healing 2 (in arid environments)",
+      "Summon Mephit (15% chance, 1 mephit of same type)"
+    ],
+    "saves": {
+      "fort": 3,
+      "ref": 5,
+      "will": 3
+    },
+    "abilities": {
+      "str": 10,
+      "dex": 17,
+      "con": 10,
+      "int": 6,
+      "wis": 11,
+      "cha": 15
+    },
+    "skills": {
+      "Bluff": 8,
+      "Diplomacy": 2,
+      "Hide": 12,
+      "Listen": 6,
+      "Move Silently": 8,
+      "Spot": 6
+    },
+    "feats": [
+      "Improved Initiative",
+      "Toughness"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "None",
+    "dr": "5/Magic",
+    "sr": null,
+    "regen": null,
+    "fast_heal": 2,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 10,
+    "allowed_biomes": [
+      "Warm_Desert",
+      "Temperate_Desert"
+    ],
+    "primary_biome": "Warm_Desert",
+    "ecology_notes": "Dust mephits are creatures of arid, windswept places, their blinding breath weapon making them effective ambushers in desert ruins and dry canyons."
+  },
+  {
+    "name": "Mephit, Earth",
+    "cr": 3,
+    "size": "Small",
+    "type": "Outsider",
+    "subtype": "Earth",
+    "hit_dice": "3d8+3",
+    "hp_avg": 16,
+    "initiative": 0,
+    "speed": {
+      "land": 30,
+      "fly": 40
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 11,
+      "flat_footed": 16,
+      "components": "+4 natural, +1 size"
+    },
+    "base_attack": 2,
+    "grapple": -2,
+    "attacks": [
+      {
+        "name": "Claw",
+        "attack_bonus": "+4",
+        "damage": "1d3+2",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+4",
+        "damage": "1d3+2",
+        "damage_type": "Slashing"
+      }
+    ],
+    "special_attacks": [
+      "Breath Weapon (cone 15 ft., DC 12 Ref, 1d8 jagged rock shards; recharge 1d4 rounds)",
+      "Spell-Like Abilities (soften earth and stone 1/day, stinking cloud 1/day; CL 6th)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "DR 5/Magic",
+      "Elemental Traits",
+      "Fast Healing 2 (underground or on Elemental Plane of Earth)",
+      "Summon Mephit (15% chance, 1 mephit of same type)"
+    ],
+    "saves": {
+      "fort": 4,
+      "ref": 3,
+      "will": 3
+    },
+    "abilities": {
+      "str": 17,
+      "dex": 10,
+      "con": 13,
+      "int": 6,
+      "wis": 11,
+      "cha": 15
+    },
+    "skills": {
+      "Bluff": 7,
+      "Diplomacy": 2,
+      "Hide": 9,
+      "Listen": 6,
+      "Move Silently": 6,
+      "Spot": 6
+    },
+    "feats": [
+      "Power Attack",
+      "Toughness"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "None",
+    "dr": "5/Magic",
+    "sr": null,
+    "regen": null,
+    "fast_heal": 2,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 10,
+    "allowed_biomes": [
+      "Mountain",
+      "Underground"
+    ],
+    "primary_biome": "Mountain",
+    "ecology_notes": "Earth mephits are squat, heavy-limbed creatures that haunt mines and caverns. Their stone-sharp breath makes them dangerous despite their small stature."
+  },
+  {
+    "name": "Mephit, Fire",
+    "cr": 3,
+    "size": "Small",
+    "type": "Outsider",
+    "subtype": "Fire",
+    "hit_dice": "3d8",
+    "hp_avg": 13,
+    "initiative": 7,
+    "speed": {
+      "land": 30,
+      "fly": 40
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 14,
+      "flat_footed": 13,
+      "components": "+3 Dex, +2 natural, +1 size"
+    },
+    "base_attack": 2,
+    "grapple": -2,
+    "attacks": [
+      {
+        "name": "Claw",
+        "attack_bonus": "+5",
+        "damage": "1d3 plus 1d4 fire",
+        "damage_type": "Slashing + Fire"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+5",
+        "damage": "1d3 plus 1d4 fire",
+        "damage_type": "Slashing + Fire"
+      }
+    ],
+    "special_attacks": [
+      "Breath Weapon (cone 10 ft., DC 12 Ref, 1d8 fire damage; recharge 1d4 rounds)",
+      "Spell-Like Abilities (scorching ray 1/day, heat metal 1/day; CL 6th)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "DR 5/Magic",
+      "Elemental Traits",
+      "Fast Healing 2 (near open flames or on Elemental Plane of Fire)",
+      "Immunity to Fire",
+      "Summon Mephit (15% chance, 1 mephit of same type)"
+    ],
+    "saves": {
+      "fort": 3,
+      "ref": 5,
+      "will": 3
+    },
+    "abilities": {
+      "str": 10,
+      "dex": 17,
+      "con": 10,
+      "int": 6,
+      "wis": 11,
+      "cha": 15
+    },
+    "skills": {
+      "Bluff": 8,
+      "Diplomacy": 2,
+      "Hide": 12,
+      "Listen": 6,
+      "Move Silently": 8,
+      "Spot": 6
+    },
+    "feats": [
+      "Improved Initiative",
+      "Toughness"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "None",
+    "dr": "5/Magic",
+    "sr": null,
+    "regen": null,
+    "fast_heal": 2,
+    "elemental_weaknesses": [
+      "Cold"
+    ],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 10,
+    "allowed_biomes": [
+      "Warm_Desert",
+      "Warm_Plain"
+    ],
+    "primary_biome": "Warm_Desert",
+    "ecology_notes": "Fire mephits are cruel and boastful creatures that delight in setting things ablaze. Their fiery claws and breath weapon make them dangerous out of proportion to their size."
+  },
+  {
+    "name": "Mephit, Ice",
+    "cr": 3,
+    "size": "Small",
+    "type": "Outsider",
+    "subtype": "Cold",
+    "hit_dice": "3d8",
+    "hp_avg": 13,
+    "initiative": 7,
+    "speed": {
+      "land": 30,
+      "fly": 40
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 14,
+      "flat_footed": 13,
+      "components": "+3 Dex, +2 natural, +1 size"
+    },
+    "base_attack": 2,
+    "grapple": -2,
+    "attacks": [
+      {
+        "name": "Claw",
+        "attack_bonus": "+5",
+        "damage": "1d3 plus 1d4 cold",
+        "damage_type": "Slashing + Cold"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+5",
+        "damage": "1d3 plus 1d4 cold",
+        "damage_type": "Slashing + Cold"
+      }
+    ],
+    "special_attacks": [
+      "Breath Weapon (cone 10 ft., DC 12 Ref, 1d4 cold plus ice shard piercing; recharge 1d4 rounds)",
+      "Spell-Like Abilities (chill metal 1/day, ice storm 1/day; CL 6th)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "DR 5/Magic",
+      "Elemental Traits",
+      "Fast Healing 2 (in cold environments or on Elemental Plane of Ice)",
+      "Immunity to Cold",
+      "Summon Mephit (15% chance, 1 mephit of same type)"
+    ],
+    "saves": {
+      "fort": 3,
+      "ref": 5,
+      "will": 3
+    },
+    "abilities": {
+      "str": 10,
+      "dex": 17,
+      "con": 10,
+      "int": 6,
+      "wis": 11,
+      "cha": 15
+    },
+    "skills": {
+      "Bluff": 8,
+      "Diplomacy": 2,
+      "Hide": 12,
+      "Listen": 6,
+      "Move Silently": 8,
+      "Spot": 6
+    },
+    "feats": [
+      "Improved Initiative",
+      "Toughness"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "None",
+    "dr": "5/Magic",
+    "sr": null,
+    "regen": null,
+    "fast_heal": 2,
+    "elemental_weaknesses": [
+      "Fire"
+    ],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 10,
+    "allowed_biomes": [
+      "Arctic",
+      "Cold_Plain"
+    ],
+    "primary_biome": "Arctic",
+    "ecology_notes": "Ice mephits are spiteful creatures of frost and frozen air, native to the border between the Elemental Planes of Air and Water. They inhabit glacial caves and frozen tundras."
+  },
+  {
+    "name": "Mephit, Magma",
+    "cr": 4,
+    "size": "Small",
+    "type": "Outsider",
+    "subtype": "Fire, Earth",
+    "hit_dice": "4d8+4",
+    "hp_avg": 22,
+    "initiative": 0,
+    "speed": {
+      "land": 30,
+      "fly": 40
+    },
+    "armor_class": {
+      "total": 17,
+      "touch": 11,
+      "flat_footed": 17,
+      "components": "+5 natural, +1 size"
+    },
+    "base_attack": 3,
+    "grapple": -1,
+    "attacks": [
+      {
+        "name": "Claw",
+        "attack_bonus": "+4",
+        "damage": "1d3+1 plus 1d4 fire",
+        "damage_type": "Slashing + Fire"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+4",
+        "damage": "1d3+1 plus 1d4 fire",
+        "damage_type": "Slashing + Fire"
+      }
+    ],
+    "special_attacks": [
+      "Breath Weapon (cone 10 ft., DC 13 Ref, 1d4 fire from lava splash; recharge 1d4 rounds)",
+      "Spell-Like Abilities (acid splash 3/day, produce flame 1/day; CL 6th)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "DR 5/Magic",
+      "Elemental Traits",
+      "Fast Healing 2 (near lava or magma)",
+      "Immunity to Fire",
+      "Summon Mephit (15% chance, 1 mephit of same type)"
+    ],
+    "saves": {
+      "fort": 5,
+      "ref": 3,
+      "will": 4
+    },
+    "abilities": {
+      "str": 13,
+      "dex": 10,
+      "con": 13,
+      "int": 6,
+      "wis": 11,
+      "cha": 15
+    },
+    "skills": {
+      "Bluff": 7,
+      "Diplomacy": 2,
+      "Hide": 8,
+      "Listen": 5,
+      "Move Silently": 6,
+      "Spot": 5
+    },
+    "feats": [
+      "Power Attack",
+      "Toughness"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "None",
+    "dr": "5/Magic",
+    "sr": null,
+    "regen": null,
+    "fast_heal": 2,
+    "elemental_weaknesses": [
+      "Cold"
+    ],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 5,
+    "allowed_biomes": [
+      "Mountain",
+      "Underground"
+    ],
+    "primary_biome": "Mountain",
+    "ecology_notes": "Magma mephits dwell near volcanic vents and lava flows, creatures born from the border between Earth and Fire planes. Their superheated claws can melt stone over time."
+  },
+  {
+    "name": "Mephit, Ooze",
+    "cr": 3,
+    "size": "Small",
+    "type": "Outsider",
+    "subtype": "Water, Earth",
+    "hit_dice": "3d8+3",
+    "hp_avg": 16,
+    "initiative": 0,
+    "speed": {
+      "land": 30,
+      "fly": 40
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 11,
+      "flat_footed": 16,
+      "components": "+4 natural, +1 size"
+    },
+    "base_attack": 2,
+    "grapple": -2,
+    "attacks": [
+      {
+        "name": "Claw",
+        "attack_bonus": "+4",
+        "damage": "1d3+2",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+4",
+        "damage": "1d3+2",
+        "damage_type": "Slashing"
+      }
+    ],
+    "special_attacks": [
+      "Breath Weapon (cone 10 ft., DC 12 Ref, 1d4 acid; recharge 1d4 rounds)",
+      "Spell-Like Abilities (acid splash 3/day, stinking cloud 1/day; CL 6th)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "DR 5/Magic",
+      "Elemental Traits",
+      "Fast Healing 2 (in swampy or muddy environments)",
+      "Summon Mephit (15% chance, 1 mephit of same type)"
+    ],
+    "saves": {
+      "fort": 4,
+      "ref": 3,
+      "will": 3
+    },
+    "abilities": {
+      "str": 14,
+      "dex": 10,
+      "con": 13,
+      "int": 6,
+      "wis": 11,
+      "cha": 15
+    },
+    "skills": {
+      "Bluff": 7,
+      "Diplomacy": 2,
+      "Hide": 8,
+      "Listen": 5,
+      "Move Silently": 6,
+      "Spot": 5
+    },
+    "feats": [
+      "Power Attack",
+      "Toughness"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "None",
+    "dr": "5/Magic",
+    "sr": null,
+    "regen": null,
+    "fast_heal": 2,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 10,
+    "allowed_biomes": [
+      "Temperate_Swamp",
+      "Warm_Swamp"
+    ],
+    "primary_biome": "Temperate_Swamp",
+    "ecology_notes": "Ooze mephits are creatures of muddy, stagnant water from the border of the Earth and Water planes. They inhabit swamps and bogs, smelling of rot and corrosion."
+  },
+  {
+    "name": "Mephit, Salt",
+    "cr": 3,
+    "size": "Small",
+    "type": "Outsider",
+    "subtype": "Earth",
+    "hit_dice": "3d8",
+    "hp_avg": 13,
+    "initiative": 7,
+    "speed": {
+      "land": 30,
+      "fly": 40
+    },
+    "armor_class": {
+      "total": 17,
+      "touch": 14,
+      "flat_footed": 14,
+      "components": "+3 Dex, +3 natural, +1 size"
+    },
+    "base_attack": 2,
+    "grapple": -2,
+    "attacks": [
+      {
+        "name": "Claw",
+        "attack_bonus": "+5",
+        "damage": "1d3",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+5",
+        "damage": "1d3",
+        "damage_type": "Slashing"
+      }
+    ],
+    "special_attacks": [
+      "Breath Weapon (cone 10 ft., DC 12 Fort, 1d8 dehydration damage plus Fatigue; recharge 1d4 rounds)",
+      "Spell-Like Abilities (glitterdust 1/day, parching touch 1/day; CL 6th)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "DR 5/Magic",
+      "Elemental Traits",
+      "Fast Healing 2 (in arid or salty environments)",
+      "Summon Mephit (15% chance, 1 mephit of same type)"
+    ],
+    "saves": {
+      "fort": 3,
+      "ref": 5,
+      "will": 3
+    },
+    "abilities": {
+      "str": 10,
+      "dex": 17,
+      "con": 10,
+      "int": 6,
+      "wis": 11,
+      "cha": 15
+    },
+    "skills": {
+      "Bluff": 8,
+      "Diplomacy": 2,
+      "Hide": 12,
+      "Listen": 6,
+      "Move Silently": 8,
+      "Spot": 6
+    },
+    "feats": [
+      "Improved Initiative",
+      "Toughness"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "None",
+    "dr": "5/Magic",
+    "sr": null,
+    "regen": null,
+    "fast_heal": 2,
+    "elemental_weaknesses": [
+      "Water"
+    ],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 10,
+    "allowed_biomes": [
+      "Temperate_Desert",
+      "Warm_Desert"
+    ],
+    "primary_biome": "Warm_Desert",
+    "ecology_notes": "Salt mephits are parched, crystalline creatures from arid borderlands. Their dehydrating breath weapon is particularly lethal in desert environments where water is already scarce."
+  },
+  {
+    "name": "Mephit, Steam",
+    "cr": 3,
+    "size": "Small",
+    "type": "Outsider",
+    "subtype": "Fire, Water",
+    "hit_dice": "3d8",
+    "hp_avg": 13,
+    "initiative": 7,
+    "speed": {
+      "land": 30,
+      "fly": 40
+    },
+    "armor_class": {
+      "total": 17,
+      "touch": 14,
+      "flat_footed": 14,
+      "components": "+3 Dex, +3 natural, +1 size"
+    },
+    "base_attack": 2,
+    "grapple": -2,
+    "attacks": [
+      {
+        "name": "Claw",
+        "attack_bonus": "+5",
+        "damage": "1d3",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+5",
+        "damage": "1d3",
+        "damage_type": "Slashing"
+      }
+    ],
+    "special_attacks": [
+      "Breath Weapon (cone 10 ft., DC 12 Fort, 1d4 fire plus 1d4 scalding steam; recharge 1d4 rounds)",
+      "Spell-Like Abilities (blur 1/day, pyrotechnics 1/day; CL 6th)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "DR 5/Magic",
+      "Elemental Traits",
+      "Fast Healing 2 (near steam vents or boiling water)",
+      "Immunity to Fire",
+      "Summon Mephit (15% chance, 1 mephit of same type)"
+    ],
+    "saves": {
+      "fort": 3,
+      "ref": 5,
+      "will": 3
+    },
+    "abilities": {
+      "str": 10,
+      "dex": 17,
+      "con": 10,
+      "int": 6,
+      "wis": 11,
+      "cha": 15
+    },
+    "skills": {
+      "Bluff": 8,
+      "Diplomacy": 2,
+      "Hide": 12,
+      "Listen": 6,
+      "Move Silently": 8,
+      "Spot": 6
+    },
+    "feats": [
+      "Improved Initiative",
+      "Toughness"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "None",
+    "dr": "5/Magic",
+    "sr": null,
+    "regen": null,
+    "fast_heal": 2,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 10,
+    "allowed_biomes": [
+      "Warm_Aquatic",
+      "Temperate_Aquatic"
+    ],
+    "primary_biome": "Warm_Aquatic",
+    "ecology_notes": "Steam mephits haunt volcanic hot springs and geothermal vents, born where fire meets water. Their scalding breath makes them deadly in enclosed spaces."
+  },
+  {
+    "name": "Mephit, Water",
+    "cr": 3,
+    "size": "Small",
+    "type": "Outsider",
+    "subtype": "Water",
+    "hit_dice": "3d8",
+    "hp_avg": 13,
+    "initiative": 7,
+    "speed": {
+      "land": 30,
+      "fly": 40
+    },
+    "armor_class": {
+      "total": 17,
+      "touch": 14,
+      "flat_footed": 14,
+      "components": "+3 Dex, +3 natural, +1 size"
+    },
+    "base_attack": 2,
+    "grapple": -2,
+    "attacks": [
+      {
+        "name": "Claw",
+        "attack_bonus": "+5",
+        "damage": "1d3",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+5",
+        "damage": "1d3",
+        "damage_type": "Slashing"
+      }
+    ],
+    "special_attacks": [
+      "Breath Weapon (cone 10 ft., DC 12 Fort, 1d8 acid from briny spit; recharge 1d4 rounds)",
+      "Spell-Like Abilities (acid arrow 2/day, stinking cloud 1/day; CL 6th)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "DR 5/Magic",
+      "Elemental Traits",
+      "Fast Healing 2 (in or near water)",
+      "Immunity to Cold",
+      "Summon Mephit (15% chance, 1 mephit of same type)"
+    ],
+    "saves": {
+      "fort": 3,
+      "ref": 5,
+      "will": 3
+    },
+    "abilities": {
+      "str": 10,
+      "dex": 17,
+      "con": 10,
+      "int": 6,
+      "wis": 11,
+      "cha": 15
+    },
+    "skills": {
+      "Bluff": 8,
+      "Diplomacy": 2,
+      "Hide": 12,
+      "Listen": 6,
+      "Move Silently": 8,
+      "Spot": 6
+    },
+    "feats": [
+      "Improved Initiative",
+      "Toughness"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "None",
+    "dr": "5/Magic",
+    "sr": null,
+    "regen": null,
+    "fast_heal": 2,
+    "elemental_weaknesses": [
+      "Fire"
+    ],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 10,
+    "allowed_biomes": [
+      "Temperate_Aquatic",
+      "Warm_Aquatic"
+    ],
+    "primary_biome": "Temperate_Aquatic",
+    "ecology_notes": "Water mephits dwell near coasts, rivers, and bogs. They are obnoxious and vain, collecting shiny objects and lording over smaller aquatic creatures."
+  }
+]
