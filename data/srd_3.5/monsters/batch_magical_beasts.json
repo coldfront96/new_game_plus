@@ -1,0 +1,2308 @@
+[
+  {
+    "name": "Basilisk",
+    "cr": 5,
+    "size": "Medium",
+    "type": "Magical Beast",
+    "subtype": null,
+    "hit_dice": "6d10+12",
+    "hp_avg": 45,
+    "initiative": -1,
+    "speed": {
+      "land": 20
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 9,
+      "flat_footed": 16,
+      "components": "-1 Dex, +7 natural"
+    },
+    "base_attack": 4,
+    "grapple": 7,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+7",
+        "damage": "2d6+4",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Gaze (DC 13 Fort, permanent petrification; reflecting gaze against own reflection DC 13 Fort or self-petrification)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Low-light vision"
+    ],
+    "saves": {
+      "fort": 7,
+      "ref": 4,
+      "will": 3
+    },
+    "abilities": {
+      "str": 17,
+      "dex": 8,
+      "con": 15,
+      "int": 2,
+      "wis": 12,
+      "cha": 11
+    },
+    "skills": {
+      "Hide": -1,
+      "Listen": 6,
+      "Spot": 7
+    },
+    "feats": [
+      "Alertness",
+      "Blind-Fight",
+      "Iron Will"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "7-10 HD (Medium); 11-18 HD (Large)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [
+      {
+        "effect_type": "gaze",
+        "range_ft": 30,
+        "save_type": "Fort",
+        "save_dc": 13,
+        "effect_on_fail": "Petrified (permanent unless stone to flesh cast)",
+        "effect_on_pass": null,
+        "suppress_conditions": []
+      }
+    ],
+    "population_base": 40,
+    "allowed_biomes": [
+      "Temperate_Plain",
+      "Warm_Desert"
+    ],
+    "primary_biome": "Temperate_Plain",
+    "ecology_notes": "The basilisk is a slow-moving reptile whose gaze can turn flesh to stone. It haunts rocky plains and scrublands, leaving a trail of petrified prey. Adventurers approaching a basilisk carry mirrors to redirect its gaze, as the creature can petrify even itself when confronted with its own reflection."
+  },
+  {
+    "name": "Behir",
+    "cr": 8,
+    "size": "Huge",
+    "type": "Magical Beast",
+    "subtype": null,
+    "hit_dice": "9d10+45",
+    "hp_avg": 94,
+    "initiative": 1,
+    "speed": {
+      "land": 40,
+      "climb": 15
+    },
+    "armor_class": {
+      "total": 20,
+      "touch": 9,
+      "flat_footed": 19,
+      "components": "+1 Dex, -2 size, +11 natural"
+    },
+    "base_attack": 9,
+    "grapple": 23,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+13",
+        "damage": "2d6+10",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Rake",
+        "attack_bonus": "+8",
+        "damage": "1d4+5",
+        "damage_type": "Slashing"
+      }
+    ],
+    "special_attacks": [
+      "Breath weapon (DC 20 Ref, 7d6 lightning, 10 ft. wide 20 ft. long line)",
+      "Constrict 2d8+8",
+      "Improved Grab",
+      "Rake 1d4+5 (x6 legs)",
+      "Swallow Whole"
+    ],
+    "special_qualities": [
+      "Cannot be tripped",
+      "Darkvision 60 ft.",
+      "Low-light vision",
+      "Immunity to electricity"
+    ],
+    "saves": {
+      "fort": 11,
+      "ref": 7,
+      "will": 4
+    },
+    "abilities": {
+      "str": 26,
+      "dex": 13,
+      "con": 21,
+      "int": 7,
+      "wis": 14,
+      "cha": 12
+    },
+    "skills": {
+      "Climb": 16,
+      "Hide": 3,
+      "Listen": 13,
+      "Spot": 13
+    },
+    "feats": [
+      "Alertness",
+      "Cleave",
+      "Lightning Reflexes",
+      "Power Attack"
+    ],
+    "alignment": "Usually Neutral Evil",
+    "advancement": "10-18 HD (Huge); 19-27 HD (Gargantuan)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 15,
+    "allowed_biomes": [
+      "Mountain",
+      "Underground",
+      "Temperate_Plain"
+    ],
+    "primary_biome": "Mountain",
+    "ecology_notes": "The behir is a massive serpentine creature with twelve legs that allow it to move quickly and climb stone walls. It hunts large prey, discharging a bolt of lightning before constricting and swallowing victims whole. Behirs have an intense hatred of dragons and will attack them on sight."
+  },
+  {
+    "name": "Blink Dog",
+    "cr": 2,
+    "size": "Medium",
+    "type": "Magical Beast",
+    "subtype": null,
+    "hit_dice": "4d10",
+    "hp_avg": 22,
+    "initiative": 3,
+    "speed": {
+      "land": 40
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 13,
+      "flat_footed": 13,
+      "components": "+3 Dex, +3 natural"
+    },
+    "base_attack": 3,
+    "grapple": 4,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+4",
+        "damage": "1d6+1",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [],
+    "special_qualities": [
+      "Blink (as the spell, at-will)",
+      "Darkvision 60 ft.",
+      "Low-light vision",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 4,
+      "ref": 7,
+      "will": 4
+    },
+    "abilities": {
+      "str": 12,
+      "dex": 17,
+      "con": 11,
+      "int": 10,
+      "wis": 13,
+      "cha": 11
+    },
+    "skills": {
+      "Listen": 7,
+      "Sense Motive": 5,
+      "Spot": 7,
+      "Survival": 5
+    },
+    "feats": [
+      "Iron Will",
+      "Track"
+    ],
+    "alignment": "Always Lawful Good",
+    "advancement": "5-8 HD (Medium); 9-12 HD (Large)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 60,
+    "allowed_biomes": [
+      "Temperate_Plain",
+      "Temperate_Forest"
+    ],
+    "primary_biome": "Temperate_Plain",
+    "ecology_notes": "Blink dogs are intelligent, dog-like creatures with the innate ability to teleport short distances, seemingly winking in and out of existence. They live in packs with a strong lawful social structure and are generally friendly toward good-aligned beings. They use their blinking to confuse and outmaneuver enemies in combat."
+  },
+  {
+    "name": "Bulette",
+    "cr": 7,
+    "size": "Huge",
+    "type": "Magical Beast",
+    "subtype": null,
+    "hit_dice": "9d10+45",
+    "hp_avg": 94,
+    "initiative": 6,
+    "speed": {
+      "land": 40,
+      "burrow": 10
+    },
+    "armor_class": {
+      "total": 22,
+      "touch": 8,
+      "flat_footed": 20,
+      "components": "+2 Dex, -2 size, +12 natural"
+    },
+    "base_attack": 9,
+    "grapple": 26,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+17",
+        "damage": "2d8+8",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+12",
+        "damage": "2d6+4",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+12",
+        "damage": "2d6+4",
+        "damage_type": "Slashing"
+      }
+    ],
+    "special_attacks": [
+      "Leap (can jump and then charge in the same round)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Low-light vision",
+      "Scent",
+      "Tremorsense 60 ft."
+    ],
+    "saves": {
+      "fort": 11,
+      "ref": 8,
+      "will": 4
+    },
+    "abilities": {
+      "str": 27,
+      "dex": 15,
+      "con": 20,
+      "int": 2,
+      "wis": 13,
+      "cha": 6
+    },
+    "skills": {
+      "Jump": 24,
+      "Listen": 9,
+      "Spot": 9
+    },
+    "feats": [
+      "Alertness",
+      "Improved Initiative",
+      "Iron Will",
+      "Track"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "10-18 HD (Huge); 19-27 HD (Gargantuan)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 10,
+    "allowed_biomes": [
+      "Temperate_Plain",
+      "Temperate_Forest"
+    ],
+    "primary_biome": "Temperate_Plain",
+    "ecology_notes": "The bulette, or landshark, is a terrifying predator that burrows through earth and stone, launching itself upward to seize prey from below. Its incredibly thick, layered armor plating makes it nearly impervious to attack. Bulettes follow herds and migrations, devouring anything they detect through tremorsense."
+  },
+  {
+    "name": "Cockatrice",
+    "cr": 3,
+    "size": "Small",
+    "type": "Magical Beast",
+    "subtype": null,
+    "hit_dice": "5d10",
+    "hp_avg": 27,
+    "initiative": 3,
+    "speed": {
+      "land": 20,
+      "fly": 60
+    },
+    "armor_class": {
+      "total": 14,
+      "touch": 14,
+      "flat_footed": 11,
+      "components": "+3 Dex, +1 size"
+    },
+    "base_attack": 3,
+    "grapple": -2,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+6",
+        "damage": "1d4-2",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Petrification (DC 12 Fort, permanent)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Low-light vision"
+    ],
+    "saves": {
+      "fort": 4,
+      "ref": 7,
+      "will": 2
+    },
+    "abilities": {
+      "str": 6,
+      "dex": 17,
+      "con": 11,
+      "int": 2,
+      "wis": 13,
+      "cha": 9
+    },
+    "skills": {
+      "Listen": 5,
+      "Spot": 9
+    },
+    "feats": [
+      "Alertness",
+      "Dodge",
+      "Weapon Finesse"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "6-8 HD (Small); 9-15 HD (Medium)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 60,
+    "allowed_biomes": [
+      "Temperate_Plain",
+      "Temperate_Forest"
+    ],
+    "primary_biome": "Temperate_Plain",
+    "ecology_notes": "The cockatrice is a bizarre creature resembling a two-legged dragon with a rooster's head. Its bite can permanently petrify living flesh, and its lairs are often decorated with stone statues of its former victims. Cockatrices flock in small groups and are territorial, attacking larger creatures that wander too close."
+  },
+  {
+    "name": "Digester",
+    "cr": 6,
+    "size": "Medium",
+    "type": "Magical Beast",
+    "subtype": null,
+    "hit_dice": "8d10+16",
+    "hp_avg": 60,
+    "initiative": 6,
+    "speed": {
+      "land": 60
+    },
+    "armor_class": {
+      "total": 17,
+      "touch": 16,
+      "flat_footed": 11,
+      "components": "+6 Dex, +1 natural"
+    },
+    "base_attack": 8,
+    "grapple": 10,
+    "attacks": [
+      {
+        "name": "Claw",
+        "attack_bonus": "+10",
+        "damage": "1d8+2",
+        "damage_type": "Slashing"
+      }
+    ],
+    "special_attacks": [
+      "Acid spray (DC 16 Ref, 4d8 acid in 10 ft. cone; recharges in 1d4 rounds)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Immunity to acid",
+      "Low-light vision",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 8,
+      "ref": 12,
+      "will": 3
+    },
+    "abilities": {
+      "str": 15,
+      "dex": 23,
+      "con": 15,
+      "int": 2,
+      "wis": 12,
+      "cha": 10
+    },
+    "skills": {
+      "Hide": 8,
+      "Jump": 14,
+      "Listen": 7,
+      "Spot": 7
+    },
+    "feats": [
+      "Alertness",
+      "Improved Initiative",
+      "Lightning Reflexes"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "9-16 HD (Medium); 17-24 HD (Large)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 20,
+    "allowed_biomes": [
+      "Temperate_Forest",
+      "Warm_Plain"
+    ],
+    "primary_biome": "Temperate_Forest",
+    "ecology_notes": "The digester is an extraordinarily fast predator that sprays a cone of concentrated acid from a tube-like organ in its chest. It is completely immune to acid, even that of other digesters. Digesters hunt by running prey down at incredible speed, softening them with acid before finishing with claws."
+  },
+  {
+    "name": "Displacer Beast",
+    "cr": 4,
+    "size": "Large",
+    "type": "Magical Beast",
+    "subtype": null,
+    "hit_dice": "6d10+18",
+    "hp_avg": 51,
+    "initiative": 2,
+    "speed": {
+      "land": 40
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 11,
+      "flat_footed": 14,
+      "components": "+2 Dex, -1 size, +5 natural"
+    },
+    "base_attack": 6,
+    "grapple": 13,
+    "attacks": [
+      {
+        "name": "Tentacle",
+        "attack_bonus": "+8",
+        "damage": "1d6+3",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Tentacle",
+        "attack_bonus": "+8",
+        "damage": "1d6+3",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+3",
+        "damage": "1d8+1",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Displacement (50% miss chance against all attacks)",
+      "Evasion",
+      "Resistance to ranged attacks (+2 bonus to AC against ranged weapons)",
+      "Low-light vision"
+    ],
+    "saves": {
+      "fort": 8,
+      "ref": 7,
+      "will": 3
+    },
+    "abilities": {
+      "str": 18,
+      "dex": 15,
+      "con": 16,
+      "int": 5,
+      "wis": 12,
+      "cha": 8
+    },
+    "skills": {
+      "Hide": 4,
+      "Listen": 6,
+      "Move Silently": 5,
+      "Spot": 6
+    },
+    "feats": [
+      "Alertness",
+      "Combat Reflexes",
+      "Stealthy"
+    ],
+    "alignment": "Usually Neutral Evil",
+    "advancement": "7-9 HD (Large); 10-18 HD (Huge)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 30,
+    "allowed_biomes": [
+      "Temperate_Forest",
+      "Underground"
+    ],
+    "primary_biome": "Temperate_Forest",
+    "ecology_notes": "The displacer beast is a panther-like creature with six legs and two long tentacles sprouting from its shoulders. It appears to be two feet from its actual location due to its displacement ability, causing attacks to frequently miss. Displacer beasts have an instinctive hatred of blink dogs and will fight them to the death."
+  },
+  {
+    "name": "Ethereal Marauder",
+    "cr": 3,
+    "size": "Medium",
+    "type": "Magical Beast",
+    "subtype": "Extraplanar",
+    "hit_dice": "2d10+4",
+    "hp_avg": 15,
+    "initiative": 5,
+    "speed": {
+      "land": 40
+    },
+    "armor_class": {
+      "total": 14,
+      "touch": 11,
+      "flat_footed": 13,
+      "components": "+1 Dex, +3 natural"
+    },
+    "base_attack": 2,
+    "grapple": 4,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+4",
+        "damage": "1d8+3",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Ethereal jaunt (can shift between Ethereal Plane and Material Plane at will as a free action)"
+    ],
+    "saves": {
+      "fort": 5,
+      "ref": 4,
+      "will": 1
+    },
+    "abilities": {
+      "str": 14,
+      "dex": 12,
+      "con": 15,
+      "int": 3,
+      "wis": 12,
+      "cha": 10
+    },
+    "skills": {
+      "Hide": 5,
+      "Listen": 3,
+      "Move Silently": 5,
+      "Spot": 3
+    },
+    "feats": [
+      "Improved Initiative"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "3-6 HD (Medium)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 20,
+    "allowed_biomes": [
+      "Any"
+    ],
+    "primary_biome": "Any",
+    "ecology_notes": "Ethereal marauders are predators native to the Ethereal Plane that slip between the planes to hunt on the Material. They phase in, bite their prey, and immediately phase back out, making them difficult to target. They will repeatedly attack from the safety of the Ethereal Plane until their prey is dead."
+  },
+  {
+    "name": "Girallon",
+    "cr": 6,
+    "size": "Large",
+    "type": "Magical Beast",
+    "subtype": null,
+    "hit_dice": "7d10+35",
+    "hp_avg": 73,
+    "initiative": 2,
+    "speed": {
+      "land": 40,
+      "climb": 40
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 11,
+      "flat_footed": 14,
+      "components": "+2 Dex, -1 size, +5 natural"
+    },
+    "base_attack": 7,
+    "grapple": 16,
+    "attacks": [
+      {
+        "name": "Claw",
+        "attack_bonus": "+11",
+        "damage": "1d4+5",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+11",
+        "damage": "1d4+5",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+11",
+        "damage": "1d4+5",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+11",
+        "damage": "1d4+5",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+6",
+        "damage": "2d6+2",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Rend (if both forelimb claws hit the same target, additional 2d4+7 damage)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Low-light vision",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 10,
+      "ref": 7,
+      "will": 3
+    },
+    "abilities": {
+      "str": 21,
+      "dex": 15,
+      "con": 21,
+      "int": 3,
+      "wis": 12,
+      "cha": 7
+    },
+    "skills": {
+      "Climb": 13,
+      "Listen": 6,
+      "Spot": 6
+    },
+    "feats": [
+      "Alertness",
+      "Multiattack",
+      "Power Attack"
+    ],
+    "alignment": "Usually Neutral Evil",
+    "advancement": "8-14 HD (Large); 15-21 HD (Huge)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 15,
+    "allowed_biomes": [
+      "Warm_Forest"
+    ],
+    "primary_biome": "Warm_Forest",
+    "ecology_notes": "The girallon is a massive four-armed ape that inhabits warm jungles and forests. It is an aggressive, territorial predator that can rend prey apart with its multiple claws. Girallons are occasionally worshipped by primitive humanoid tribes and may be kept as guardian creatures, though they are extremely difficult to control."
+  },
+  {
+    "name": "Gorgon",
+    "cr": 8,
+    "size": "Large",
+    "type": "Magical Beast",
+    "subtype": null,
+    "hit_dice": "8d10+40",
+    "hp_avg": 84,
+    "initiative": 0,
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 19,
+      "touch": 9,
+      "flat_footed": 19,
+      "components": "-1 size, +10 natural"
+    },
+    "base_attack": 8,
+    "grapple": 17,
+    "attacks": [
+      {
+        "name": "Gore",
+        "attack_bonus": "+12",
+        "damage": "2d8+9",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Hoof",
+        "attack_bonus": "+7",
+        "damage": "2d6+4",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Hoof",
+        "attack_bonus": "+7",
+        "damage": "2d6+4",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Breath weapon (DC 18 Fort, petrification, 60 ft. cone; permanent until stone to flesh)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Low-light vision",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 11,
+      "ref": 6,
+      "will": 4
+    },
+    "abilities": {
+      "str": 23,
+      "dex": 10,
+      "con": 21,
+      "int": 2,
+      "wis": 12,
+      "cha": 9
+    },
+    "skills": {
+      "Listen": 9,
+      "Spot": 9
+    },
+    "feats": [
+      "Alertness",
+      "Improved Bull Rush",
+      "Power Attack",
+      "Toughness"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "9-12 HD (Large); 13-24 HD (Huge)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 15,
+    "allowed_biomes": [
+      "Temperate_Plain",
+      "Mountain"
+    ],
+    "primary_biome": "Temperate_Plain",
+    "ecology_notes": "The gorgon is a bull-like creature covered in overlapping iron scales. It can exhale a cone of breath that permanently petrifies living creatures. Gorgons are aggressive and territorial, charging at anything that enters their grazing range. Statues of their former victims frequently litter the landscape around their territory."
+  },
+  {
+    "name": "Griffon",
+    "cr": 4,
+    "size": "Large",
+    "type": "Magical Beast",
+    "subtype": null,
+    "hit_dice": "7d10+21",
+    "hp_avg": 59,
+    "initiative": 2,
+    "speed": {
+      "land": 30,
+      "fly": 80
+    },
+    "armor_class": {
+      "total": 17,
+      "touch": 11,
+      "flat_footed": 15,
+      "components": "+2 Dex, -1 size, +6 natural"
+    },
+    "base_attack": 7,
+    "grapple": 15,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+10",
+        "damage": "2d6+4",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+5",
+        "damage": "1d4+2",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+5",
+        "damage": "1d4+2",
+        "damage_type": "Slashing"
+      }
+    ],
+    "special_attacks": [
+      "Pounce (full attack on charge)",
+      "Rake 1d6+2"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Low-light vision",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 8,
+      "ref": 7,
+      "will": 3
+    },
+    "abilities": {
+      "str": 18,
+      "dex": 15,
+      "con": 16,
+      "int": 5,
+      "wis": 13,
+      "cha": 8
+    },
+    "skills": {
+      "Jump": 6,
+      "Listen": 6,
+      "Spot": 10
+    },
+    "feats": [
+      "Alertness",
+      "Iron Will",
+      "Weapon Focus (bite)"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "8-10 HD (Large); 11-21 HD (Huge)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 25,
+    "allowed_biomes": [
+      "Temperate_Plain",
+      "Mountain",
+      "Cold_Plain"
+    ],
+    "primary_biome": "Temperate_Plain",
+    "ecology_notes": "Griffons are majestic creatures with the body of a lion and the head, wings, and forelegs of an eagle. They nest in eyries on mountainsides and hunt across open plains. Griffons have an insatiable appetite for horseflesh and will aggressively target horses. They can be trained as mounts by skilled handlers."
+  },
+  {
+    "name": "Gynosphinx",
+    "cr": 8,
+    "size": "Large",
+    "type": "Magical Beast",
+    "subtype": null,
+    "hit_dice": "8d10+8",
+    "hp_avg": 52,
+    "initiative": 5,
+    "speed": {
+      "land": 40,
+      "fly": 60
+    },
+    "armor_class": {
+      "total": 20,
+      "touch": 11,
+      "flat_footed": 19,
+      "components": "+1 Dex, -1 size, +10 natural"
+    },
+    "base_attack": 8,
+    "grapple": 14,
+    "attacks": [
+      {
+        "name": "Claw",
+        "attack_bonus": "+9",
+        "damage": "2d6+2",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+9",
+        "damage": "2d6+2",
+        "damage_type": "Slashing"
+      }
+    ],
+    "special_attacks": [
+      "Pounce (full attack on charge)",
+      "Rake 2d6+2",
+      "Spell-like abilities: clairaudience/clairvoyance, detect magic, read magic, comprehend languages 3/day; legend lore, locate object, dispel magic 1/day; symbol of fear/insanity/pain/persuasion/sleep 1/day each"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Low-light vision",
+      "SR 22"
+    ],
+    "saves": {
+      "fort": 7,
+      "ref": 7,
+      "will": 8
+    },
+    "abilities": {
+      "str": 14,
+      "dex": 13,
+      "con": 13,
+      "int": 18,
+      "wis": 19,
+      "cha": 19
+    },
+    "skills": {
+      "Concentration": 12,
+      "Knowledge (arcana)": 15,
+      "Knowledge (history)": 15,
+      "Knowledge (religion)": 15,
+      "Knowledge (planes)": 15,
+      "Listen": 13,
+      "Sense Motive": 15,
+      "Spot": 14
+    },
+    "feats": [
+      "Combat Expertise",
+      "Improved Initiative",
+      "Iron Will"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "9-12 HD (Large); 13-24 HD (Huge)",
+    "dr": null,
+    "sr": 22,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 10,
+    "allowed_biomes": [
+      "Temperate_Desert",
+      "Warm_Desert"
+    ],
+    "primary_biome": "Warm_Desert",
+    "ecology_notes": "Gynosphinxes are female sphinxes of immense intelligence and arcane knowledge, dwelling in ancient ruins and desert wastes. They are obsessed with riddles and knowledge, demanding answers to puzzles before they will reveal information. They are less aggressive than androsphinxes but can be deadly foes when provoked, wielding powerful symbol spells."
+  },
+  {
+    "name": "Androsphinx",
+    "cr": 12,
+    "size": "Large",
+    "type": "Magical Beast",
+    "subtype": null,
+    "hit_dice": "12d10+24",
+    "hp_avg": 90,
+    "initiative": 0,
+    "speed": {
+      "land": 40,
+      "fly": 60
+    },
+    "armor_class": {
+      "total": 20,
+      "touch": 9,
+      "flat_footed": 20,
+      "components": "-1 size, +11 natural"
+    },
+    "base_attack": 12,
+    "grapple": 20,
+    "attacks": [
+      {
+        "name": "Claw",
+        "attack_bonus": "+15",
+        "damage": "2d6+4",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+15",
+        "damage": "2d6+4",
+        "damage_type": "Slashing"
+      }
+    ],
+    "special_attacks": [
+      "Pounce (full attack on charge)",
+      "Rake 2d6+4",
+      "Roar (DC 19 Will, paralyzed 1d4 rounds on first roar; DC 19 Will, frightened 2d6 rounds on second roar; deafened and panicked on third roar; 3 times/day)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Low-light vision",
+      "SR 23"
+    ],
+    "saves": {
+      "fort": 10,
+      "ref": 8,
+      "will": 11
+    },
+    "abilities": {
+      "str": 19,
+      "dex": 10,
+      "con": 15,
+      "int": 16,
+      "wis": 17,
+      "cha": 17
+    },
+    "skills": {
+      "Concentration": 17,
+      "Knowledge (arcana)": 18,
+      "Knowledge (history)": 18,
+      "Listen": 18,
+      "Sense Motive": 18,
+      "Spot": 18
+    },
+    "feats": [
+      "Cleave",
+      "Iron Will",
+      "Power Attack",
+      "Weapon Focus (claw)"
+    ],
+    "alignment": "Always Chaotic Good",
+    "advancement": "13-24 HD (Large); 25-36 HD (Huge)",
+    "dr": null,
+    "sr": 23,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 5,
+    "allowed_biomes": [
+      "Temperate_Desert",
+      "Warm_Desert"
+    ],
+    "primary_biome": "Warm_Desert",
+    "ecology_notes": "Androsphinxes are male sphinxes of great power, wisdom, and fury. Their roar is legendary — it can paralyze, terrify, or even deafen and destroy entire groups of adventurers. Despite their chaotic good alignment, they are fiercely territorial and test intruders harshly before determining their worthiness. They guard ancient holy sites in desert regions."
+  },
+  {
+    "name": "Hippogriff",
+    "cr": 2,
+    "size": "Large",
+    "type": "Magical Beast",
+    "subtype": null,
+    "hit_dice": "3d10+9",
+    "hp_avg": 25,
+    "initiative": 2,
+    "speed": {
+      "land": 50,
+      "fly": 100
+    },
+    "armor_class": {
+      "total": 15,
+      "touch": 11,
+      "flat_footed": 13,
+      "components": "+2 Dex, -1 size, +4 natural"
+    },
+    "base_attack": 3,
+    "grapple": 10,
+    "attacks": [
+      {
+        "name": "Claw",
+        "attack_bonus": "+6",
+        "damage": "1d4+4",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+6",
+        "damage": "1d4+4",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+1",
+        "damage": "1d8+2",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Pounce (full attack on charge)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Low-light vision",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 6,
+      "ref": 5,
+      "will": 2
+    },
+    "abilities": {
+      "str": 18,
+      "dex": 15,
+      "con": 16,
+      "int": 2,
+      "wis": 13,
+      "cha": 9
+    },
+    "skills": {
+      "Listen": 5,
+      "Spot": 9
+    },
+    "feats": [
+      "Dodge",
+      "Wingover"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "4-6 HD (Large); 7-9 HD (Huge)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 40,
+    "allowed_biomes": [
+      "Temperate_Plain",
+      "Mountain",
+      "Cold_Plain"
+    ],
+    "primary_biome": "Temperate_Plain",
+    "ecology_notes": "Hippogriffs are horse-eagle hybrids related to the griffon. They are fast fliers that nest on cliffsides and hunt horses and ponies — a trait that puts them in conflict with farming communities. Hippogriffs are commonly tamed and used as flying mounts, as they are more tractable than griffons."
+  },
+  {
+    "name": "Lamia",
+    "cr": 6,
+    "size": "Large",
+    "type": "Magical Beast",
+    "subtype": null,
+    "hit_dice": "9d10+9",
+    "hp_avg": 58,
+    "initiative": 2,
+    "speed": {
+      "land": 60
+    },
+    "armor_class": {
+      "total": 14,
+      "touch": 11,
+      "flat_footed": 12,
+      "components": "+2 Dex, -1 size, +3 natural"
+    },
+    "base_attack": 6,
+    "grapple": 13,
+    "attacks": [
+      {
+        "name": "Touch",
+        "attack_bonus": "+8",
+        "damage": "1d4 Wisdom drain",
+        "damage_type": "Special"
+      },
+      {
+        "name": "Dagger",
+        "attack_bonus": "+7/+2",
+        "damage": "1d4+3",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Spell-like abilities: disguise self at will; charm monster (DC 16) 3/day, major image (DC 16) 3/day, mirror image 3/day, suggestion (DC 15) 3/day; deep slumber (DC 16) 1/day",
+      "Wisdom drain (1d4 Wisdom per touch, permanent)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Low-light vision"
+    ],
+    "saves": {
+      "fort": 7,
+      "ref": 8,
+      "will": 6
+    },
+    "abilities": {
+      "str": 16,
+      "dex": 14,
+      "con": 13,
+      "int": 14,
+      "wis": 15,
+      "cha": 18
+    },
+    "skills": {
+      "Bluff": 14,
+      "Diplomacy": 10,
+      "Disguise": 14,
+      "Hide": 5,
+      "Knowledge (any)": 12,
+      "Spot": 12
+    },
+    "feats": [
+      "Dodge",
+      "Weapon Focus (touch)",
+      "Iron Will",
+      "Mobility"
+    ],
+    "alignment": "Usually Chaotic Evil",
+    "advancement": "10-13 HD (Large); 14-27 HD (Huge)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 10,
+    "allowed_biomes": [
+      "Warm_Desert",
+      "Warm_Plain"
+    ],
+    "primary_biome": "Warm_Desert",
+    "ecology_notes": "Lamias are predatory creatures with a humanoid upper body and the lower body of a great lion or serpent. They use illusion magic to lure victims close, then permanently drain their wisdom with a touch. A victim with insufficient Wisdom becomes a willing slave to the lamia. They often establish cults around themselves, worshipped by Wisdom-drained humanoids."
+  },
+  {
+    "name": "Manticore",
+    "cr": 5,
+    "size": "Large",
+    "type": "Magical Beast",
+    "subtype": null,
+    "hit_dice": "6d10+24",
+    "hp_avg": 57,
+    "initiative": 2,
+    "speed": {
+      "land": 30,
+      "fly": 50
+    },
+    "armor_class": {
+      "total": 17,
+      "touch": 11,
+      "flat_footed": 15,
+      "components": "+2 Dex, -1 size, +6 natural"
+    },
+    "base_attack": 6,
+    "grapple": 14,
+    "attacks": [
+      {
+        "name": "Claw",
+        "attack_bonus": "+9",
+        "damage": "1d4+4",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+9",
+        "damage": "1d4+4",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+4",
+        "damage": "1d8+2",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Spikes (throw up to 6 spikes per round, range 180 ft., 1d8+2 each)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Low-light vision",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 9,
+      "ref": 7,
+      "will": 3
+    },
+    "abilities": {
+      "str": 18,
+      "dex": 15,
+      "con": 18,
+      "int": 7,
+      "wis": 12,
+      "cha": 9
+    },
+    "skills": {
+      "Listen": 8,
+      "Spot": 8,
+      "Survival": 1
+    },
+    "feats": [
+      "Alertness",
+      "Run",
+      "Track"
+    ],
+    "alignment": "Usually Neutral Evil",
+    "advancement": "7-9 HD (Large); 10-18 HD (Huge)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 20,
+    "allowed_biomes": [
+      "Temperate_Plain",
+      "Warm_Plain",
+      "Mountain"
+    ],
+    "primary_biome": "Temperate_Plain",
+    "ecology_notes": "The manticore is a monstrous predator with a human-like face, lion's body, bat wings, and a tail studded with iron spikes it can hurl at prey. It is cunning enough to speak, and it sometimes toys with victims or negotiates for food. Manticores are territorial and voracious, consuming every part of their prey including bones."
+  },
+  {
+    "name": "Owlbear",
+    "cr": 4,
+    "size": "Large",
+    "type": "Magical Beast",
+    "subtype": null,
+    "hit_dice": "5d10+25",
+    "hp_avg": 52,
+    "initiative": 1,
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 15,
+      "touch": 10,
+      "flat_footed": 14,
+      "components": "+1 Dex, -1 size, +5 natural"
+    },
+    "base_attack": 5,
+    "grapple": 13,
+    "attacks": [
+      {
+        "name": "Claw",
+        "attack_bonus": "+8",
+        "damage": "1d6+4",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+8",
+        "damage": "1d6+4",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+3",
+        "damage": "1d8+2",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Improved Grab"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Low-light vision",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 9,
+      "ref": 5,
+      "will": 2
+    },
+    "abilities": {
+      "str": 19,
+      "dex": 12,
+      "con": 21,
+      "int": 2,
+      "wis": 12,
+      "cha": 10
+    },
+    "skills": {
+      "Listen": 8,
+      "Spot": 8
+    },
+    "feats": [
+      "Alertness",
+      "Endurance",
+      "Toughness"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "6-8 HD (Large); 9-15 HD (Huge)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 30,
+    "allowed_biomes": [
+      "Temperate_Forest",
+      "Cold_Forest"
+    ],
+    "primary_biome": "Temperate_Forest",
+    "ecology_notes": "The owlbear is thought to be the magical crossbreed of an owl and a bear, combining the worst traits of both. It is aggressive to an extreme, attacking anything it encounters, and will fight to the death. Owlbear cubs are occasionally captured and raised as guard animals, though they remain unpredictable and dangerous."
+  },
+  {
+    "name": "Pegasus",
+    "cr": 3,
+    "size": "Large",
+    "type": "Magical Beast",
+    "subtype": null,
+    "hit_dice": "4d10+12",
+    "hp_avg": 34,
+    "initiative": 2,
+    "speed": {
+      "land": 60,
+      "fly": 120
+    },
+    "armor_class": {
+      "total": 14,
+      "touch": 11,
+      "flat_footed": 12,
+      "components": "+2 Dex, -1 size, +3 natural"
+    },
+    "base_attack": 4,
+    "grapple": 11,
+    "attacks": [
+      {
+        "name": "Hoof",
+        "attack_bonus": "+7",
+        "damage": "1d6+4",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Hoof",
+        "attack_bonus": "+7",
+        "damage": "1d6+4",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+2",
+        "damage": "1d3+2",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Low-light vision",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 7,
+      "ref": 6,
+      "will": 4
+    },
+    "abilities": {
+      "str": 18,
+      "dex": 15,
+      "con": 16,
+      "int": 10,
+      "wis": 13,
+      "cha": 13
+    },
+    "skills": {
+      "Diplomacy": 2,
+      "Knowledge (nature)": 5,
+      "Listen": 10,
+      "Sense Motive": 7,
+      "Spot": 10
+    },
+    "feats": [
+      "Flyby Attack",
+      "Iron Will"
+    ],
+    "alignment": "Always Neutral Good",
+    "advancement": "5-8 HD (Large); 9-12 HD (Huge)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 30,
+    "allowed_biomes": [
+      "Temperate_Plain",
+      "Mountain"
+    ],
+    "primary_biome": "Temperate_Plain",
+    "ecology_notes": "Pegasi are winged horses of noble spirit and keen intelligence. They only accept good-aligned riders and are highly prized as aerial mounts. They are surprisingly social creatures, able to communicate with other magical beasts, and form tight bonds with their riders. Pegasi herds roam freely through mountain meadows and high plains."
+  },
+  {
+    "name": "Phase Spider",
+    "cr": 5,
+    "size": "Large",
+    "type": "Magical Beast",
+    "subtype": null,
+    "hit_dice": "5d10+15",
+    "hp_avg": 42,
+    "initiative": 7,
+    "speed": {
+      "land": 40,
+      "climb": 20
+    },
+    "armor_class": {
+      "total": 15,
+      "touch": 12,
+      "flat_footed": 12,
+      "components": "+3 Dex, -1 size, +3 natural"
+    },
+    "base_attack": 5,
+    "grapple": 12,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+7",
+        "damage": "1d6+4",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Ethereal jaunt (free action shift to Ethereal Plane)",
+      "Poison (DC 14 Fort, 1d8 Con primary, 1d8 Con secondary)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Low-light vision"
+    ],
+    "saves": {
+      "fort": 7,
+      "ref": 7,
+      "will": 2
+    },
+    "abilities": {
+      "str": 17,
+      "dex": 17,
+      "con": 16,
+      "int": 7,
+      "wis": 13,
+      "cha": 10
+    },
+    "skills": {
+      "Climb": 11,
+      "Move Silently": 8,
+      "Spot": 10
+    },
+    "feats": [
+      "Alertness",
+      "Improved Initiative",
+      "Iron Will"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "6-8 HD (Large); 9-15 HD (Huge)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 15,
+    "allowed_biomes": [
+      "Temperate_Forest",
+      "Underground"
+    ],
+    "primary_biome": "Underground",
+    "ecology_notes": "Phase spiders are enormous spiders that can shift to the Ethereal Plane at will, using this ability to ambush prey. They phase in, inject a fast-acting venom, then phase back out before the target can retaliate. Their venom is highly lethal; phase spiders will pursue victims between planes until the poison finishes the job."
+  },
+  {
+    "name": "Remorhaz",
+    "cr": 7,
+    "size": "Huge",
+    "type": "Magical Beast",
+    "subtype": null,
+    "hit_dice": "7d10+35",
+    "hp_avg": 73,
+    "initiative": 1,
+    "speed": {
+      "land": 30,
+      "burrow": 20
+    },
+    "armor_class": {
+      "total": 24,
+      "touch": 9,
+      "flat_footed": 23,
+      "components": "+1 Dex, -2 size, +15 natural"
+    },
+    "base_attack": 7,
+    "grapple": 20,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+11",
+        "damage": "2d8+9",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Improved Grab",
+      "Swallow Whole (2d8+9 bludgeoning + 8d6 fire damage per round inside)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Low-light vision",
+      "Heat (contact with body deals 1d6 fire damage)",
+      "Immunity to cold",
+      "Vulnerability to cold (takes half again as much damage from cold)"
+    ],
+    "saves": {
+      "fort": 10,
+      "ref": 6,
+      "will": 3
+    },
+    "abilities": {
+      "str": 23,
+      "dex": 13,
+      "con": 21,
+      "int": 5,
+      "wis": 12,
+      "cha": 10
+    },
+    "skills": {
+      "Listen": 8,
+      "Spot": 8
+    },
+    "feats": [
+      "Alertness",
+      "Endurance",
+      "Iron Will"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "8-10 HD (Huge); 11-21 HD (Gargantuan)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [
+      "Cold"
+    ],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 10,
+    "allowed_biomes": [
+      "Arctic",
+      "Cold_Plain"
+    ],
+    "primary_biome": "Arctic",
+    "ecology_notes": "The remorhaz is a massive centipede-like creature that generates tremendous internal heat, allowing it to burrow through ice and frozen ground with ease. Despite living in arctic environments, it is completely immune to cold and radiates enough heat to burn those who touch it. It swallows prey whole, where the internal fire kills quickly."
+  },
+  {
+    "name": "Sea Cat",
+    "cr": 4,
+    "size": "Large",
+    "type": "Magical Beast",
+    "subtype": "Aquatic",
+    "hit_dice": "6d10+18",
+    "hp_avg": 51,
+    "initiative": 1,
+    "speed": {
+      "land": 10,
+      "swim": 40
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 10,
+      "flat_footed": 15,
+      "components": "+1 Dex, -1 size, +6 natural"
+    },
+    "base_attack": 6,
+    "grapple": 14,
+    "attacks": [
+      {
+        "name": "Claw",
+        "attack_bonus": "+9",
+        "damage": "1d6+4",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+9",
+        "damage": "1d6+4",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+4",
+        "damage": "2d6+2",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Improved Grab",
+      "Rake 1d6+4"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Low-light vision",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 8,
+      "ref": 6,
+      "will": 3
+    },
+    "abilities": {
+      "str": 19,
+      "dex": 13,
+      "con": 16,
+      "int": 2,
+      "wis": 13,
+      "cha": 10
+    },
+    "skills": {
+      "Listen": 7,
+      "Spot": 7,
+      "Swim": 12
+    },
+    "feats": [
+      "Alertness",
+      "Endurance",
+      "Toughness"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "7-9 HD (Large); 10-18 HD (Huge)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 30,
+    "allowed_biomes": [
+      "Temperate_Aquatic",
+      "Cold_Aquatic"
+    ],
+    "primary_biome": "Temperate_Aquatic",
+    "ecology_notes": "Sea cats are walrus-sized aquatic predators that resemble a lion or large cat adapted for life in the sea. They hunt fish, seals, and humanoids with equal ferocity, using powerful claws and raking rear legs to shred prey once grappled. They are encountered both in open water and in coastal caves where they haul out to rest."
+  },
+  {
+    "name": "Shocker Lizard",
+    "cr": 2,
+    "size": "Small",
+    "type": "Magical Beast",
+    "subtype": null,
+    "hit_dice": "2d10+2",
+    "hp_avg": 13,
+    "initiative": 3,
+    "speed": {
+      "land": 40,
+      "climb": 20,
+      "swim": 20
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 14,
+      "flat_footed": 13,
+      "components": "+3 Dex, +1 size, +2 natural"
+    },
+    "base_attack": 1,
+    "grapple": -3,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+5",
+        "damage": "1d4",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Stunning shock (DC 12 Fort, stunned 1d4+1 rounds; requires contact)",
+      "Lethal shock (DC 12 Fort, 2d8 electricity when 2 or more shocker lizards cooperate)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Immunity to electricity",
+      "Low-light vision",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 4,
+      "ref": 6,
+      "will": 1
+    },
+    "abilities": {
+      "str": 10,
+      "dex": 17,
+      "con": 13,
+      "int": 2,
+      "wis": 12,
+      "cha": 6
+    },
+    "skills": {
+      "Climb": 11,
+      "Hide": 9,
+      "Spot": 3
+    },
+    "feats": [
+      "Alertness"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "3-4 HD (Small); 5-6 HD (Medium)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 80,
+    "allowed_biomes": [
+      "Warm_Swamp",
+      "Temperate_Swamp"
+    ],
+    "primary_biome": "Warm_Swamp",
+    "ecology_notes": "Shocker lizards are small reptiles that generate and store electrical energy. Individually they can stun prey, but when multiple shocker lizards cooperate they can unleash lethal bolts of electricity. They congregate in herds and are completely immune to electrical attacks, making them dangerous even to creatures with lightning-based abilities."
+  },
+  {
+    "name": "Stirge",
+    "cr": 0.5,
+    "size": "Tiny",
+    "type": "Magical Beast",
+    "subtype": null,
+    "hit_dice": "1d10",
+    "hp_avg": 5,
+    "initiative": 4,
+    "speed": {
+      "land": 10,
+      "fly": 40
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 16,
+      "flat_footed": 12,
+      "components": "+4 Dex, +2 size"
+    },
+    "base_attack": 1,
+    "grapple": -11,
+    "attacks": [
+      {
+        "name": "Touch",
+        "attack_bonus": "+7",
+        "damage": "1d3-4",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Attach (grapple on successful touch, +7 to grapple despite penalty)",
+      "Blood drain (1d4 Constitution per round while attached)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Low-light vision"
+    ],
+    "saves": {
+      "fort": 2,
+      "ref": 6,
+      "will": 1
+    },
+    "abilities": {
+      "str": 3,
+      "dex": 19,
+      "con": 10,
+      "int": 1,
+      "wis": 12,
+      "cha": 6
+    },
+    "skills": {
+      "Hide": 14,
+      "Listen": 2,
+      "Spot": 2
+    },
+    "feats": [
+      "Alertness",
+      "Weapon Finesse"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "2-3 HD (Tiny)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 200,
+    "allowed_biomes": [
+      "Temperate_Swamp",
+      "Underground",
+      "Temperate_Forest"
+    ],
+    "primary_biome": "Temperate_Swamp",
+    "ecology_notes": "Stirges are mosquito-like flying creatures that attack in swarms, latching on to prey to drain blood. A single stirge is a minor threat, but dozens attacking simultaneously can drain the life from a heavily armored warrior in moments. They roost in caves, hollow trees, and dungeon ceilings, dropping on prey from above."
+  },
+  {
+    "name": "Unicorn",
+    "cr": 3,
+    "size": "Large",
+    "type": "Magical Beast",
+    "subtype": null,
+    "hit_dice": "4d10+12",
+    "hp_avg": 34,
+    "initiative": 3,
+    "speed": {
+      "land": 60
+    },
+    "armor_class": {
+      "total": 18,
+      "touch": 12,
+      "flat_footed": 15,
+      "components": "+3 Dex, -1 size, +6 natural"
+    },
+    "base_attack": 4,
+    "grapple": 10,
+    "attacks": [
+      {
+        "name": "Horn",
+        "attack_bonus": "+8",
+        "damage": "1d8+5",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Hoof",
+        "attack_bonus": "+3",
+        "damage": "1d4+2",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Hoof",
+        "attack_bonus": "+3",
+        "damage": "1d4+2",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Low-light vision",
+      "Scent",
+      "Spell-like abilities: detect evil at will; cure light wounds 3/day; cure moderate wounds 1/day; greater teleport 1/day (self plus rider only)",
+      "Immunity to charm effects",
+      "Immunity to poison"
+    ],
+    "saves": {
+      "fort": 7,
+      "ref": 7,
+      "will": 6
+    },
+    "abilities": {
+      "str": 20,
+      "dex": 17,
+      "con": 16,
+      "int": 11,
+      "wis": 21,
+      "cha": 24
+    },
+    "skills": {
+      "Jump": 11,
+      "Listen": 11,
+      "Move Silently": 9,
+      "Spot": 11,
+      "Survival": 9
+    },
+    "feats": [
+      "Alertness",
+      "Skill Focus (Survival)"
+    ],
+    "alignment": "Always Chaotic Good",
+    "advancement": "5-8 HD (Large)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 15,
+    "allowed_biomes": [
+      "Temperate_Forest",
+      "Warm_Forest"
+    ],
+    "primary_biome": "Temperate_Forest",
+    "ecology_notes": "Unicorns are legendary creatures of purity and grace, appearing as magnificent white horses with a single spiraling horn. They are innately able to detect evil and will only accept a pure-hearted rider. Their horn has healing properties, and their very presence is said to purify tainted ground. Unicorn herds guard ancient forests."
+  },
+  {
+    "name": "Winter Wolf",
+    "cr": 5,
+    "size": "Large",
+    "type": "Magical Beast",
+    "subtype": null,
+    "hit_dice": "6d10+18",
+    "hp_avg": 51,
+    "initiative": 5,
+    "speed": {
+      "land": 50
+    },
+    "armor_class": {
+      "total": 15,
+      "touch": 10,
+      "flat_footed": 14,
+      "components": "+1 Dex, -1 size, +5 natural"
+    },
+    "base_attack": 6,
+    "grapple": 14,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+9",
+        "damage": "1d8+6 plus 1d6 cold",
+        "damage_type": "Piercing/Cold"
+      }
+    ],
+    "special_attacks": [
+      "Breath weapon (DC 14 Ref, 9d6 cold, 30 ft. cone)",
+      "Knock down (free Strength check to trip if bite deals damage)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Low-light vision",
+      "Scent",
+      "Immunity to cold",
+      "Vulnerability to fire"
+    ],
+    "saves": {
+      "fort": 8,
+      "ref": 6,
+      "will": 3
+    },
+    "abilities": {
+      "str": 22,
+      "dex": 13,
+      "con": 16,
+      "int": 9,
+      "wis": 13,
+      "cha": 10
+    },
+    "skills": {
+      "Hide": 1,
+      "Listen": 9,
+      "Move Silently": 4,
+      "Spot": 9,
+      "Survival": 2
+    },
+    "feats": [
+      "Alertness",
+      "Improved Initiative",
+      "Track"
+    ],
+    "alignment": "Usually Neutral Evil",
+    "advancement": "7-9 HD (Large); 10-18 HD (Huge)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [
+      "Fire"
+    ],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 20,
+    "allowed_biomes": [
+      "Arctic",
+      "Cold_Plain",
+      "Cold_Forest"
+    ],
+    "primary_biome": "Arctic",
+    "ecology_notes": "Winter wolves are large, intelligent wolves with icy-white fur and the ability to exhale blasts of freezing cold. They are capable of speech and often serve as leaders of ordinary wolf packs or as mounts for frost giants. Winter wolves hunt cooperatively, using their breath weapon to slow and freeze prey before moving in for the kill."
+  },
+  {
+    "name": "Worg",
+    "cr": 2,
+    "size": "Medium",
+    "type": "Magical Beast",
+    "subtype": null,
+    "hit_dice": "4d10+8",
+    "hp_avg": 30,
+    "initiative": 2,
+    "speed": {
+      "land": 50
+    },
+    "armor_class": {
+      "total": 14,
+      "touch": 12,
+      "flat_footed": 12,
+      "components": "+2 Dex, +2 natural"
+    },
+    "base_attack": 3,
+    "grapple": 6,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+6",
+        "damage": "1d6+4",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Trip (on successful bite, free Strength check to trip opponent)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Low-light vision",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 6,
+      "ref": 6,
+      "will": 3
+    },
+    "abilities": {
+      "str": 17,
+      "dex": 15,
+      "con": 15,
+      "int": 6,
+      "wis": 14,
+      "cha": 8
+    },
+    "skills": {
+      "Hide": 4,
+      "Listen": 6,
+      "Move Silently": 6,
+      "Spot": 6,
+      "Survival": 1
+    },
+    "feats": [
+      "Alertness",
+      "Track"
+    ],
+    "alignment": "Usually Neutral Evil",
+    "advancement": "5-6 HD (Medium); 7-12 HD (Large)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 60,
+    "allowed_biomes": [
+      "Temperate_Plain",
+      "Cold_Plain"
+    ],
+    "primary_biome": "Temperate_Plain",
+    "ecology_notes": "Worgs are large, intelligent wolves that speak their own language and are sometimes capable of speech in the common tongue. They serve as mounts for goblins, forming a symbiotic relationship where the goblin scouts provide intelligence and the worg provides speed and combat power. Worgs hunt cooperatively, using their trip ability to bring down running prey."
+  },
+  {
+    "name": "Wyvern",
+    "cr": 6,
+    "size": "Large",
+    "type": "Dragon",
+    "subtype": null,
+    "hit_dice": "7d12+14",
+    "hp_avg": 59,
+    "initiative": 1,
+    "speed": {
+      "land": 20,
+      "fly": 60
+    },
+    "armor_class": {
+      "total": 18,
+      "touch": 10,
+      "flat_footed": 17,
+      "components": "+1 Dex, -1 size, +8 natural"
+    },
+    "base_attack": 7,
+    "grapple": 15,
+    "attacks": [
+      {
+        "name": "Sting",
+        "attack_bonus": "+10",
+        "damage": "2d6+4",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+5",
+        "damage": "1d8+2",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+5",
+        "damage": "1d8+2",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+5",
+        "damage": "1d8+4",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Improved Grab",
+      "Poison sting (DC 17 Fort, 2d6 Con primary, 2d6 Con secondary)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Immunity to magic sleep effects",
+      "Immunity to paralysis",
+      "Low-light vision",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 7,
+      "ref": 6,
+      "will": 5
+    },
+    "abilities": {
+      "str": 19,
+      "dex": 12,
+      "con": 15,
+      "int": 5,
+      "wis": 12,
+      "cha": 9
+    },
+    "skills": {
+      "Hide": 4,
+      "Listen": 13,
+      "Move Silently": 4,
+      "Spot": 16
+    },
+    "feats": [
+      "Alertness",
+      "Flyby Attack",
+      "Multiattack",
+      "Power Attack"
+    ],
+    "alignment": "Usually Neutral Evil",
+    "advancement": "8-10 HD (Large); 11-21 HD (Huge)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 15,
+    "allowed_biomes": [
+      "Mountain",
+      "Temperate_Plain"
+    ],
+    "primary_biome": "Mountain",
+    "ecology_notes": "The wyvern is a lesser dragon-kin with a barbed, venomous tail and powerful talons. It lacks the intelligence and breath weapon of true dragons but compensates with its highly lethal venom. Wyverns nest in mountain crags and hunt across wide territories, attacking anything they can carry off. They are sometimes tamed as mounts by powerful warlords."
+  }
+]

@@ -1,0 +1,809 @@
+[
+  {
+    "name": "Annis Hag",
+    "cr": 6,
+    "size": "Large",
+    "type": "Monstrous Humanoid",
+    "subtype": null,
+    "hit_dice": "7d8+35",
+    "hp_avg": 66,
+    "initiative": 1,
+    "speed": {
+      "land": 40
+    },
+    "armor_class": {
+      "total": 20,
+      "touch": 10,
+      "flat_footed": 19,
+      "components": "+1 Dex, -1 size, +10 natural"
+    },
+    "base_attack": 7,
+    "grapple": 16,
+    "attacks": [
+      {
+        "name": "Claw",
+        "attack_bonus": "+11",
+        "damage": "1d6+6",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+11",
+        "damage": "1d6+6",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+6",
+        "damage": "2d6+3",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Improved Grab",
+      "Rake 1d6+6 (x2)",
+      "Rend (if both claws hit same target, 2d6+9 additional damage)",
+      "Spell-like abilities: alter self 1/day, fog cloud 1/day, invisibility 1/day"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "SR 19"
+    ],
+    "saves": {
+      "fort": 10,
+      "ref": 6,
+      "will": 5
+    },
+    "abilities": {
+      "str": 23,
+      "dex": 12,
+      "con": 20,
+      "int": 12,
+      "wis": 13,
+      "cha": 10
+    },
+    "skills": {
+      "Bluff": 9,
+      "Diplomacy": 5,
+      "Hide": 7,
+      "Listen": 9,
+      "Sense Motive": 9,
+      "Spot": 9
+    },
+    "feats": [
+      "Alertness",
+      "Blind-Fight",
+      "Combat Reflexes",
+      "Great Fortitude"
+    ],
+    "alignment": "Always Chaotic Evil",
+    "advancement": "8-14 HD (Large)",
+    "dr": null,
+    "sr": 19,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 5,
+    "allowed_biomes": [
+      "Cold_Swamp",
+      "Cold_Forest",
+      "Mountain"
+    ],
+    "primary_biome": "Cold_Swamp",
+    "ecology_notes": "The annis is the most physically powerful of the hags, a massive iron-skinned monster that haunts cold bogs, frozen forests, and mountain passes. Unlike other hags that rely on trickery and magic, the annis prefers to simply tear prey apart with her rending claws. She still employs illusion and fog to set up ambushes, vanishing into the mist before tearing victims apart."
+  },
+  {
+    "name": "Gargoyle",
+    "cr": 4,
+    "size": "Medium",
+    "type": "Monstrous Humanoid",
+    "subtype": null,
+    "hit_dice": "4d8+19",
+    "hp_avg": 37,
+    "initiative": 6,
+    "speed": {
+      "land": 45,
+      "fly": 60
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 12,
+      "flat_footed": 14,
+      "components": "+2 Dex, +4 natural"
+    },
+    "base_attack": 4,
+    "grapple": 6,
+    "attacks": [
+      {
+        "name": "Claw",
+        "attack_bonus": "+6",
+        "damage": "1d4+2",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+6",
+        "damage": "1d4+2",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+1",
+        "damage": "1d6+1",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Gore",
+        "attack_bonus": "+1",
+        "damage": "1d4+1",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Freeze (can appear as a stone gargoyle statue; DC 20 Spot to notice it is alive)",
+      "DR 10/Magic"
+    ],
+    "saves": {
+      "fort": 5,
+      "ref": 6,
+      "will": 5
+    },
+    "abilities": {
+      "str": 15,
+      "dex": 14,
+      "con": 18,
+      "int": 6,
+      "wis": 11,
+      "cha": 7
+    },
+    "skills": {
+      "Hide": 7,
+      "Listen": 5,
+      "Spot": 5
+    },
+    "feats": [
+      "Alertness",
+      "Multiattack",
+      "Improved Initiative"
+    ],
+    "alignment": "Usually Chaotic Evil",
+    "advancement": "5-8 HD (Medium); 9-16 HD (Large)",
+    "dr": "10/Magic",
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 30,
+    "allowed_biomes": [
+      "Mountain",
+      "Any_Ruin",
+      "Underground"
+    ],
+    "primary_biome": "Mountain",
+    "ecology_notes": "Gargoyles are cunning ambush predators that roost on stone buildings and cliff faces, where their stony skin allows them to blend perfectly with their surroundings. They wait motionless for hours, then drop on unsuspecting prey. Gargoyles often guard ruins or dungeons, serving evil masters or simply claiming territory they consider their own."
+  },
+  {
+    "name": "Green Hag",
+    "cr": 5,
+    "size": "Medium",
+    "type": "Monstrous Humanoid",
+    "subtype": null,
+    "hit_dice": "9d8+18",
+    "hp_avg": 58,
+    "initiative": 1,
+    "speed": {
+      "land": 30,
+      "swim": 30
+    },
+    "armor_class": {
+      "total": 22,
+      "touch": 11,
+      "flat_footed": 21,
+      "components": "+1 Dex, +11 natural"
+    },
+    "base_attack": 6,
+    "grapple": 9,
+    "attacks": [
+      {
+        "name": "Claw",
+        "attack_bonus": "+9",
+        "damage": "1d4+3",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+9",
+        "damage": "1d4+3",
+        "damage_type": "Slashing"
+      }
+    ],
+    "special_attacks": [
+      "Spell-like abilities (at will): dancing lights, disguise self, ghost sound, invisibility, pass without trace, tongues, water breathing",
+      "Spell-like abilities (3/day): animate objects, baleful polymorph, bestow curse (DC 14), speak with animals, veil",
+      "Weakness (touch, DC 16 Fort or target loses half Strength for 24 hours)"
+    ],
+    "special_qualities": [
+      "Darkvision 90 ft.",
+      "Mimicry (can perfectly mimic voices and sounds)",
+      "SR 18"
+    ],
+    "saves": {
+      "fort": 7,
+      "ref": 7,
+      "will": 8
+    },
+    "abilities": {
+      "str": 17,
+      "dex": 12,
+      "con": 14,
+      "int": 13,
+      "wis": 13,
+      "cha": 14
+    },
+    "skills": {
+      "Bluff": 12,
+      "Concentration": 12,
+      "Craft (any)": 12,
+      "Disguise": 12,
+      "Handle Animal": 12,
+      "Knowledge (arcana)": 12,
+      "Swim": 11
+    },
+    "feats": [
+      "Alertness",
+      "Combat Casting",
+      "Great Fortitude",
+      "Iron Will"
+    ],
+    "alignment": "Usually Chaotic Evil",
+    "advancement": "10-13 HD (Medium); 14-27 HD (Large)",
+    "dr": null,
+    "sr": 18,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 5,
+    "allowed_biomes": [
+      "Temperate_Swamp",
+      "Temperate_Forest"
+    ],
+    "primary_biome": "Temperate_Swamp",
+    "ecology_notes": "Green hags are cunning swamp witches who use illusion and shapeshifting to infiltrate communities, spreading misery and discord. They particularly delight in corrupting good people, using their weakness touch to debilitate strong warriors. Green hags often form covens of three with other hags, dramatically increasing their magical power."
+  },
+  {
+    "name": "Medusa",
+    "cr": 7,
+    "size": "Medium",
+    "type": "Monstrous Humanoid",
+    "subtype": null,
+    "hit_dice": "6d8+6",
+    "hp_avg": 33,
+    "initiative": 2,
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 15,
+      "touch": 12,
+      "flat_footed": 13,
+      "components": "+2 Dex, +3 natural"
+    },
+    "base_attack": 4,
+    "grapple": 4,
+    "attacks": [
+      {
+        "name": "Dagger",
+        "attack_bonus": "+4",
+        "damage": "1d4",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Dagger",
+        "attack_bonus": "+4",
+        "damage": "1d4",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Shortbow (ranged)",
+        "attack_bonus": "+6/+6",
+        "damage": "1d6",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Gaze (DC 15 Fort, permanent petrification)",
+      "Poison bite (DC 14 Fort, 1d6 Str primary, 1d6 Str secondary)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft."
+    ],
+    "saves": {
+      "fort": 5,
+      "ref": 7,
+      "will": 6
+    },
+    "abilities": {
+      "str": 10,
+      "dex": 15,
+      "con": 12,
+      "int": 12,
+      "wis": 13,
+      "cha": 15
+    },
+    "skills": {
+      "Bluff": 8,
+      "Diplomacy": 6,
+      "Disguise": 8,
+      "Move Silently": 7,
+      "Spot": 7
+    },
+    "feats": [
+      "Point Blank Shot",
+      "Precise Shot",
+      "Rapid Shot"
+    ],
+    "alignment": "Usually Lawful Evil",
+    "advancement": "7-12 HD (Medium)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [
+      {
+        "effect_type": "gaze",
+        "range_ft": 30,
+        "save_type": "Fort",
+        "save_dc": 15,
+        "effect_on_fail": "Petrified (permanent unless stone to flesh cast)",
+        "effect_on_pass": null,
+        "suppress_conditions": []
+      }
+    ],
+    "population_base": 15,
+    "allowed_biomes": [
+      "Temperate_Forest",
+      "Warm_Desert",
+      "Any_Ruin"
+    ],
+    "primary_biome": "Temperate_Forest",
+    "ecology_notes": "The medusa is a fearsome creature with a woman's body and a head writhing with venomous snakes. Her gaze can permanently petrify any creature that meets her eyes, and her hair-snakes can inject a strength-sapping venom. Medusas often collect the stone statues of their victims as art. They wear veils in public and are cunning enough to negotiate when it suits them."
+  },
+  {
+    "name": "Naga, Dark",
+    "cr": 8,
+    "size": "Large",
+    "type": "Monstrous Humanoid",
+    "subtype": null,
+    "hit_dice": "9d8+18",
+    "hp_avg": 58,
+    "initiative": 5,
+    "speed": {
+      "land": 40
+    },
+    "armor_class": {
+      "total": 14,
+      "touch": 11,
+      "flat_footed": 13,
+      "components": "+1 Dex, -1 size, +4 natural"
+    },
+    "base_attack": 6,
+    "grapple": 12,
+    "attacks": [
+      {
+        "name": "Sting",
+        "attack_bonus": "+7",
+        "damage": "2d4+3",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+2",
+        "damage": "1d4+1",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Detect thoughts (DC 15 Will to resist)",
+      "Poison (DC 20 Fort, 2d6 Str primary, 2d6 Str secondary)",
+      "Spells (as 7th-level sorcerer)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Guarded thoughts (immune to detect thoughts and mind reading)",
+      "SR 19"
+    ],
+    "saves": {
+      "fort": 7,
+      "ref": 7,
+      "will": 8
+    },
+    "abilities": {
+      "str": 16,
+      "dex": 13,
+      "con": 14,
+      "int": 16,
+      "wis": 15,
+      "cha": 17
+    },
+    "skills": {
+      "Bluff": 12,
+      "Concentration": 11,
+      "Diplomacy": 5,
+      "Intimidate": 12,
+      "Listen": 11,
+      "Spellcraft": 12,
+      "Spot": 11
+    },
+    "feats": [
+      "Alertness",
+      "Combat Casting",
+      "Empower Spell",
+      "Improved Initiative",
+      "Lightning Reflexes"
+    ],
+    "alignment": "Usually Lawful Evil",
+    "advancement": "10-13 HD (Large); 14-27 HD (Huge)",
+    "dr": null,
+    "sr": 19,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 5,
+    "allowed_biomes": [
+      "Underground",
+      "Underdark"
+    ],
+    "primary_biome": "Underground",
+    "ecology_notes": "Dark nagas are sinister serpentine beings who dwell in underground lairs, accumulating power and wealth. They use their detect thoughts ability to read the minds of those who approach, making them nearly impossible to deceive. Dark nagas are scheming and manipulative, building networks of humanoid servants and alliances with other evil beings in the Underdark."
+  },
+  {
+    "name": "Naga, Guardian",
+    "cr": 10,
+    "size": "Large",
+    "type": "Monstrous Humanoid",
+    "subtype": null,
+    "hit_dice": "11d8+44",
+    "hp_avg": 93,
+    "initiative": 2,
+    "speed": {
+      "land": 40
+    },
+    "armor_class": {
+      "total": 18,
+      "touch": 11,
+      "flat_footed": 16,
+      "components": "+2 Dex, -1 size, +7 natural"
+    },
+    "base_attack": 8,
+    "grapple": 15,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+10",
+        "damage": "2d6+5",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Poison (DC 20 Fort, 2d6 Con primary, 2d6 Con secondary)",
+      "Spit venom (ranged touch attack, 30 ft., DC 20 Fort or blinded for 1d6 minutes)",
+      "Spells (as 11th-level cleric)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "SR 22"
+    ],
+    "saves": {
+      "fort": 11,
+      "ref": 9,
+      "will": 12
+    },
+    "abilities": {
+      "str": 21,
+      "dex": 14,
+      "con": 19,
+      "int": 16,
+      "wis": 19,
+      "cha": 18
+    },
+    "skills": {
+      "Concentration": 18,
+      "Diplomacy": 7,
+      "Listen": 16,
+      "Spellcraft": 16,
+      "Spot": 16,
+      "Survival": 4
+    },
+    "feats": [
+      "Alertness",
+      "Combat Casting",
+      "Dodge",
+      "Empower Spell",
+      "Lightning Reflexes"
+    ],
+    "alignment": "Always Lawful Good",
+    "advancement": "12-16 HD (Large); 17-33 HD (Huge)",
+    "dr": null,
+    "sr": 22,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 5,
+    "allowed_biomes": [
+      "Temperate_Forest",
+      "Warm_Forest",
+      "Temperate_Plain"
+    ],
+    "primary_biome": "Temperate_Forest",
+    "ecology_notes": "Guardian nagas are noble, lawful-good serpents who serve as protectors of sacred places, tombs, and temples. They possess powerful clerical spellcasting and are immune to many effects through their spell resistance. Guardian nagas are willing to negotiate with good-aligned visitors but are relentless in defending their charges against evil intruders."
+  },
+  {
+    "name": "Naga, Spirit",
+    "cr": 9,
+    "size": "Large",
+    "type": "Monstrous Humanoid",
+    "subtype": null,
+    "hit_dice": "9d8+18",
+    "hp_avg": 58,
+    "initiative": 5,
+    "speed": {
+      "land": 40
+    },
+    "armor_class": {
+      "total": 14,
+      "touch": 11,
+      "flat_footed": 13,
+      "components": "+1 Dex, -1 size, +4 natural"
+    },
+    "base_attack": 6,
+    "grapple": 12,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+7",
+        "damage": "2d6+3",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Charming gaze (DC 16 Will, charmed for 24 hours, as charm person)",
+      "Poison (DC 19 Fort, 1d8 Con primary, 1d8 Con secondary)",
+      "Spells (as 7th-level sorceress and 9th-level cleric)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "SR 18"
+    ],
+    "saves": {
+      "fort": 8,
+      "ref": 7,
+      "will": 9
+    },
+    "abilities": {
+      "str": 16,
+      "dex": 13,
+      "con": 14,
+      "int": 13,
+      "wis": 15,
+      "cha": 18
+    },
+    "skills": {
+      "Bluff": 16,
+      "Concentration": 14,
+      "Listen": 14,
+      "Spellcraft": 13,
+      "Spot": 14
+    },
+    "feats": [
+      "Alertness",
+      "Combat Casting",
+      "Empower Spell",
+      "Improved Initiative"
+    ],
+    "alignment": "Usually Chaotic Evil",
+    "advancement": "10-13 HD (Large); 14-27 HD (Huge)",
+    "dr": null,
+    "sr": 18,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [
+      {
+        "effect_type": "gaze",
+        "range_ft": 30,
+        "save_type": "Will",
+        "save_dc": 16,
+        "effect_on_fail": "Charmed for 24 hours (as charm person)",
+        "effect_on_pass": null,
+        "suppress_conditions": []
+      }
+    ],
+    "population_base": 8,
+    "allowed_biomes": [
+      "Temperate_Forest",
+      "Any_Ruin"
+    ],
+    "primary_biome": "Temperate_Forest",
+    "ecology_notes": "Spirit nagas are malevolent serpents that combine powerful spellcasting with a hypnotic gaze that can charm victims into willing servitude. They dwell in ruins and dark forests, gathering cults of charmed humanoids to serve them. Spirit nagas use their thralls to gather food, treasure, and information, ruling over them with casual cruelty."
+  },
+  {
+    "name": "Naga, Water",
+    "cr": 7,
+    "size": "Large",
+    "type": "Monstrous Humanoid",
+    "subtype": "Aquatic",
+    "hit_dice": "7d8+21",
+    "hp_avg": 52,
+    "initiative": 1,
+    "speed": {
+      "land": 30,
+      "swim": 50
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 10,
+      "flat_footed": 15,
+      "components": "+1 Dex, -1 size, +6 natural"
+    },
+    "base_attack": 5,
+    "grapple": 11,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+6",
+        "damage": "2d6+4",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Poison (DC 16 Fort, 1d8 Con primary, 1d8 Con secondary)",
+      "Spells (as 7th-level sorcerer)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "SR 17"
+    ],
+    "saves": {
+      "fort": 7,
+      "ref": 6,
+      "will": 7
+    },
+    "abilities": {
+      "str": 17,
+      "dex": 13,
+      "con": 16,
+      "int": 13,
+      "wis": 15,
+      "cha": 18
+    },
+    "skills": {
+      "Concentration": 13,
+      "Diplomacy": 6,
+      "Listen": 14,
+      "Spellcraft": 11,
+      "Spot": 14,
+      "Swim": 11
+    },
+    "feats": [
+      "Alertness",
+      "Combat Casting",
+      "Lightning Reflexes",
+      "Spell Penetration"
+    ],
+    "alignment": "Usually Neutral Evil",
+    "advancement": "8-10 HD (Large); 11-21 HD (Huge)",
+    "dr": null,
+    "sr": 17,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 10,
+    "allowed_biomes": [
+      "Temperate_Aquatic",
+      "Warm_Aquatic",
+      "Temperate_Swamp"
+    ],
+    "primary_biome": "Temperate_Aquatic",
+    "ecology_notes": "Water nagas are aquatic serpents that dwell in deep lakes, slow rivers, and flooded ruins. They are capricious and self-serving, using their sorcerous magic and venomous bite to control their aquatic territories. Water nagas sometimes make deals with sailors or fishermen, demanding tribute in exchange for safe passage across their waters."
+  },
+  {
+    "name": "Sea Hag",
+    "cr": 4,
+    "size": "Medium",
+    "type": "Monstrous Humanoid",
+    "subtype": "Aquatic",
+    "hit_dice": "3d8+6",
+    "hp_avg": 19,
+    "initiative": 1,
+    "speed": {
+      "land": 30,
+      "swim": 40
+    },
+    "armor_class": {
+      "total": 14,
+      "touch": 11,
+      "flat_footed": 13,
+      "components": "+1 Dex, +3 natural"
+    },
+    "base_attack": 2,
+    "grapple": 3,
+    "attacks": [
+      {
+        "name": "Claw",
+        "attack_bonus": "+3",
+        "damage": "1d4+1",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+3",
+        "damage": "1d4+1",
+        "damage_type": "Slashing"
+      }
+    ],
+    "special_attacks": [
+      "Evil eye (DC 14 Will, weakened: -2 penalty to all rolls and checks for 24 hours)",
+      "Horrific appearance (DC 12 Will, stunned 1 round on first viewing, shaken for 10 rounds thereafter)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "SR 14"
+    ],
+    "saves": {
+      "fort": 5,
+      "ref": 4,
+      "will": 3
+    },
+    "abilities": {
+      "str": 13,
+      "dex": 12,
+      "con": 14,
+      "int": 10,
+      "wis": 10,
+      "cha": 14
+    },
+    "skills": {
+      "Craft (any)": 6,
+      "Intimidate": 8,
+      "Spot": 6,
+      "Swim": 9
+    },
+    "feats": [
+      "Alertness",
+      "Great Fortitude"
+    ],
+    "alignment": "Always Chaotic Evil",
+    "advancement": "4-6 HD (Medium); 7-9 HD (Large)",
+    "dr": null,
+    "sr": 14,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 5,
+    "allowed_biomes": [
+      "Cold_Aquatic",
+      "Temperate_Aquatic"
+    ],
+    "primary_biome": "Cold_Aquatic",
+    "ecology_notes": "Sea hags are hideous aquatic hags that dwell in sunken ruins, sea caves, and cold coastal waters. Their appearance alone can stun the unprepared, and their evil eye weakens those who lock gazes with them. Sea hags sometimes form covens with other hags, and they prey on sailors and coastal villagers, drowning victims and keeping their possessions in underwater lairs."
+  }
+]
