@@ -156,7 +156,7 @@
     "hp_avg": 13,
     "initiative": 2,
     "speed": {"land": 5, "fly": 40},
-    "armor_class": {"total": 16, "touch": 20, "flat_footed": 12, "components": "+4 Dex, +4 size (Diminutive); swarm immune to weapon damage"},
+    "armor_class": {"total": 16, "touch": 20, "flat_footed": 12, "components": "+2 Dex, +4 size (Diminutive), +4 dodge (swarm)"},
     "base_attack": 2,
     "grapple": -11,
     "attacks": [
@@ -448,7 +448,7 @@
     "hp_avg": 19,
     "initiative": 3,
     "speed": {"land": 50},
-    "armor_class": {"total": 13, "touch": 9, "flat_footed": 13, "components": "+3 Dex, +1 natural, -1 size"},
+    "armor_class": {"total": 13, "touch": 9, "flat_footed": 13, "components": "+4 natural, -1 size"},
     "base_attack": 2,
     "grapple": 10,
     "attacks": [
@@ -559,7 +559,7 @@
     "hp_avg": 22,
     "initiative": 1,
     "speed": {"land": 20, "swim": 30},
-    "armor_class": {"total": 15, "touch": 9, "flat_footed": 15, "components": "+1 Dex, +4 natural, -1 Dex to touch"},
+    "armor_class": {"total": 15, "touch": 9, "flat_footed": 15, "components": "+6 natural, -1 Dex"},
     "base_attack": 2,
     "grapple": 10,
     "attacks": [
@@ -962,7 +962,7 @@
     "hp_avg": 19,
     "initiative": 2,
     "speed": {"land": 60},
-    "armor_class": {"total": 13, "touch": 10, "flat_footed": 13, "components": "+2 Dex, +2 natural, -1 size"},
+    "armor_class": {"total": 13, "touch": 10, "flat_footed": 12, "components": "+1 Dex, +3 natural, -1 size"},
     "base_attack": 2,
     "grapple": 7,
     "attacks": [
