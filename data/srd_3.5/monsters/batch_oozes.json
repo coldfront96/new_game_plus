@@ -1,0 +1,294 @@
+[
+  {
+    "name": "Black Pudding",
+    "cr": 7,
+    "size": "Huge",
+    "type": "Ooze",
+    "subtype": null,
+    "hit_dice": "10d10+60",
+    "hp_avg": 115,
+    "initiative": -5,
+    "speed": {
+      "land": 20,
+      "climb": 20
+    },
+    "armor_class": {
+      "total": 3,
+      "touch": 3,
+      "flat_footed": 3,
+      "components": "-5 Dex, -2 size"
+    },
+    "base_attack": 7,
+    "grapple": 13,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+8",
+        "damage": "2d6+4 plus 2d6 acid",
+        "damage_type": "Bludgeoning + Acid"
+      }
+    ],
+    "special_attacks": [
+      "Acid",
+      "Constrict 2d6+4 plus 2d6 acid",
+      "Improved Grab"
+    ],
+    "special_qualities": [
+      "Blindsight 60 ft.",
+      "Immunity to Cold",
+      "Immunity to Electricity",
+      "Ooze Traits",
+      "Split"
+    ],
+    "saves": {
+      "fort": 9,
+      "ref": -2,
+      "will": -2
+    },
+    "abilities": {
+      "str": 17,
+      "dex": 1,
+      "con": 22,
+      "int": null,
+      "wis": 1,
+      "cha": 1
+    },
+    "skills": {
+      "Climb": 11
+    },
+    "feats": [],
+    "alignment": "Always Neutral",
+    "advancement": "11-15 HD (Huge); 16-30 HD (Gargantuan)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 40,
+    "allowed_biomes": [
+      "Underground",
+      "Any_Ruin"
+    ],
+    "primary_biome": "Underground",
+    "ecology_notes": "Black puddings dissolve organic and metal matter with their powerful acid. When struck by slashing or cold attacks they split into smaller puddings."
+  },
+  {
+    "name": "Gelatinous Cube",
+    "cr": 3,
+    "size": "Large",
+    "type": "Ooze",
+    "subtype": null,
+    "hit_dice": "4d10+32",
+    "hp_avg": 54,
+    "initiative": -5,
+    "speed": {
+      "land": 15
+    },
+    "armor_class": {
+      "total": 3,
+      "touch": 3,
+      "flat_footed": 3,
+      "components": "-5 Dex, -1 size"
+    },
+    "base_attack": 3,
+    "grapple": 7,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+2",
+        "damage": "1d6+1 plus 1d6 acid",
+        "damage_type": "Bludgeoning + Acid"
+      }
+    ],
+    "special_attacks": [
+      "Acid",
+      "Engulf (DC 13 Ref)",
+      "Paralysis (DC 20 Fort, 3d6 rounds)"
+    ],
+    "special_qualities": [
+      "Blindsight 60 ft.",
+      "Immunity to Electricity",
+      "Ooze Traits",
+      "Transparent"
+    ],
+    "saves": {
+      "fort": 9,
+      "ref": -4,
+      "will": -4
+    },
+    "abilities": {
+      "str": 12,
+      "dex": 1,
+      "con": 26,
+      "int": null,
+      "wis": 1,
+      "cha": 1
+    },
+    "skills": {},
+    "feats": [],
+    "alignment": "Always Neutral",
+    "advancement": "5-12 HD (Huge)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 80,
+    "allowed_biomes": [
+      "Underground"
+    ],
+    "primary_biome": "Underground",
+    "ecology_notes": "Gelatinous cubes are nearly transparent, gliding through dungeon corridors sweeping up organic matter. Their near-invisibility makes them a notorious dungeon hazard."
+  },
+  {
+    "name": "Gray Ooze",
+    "cr": 4,
+    "size": "Medium",
+    "type": "Ooze",
+    "subtype": null,
+    "hit_dice": "3d10+15",
+    "hp_avg": 31,
+    "initiative": -5,
+    "speed": {
+      "land": 10
+    },
+    "armor_class": {
+      "total": 5,
+      "touch": 5,
+      "flat_footed": 5,
+      "components": "-5 Dex"
+    },
+    "base_attack": 2,
+    "grapple": 3,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+3",
+        "damage": "1d6+1 plus 1d6 acid",
+        "damage_type": "Bludgeoning + Acid"
+      }
+    ],
+    "special_attacks": [
+      "Acid",
+      "Constrict 1d6+1 plus 1d6 acid",
+      "Improved Grab"
+    ],
+    "special_qualities": [
+      "Blindsight 60 ft.",
+      "Immunity to Cold",
+      "Immunity to Fire",
+      "Ooze Traits",
+      "Transparent"
+    ],
+    "saves": {
+      "fort": 6,
+      "ref": -4,
+      "will": -4
+    },
+    "abilities": {
+      "str": 12,
+      "dex": 1,
+      "con": 21,
+      "int": null,
+      "wis": 1,
+      "cha": 1
+    },
+    "skills": {},
+    "feats": [],
+    "alignment": "Always Neutral",
+    "advancement": "4-9 HD (Large)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 100,
+    "allowed_biomes": [
+      "Underground",
+      "Cold_Swamp"
+    ],
+    "primary_biome": "Underground",
+    "ecology_notes": "Gray oozes blend seamlessly with wet stone, dissolving metal armor and weapons with their potent acid. They are immune to both cold and fire."
+  },
+  {
+    "name": "Ochre Jelly",
+    "cr": 5,
+    "size": "Large",
+    "type": "Ooze",
+    "subtype": null,
+    "hit_dice": "6d10+36",
+    "hp_avg": 69,
+    "initiative": -5,
+    "speed": {
+      "land": 10,
+      "climb": 10
+    },
+    "armor_class": {
+      "total": 4,
+      "touch": 4,
+      "flat_footed": 4,
+      "components": "-5 Dex, -1 size"
+    },
+    "base_attack": 4,
+    "grapple": 9,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+4",
+        "damage": "2d4+3 plus 1d4 acid",
+        "damage_type": "Bludgeoning + Acid"
+      }
+    ],
+    "special_attacks": [
+      "Acid",
+      "Constrict 2d4+3 plus 1d4 acid",
+      "Improved Grab"
+    ],
+    "special_qualities": [
+      "Blindsight 60 ft.",
+      "Immunity to Electricity",
+      "Immunity to Slashing",
+      "Ooze Traits"
+    ],
+    "saves": {
+      "fort": 6,
+      "ref": -4,
+      "will": -3
+    },
+    "abilities": {
+      "str": 15,
+      "dex": 1,
+      "con": 22,
+      "int": null,
+      "wis": 1,
+      "cha": 1
+    },
+    "skills": {
+      "Climb": 10
+    },
+    "feats": [],
+    "alignment": "Always Neutral",
+    "advancement": "7-16 HD (Huge)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 60,
+    "allowed_biomes": [
+      "Underground",
+      "Any_Ruin",
+      "Temperate_Swamp"
+    ],
+    "primary_biome": "Underground",
+    "ecology_notes": "Ochre jellies split when struck by lightning or blades, making them a persistent dungeon menace. Their acid dissolves flesh but not metal or stone."
+  }
+]

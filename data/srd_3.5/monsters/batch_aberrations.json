@@ -1,0 +1,1223 @@
+[
+  {
+    "name": "Carrion Crawler",
+    "cr": 4,
+    "size": "Large",
+    "type": "Aberration",
+    "subtype": null,
+    "hit_dice": "3d8+6",
+    "hp_avg": 20,
+    "initiative": 0,
+    "speed": {
+      "land": 30,
+      "climb": 15
+    },
+    "armor_class": {
+      "total": 17,
+      "touch": 9,
+      "flat_footed": 17,
+      "components": "+8 natural, -1 size"
+    },
+    "base_attack": 2,
+    "grapple": 9,
+    "attacks": [
+      {
+        "name": "Tentacle (x8)",
+        "attack_bonus": "+6",
+        "damage": "Paralysis (DC 13 Fort, 2d6 rounds)",
+        "damage_type": "Special"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+1",
+        "damage": "1d4+1",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Paralysis (DC 13 Fort, 2d6 rounds)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 3,
+      "ref": 1,
+      "will": 3
+    },
+    "abilities": {
+      "str": 17,
+      "dex": 10,
+      "con": 14,
+      "int": 1,
+      "wis": 13,
+      "cha": 6
+    },
+    "skills": {
+      "Listen": 5,
+      "Spot": 5
+    },
+    "feats": [
+      "Alertness",
+      "Weapon Focus (tentacle)"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "4-7 HD (Large); 8-9 HD (Huge)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 120,
+    "allowed_biomes": [
+      "Underground",
+      "Underdark"
+    ],
+    "primary_biome": "Underground",
+    "ecology_notes": "Carrion crawlers haunt dungeon tunnels, drawn by the scent of carrion and living prey. Their paralyzing tentacles allow them to subdue prey far larger than themselves."
+  },
+  {
+    "name": "Chuul",
+    "cr": 7,
+    "size": "Large",
+    "type": "Aberration",
+    "subtype": "Aquatic",
+    "hit_dice": "11d8+44",
+    "hp_avg": 93,
+    "initiative": 7,
+    "speed": {
+      "land": 30,
+      "swim": 20
+    },
+    "armor_class": {
+      "total": 22,
+      "touch": 9,
+      "flat_footed": 22,
+      "components": "+13 natural, -1 size"
+    },
+    "base_attack": 8,
+    "grapple": 18,
+    "attacks": [
+      {
+        "name": "Claw",
+        "attack_bonus": "+13/+13",
+        "damage": "2d6+6",
+        "damage_type": "Slashing"
+      }
+    ],
+    "special_attacks": [
+      "Constrict 3d6+6",
+      "Improved Grab",
+      "Paralytic Tentacles (DC 19 Fort)"
+    ],
+    "special_qualities": [
+      "Amphibious",
+      "Darkvision 60 ft.",
+      "Immunity to Poison"
+    ],
+    "saves": {
+      "fort": 11,
+      "ref": 6,
+      "will": 6
+    },
+    "abilities": {
+      "str": 20,
+      "dex": 10,
+      "con": 19,
+      "int": 10,
+      "wis": 14,
+      "cha": 5
+    },
+    "skills": {
+      "Hide": 2,
+      "Listen": 12,
+      "Spot": 12,
+      "Swim": 14
+    },
+    "feats": [
+      "Combat Reflexes",
+      "Improved Initiative",
+      "Iron Will",
+      "Weapon Focus (claw)"
+    ],
+    "alignment": "Usually Chaotic Evil",
+    "advancement": "12-22 HD (Large); 23-33 HD (Huge)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 50,
+    "allowed_biomes": [
+      "Temperate_Aquatic",
+      "Warm_Aquatic",
+      "Underground"
+    ],
+    "primary_biome": "Temperate_Aquatic",
+    "ecology_notes": "Chuuls are cunning predators that haunt coastal waters and flooded dungeons. They are immune to poison and use their paralytic tentacles to subdue prey before consuming it."
+  },
+  {
+    "name": "Cloaker",
+    "cr": 5,
+    "size": "Large",
+    "type": "Aberration",
+    "subtype": null,
+    "hit_dice": "6d8+18",
+    "hp_avg": 45,
+    "initiative": 1,
+    "speed": {
+      "land": 10,
+      "fly": 40
+    },
+    "armor_class": {
+      "total": 19,
+      "touch": 10,
+      "flat_footed": 18,
+      "components": "+1 Dex, +9 natural, -1 size"
+    },
+    "base_attack": 4,
+    "grapple": 12,
+    "attacks": [
+      {
+        "name": "Tail Slap",
+        "attack_bonus": "+8",
+        "damage": "1d6+4",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Engulf",
+      "Moan (DC 14 Will, various effects)",
+      "Tail Slap"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Shadow Shift"
+    ],
+    "saves": {
+      "fort": 5,
+      "ref": 3,
+      "will": 7
+    },
+    "abilities": {
+      "str": 19,
+      "dex": 12,
+      "con": 17,
+      "int": 14,
+      "wis": 15,
+      "cha": 15
+    },
+    "skills": {
+      "Hide": 10,
+      "Listen": 11,
+      "Move Silently": 12,
+      "Spot": 11
+    },
+    "feats": [
+      "Alertness",
+      "Combat Reflexes",
+      "Dodge"
+    ],
+    "alignment": "Usually Chaotic Evil",
+    "advancement": "7-9 HD (Large); 10-18 HD (Huge)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [
+      {
+        "effect_type": "moan",
+        "range_ft": 60,
+        "save_type": "Will",
+        "save_dc": 14,
+        "effect_on_fail": "Unease (-2 to attacks and damage), or Fear (flee), or Nausea (sickened), or Stupor (paralysis for 1d4+1 rounds)",
+        "effect_on_pass": null,
+        "suppress_conditions": [
+          "Deafened"
+        ]
+      }
+    ],
+    "population_base": 30,
+    "allowed_biomes": [
+      "Underground",
+      "Underdark"
+    ],
+    "primary_biome": "Underground",
+    "ecology_notes": "Cloakers disguise themselves as darkened ceiling folds, swooping onto prey. Their haunting moan disorients multiple foes simultaneously."
+  },
+  {
+    "name": "Delver",
+    "cr": 9,
+    "size": "Huge",
+    "type": "Aberration",
+    "subtype": null,
+    "hit_dice": "15d8+75",
+    "hp_avg": 142,
+    "initiative": 0,
+    "speed": {
+      "land": 30,
+      "burrow": 10
+    },
+    "armor_class": {
+      "total": 25,
+      "touch": 9,
+      "flat_footed": 25,
+      "components": "+16 natural, -2 size"
+    },
+    "base_attack": 11,
+    "grapple": 25,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+15/+15",
+        "damage": "2d8+6 plus 2d6 acid",
+        "damage_type": "Bludgeoning + Acid"
+      }
+    ],
+    "special_attacks": [
+      "Corrosive Slime (DC 24 Fort, 2d6 acid/round for 10 rounds)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Stone Glide",
+      "Tremorsense 60 ft."
+    ],
+    "saves": {
+      "fort": 10,
+      "ref": 5,
+      "will": 11
+    },
+    "abilities": {
+      "str": 23,
+      "dex": 11,
+      "con": 21,
+      "int": 14,
+      "wis": 14,
+      "cha": 13
+    },
+    "skills": {
+      "Climb": 16,
+      "Knowledge (dungeoneering)": 13,
+      "Listen": 15,
+      "Spot": 15,
+      "Survival": 13
+    },
+    "feats": [
+      "Alertness",
+      "Awesome Blow",
+      "Combat Reflexes",
+      "Improved Bull Rush",
+      "Power Attack"
+    ],
+    "alignment": "Usually Neutral",
+    "advancement": "16-24 HD (Huge); 25-45 HD (Gargantuan)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 10,
+    "allowed_biomes": [
+      "Underground"
+    ],
+    "primary_biome": "Underground",
+    "ecology_notes": "Delvers glide through solid rock using their acidic slime. They are solitary predators that carve their own tunnel networks deep underground."
+  },
+  {
+    "name": "Destrachan",
+    "cr": 8,
+    "size": "Large",
+    "type": "Aberration",
+    "subtype": null,
+    "hit_dice": "8d8+24",
+    "hp_avg": 60,
+    "initiative": -1,
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 18,
+      "touch": 8,
+      "flat_footed": 18,
+      "components": "+10 natural, -1 Dex, -1 size"
+    },
+    "base_attack": 6,
+    "grapple": 15,
+    "attacks": [
+      {
+        "name": "Claw",
+        "attack_bonus": "+10/+10",
+        "damage": "1d6+5",
+        "damage_type": "Slashing"
+      }
+    ],
+    "special_attacks": [
+      "Destructive Harmonics (DC 18 Fort, choose matter/flesh/hard matter)"
+    ],
+    "special_qualities": [
+      "Blind",
+      "Blindsight 100 ft.",
+      "Immunity to Sonic"
+    ],
+    "saves": {
+      "fort": 5,
+      "ref": 1,
+      "will": 9
+    },
+    "abilities": {
+      "str": 20,
+      "dex": 9,
+      "con": 17,
+      "int": 12,
+      "wis": 16,
+      "cha": 12
+    },
+    "skills": {
+      "Listen": 16,
+      "Move Silently": 8,
+      "Survival": 8
+    },
+    "feats": [
+      "Alertness",
+      "Dodge",
+      "Lightning Reflexes"
+    ],
+    "alignment": "Usually Chaotic Evil",
+    "advancement": "9-16 HD (Large); 17-24 HD (Huge)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 20,
+    "allowed_biomes": [
+      "Underground"
+    ],
+    "primary_biome": "Underground",
+    "ecology_notes": "Destrachans are blind but rely on exquisitely sensitive hearing. Their devastating harmonics can selectively destroy organic material, metal, or stone."
+  },
+  {
+    "name": "Digester",
+    "cr": 6,
+    "size": "Medium",
+    "type": "Aberration",
+    "subtype": null,
+    "hit_dice": "8d8+24",
+    "hp_avg": 60,
+    "initiative": 3,
+    "speed": {
+      "land": 60
+    },
+    "armor_class": {
+      "total": 17,
+      "touch": 12,
+      "flat_footed": 14,
+      "components": "+3 Dex, +4 natural"
+    },
+    "base_attack": 6,
+    "grapple": 8,
+    "attacks": [
+      {
+        "name": "Claw",
+        "attack_bonus": "+8",
+        "damage": "1d8+3",
+        "damage_type": "Slashing"
+      }
+    ],
+    "special_attacks": [
+      "Acid Jet (20 ft. line, DC 18 Ref, 4d8 acid; recharge 1d4 rounds)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Immunity to Acid",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 5,
+      "ref": 7,
+      "will": 5
+    },
+    "abilities": {
+      "str": 17,
+      "dex": 17,
+      "con": 17,
+      "int": 2,
+      "wis": 12,
+      "cha": 10
+    },
+    "skills": {
+      "Hide": 9,
+      "Listen": 5,
+      "Spot": 5
+    },
+    "feats": [
+      "Alertness",
+      "Run",
+      "Weapon Focus (claw)"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "9-12 HD (Medium); 13-24 HD (Large)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 50,
+    "allowed_biomes": [
+      "Warm_Forest",
+      "Warm_Plain"
+    ],
+    "primary_biome": "Warm_Forest",
+    "ecology_notes": "Digesters are fast bipedal predators that spray acid to dissolve prey before consuming them. Their own bodies are immune to acid."
+  },
+  {
+    "name": "Ethereal Filcher",
+    "cr": 3,
+    "size": "Medium",
+    "type": "Aberration",
+    "subtype": null,
+    "hit_dice": "5d8",
+    "hp_avg": 22,
+    "initiative": 8,
+    "speed": {
+      "land": 40
+    },
+    "armor_class": {
+      "total": 17,
+      "touch": 14,
+      "flat_footed": 14,
+      "components": "+3 Dex, +4 natural"
+    },
+    "base_attack": 3,
+    "grapple": 3,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+7",
+        "damage": "1d4",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Detect Magic",
+      "Ethereal Jaunt"
+    ],
+    "saves": {
+      "fort": 1,
+      "ref": 7,
+      "will": 5
+    },
+    "abilities": {
+      "str": 10,
+      "dex": 17,
+      "con": 11,
+      "int": 7,
+      "wis": 16,
+      "cha": 10
+    },
+    "skills": {
+      "Listen": 11,
+      "Spot": 11
+    },
+    "feats": [
+      "Improved Initiative",
+      "Lightning Reflexes"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "6-10 HD (Medium)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 30,
+    "allowed_biomes": [
+      "Any_Urban",
+      "Underground",
+      "Ethereal"
+    ],
+    "primary_biome": "Any_Urban",
+    "ecology_notes": "Ethereal filchers slip between the Material and Ethereal Planes to steal shiny objects and trinkets, retreating to the Ethereal Plane to examine their prizes."
+  },
+  {
+    "name": "Gibbering Mouther",
+    "cr": 5,
+    "size": "Medium",
+    "type": "Aberration",
+    "subtype": null,
+    "hit_dice": "4d8+32",
+    "hp_avg": 50,
+    "initiative": 1,
+    "speed": {
+      "land": 10,
+      "swim": 20
+    },
+    "armor_class": {
+      "total": 19,
+      "touch": 11,
+      "flat_footed": 18,
+      "components": "+1 Dex, +8 natural"
+    },
+    "base_attack": 3,
+    "grapple": 5,
+    "attacks": [
+      {
+        "name": "Bite (x6)",
+        "attack_bonus": "+3",
+        "damage": "1d4 plus spittle",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Gibbering (DC 13 Will, 60 ft.)",
+      "Ground Manipulation",
+      "Improved Grab",
+      "Spittle (DC 18 Fort, blindness)",
+      "Swallow Whole"
+    ],
+    "special_qualities": [
+      "Amorphous",
+      "Darkvision 60 ft."
+    ],
+    "saves": {
+      "fort": 11,
+      "ref": 2,
+      "will": 2
+    },
+    "abilities": {
+      "str": 14,
+      "dex": 13,
+      "con": 26,
+      "int": 4,
+      "wis": 8,
+      "cha": 13
+    },
+    "skills": {
+      "Listen": 6,
+      "Spot": 6
+    },
+    "feats": [
+      "Toughness",
+      "Weapon Finesse"
+    ],
+    "alignment": "Always Chaotic Neutral",
+    "advancement": "5-12 HD (Medium)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [
+      {
+        "effect_type": "gibbering",
+        "range_ft": 60,
+        "save_type": "Will",
+        "save_dc": 13,
+        "effect_on_fail": "Babbling incoherently \u2014 cannot cast spells, activate magic items, or take actions that require concentration for 1 round",
+        "effect_on_pass": null,
+        "suppress_conditions": [
+          "Deafened"
+        ]
+      }
+    ],
+    "population_base": 20,
+    "allowed_biomes": [
+      "Underground",
+      "Any_Ruin"
+    ],
+    "primary_biome": "Underground",
+    "ecology_notes": "Gibbering mouthers are masses of mouths, eyes, and pseudopods that gibber incessantly, driving nearby creatures to madness."
+  },
+  {
+    "name": "Grick",
+    "cr": 3,
+    "size": "Medium",
+    "type": "Aberration",
+    "subtype": null,
+    "hit_dice": "2d8+2",
+    "hp_avg": 11,
+    "initiative": 2,
+    "speed": {
+      "land": 30,
+      "climb": 20
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 12,
+      "flat_footed": 14,
+      "components": "+2 Dex, +4 natural"
+    },
+    "base_attack": 1,
+    "grapple": 3,
+    "attacks": [
+      {
+        "name": "Tentacle (x4)",
+        "attack_bonus": "+3",
+        "damage": "1d4+2",
+        "damage_type": "Slashing"
+      }
+    ],
+    "special_attacks": [],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "DR 10/Magic",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 1,
+      "ref": 2,
+      "will": 3
+    },
+    "abilities": {
+      "str": 14,
+      "dex": 14,
+      "con": 13,
+      "int": 3,
+      "wis": 14,
+      "cha": 5
+    },
+    "skills": {
+      "Climb": 10,
+      "Hide": 7,
+      "Listen": 3,
+      "Spot": 3
+    },
+    "feats": [
+      "Multiattack"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "3-4 HD (Medium); 5-6 HD (Large)",
+    "dr": "10/Magic",
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 80,
+    "allowed_biomes": [
+      "Underground",
+      "Underdark"
+    ],
+    "primary_biome": "Underground",
+    "ecology_notes": "Gricks are worm-like ambush predators that lurk in crevices, their natural DR making them difficult to harm with non-magical weapons."
+  },
+  {
+    "name": "Mimic",
+    "cr": 4,
+    "size": "Medium",
+    "type": "Aberration",
+    "subtype": null,
+    "hit_dice": "7d8+21",
+    "hp_avg": 52,
+    "initiative": 1,
+    "speed": {
+      "land": 10
+    },
+    "armor_class": {
+      "total": 15,
+      "touch": 11,
+      "flat_footed": 14,
+      "components": "+1 Dex, +4 natural"
+    },
+    "base_attack": 5,
+    "grapple": 9,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+9",
+        "damage": "1d8+4",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Adhesive",
+      "Constrict 1d8+4",
+      "Crush"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Immunity to Acid",
+      "Mimicry"
+    ],
+    "saves": {
+      "fort": 5,
+      "ref": 3,
+      "will": 6
+    },
+    "abilities": {
+      "str": 19,
+      "dex": 12,
+      "con": 17,
+      "int": 10,
+      "wis": 13,
+      "cha": 10
+    },
+    "skills": {
+      "Bluff": 13,
+      "Climb": 9,
+      "Disguise": 13,
+      "Listen": 9,
+      "Spot": 9
+    },
+    "feats": [
+      "Alertness",
+      "Lightning Reflexes",
+      "Weapon Focus (slam)"
+    ],
+    "alignment": "Usually Neutral",
+    "advancement": "8-10 HD (Large); 11-21 HD (Huge)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 40,
+    "allowed_biomes": [
+      "Underground",
+      "Any_Ruin"
+    ],
+    "primary_biome": "Underground",
+    "ecology_notes": "Mimics are shapechanging predators that imitate dungeon furniture \u2014 chests, doors, walls \u2014 waiting motionlessly for creatures to investigate before striking."
+  },
+  {
+    "name": "Otyugh",
+    "cr": 4,
+    "size": "Large",
+    "type": "Aberration",
+    "subtype": null,
+    "hit_dice": "6d8+9",
+    "hp_avg": 36,
+    "initiative": 0,
+    "speed": {
+      "land": 20
+    },
+    "armor_class": {
+      "total": 17,
+      "touch": 10,
+      "flat_footed": 16,
+      "components": "+1 Dex, -1 size, +7 natural"
+    },
+    "base_attack": 4,
+    "grapple": 11,
+    "attacks": [
+      {
+        "name": "Tentacle",
+        "attack_bonus": "+6/+6",
+        "damage": "1d6+4 plus disease",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+4",
+        "damage": "1d4+2",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Constrict 1d6+4",
+      "Disease (filth fever, DC 14 Fort)",
+      "Improved Grab"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 4,
+      "ref": 2,
+      "will": 6
+    },
+    "abilities": {
+      "str": 16,
+      "dex": 10,
+      "con": 13,
+      "int": 5,
+      "wis": 16,
+      "cha": 6
+    },
+    "skills": {
+      "Hide": 1,
+      "Listen": 8,
+      "Spot": 8,
+      "Survival": 3
+    },
+    "feats": [
+      "Alertness",
+      "Endurance",
+      "Weapon Focus (tentacle)"
+    ],
+    "alignment": "Usually Neutral",
+    "advancement": "7-12 HD (Large); 13-18 HD (Huge)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 80,
+    "allowed_biomes": [
+      "Underground",
+      "Any_Urban"
+    ],
+    "primary_biome": "Underground",
+    "ecology_notes": "Otyughs wallow in heaps of offal, filth, and refuse. They are found in dungeons, sewers, and cesspits, playing a grim ecological role as waste disposal."
+  },
+  {
+    "name": "Roper",
+    "cr": 12,
+    "size": "Large",
+    "type": "Aberration",
+    "subtype": null,
+    "hit_dice": "10d8+60",
+    "hp_avg": 105,
+    "initiative": 5,
+    "speed": {
+      "land": 10
+    },
+    "armor_class": {
+      "total": 24,
+      "touch": 9,
+      "flat_footed": 24,
+      "components": "+15 natural, +1 Dex, -1 size"
+    },
+    "base_attack": 7,
+    "grapple": 17,
+    "attacks": [
+      {
+        "name": "Strand (x6)",
+        "attack_bonus": "+12",
+        "damage": "Weakness (DC 18 Fort, 2d6 STR damage)",
+        "damage_type": "Special"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+8",
+        "damage": "2d6+6",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Pull (strands, 10 ft.)",
+      "Strands (DC 18 Fort, 2d6 STR weakness)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Immunity to Cold",
+      "Immunity to Electricity",
+      "Resistance to Fire 10",
+      "SR 30",
+      "Vulnerability to Fire"
+    ],
+    "saves": {
+      "fort": 13,
+      "ref": 4,
+      "will": 10
+    },
+    "abilities": {
+      "str": 19,
+      "dex": 13,
+      "con": 23,
+      "int": 12,
+      "wis": 16,
+      "cha": 12
+    },
+    "skills": {
+      "Climb": 13,
+      "Hide": 15,
+      "Listen": 14,
+      "Spot": 14
+    },
+    "feats": [
+      "Alertness",
+      "Improved Initiative",
+      "Iron Will",
+      "Weapon Focus (strand)"
+    ],
+    "alignment": "Usually Chaotic Evil",
+    "advancement": "11-20 HD (Large); 21-30 HD (Huge)",
+    "dr": null,
+    "sr": 30,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [
+      "Fire"
+    ],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 15,
+    "allowed_biomes": [
+      "Underground",
+      "Underdark"
+    ],
+    "primary_biome": "Underdark",
+    "ecology_notes": "Ropers disguise themselves as stalagmites or dungeon columns. They extend sticky strands to drain Strength from prey before biting. They have high spell resistance."
+  },
+  {
+    "name": "Skum",
+    "cr": 2,
+    "size": "Medium",
+    "type": "Aberration",
+    "subtype": "Aquatic",
+    "hit_dice": "2d8+2",
+    "hp_avg": 11,
+    "initiative": 0,
+    "speed": {
+      "land": 20,
+      "swim": 40
+    },
+    "armor_class": {
+      "total": 13,
+      "touch": 10,
+      "flat_footed": 13,
+      "components": "+3 natural"
+    },
+    "base_attack": 1,
+    "grapple": 3,
+    "attacks": [
+      {
+        "name": "Claw",
+        "attack_bonus": "+3/+3",
+        "damage": "1d4+2",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+1",
+        "damage": "2d6+1",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Rake 1d6+1"
+    ],
+    "special_qualities": [
+      "Amphibious",
+      "Darkvision 60 ft."
+    ],
+    "saves": {
+      "fort": 1,
+      "ref": 0,
+      "will": 3
+    },
+    "abilities": {
+      "str": 14,
+      "dex": 10,
+      "con": 12,
+      "int": 10,
+      "wis": 11,
+      "cha": 6
+    },
+    "skills": {
+      "Balance": 4,
+      "Listen": 6,
+      "Spot": 6,
+      "Swim": 10
+    },
+    "feats": [
+      "Multiattack"
+    ],
+    "alignment": "Always Lawful Evil",
+    "advancement": "3-4 HD (Medium)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 150,
+    "allowed_biomes": [
+      "Aquatic",
+      "Cold_Aquatic",
+      "Temperate_Aquatic"
+    ],
+    "primary_biome": "Temperate_Aquatic",
+    "ecology_notes": "Skum are the debased servants of aboleths, transformed from humanoid stock. They patrol the flooded caves and coasts where their aboleth masters hold dominion."
+  },
+  {
+    "name": "Umber Hulk",
+    "cr": 7,
+    "size": "Large",
+    "type": "Aberration",
+    "subtype": null,
+    "hit_dice": "8d8+35",
+    "hp_avg": 71,
+    "initiative": 1,
+    "speed": {
+      "land": 20,
+      "burrow": 20
+    },
+    "armor_class": {
+      "total": 18,
+      "touch": 9,
+      "flat_footed": 17,
+      "components": "+1 Dex, +8 natural, -1 size"
+    },
+    "base_attack": 6,
+    "grapple": 16,
+    "attacks": [
+      {
+        "name": "Claw",
+        "attack_bonus": "+11/+11",
+        "damage": "2d4+6",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+9",
+        "damage": "2d8+3",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Confusing Gaze (DC 15 Will, confused 1 round)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Tremorsense 60 ft."
+    ],
+    "saves": {
+      "fort": 10,
+      "ref": 2,
+      "will": 5
+    },
+    "abilities": {
+      "str": 23,
+      "dex": 13,
+      "con": 21,
+      "int": 9,
+      "wis": 11,
+      "cha": 13
+    },
+    "skills": {
+      "Climb": 13,
+      "Listen": 9,
+      "Spot": 9
+    },
+    "feats": [
+      "Great Fortitude",
+      "Toughness",
+      "Weapon Focus (claw)"
+    ],
+    "alignment": "Usually Chaotic Evil",
+    "advancement": "9-16 HD (Large); 17-24 HD (Huge)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 50,
+    "allowed_biomes": [
+      "Underground"
+    ],
+    "primary_biome": "Underground",
+    "ecology_notes": "Umber hulks tunnel through rock with their powerful claws. Their disorienting multi-faceted gaze confuses opponents, allowing them to attack with impunity."
+  },
+  {
+    "name": "Will-o'-Wisp",
+    "cr": 6,
+    "size": "Small",
+    "type": "Aberration",
+    "subtype": null,
+    "hit_dice": "9d8",
+    "hp_avg": 40,
+    "initiative": 13,
+    "speed": {
+      "fly": 50
+    },
+    "armor_class": {
+      "total": 29,
+      "touch": 29,
+      "flat_footed": 27,
+      "components": "+9 Dex, +9 deflection, +1 size"
+    },
+    "base_attack": 6,
+    "grapple": -3,
+    "attacks": [
+      {
+        "name": "Shock",
+        "attack_bonus": "+11",
+        "damage": "2d8",
+        "damage_type": "Electricity"
+      }
+    ],
+    "special_attacks": [
+      "Shock (electricity, 2d8)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "DR 10/Magic",
+      "Immunity to Magic (most spells)",
+      "Natural Invisibility"
+    ],
+    "saves": {
+      "fort": 3,
+      "ref": 12,
+      "will": 9
+    },
+    "abilities": {
+      "str": null,
+      "dex": 29,
+      "con": null,
+      "int": 15,
+      "wis": 16,
+      "cha": 12
+    },
+    "skills": {
+      "Bluff": 13,
+      "Diplomacy": 3,
+      "Intimidate": 3,
+      "Listen": 17,
+      "Search": 14,
+      "Spot": 17
+    },
+    "feats": [
+      "Alertness",
+      "Blind-Fight",
+      "Dodge",
+      "Improved Initiative",
+      "Weapon Finesse"
+    ],
+    "alignment": "Usually Chaotic Evil",
+    "advancement": "10-18 HD (Small)",
+    "dr": "10/Magic",
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 30,
+    "allowed_biomes": [
+      "Temperate_Swamp",
+      "Warm_Swamp",
+      "Temperate_Forest"
+    ],
+    "primary_biome": "Temperate_Swamp",
+    "ecology_notes": "Will-o'-wisps haunt swamps and marshes, luring travelers to their deaths. They feed on the fear and despair of dying creatures."
+  }
+]
