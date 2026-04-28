@@ -1,0 +1,962 @@
+[
+  {
+    "name": "Animated Object, Tiny",
+    "cr": 1,
+    "size": "Tiny",
+    "type": "Construct",
+    "subtype": null,
+    "hit_dice": "1d10",
+    "hp_avg": 5,
+    "initiative": 2,
+    "speed": {
+      "land": 40
+    },
+    "armor_class": {
+      "total": 14,
+      "touch": 14,
+      "flat_footed": 12,
+      "components": "+2 Dex, +2 size"
+    },
+    "base_attack": 0,
+    "grapple": -8,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+2",
+        "damage": "1d3",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Low-Light Vision",
+      "Construct Traits",
+      "Hardness 5"
+    ],
+    "saves": {
+      "fort": 0,
+      "ref": 2,
+      "will": -5
+    },
+    "abilities": {
+      "str": 6,
+      "dex": 14,
+      "con": null,
+      "int": null,
+      "wis": 1,
+      "cha": 1
+    },
+    "skills": {},
+    "feats": [],
+    "alignment": "Always Neutral",
+    "advancement": "None (created by magic, varies by size)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 0,
+    "allowed_biomes": [
+      "Any_Ruin"
+    ],
+    "primary_biome": "Any_Ruin",
+    "ecology_notes": "Tiny animated objects serve as minor guardians or servants, brought to life by Animate Objects. Their small size and hardness make them difficult to destroy outright."
+  },
+  {
+    "name": "Animated Object, Small",
+    "cr": 2,
+    "size": "Small",
+    "type": "Construct",
+    "subtype": null,
+    "hit_dice": "2d10",
+    "hp_avg": 11,
+    "initiative": 1,
+    "speed": {
+      "land": 40
+    },
+    "armor_class": {
+      "total": 14,
+      "touch": 12,
+      "flat_footed": 13,
+      "components": "+1 Dex, +1 size, +2 natural"
+    },
+    "base_attack": 1,
+    "grapple": -3,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+1",
+        "damage": "1d4+1",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Low-Light Vision",
+      "Construct Traits",
+      "Hardness 5"
+    ],
+    "saves": {
+      "fort": 0,
+      "ref": 1,
+      "will": -5
+    },
+    "abilities": {
+      "str": 12,
+      "dex": 12,
+      "con": null,
+      "int": null,
+      "wis": 1,
+      "cha": 1
+    },
+    "skills": {},
+    "feats": [],
+    "alignment": "Always Neutral",
+    "advancement": "None (created by magic, varies by size)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 0,
+    "allowed_biomes": [
+      "Any_Ruin"
+    ],
+    "primary_biome": "Any_Ruin",
+    "ecology_notes": "Small animated objects are common magical sentinels in ancient vaults and wizard towers, activated to defend against intruders."
+  },
+  {
+    "name": "Animated Object, Medium",
+    "cr": 3,
+    "size": "Medium",
+    "type": "Construct",
+    "subtype": null,
+    "hit_dice": "4d10",
+    "hp_avg": 22,
+    "initiative": 0,
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 14,
+      "touch": 10,
+      "flat_footed": 14,
+      "components": "+4 natural"
+    },
+    "base_attack": 3,
+    "grapple": 4,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+4",
+        "damage": "1d6+2",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Low-Light Vision",
+      "Construct Traits",
+      "Hardness 5"
+    ],
+    "saves": {
+      "fort": 1,
+      "ref": 1,
+      "will": -4
+    },
+    "abilities": {
+      "str": 14,
+      "dex": 10,
+      "con": null,
+      "int": null,
+      "wis": 1,
+      "cha": 1
+    },
+    "skills": {},
+    "feats": [],
+    "alignment": "Always Neutral",
+    "advancement": "None (created by magic, varies by size)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 0,
+    "allowed_biomes": [
+      "Any_Ruin"
+    ],
+    "primary_biome": "Any_Ruin",
+    "ecology_notes": "Medium animated objects are versatile guardian constructs, often taking the form of furniture, statues, or tools in ruin complexes."
+  },
+  {
+    "name": "Animated Object, Large",
+    "cr": 5,
+    "size": "Large",
+    "type": "Construct",
+    "subtype": null,
+    "hit_dice": "8d10",
+    "hp_avg": 44,
+    "initiative": -1,
+    "speed": {
+      "land": 20
+    },
+    "armor_class": {
+      "total": 13,
+      "touch": 8,
+      "flat_footed": 13,
+      "components": "+5 natural, -1 size, -1 Dex"
+    },
+    "base_attack": 6,
+    "grapple": 14,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+9",
+        "damage": "1d8+7",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Slam",
+        "attack_bonus": "+9",
+        "damage": "1d8+7",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Low-Light Vision",
+      "Construct Traits",
+      "Hardness 5"
+    ],
+    "saves": {
+      "fort": 2,
+      "ref": 1,
+      "will": -3
+    },
+    "abilities": {
+      "str": 24,
+      "dex": 8,
+      "con": null,
+      "int": null,
+      "wis": 1,
+      "cha": 1
+    },
+    "skills": {},
+    "feats": [],
+    "alignment": "Always Neutral",
+    "advancement": "None (created by magic, varies by size)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 0,
+    "allowed_biomes": [
+      "Any_Ruin"
+    ],
+    "primary_biome": "Any_Ruin",
+    "ecology_notes": "Large animated objects guard the halls of mighty spellcasters, their bulk and dual slam attacks making them formidable defenders of arcane vaults."
+  },
+  {
+    "name": "Animated Object, Huge",
+    "cr": 7,
+    "size": "Huge",
+    "type": "Construct",
+    "subtype": null,
+    "hit_dice": "16d10",
+    "hp_avg": 88,
+    "initiative": -2,
+    "speed": {
+      "land": 20
+    },
+    "armor_class": {
+      "total": 11,
+      "touch": 6,
+      "flat_footed": 11,
+      "components": "+7 natural, -2 size, -2 Dex"
+    },
+    "base_attack": 12,
+    "grapple": 26,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+17",
+        "damage": "2d6+11",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Slam",
+        "attack_bonus": "+17",
+        "damage": "2d6+11",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Low-Light Vision",
+      "Construct Traits",
+      "Hardness 5"
+    ],
+    "saves": {
+      "fort": 5,
+      "ref": 3,
+      "will": -2
+    },
+    "abilities": {
+      "str": 32,
+      "dex": 6,
+      "con": null,
+      "int": null,
+      "wis": 1,
+      "cha": 1
+    },
+    "skills": {},
+    "feats": [],
+    "alignment": "Always Neutral",
+    "advancement": "None (created by magic, varies by size)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 0,
+    "allowed_biomes": [
+      "Any_Ruin"
+    ],
+    "primary_biome": "Any_Ruin",
+    "ecology_notes": "Huge animated objects are colossal magical sentinels capable of devastating whole groups of adventurers. Only powerful casters can create and control them."
+  },
+  {
+    "name": "Animated Object, Gargantuan",
+    "cr": 10,
+    "size": "Gargantuan",
+    "type": "Construct",
+    "subtype": null,
+    "hit_dice": "24d10",
+    "hp_avg": 132,
+    "initiative": -2,
+    "speed": {
+      "land": 20
+    },
+    "armor_class": {
+      "total": 8,
+      "touch": 4,
+      "flat_footed": 8,
+      "components": "+8 natural, -4 size, -2 Dex"
+    },
+    "base_attack": 18,
+    "grapple": 37,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+26",
+        "damage": "2d8+15",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Slam",
+        "attack_bonus": "+26",
+        "damage": "2d8+15",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Low-Light Vision",
+      "Construct Traits",
+      "Hardness 5"
+    ],
+    "saves": {
+      "fort": 8,
+      "ref": 6,
+      "will": 0
+    },
+    "abilities": {
+      "str": 40,
+      "dex": 6,
+      "con": null,
+      "int": null,
+      "wis": 1,
+      "cha": 1
+    },
+    "skills": {},
+    "feats": [],
+    "alignment": "Always Neutral",
+    "advancement": "None (created by magic, varies by size)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 0,
+    "allowed_biomes": [
+      "Any_Ruin"
+    ],
+    "primary_biome": "Any_Ruin",
+    "ecology_notes": "Gargantuan animated objects are among the most powerful magical constructs, typically animating massive statues or siege equipment in ancient strongholds."
+  },
+  {
+    "name": "Animated Object, Colossal",
+    "cr": 14,
+    "size": "Colossal",
+    "type": "Construct",
+    "subtype": null,
+    "hit_dice": "32d10",
+    "hp_avg": 176,
+    "initiative": -2,
+    "speed": {
+      "land": 20
+    },
+    "armor_class": {
+      "total": 3,
+      "touch": 0,
+      "flat_footed": 3,
+      "components": "+9 natural, -8 size, -2 Dex"
+    },
+    "base_attack": 24,
+    "grapple": 49,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+34",
+        "damage": "4d6+19",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Slam",
+        "attack_bonus": "+34",
+        "damage": "4d6+19",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Low-Light Vision",
+      "Construct Traits",
+      "Hardness 5"
+    ],
+    "saves": {
+      "fort": 10,
+      "ref": 8,
+      "will": 2
+    },
+    "abilities": {
+      "str": 48,
+      "dex": 6,
+      "con": null,
+      "int": null,
+      "wis": 1,
+      "cha": 1
+    },
+    "skills": {},
+    "feats": [],
+    "alignment": "Always Neutral",
+    "advancement": "None (created by magic, varies by size)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 0,
+    "allowed_biomes": [
+      "Any_Ruin"
+    ],
+    "primary_biome": "Any_Ruin",
+    "ecology_notes": "Colossal animated objects are legendary magical constructs of world-shaking power. Their creation requires epic-level magic and is incredibly rare."
+  },
+  {
+    "name": "Golem, Clay",
+    "cr": 10,
+    "size": "Large",
+    "type": "Construct",
+    "subtype": null,
+    "hit_dice": "11d10+30",
+    "hp_avg": 90,
+    "initiative": -1,
+    "speed": {
+      "land": 20
+    },
+    "armor_class": {
+      "total": 22,
+      "touch": 8,
+      "flat_footed": 22,
+      "components": "+14 natural, -1 size, -1 Dex"
+    },
+    "base_attack": 8,
+    "grapple": 20,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+15",
+        "damage": "2d10+9",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Slam",
+        "attack_bonus": "+15",
+        "damage": "2d10+9",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Berserk (uncontrolled rampage when damaged; DC 19 Will to control)",
+      "Cursed Wound (wounds cannot heal naturally; DC 26 Remove Curse to lift)"
+    ],
+    "special_qualities": [
+      "Construct Traits",
+      "Darkvision 60 ft.",
+      "DR 10/Adamantine",
+      "Magic Immunity (immune to all spells except as noted)",
+      "Immunity to Normal Healing (only Mending or spells targeted at constructs heal it)"
+    ],
+    "saves": {
+      "fort": 3,
+      "ref": 2,
+      "will": 3
+    },
+    "abilities": {
+      "str": 29,
+      "dex": 9,
+      "con": null,
+      "int": null,
+      "wis": 11,
+      "cha": 1
+    },
+    "skills": {},
+    "feats": [
+      "Power Attack",
+      "Cleave"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "None",
+    "dr": "10/Adamantine",
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 0,
+    "allowed_biomes": [
+      "Any_Ruin"
+    ],
+    "primary_biome": "Any_Ruin",
+    "ecology_notes": "Clay golems are powerful guardian constructs crafted from sacred clay. Their cursed wound ability makes them particularly feared, as wounds from their slams resist all natural healing."
+  },
+  {
+    "name": "Golem, Flesh",
+    "cr": 7,
+    "size": "Large",
+    "type": "Construct",
+    "subtype": null,
+    "hit_dice": "9d10+20",
+    "hp_avg": 69,
+    "initiative": -1,
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 15,
+      "touch": 8,
+      "flat_footed": 15,
+      "components": "+7 natural, -1 size, -1 Dex"
+    },
+    "base_attack": 6,
+    "grapple": 15,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+10",
+        "damage": "2d8+5",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Slam",
+        "attack_bonus": "+10",
+        "damage": "2d8+5",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Berserk (uncontrolled rampage when damaged; DC 17 Will to control)"
+    ],
+    "special_qualities": [
+      "Construct Traits",
+      "Darkvision 60 ft.",
+      "DR 5/Adamantine",
+      "Immunity to Magic (fire slows it, cold negates berserk temporarily)",
+      "Low-Light Vision"
+    ],
+    "saves": {
+      "fort": 3,
+      "ref": 2,
+      "will": 2
+    },
+    "abilities": {
+      "str": 21,
+      "dex": 9,
+      "con": null,
+      "int": null,
+      "wis": 11,
+      "cha": 1
+    },
+    "skills": {},
+    "feats": [
+      "Power Attack",
+      "Cleave",
+      "Improved Sunder"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "None",
+    "dr": "5/Adamantine",
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 0,
+    "allowed_biomes": [
+      "Any_Ruin"
+    ],
+    "primary_biome": "Any_Ruin",
+    "ecology_notes": "Flesh golems are grotesque constructs assembled from corpse parts, animated by powerful magic. They are susceptible to fire and electricity affects their behavior."
+  },
+  {
+    "name": "Golem, Iron",
+    "cr": 13,
+    "size": "Large",
+    "type": "Construct",
+    "subtype": null,
+    "hit_dice": "18d10+30",
+    "hp_avg": 129,
+    "initiative": -1,
+    "speed": {
+      "land": 20
+    },
+    "armor_class": {
+      "total": 30,
+      "touch": 9,
+      "flat_footed": 30,
+      "components": "+22 natural, -1 size, -1 Dex"
+    },
+    "base_attack": 13,
+    "grapple": 25,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+20",
+        "damage": "2d10+11",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Slam",
+        "attack_bonus": "+20",
+        "damage": "2d10+11",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Breath Weapon (10-ft. radius poison gas cloud, DC 19 Fort, 1d4 Con + 1d4 Con secondary; usable every 1d4+1 rounds)"
+    ],
+    "special_qualities": [
+      "Construct Traits",
+      "Darkvision 60 ft.",
+      "DR 15/Adamantine",
+      "Immunity to Magic (rusting attacks slow it; electricity heals it)",
+      "Low-Light Vision"
+    ],
+    "saves": {
+      "fort": 6,
+      "ref": 5,
+      "will": 6
+    },
+    "abilities": {
+      "str": 33,
+      "dex": 9,
+      "con": null,
+      "int": null,
+      "wis": 11,
+      "cha": 1
+    },
+    "skills": {},
+    "feats": [
+      "Power Attack",
+      "Cleave",
+      "Great Cleave",
+      "Improved Sunder",
+      "Improved Bull Rush"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "None",
+    "dr": "15/Adamantine",
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 0,
+    "allowed_biomes": [
+      "Any_Ruin"
+    ],
+    "primary_biome": "Any_Ruin",
+    "ecology_notes": "Iron golems are nearly indestructible constructs forged from pure iron. Only adamantine weapons can harm them, and their poison breath weapon makes them deadly even at range."
+  },
+  {
+    "name": "Golem, Stone",
+    "cr": 11,
+    "size": "Large",
+    "type": "Construct",
+    "subtype": null,
+    "hit_dice": "14d10+30",
+    "hp_avg": 107,
+    "initiative": -1,
+    "speed": {
+      "land": 20
+    },
+    "armor_class": {
+      "total": 26,
+      "touch": 8,
+      "flat_footed": 26,
+      "components": "+18 natural, -1 size, -1 Dex"
+    },
+    "base_attack": 10,
+    "grapple": 22,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+17",
+        "damage": "2d10+9",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Slam",
+        "attack_bonus": "+17",
+        "damage": "2d10+9",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Slow (DC 17 Will, target is slowed for 2d6 rounds; area 10-ft. radius)"
+    ],
+    "special_qualities": [
+      "Construct Traits",
+      "Darkvision 60 ft.",
+      "DR 10/Adamantine",
+      "Immunity to Magic (haste counters slow; acid deals normal damage; other spells require DC 19 Fort or be affected)",
+      "Low-Light Vision"
+    ],
+    "saves": {
+      "fort": 4,
+      "ref": 3,
+      "will": 4
+    },
+    "abilities": {
+      "str": 29,
+      "dex": 9,
+      "con": null,
+      "int": null,
+      "wis": 11,
+      "cha": 1
+    },
+    "skills": {},
+    "feats": [
+      "Power Attack",
+      "Cleave",
+      "Great Cleave",
+      "Improved Sunder"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "None",
+    "dr": "10/Adamantine",
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 0,
+    "allowed_biomes": [
+      "Any_Ruin"
+    ],
+    "primary_biome": "Any_Ruin",
+    "ecology_notes": "Stone golems are enduring magical constructs, carved from solid rock and animated for permanent guardianship. Their slow ability can quickly turn an encounter against unprepared adventurers."
+  },
+  {
+    "name": "Homunculus",
+    "cr": 1,
+    "size": "Tiny",
+    "type": "Construct",
+    "subtype": null,
+    "hit_dice": "2d10",
+    "hp_avg": 11,
+    "initiative": 2,
+    "speed": {
+      "land": 20,
+      "fly": 50
+    },
+    "armor_class": {
+      "total": 14,
+      "touch": 14,
+      "flat_footed": 12,
+      "components": "+2 Dex, +2 size"
+    },
+    "base_attack": 1,
+    "grapple": -7,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+2",
+        "damage": "1d4-1 plus poison",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Poison (DC 13 Fort, 1d4 Str primary and secondary)"
+    ],
+    "special_qualities": [
+      "Construct Traits",
+      "Darkvision 60 ft.",
+      "Empathic Link with master (1 mile range)",
+      "Low-Light Vision"
+    ],
+    "saves": {
+      "fort": 0,
+      "ref": 2,
+      "will": 1
+    },
+    "abilities": {
+      "str": 8,
+      "dex": 15,
+      "con": null,
+      "int": 10,
+      "wis": 12,
+      "cha": 7
+    },
+    "skills": {
+      "Hide": 14,
+      "Listen": 4,
+      "Spot": 4
+    },
+    "feats": [
+      "Lightning Reflexes"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "None",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 0,
+    "allowed_biomes": [
+      "Any_Ruin"
+    ],
+    "primary_biome": "Any_Ruin",
+    "ecology_notes": "A homunculus is a tiny familiar-like construct created by a wizard from his own blood. It shares an empathic link with its creator and serves as a loyal spy and scout."
+  },
+  {
+    "name": "Shield Guardian",
+    "cr": 8,
+    "size": "Large",
+    "type": "Construct",
+    "subtype": null,
+    "hit_dice": "15d10+20",
+    "hp_avg": 102,
+    "initiative": 0,
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 24,
+      "touch": 9,
+      "flat_footed": 24,
+      "components": "+15 natural, -1 size"
+    },
+    "base_attack": 11,
+    "grapple": 20,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+15",
+        "damage": "1d6+5",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Slam",
+        "attack_bonus": "+10",
+        "damage": "1d6+5",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Find Master (telepathic bond; can locate master anywhere on same plane)",
+      "Guard (first 2d6 damage dealt to master per round is redirected to guardian)"
+    ],
+    "special_qualities": [
+      "Construct Traits",
+      "Darkvision 60 ft.",
+      "Fast Healing 2",
+      "Shield Other (50% damage redirect from master to guardian)",
+      "Spell Storing (can store one spell of 4th level or lower cast into it)"
+    ],
+    "saves": {
+      "fort": 5,
+      "ref": 5,
+      "will": 5
+    },
+    "abilities": {
+      "str": 21,
+      "dex": 10,
+      "con": null,
+      "int": null,
+      "wis": 10,
+      "cha": 1
+    },
+    "skills": {},
+    "feats": [
+      "Power Attack",
+      "Improved Bull Rush",
+      "Improved Sunder"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "16-21 HD (Large); 22-45 HD (Huge)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": 2,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 0,
+    "allowed_biomes": [
+      "Any_Ruin"
+    ],
+    "primary_biome": "Any_Ruin",
+    "ecology_notes": "Shield guardians are powerful constructs bound to a magical amulet and programmed to protect their master. They intercept attacks and heal rapidly, making them prized bodyguards for wealthy spellcasters."
+  }
+]
