@@ -769,3 +769,104 @@ class TestEncumbranceState:
         state = compute_encumbrance_state(char)
         assert state.capacity.strength == 20
         assert state.capacity.heavy_max_lb == 400.0
+
+
+# ---------------------------------------------------------------------------
+# TestApplyEncumbranceToCombatState (E-063)
+# ---------------------------------------------------------------------------
+
+from src.rules_engine.encumbrance import apply_encumbrance_to_combat_state
+
+
+class _FakeCombatState:
+    """Minimal stand-in for CombatState used in E-063 tests."""
+    def __init__(self, tick: int = 0):
+        self.tick = tick
+
+
+class TestApplyEncumbranceToCombatState:
+    """E-063: apply_encumbrance_to_combat_state writes encumbrance metadata."""
+
+    def test_returns_combat_state_unchanged(self):
+        char = _make_character(strength=18, base_speed=30)
+        cs = _FakeCombatState(tick=5)
+        result = apply_encumbrance_to_combat_state(char, cs)
+        assert result is cs
+        assert result.tick == 5
+
+    def test_light_load_no_max_dex_cap(self):
+        char = _make_character(strength=18, base_speed=30)
+        apply_encumbrance_to_combat_state(char, _FakeCombatState())
+        assert char.metadata["load_max_dex_cap"] is None
+
+    def test_medium_load_max_dex_cap_three(self):
+        char = _make_character(strength=10, base_speed=30)
+        mgr = EquipmentManager()
+        mgr.equip_item(_make_weapon(50.0, "HeavyThing"), EquipmentSlot.MAIN_HAND)
+        char.equipment_manager = mgr
+        apply_encumbrance_to_combat_state(char, _FakeCombatState())
+        assert char.metadata["load_max_dex_cap"] == 3
+
+    def test_heavy_load_max_dex_cap_one(self):
+        char = _make_character(strength=10, base_speed=30)
+        mgr = EquipmentManager()
+        mgr.equip_item(_make_weapon(90.0, "HugeLoad"), EquipmentSlot.MAIN_HAND)
+        char.equipment_manager = mgr
+        apply_encumbrance_to_combat_state(char, _FakeCombatState())
+        assert char.metadata["load_max_dex_cap"] == 1
+
+    def test_voxel_speed_written_to_metadata(self):
+        char = _make_character(strength=10, base_speed=30)
+        apply_encumbrance_to_combat_state(char, _FakeCombatState())
+        assert "enc_voxel_speed" in char.metadata
+        assert char.metadata["enc_voxel_speed"] == 6  # 30 ft / 5
+
+    def test_voxel_speed_reduced_for_medium_load(self):
+        char = _make_character(strength=10, base_speed=30)
+        mgr = EquipmentManager()
+        mgr.equip_item(_make_weapon(50.0, "HeavyThing"), EquipmentSlot.MAIN_HAND)
+        char.equipment_manager = mgr
+        apply_encumbrance_to_combat_state(char, _FakeCombatState())
+        assert char.metadata["enc_voxel_speed"] == 4  # 20 ft / 5
+
+    def test_overload_stationary_flag(self):
+        char = _make_character(strength=10, base_speed=30)
+        mgr = EquipmentManager()
+        mgr.equip_item(_make_weapon(200.0, "ImpossibleLoad"), EquipmentSlot.MAIN_HAND)
+        char.equipment_manager = mgr
+        apply_encumbrance_to_combat_state(char, _FakeCombatState())
+        assert char.metadata["enc_stationary"] is True
+        assert char.metadata["enc_voxel_speed"] == 0
+
+    def test_light_load_not_stationary(self):
+        char = _make_character(strength=18, base_speed=30)
+        apply_encumbrance_to_combat_state(char, _FakeCombatState())
+        assert char.metadata["enc_stationary"] is False
+
+    def test_voxel_speed_property_uses_metadata(self):
+        """After apply_..., character.voxel_speed returns enc_voxel_speed."""
+        char = _make_character(strength=10, base_speed=30)
+        mgr = EquipmentManager()
+        mgr.equip_item(_make_weapon(50.0, "HeavyThing"), EquipmentSlot.MAIN_HAND)
+        char.equipment_manager = mgr
+        apply_encumbrance_to_combat_state(char, _FakeCombatState())
+        assert char.voxel_speed == 4
+
+    def test_armor_class_respects_load_max_dex(self):
+        """Heavy load (max_dex +1) caps Dex bonus to AC."""
+        char = _make_character(strength=10, base_speed=30)
+        char.dexterity = 20  # +5 dex mod without any cap
+        mgr = EquipmentManager()
+        mgr.equip_item(_make_weapon(90.0, "HugeLoad"), EquipmentSlot.MAIN_HAND)
+        char.equipment_manager = mgr
+        apply_encumbrance_to_combat_state(char, _FakeCombatState())
+        # AC should cap dex at +1, not +5
+        assert char.armor_class == 10 + 1  # 10 + min(+5, +1)
+
+    def test_load_acp_written_to_metadata(self):
+        char = _make_character(strength=10, base_speed=30)
+        mgr = EquipmentManager()
+        mgr.equip_item(_make_weapon(50.0, "HeavyThing"), EquipmentSlot.MAIN_HAND)
+        char.equipment_manager = mgr
+        apply_encumbrance_to_combat_state(char, _FakeCombatState())
+        assert char.metadata["load_acp"] == -3  # Medium load ACP

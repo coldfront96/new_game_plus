@@ -514,3 +514,121 @@ class TestLevelUpStandard:
         report = level_up_standard(r, "Paladin", "Human")
         assert report.xp_penalty_pct == 0.0
         assert report.notes == []
+
+
+# ---------------------------------------------------------------------------
+# E-065 — level_up (unified prestige + standard)
+# ---------------------------------------------------------------------------
+
+from src.rules_engine.multiclass import level_up
+from src.rules_engine.character_35e import Alignment, Character35e as _Character35e
+
+
+def _make_multiclass_record():
+    return MulticlassRecord(entries=[], favored_class=None, total_xp=0)
+
+
+def _shadowdancer_char_e065() -> _Character35e:
+    """Char that meets Shadowdancer prereqs (Hide 10, MS 8, Perform 5, feats)."""
+    return _Character35e(
+        name="Shadow",
+        char_class="Rogue",
+        level=5,
+        alignment=Alignment.CHAOTIC_NEUTRAL,
+        skills={"Hide": 10, "Move Silently": 8, "Perform": 5},
+        feats=["Dodge", "Mobility", "Combat Reflexes"],
+    )
+
+
+class TestLevelUpUnified:
+    """E-065: level_up dispatches to standard or prestige path correctly."""
+
+    # ---- Standard class path ----
+
+    def test_standard_class_returns_level_up_report(self):
+        r = _make_multiclass_record()
+        report = level_up(r, "Fighter", "Human")
+        assert isinstance(report, LevelUpReport)
+
+    def test_standard_class_increments_level(self):
+        r = _make_multiclass_record()
+        level_up(r, "Rogue", "Halfling")
+        entry = next(e for e in r.entries if e.class_name == "Rogue")
+        assert entry.level == 1
+
+    def test_standard_class_report_class_name(self):
+        r = _make_multiclass_record()
+        report = level_up(r, "Cleric", "Human")
+        assert report.class_name == "Cleric"
+
+    def test_standard_class_bab_delta_fighter(self):
+        r = _make_multiclass_record()
+        report = level_up(r, "Fighter", "Human")
+        assert report.bab_delta == 1
+
+    def test_standard_class_not_prestige_flag(self):
+        r = _make_multiclass_record()
+        level_up(r, "Wizard", "Elf")
+        entry = next(e for e in r.entries if e.class_name == "Wizard")
+        assert entry.is_prestige is False
+
+    # ---- Prestige class path ----
+
+    def test_prestige_class_entry_returns_report(self):
+        r = MulticlassRecord(
+            entries=[ClassLevel("Rogue", 5), ClassLevel("Fighter", 2)],
+            favored_class=None,
+        )
+        char = _shadowdancer_char_e065()
+        report = level_up(r, "Shadowdancer", "Human", character=char)
+        assert isinstance(report, LevelUpReport)
+        assert report.class_name == "Shadowdancer"
+
+    def test_prestige_class_sets_is_prestige_flag(self):
+        r = MulticlassRecord(
+            entries=[ClassLevel("Rogue", 5), ClassLevel("Fighter", 2)],
+            favored_class=None,
+        )
+        char = _shadowdancer_char_e065()
+        level_up(r, "Shadowdancer", "Human", character=char)
+        pc_entry = next(e for e in r.entries if e.class_name == "Shadowdancer")
+        assert pc_entry.is_prestige is True
+
+    def test_prestige_class_first_entry_at_level_1(self):
+        r = MulticlassRecord(
+            entries=[ClassLevel("Rogue", 5), ClassLevel("Fighter", 2)],
+            favored_class=None,
+        )
+        char = _shadowdancer_char_e065()
+        level_up(r, "Shadowdancer", "Human", character=char)
+        pc_entry = next(e for e in r.entries if e.class_name == "Shadowdancer")
+        assert pc_entry.level == 1
+
+    def test_prestige_class_second_level_advances(self):
+        r = MulticlassRecord(
+            entries=[
+                ClassLevel("Rogue", 5),
+                ClassLevel("Fighter", 2),
+                ClassLevel("Shadowdancer", 1, is_prestige=True),
+            ],
+            favored_class=None,
+        )
+        char = _shadowdancer_char_e065()
+        level_up(r, "Shadowdancer", "Human", character=char)
+        pc_entry = next(e for e in r.entries if e.class_name == "Shadowdancer")
+        assert pc_entry.level == 2
+
+    def test_prestige_note_in_report(self):
+        r = MulticlassRecord(
+            entries=[ClassLevel("Rogue", 5), ClassLevel("Fighter", 2)],
+            favored_class=None,
+        )
+        char = _shadowdancer_char_e065()
+        report = level_up(r, "Shadowdancer", "Human", character=char)
+        assert any("Shadowdancer" in n for n in report.notes)
+
+    def test_prestige_raises_on_unmet_prerequisites(self):
+        r = _make_multiclass_record()  # empty — no feats/skills, prereqs fail
+        char = _Character35e(name="Peasant", char_class="Commoner", level=1)
+        with pytest.raises(ValueError, match="Prerequisites not met"):
+            level_up(r, "Shadowdancer", "Human", character=char)

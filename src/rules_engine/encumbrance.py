@@ -746,3 +746,60 @@ def compute_encumbrance_state(character: "Character35e") -> EncumbranceState:
         max_dex_to_ac_after_armor=combined_max_dex,
         armor_check_penalty_total=acp_total,
     )
+
+
+# ---------------------------------------------------------------------------
+# E-063 — Encumbrance-Aware Combat & Movement
+# ---------------------------------------------------------------------------
+
+def apply_encumbrance_to_combat_state(
+    character: "Character35e",
+    combat_state: object,
+) -> object:
+    """Apply the character's current encumbrance state to *combat_state*.
+
+    Computes an :class:`EncumbranceState` snapshot and writes the relevant
+    fields into ``character.metadata`` so that :attr:`Character35e.armor_class`
+    and :attr:`Character35e.voxel_speed` automatically incorporate the load
+    penalties on the next access.
+
+    Metadata keys written:
+      * ``"load_max_dex_cap"``  — ``int | None``; the Dex-to-AC cap imposed by
+        load alone (Medium: +3, Heavy: +1, Light/Overload: ``None``).  The
+        ``armor_class`` property caps Dex at this value in addition to any
+        armor max-Dex cap.
+      * ``"load_acp"``          — ``int``; the armor-check penalty added by
+        load (0, −3, or −6).  Callers can sum this with the armor ACP for
+        skill checks (Climb, Jump, Swim, Tumble, Hide, Move Silently).
+      * ``"enc_voxel_speed"``   — ``int``; the effective voxel-grid speed
+        after stacking armor and load speed penalties (no double-apply).  The
+        ``voxel_speed`` property returns this override when present.
+      * ``"enc_stationary"``    — ``bool``; ``True`` when the character is
+        Overloaded and may not move voluntarily (only standard/free actions).
+
+    Args:
+        character:    A fully initialised
+                      :class:`~src.rules_engine.character_35e.Character35e`.
+        combat_state: Any combat-round state container (e.g.
+                      :class:`~src.rules_engine.mm_passive.CombatState`).
+                      The object is returned unchanged; the encumbrance effects
+                      are written to *character* directly.
+
+    Returns:
+        The unmodified *combat_state* (pass-through for chaining).
+    """
+    enc = compute_encumbrance_state(character)
+
+    # Load-only Dex cap (Medium → +3, Heavy → +1, Light/Overload → None)
+    character.metadata["load_max_dex_cap"] = enc.penalties.max_dex_to_ac
+
+    # Load-only ACP (0 for Light, -3 for Medium, -6 for Heavy, -6 for Overload)
+    character.metadata["load_acp"] = enc.penalties.armor_check_penalty
+
+    # Effective voxel speed (armor + load, no double-apply)
+    character.metadata["enc_voxel_speed"] = enc.effective_speed_voxel
+
+    # Stationary flag for Overload
+    character.metadata["enc_stationary"] = (enc.load == LoadCategory.Overload)
+
+    return combat_state
