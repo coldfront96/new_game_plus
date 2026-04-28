@@ -431,6 +431,11 @@ class Character35e:
         Returns:
             Number of blocks the character can traverse per move action.
         """
+        # Encumbrance override set by apply_encumbrance_to_combat_state (E-063)
+        enc_voxel = self.metadata.get("enc_voxel_speed")
+        if enc_voxel is not None:
+            return int(enc_voxel)
+
         speed = self.base_speed
         if self.equipment_manager is not None:
             category = self.equipment_manager.get_armor_category()
@@ -547,6 +552,11 @@ class Character35e:
             max_dex = self.equipment_manager.get_min_max_dex_bonus()
             if max_dex is not None:
                 dex_mod = min(dex_mod, max_dex)
+
+        # Encumbrance Dex cap set by apply_encumbrance_to_combat_state (E-063)
+        load_max_dex = self.metadata.get("load_max_dex_cap")
+        if load_max_dex is not None:
+            dex_mod = min(dex_mod, load_max_dex)
 
         ac = 10 + dex_mod + self.size.value
         if self.equipment_manager is not None:

@@ -466,3 +466,130 @@ def level_up_standard(
         xp_penalty_pct=penalty,
         notes=notes,
     )
+
+
+# ---------------------------------------------------------------------------
+# E-065 — Unified Multiclass + Prestige Progression
+# ---------------------------------------------------------------------------
+
+def level_up(
+    record: MulticlassRecord,
+    klass: str,
+    race_name: str,
+    character=None,
+    con_modifier: int = 0,
+    rng=None,
+) -> LevelUpReport:
+    """Unified level-up for standard classes and prestige classes.
+
+    Decision tree:
+    * If *klass* is in ``PRESTIGE_CLASS_REGISTRY``:
+        1. Verify prerequisites via ``attempt_prestige_entry`` (or
+           ``advance_prestige`` if already entered).
+        2. Apply BAB/save deltas via the prestige class's progression data.
+        3. Apply caster-level continuation via
+           ``apply_prestige_caster_continuation``.
+        4. Prestige levels are **exempt** from the XP penalty (``is_prestige``
+           flag).
+    * Otherwise delegates to :func:`level_up_standard`.
+
+    Args:
+        record:        The character's :class:`MulticlassRecord`; mutated
+                       in-place.
+        klass:         Class name to advance (standard or prestige).
+        race_name:     Race name used for favored-class XP-penalty logic.
+        character:     Optional ``Character35e`` instance; required for
+                       prerequisite verification when entering a prestige
+                       class for the first time.  May be ``None`` if the
+                       prestige class is already recorded in *record*.
+        con_modifier:  CON modifier added to each HP roll.
+        rng:           Object with ``randint(a, b)`` method; when ``None``
+                       average HD is used.
+
+    Returns:
+        A :class:`LevelUpReport` describing the stat changes.
+
+    Raises:
+        ValueError: If *klass* is a prestige class and prerequisites are
+                    not met, or the class is already at ``max_class_level``.
+    """
+    from src.rules_engine.prestige_classes import (
+        PRESTIGE_CLASS_REGISTRY,
+        attempt_prestige_entry,
+        advance_prestige,
+        apply_prestige_caster_continuation,
+        CasterLevelMode,
+    )
+    from src.rules_engine.npc_classes import BABProgression
+
+    if klass not in PRESTIGE_CLASS_REGISTRY:
+        # Standard (non-prestige) path
+        return level_up_standard(record, klass, race_name, con_modifier, rng)
+
+    # ---- Prestige path ----
+    pc = PRESTIGE_CLASS_REGISTRY[klass]
+
+    # Determine if this is a first-time entry or an advancement
+    existing = next((e for e in record.entries if e.class_name == klass), None)
+
+    stats_before = build_multiclass_stats(record, con_modifier)
+
+    if existing is None:
+        # First entry: validate prerequisites
+        entry_result = attempt_prestige_entry(character, klass, record)
+        if not entry_result.success:
+            raise ValueError(
+                f"Prerequisites not met for '{klass}': "
+                + entry_result.prerequisite_result.summary
+            )
+        new_level = 1
+    else:
+        # Already entered: just advance
+        advance_prestige(record, klass)
+        existing_after = next(e for e in record.entries if e.class_name == klass)
+        new_level = existing_after.level
+
+    stats_after = build_multiclass_stats(record, con_modifier)
+
+    # HP gained: use average (or roll)
+    hd = pc.hit_die
+    total_levels_after = sum(e.level for e in record.entries)
+    if total_levels_after == 1:
+        hp_gained = hd + con_modifier
+    elif rng is not None:
+        hp_gained = rng.randint(1, hd) + con_modifier
+    else:
+        hp_gained = (hd + 1) // 2 + con_modifier
+
+    # Caster-level continuation
+    caster_meta = {
+        "arcane_caster_level": sum(
+            e.level for e in record.entries
+            if e.class_name in ("Wizard", "Sorcerer", "Bard")
+        ),
+        "divine_caster_level": sum(
+            e.level for e in record.entries
+            if e.class_name in ("Cleric", "Druid", "Paladin", "Ranger", "Adept")
+        ),
+    }
+    apply_prestige_caster_continuation(record, pc, new_level, caster_meta)
+
+    # Prestige classes are always penalty-exempt
+    penalty = multiclass_xp_penalty_pct(record, race_name)
+    object.__setattr__(record, "current_xp_penalty_pct", penalty)
+
+    notes: list[str] = [f"Entered/advanced prestige class '{klass}' to level {new_level}."]
+    if pc.caster_level_progression != CasterLevelMode.None_:
+        notes.append(f"Caster-level continuation applied ({pc.caster_level_progression.name}).")
+
+    return LevelUpReport(
+        class_name=klass,
+        new_level=new_level,
+        bab_delta=stats_after.total_bab - stats_before.total_bab,
+        fort_delta=stats_after.fort_save - stats_before.fort_save,
+        ref_delta=stats_after.ref_save - stats_before.ref_save,
+        will_delta=stats_after.will_save - stats_before.will_save,
+        hp_gained=hp_gained,
+        xp_penalty_pct=penalty,
+        notes=notes,
+    )
