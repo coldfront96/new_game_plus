@@ -1376,11 +1376,9 @@
       "Water Mastery (+1 attack and damage when both in water)"
     ],
     "special_qualities": [
-      "Water Mastery (+1 attack and damage when both in water)",
       "Elemental Traits",
       "Darkvision 60 ft.",
-      "Immunity to Cold",
-      "Drench (extinguish non-magical flames on contact)"
+      "Immunity to Cold"
     ],
     "saves": {
       "fort": 4,
@@ -1451,11 +1449,9 @@
       "Water Mastery"
     ],
     "special_qualities": [
-      "Water Mastery (+1 attack and damage when both in water)",
       "Elemental Traits",
       "Darkvision 60 ft.",
-      "Immunity to Cold",
-      "Drench (extinguish non-magical flames on contact)"
+      "Immunity to Cold"
     ],
     "saves": {
       "fort": 7,
@@ -1527,11 +1523,9 @@
       "Water Mastery"
     ],
     "special_qualities": [
-      "Water Mastery (+1 attack and damage when both in water)",
       "Elemental Traits",
       "Darkvision 60 ft.",
-      "Immunity to Cold",
-      "Drench (extinguish non-magical flames on contact)"
+      "Immunity to Cold"
     ],
     "saves": {
       "fort": 10,
@@ -1604,11 +1598,9 @@
       "Water Mastery"
     ],
     "special_qualities": [
-      "Water Mastery (+1 attack and damage when both in water)",
       "Elemental Traits",
       "Darkvision 60 ft.",
-      "Immunity to Cold",
-      "Drench (extinguish non-magical flames on contact)"
+      "Immunity to Cold"
     ],
     "saves": {
       "fort": 15,
@@ -1682,11 +1674,9 @@
       "Water Mastery"
     ],
     "special_qualities": [
-      "Water Mastery (+1 attack and damage when both in water)",
       "Elemental Traits",
       "Darkvision 60 ft.",
-      "Immunity to Cold",
-      "Drench (extinguish non-magical flames on contact)"
+      "Immunity to Cold"
     ],
     "saves": {
       "fort": 18,
@@ -1761,11 +1751,9 @@
       "Water Mastery"
     ],
     "special_qualities": [
-      "Water Mastery (+1 attack and damage when both in water)",
       "Elemental Traits",
       "Darkvision 60 ft.",
-      "Immunity to Cold",
-      "Drench (extinguish non-magical flames on contact)"
+      "Immunity to Cold"
     ],
     "saves": {
       "fort": 20,
