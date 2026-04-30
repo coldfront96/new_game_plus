@@ -488,19 +488,19 @@ See [`LIVING_WORLD_MM_BUILD_SITE.md`](LIVING_WORLD_MM_BUILD_SITE.md) for the ful
 
 | Monster | CR | Status | Notes |
 |---------|----|--------|-------|
-| Allip | 3 | ❌ | |
-| Bodak | 8 | ❌ | |
-| Devourer | 11 | ❌ | |
-| Ghost (human warrior example) | 5+ | ❌ | base example needed |
-| Ghast | 3 | ❌ | |
-| Ghoul | 1 | 🔲 | stub in `core.json` |
-| Lich (example) | 11+ | ❌ | |
-| Mohrg | 8 | ❌ | |
-| Mummy | 5 | 🔲 | stub in `core.json` |
+| Allip | 3 | ✅ | `data/srd_3.5/monsters/batch_undead.json` |
+| Bodak | 8 | ✅ | `data/srd_3.5/monsters/batch_undead.json` |
+| Devourer | 11 | ✅ | `data/srd_3.5/monsters/batch_undead.json` |
+| Ghost (human warrior example) | 5+ | ✅ | `data/srd_3.5/monsters/batch_undead.json` |
+| Ghast | 3 | ✅ | `data/srd_3.5/monsters/batch_undead.json` |
+| Ghoul | 1 | ✅ | `data/srd_3.5/monsters/batch_undead.json` (was stub in `core.json`) |
+| Lich (example) | 11+ | ✅ | `data/srd_3.5/monsters/batch_undead.json` |
+| Mohrg | 8 | ✅ | `data/srd_3.5/monsters/batch_undead.json` |
+| Mummy | 5 | ✅ | `data/srd_3.5/monsters/batch_undead.json` (was stub in `core.json`) |
 | Shadow | 3 | ✅ | `data/srd_3.5/monsters/batch_s_z.json` |
-| Specter | 7 | ❌ | |
+| Specter | 7 | ✅ | `data/srd_3.5/monsters/batch_undead.json` |
 | Vampire (example) | 8+ | ✅ | `data/srd_3.5/monsters/batch_s_z.json` |
-| Wight | 3 | 🔲 | stub in `core.json` |
+| Wight | 3 | ✅ | `data/srd_3.5/monsters/batch_undead.json` (was stub in `core.json`) |
 | Wraith | 5 | ✅ | `data/srd_3.5/monsters/batch_s_z.json`; also stub in `core.json` |
 
 ---
@@ -509,37 +509,37 @@ See [`LIVING_WORLD_MM_BUILD_SITE.md`](LIVING_WORLD_MM_BUILD_SITE.md) for the ful
 
 | Monster | CR | Status | Notes |
 |---------|----|--------|-------|
-| Ant, Giant (Worker) | 1 | 🔲 | stub in `core.json` |
-| Ant, Giant (Soldier) | 2 | ❌ | |
-| Ant, Giant (Queen) | 2 | ❌ | |
-| Bee, Giant | 1 | ❌ | |
-| Beetle, Giant Bombardier | 2 | ❌ | |
-| Beetle, Giant Fire | 1/3 | ❌ | |
+| Ant, Giant (Worker) | 1 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` (was stub in `core.json`) |
+| Ant, Giant (Soldier) | 2 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
+| Ant, Giant (Queen) | 2 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
+| Bee, Giant | 1 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
+| Beetle, Giant Bombardier | 2 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
+| Beetle, Giant Fire | 1/3 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
 | Centipede, Monstrous (Tiny) | 1/4 | ❌ | |
-| Centipede, Monstrous (Small) | 1/2 | ❌ | |
-| Centipede, Monstrous (Medium) | 1 | ❌ | |
-| Centipede, Monstrous (Large) | 3 | ❌ | |
-| Centipede, Monstrous (Huge) | 6 | ❌ | |
+| Centipede, Monstrous (Small) | 1/2 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
+| Centipede, Monstrous (Medium) | 1 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
+| Centipede, Monstrous (Large) | 3 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
+| Centipede, Monstrous (Huge) | 6 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
 | Centipede, Monstrous (Gargantuan) | 9 | ❌ | |
 | Centipede, Monstrous (Colossal) | 12 | ❌ | |
-| Leech, Giant | 2 | ❌ | |
-| Scorpion, Giant | 3 | 🔲 | stub in `core.json` |
+| Leech, Giant | 2 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
+| Scorpion, Giant | 3 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` as Scorpion, Monstrous (Large) (was stub in `core.json`) |
 | Scorpion, Monstrous (Tiny) | 1/4 | ❌ | |
 | Scorpion, Monstrous (Small) | 1/2 | ❌ | |
-| Scorpion, Monstrous (Medium) | 1 | ❌ | |
-| Scorpion, Monstrous (Large) | 3 | ❌ | |
-| Scorpion, Monstrous (Huge) | 7 | ❌ | |
+| Scorpion, Monstrous (Medium) | 1 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
+| Scorpion, Monstrous (Large) | 3 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
+| Scorpion, Monstrous (Huge) | 7 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
 | Scorpion, Monstrous (Gargantuan) | 10 | ❌ | |
 | Scorpion, Monstrous (Colossal) | 12 | ❌ | |
 | Spider, Monstrous (Tiny) | 1/4 | ❌ | |
-| Spider, Monstrous (Small) | 1/2 | ❌ | |
-| Spider, Monstrous (Medium) | 1 | ❌ | |
-| Spider, Monstrous (Large) | 2 | ❌ | |
-| Spider, Monstrous (Huge) | 5 | ❌ | |
+| Spider, Monstrous (Small) | 1/2 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
+| Spider, Monstrous (Medium) | 1 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
+| Spider, Monstrous (Large) | 2 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
+| Spider, Monstrous (Huge) | 5 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
 | Spider, Monstrous (Gargantuan) | 8 | ❌ | |
 | Spider, Monstrous (Colossal) | 11 | ❌ | |
-| Spider, Giant | 1 | 🔲 | stub in `core.json` |
-| Wasp, Giant | 3 | ❌ | |
+| Spider, Giant | 1 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` (was stub in `core.json`) |
+| Wasp, Giant | 3 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
 
 ---
 
@@ -547,9 +547,9 @@ See [`LIVING_WORLD_MM_BUILD_SITE.md`](LIVING_WORLD_MM_BUILD_SITE.md) for the ful
 
 | Status | Count |
 |--------|-------|
-| ✅ Full stat block | 36 |
-| 🔲 Stub only (name + CR) | ~40 |
-| ❌ Not started | ~220 |
+| ✅ Full stat block | ~89 |
+| 🔲 Stub only (name + CR) | ~5 |
+| ❌ Not started | ~200 |
 | **Total SRD entries** | **~296** |
 
 > Count excludes multi-size vermin/elemental variants counted individually and dragon age categories.
@@ -562,7 +562,7 @@ See [`LIVING_WORLD_MM_BUILD_SITE.md`](LIVING_WORLD_MM_BUILD_SITE.md) for the ful
 Prioritise by gameplay impact and CR coverage:
 
 ### Phase 1 — Complete the stubs (40 entries, high ROI)
-Upgrade all 🔲 `core.json` stubs to full stat blocks. These already exist in the data layer and just need stat population.
+Upgrade all 🔲 `core.json` stubs to full stat blocks. These already exist in the data layer and just need stat population. **Most stubs now promoted** — see Phase 2/3 for remaining gaps.
 
 ### Phase 2 — Low-CR dungeon staples (❌ not started, CR ≤ 3)
 Goblin, Orc (done), Skeleton variants, Zombie variants, Kobold (done), Rat/Dire Rat (done), Spider (Monstrous, various sizes), Centipede (various), Ghoul, Ghast, Stirge, Blink Dog, Shocker Lizard, Pixie, Sprite.
@@ -575,3 +575,32 @@ Balor, Pit Fiend, Solar, Planetar, Marut, Lich example, Devourer, Bodak, Slaad v
 
 ### Phase 5 — Templates
 Implement as modifier overlays: Celestial, Fiendish, Half-Dragon, Half-Fiend, Half-Celestial, Lycanthrope variants.
+
+---
+
+## Completion Notes
+
+### 2026-04-30 — Undead batch + Vermin batch
+
+**Undead batch — `data/srd_3.5/monsters/batch_undead.json`** (11 entries)
+- Allip (CR 3), Bodak (CR 8), Devourer (CR 11), Ghost / Human Warrior 5 (CR 5),
+  Ghast (CR 3), Ghoul (CR 1), Lich / Human Wizard 11 (CR 11), Mohrg (CR 8),
+  Mummy (CR 5), Specter (CR 7), Wight (CR 3).
+- Promotes 3 stubs from `core.json` (Ghoul, Mummy, Wight) to full stat blocks.
+- Full v2 schema compliance: ecology fields, passive_effects for auras/gazes,
+  elemental_weaknesses (fire → Mummy), DR (Mummy 5/—, Lich 15/bludgeoning and magic),
+  SR (Devourer 21), fast_heal (Mohrg 5).
+
+**Vermin batch — `data/srd_3.5/monsters/batch_vermin.json`** (20 entries)
+- Ant, Giant (Worker CR 1 / Soldier CR 2 / Queen CR 2).
+- Bee, Giant (CR 1).
+- Beetle, Giant Bombardier (CR 2) / Giant Fire (CR 1/3).
+- Centipede, Monstrous (Small CR 1/2 / Medium CR 1 / Large CR 3 / Huge CR 6).
+- Leech, Giant (CR 2).
+- Scorpion, Monstrous (Medium CR 1 / Large CR 3 / Huge CR 7).
+- Spider, Monstrous (Small CR 1/2 / Medium CR 1 / Large CR 2 / Huge CR 5) + Giant (CR 1).
+- Wasp, Giant (CR 3).
+- Promotes 3 stubs from `core.json` (Ant Giant Worker, Scorpion Giant, Spider Giant)
+  to full stat blocks.
+
+**Full-suite pass count (post-undead+vermin): 3 406 tests passing (2 pre-existing failures unchanged).**

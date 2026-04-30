@@ -1,0 +1,997 @@
+[
+  {
+    "name": "Ghoul",
+    "cr": 1,
+    "size": "Medium",
+    "type": "Undead",
+    "subtype": null,
+    "hit_dice": "2d12",
+    "hp_avg": 13,
+    "initiative": 2,
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 14,
+      "touch": 12,
+      "flat_footed": 12,
+      "components": "+2 Dex, +2 natural"
+    },
+    "base_attack": 1,
+    "grapple": 2,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+2",
+        "damage": "1d6+1 plus paralysis",
+        "damage_type": "Piercing/Slashing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+0",
+        "damage": "1d3 plus paralysis",
+        "damage_type": "Slashing"
+      }
+    ],
+    "special_attacks": [
+      "Ghoul Fever (DC 12 Fort, incubation 1 day, 1d3 CON/1d3 DEX)",
+      "Paralysis (1d4+1 rounds, DC 12 Fort, elves immune)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Undead Traits",
+      "+2 Turn Resistance"
+    ],
+    "saves": {
+      "fort": 0,
+      "ref": 2,
+      "will": 5
+    },
+    "abilities": {
+      "str": 13,
+      "dex": 15,
+      "con": null,
+      "int": 13,
+      "wis": 14,
+      "cha": 12
+    },
+    "skills": {
+      "Balance": 8,
+      "Climb": 7,
+      "Hide": 8,
+      "Jump": 7,
+      "Move Silently": 8,
+      "Spot": 7
+    },
+    "feats": [
+      "Multiattack"
+    ],
+    "alignment": "Usually Chaotic Evil",
+    "advancement": "3+ HD (Medium)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 200,
+    "allowed_biomes": [
+      "Any_Ruin",
+      "Underground",
+      "Any_Graveyard"
+    ],
+    "primary_biome": "Any_Ruin",
+    "ecology_notes": "Ghouls are ravenous undead that haunt graveyards and dungeons, feeding on corpses and fresh kills. Their paralytic bite makes them dangerous in groups, and victims who die of ghoul fever rise as ghouls themselves. Elves are uniquely immune to ghoul paralysis."
+  },
+  {
+    "name": "Ghast",
+    "cr": 3,
+    "size": "Medium",
+    "type": "Undead",
+    "subtype": null,
+    "hit_dice": "4d12",
+    "hp_avg": 26,
+    "initiative": 3,
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 17,
+      "touch": 13,
+      "flat_footed": 14,
+      "components": "+3 Dex, +4 natural"
+    },
+    "base_attack": 2,
+    "grapple": 3,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+3",
+        "damage": "1d8+1 plus paralysis",
+        "damage_type": "Piercing/Slashing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+1",
+        "damage": "1d4 plus paralysis",
+        "damage_type": "Slashing"
+      }
+    ],
+    "special_attacks": [
+      "Ghoul Fever (DC 15 Fort, incubation 1 day, 1d3 CON/1d3 DEX)",
+      "Paralysis (1d4+1 rounds, DC 15 Fort, elves not immune)",
+      "Stench (10-ft radius, DC 15 Fort or nauseated 1d6+4 minutes)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Undead Traits",
+      "+2 Turn Resistance"
+    ],
+    "saves": {
+      "fort": 1,
+      "ref": 4,
+      "will": 6
+    },
+    "abilities": {
+      "str": 13,
+      "dex": 17,
+      "con": null,
+      "int": 13,
+      "wis": 14,
+      "cha": 12
+    },
+    "skills": {
+      "Balance": 11,
+      "Climb": 7,
+      "Hide": 11,
+      "Jump": 7,
+      "Move Silently": 11,
+      "Spot": 7
+    },
+    "feats": [
+      "Multiattack",
+      "Weapon Finesse"
+    ],
+    "alignment": "Usually Chaotic Evil",
+    "advancement": "5-10 HD (Medium)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [
+      {
+        "effect_type": "Stench",
+        "range_ft": 10,
+        "save_type": "Fort",
+        "save_dc": 15,
+        "effect_on_fail": "Nauseated for 1d6+4 minutes",
+        "effect_on_pass": "Immune to that ghast's stench for 24 hours",
+        "suppress_conditions": []
+      }
+    ],
+    "population_base": 100,
+    "allowed_biomes": [
+      "Any_Ruin",
+      "Underground",
+      "Any_Graveyard"
+    ],
+    "primary_biome": "Any_Ruin",
+    "ecology_notes": "Ghasts are more powerful versions of ghouls with a nauseating stench. Unlike regular ghouls, ghast paralysis affects elves as well. They are cunning hunters who lead packs of ghouls and prefer to disable prey before feasting."
+  },
+  {
+    "name": "Wight",
+    "cr": 3,
+    "size": "Medium",
+    "type": "Undead",
+    "subtype": null,
+    "hit_dice": "4d12",
+    "hp_avg": 26,
+    "initiative": 1,
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 15,
+      "touch": 11,
+      "flat_footed": 14,
+      "components": "+1 Dex, +4 natural"
+    },
+    "base_attack": 2,
+    "grapple": 3,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+3",
+        "damage": "1d4+1 plus energy drain",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Create Spawn (humanoid killed by energy drain rises as wight in 1d4 rounds)",
+      "Energy Drain (1 negative level per hit, DC 14 Fort to remove after 24 hours)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Undead Traits",
+      "+2 Turn Resistance"
+    ],
+    "saves": {
+      "fort": 1,
+      "ref": 2,
+      "will": 5
+    },
+    "abilities": {
+      "str": 12,
+      "dex": 12,
+      "con": null,
+      "int": 11,
+      "wis": 13,
+      "cha": 15
+    },
+    "skills": {
+      "Hide": 8,
+      "Listen": 7,
+      "Move Silently": 8,
+      "Spot": 7
+    },
+    "feats": [
+      "Alertness",
+      "Blind-Fight"
+    ],
+    "alignment": "Usually Lawful Evil",
+    "advancement": "5-10 HD (Medium)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 150,
+    "allowed_biomes": [
+      "Any_Ruin",
+      "Any_Graveyard",
+      "Underground"
+    ],
+    "primary_biome": "Any_Ruin",
+    "ecology_notes": "Wights are intelligent undead that haunt ruins and burial sites. They drain the life force from living creatures and can raise slain victims as spawn under their control. Wights retain the cunning they had in life and sometimes use weapons or tactics from their mortal existence."
+  },
+  {
+    "name": "Allip",
+    "cr": 3,
+    "size": "Medium",
+    "type": "Undead",
+    "subtype": "Incorporeal",
+    "hit_dice": "4d12",
+    "hp_avg": 26,
+    "initiative": 5,
+    "speed": {
+      "fly": 30
+    },
+    "armor_class": {
+      "total": 13,
+      "touch": 13,
+      "flat_footed": 12,
+      "components": "+1 Dex, +2 deflection (incorporeal)"
+    },
+    "base_attack": 2,
+    "grapple": -1,
+    "attacks": [
+      {
+        "name": "Incorporeal Touch",
+        "attack_bonus": "+3",
+        "damage": "1d4 WIS drain",
+        "damage_type": "Wisdom drain"
+      }
+    ],
+    "special_attacks": [
+      "Babble (30-ft radius, Will DC 16 or fascinated for 2d4 rounds)",
+      "Madness (touching an allip requires DC 16 Will or 1 WIS damage)",
+      "Wisdom Drain (1d4 WIS per touch, DC 16 Will for half)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Incorporeal Traits",
+      "Undead Traits",
+      "+2 Turn Resistance"
+    ],
+    "saves": {
+      "fort": 1,
+      "ref": 2,
+      "will": 6
+    },
+    "abilities": {
+      "str": null,
+      "dex": 12,
+      "con": null,
+      "int": 11,
+      "wis": 11,
+      "cha": 18
+    },
+    "skills": {
+      "Hide": 8,
+      "Intimidate": 7,
+      "Listen": 9,
+      "Search": 5,
+      "Spot": 9,
+      "Survival": 0
+    },
+    "feats": [
+      "Blind-Fight",
+      "Improved Initiative"
+    ],
+    "alignment": "Usually Neutral Evil",
+    "advancement": "5-8 HD (Medium)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [
+      {
+        "effect_type": "Babble",
+        "range_ft": 30,
+        "save_type": "Will",
+        "save_dc": 16,
+        "effect_on_fail": "Fascinated for 2d4 rounds",
+        "effect_on_pass": null,
+        "suppress_conditions": []
+      }
+    ],
+    "population_base": 30,
+    "allowed_biomes": [
+      "Any_Ruin",
+      "Any_Graveyard",
+      "Underground"
+    ],
+    "primary_biome": "Any_Ruin",
+    "ecology_notes": "Allips are the remnants of those who went insane before or after death, driven mad by dark secrets or terrible trauma. They babble incessantly and drain the sanity of those who approach. Those who meet an allip's gaze or touch often suffer lasting mental damage."
+  },
+  {
+    "name": "Mummy",
+    "cr": 5,
+    "size": "Medium",
+    "type": "Undead",
+    "subtype": null,
+    "hit_dice": "8d12+3",
+    "hp_avg": 55,
+    "initiative": 0,
+    "speed": {
+      "land": 20
+    },
+    "armor_class": {
+      "total": 20,
+      "touch": 10,
+      "flat_footed": 20,
+      "components": "+10 natural"
+    },
+    "base_attack": 4,
+    "grapple": 11,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+11",
+        "damage": "1d6+10 plus mummy rot",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Despair (Will DC 16 or paralyzed with fear for 1d4 rounds on first sight)",
+      "Mummy Rot (supernatural disease: incubation 1 minute; 1d6 CON/1d6 CHA; DC 20 Fort; only Remove Disease can cure)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Damage Reduction 5/—",
+      "Undead Traits",
+      "Vulnerability to Fire"
+    ],
+    "saves": {
+      "fort": 2,
+      "ref": 2,
+      "will": 8
+    },
+    "abilities": {
+      "str": 24,
+      "dex": 10,
+      "con": null,
+      "int": 6,
+      "wis": 14,
+      "cha": 15
+    },
+    "skills": {
+      "Hide": 7,
+      "Listen": 8,
+      "Move Silently": 7,
+      "Spot": 8
+    },
+    "feats": [
+      "Alertness",
+      "Great Fortitude",
+      "Power Attack",
+      "Toughness"
+    ],
+    "alignment": "Usually Lawful Evil",
+    "advancement": "9-16 HD (Medium)",
+    "dr": "5/—",
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [
+      "Fire"
+    ],
+    "alignment_weaknesses": [],
+    "passive_effects": [
+      {
+        "effect_type": "Despair",
+        "range_ft": 60,
+        "save_type": "Will",
+        "save_dc": 16,
+        "effect_on_fail": "Paralyzed with fear for 1d4 rounds",
+        "effect_on_pass": "Immune to that mummy's despair for 24 hours",
+        "suppress_conditions": []
+      }
+    ],
+    "population_base": 20,
+    "allowed_biomes": [
+      "Warm_Desert",
+      "Any_Ruin",
+      "Any_Tomb"
+    ],
+    "primary_biome": "Warm_Desert",
+    "ecology_notes": "Mummies are preserved undead created through ancient funerary rituals or dark magic. They guard tombs and treasure hordes, striking fear into intruders with their fearsome appearance. Mummy rot is particularly feared as it can only be cured by magic, not natural healing. Mummies are highly flammable and take extra damage from fire."
+  },
+  {
+    "name": "Specter",
+    "cr": 7,
+    "size": "Medium",
+    "type": "Undead",
+    "subtype": "Incorporeal",
+    "hit_dice": "7d12",
+    "hp_avg": 45,
+    "initiative": 7,
+    "speed": {
+      "fly": 80
+    },
+    "armor_class": {
+      "total": 15,
+      "touch": 15,
+      "flat_footed": 12,
+      "components": "+3 Dex, +2 deflection (incorporeal)"
+    },
+    "base_attack": 3,
+    "grapple": -1,
+    "attacks": [
+      {
+        "name": "Incorporeal Touch",
+        "attack_bonus": "+6",
+        "damage": "1d8 CON drain",
+        "damage_type": "Constitution drain"
+      }
+    ],
+    "special_attacks": [
+      "Constitution Drain (1d8 CON per touch, DC 15 Fort for half; drained CON feeds specter)",
+      "Create Spawn (humanoid killed by CON drain rises as specter in 1d4 rounds, under specter's control)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Incorporeal Traits",
+      "Undead Traits",
+      "+2 Turn Resistance",
+      "Sunlight Powerlessness (loses all powers in sunlight)",
+      "Unnatural Aura (animals panic at 30 ft.)"
+    ],
+    "saves": {
+      "fort": 2,
+      "ref": 5,
+      "will": 7
+    },
+    "abilities": {
+      "str": null,
+      "dex": 16,
+      "con": null,
+      "int": 14,
+      "wis": 14,
+      "cha": 15
+    },
+    "skills": {
+      "Diplomacy": 4,
+      "Hide": 13,
+      "Intimidate": 12,
+      "Listen": 14,
+      "Search": 12,
+      "Sense Motive": 12,
+      "Spot": 14,
+      "Survival": 2
+    },
+    "feats": [
+      "Alertness",
+      "Blind-Fight",
+      "Combat Reflexes",
+      "Improved Initiative"
+    ],
+    "alignment": "Always Lawful Evil",
+    "advancement": "8-14 HD (Medium)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 75,
+    "allowed_biomes": [
+      "Any_Ruin",
+      "Any_Graveyard",
+      "Underground"
+    ],
+    "primary_biome": "Any_Ruin",
+    "ecology_notes": "Specters are powerful incorporeal undead that drain the life force from the living. They are faster and more dangerous than wraiths. Specters are powerless in direct sunlight and animals flee from their unnatural presence. They command spawn they have created, building networks of undead servants."
+  },
+  {
+    "name": "Bodak",
+    "cr": 8,
+    "size": "Medium",
+    "type": "Undead",
+    "subtype": "Extraplanar",
+    "hit_dice": "9d12",
+    "hp_avg": 58,
+    "initiative": 6,
+    "speed": {
+      "land": 20
+    },
+    "armor_class": {
+      "total": 20,
+      "touch": 12,
+      "flat_footed": 18,
+      "components": "+2 Dex, +8 natural"
+    },
+    "base_attack": 4,
+    "grapple": 4,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+4",
+        "damage": "1d8",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Death Gaze (30 ft., DC 15 Fort or die; Will DC 15 to avert eyes and attack at -4)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Immunity to Electricity",
+      "Resistance to Acid 10",
+      "Resistance to Fire 10",
+      "Undead Traits",
+      "Vulnerability to Sunlight (2d6 damage per round in direct sunlight)"
+    ],
+    "saves": {
+      "fort": 3,
+      "ref": 5,
+      "will": 7
+    },
+    "abilities": {
+      "str": 11,
+      "dex": 15,
+      "con": null,
+      "int": 6,
+      "wis": 12,
+      "cha": 12
+    },
+    "skills": {
+      "Listen": 11,
+      "Move Silently": 11,
+      "Spot": 11
+    },
+    "feats": [
+      "Alertness",
+      "Improved Initiative",
+      "Lightning Reflexes",
+      "Weapon Focus (slam)"
+    ],
+    "alignment": "Always Chaotic Evil",
+    "advancement": "10-13 HD (Medium)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [
+      "Sunlight"
+    ],
+    "alignment_weaknesses": [],
+    "passive_effects": [
+      {
+        "effect_type": "Death Gaze",
+        "range_ft": 30,
+        "save_type": "Fort",
+        "save_dc": 15,
+        "effect_on_fail": "Instant death",
+        "effect_on_pass": null,
+        "suppress_conditions": []
+      }
+    ],
+    "population_base": 10,
+    "allowed_biomes": [
+      "Any_Ruin",
+      "Underground",
+      "Any_Planar"
+    ],
+    "primary_biome": "Any_Ruin",
+    "ecology_notes": "Bodaks are horrific undead created when a mortal is destroyed by the power of Orcus or similar dark forces on the lower planes. Their death gaze can slay any living creature that meets their eyes. They burn in direct sunlight and seek dark places to hide. Bodaks retain no memory of their former lives."
+  },
+  {
+    "name": "Mohrg",
+    "cr": 8,
+    "size": "Medium",
+    "type": "Undead",
+    "subtype": null,
+    "hit_dice": "14d12",
+    "hp_avg": 91,
+    "initiative": 9,
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 15,
+      "flat_footed": 11,
+      "components": "+5 Dex, +1 natural"
+    },
+    "base_attack": 7,
+    "grapple": 12,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+12",
+        "damage": "1d6+7",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Tongue",
+        "attack_bonus": "+7",
+        "damage": "Paralysis only",
+        "damage_type": "Touch"
+      }
+    ],
+    "special_attacks": [
+      "Create Spawn (humanoid killed by mohrg rises as zombie in 1d4 days)",
+      "Paralysis (1d4 minutes, DC 17 Fort, tongue attack only)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Fast Healing 5",
+      "Undead Traits"
+    ],
+    "saves": {
+      "fort": 4,
+      "ref": 9,
+      "will": 9
+    },
+    "abilities": {
+      "str": 21,
+      "dex": 21,
+      "con": null,
+      "int": 11,
+      "wis": 10,
+      "cha": 10
+    },
+    "skills": {
+      "Climb": 12,
+      "Hide": 22,
+      "Listen": 13,
+      "Move Silently": 22,
+      "Spot": 13,
+      "Swim": 8
+    },
+    "feats": [
+      "Alertness",
+      "Dodge",
+      "Improved Initiative",
+      "Lightning Reflexes",
+      "Mobility",
+      "Skill Focus (Hide)",
+      "Skill Focus (Move Silently)"
+    ],
+    "alignment": "Always Chaotic Evil",
+    "advancement": "15-21 HD (Medium)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": 5,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 15,
+    "allowed_biomes": [
+      "Any_Ruin",
+      "Underground",
+      "Any_Urban"
+    ],
+    "primary_biome": "Any_Urban",
+    "ecology_notes": "Mohrgs are the undead remains of serial killers and mass murderers whose evil was so great they rose without any ritual. They are fast, agile, and difficult to destroy, with fast healing that makes them resilient in combat. A mohrg's tongue attack paralyzes prey that the creature then slays to raise as zombie thralls."
+  },
+  {
+    "name": "Ghost (Human Warrior 5)",
+    "cr": 5,
+    "size": "Medium",
+    "type": "Undead",
+    "subtype": "Incorporeal",
+    "hit_dice": "5d12",
+    "hp_avg": 32,
+    "initiative": 0,
+    "speed": {
+      "fly": 30
+    },
+    "armor_class": {
+      "total": 14,
+      "touch": 14,
+      "flat_footed": 14,
+      "components": "+4 deflection (incorporeal)"
+    },
+    "base_attack": 5,
+    "grapple": -1,
+    "attacks": [
+      {
+        "name": "Corrupting Touch",
+        "attack_bonus": "+3",
+        "damage": "1d6",
+        "damage_type": "Force"
+      }
+    ],
+    "special_attacks": [
+      "Corrupting Touch (1d6 damage, DC 18 Fort; deals damage to living creatures)",
+      "Frightful Moan (30-ft cone, Will DC 18 or panicked for 2d4 rounds)",
+      "Telekinesis (CL 5, at will; can hurl objects or creatures)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Incorporeal Traits",
+      "Rejuvenation (destroyed ghost returns in 2d4 days unless laid to rest)",
+      "Undead Traits",
+      "+4 Turn Resistance"
+    ],
+    "saves": {
+      "fort": 2,
+      "ref": 1,
+      "will": 4
+    },
+    "abilities": {
+      "str": null,
+      "dex": 10,
+      "con": null,
+      "int": 11,
+      "wis": 12,
+      "cha": 18
+    },
+    "skills": {
+      "Intimidate": 12,
+      "Listen": 9,
+      "Search": 8,
+      "Spot": 9,
+      "Survival": 1
+    },
+    "feats": [
+      "Alertness",
+      "Blind-Fight",
+      "Improved Initiative"
+    ],
+    "alignment": "Any (originally Lawful Neutral)",
+    "advancement": "By character class",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 0,
+    "allowed_biomes": [
+      "Any_Ruin",
+      "Any_Graveyard",
+      "Any_Haunted"
+    ],
+    "primary_biome": "Any_Haunted",
+    "ecology_notes": "This ghost represents a typical example using a Human Warrior 5 base. Ghosts are incorporeal undead created when a creature dies with strong unfinished business. They retain abilities from life and gain ghost-template powers. The ghost can only be permanently destroyed when its unresolved purpose is fulfilled or by special means. CHA score represents the ghost template bonus (+4 to CHA)."
+  },
+  {
+    "name": "Devourer",
+    "cr": 11,
+    "size": "Large",
+    "type": "Undead",
+    "subtype": "Extraplanar",
+    "hit_dice": "12d12",
+    "hp_avg": 78,
+    "initiative": 7,
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 21,
+      "touch": 12,
+      "flat_footed": 18,
+      "components": "+3 Dex, +9 natural, -1 size"
+    },
+    "base_attack": 6,
+    "grapple": 14,
+    "attacks": [
+      {
+        "name": "Claw",
+        "attack_bonus": "+9",
+        "damage": "1d6+4",
+        "damage_type": "Slashing"
+      }
+    ],
+    "special_attacks": [
+      "Energy Drain (2 negative levels per slam, DC 20 Fort to remove after 24 hours)",
+      "Soul Consumption (slain creature's soul trapped for spell energy; DC 20 Fort or soul trapped)",
+      "Spell-Like Abilities (CL 18: 3/day confusion DC 18, fear DC 18, lesser confusion, levitate, ray of enfeeblement; 1/day animate dead, bestow curse DC 17, chaos hammer DC 18, confusion DC 18, control undead, death knell DC 16, desecrate, inflict serious wounds, speak with dead; 1/week trap the soul)",
+      "Trap Essence (captured souls stored in chest cavity, usable as spell energy: 3 sp per trapped soul)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Spell Resistance 21",
+      "Undead Traits"
+    ],
+    "saves": {
+      "fort": 4,
+      "ref": 7,
+      "will": 9
+    },
+    "abilities": {
+      "str": 19,
+      "dex": 16,
+      "con": null,
+      "int": 16,
+      "wis": 16,
+      "cha": 17
+    },
+    "skills": {
+      "Bluff": 18,
+      "Concentration": 18,
+      "Hide": 14,
+      "Intimidate": 18,
+      "Knowledge (religion)": 18,
+      "Listen": 20,
+      "Sense Motive": 18,
+      "Spot": 20
+    },
+    "feats": [
+      "Ability Focus (energy drain)",
+      "Alertness",
+      "Combat Reflexes",
+      "Improved Initiative",
+      "Spell Penetration"
+    ],
+    "alignment": "Always Neutral Evil",
+    "advancement": "13-24 HD (Large)",
+    "dr": null,
+    "sr": 21,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 5,
+    "allowed_biomes": [
+      "Any_Planar",
+      "Any_Ruin",
+      "Underground"
+    ],
+    "primary_biome": "Any_Planar",
+    "ecology_notes": "Devourers are horrific extraplanar undead that consume the souls of the living. They originate on the lower planes and travel to the material plane to harvest souls, which they store in their ribcages as spell energy. A devourer whose soul supply runs out becomes dormant. They are among the most feared undead for their ability to permanently destroy souls."
+  },
+  {
+    "name": "Lich (Human Wizard 11)",
+    "cr": 11,
+    "size": "Medium",
+    "type": "Undead",
+    "subtype": "Augmented Humanoid",
+    "hit_dice": "11d12",
+    "hp_avg": 71,
+    "initiative": 6,
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 25,
+      "touch": 12,
+      "flat_footed": 23,
+      "components": "+2 Dex, +4 natural, +7 bracers of armor, +2 ring of protection"
+    },
+    "base_attack": 5,
+    "grapple": 5,
+    "attacks": [
+      {
+        "name": "Touch",
+        "attack_bonus": "+5",
+        "damage": "1d8+5 plus paralysis",
+        "damage_type": "Cold (negative energy)"
+      }
+    ],
+    "special_attacks": [
+      "Fear Aura (60-ft radius, Will DC 18 or frightened for 2d6 rounds; immune once saved)",
+      "Paralyzing Touch (DC 18 Fort or paralyzed for 1d4+4 rounds, CL 10)",
+      "Spells (Wizard 11; sample: Cone of Cold, Disintegrate, Dominate Person, Fireball, Hold Monster, Lightning Bolt, Magic Missile, Teleport, Timestop, etc.)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Damage Reduction 15/Bludgeoning and Magic",
+      "Immunity to Cold",
+      "Immunity to Electricity",
+      "Immunity to Polymorph",
+      "Immunity to Mind-Affecting Effects",
+      "Phylactery (lich reforms 1d10 days after destruction)",
+      "Undead Traits",
+      "+4 Turn Resistance"
+    ],
+    "saves": {
+      "fort": 5,
+      "ref": 5,
+      "will": 12
+    },
+    "abilities": {
+      "str": 11,
+      "dex": 14,
+      "con": null,
+      "int": 19,
+      "wis": 14,
+      "cha": 16
+    },
+    "skills": {
+      "Concentration": 17,
+      "Hide": 10,
+      "Knowledge (arcana)": 18,
+      "Listen": 15,
+      "Move Silently": 10,
+      "Search": 18,
+      "Sense Motive": 15,
+      "Spellcraft": 22,
+      "Spot": 15
+    },
+    "feats": [
+      "Combat Casting",
+      "Craft Wondrous Item",
+      "Heighten Spell",
+      "Improved Initiative",
+      "Iron Will",
+      "Lightning Reflexes",
+      "Scribe Scroll",
+      "Silent Spell",
+      "Spell Focus (evocation)",
+      "Still Spell",
+      "Toughness"
+    ],
+    "alignment": "Any Evil",
+    "advancement": "By character class",
+    "dr": "15/Bludgeoning and Magic",
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [
+      {
+        "effect_type": "Fear Aura",
+        "range_ft": 60,
+        "save_type": "Will",
+        "save_dc": 18,
+        "effect_on_fail": "Frightened for 2d6 rounds",
+        "effect_on_pass": "Immune to that lich's fear aura for 24 hours",
+        "suppress_conditions": []
+      }
+    ],
+    "population_base": 0,
+    "allowed_biomes": [
+      "Any_Ruin",
+      "Any_Dungeon",
+      "Underground"
+    ],
+    "primary_biome": "Any_Ruin",
+    "ecology_notes": "This lich represents a human wizard of 11th level who achieved undeath through the lich ritual. Liches are among the most powerful undead, retaining their full spellcasting ability and intellect. They are immortal so long as their phylactery survives, reforming within days of destruction. The sample shown uses bracers of armor +7 and a ring of protection +2. Actual lich power varies greatly by base class level and magic items."
+  }
+]
