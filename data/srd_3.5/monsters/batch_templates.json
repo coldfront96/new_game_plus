@@ -1,0 +1,1155 @@
+[
+  {
+    "name": "Skeleton (Human Warrior)",
+    "cr": 0.333,
+    "size": "Medium",
+    "type": "Undead",
+    "subtype": "Augmented Humanoid",
+    "hit_dice": "1d12",
+    "hp_avg": 6,
+    "initiative": 6,
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 15,
+      "touch": 12,
+      "flat_footed": 13,
+      "components": "+2 Dex, +2 natural, +1 light shield"
+    },
+    "base_attack": 0,
+    "grapple": 1,
+    "attacks": [
+      {
+        "name": "Scimitar",
+        "attack_bonus": "+1",
+        "damage": "1d6+1/18-20",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw (if no weapon)",
+        "attack_bonus": "+1",
+        "damage": "1d4+1",
+        "damage_type": "Slashing"
+      }
+    ],
+    "special_attacks": [],
+    "special_qualities": [
+      "Damage Reduction 5/Bludgeoning",
+      "Darkvision 60 ft.",
+      "Immunity to Cold",
+      "Undead Traits"
+    ],
+    "saves": {
+      "fort": 0,
+      "ref": 2,
+      "will": 2
+    },
+    "abilities": {
+      "str": 13,
+      "dex": 15,
+      "con": null,
+      "int": null,
+      "wis": 10,
+      "cha": 1
+    },
+    "skills": {},
+    "feats": [
+      "Improved Initiative"
+    ],
+    "alignment": "Always Neutral Evil",
+    "advancement": "None",
+    "dr": "5/Bludgeoning",
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 0,
+    "allowed_biomes": [
+      "Any"
+    ],
+    "primary_biome": "Any",
+    "ecology_notes": "Skeleton templates are applied to any creature with a skeleton. This entry represents a human warrior skeleton. Skeletons retain the shape and size of the base creature but lose all flesh and bodily organs."
+  },
+  {
+    "name": "Celestial Creature (Dire Bear)",
+    "cr": 8,
+    "size": "Large",
+    "type": "Magical Beast",
+    "subtype": "Extraplanar",
+    "hit_dice": "12d8+51",
+    "hp_avg": 105,
+    "initiative": 1,
+    "speed": {
+      "land": 40
+    },
+    "armor_class": {
+      "total": 17,
+      "touch": 10,
+      "flat_footed": 16,
+      "components": "+1 Dex, +7 natural, -1 size"
+    },
+    "base_attack": 9,
+    "grapple": 22,
+    "attacks": [
+      {
+        "name": "Claw (\u00d72)",
+        "attack_bonus": "+17",
+        "damage": "2d4+10",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+12",
+        "damage": "2d8+5",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Smite Evil 1/day (+12 damage vs evil)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "DR 5/Magic",
+      "Improved Grab",
+      "Low-light vision",
+      "Resistance to Acid/Cold/Electricity 10",
+      "SR 17"
+    ],
+    "saves": {
+      "fort": 11,
+      "ref": 9,
+      "will": 5
+    },
+    "abilities": {
+      "str": 31,
+      "dex": 13,
+      "con": 19,
+      "int": 3,
+      "wis": 12,
+      "cha": 6
+    },
+    "skills": {
+      "Listen": 7,
+      "Spot": 7,
+      "Swim": 14
+    },
+    "feats": [
+      "Alertness",
+      "Endurance",
+      "Run",
+      "Toughness",
+      "Weapon Focus (claw)"
+    ],
+    "alignment": "Always Good (celestial template)",
+    "advancement": "13-16 HD (Large); 17+ HD (Huge)",
+    "dr": "5/Magic",
+    "sr": 17,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 0,
+    "allowed_biomes": [
+      "Any Good"
+    ],
+    "primary_biome": "Any Good",
+    "ecology_notes": "The Celestial template is applied to animals or magical beasts summoned from good-aligned outer planes. Representative example: Celestial Dire Bear. The template adds Smite Evil, DR/Magic, resistance to energy types, SR, and darkvision 60 ft."
+  },
+  {
+    "name": "Fiendish Creature (Giant Constrictor Snake)",
+    "cr": 6,
+    "size": "Large",
+    "type": "Magical Beast",
+    "subtype": "Extraplanar",
+    "hit_dice": "11d8+14",
+    "hp_avg": 63,
+    "initiative": 3,
+    "speed": {
+      "land": 20,
+      "climb": 20,
+      "swim": 20
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 12,
+      "flat_footed": 13,
+      "components": "+3 Dex, +4 natural, -1 size"
+    },
+    "base_attack": 8,
+    "grapple": 17,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+12",
+        "damage": "1d8+7",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Constrict",
+        "attack_bonus": "+12",
+        "damage": "1d8+7",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Constrict 1d8+7",
+      "Improved Grab",
+      "Smite Good 1/day (+11 damage vs good)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "DR 5/Magic",
+      "Low-light vision",
+      "Resistance to Cold/Fire 10",
+      "Scent",
+      "SR 16"
+    ],
+    "saves": {
+      "fort": 8,
+      "ref": 10,
+      "will": 4
+    },
+    "abilities": {
+      "str": 21,
+      "dex": 17,
+      "con": 13,
+      "int": 1,
+      "wis": 12,
+      "cha": 2
+    },
+    "skills": {
+      "Balance": 13,
+      "Climb": 23,
+      "Hide": 2,
+      "Listen": 10,
+      "Spot": 10,
+      "Swim": 21
+    },
+    "feats": [
+      "Alertness",
+      "Endurance",
+      "Power Attack",
+      "Skill Focus (Hide)",
+      "Toughness"
+    ],
+    "alignment": "Always Evil (fiendish template)",
+    "advancement": "12-16 HD (Large); 17+ HD (Huge)",
+    "dr": "5/Magic",
+    "sr": 16,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 0,
+    "allowed_biomes": [
+      "Any Evil"
+    ],
+    "primary_biome": "Any Evil",
+    "ecology_notes": "The Fiendish template is applied to animals or magical beasts summoned from evil-aligned outer planes. Representative example: Fiendish Constrictor Snake. Adds Smite Good, DR/Magic, resistance to cold and fire, SR, and darkvision 60 ft."
+  },
+  {
+    "name": "Half-Celestial (Human Paladin 5)",
+    "cr": 7,
+    "size": "Medium",
+    "type": "Outsider",
+    "subtype": "Native",
+    "hit_dice": "5d10+10",
+    "hp_avg": 37,
+    "initiative": 1,
+    "speed": {
+      "land": 30,
+      "fly": 60
+    },
+    "armor_class": {
+      "total": 22,
+      "touch": 11,
+      "flat_footed": 21,
+      "components": "+1 Dex, +7 full plate, +2 shield, +2 natural"
+    },
+    "base_attack": 5,
+    "grapple": 7,
+    "attacks": [
+      {
+        "name": "Longsword",
+        "attack_bonus": "+8",
+        "damage": "1d8+4/19-20",
+        "damage_type": "Slashing"
+      }
+    ],
+    "special_attacks": [
+      "Smite Evil 2/day",
+      "Turn Undead",
+      "Spells (as 5th level paladin)"
+    ],
+    "special_qualities": [
+      "Aura of Courage",
+      "Aura of Good",
+      "Darkvision 60 ft.",
+      "Divine Grace",
+      "Divine Health",
+      "DR 5/Magic",
+      "Immunity to Disease",
+      "Lay on Hands",
+      "Low-light vision",
+      "Paladin Abilities",
+      "Resistance to Acid/Cold/Electricity 10",
+      "SR 16"
+    ],
+    "saves": {
+      "fort": 11,
+      "ref": 7,
+      "will": 8
+    },
+    "abilities": {
+      "str": 14,
+      "dex": 12,
+      "con": 14,
+      "int": 10,
+      "wis": 14,
+      "cha": 18
+    },
+    "skills": {
+      "Concentration": 10,
+      "Diplomacy": 12,
+      "Knowledge (religion)": 8,
+      "Ride": 9,
+      "Sense Motive": 10
+    },
+    "feats": [
+      "Mounted Combat",
+      "Ride-By Attack",
+      "Weapon Focus (longsword)"
+    ],
+    "alignment": "Always Good",
+    "advancement": "By character class",
+    "dr": "5/Magic",
+    "sr": 16,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 0,
+    "allowed_biomes": [
+      "Any Good"
+    ],
+    "primary_biome": "Any Good",
+    "ecology_notes": "Half-Celestials are mortals with one celestial parent. Representative example: Half-Celestial Human Paladin 5. Template adds wings (fly speed), DR, energy resistance, SR, SLAs, and boosts abilities."
+  },
+  {
+    "name": "Half-Dragon (Human Fighter 5)",
+    "cr": 7,
+    "size": "Medium",
+    "type": "Dragon",
+    "subtype": "Augmented Humanoid",
+    "hit_dice": "5d10+15",
+    "hp_avg": 42,
+    "initiative": 1,
+    "speed": {
+      "land": 30,
+      "fly": 30
+    },
+    "armor_class": {
+      "total": 20,
+      "touch": 11,
+      "flat_footed": 19,
+      "components": "+1 Dex, +7 full plate, +4 natural"
+    },
+    "base_attack": 5,
+    "grapple": 9,
+    "attacks": [
+      {
+        "name": "Longsword",
+        "attack_bonus": "+9",
+        "damage": "1d8+4/19-20",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Breath Weapon (line of fire)",
+        "attack_bonus": "Special",
+        "damage": "6d8 fire (30-ft. line; Ref DC 16 half)",
+        "damage_type": "Fire"
+      }
+    ],
+    "special_attacks": [
+      "Breath Weapon (6d8 fire, 30-ft line, DC 16 Ref)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Immunity to Fire",
+      "Low-light vision"
+    ],
+    "saves": {
+      "fort": 7,
+      "ref": 2,
+      "will": 2
+    },
+    "abilities": {
+      "str": 18,
+      "dex": 13,
+      "con": 16,
+      "int": 10,
+      "wis": 10,
+      "cha": 12
+    },
+    "skills": {
+      "Climb": 10,
+      "Intimidate": 9,
+      "Swim": 8
+    },
+    "feats": [
+      "Cleave",
+      "Improved Initiative",
+      "Power Attack",
+      "Weapon Focus (longsword)",
+      "Weapon Specialization (longsword)"
+    ],
+    "alignment": "Usually Chaotic Evil (parent dragon type)",
+    "advancement": "By character class",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 0,
+    "allowed_biomes": [
+      "Any"
+    ],
+    "primary_biome": "Any",
+    "ecology_notes": "Half-Dragons have one dragon parent. Representative example: Half-Red Dragon Human Fighter 5. Template adds +8 STR/+6 CON, wings, natural armor +4, breath weapon matching parent's, and immunities."
+  },
+  {
+    "name": "Half-Fiend (Succubus)",
+    "cr": 9,
+    "size": "Medium",
+    "type": "Outsider",
+    "subtype": "Augmented Outsider, Chaotic, Evil",
+    "hit_dice": "6d8+6",
+    "hp_avg": 33,
+    "initiative": 1,
+    "speed": {
+      "land": 30,
+      "fly": 60
+    },
+    "armor_class": {
+      "total": 20,
+      "touch": 11,
+      "flat_footed": 19,
+      "components": "+1 Dex, +9 natural"
+    },
+    "base_attack": 6,
+    "grapple": 7,
+    "attacks": [
+      {
+        "name": "Claw (\u00d72)",
+        "attack_bonus": "+7",
+        "damage": "1d6+1",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Smite Good Slam",
+        "attack_bonus": "+7",
+        "damage": "1d6+7 plus smite",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Energy Drain (2 negative levels per kiss)",
+      "Smite Good 1/day",
+      "Spell-Like Abilities (CL 9: desecrate, unholy blight, poison, contagion, blasphemy, unholy aura, horrid wilting, summon monster IX)"
+    ],
+    "special_qualities": [
+      "Alternate Form",
+      "Darkvision 60 ft.",
+      "DR 10/Magic",
+      "Immunity to poison/fire",
+      "Low-light vision",
+      "Resistance to Acid/Cold/Electricity/Fire 10",
+      "SR 18",
+      "Telepathy 100 ft."
+    ],
+    "saves": {
+      "fort": 6,
+      "ref": 6,
+      "will": 7
+    },
+    "abilities": {
+      "str": 13,
+      "dex": 13,
+      "con": 13,
+      "int": 18,
+      "wis": 14,
+      "cha": 26
+    },
+    "skills": {
+      "Bluff": 17,
+      "Concentration": 10,
+      "Diplomacy": 20,
+      "Disguise": 17,
+      "Escape Artist": 10,
+      "Hide": 10,
+      "Intimidate": 18,
+      "Knowledge (planes)": 13,
+      "Listen": 13,
+      "Move Silently": 10,
+      "Search": 13,
+      "Sense Motive": 13,
+      "Spot": 13
+    },
+    "feats": [
+      "Dodge",
+      "Mobility",
+      "Spring Attack"
+    ],
+    "alignment": "Always Chaotic Evil",
+    "advancement": "None (base creature level)",
+    "dr": "10/Magic",
+    "sr": 18,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 0,
+    "allowed_biomes": [
+      "Any Evil"
+    ],
+    "primary_biome": "Any Evil",
+    "ecology_notes": "Half-Fiends are the offspring of fiends and other creatures. Representative example: Half-Fiend Succubus. Template adds dark wings, DR, immunities, resistances, SR, and dark spell-like abilities."
+  },
+  {
+    "name": "Lycanthrope, Werewolf (Human Fighter 2)",
+    "cr": 4,
+    "size": "Medium",
+    "type": "Humanoid",
+    "subtype": "Human, Shapechanger",
+    "hit_dice": "2d8+4 plus 2d8+4",
+    "hp_avg": 28,
+    "initiative": 1,
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 11,
+      "flat_footed": 15,
+      "components": "+1 Dex, +3 studded leather, +2 natural"
+    },
+    "base_attack": 3,
+    "grapple": 5,
+    "attacks": [
+      {
+        "name": "Bite (wolf form)",
+        "attack_bonus": "+5",
+        "damage": "1d6+3 plus curse of lycanthropy",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Longsword (humanoid)",
+        "attack_bonus": "+5",
+        "damage": "1d8+3/19-20",
+        "damage_type": "Slashing"
+      }
+    ],
+    "special_attacks": [
+      "Curse of Lycanthropy (DC 15 Fort or become werewolf)"
+    ],
+    "special_qualities": [
+      "Alternate Form (wolf or hybrid)",
+      "Damage Reduction 10/Silver",
+      "Low-light vision (wolf or hybrid)",
+      "Lycanthropic Empathy (wolves and dire wolves)",
+      "Scent (wolf or hybrid)"
+    ],
+    "saves": {
+      "fort": 6,
+      "ref": 2,
+      "will": 1
+    },
+    "abilities": {
+      "str": 15,
+      "dex": 13,
+      "con": 14,
+      "int": 10,
+      "wis": 11,
+      "cha": 8
+    },
+    "skills": {
+      "Handle Animal": 4,
+      "Intimidate": 5,
+      "Listen": 5,
+      "Spot": 5
+    },
+    "feats": [
+      "Alertness",
+      "Iron Will",
+      "Track",
+      "Weapon Focus (bite)"
+    ],
+    "alignment": "Usually Chaotic Evil",
+    "advancement": "By character class",
+    "dr": "10/Silver",
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 3,
+    "allowed_biomes": [
+      "Forest",
+      "Rural",
+      "Urban"
+    ],
+    "primary_biome": "Forest",
+    "ecology_notes": "Werewolves are lycanthropes who transform into wolves or wolf-humanoid hybrids. Representative example: Werewolf (Human Fighter 2). They spread their curse through bite attacks."
+  },
+  {
+    "name": "Lycanthrope, Wererat (Human Rogue 3)",
+    "cr": 4,
+    "size": "Small",
+    "type": "Humanoid",
+    "subtype": "Human, Shapechanger",
+    "hit_dice": "3d6+6 plus 1d8+2",
+    "hp_avg": 24,
+    "initiative": 2,
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 12,
+      "flat_footed": 14,
+      "components": "+2 Dex, +2 leather, +2 natural"
+    },
+    "base_attack": 2,
+    "grapple": 0,
+    "attacks": [
+      {
+        "name": "Short Sword",
+        "attack_bonus": "+3",
+        "damage": "1d6/19-20",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Bite (hybrid/rat)",
+        "attack_bonus": "+3",
+        "damage": "1d3 plus curse",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Curse of Lycanthropy (DC 14 Fort)",
+      "Sneak Attack +2d6"
+    ],
+    "special_qualities": [
+      "Alternate Form (dire rat or hybrid)",
+      "Damage Reduction 10/Silver",
+      "Evasion",
+      "Low-light vision",
+      "Lycanthropic Empathy (rats and dire rats)",
+      "Scent",
+      "Trap Sense +1",
+      "Trapfinding"
+    ],
+    "saves": {
+      "fort": 4,
+      "ref": 7,
+      "will": 2
+    },
+    "abilities": {
+      "str": 10,
+      "dex": 15,
+      "con": 14,
+      "int": 14,
+      "wis": 11,
+      "cha": 8
+    },
+    "skills": {
+      "Bluff": 5,
+      "Diplomacy": 1,
+      "Disable Device": 8,
+      "Escape Artist": 8,
+      "Hide": 8,
+      "Intimidate": 1,
+      "Listen": 6,
+      "Move Silently": 8,
+      "Open Lock": 8,
+      "Search": 8,
+      "Sense Motive": 6,
+      "Spot": 6
+    },
+    "feats": [
+      "Alertness",
+      "Dodge",
+      "Weapon Finesse"
+    ],
+    "alignment": "Usually Lawful Evil",
+    "advancement": "By character class",
+    "dr": "10/Silver",
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 5,
+    "allowed_biomes": [
+      "Urban",
+      "Sewer",
+      "Underground"
+    ],
+    "primary_biome": "Urban",
+    "ecology_notes": "Wererats are cunning shapeshifters who prefer urban environments. Representative example: Wererat (Human Rogue 3). They often form secret guilds and work as spies, thieves, and assassins."
+  },
+  {
+    "name": "Lycanthrope, Wereboar (Human Barbarian 3)",
+    "cr": 5,
+    "size": "Medium",
+    "type": "Humanoid",
+    "subtype": "Human, Shapechanger",
+    "hit_dice": "3d12+6 plus 3d8+6",
+    "hp_avg": 48,
+    "initiative": 0,
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 10,
+      "flat_footed": 16,
+      "components": "+3 natural, +3 hide armor"
+    },
+    "base_attack": 4,
+    "grapple": 7,
+    "attacks": [
+      {
+        "name": "Greataxe",
+        "attack_bonus": "+7",
+        "damage": "1d12+4/\u00d73",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Bite (hybrid/boar)",
+        "attack_bonus": "+7",
+        "damage": "1d8+4 plus curse",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Curse of Lycanthropy (DC 15 Fort)",
+      "Rage 1/day"
+    ],
+    "special_qualities": [
+      "Alternate Form (boar or hybrid)",
+      "Damage Reduction 10/Silver",
+      "Ferocity (boar form; fight below 0 hp)",
+      "Low-light vision",
+      "Lycanthropic Empathy (boars and dire boars)",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 8,
+      "ref": 1,
+      "will": 3
+    },
+    "abilities": {
+      "str": 17,
+      "dex": 10,
+      "con": 15,
+      "int": 10,
+      "wis": 11,
+      "cha": 6
+    },
+    "skills": {
+      "Handle Animal": 2,
+      "Intimidate": 4,
+      "Listen": 5,
+      "Spot": 5,
+      "Survival": 6
+    },
+    "feats": [
+      "Alertness",
+      "Power Attack",
+      "Toughness"
+    ],
+    "alignment": "Usually Neutral Evil",
+    "advancement": "By character class",
+    "dr": "10/Silver",
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 2,
+    "allowed_biomes": [
+      "Forest",
+      "Hills",
+      "Rural"
+    ],
+    "primary_biome": "Forest",
+    "ecology_notes": "Wereboars are aggressive and stubborn lycanthropes who share the boar's ferocity. Representative example: Wereboar (Human Barbarian 3). They rarely form groups but are territorial and dangerous."
+  },
+  {
+    "name": "Lycanthrope, Weretiger (Human Fighter 5)",
+    "cr": 8,
+    "size": "Medium",
+    "type": "Humanoid",
+    "subtype": "Human, Shapechanger",
+    "hit_dice": "5d10+10 plus 6d8+12",
+    "hp_avg": 76,
+    "initiative": 2,
+    "speed": {
+      "land": 40
+    },
+    "armor_class": {
+      "total": 17,
+      "touch": 12,
+      "flat_footed": 15,
+      "components": "+2 Dex, +5 natural"
+    },
+    "base_attack": 9,
+    "grapple": 15,
+    "attacks": [
+      {
+        "name": "Longsword",
+        "attack_bonus": "+13",
+        "damage": "1d8+6/19-20",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw \u00d72 (hybrid/tiger)",
+        "attack_bonus": "+13",
+        "damage": "1d8+6",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Bite (hybrid/tiger)",
+        "attack_bonus": "+8",
+        "damage": "2d6+3 plus curse",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Curse of Lycanthropy (DC 17 Fort)",
+      "Pounce",
+      "Rake (1d8+3 each, 2 claws if pounce)"
+    ],
+    "special_qualities": [
+      "Alternate Form (tiger or hybrid)",
+      "Damage Reduction 10/Silver",
+      "Improved Grab",
+      "Low-light vision",
+      "Lycanthropic Empathy (tigers and dire tigers)",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 10,
+      "ref": 5,
+      "will": 4
+    },
+    "abilities": {
+      "str": 23,
+      "dex": 15,
+      "con": 15,
+      "int": 12,
+      "wis": 12,
+      "cha": 8
+    },
+    "skills": {
+      "Handle Animal": 5,
+      "Hide": 6,
+      "Listen": 8,
+      "Move Silently": 6,
+      "Spot": 8,
+      "Swim": 10
+    },
+    "feats": [
+      "Alertness",
+      "Cleave",
+      "Improved Initiative",
+      "Power Attack",
+      "Track",
+      "Weapon Focus (claw)"
+    ],
+    "alignment": "Usually Neutral Evil",
+    "advancement": "By character class",
+    "dr": "10/Silver",
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 1,
+    "allowed_biomes": [
+      "Forest",
+      "Jungle"
+    ],
+    "primary_biome": "Forest",
+    "ecology_notes": "Weretigers are proud and solitary lycanthropes. Representative example: Weretiger (Human Fighter 5). They combine human cunning with feline ferocity and hunting instinct."
+  },
+  {
+    "name": "Lycanthrope, Werebear (Human Ranger 5)",
+    "cr": 8,
+    "size": "Medium",
+    "type": "Humanoid",
+    "subtype": "Human, Shapechanger",
+    "hit_dice": "5d8+10 plus 6d8+12",
+    "hp_avg": 71,
+    "initiative": 1,
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 18,
+      "touch": 11,
+      "flat_footed": 17,
+      "components": "+1 Dex, +7 natural"
+    },
+    "base_attack": 9,
+    "grapple": 18,
+    "attacks": [
+      {
+        "name": "Longsword",
+        "attack_bonus": "+13",
+        "damage": "1d8+5/19-20",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw \u00d72 (hybrid/bear)",
+        "attack_bonus": "+13",
+        "damage": "1d8+5",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Bite (hybrid/bear)",
+        "attack_bonus": "+8",
+        "damage": "2d6+2 plus curse",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Curse of Lycanthropy (DC 18 Fort; werebear curse may only create werebears)",
+      "Hug (1d8+5 if both claws hit)"
+    ],
+    "special_qualities": [
+      "Alternate Form (bear or hybrid)",
+      "Damage Reduction 10/Silver",
+      "Improved Grab",
+      "Low-light vision",
+      "Lycanthropic Empathy (bears and dire bears)",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 11,
+      "ref": 7,
+      "will": 5
+    },
+    "abilities": {
+      "str": 21,
+      "dex": 13,
+      "con": 16,
+      "int": 12,
+      "wis": 14,
+      "cha": 8
+    },
+    "skills": {
+      "Handle Animal": 7,
+      "Heal": 10,
+      "Hide": 5,
+      "Knowledge (nature)": 9,
+      "Listen": 10,
+      "Move Silently": 5,
+      "Spot": 10,
+      "Survival": 12
+    },
+    "feats": [
+      "Alertness",
+      "Endurance",
+      "Iron Will",
+      "Power Attack",
+      "Track",
+      "Weapon Focus (claw)"
+    ],
+    "alignment": "Usually Lawful Good",
+    "advancement": "By character class",
+    "dr": "10/Silver",
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 2,
+    "allowed_biomes": [
+      "Forest",
+      "Hills"
+    ],
+    "primary_biome": "Forest",
+    "ecology_notes": "Werebears are the most benevolent of the common lycanthropes, often acting as forest guardians. Representative example: Werebear (Human Ranger 5). Their curse rarely spreads beyond willing recipients."
+  },
+  {
+    "name": "Lich Template (Generic)",
+    "cr": "base + 2",
+    "size": "Any",
+    "type": "Undead",
+    "subtype": "Augmented Humanoid",
+    "hit_dice": "as base creature (uses d12 HD as undead)",
+    "hp_avg": 0,
+    "initiative": 0,
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 0,
+      "touch": 0,
+      "flat_footed": 0,
+      "components": "as base creature +5 natural armor (minimum)"
+    },
+    "base_attack": 0,
+    "grapple": 0,
+    "attacks": [
+      {
+        "name": "Touch (paralyzing; DC base Wis+10 Fort)",
+        "attack_bonus": "+varies",
+        "damage": "1d8+5 cold plus paralysis",
+        "damage_type": "Cold/Negative"
+      }
+    ],
+    "special_attacks": [
+      "Fear Aura (60-ft. radius; DC Cha+10 Will or frightened 2d4 rounds)",
+      "Paralyzing Touch (1d8+5 cold, DC Fort paralyze 1d4+1 rounds)",
+      "Spell-Like Abilities (as base creature spells)",
+      "Spells (retain all spells from base creature)"
+    ],
+    "special_qualities": [
+      "Damage Reduction 15/Bludgeoning and Magic",
+      "Darkvision 60 ft.",
+      "Immunity to Cold, Electricity, Polymorph, Mind-Affecting Effects",
+      "Phylactery (1 hp left if destroyed; reforms in 1d10 days)",
+      "Turn Resistance +4",
+      "Undead Traits"
+    ],
+    "saves": {
+      "fort": 0,
+      "ref": 0,
+      "will": 4
+    },
+    "abilities": {
+      "str": 0,
+      "dex": 0,
+      "con": null,
+      "int": 2,
+      "wis": 2,
+      "cha": 2
+    },
+    "skills": {},
+    "feats": [],
+    "alignment": "Any Evil",
+    "advancement": "None (fixed at creation)",
+    "dr": "15/Bludgeoning and Magic",
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 0,
+    "allowed_biomes": [
+      "Any"
+    ],
+    "primary_biome": "Any",
+    "ecology_notes": "The Lich template can be applied to any humanoid spellcaster. Ability deltas: STR/DEX unchanged (0), INT +2, WIS +2, CHA +2, CON removed (null). Adds paralyzing touch, fear aura, DR, immunities, and phylactery. See batch_undead.json for a representative example (Lich Human Wizard 11)."
+  },
+  {
+    "name": "Celestial Creature (Heavy Horse)",
+    "cr": 2,
+    "size": "Large",
+    "type": "Magical Beast",
+    "subtype": "Extraplanar",
+    "hit_dice": "3d8+6",
+    "hp_avg": 19,
+    "initiative": 2,
+    "speed": {
+      "land": 60
+    },
+    "armor_class": {
+      "total": 14,
+      "touch": 12,
+      "flat_footed": 12,
+      "components": "+2 Dex, +3 natural, -1 size"
+    },
+    "base_attack": 2,
+    "grapple": 8,
+    "attacks": [
+      {
+        "name": "2 hooves",
+        "attack_bonus": "+3",
+        "damage": "1d6+2",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "-2",
+        "damage": "1d3+1",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Smite Evil 1/day (+3 damage vs evil)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "DR 5/Magic",
+      "Low-light vision",
+      "Resistance to Acid/Cold/Electricity 5",
+      "Scent",
+      "SR 8"
+    ],
+    "saves": {
+      "fort": 5,
+      "ref": 5,
+      "will": 2
+    },
+    "abilities": {
+      "str": 14,
+      "dex": 14,
+      "con": 15,
+      "int": 2,
+      "wis": 12,
+      "cha": 6
+    },
+    "skills": {
+      "Listen": 4,
+      "Spot": 4
+    },
+    "feats": [
+      "Endurance",
+      "Run"
+    ],
+    "alignment": "Always Good (celestial)",
+    "advancement": "4-6 HD (Large)",
+    "dr": "5/Magic",
+    "sr": 8,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 0,
+    "allowed_biomes": [
+      "Any Good"
+    ],
+    "primary_biome": "Any Good",
+    "ecology_notes": "Representative example: Celestial Heavy Horse (CR 2). The Celestial template grants Smite Evil, DR 5/Magic, energy resistance to acid/cold/electricity (5 for up to 4 HD, 10 for 5-10 HD, 15 for 11+ HD), SR equal to HD+5, darkvision 60 ft., and alignment subtype (Good)."
+  }
+]
