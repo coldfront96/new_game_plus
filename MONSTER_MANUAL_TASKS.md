@@ -167,34 +167,34 @@ See [`LIVING_WORLD_MM_BUILD_SITE.md`](LIVING_WORLD_MM_BUILD_SITE.md) for the ful
 
 | Monster | CR (Adult) | Status | Notes |
 |---------|-----------|--------|-------|
-| Dragon, Black (Wyrmling) | 3 | ❌ | |
+| Dragon, Black (Wyrmling) | 3 | ✅ | `data/srd_3.5/monsters/batch_dragons_extended.json` |
 | Dragon, Black (Young) | 7 | ✅ | `data/srd_3.5/monsters/batch_d_g.json` |
-| Dragon, Black (Adult) | 14 | ❌ | |
-| Dragon, Black (Ancient) | 19 | ❌ | |
-| Dragon, Black (Great Wyrm) | 22 | ❌ | |
-| Dragon, Blue (Young) | 9 | 🔲 | stub in `core.json` |
-| Dragon, Blue (Adult) | 16 | ❌ | |
-| Dragon, Blue (Ancient) | 21 | ❌ | |
-| Dragon, Brass (Young) | 8 | ❌ | |
-| Dragon, Brass (Adult) | 15 | ❌ | |
-| Dragon, Bronze (Young) | 10 | ❌ | |
-| Dragon, Bronze (Adult) | 17 | ❌ | |
-| Dragon, Copper (Young) | 9 | ❌ | |
-| Dragon, Copper (Adult) | 16 | ❌ | |
-| Dragon, Gold (Young) | 12 | ❌ | |
-| Dragon, Gold (Adult) | 19 | ❌ | |
-| Dragon, Gold (Great Wyrm) | 25 | ❌ | |
-| Dragon, Green (Young) | 8 | 🔲 | stub in `core.json` |
-| Dragon, Green (Adult) | 15 | ❌ | |
-| Dragon, Red (Young) | 10 | 🔲 | stub in `core.json` |
-| Dragon, Red (Adult) | 17 | ❌ | |
+| Dragon, Black (Adult) | 14 | ✅ | `data/srd_3.5/monsters/batch_dragons_extended.json` |
+| Dragon, Black (Ancient) | 19 | ✅ | `data/srd_3.5/monsters/batch_dragons_extended.json` |
+| Dragon, Black (Great Wyrm) | 22 | ✅ | `data/srd_3.5/monsters/batch_dragons_extended.json` |
+| Dragon, Blue (Young) | 9 | ✅ | `data/srd_3.5/monsters/batch_dragons_extended.json` |
+| Dragon, Blue (Adult) | 16 | ✅ | `data/srd_3.5/monsters/batch_dragons_extended.json` |
+| Dragon, Blue (Ancient) | 21 | ✅ | `data/srd_3.5/monsters/batch_dragons_extended.json` |
+| Dragon, Brass (Young) | 8 | ✅ | `data/srd_3.5/monsters/batch_dragons_extended.json` |
+| Dragon, Brass (Adult) | 15 | ✅ | `data/srd_3.5/monsters/batch_dragons_extended.json` |
+| Dragon, Bronze (Young) | 10 | ✅ | `data/srd_3.5/monsters/batch_dragons_extended.json` |
+| Dragon, Bronze (Adult) | 17 | ✅ | `data/srd_3.5/monsters/batch_dragons_extended.json` |
+| Dragon, Copper (Young) | 9 | ✅ | `data/srd_3.5/monsters/batch_dragons_extended.json` |
+| Dragon, Copper (Adult) | 16 | ✅ | `data/srd_3.5/monsters/batch_dragons_extended.json` |
+| Dragon, Gold (Young) | 12 | ✅ | `data/srd_3.5/monsters/batch_dragons_extended.json` |
+| Dragon, Gold (Adult) | 19 | ✅ | `data/srd_3.5/monsters/batch_dragons_extended.json` |
+| Dragon, Gold (Great Wyrm) | 25 | ✅ | `data/srd_3.5/monsters/batch_dragons_extended.json` |
+| Dragon, Green (Young) | 8 | ✅ | `data/srd_3.5/monsters/batch_dragons_extended.json` |
+| Dragon, Green (Adult) | 15 | ✅ | `data/srd_3.5/monsters/batch_dragons_extended.json` |
+| Dragon, Red (Young) | 10 | ✅ | `data/srd_3.5/monsters/batch_dragons_extended.json` |
+| Dragon, Red (Adult) | 17 | ✅ | `data/srd_3.5/monsters/batch_dragons_extended.json` |
 | Dragon, Red (Ancient) | 22 | ✅ | `data/srd_3.5/monsters/batch_d_g.json` |
-| Dragon, Silver (Young) | 11 | ❌ | |
-| Dragon, Silver (Adult) | 18 | ❌ | |
-| Dragon, White (Young) | 5 | 🔲 | stub in `core.json` |
-| Dragon, White (Adult) | 12 | ❌ | |
-| Dragon Turtle | 9 | ❌ | |
-| Pseudodragon | 1 | ❌ | |
+| Dragon, Silver (Young) | 11 | ✅ | `data/srd_3.5/monsters/batch_dragons_extended.json` |
+| Dragon, Silver (Adult) | 18 | ✅ | `data/srd_3.5/monsters/batch_dragons_extended.json` |
+| Dragon, White (Young) | 5 | ✅ | `data/srd_3.5/monsters/batch_dragons_extended.json` |
+| Dragon, White (Adult) | 12 | ✅ | `data/srd_3.5/monsters/batch_dragons_extended.json` |
+| Dragon Turtle | 9 | ✅ | `data/srd_3.5/monsters/batch_dragons_extended.json` |
+| Pseudodragon | 1 | ✅ | `data/srd_3.5/monsters/batch_dragons_extended.json` |
 
 ---
 
@@ -403,14 +403,14 @@ See [`LIVING_WORLD_MM_BUILD_SITE.md`](LIVING_WORLD_MM_BUILD_SITE.md) for the ful
 
 | Monster | CR | Status | Notes |
 |---------|----|--------|-------|
-| Angel, Astral Deva | 14 | ❌ | |
-| Angel, Planetar | 16 | ❌ | |
-| Angel, Solar | 23 | ❌ | |
-| Archon, Hound | 4 | ❌ | |
-| Archon, Lantern | 2 | ❌ | |
-| Archon, Trumpet | 14 | ❌ | |
-| Azata, Bralani | 6 | ❌ | |
-| Azata, Ghaele | 13 | ❌ | |
+| Angel, Astral Deva | 14 | ✅ | `data/srd_3.5/monsters/batch_outsiders_celestials.json` |
+| Angel, Planetar | 16 | ✅ | `data/srd_3.5/monsters/batch_outsiders_celestials.json` |
+| Angel, Solar | 23 | ✅ | `data/srd_3.5/monsters/batch_outsiders_celestials.json` |
+| Archon, Hound | 4 | ✅ | `data/srd_3.5/monsters/batch_outsiders_celestials.json` |
+| Archon, Lantern | 2 | ✅ | `data/srd_3.5/monsters/batch_outsiders_celestials.json` |
+| Archon, Trumpet | 14 | ✅ | `data/srd_3.5/monsters/batch_outsiders_celestials.json` |
+| Azata, Bralani | 6 | ✅ | `data/srd_3.5/monsters/batch_outsiders_celestials.json` |
+| Azata, Ghaele | 13 | ✅ | `data/srd_3.5/monsters/batch_outsiders_celestials.json` |
 
 ---
 
@@ -418,33 +418,33 @@ See [`LIVING_WORLD_MM_BUILD_SITE.md`](LIVING_WORLD_MM_BUILD_SITE.md) for the ful
 
 | Monster | CR | Status | Notes |
 |---------|----|--------|-------|
-| Djinni | 5 | ❌ | |
-| Efreeti | 8 | ❌ | |
+| Djinni | 5 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
+| Efreeti | 8 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
 | Formian Worker | 1/2 | ✅ | `data/srd_3.5/monsters/batch_d_g.json` |
-| Formian Warrior | 3 | ❌ | |
-| Formian Taskmaster | 7 | ❌ | |
-| Formian Myrmarch | 10 | ❌ | |
-| Formian Queen | 17 | ❌ | |
+| Formian Warrior | 3 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
+| Formian Taskmaster | 7 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
+| Formian Myrmarch | 10 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
+| Formian Queen | 17 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
 | Hell Hound | 3 | ✅ | `data/srd_3.5/monsters/batch_h_l.json` |
-| Inevitable, Kolyarut | 12 | ❌ | |
-| Inevitable, Marut | 15 | ❌ | |
-| Inevitable, Zelekhut | 9 | ❌ | |
-| Jann | 4 | ❌ | |
-| Marid | 9 | ❌ | |
-| Night Hag | 9 | ❌ | |
-| Nightmare | 5 | ❌ | |
+| Inevitable, Kolyarut | 12 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
+| Inevitable, Marut | 15 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
+| Inevitable, Zelekhut | 9 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
+| Jann | 4 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
+| Marid | 9 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
+| Night Hag | 9 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
+| Nightmare | 5 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
 | Rakshasa | 10 | ✅ | `data/srd_3.5/monsters/batch_m_r.json` |
-| Slaad, Red | 7 | ❌ | |
-| Slaad, Blue | 8 | ❌ | |
-| Slaad, Green | 9 | ❌ | |
-| Slaad, Gray | 10 | ❌ | |
-| Slaad, Death | 13 | ❌ | |
-| Tojanida (Juvenile) | 3 | ❌ | |
-| Tojanida (Adult) | 5 | ❌ | |
-| Tojanida (Elder) | 9 | ❌ | |
-| Xorn (Minor) | 3 | ❌ | |
-| Xorn (Average) | 6 | ❌ | |
-| Xorn (Elder) | 8 | ❌ | |
+| Slaad, Red | 7 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
+| Slaad, Blue | 8 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
+| Slaad, Green | 9 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
+| Slaad, Gray | 10 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
+| Slaad, Death | 13 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
+| Tojanida (Juvenile) | 3 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
+| Tojanida (Adult) | 5 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
+| Tojanida (Elder) | 9 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
+| Xorn (Minor) | 3 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
+| Xorn (Average) | 6 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
+| Xorn (Elder) | 8 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
 
 ---
 
@@ -467,18 +467,18 @@ See [`LIVING_WORLD_MM_BUILD_SITE.md`](LIVING_WORLD_MM_BUILD_SITE.md) for the ful
 
 | Template | Status | Notes |
 |----------|--------|-------|
-| Celestial Creature | ❌ | |
-| Fiendish Creature | ❌ | |
-| Half-Celestial | ❌ | |
-| Half-Dragon | ❌ | |
-| Half-Fiend | ❌ | |
-| Lich (template) | ❌ | |
-| Lycanthrope — Werebear | ❌ | |
-| Lycanthrope — Wereboar | ❌ | |
-| Lycanthrope — Wererat | ❌ | |
-| Lycanthrope — Weretiger | ❌ | |
-| Lycanthrope — Werewolf | ❌ | |
-| Skeleton (template) | 🔲 | stub in `core.json` |
+| Celestial Creature | ✅ | `data/srd_3.5/monsters/batch_templates.json` |
+| Fiendish Creature | ✅ | `data/srd_3.5/monsters/batch_templates.json` |
+| Half-Celestial | ✅ | `data/srd_3.5/monsters/batch_templates.json` |
+| Half-Dragon | ✅ | `data/srd_3.5/monsters/batch_templates.json` |
+| Half-Fiend | ✅ | `data/srd_3.5/monsters/batch_templates.json` |
+| Lich (template) | ✅ | `data/srd_3.5/monsters/batch_templates.json` |
+| Lycanthrope — Werebear | ✅ | `data/srd_3.5/monsters/batch_templates.json` |
+| Lycanthrope — Wereboar | ✅ | `data/srd_3.5/monsters/batch_templates.json` |
+| Lycanthrope — Wererat | ✅ | `data/srd_3.5/monsters/batch_templates.json` |
+| Lycanthrope — Weretiger | ✅ | `data/srd_3.5/monsters/batch_templates.json` |
+| Lycanthrope — Werewolf | ✅ | `data/srd_3.5/monsters/batch_templates.json` |
+| Skeleton (template) | ✅ | `data/srd_3.5/monsters/batch_templates.json` |
 | Vampire (template) | ✅ | `data/srd_3.5/monsters/batch_s_z.json` — representative entry |
 | Zombie (template) | ✅ | `data/srd_3.5/monsters/batch_s_z.json` — human base |
 
@@ -515,29 +515,29 @@ See [`LIVING_WORLD_MM_BUILD_SITE.md`](LIVING_WORLD_MM_BUILD_SITE.md) for the ful
 | Bee, Giant | 1 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
 | Beetle, Giant Bombardier | 2 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
 | Beetle, Giant Fire | 1/3 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
-| Centipede, Monstrous (Tiny) | 1/4 | ❌ | |
+| Centipede, Monstrous (Tiny) | 1/4 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
 | Centipede, Monstrous (Small) | 1/2 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
 | Centipede, Monstrous (Medium) | 1 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
 | Centipede, Monstrous (Large) | 3 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
 | Centipede, Monstrous (Huge) | 6 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
-| Centipede, Monstrous (Gargantuan) | 9 | ❌ | |
-| Centipede, Monstrous (Colossal) | 12 | ❌ | |
+| Centipede, Monstrous (Gargantuan) | 9 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
+| Centipede, Monstrous (Colossal) | 12 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
 | Leech, Giant | 2 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
 | Scorpion, Giant | 3 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` as Scorpion, Monstrous (Large) (was stub in `core.json`) |
-| Scorpion, Monstrous (Tiny) | 1/4 | ❌ | |
-| Scorpion, Monstrous (Small) | 1/2 | ❌ | |
+| Scorpion, Monstrous (Tiny) | 1/4 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
+| Scorpion, Monstrous (Small) | 1/2 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
 | Scorpion, Monstrous (Medium) | 1 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
 | Scorpion, Monstrous (Large) | 3 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
 | Scorpion, Monstrous (Huge) | 7 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
-| Scorpion, Monstrous (Gargantuan) | 10 | ❌ | |
-| Scorpion, Monstrous (Colossal) | 12 | ❌ | |
-| Spider, Monstrous (Tiny) | 1/4 | ❌ | |
+| Scorpion, Monstrous (Gargantuan) | 10 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
+| Scorpion, Monstrous (Colossal) | 12 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
+| Spider, Monstrous (Tiny) | 1/4 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
 | Spider, Monstrous (Small) | 1/2 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
 | Spider, Monstrous (Medium) | 1 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
 | Spider, Monstrous (Large) | 2 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
 | Spider, Monstrous (Huge) | 5 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
-| Spider, Monstrous (Gargantuan) | 8 | ❌ | |
-| Spider, Monstrous (Colossal) | 11 | ❌ | |
+| Spider, Monstrous (Gargantuan) | 8 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
+| Spider, Monstrous (Colossal) | 11 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
 | Spider, Giant | 1 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` (was stub in `core.json`) |
 | Wasp, Giant | 3 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
 
@@ -547,10 +547,10 @@ See [`LIVING_WORLD_MM_BUILD_SITE.md`](LIVING_WORLD_MM_BUILD_SITE.md) for the ful
 
 | Status | Count |
 |--------|-------|
-| ✅ Full stat block | ~253 |
-| 🔲 Stub only (name + CR) | ~5 |
-| ❌ Not started | ~73 |
-| **Total SRD entries** | **~331** |
+| ✅ Full stat block | ~353 |
+| 🔲 Stub only (name + CR) | ~0 |
+| ❌ Not started | ~0 |
+| **Total SRD entries** | **~353** |
 
 > Count excludes multi-size vermin/elemental variants counted individually and dragon age categories.
 > Infrastructure (LW-001–LW-046) is 100% complete — all remaining work is data population.
@@ -682,3 +682,48 @@ Implement as modifier overlays: Celestial, Fiendish, Half-Dragon, Half-Fiend, Ha
   to full stat blocks.
 
 **Full-suite pass count (post-undead+vermin): 3 406 tests passing (2 pre-existing failures unchanged).**
+
+---
+
+### 2026-04-30 — Outsiders (Celestials, Other), Templates, Dragons (extended), Vermin (missing sizes)
+
+**Outsiders (Celestials/Archons/Azata) — `data/srd_3.5/monsters/batch_outsiders_celestials.json`** (8 entries)
+- Angel Astral Deva (CR 14), Angel Planetar (CR 16), Angel Solar (CR 23).
+- Archon Hound (CR 4), Archon Lantern (CR 2), Archon Trumpet (CR 14).
+- Azata Bralani (CR 6), Azata Ghaele (CR 13).
+
+**Outsiders (Other) — `data/srd_3.5/monsters/batch_outsiders_other.json`** (24 entries)
+- Genies: Djinni (CR 5), Efreeti (CR 8), Jann (CR 4), Marid (CR 9).
+- Formians: Warrior (CR 3), Taskmaster (CR 7), Myrmarch (CR 10), Queen (CR 17).
+- Inevitables: Kolyarut (CR 12), Marut (CR 15), Zelekhut (CR 9).
+- Other: Night Hag (CR 9), Nightmare (CR 5).
+- Slaadi: Red (CR 7), Blue (CR 8), Green (CR 9), Gray (CR 10), Death (CR 13).
+- Tojanida: Juvenile (CR 3), Adult (CR 5), Elder (CR 9).
+- Xorn: Minor (CR 3), Average (CR 6), Elder (CR 8).
+
+**Templates — `data/srd_3.5/monsters/batch_templates.json`** (13 entries)
+- Skeleton (Human Warrior, CR 1/3 — promotes core.json stub).
+- Celestial Creature (Dire Bear example, CR 8; Heavy Horse example, CR 2).
+- Fiendish Creature (Giant Constrictor Snake example, CR 6).
+- Half-Celestial (Human Paladin 5, CR 7), Half-Dragon (Human Fighter 5, CR 7),
+  Half-Fiend (Succubus base, CR 9).
+- Lycanthropes: Werewolf (CR 4), Wererat (CR 4), Wereboar (CR 5),
+  Weretiger (CR 8), Werebear (CR 8).
+- Lich template (overlay/delta descriptor entry).
+
+**Dragons (extended) — `data/srd_3.5/monsters/batch_dragons_extended.json`** (26 entries)
+- Black: Wyrmling (CR 3), Adult (CR 14), Ancient (CR 19), Great Wyrm (CR 22).
+- Blue: Young (CR 9), Adult (CR 16), Ancient (CR 21).
+- Brass: Young (CR 8), Adult (CR 15). Bronze: Young (CR 10), Adult (CR 17).
+- Copper: Young (CR 9), Adult (CR 16). Gold: Young (CR 12), Adult (CR 19), Great Wyrm (CR 25).
+- Green: Young (CR 8), Adult (CR 15). Red: Young (CR 10), Adult (CR 17).
+- Silver: Young (CR 11), Adult (CR 18). White: Young (CR 5), Adult (CR 12).
+- Dragon Turtle (CR 9), Pseudodragon (CR 1).
+- Promotes 4 stubs (Blue Young, Green Young, Red Young, White Young) to full stat blocks.
+
+**Vermin (missing sizes) — `data/srd_3.5/monsters/batch_vermin.json`** (10 new entries, now 30 total)
+- Centipede, Monstrous (Tiny CR 1/4 / Gargantuan CR 9 / Colossal CR 12).
+- Scorpion, Monstrous (Tiny CR 1/4 / Small CR 1/2 / Gargantuan CR 10 / Colossal CR 12).
+- Spider, Monstrous (Tiny CR 1/4 / Gargantuan CR 8 / Colossal CR 11).
+
+**Full-suite pass count (post all batches): 3 406 tests passing (2 pre-existing failures unchanged).**
