@@ -1564,5 +1564,799 @@
     ],
     "primary_biome": "Temperate_Swamp",
     "ecology_notes": "Giant leeches lurk in swamps and murky water, attaching to prey with a powerful bite. Once attached they drain blood rapidly, weakening their host. They detect prey through vibrations and body heat. Salt or fire can cause them to detach."
+  },
+  {
+    "name": "Centipede, Monstrous (Tiny)",
+    "cr": 0.25,
+    "size": "Tiny",
+    "type": "Vermin",
+    "subtype": null,
+    "hit_dice": "1d8",
+    "hp_avg": 4,
+    "initiative": 3,
+    "speed": {
+      "land": 20,
+      "climb": 20
+    },
+    "armor_class": {
+      "total": 17,
+      "touch": 15,
+      "flat_footed": 14,
+      "components": "+3 Dex, +2 natural, +2 size"
+    },
+    "base_attack": 0,
+    "grapple": -10,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+5",
+        "damage": "1d3-3 plus poison",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Poison (DC 10 Fort; 1d3 Dex/1d3 Dex)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Mindless",
+      "Vermin Traits"
+    ],
+    "saves": {
+      "fort": 2,
+      "ref": 3,
+      "will": 0
+    },
+    "abilities": {
+      "str": 5,
+      "dex": 17,
+      "con": 10,
+      "int": null,
+      "wis": 10,
+      "cha": 2
+    },
+    "skills": {
+      "Climb": 11,
+      "Hide": 15,
+      "Spot": 4
+    },
+    "feats": [
+      "Weapon Finesse"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "—",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 200,
+    "allowed_biomes": [
+      "Underground",
+      "Forest",
+      "Swamp"
+    ],
+    "primary_biome": "Underground",
+    "ecology_notes": "Tiny monstrous centipedes are more nuisance than threat, but their venom can weaken the unwary."
+  },
+  {
+    "name": "Centipede, Monstrous (Gargantuan)",
+    "cr": 9,
+    "size": "Gargantuan",
+    "type": "Vermin",
+    "subtype": null,
+    "hit_dice": "24d8+48",
+    "hp_avg": 156,
+    "initiative": -2,
+    "speed": {
+      "land": 40,
+      "climb": 40
+    },
+    "armor_class": {
+      "total": 18,
+      "touch": 4,
+      "flat_footed": 18,
+      "components": "-2 Dex, +14 natural, -4 size"
+    },
+    "base_attack": 18,
+    "grapple": 34,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+18",
+        "damage": "2d8+9 plus poison",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Poison (DC 22 Fort; 2d6 Dex/2d6 Dex)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Mindless",
+      "Vermin Traits"
+    ],
+    "saves": {
+      "fort": 16,
+      "ref": 6,
+      "will": 8
+    },
+    "abilities": {
+      "str": 27,
+      "dex": 7,
+      "con": 14,
+      "int": null,
+      "wis": 10,
+      "cha": 2
+    },
+    "skills": {
+      "Climb": 16,
+      "Spot": 4
+    },
+    "feats": [
+      "Alertness"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "25-32 HD (Gargantuan)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 8,
+    "allowed_biomes": [
+      "Underground",
+      "Underdark"
+    ],
+    "primary_biome": "Underground",
+    "ecology_notes": "Gargantuan monstrous centipedes are massive predators capable of engulfing large creatures in their enormous mandibles."
+  },
+  {
+    "name": "Centipede, Monstrous (Colossal)",
+    "cr": 12,
+    "size": "Colossal",
+    "type": "Vermin",
+    "subtype": null,
+    "hit_dice": "48d8+96",
+    "hp_avg": 312,
+    "initiative": -3,
+    "speed": {
+      "land": 40,
+      "climb": 40
+    },
+    "armor_class": {
+      "total": 19,
+      "touch": 1,
+      "flat_footed": 19,
+      "components": "-3 Dex, +20 natural, -8 size"
+    },
+    "base_attack": 36,
+    "grapple": 60,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+28",
+        "damage": "4d6+18 plus poison",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Poison (DC 28 Fort; 2d8 Dex/2d8 Dex)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Mindless",
+      "Vermin Traits"
+    ],
+    "saves": {
+      "fort": 28,
+      "ref": 13,
+      "will": 16
+    },
+    "abilities": {
+      "str": 35,
+      "dex": 5,
+      "con": 14,
+      "int": null,
+      "wis": 10,
+      "cha": 2
+    },
+    "skills": {
+      "Climb": 20,
+      "Spot": 4
+    },
+    "feats": [
+      "Alertness",
+      "Toughness"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "None",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 2,
+    "allowed_biomes": [
+      "Underground",
+      "Underdark"
+    ],
+    "primary_biome": "Underground",
+    "ecology_notes": "Colossal monstrous centipedes dwarf most buildings and can wipe out entire dungeon populations with their highly toxic venom."
+  },
+  {
+    "name": "Scorpion, Monstrous (Tiny)",
+    "cr": 0.25,
+    "size": "Tiny",
+    "type": "Vermin",
+    "subtype": null,
+    "hit_dice": "1d8",
+    "hp_avg": 4,
+    "initiative": 3,
+    "speed": {
+      "land": 20
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 15,
+      "flat_footed": 13,
+      "components": "+3 Dex, +1 natural, +2 size"
+    },
+    "base_attack": 0,
+    "grapple": -9,
+    "attacks": [
+      {
+        "name": "Claw (×2)",
+        "attack_bonus": "+5",
+        "damage": "1d2-3",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Sting",
+        "attack_bonus": "+0",
+        "damage": "1d2-3 plus poison",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Poison (DC 10 Fort; 1d2 Con/1d2 Con)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Tremorsense 60 ft.",
+      "Vermin Traits"
+    ],
+    "saves": {
+      "fort": 2,
+      "ref": 3,
+      "will": 0
+    },
+    "abilities": {
+      "str": 5,
+      "dex": 17,
+      "con": 10,
+      "int": null,
+      "wis": 10,
+      "cha": 2
+    },
+    "skills": {
+      "Climb": 7,
+      "Hide": 15,
+      "Spot": 4
+    },
+    "feats": [
+      "Weapon Finesse"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "—",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 200,
+    "allowed_biomes": [
+      "Desert",
+      "Underground",
+      "Jungle"
+    ],
+    "primary_biome": "Desert",
+    "ecology_notes": "Tiny monstrous scorpions are barely noticeable but can surprise the unwary with their venomous sting."
+  },
+  {
+    "name": "Scorpion, Monstrous (Small)",
+    "cr": 0.5,
+    "size": "Small",
+    "type": "Vermin",
+    "subtype": null,
+    "hit_dice": "2d8",
+    "hp_avg": 9,
+    "initiative": 3,
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 15,
+      "touch": 14,
+      "flat_footed": 12,
+      "components": "+3 Dex, +1 natural, +1 size"
+    },
+    "base_attack": 1,
+    "grapple": -2,
+    "attacks": [
+      {
+        "name": "Claw (×2)",
+        "attack_bonus": "+5",
+        "damage": "1d3-1",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Sting",
+        "attack_bonus": "+0",
+        "damage": "1d3-1 plus poison",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Poison (DC 11 Fort; 1d3 Con/1d3 Con)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Tremorsense 60 ft.",
+      "Vermin Traits"
+    ],
+    "saves": {
+      "fort": 3,
+      "ref": 3,
+      "will": 0
+    },
+    "abilities": {
+      "str": 9,
+      "dex": 17,
+      "con": 10,
+      "int": null,
+      "wis": 10,
+      "cha": 2
+    },
+    "skills": {
+      "Climb": 7,
+      "Hide": 11,
+      "Spot": 4
+    },
+    "feats": [
+      "Weapon Finesse"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "3 HD (Small)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 100,
+    "allowed_biomes": [
+      "Desert",
+      "Underground"
+    ],
+    "primary_biome": "Desert",
+    "ecology_notes": "Small monstrous scorpions are common hazards in desert regions and underground passages."
+  },
+  {
+    "name": "Scorpion, Monstrous (Gargantuan)",
+    "cr": 10,
+    "size": "Gargantuan",
+    "type": "Vermin",
+    "subtype": null,
+    "hit_dice": "20d8+80",
+    "hp_avg": 170,
+    "initiative": 0,
+    "speed": {
+      "land": 50
+    },
+    "armor_class": {
+      "total": 25,
+      "touch": 6,
+      "flat_footed": 25,
+      "components": "+19 natural, -4 size"
+    },
+    "base_attack": 15,
+    "grapple": 33,
+    "attacks": [
+      {
+        "name": "Claw (×2)",
+        "attack_bonus": "+19",
+        "damage": "2d6+10",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Sting",
+        "attack_bonus": "+14",
+        "damage": "2d6+5 plus poison",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Constrict 2d6+10",
+      "Improved Grab",
+      "Poison (DC 26 Fort; 2d6 Con/2d6 Con)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Tremorsense 60 ft.",
+      "Vermin Traits"
+    ],
+    "saves": {
+      "fort": 16,
+      "ref": 6,
+      "will": 6
+    },
+    "abilities": {
+      "str": 31,
+      "dex": 10,
+      "con": 20,
+      "int": null,
+      "wis": 10,
+      "cha": 2
+    },
+    "skills": {
+      "Climb": 18,
+      "Hide": -4,
+      "Spot": 4
+    },
+    "feats": [
+      "Alertness",
+      "Combat Reflexes",
+      "Toughness"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "21-28 HD (Gargantuan)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 3,
+    "allowed_biomes": [
+      "Desert",
+      "Underground",
+      "Underdark"
+    ],
+    "primary_biome": "Desert",
+    "ecology_notes": "Gargantuan monstrous scorpions are apex predators of the deep desert and underdark, capable of killing elephants."
+  },
+  {
+    "name": "Scorpion, Monstrous (Colossal)",
+    "cr": 12,
+    "size": "Colossal",
+    "type": "Vermin",
+    "subtype": null,
+    "hit_dice": "40d8+160",
+    "hp_avg": 340,
+    "initiative": 0,
+    "speed": {
+      "land": 50
+    },
+    "armor_class": {
+      "total": 30,
+      "touch": 2,
+      "flat_footed": 30,
+      "components": "+28 natural, -8 size"
+    },
+    "base_attack": 30,
+    "grapple": 54,
+    "attacks": [
+      {
+        "name": "Claw (×2)",
+        "attack_bonus": "+30",
+        "damage": "2d8+14",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Sting",
+        "attack_bonus": "+25",
+        "damage": "2d8+7 plus poison",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Constrict 2d8+14",
+      "Improved Grab",
+      "Poison (DC 32 Fort; 2d8 Con/2d8 Con)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Tremorsense 60 ft.",
+      "Vermin Traits"
+    ],
+    "saves": {
+      "fort": 26,
+      "ref": 13,
+      "will": 13
+    },
+    "abilities": {
+      "str": 39,
+      "dex": 10,
+      "con": 22,
+      "int": null,
+      "wis": 10,
+      "cha": 2
+    },
+    "skills": {
+      "Climb": 22,
+      "Hide": -8,
+      "Spot": 4
+    },
+    "feats": [
+      "Alertness",
+      "Combat Reflexes",
+      "Power Attack",
+      "Toughness"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "None",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 1,
+    "allowed_biomes": [
+      "Desert",
+      "Underdark"
+    ],
+    "primary_biome": "Desert",
+    "ecology_notes": "Colossal monstrous scorpions are legendary terrors. Their venom can kill a giant in seconds and their claws can crush stone."
+  },
+  {
+    "name": "Spider, Monstrous (Tiny)",
+    "cr": 0.25,
+    "size": "Tiny",
+    "type": "Vermin",
+    "subtype": null,
+    "hit_dice": "1d8",
+    "hp_avg": 4,
+    "initiative": 3,
+    "speed": {
+      "land": 20,
+      "climb": 10
+    },
+    "armor_class": {
+      "total": 17,
+      "touch": 15,
+      "flat_footed": 14,
+      "components": "+3 Dex, +2 natural, +2 size"
+    },
+    "base_attack": 0,
+    "grapple": -10,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+5",
+        "damage": "1d3-3 plus poison",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Poison (DC 10 Fort; 1d2 Str/1d2 Str)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Tremorsense 60 ft.",
+      "Vermin Traits",
+      "Web (6/day; DC 10 escape; 1 hp; break DC 10)"
+    ],
+    "saves": {
+      "fort": 2,
+      "ref": 3,
+      "will": 0
+    },
+    "abilities": {
+      "str": 5,
+      "dex": 17,
+      "con": 10,
+      "int": null,
+      "wis": 10,
+      "cha": 2
+    },
+    "skills": {
+      "Climb": 11,
+      "Hide": 15,
+      "Move_Silently": 8,
+      "Spot": 4
+    },
+    "feats": [
+      "Weapon Finesse"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "—",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 300,
+    "allowed_biomes": [
+      "Forest",
+      "Underground",
+      "Any"
+    ],
+    "primary_biome": "Forest",
+    "ecology_notes": "Tiny monstrous spiders are nearly indistinguishable from large normal spiders. Their webs are more of an annoyance than a real trap."
+  },
+  {
+    "name": "Spider, Monstrous (Gargantuan)",
+    "cr": 8,
+    "size": "Gargantuan",
+    "type": "Vermin",
+    "subtype": null,
+    "hit_dice": "16d8+48",
+    "hp_avg": 120,
+    "initiative": 3,
+    "speed": {
+      "land": 30,
+      "climb": 20
+    },
+    "armor_class": {
+      "total": 19,
+      "touch": 5,
+      "flat_footed": 16,
+      "components": "+3 Dex, +12 natural, -4 size, -2 armor (carapace)"
+    },
+    "base_attack": 12,
+    "grapple": 30,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+14",
+        "damage": "2d8+12 plus poison",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Improved Grab",
+      "Poison (DC 22 Fort; 1d8 Str primary, 2d6 Str secondary)",
+      "Web (8/day; Large+ tangles; DC 22 break; 14 hp; DC 22 escape)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Tremorsense 60 ft.",
+      "Vermin Traits"
+    ],
+    "saves": {
+      "fort": 13,
+      "ref": 8,
+      "will": 5
+    },
+    "abilities": {
+      "str": 27,
+      "dex": 17,
+      "con": 16,
+      "int": null,
+      "wis": 10,
+      "cha": 2
+    },
+    "skills": {
+      "Climb": 16,
+      "Hide": -4,
+      "Move_Silently": 4,
+      "Spot": 4
+    },
+    "feats": [
+      "Alertness",
+      "Toughness"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "17-24 HD (Gargantuan)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 5,
+    "allowed_biomes": [
+      "Underground",
+      "Underdark",
+      "Forest"
+    ],
+    "primary_biome": "Underground",
+    "ecology_notes": "Gargantuan monstrous spiders can cover chambers with their webs and easily pull in large prey."
+  },
+  {
+    "name": "Spider, Monstrous (Colossal)",
+    "cr": 11,
+    "size": "Colossal",
+    "type": "Vermin",
+    "subtype": null,
+    "hit_dice": "32d8+96",
+    "hp_avg": 240,
+    "initiative": 3,
+    "speed": {
+      "land": 30,
+      "climb": 20
+    },
+    "armor_class": {
+      "total": 25,
+      "touch": 1,
+      "flat_footed": 22,
+      "components": "+3 Dex, +20 natural, -8 size"
+    },
+    "base_attack": 24,
+    "grapple": 48,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+24",
+        "damage": "4d6+18 plus poison",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Improved Grab",
+      "Poison (DC 28 Fort; 2d6 Str/2d6 Str)",
+      "Web (10/day; DC 28 break; 28 hp; DC 28 escape)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Tremorsense 60 ft.",
+      "Vermin Traits"
+    ],
+    "saves": {
+      "fort": 21,
+      "ref": 13,
+      "will": 10
+    },
+    "abilities": {
+      "str": 35,
+      "dex": 17,
+      "con": 16,
+      "int": null,
+      "wis": 10,
+      "cha": 2
+    },
+    "skills": {
+      "Climb": 20,
+      "Hide": -8,
+      "Move_Silently": 3,
+      "Spot": 4
+    },
+    "feats": [
+      "Alertness",
+      "Power Attack",
+      "Toughness"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "None",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 1,
+    "allowed_biomes": [
+      "Underdark",
+      "Underground"
+    ],
+    "primary_biome": "Underdark",
+    "ecology_notes": "Colossal monstrous spiders are nightmarish dungeon predators. Their massive webs can span entire caverns, and their venom can kill a giant quickly."
   }
 ]
