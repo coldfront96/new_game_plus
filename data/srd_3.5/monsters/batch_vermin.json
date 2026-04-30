@@ -1,0 +1,1568 @@
+[
+  {
+    "name": "Ant, Giant (Worker)",
+    "cr": 1,
+    "size": "Medium",
+    "type": "Vermin",
+    "subtype": null,
+    "hit_dice": "2d8+2",
+    "hp_avg": 11,
+    "initiative": 0,
+    "speed": {
+      "land": 50,
+      "climb": 20
+    },
+    "armor_class": {
+      "total": 17,
+      "touch": 10,
+      "flat_footed": 17,
+      "components": "+7 natural"
+    },
+    "base_attack": 1,
+    "grapple": 3,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+3",
+        "damage": "1d6+3",
+        "damage_type": "Slashing"
+      }
+    ],
+    "special_attacks": [
+      "Improved Grab (if bite hits, may start a grapple as a free action)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Scent",
+      "Vermin Traits (mindless, immune to mind-affecting effects)"
+    ],
+    "saves": {
+      "fort": 4,
+      "ref": 0,
+      "will": 0
+    },
+    "abilities": {
+      "str": 14,
+      "dex": 10,
+      "con": 13,
+      "int": null,
+      "wis": 11,
+      "cha": 11
+    },
+    "skills": {
+      "Climb": 10,
+      "Listen": 4,
+      "Spot": 4
+    },
+    "feats": [],
+    "alignment": "Always Neutral",
+    "advancement": "3-4 HD (Medium)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 500,
+    "allowed_biomes": [
+      "Temperate_Plain",
+      "Warm_Plain",
+      "Underground",
+      "Temperate_Forest",
+      "Warm_Forest"
+    ],
+    "primary_biome": "Temperate_Plain",
+    "ecology_notes": "Giant ant workers are the backbone of their colonies, foraging for food and defending the nest. They are mindless insects that follow pheromone signals from their queen. Worker ants are faster than they look and can carry objects many times their own weight. They attack any creature that threatens the colony."
+  },
+  {
+    "name": "Ant, Giant (Soldier)",
+    "cr": 2,
+    "size": "Medium",
+    "type": "Vermin",
+    "subtype": null,
+    "hit_dice": "4d8+4",
+    "hp_avg": 22,
+    "initiative": 0,
+    "speed": {
+      "land": 50,
+      "climb": 20
+    },
+    "armor_class": {
+      "total": 17,
+      "touch": 10,
+      "flat_footed": 17,
+      "components": "+7 natural"
+    },
+    "base_attack": 3,
+    "grapple": 6,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+6",
+        "damage": "2d4+4",
+        "damage_type": "Slashing"
+      }
+    ],
+    "special_attacks": [
+      "Acid Sting (1d4 acid damage on successful bite, once per round)",
+      "Improved Grab (if bite hits, may start a grapple as a free action)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Scent",
+      "Vermin Traits (mindless, immune to mind-affecting effects)"
+    ],
+    "saves": {
+      "fort": 5,
+      "ref": 1,
+      "will": 1
+    },
+    "abilities": {
+      "str": 16,
+      "dex": 10,
+      "con": 13,
+      "int": null,
+      "wis": 13,
+      "cha": 11
+    },
+    "skills": {
+      "Climb": 11,
+      "Listen": 5,
+      "Spot": 5
+    },
+    "feats": [
+      "Weapon Focus (bite)"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "5-8 HD (Medium)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 200,
+    "allowed_biomes": [
+      "Temperate_Plain",
+      "Warm_Plain",
+      "Underground",
+      "Temperate_Forest",
+      "Warm_Forest"
+    ],
+    "primary_biome": "Temperate_Plain",
+    "ecology_notes": "Giant ant soldiers are larger and more aggressive than workers, defending the colony with powerful bites and a stinging acid spray. They respond rapidly to any threat to the nest, swarming intruders in coordinated groups."
+  },
+  {
+    "name": "Ant, Giant (Queen)",
+    "cr": 2,
+    "size": "Large",
+    "type": "Vermin",
+    "subtype": null,
+    "hit_dice": "4d8+8",
+    "hp_avg": 26,
+    "initiative": -1,
+    "speed": {
+      "land": 40
+    },
+    "armor_class": {
+      "total": 17,
+      "touch": 8,
+      "flat_footed": 17,
+      "components": "-1 Dex, +9 natural, -1 size"
+    },
+    "base_attack": 3,
+    "grapple": 11,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+6",
+        "damage": "2d6+6",
+        "damage_type": "Slashing"
+      }
+    ],
+    "special_attacks": [
+      "Improved Grab (if bite hits, may start a grapple as a free action)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Scent",
+      "Vermin Traits (mindless, immune to mind-affecting effects)"
+    ],
+    "saves": {
+      "fort": 6,
+      "ref": 0,
+      "will": 1
+    },
+    "abilities": {
+      "str": 22,
+      "dex": 8,
+      "con": 14,
+      "int": null,
+      "wis": 13,
+      "cha": 11
+    },
+    "skills": {
+      "Listen": 5,
+      "Spot": 5
+    },
+    "feats": [
+      "Weapon Focus (bite)"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "5-8 HD (Large)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 5,
+    "allowed_biomes": [
+      "Temperate_Plain",
+      "Warm_Plain",
+      "Underground"
+    ],
+    "primary_biome": "Underground",
+    "ecology_notes": "The giant ant queen is the most powerful member of the colony, rarely leaving the brood chamber. She is responsible for laying eggs and directing the colony through chemical signals. Killing the queen disrupts the colony and may cause the worker and soldier ants to become confused or dispersed."
+  },
+  {
+    "name": "Bee, Giant",
+    "cr": 1,
+    "size": "Medium",
+    "type": "Vermin",
+    "subtype": null,
+    "hit_dice": "3d8",
+    "hp_avg": 13,
+    "initiative": 2,
+    "speed": {
+      "land": 20,
+      "fly": 80
+    },
+    "armor_class": {
+      "total": 14,
+      "touch": 12,
+      "flat_footed": 12,
+      "components": "+2 Dex, +2 natural"
+    },
+    "base_attack": 2,
+    "grapple": 2,
+    "attacks": [
+      {
+        "name": "Sting",
+        "attack_bonus": "+2",
+        "damage": "1d4 plus poison",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Poison (sting: Fort DC 11, 1d6 CON/1d6 CON; stinger pulled free deals 1d4 damage to bee, killing it if already injured)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Vermin Traits (mindless, immune to mind-affecting effects)"
+    ],
+    "saves": {
+      "fort": 3,
+      "ref": 3,
+      "will": 1
+    },
+    "abilities": {
+      "str": 11,
+      "dex": 14,
+      "con": 11,
+      "int": null,
+      "wis": 12,
+      "cha": 9
+    },
+    "skills": {
+      "Listen": 5,
+      "Spot": 5,
+      "Survival": 1
+    },
+    "feats": [],
+    "alignment": "Always Neutral",
+    "advancement": "4-6 HD (Medium)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 100,
+    "allowed_biomes": [
+      "Temperate_Forest",
+      "Temperate_Plain",
+      "Warm_Forest",
+      "Temperate_Hill"
+    ],
+    "primary_biome": "Temperate_Forest",
+    "ecology_notes": "Giant bees form large colonies like their smaller kin, gathering nectar and pollen. They are aggressive when disturbed near their hive and will sting intruders repeatedly. A giant bee that stings often disembowels itself in the process, dying from its own attack."
+  },
+  {
+    "name": "Beetle, Giant Bombardier",
+    "cr": 2,
+    "size": "Medium",
+    "type": "Vermin",
+    "subtype": null,
+    "hit_dice": "2d8+4",
+    "hp_avg": 13,
+    "initiative": 0,
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 10,
+      "flat_footed": 16,
+      "components": "+6 natural"
+    },
+    "base_attack": 1,
+    "grapple": 3,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+3",
+        "damage": "1d4+3",
+        "damage_type": "Slashing"
+      }
+    ],
+    "special_attacks": [
+      "Acid Spray (10-ft cone, 2d4 acid damage, Ref DC 13 for half, usable every 1d4 rounds)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Scent",
+      "Vermin Traits (mindless, immune to mind-affecting effects)"
+    ],
+    "saves": {
+      "fort": 5,
+      "ref": 0,
+      "will": 0
+    },
+    "abilities": {
+      "str": 17,
+      "dex": 10,
+      "con": 15,
+      "int": null,
+      "wis": 10,
+      "cha": 9
+    },
+    "skills": {
+      "Listen": 4,
+      "Spot": 4
+    },
+    "feats": [],
+    "alignment": "Always Neutral",
+    "advancement": "3-4 HD (Medium)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 80,
+    "allowed_biomes": [
+      "Temperate_Forest",
+      "Warm_Forest",
+      "Temperate_Plain",
+      "Temperate_Swamp"
+    ],
+    "primary_biome": "Temperate_Forest",
+    "ecology_notes": "Giant bombardier beetles defend themselves by spraying a caustic, boiling acid from their abdomens. This spray is accurate and can hit multiple enemies in a cone. Adventurers who hear a clicking sound from a beetle's abdomen would be wise to take cover."
+  },
+  {
+    "name": "Beetle, Giant Fire",
+    "cr": 0.33,
+    "size": "Small",
+    "type": "Vermin",
+    "subtype": null,
+    "hit_dice": "1d8+0",
+    "hp_avg": 4,
+    "initiative": 0,
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 11,
+      "flat_footed": 16,
+      "components": "+4 natural, +1 size"
+    },
+    "base_attack": 0,
+    "grapple": -4,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+1",
+        "damage": "2d4-1",
+        "damage_type": "Slashing"
+      }
+    ],
+    "special_attacks": [],
+    "special_qualities": [
+      "Low-Light Vision",
+      "Vermin Traits (mindless, immune to mind-affecting effects)",
+      "Luminescence (glands glow with pale reddish light in 10-ft radius)"
+    ],
+    "saves": {
+      "fort": 2,
+      "ref": 0,
+      "will": 0
+    },
+    "abilities": {
+      "str": 9,
+      "dex": 11,
+      "con": 11,
+      "int": null,
+      "wis": 10,
+      "cha": 7
+    },
+    "skills": {
+      "Listen": 0,
+      "Spot": 0
+    },
+    "feats": [],
+    "alignment": "Always Neutral",
+    "advancement": "2-3 HD (Small)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 150,
+    "allowed_biomes": [
+      "Temperate_Forest",
+      "Warm_Forest",
+      "Underground",
+      "Temperate_Plain"
+    ],
+    "primary_biome": "Temperate_Forest",
+    "ecology_notes": "Giant fire beetles produce a bioluminescent glow from glands near their abdomens. This light has made them popular as living lanterns for dungeon explorers. Their glands remain luminescent for 1d6 days after the beetle dies. Fire beetles are not aggressive unless cornered."
+  },
+  {
+    "name": "Centipede, Monstrous (Small)",
+    "cr": 0.5,
+    "size": "Small",
+    "type": "Vermin",
+    "subtype": null,
+    "hit_dice": "1d8",
+    "hp_avg": 4,
+    "initiative": 2,
+    "speed": {
+      "land": 40,
+      "climb": 40
+    },
+    "armor_class": {
+      "total": 14,
+      "touch": 13,
+      "flat_footed": 12,
+      "components": "+2 Dex, +1 natural, +1 size"
+    },
+    "base_attack": 0,
+    "grapple": -4,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+2",
+        "damage": "1d4-2 plus poison",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Poison (bite: Fort DC 10, 1d4 DEX/1d4 DEX)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Tremorsense 60 ft.",
+      "Vermin Traits (mindless, immune to mind-affecting effects)"
+    ],
+    "saves": {
+      "fort": 2,
+      "ref": 2,
+      "will": 0
+    },
+    "abilities": {
+      "str": 7,
+      "dex": 15,
+      "con": 10,
+      "int": null,
+      "wis": 10,
+      "cha": 2
+    },
+    "skills": {
+      "Climb": 10,
+      "Hide": 12,
+      "Spot": 4
+    },
+    "feats": [
+      "Weapon Finesse"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "2 HD (Small)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 300,
+    "allowed_biomes": [
+      "Temperate_Forest",
+      "Underground",
+      "Temperate_Swamp",
+      "Warm_Forest"
+    ],
+    "primary_biome": "Underground",
+    "ecology_notes": "Monstrous centipedes are predatory multi-legged vermin found in damp places. They inject venom through their mandibles and can move quickly across walls and ceilings. Small centipedes are a common hazard in dungeons and caves."
+  },
+  {
+    "name": "Centipede, Monstrous (Medium)",
+    "cr": 1,
+    "size": "Medium",
+    "type": "Vermin",
+    "subtype": null,
+    "hit_dice": "2d8",
+    "hp_avg": 9,
+    "initiative": 2,
+    "speed": {
+      "land": 40,
+      "climb": 40
+    },
+    "armor_class": {
+      "total": 14,
+      "touch": 12,
+      "flat_footed": 12,
+      "components": "+2 Dex, +2 natural"
+    },
+    "base_attack": 1,
+    "grapple": 1,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+3",
+        "damage": "1d6 plus poison",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Poison (bite: Fort DC 11, 1d4 DEX/1d4 DEX)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Tremorsense 60 ft.",
+      "Vermin Traits (mindless, immune to mind-affecting effects)"
+    ],
+    "saves": {
+      "fort": 3,
+      "ref": 2,
+      "will": 0
+    },
+    "abilities": {
+      "str": 11,
+      "dex": 15,
+      "con": 10,
+      "int": null,
+      "wis": 10,
+      "cha": 2
+    },
+    "skills": {
+      "Climb": 8,
+      "Hide": 6,
+      "Spot": 4
+    },
+    "feats": [
+      "Weapon Finesse"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "3-4 HD (Medium)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 200,
+    "allowed_biomes": [
+      "Temperate_Forest",
+      "Underground",
+      "Temperate_Swamp",
+      "Warm_Forest"
+    ],
+    "primary_biome": "Underground",
+    "ecology_notes": "Medium monstrous centipedes are aggressive predators that use their venomous bite to debilitate prey. They are fast movers and excellent climbers."
+  },
+  {
+    "name": "Centipede, Monstrous (Large)",
+    "cr": 3,
+    "size": "Large",
+    "type": "Vermin",
+    "subtype": null,
+    "hit_dice": "4d8",
+    "hp_avg": 18,
+    "initiative": 2,
+    "speed": {
+      "land": 40,
+      "climb": 40
+    },
+    "armor_class": {
+      "total": 14,
+      "touch": 11,
+      "flat_footed": 12,
+      "components": "+2 Dex, +3 natural, -1 size"
+    },
+    "base_attack": 3,
+    "grapple": 7,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+4",
+        "damage": "1d8+3 plus poison",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Poison (bite: Fort DC 13, 1d6 DEX/1d6 DEX)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Tremorsense 60 ft.",
+      "Vermin Traits (mindless, immune to mind-affecting effects)"
+    ],
+    "saves": {
+      "fort": 4,
+      "ref": 3,
+      "will": 1
+    },
+    "abilities": {
+      "str": 17,
+      "dex": 15,
+      "con": 10,
+      "int": null,
+      "wis": 10,
+      "cha": 2
+    },
+    "skills": {
+      "Climb": 11,
+      "Hide": 2,
+      "Spot": 4
+    },
+    "feats": [
+      "Weapon Finesse"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "5-8 HD (Large)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 80,
+    "allowed_biomes": [
+      "Underground",
+      "Temperate_Forest",
+      "Temperate_Swamp",
+      "Warm_Forest"
+    ],
+    "primary_biome": "Underground",
+    "ecology_notes": "Large monstrous centipedes pose a significant threat with their potent venom and powerful bite. They hunt rodents and small humanoids in dark caverns."
+  },
+  {
+    "name": "Centipede, Monstrous (Huge)",
+    "cr": 6,
+    "size": "Huge",
+    "type": "Vermin",
+    "subtype": null,
+    "hit_dice": "8d8",
+    "hp_avg": 36,
+    "initiative": 2,
+    "speed": {
+      "land": 40,
+      "climb": 40
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 10,
+      "flat_footed": 14,
+      "components": "+2 Dex, +6 natural, -2 size"
+    },
+    "base_attack": 6,
+    "grapple": 18,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+8",
+        "damage": "2d6+6 plus poison",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Poison (bite: Fort DC 16, 1d8 DEX/1d8 DEX)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Tremorsense 60 ft.",
+      "Vermin Traits (mindless, immune to mind-affecting effects)"
+    ],
+    "saves": {
+      "fort": 6,
+      "ref": 4,
+      "will": 2
+    },
+    "abilities": {
+      "str": 23,
+      "dex": 15,
+      "con": 10,
+      "int": null,
+      "wis": 10,
+      "cha": 2
+    },
+    "skills": {
+      "Climb": 14,
+      "Hide": -2,
+      "Spot": 4
+    },
+    "feats": [
+      "Alertness",
+      "Weapon Finesse"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "9-16 HD (Huge)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 20,
+    "allowed_biomes": [
+      "Underground",
+      "Temperate_Swamp",
+      "Warm_Forest"
+    ],
+    "primary_biome": "Underground",
+    "ecology_notes": "Huge monstrous centipedes are cave-dwelling predators capable of killing large humanoids. Their venom is highly potent."
+  },
+  {
+    "name": "Scorpion, Monstrous (Medium)",
+    "cr": 1,
+    "size": "Medium",
+    "type": "Vermin",
+    "subtype": null,
+    "hit_dice": "2d8+2",
+    "hp_avg": 11,
+    "initiative": 0,
+    "speed": {
+      "land": 40
+    },
+    "armor_class": {
+      "total": 14,
+      "touch": 10,
+      "flat_footed": 14,
+      "components": "+4 natural"
+    },
+    "base_attack": 1,
+    "grapple": 1,
+    "attacks": [
+      {
+        "name": "Claw",
+        "attack_bonus": "+1",
+        "damage": "1d4",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Sting",
+        "attack_bonus": "+1",
+        "damage": "1d4 plus poison",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Constrict (1d4 damage when grapple maintained with claw)",
+      "Improved Grab (claws; if both claws hit, may grapple as free action)",
+      "Poison (sting: Fort DC 12, 1d4 STR/1d4 STR)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Tremorsense 60 ft.",
+      "Vermin Traits (mindless, immune to mind-affecting effects)"
+    ],
+    "saves": {
+      "fort": 4,
+      "ref": 0,
+      "will": 0
+    },
+    "abilities": {
+      "str": 11,
+      "dex": 10,
+      "con": 12,
+      "int": null,
+      "wis": 10,
+      "cha": 2
+    },
+    "skills": {
+      "Climb": 4,
+      "Hide": 4,
+      "Listen": 4,
+      "Spot": 4
+    },
+    "feats": [],
+    "alignment": "Always Neutral",
+    "advancement": "3-4 HD (Medium)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 100,
+    "allowed_biomes": [
+      "Warm_Desert",
+      "Warm_Plain",
+      "Underground",
+      "Temperate_Hill"
+    ],
+    "primary_biome": "Warm_Desert",
+    "ecology_notes": "Monstrous scorpions are ambush predators that use their powerful claws to grab prey before delivering a venomous sting. They are common in deserts, badlands, and underground environments."
+  },
+  {
+    "name": "Scorpion, Monstrous (Large)",
+    "cr": 3,
+    "size": "Large",
+    "type": "Vermin",
+    "subtype": null,
+    "hit_dice": "5d8+5",
+    "hp_avg": 27,
+    "initiative": 0,
+    "speed": {
+      "land": 50
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 9,
+      "flat_footed": 16,
+      "components": "+7 natural, -1 size"
+    },
+    "base_attack": 3,
+    "grapple": 11,
+    "attacks": [
+      {
+        "name": "Claw",
+        "attack_bonus": "+6",
+        "damage": "1d6+4",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Sting",
+        "attack_bonus": "+1",
+        "damage": "1d6+2 plus poison",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Constrict (1d6+4 damage when grapple maintained with claw)",
+      "Improved Grab (claws; if both claws hit, may grapple as free action)",
+      "Poison (sting: Fort DC 14, 1d6 STR/1d6 STR)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Tremorsense 60 ft.",
+      "Vermin Traits (mindless, immune to mind-affecting effects)"
+    ],
+    "saves": {
+      "fort": 5,
+      "ref": 1,
+      "will": 1
+    },
+    "abilities": {
+      "str": 19,
+      "dex": 10,
+      "con": 12,
+      "int": null,
+      "wis": 10,
+      "cha": 2
+    },
+    "skills": {
+      "Climb": 8,
+      "Hide": 0,
+      "Listen": 4,
+      "Spot": 4
+    },
+    "feats": [
+      "Alertness"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "6-10 HD (Large)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 40,
+    "allowed_biomes": [
+      "Warm_Desert",
+      "Warm_Plain",
+      "Underground",
+      "Temperate_Hill"
+    ],
+    "primary_biome": "Warm_Desert",
+    "ecology_notes": "Large monstrous scorpions can grab and sting humanoid prey. They often lurk beneath sand or in cave entrances, waiting for prey to walk within reach."
+  },
+  {
+    "name": "Scorpion, Monstrous (Huge)",
+    "cr": 7,
+    "size": "Huge",
+    "type": "Vermin",
+    "subtype": null,
+    "hit_dice": "10d8+30",
+    "hp_avg": 75,
+    "initiative": 0,
+    "speed": {
+      "land": 50
+    },
+    "armor_class": {
+      "total": 20,
+      "touch": 8,
+      "flat_footed": 20,
+      "components": "+12 natural, -2 size"
+    },
+    "base_attack": 7,
+    "grapple": 21,
+    "attacks": [
+      {
+        "name": "Claw",
+        "attack_bonus": "+11",
+        "damage": "2d6+6",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Sting",
+        "attack_bonus": "+6",
+        "damage": "2d4+3 plus poison",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Constrict (2d6+6 damage when grapple maintained with claw)",
+      "Improved Grab (claws; if both claws hit, may grapple as free action)",
+      "Poison (sting: Fort DC 18, 1d8 STR/1d8 STR)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Tremorsense 60 ft.",
+      "Vermin Traits (mindless, immune to mind-affecting effects)"
+    ],
+    "saves": {
+      "fort": 10,
+      "ref": 3,
+      "will": 3
+    },
+    "abilities": {
+      "str": 23,
+      "dex": 10,
+      "con": 16,
+      "int": null,
+      "wis": 10,
+      "cha": 2
+    },
+    "skills": {
+      "Climb": 10,
+      "Hide": -4,
+      "Listen": 4,
+      "Spot": 4
+    },
+    "feats": [
+      "Alertness",
+      "Endurance",
+      "Iron Will",
+      "Weapon Focus (claw)"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "11-15 HD (Huge)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 10,
+    "allowed_biomes": [
+      "Warm_Desert",
+      "Underground",
+      "Warm_Plain"
+    ],
+    "primary_biome": "Warm_Desert",
+    "ecology_notes": "Huge monstrous scorpions are apex predators of the desert and underdark. Large enough to grab and crush an ogre, these creatures are among the most feared vermin in the world."
+  },
+  {
+    "name": "Spider, Monstrous (Small)",
+    "cr": 0.5,
+    "size": "Small",
+    "type": "Vermin",
+    "subtype": null,
+    "hit_dice": "1d8+2",
+    "hp_avg": 6,
+    "initiative": 3,
+    "speed": {
+      "land": 30,
+      "climb": 20
+    },
+    "armor_class": {
+      "total": 14,
+      "touch": 14,
+      "flat_footed": 11,
+      "components": "+3 Dex, +1 size"
+    },
+    "base_attack": 0,
+    "grapple": -4,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+4",
+        "damage": "1d4-2 plus poison",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Poison (bite: Fort DC 11, 1d4 STR/1d4 STR)",
+      "Web (ranged touch +4, 10-ft range; DC 11 Str to break)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Tremorsense 60 ft.",
+      "Vermin Traits (mindless, immune to mind-affecting effects)"
+    ],
+    "saves": {
+      "fort": 4,
+      "ref": 3,
+      "will": 0
+    },
+    "abilities": {
+      "str": 7,
+      "dex": 17,
+      "con": 14,
+      "int": null,
+      "wis": 10,
+      "cha": 2
+    },
+    "skills": {
+      "Climb": 11,
+      "Hide": 11,
+      "Listen": 4,
+      "Move Silently": 7,
+      "Spot": 7
+    },
+    "feats": [
+      "Weapon Finesse"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "2 HD (Small)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 400,
+    "allowed_biomes": [
+      "Temperate_Forest",
+      "Underground",
+      "Temperate_Swamp",
+      "Any_Ruin"
+    ],
+    "primary_biome": "Temperate_Forest",
+    "ecology_notes": "Small monstrous spiders are ambush hunters that use webs to trap prey. They are common in forests, dungeons, and ruins."
+  },
+  {
+    "name": "Spider, Monstrous (Medium)",
+    "cr": 1,
+    "size": "Medium",
+    "type": "Vermin",
+    "subtype": null,
+    "hit_dice": "2d8+2",
+    "hp_avg": 11,
+    "initiative": 3,
+    "speed": {
+      "land": 30,
+      "climb": 20
+    },
+    "armor_class": {
+      "total": 14,
+      "touch": 13,
+      "flat_footed": 11,
+      "components": "+3 Dex, +1 natural"
+    },
+    "base_attack": 1,
+    "grapple": 1,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+4",
+        "damage": "1d6 plus poison",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Poison (bite: Fort DC 12, 1d6 STR/1d6 STR)",
+      "Web (ranged touch +4, 10-ft range, 5 times per day; DC 12 Str to break)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Tremorsense 60 ft.",
+      "Vermin Traits (mindless, immune to mind-affecting effects)"
+    ],
+    "saves": {
+      "fort": 4,
+      "ref": 3,
+      "will": 0
+    },
+    "abilities": {
+      "str": 11,
+      "dex": 17,
+      "con": 12,
+      "int": null,
+      "wis": 10,
+      "cha": 2
+    },
+    "skills": {
+      "Climb": 11,
+      "Hide": 7,
+      "Listen": 4,
+      "Move Silently": 7,
+      "Spot": 8
+    },
+    "feats": [
+      "Weapon Finesse"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "3-4 HD (Medium)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 300,
+    "allowed_biomes": [
+      "Temperate_Forest",
+      "Underground",
+      "Temperate_Swamp",
+      "Any_Ruin"
+    ],
+    "primary_biome": "Temperate_Forest",
+    "ecology_notes": "Medium monstrous spiders are common dungeon and forest predators. Their venom weakens prey, and their webs make excellent traps."
+  },
+  {
+    "name": "Spider, Monstrous (Large)",
+    "cr": 2,
+    "size": "Large",
+    "type": "Vermin",
+    "subtype": null,
+    "hit_dice": "4d8+4",
+    "hp_avg": 22,
+    "initiative": 3,
+    "speed": {
+      "land": 30,
+      "climb": 20
+    },
+    "armor_class": {
+      "total": 14,
+      "touch": 12,
+      "flat_footed": 11,
+      "components": "+3 Dex, +2 natural, -1 size"
+    },
+    "base_attack": 3,
+    "grapple": 7,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+5",
+        "damage": "1d8+3 plus poison",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Poison (bite: Fort DC 13, 1d8 STR/1d8 STR)",
+      "Web (ranged touch +5, 10-ft range; DC 18 Str to break)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Tremorsense 60 ft.",
+      "Vermin Traits (mindless, immune to mind-affecting effects)"
+    ],
+    "saves": {
+      "fort": 5,
+      "ref": 4,
+      "will": 1
+    },
+    "abilities": {
+      "str": 15,
+      "dex": 17,
+      "con": 12,
+      "int": null,
+      "wis": 10,
+      "cha": 2
+    },
+    "skills": {
+      "Climb": 14,
+      "Hide": 4,
+      "Listen": 4,
+      "Move Silently": 7,
+      "Spot": 8
+    },
+    "feats": [
+      "Alertness",
+      "Weapon Finesse"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "5-8 HD (Large)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 120,
+    "allowed_biomes": [
+      "Underground",
+      "Temperate_Forest",
+      "Temperate_Swamp",
+      "Any_Ruin"
+    ],
+    "primary_biome": "Underground",
+    "ecology_notes": "Large monstrous spiders are capable of tackling humans and other medium-sized creatures. Their webs are strong enough to hold most prey."
+  },
+  {
+    "name": "Spider, Monstrous (Huge)",
+    "cr": 5,
+    "size": "Huge",
+    "type": "Vermin",
+    "subtype": null,
+    "hit_dice": "8d8+8",
+    "hp_avg": 44,
+    "initiative": 3,
+    "speed": {
+      "land": 30,
+      "climb": 20
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 11,
+      "flat_footed": 13,
+      "components": "+3 Dex, +5 natural, -2 size"
+    },
+    "base_attack": 6,
+    "grapple": 18,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+10",
+        "damage": "2d6+6 plus poison",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Poison (bite: Fort DC 16, 1d10 STR/1d10 STR)",
+      "Web (ranged touch +8, 40-ft range; DC 26 Str to break)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Tremorsense 60 ft.",
+      "Vermin Traits (mindless, immune to mind-affecting effects)"
+    ],
+    "saves": {
+      "fort": 7,
+      "ref": 5,
+      "will": 2
+    },
+    "abilities": {
+      "str": 23,
+      "dex": 17,
+      "con": 12,
+      "int": null,
+      "wis": 10,
+      "cha": 2
+    },
+    "skills": {
+      "Climb": 18,
+      "Hide": -1,
+      "Listen": 4,
+      "Move Silently": 7,
+      "Spot": 8
+    },
+    "feats": [
+      "Alertness",
+      "Weapon Finesse"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "9-16 HD (Huge)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 30,
+    "allowed_biomes": [
+      "Underground",
+      "Temperate_Forest",
+      "Temperate_Swamp"
+    ],
+    "primary_biome": "Underground",
+    "ecology_notes": "Huge monstrous spiders are terrifying predators capable of immobilizing large creatures in their webs. Their webs are virtually inescapable without strength comparable to a giant."
+  },
+  {
+    "name": "Spider, Giant",
+    "cr": 1,
+    "size": "Large",
+    "type": "Vermin",
+    "subtype": null,
+    "hit_dice": "4d8+8",
+    "hp_avg": 26,
+    "initiative": 3,
+    "speed": {
+      "land": 40,
+      "climb": 20
+    },
+    "armor_class": {
+      "total": 14,
+      "touch": 12,
+      "flat_footed": 11,
+      "components": "+3 Dex, +2 natural, -1 size"
+    },
+    "base_attack": 3,
+    "grapple": 7,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+5",
+        "damage": "1d8+3 plus poison",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Poison (bite: Fort DC 13, 1d6 STR/1d6 STR)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Tremorsense 60 ft.",
+      "Vermin Traits (mindless, immune to mind-affecting effects)"
+    ],
+    "saves": {
+      "fort": 6,
+      "ref": 4,
+      "will": 1
+    },
+    "abilities": {
+      "str": 15,
+      "dex": 17,
+      "con": 14,
+      "int": null,
+      "wis": 10,
+      "cha": 2
+    },
+    "skills": {
+      "Climb": 14,
+      "Hide": 4,
+      "Listen": 4,
+      "Move Silently": 7,
+      "Spot": 8
+    },
+    "feats": [
+      "Alertness",
+      "Weapon Finesse"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "5-6 HD (Large)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 100,
+    "allowed_biomes": [
+      "Underground",
+      "Temperate_Forest",
+      "Any_Ruin",
+      "Temperate_Swamp"
+    ],
+    "primary_biome": "Underground",
+    "ecology_notes": "Giant spiders are large arachnids commonly found in dungeons and caves. Unlike web-spinning monstrous spiders, giant spiders rely on speed and ambush tactics. Their venom is highly effective, rapidly sapping the strength of prey."
+  },
+  {
+    "name": "Wasp, Giant",
+    "cr": 3,
+    "size": "Large",
+    "type": "Vermin",
+    "subtype": null,
+    "hit_dice": "5d8+10",
+    "hp_avg": 32,
+    "initiative": 1,
+    "speed": {
+      "land": 20,
+      "fly": 60
+    },
+    "armor_class": {
+      "total": 14,
+      "touch": 10,
+      "flat_footed": 13,
+      "components": "+1 Dex, +4 natural, -1 size"
+    },
+    "base_attack": 3,
+    "grapple": 11,
+    "attacks": [
+      {
+        "name": "Sting",
+        "attack_bonus": "+7",
+        "damage": "1d8+6 plus poison",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Improved Grab (sting; if sting hits, may start grapple as free action)",
+      "Poison (sting: Fort DC 14, 1d6 DEX/1d6 DEX)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Scent",
+      "Vermin Traits (mindless, immune to mind-affecting effects)"
+    ],
+    "saves": {
+      "fort": 6,
+      "ref": 2,
+      "will": 1
+    },
+    "abilities": {
+      "str": 18,
+      "dex": 12,
+      "con": 14,
+      "int": null,
+      "wis": 11,
+      "cha": 9
+    },
+    "skills": {
+      "Listen": 5,
+      "Spot": 9,
+      "Survival": 0
+    },
+    "feats": [
+      "Alertness",
+      "Weapon Focus (sting)"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "6-8 HD (Large)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 60,
+    "allowed_biomes": [
+      "Temperate_Forest",
+      "Warm_Forest",
+      "Temperate_Plain",
+      "Warm_Plain"
+    ],
+    "primary_biome": "Temperate_Forest",
+    "ecology_notes": "Giant wasps are aggressive colonial insects that fiercely defend their paper-like nests. They inject venom that rapidly paralyzes prey, which they then carry back to feed their larvae. Giant wasp nests can contain dozens of workers and are extremely dangerous to disturb."
+  },
+  {
+    "name": "Leech, Giant",
+    "cr": 2,
+    "size": "Medium",
+    "type": "Vermin",
+    "subtype": null,
+    "hit_dice": "2d8+4",
+    "hp_avg": 13,
+    "initiative": 0,
+    "speed": {
+      "land": 20,
+      "swim": 30
+    },
+    "armor_class": {
+      "total": 12,
+      "touch": 10,
+      "flat_footed": 12,
+      "components": "+2 natural"
+    },
+    "base_attack": 1,
+    "grapple": 3,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+3",
+        "damage": "1d6+3",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Blood Drain (attached leech deals 1d4 CON damage per round)",
+      "Improved Grab (bite; if bite hits, may attach and drain blood)"
+    ],
+    "special_qualities": [
+      "Blindsight 30 ft.",
+      "Vermin Traits (mindless, immune to mind-affecting effects)"
+    ],
+    "saves": {
+      "fort": 5,
+      "ref": 0,
+      "will": 0
+    },
+    "abilities": {
+      "str": 14,
+      "dex": 10,
+      "con": 14,
+      "int": null,
+      "wis": 10,
+      "cha": 2
+    },
+    "skills": {
+      "Hide": 4,
+      "Listen": 4,
+      "Spot": 4,
+      "Swim": 10
+    },
+    "feats": [],
+    "alignment": "Always Neutral",
+    "advancement": "3-4 HD (Medium)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 50,
+    "allowed_biomes": [
+      "Temperate_Swamp",
+      "Warm_Swamp",
+      "Temperate_Aquatic",
+      "Warm_Aquatic"
+    ],
+    "primary_biome": "Temperate_Swamp",
+    "ecology_notes": "Giant leeches lurk in swamps and murky water, attaching to prey with a powerful bite. Once attached they drain blood rapidly, weakening their host. They detect prey through vibrations and body heat. Salt or fire can cause them to detach."
+  }
+]
