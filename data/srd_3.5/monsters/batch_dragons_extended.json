@@ -1,0 +1,3144 @@
+[
+  {
+    "name": "Dragon, Black (Wyrmling)",
+    "cr": 3,
+    "size": "Tiny",
+    "type": "Dragon",
+    "subtype": "Water",
+    "hit_dice": "4d12+4",
+    "hp_avg": 30,
+    "initiative": 0,
+    "speed": {
+      "land": 60,
+      "fly": 100,
+      "swim": 60
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 12,
+      "flat_footed": 16,
+      "components": "+4 natural, +2 size"
+    },
+    "base_attack": 4,
+    "grapple": -2,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+6",
+        "damage": "1d4+1",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "2 Claws",
+        "attack_bonus": "+1",
+        "damage": "1d2",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "2 Wings",
+        "attack_bonus": "-4",
+        "damage": "1d3",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Breath Weapon (60-ft line acid, 2d4, DC 11 Reflex half)"
+    ],
+    "special_qualities": [
+      "Blindsense 60 ft.",
+      "Darkvision 120 ft.",
+      "Immunity to Acid",
+      "Keen Senses",
+      "Low-Light Vision",
+      "Water Breathing"
+    ],
+    "saves": {
+      "fort": 5,
+      "ref": 4,
+      "will": 4
+    },
+    "abilities": {
+      "str": 11,
+      "dex": 10,
+      "con": 13,
+      "int": 8,
+      "wis": 11,
+      "cha": 8
+    },
+    "skills": {
+      "Escape Artist": 5,
+      "Hide": 13,
+      "Listen": 5,
+      "Move Silently": 5,
+      "Spot": 5,
+      "Swim": 8
+    },
+    "feats": [
+      "Alertness",
+      "Multiattack"
+    ],
+    "alignment": "Always Chaotic Evil",
+    "advancement": "5-8 HD (Small)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 50,
+    "allowed_biomes": [
+      "Warm_Swamp",
+      "Temperate_Swamp"
+    ],
+    "primary_biome": "Warm_Swamp",
+    "ecology_notes": "Smallest black dragons, already dangerous with corrosive breath"
+  },
+  {
+    "name": "Dragon, Black (Adult)",
+    "cr": 14,
+    "size": "Large",
+    "type": "Dragon",
+    "subtype": "Water",
+    "hit_dice": "19d12+76",
+    "hp_avg": 199,
+    "initiative": 4,
+    "speed": {
+      "land": 60,
+      "fly": 150,
+      "swim": 60
+    },
+    "armor_class": {
+      "total": 28,
+      "touch": 9,
+      "flat_footed": 28,
+      "components": "+19 natural, -1 size"
+    },
+    "base_attack": 19,
+    "grapple": 28,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+23",
+        "damage": "2d6+7",
+        "crit_range": "19-20/x2",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "2 Claws",
+        "attack_bonus": "+21",
+        "damage": "1d8+3",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "2 Wings",
+        "attack_bonus": "+18",
+        "damage": "1d6+3",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Tail Slap",
+        "attack_bonus": "+18",
+        "damage": "1d8+10",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Breath Weapon (80-ft line acid, 12d4, DC 21 Reflex half)",
+      "Frightful Presence (DC 21 Will, 150 ft.)",
+      "Spell-Like Abilities (CL 3: darkness 3/day)",
+      "Spells (CL 3)"
+    ],
+    "special_qualities": [
+      "Blindsense 60 ft.",
+      "Darkvision 120 ft.",
+      "DR 5/Magic",
+      "Immunity to Acid",
+      "Keen Senses",
+      "Low-Light Vision",
+      "Spell Resistance 19",
+      "Water Breathing"
+    ],
+    "saves": {
+      "fort": 15,
+      "ref": 11,
+      "will": 13
+    },
+    "abilities": {
+      "str": 25,
+      "dex": 10,
+      "con": 19,
+      "int": 14,
+      "wis": 15,
+      "cha": 14
+    },
+    "skills": {
+      "Bluff": 24,
+      "Concentration": 26,
+      "Diplomacy": 6,
+      "Hide": 18,
+      "Intimidate": 4,
+      "Listen": 26,
+      "Move Silently": 22,
+      "Search": 24,
+      "Sense Motive": 24,
+      "Spot": 26,
+      "Swim": 33
+    },
+    "feats": [
+      "Alertness",
+      "Cleave",
+      "Combat Reflexes",
+      "Improved Initiative",
+      "Multiattack",
+      "Power Attack"
+    ],
+    "alignment": "Always Chaotic Evil",
+    "advancement": "See Dragon age categories",
+    "dr": "5/Magic",
+    "sr": 19,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [
+      {
+        "effect_type": "frightful_presence",
+        "range_ft": 150,
+        "save_type": "Will",
+        "save_dc": 21,
+        "effect_on_fail": "Shaken (if <= dragon HD) or Panicked (if < 1/2 dragon HD)",
+        "effect_on_pass": null,
+        "suppress_conditions": [
+          "Shaken",
+          "Frightened",
+          "Panicked"
+        ]
+      }
+    ],
+    "population_base": 10,
+    "allowed_biomes": [
+      "Warm_Swamp",
+      "Temperate_Swamp"
+    ],
+    "primary_biome": "Warm_Swamp",
+    "ecology_notes": null
+  },
+  {
+    "name": "Dragon, Black (Ancient)",
+    "cr": 19,
+    "size": "Huge",
+    "type": "Dragon",
+    "subtype": "Water",
+    "hit_dice": "28d12+140",
+    "hp_avg": 322,
+    "initiative": 4,
+    "speed": {
+      "land": 60,
+      "fly": 150,
+      "swim": 60
+    },
+    "armor_class": {
+      "total": 35,
+      "touch": 8,
+      "flat_footed": 35,
+      "components": "+27 natural, -2 size"
+    },
+    "base_attack": 28,
+    "grapple": 42,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+32",
+        "damage": "2d8+10",
+        "crit_range": "19-20/x2",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "2 Claws",
+        "attack_bonus": "+30",
+        "damage": "2d6+5",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "2 Wings",
+        "attack_bonus": "+27",
+        "damage": "1d8+5",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Tail Slap",
+        "attack_bonus": "+27",
+        "damage": "2d6+15",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Breath Weapon (100-ft line acid, 18d4, DC 25 Reflex half)",
+      "Corrupt Water",
+      "Frightful Presence (DC 25 Will, 210 ft.)",
+      "Spells (CL 9)",
+      "Spell-Like Abilities (CL 9: darkness 3/day, insect plague 1/day)"
+    ],
+    "special_qualities": [
+      "Blindsense 60 ft.",
+      "Darkvision 120 ft.",
+      "DR 10/Magic",
+      "Immunity to Acid",
+      "Keen Senses",
+      "Low-Light Vision",
+      "Spell Resistance 23",
+      "Water Breathing"
+    ],
+    "saves": {
+      "fort": 21,
+      "ref": 16,
+      "will": 21
+    },
+    "abilities": {
+      "str": 31,
+      "dex": 10,
+      "con": 21,
+      "int": 18,
+      "wis": 19,
+      "cha": 18
+    },
+    "skills": {
+      "Bluff": 35,
+      "Concentration": 36,
+      "Diplomacy": 10,
+      "Hide": 23,
+      "Intimidate": 6,
+      "Listen": 35,
+      "Move Silently": 31,
+      "Search": 35,
+      "Sense Motive": 35,
+      "Spot": 35,
+      "Swim": 46
+    },
+    "feats": [
+      "Alertness",
+      "Cleave",
+      "Combat Reflexes",
+      "Flyby Attack",
+      "Hover",
+      "Improved Initiative",
+      "Multiattack",
+      "Power Attack",
+      "Snatch"
+    ],
+    "alignment": "Always Chaotic Evil",
+    "advancement": "See Dragon age categories",
+    "dr": "10/Magic",
+    "sr": 23,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [
+      {
+        "effect_type": "frightful_presence",
+        "range_ft": 210,
+        "save_type": "Will",
+        "save_dc": 25,
+        "effect_on_fail": "Shaken (if <= dragon HD) or Panicked (if < 1/2 dragon HD)",
+        "effect_on_pass": null,
+        "suppress_conditions": [
+          "Shaken",
+          "Frightened",
+          "Panicked"
+        ]
+      }
+    ],
+    "population_base": 3,
+    "allowed_biomes": [
+      "Warm_Swamp",
+      "Temperate_Swamp"
+    ],
+    "primary_biome": "Warm_Swamp",
+    "ecology_notes": null
+  },
+  {
+    "name": "Dragon, Black (Great Wyrm)",
+    "cr": 22,
+    "size": "Gargantuan",
+    "type": "Dragon",
+    "subtype": "Water",
+    "hit_dice": "34d12+204",
+    "hp_avg": 425,
+    "initiative": 4,
+    "speed": {
+      "land": 60,
+      "fly": 200,
+      "swim": 60
+    },
+    "armor_class": {
+      "total": 38,
+      "touch": 6,
+      "flat_footed": 38,
+      "components": "+32 natural, -4 size"
+    },
+    "base_attack": 34,
+    "grapple": 54,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+38",
+        "damage": "4d6+14",
+        "crit_range": "19-20/x2",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "2 Claws",
+        "attack_bonus": "+36",
+        "damage": "2d8+7",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "2 Wings",
+        "attack_bonus": "+33",
+        "damage": "2d6+7",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Tail Slap",
+        "attack_bonus": "+33",
+        "damage": "2d8+21",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Breath Weapon (120-ft line acid, 22d4, DC 28 Reflex half)",
+      "Corrupt Water",
+      "Frightful Presence (DC 28 Will, 240 ft.)",
+      "Spells (CL 15)",
+      "Spell-Like Abilities (CL 15: darkness 3/day, insect plague 3/day, plant growth 1/day)"
+    ],
+    "special_qualities": [
+      "Blindsense 60 ft.",
+      "Darkvision 120 ft.",
+      "DR 15/Magic",
+      "Immunity to Acid",
+      "Keen Senses",
+      "Low-Light Vision",
+      "Spell Resistance 27",
+      "Water Breathing"
+    ],
+    "saves": {
+      "fort": 25,
+      "ref": 19,
+      "will": 25
+    },
+    "abilities": {
+      "str": 38,
+      "dex": 10,
+      "con": 23,
+      "int": 20,
+      "wis": 21,
+      "cha": 20
+    },
+    "skills": {
+      "Bluff": 42,
+      "Concentration": 43,
+      "Diplomacy": 12,
+      "Hide": 25,
+      "Intimidate": 7,
+      "Listen": 42,
+      "Move Silently": 37,
+      "Search": 42,
+      "Sense Motive": 42,
+      "Spot": 42,
+      "Swim": 58
+    },
+    "feats": [
+      "Alertness",
+      "Cleave",
+      "Combat Reflexes",
+      "Flyby Attack",
+      "Great Cleave",
+      "Hover",
+      "Improved Initiative",
+      "Multiattack",
+      "Power Attack",
+      "Quicken Spell",
+      "Snatch",
+      "Spell Focus (Evocation)"
+    ],
+    "alignment": "Always Chaotic Evil",
+    "advancement": "See Dragon age categories",
+    "dr": "15/Magic",
+    "sr": 27,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [
+      {
+        "effect_type": "frightful_presence",
+        "range_ft": 240,
+        "save_type": "Will",
+        "save_dc": 28,
+        "effect_on_fail": "Shaken (if <= dragon HD) or Panicked (if < 1/2 dragon HD)",
+        "effect_on_pass": null,
+        "suppress_conditions": [
+          "Shaken",
+          "Frightened",
+          "Panicked"
+        ]
+      }
+    ],
+    "population_base": 1,
+    "allowed_biomes": [
+      "Warm_Swamp",
+      "Temperate_Swamp"
+    ],
+    "primary_biome": "Warm_Swamp",
+    "ecology_notes": null
+  },
+  {
+    "name": "Dragon, Blue (Young)",
+    "cr": 9,
+    "size": "Medium",
+    "type": "Dragon",
+    "subtype": "Earth",
+    "hit_dice": "13d12+26",
+    "hp_avg": 110,
+    "initiative": 4,
+    "speed": {
+      "land": 40,
+      "burrow": 20,
+      "fly": 150
+    },
+    "armor_class": {
+      "total": 21,
+      "touch": 10,
+      "flat_footed": 21,
+      "components": "+11 natural"
+    },
+    "base_attack": 13,
+    "grapple": 14,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+14",
+        "damage": "1d8+1",
+        "crit_range": "19-20/x2",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "2 Claws",
+        "attack_bonus": "+12",
+        "damage": "1d6",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "2 Wings",
+        "attack_bonus": "+9",
+        "damage": "1d4",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Tail Slap",
+        "attack_bonus": "+9",
+        "damage": "1d6+1",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Breath Weapon (60-ft line lightning, 6d8, DC 18 Reflex half)"
+    ],
+    "special_qualities": [
+      "Blindsense 60 ft.",
+      "Darkvision 120 ft.",
+      "Immunity to Electricity",
+      "Keen Senses",
+      "Low-Light Vision",
+      "Sound Imitation"
+    ],
+    "saves": {
+      "fort": 10,
+      "ref": 8,
+      "will": 9
+    },
+    "abilities": {
+      "str": 13,
+      "dex": 10,
+      "con": 15,
+      "int": 12,
+      "wis": 13,
+      "cha": 12
+    },
+    "skills": {
+      "Bluff": 17,
+      "Concentration": 18,
+      "Hide": 16,
+      "Listen": 19,
+      "Move Silently": 16,
+      "Search": 17,
+      "Sense Motive": 17,
+      "Spot": 19
+    },
+    "feats": [
+      "Alertness",
+      "Cleave",
+      "Improved Initiative",
+      "Multiattack",
+      "Power Attack"
+    ],
+    "alignment": "Always Lawful Evil",
+    "advancement": "See Dragon age categories",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 20,
+    "allowed_biomes": [
+      "Warm_Desert",
+      "Warm_Hills"
+    ],
+    "primary_biome": "Warm_Desert",
+    "ecology_notes": null
+  },
+  {
+    "name": "Dragon, Blue (Adult)",
+    "cr": 16,
+    "size": "Large",
+    "type": "Dragon",
+    "subtype": "Earth",
+    "hit_dice": "22d12+88",
+    "hp_avg": 231,
+    "initiative": 4,
+    "speed": {
+      "land": 40,
+      "burrow": 20,
+      "fly": 150
+    },
+    "armor_class": {
+      "total": 30,
+      "touch": 9,
+      "flat_footed": 30,
+      "components": "+21 natural, -1 size"
+    },
+    "base_attack": 22,
+    "grapple": 31,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+26",
+        "damage": "2d6+7",
+        "crit_range": "19-20/x2",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "2 Claws",
+        "attack_bonus": "+24",
+        "damage": "1d8+3",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "2 Wings",
+        "attack_bonus": "+22",
+        "damage": "1d6+3",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Tail Slap",
+        "attack_bonus": "+22",
+        "damage": "1d8+10",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Breath Weapon (80-ft line lightning, 14d8, DC 23 Reflex half)",
+      "Frightful Presence (DC 23 Will, 160 ft.)",
+      "Spell-Like Abilities (CL 5: ghost sound 3/day, ventriloquism 3/day, minor image 1/day, sound imitation at will)",
+      "Spells (CL 5)"
+    ],
+    "special_qualities": [
+      "Blindsense 60 ft.",
+      "Darkvision 120 ft.",
+      "DR 5/Magic",
+      "Immunity to Electricity",
+      "Keen Senses",
+      "Low-Light Vision",
+      "Spell Resistance 21",
+      "Sound Imitation"
+    ],
+    "saves": {
+      "fort": 17,
+      "ref": 13,
+      "will": 16
+    },
+    "abilities": {
+      "str": 25,
+      "dex": 10,
+      "con": 19,
+      "int": 16,
+      "wis": 17,
+      "cha": 16
+    },
+    "skills": {
+      "Bluff": 28,
+      "Concentration": 29,
+      "Hide": 21,
+      "Listen": 30,
+      "Move Silently": 25,
+      "Search": 28,
+      "Sense Motive": 28,
+      "Spot": 30
+    },
+    "feats": [
+      "Alertness",
+      "Cleave",
+      "Combat Reflexes",
+      "Flyby Attack",
+      "Hover",
+      "Improved Initiative",
+      "Multiattack",
+      "Power Attack"
+    ],
+    "alignment": "Always Lawful Evil",
+    "advancement": "See Dragon age categories",
+    "dr": "5/Magic",
+    "sr": 21,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [
+      {
+        "effect_type": "frightful_presence",
+        "range_ft": 160,
+        "save_type": "Will",
+        "save_dc": 23,
+        "effect_on_fail": "Shaken (if <= dragon HD) or Panicked (if < 1/2 dragon HD)",
+        "effect_on_pass": null,
+        "suppress_conditions": [
+          "Shaken",
+          "Frightened",
+          "Panicked"
+        ]
+      }
+    ],
+    "population_base": 8,
+    "allowed_biomes": [
+      "Warm_Desert",
+      "Warm_Hills"
+    ],
+    "primary_biome": "Warm_Desert",
+    "ecology_notes": null
+  },
+  {
+    "name": "Dragon, Blue (Ancient)",
+    "cr": 21,
+    "size": "Huge",
+    "type": "Dragon",
+    "subtype": "Earth",
+    "hit_dice": "31d12+155",
+    "hp_avg": 356,
+    "initiative": 4,
+    "speed": {
+      "land": 40,
+      "burrow": 30,
+      "fly": 200
+    },
+    "armor_class": {
+      "total": 37,
+      "touch": 8,
+      "flat_footed": 37,
+      "components": "+29 natural, -2 size"
+    },
+    "base_attack": 31,
+    "grapple": 45,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+35",
+        "damage": "2d8+10",
+        "crit_range": "19-20/x2",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "2 Claws",
+        "attack_bonus": "+33",
+        "damage": "2d6+5",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "2 Wings",
+        "attack_bonus": "+30",
+        "damage": "1d8+5",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Tail Slap",
+        "attack_bonus": "+30",
+        "damage": "2d6+15",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Breath Weapon (100-ft line lightning, 20d8, DC 27 Reflex half)",
+      "Frightful Presence (DC 27 Will, 210 ft.)",
+      "Spell-Like Abilities (CL 11: ghost sound 3/day, ventriloquism 3/day, minor image 3/day, hallucinatory terrain 1/day, veil 1/day, sound imitation at will)",
+      "Spells (CL 11)"
+    ],
+    "special_qualities": [
+      "Blindsense 60 ft.",
+      "Darkvision 120 ft.",
+      "DR 10/Magic",
+      "Immunity to Electricity",
+      "Keen Senses",
+      "Low-Light Vision",
+      "Spell Resistance 25",
+      "Sound Imitation"
+    ],
+    "saves": {
+      "fort": 22,
+      "ref": 17,
+      "will": 22
+    },
+    "abilities": {
+      "str": 31,
+      "dex": 10,
+      "con": 21,
+      "int": 20,
+      "wis": 21,
+      "cha": 20
+    },
+    "skills": {
+      "Bluff": 36,
+      "Concentration": 39,
+      "Hide": 26,
+      "Listen": 39,
+      "Move Silently": 34,
+      "Search": 39,
+      "Sense Motive": 39,
+      "Spot": 39
+    },
+    "feats": [
+      "Alertness",
+      "Cleave",
+      "Combat Reflexes",
+      "Flyby Attack",
+      "Great Cleave",
+      "Hover",
+      "Improved Initiative",
+      "Multiattack",
+      "Power Attack",
+      "Quicken Spell",
+      "Snatch",
+      "Wingover"
+    ],
+    "alignment": "Always Lawful Evil",
+    "advancement": "See Dragon age categories",
+    "dr": "10/Magic",
+    "sr": 25,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [
+      {
+        "effect_type": "frightful_presence",
+        "range_ft": 210,
+        "save_type": "Will",
+        "save_dc": 27,
+        "effect_on_fail": "Shaken (if <= dragon HD) or Panicked (if < 1/2 dragon HD)",
+        "effect_on_pass": null,
+        "suppress_conditions": [
+          "Shaken",
+          "Frightened",
+          "Panicked"
+        ]
+      }
+    ],
+    "population_base": 2,
+    "allowed_biomes": [
+      "Warm_Desert",
+      "Warm_Hills"
+    ],
+    "primary_biome": "Warm_Desert",
+    "ecology_notes": null
+  },
+  {
+    "name": "Dragon, Green (Young)",
+    "cr": 8,
+    "size": "Medium",
+    "type": "Dragon",
+    "subtype": "Air",
+    "hit_dice": "11d12+22",
+    "hp_avg": 93,
+    "initiative": 4,
+    "speed": {
+      "land": 40,
+      "fly": 150,
+      "swim": 40
+    },
+    "armor_class": {
+      "total": 19,
+      "touch": 10,
+      "flat_footed": 19,
+      "components": "+9 natural"
+    },
+    "base_attack": 11,
+    "grapple": 12,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+12",
+        "damage": "1d8+1",
+        "crit_range": "19-20/x2",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "2 Claws",
+        "attack_bonus": "+10",
+        "damage": "1d6",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "2 Wings",
+        "attack_bonus": "+7",
+        "damage": "1d4",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Tail Slap",
+        "attack_bonus": "+7",
+        "damage": "1d6+1",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Breath Weapon (30-ft cone poison gas, 3d6 Con damage, DC 17 Fortitude negates)",
+      "Spell-Like Abilities (CL 1: entangle 1/day)"
+    ],
+    "special_qualities": [
+      "Blindsense 60 ft.",
+      "Darkvision 120 ft.",
+      "Immunity to Poison",
+      "Keen Senses",
+      "Low-Light Vision",
+      "Water Breathing",
+      "Woodland Stride"
+    ],
+    "saves": {
+      "fort": 9,
+      "ref": 7,
+      "will": 8
+    },
+    "abilities": {
+      "str": 13,
+      "dex": 10,
+      "con": 15,
+      "int": 14,
+      "wis": 15,
+      "cha": 14
+    },
+    "skills": {
+      "Bluff": 16,
+      "Concentration": 16,
+      "Diplomacy": 20,
+      "Hide": 14,
+      "Listen": 18,
+      "Move Silently": 14,
+      "Search": 16,
+      "Sense Motive": 16,
+      "Spot": 18
+    },
+    "feats": [
+      "Alertness",
+      "Combat Expertise",
+      "Improved Initiative",
+      "Multiattack"
+    ],
+    "alignment": "Always Lawful Evil",
+    "advancement": "See Dragon age categories",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 20,
+    "allowed_biomes": [
+      "Temperate_Forest",
+      "Warm_Forest"
+    ],
+    "primary_biome": "Temperate_Forest",
+    "ecology_notes": null
+  },
+  {
+    "name": "Dragon, Green (Adult)",
+    "cr": 15,
+    "size": "Large",
+    "type": "Dragon",
+    "subtype": "Air",
+    "hit_dice": "20d12+80",
+    "hp_avg": 210,
+    "initiative": 4,
+    "speed": {
+      "land": 40,
+      "fly": 150,
+      "swim": 40
+    },
+    "armor_class": {
+      "total": 29,
+      "touch": 9,
+      "flat_footed": 29,
+      "components": "+20 natural, -1 size"
+    },
+    "base_attack": 20,
+    "grapple": 29,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+24",
+        "damage": "2d6+7",
+        "crit_range": "19-20/x2",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "2 Claws",
+        "attack_bonus": "+22",
+        "damage": "1d8+3",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "2 Wings",
+        "attack_bonus": "+19",
+        "damage": "1d6+3",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Tail Slap",
+        "attack_bonus": "+19",
+        "damage": "1d8+10",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Breath Weapon (40-ft cone poison gas, 12d6 Con damage, DC 22 Fortitude negates)",
+      "Frightful Presence (DC 22 Will, 150 ft.)",
+      "Spell-Like Abilities (CL 5: suggestion 3/day, minor image 3/day, dominate person 1/day)",
+      "Spells (CL 5)"
+    ],
+    "special_qualities": [
+      "Blindsense 60 ft.",
+      "Darkvision 120 ft.",
+      "DR 5/Magic",
+      "Immunity to Poison",
+      "Keen Senses",
+      "Low-Light Vision",
+      "Spell Resistance 20",
+      "Water Breathing",
+      "Woodland Stride"
+    ],
+    "saves": {
+      "fort": 16,
+      "ref": 12,
+      "will": 15
+    },
+    "abilities": {
+      "str": 25,
+      "dex": 10,
+      "con": 19,
+      "int": 16,
+      "wis": 17,
+      "cha": 16
+    },
+    "skills": {
+      "Bluff": 26,
+      "Concentration": 27,
+      "Diplomacy": 30,
+      "Hide": 19,
+      "Listen": 26,
+      "Move Silently": 23,
+      "Search": 26,
+      "Sense Motive": 26,
+      "Spot": 26
+    },
+    "feats": [
+      "Alertness",
+      "Combat Expertise",
+      "Combat Reflexes",
+      "Flyby Attack",
+      "Hover",
+      "Improved Initiative",
+      "Multiattack",
+      "Power Attack",
+      "Silent Spell"
+    ],
+    "alignment": "Always Lawful Evil",
+    "advancement": "See Dragon age categories",
+    "dr": "5/Magic",
+    "sr": 20,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [
+      {
+        "effect_type": "frightful_presence",
+        "range_ft": 150,
+        "save_type": "Will",
+        "save_dc": 22,
+        "effect_on_fail": "Shaken (if <= dragon HD) or Panicked (if < 1/2 dragon HD)",
+        "effect_on_pass": null,
+        "suppress_conditions": [
+          "Shaken",
+          "Frightened",
+          "Panicked"
+        ]
+      }
+    ],
+    "population_base": 8,
+    "allowed_biomes": [
+      "Temperate_Forest",
+      "Warm_Forest"
+    ],
+    "primary_biome": "Temperate_Forest",
+    "ecology_notes": null
+  },
+  {
+    "name": "Dragon, Red (Young)",
+    "cr": 10,
+    "size": "Large",
+    "type": "Dragon",
+    "subtype": "Fire",
+    "hit_dice": "14d12+56",
+    "hp_avg": 147,
+    "initiative": 4,
+    "speed": {
+      "land": 40,
+      "fly": 150
+    },
+    "armor_class": {
+      "total": 22,
+      "touch": 9,
+      "flat_footed": 22,
+      "components": "+13 natural, -1 size"
+    },
+    "base_attack": 14,
+    "grapple": 23,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+18",
+        "damage": "2d6+7",
+        "crit_range": "19-20/x2",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "2 Claws",
+        "attack_bonus": "+16",
+        "damage": "1d8+3",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "2 Wings",
+        "attack_bonus": "+13",
+        "damage": "1d6+3",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Tail Slap",
+        "attack_bonus": "+13",
+        "damage": "1d8+10",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Breath Weapon (30-ft cone fire, 8d10, DC 20 Reflex half)",
+      "Spell-Like Abilities (CL 1: locate object 5/day)"
+    ],
+    "special_qualities": [
+      "Blindsense 60 ft.",
+      "Darkvision 120 ft.",
+      "Immunity to Fire",
+      "Keen Senses",
+      "Low-Light Vision",
+      "Vulnerability to Cold"
+    ],
+    "saves": {
+      "fort": 13,
+      "ref": 9,
+      "will": 11
+    },
+    "abilities": {
+      "str": 25,
+      "dex": 10,
+      "con": 19,
+      "int": 14,
+      "wis": 15,
+      "cha": 14
+    },
+    "skills": {
+      "Bluff": 21,
+      "Concentration": 21,
+      "Intimidate": 21,
+      "Listen": 21,
+      "Move Silently": 17,
+      "Search": 19,
+      "Sense Motive": 19,
+      "Spot": 21
+    },
+    "feats": [
+      "Alertness",
+      "Cleave",
+      "Combat Reflexes",
+      "Improved Initiative",
+      "Multiattack",
+      "Power Attack"
+    ],
+    "alignment": "Always Chaotic Evil",
+    "advancement": "See Dragon age categories",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [
+      "Cold"
+    ],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 15,
+    "allowed_biomes": [
+      "Warm_Mountain",
+      "Warm_Hills"
+    ],
+    "primary_biome": "Warm_Mountain",
+    "ecology_notes": null
+  },
+  {
+    "name": "Dragon, Red (Adult)",
+    "cr": 17,
+    "size": "Huge",
+    "type": "Dragon",
+    "subtype": "Fire",
+    "hit_dice": "25d12+125",
+    "hp_avg": 287,
+    "initiative": 4,
+    "speed": {
+      "land": 40,
+      "fly": 150
+    },
+    "armor_class": {
+      "total": 34,
+      "touch": 8,
+      "flat_footed": 34,
+      "components": "+26 natural, -2 size"
+    },
+    "base_attack": 25,
+    "grapple": 39,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+29",
+        "damage": "2d8+10",
+        "crit_range": "19-20/x2",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "2 Claws",
+        "attack_bonus": "+27",
+        "damage": "2d6+5",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "2 Wings",
+        "attack_bonus": "+24",
+        "damage": "1d8+5",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Tail Slap",
+        "attack_bonus": "+24",
+        "damage": "2d6+15",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Breath Weapon (40-ft cone fire, 16d10, DC 24 Reflex half)",
+      "Frightful Presence (DC 24 Will, 180 ft.)",
+      "Spell-Like Abilities (CL 7: locate object 5/day, suggestion 3/day, find the path 1/day)",
+      "Spells (CL 7)"
+    ],
+    "special_qualities": [
+      "Blindsense 60 ft.",
+      "Darkvision 120 ft.",
+      "DR 5/Magic",
+      "Immunity to Fire",
+      "Keen Senses",
+      "Low-Light Vision",
+      "Spell Resistance 22",
+      "Vulnerability to Cold"
+    ],
+    "saves": {
+      "fort": 19,
+      "ref": 14,
+      "will": 18
+    },
+    "abilities": {
+      "str": 31,
+      "dex": 10,
+      "con": 21,
+      "int": 18,
+      "wis": 19,
+      "cha": 18
+    },
+    "skills": {
+      "Bluff": 32,
+      "Concentration": 33,
+      "Intimidate": 32,
+      "Listen": 33,
+      "Move Silently": 28,
+      "Search": 32,
+      "Sense Motive": 32,
+      "Spot": 33
+    },
+    "feats": [
+      "Alertness",
+      "Cleave",
+      "Combat Reflexes",
+      "Flyby Attack",
+      "Hover",
+      "Improved Initiative",
+      "Multiattack",
+      "Power Attack",
+      "Quicken Spell",
+      "Snatch"
+    ],
+    "alignment": "Always Chaotic Evil",
+    "advancement": "See Dragon age categories",
+    "dr": "5/Magic",
+    "sr": 22,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [
+      "Cold"
+    ],
+    "alignment_weaknesses": [],
+    "passive_effects": [
+      {
+        "effect_type": "frightful_presence",
+        "range_ft": 180,
+        "save_type": "Will",
+        "save_dc": 24,
+        "effect_on_fail": "Shaken (if <= dragon HD) or Panicked (if < 1/2 dragon HD)",
+        "effect_on_pass": null,
+        "suppress_conditions": [
+          "Shaken",
+          "Frightened",
+          "Panicked"
+        ]
+      }
+    ],
+    "population_base": 5,
+    "allowed_biomes": [
+      "Warm_Mountain",
+      "Warm_Hills"
+    ],
+    "primary_biome": "Warm_Mountain",
+    "ecology_notes": null
+  },
+  {
+    "name": "Dragon, White (Young)",
+    "cr": 5,
+    "size": "Small",
+    "type": "Dragon",
+    "subtype": "Cold",
+    "hit_dice": "7d12+7",
+    "hp_avg": 52,
+    "initiative": 4,
+    "speed": {
+      "land": 30,
+      "burrow": 30,
+      "fly": 150,
+      "swim": 60
+    },
+    "armor_class": {
+      "total": 17,
+      "touch": 11,
+      "flat_footed": 13,
+      "components": "+5 natural, +1 size"
+    },
+    "base_attack": 7,
+    "grapple": 4,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+9",
+        "damage": "1d6+2",
+        "crit_range": "19-20/x2",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "2 Claws",
+        "attack_bonus": "+4",
+        "damage": "1d4+1",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "2 Wings",
+        "attack_bonus": "+1",
+        "damage": "1d3",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Tail Slap",
+        "attack_bonus": "+1",
+        "damage": "1d4+3",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Breath Weapon (30-ft cone cold, 4d6, DC 14 Reflex half)"
+    ],
+    "special_qualities": [
+      "Blindsense 60 ft.",
+      "Darkvision 120 ft.",
+      "Icewalking",
+      "Immunity to Cold",
+      "Keen Senses",
+      "Low-Light Vision",
+      "Vulnerability to Fire"
+    ],
+    "saves": {
+      "fort": 6,
+      "ref": 7,
+      "will": 5
+    },
+    "abilities": {
+      "str": 14,
+      "dex": 10,
+      "con": 13,
+      "int": 6,
+      "wis": 11,
+      "cha": 6
+    },
+    "skills": {
+      "Hide": 16,
+      "Listen": 12,
+      "Move Silently": 12,
+      "Search": 10,
+      "Spot": 12,
+      "Swim": 10
+    },
+    "feats": [
+      "Alertness",
+      "Flyby Attack",
+      "Improved Initiative",
+      "Multiattack"
+    ],
+    "alignment": "Always Chaotic Evil",
+    "advancement": "See Dragon age categories",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [
+      "Fire"
+    ],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 30,
+    "allowed_biomes": [
+      "Cold_Mountain",
+      "Cold_Plains",
+      "Arctic"
+    ],
+    "primary_biome": "Cold_Mountain",
+    "ecology_notes": null
+  },
+  {
+    "name": "Dragon, White (Adult)",
+    "cr": 12,
+    "size": "Large",
+    "type": "Dragon",
+    "subtype": "Cold",
+    "hit_dice": "17d12+68",
+    "hp_avg": 178,
+    "initiative": 4,
+    "speed": {
+      "land": 30,
+      "burrow": 30,
+      "fly": 150,
+      "swim": 60
+    },
+    "armor_class": {
+      "total": 26,
+      "touch": 9,
+      "flat_footed": 26,
+      "components": "+17 natural, -1 size"
+    },
+    "base_attack": 17,
+    "grapple": 26,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+21",
+        "damage": "2d6+7",
+        "crit_range": "19-20/x2",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "2 Claws",
+        "attack_bonus": "+19",
+        "damage": "1d8+3",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "2 Wings",
+        "attack_bonus": "+17",
+        "damage": "1d6+3",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Tail Slap",
+        "attack_bonus": "+17",
+        "damage": "1d8+10",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Breath Weapon (40-ft cone cold, 10d6, DC 19 Reflex half)",
+      "Frightful Presence (DC 19 Will, 120 ft.)",
+      "Spell-Like Abilities (CL 1: fog cloud 1/day)"
+    ],
+    "special_qualities": [
+      "Blindsense 60 ft.",
+      "Darkvision 120 ft.",
+      "DR 5/Magic",
+      "Icewalking",
+      "Immunity to Cold",
+      "Keen Senses",
+      "Low-Light Vision",
+      "Spell Resistance 18",
+      "Vulnerability to Fire"
+    ],
+    "saves": {
+      "fort": 14,
+      "ref": 10,
+      "will": 11
+    },
+    "abilities": {
+      "str": 25,
+      "dex": 10,
+      "con": 19,
+      "int": 10,
+      "wis": 13,
+      "cha": 10
+    },
+    "skills": {
+      "Concentration": 21,
+      "Hide": 22,
+      "Listen": 21,
+      "Move Silently": 21,
+      "Search": 20,
+      "Spot": 21,
+      "Swim": 33
+    },
+    "feats": [
+      "Alertness",
+      "Cleave",
+      "Combat Reflexes",
+      "Flyby Attack",
+      "Hover",
+      "Improved Initiative",
+      "Multiattack",
+      "Power Attack",
+      "Snatch"
+    ],
+    "alignment": "Always Chaotic Evil",
+    "advancement": "See Dragon age categories",
+    "dr": "5/Magic",
+    "sr": 18,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [
+      "Fire"
+    ],
+    "alignment_weaknesses": [],
+    "passive_effects": [
+      {
+        "effect_type": "frightful_presence",
+        "range_ft": 120,
+        "save_type": "Will",
+        "save_dc": 19,
+        "effect_on_fail": "Shaken (if <= dragon HD) or Panicked (if < 1/2 dragon HD)",
+        "effect_on_pass": null,
+        "suppress_conditions": [
+          "Shaken",
+          "Frightened",
+          "Panicked"
+        ]
+      }
+    ],
+    "population_base": 10,
+    "allowed_biomes": [
+      "Cold_Mountain",
+      "Cold_Plains",
+      "Arctic"
+    ],
+    "primary_biome": "Cold_Mountain",
+    "ecology_notes": null
+  },
+  {
+    "name": "Dragon, Brass (Young)",
+    "cr": 8,
+    "size": "Medium",
+    "type": "Dragon",
+    "subtype": "Fire",
+    "hit_dice": "11d12+22",
+    "hp_avg": 93,
+    "initiative": 4,
+    "speed": {
+      "land": 60,
+      "burrow": 30,
+      "fly": 150
+    },
+    "armor_class": {
+      "total": 19,
+      "touch": 10,
+      "flat_footed": 19,
+      "components": "+9 natural"
+    },
+    "base_attack": 11,
+    "grapple": 12,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+12",
+        "damage": "1d8+1",
+        "crit_range": "19-20/x2",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "2 Claws",
+        "attack_bonus": "+10",
+        "damage": "1d6",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "2 Wings",
+        "attack_bonus": "+7",
+        "damage": "1d4",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Tail Slap",
+        "attack_bonus": "+7",
+        "damage": "1d6+1",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Breath Weapon (80-ft line fire, 3d6, or 60-ft cone sleep gas, DC 16 Will negates)",
+      "Spell-Like Abilities (CL 1: speak with animals 3/day)"
+    ],
+    "special_qualities": [
+      "Blindsense 60 ft.",
+      "Darkvision 120 ft.",
+      "Immunity to Fire",
+      "Keen Senses",
+      "Low-Light Vision",
+      "Vulnerability to Cold"
+    ],
+    "saves": {
+      "fort": 9,
+      "ref": 7,
+      "will": 8
+    },
+    "abilities": {
+      "str": 13,
+      "dex": 10,
+      "con": 15,
+      "int": 14,
+      "wis": 15,
+      "cha": 14
+    },
+    "skills": {
+      "Bluff": 16,
+      "Concentration": 16,
+      "Diplomacy": 18,
+      "Hide": 14,
+      "Listen": 18,
+      "Move Silently": 14,
+      "Search": 16,
+      "Spot": 18
+    },
+    "feats": [
+      "Alertness",
+      "Flyby Attack",
+      "Improved Initiative",
+      "Multiattack",
+      "Weapon Focus (bite)"
+    ],
+    "alignment": "Always Chaotic Good",
+    "advancement": "See Dragon age categories",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [
+      "Cold"
+    ],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 20,
+    "allowed_biomes": [
+      "Warm_Desert",
+      "Warm_Hills"
+    ],
+    "primary_biome": "Warm_Desert",
+    "ecology_notes": null
+  },
+  {
+    "name": "Dragon, Brass (Adult)",
+    "cr": 15,
+    "size": "Large",
+    "type": "Dragon",
+    "subtype": "Fire",
+    "hit_dice": "20d12+80",
+    "hp_avg": 210,
+    "initiative": 4,
+    "speed": {
+      "land": 60,
+      "burrow": 30,
+      "fly": 150
+    },
+    "armor_class": {
+      "total": 29,
+      "touch": 9,
+      "flat_footed": 29,
+      "components": "+20 natural, -1 size"
+    },
+    "base_attack": 20,
+    "grapple": 29,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+24",
+        "damage": "2d6+7",
+        "crit_range": "19-20/x2",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "2 Claws",
+        "attack_bonus": "+22",
+        "damage": "1d8+3",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "2 Wings",
+        "attack_bonus": "+19",
+        "damage": "1d6+3",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Tail Slap",
+        "attack_bonus": "+19",
+        "damage": "1d8+10",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Breath Weapon (100-ft line fire, 12d6, or 60-ft cone sleep gas, DC 22 Will negates)",
+      "Frightful Presence (DC 22 Will, 150 ft.)",
+      "Spell-Like Abilities (CL 5: speak with animals at will, suggestion 3/day, locate object 1/day)",
+      "Spells (CL 5)"
+    ],
+    "special_qualities": [
+      "Blindsense 60 ft.",
+      "Darkvision 120 ft.",
+      "DR 5/Magic",
+      "Immunity to Fire",
+      "Keen Senses",
+      "Low-Light Vision",
+      "Spell Resistance 20",
+      "Vulnerability to Cold"
+    ],
+    "saves": {
+      "fort": 16,
+      "ref": 12,
+      "will": 15
+    },
+    "abilities": {
+      "str": 25,
+      "dex": 10,
+      "con": 19,
+      "int": 16,
+      "wis": 17,
+      "cha": 16
+    },
+    "skills": {
+      "Bluff": 26,
+      "Concentration": 27,
+      "Diplomacy": 30,
+      "Hide": 19,
+      "Listen": 26,
+      "Move Silently": 23,
+      "Search": 26,
+      "Sense Motive": 26,
+      "Spot": 26
+    },
+    "feats": [
+      "Alertness",
+      "Cleave",
+      "Combat Reflexes",
+      "Flyby Attack",
+      "Hover",
+      "Improved Initiative",
+      "Multiattack",
+      "Power Attack"
+    ],
+    "alignment": "Always Chaotic Good",
+    "advancement": "See Dragon age categories",
+    "dr": "5/Magic",
+    "sr": 20,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [
+      "Cold"
+    ],
+    "alignment_weaknesses": [],
+    "passive_effects": [
+      {
+        "effect_type": "frightful_presence",
+        "range_ft": 150,
+        "save_type": "Will",
+        "save_dc": 22,
+        "effect_on_fail": "Shaken (if <= dragon HD) or Panicked (if < 1/2 dragon HD)",
+        "effect_on_pass": null,
+        "suppress_conditions": [
+          "Shaken",
+          "Frightened",
+          "Panicked"
+        ]
+      }
+    ],
+    "population_base": 8,
+    "allowed_biomes": [
+      "Warm_Desert",
+      "Warm_Hills"
+    ],
+    "primary_biome": "Warm_Desert",
+    "ecology_notes": null
+  },
+  {
+    "name": "Dragon, Bronze (Young)",
+    "cr": 10,
+    "size": "Medium",
+    "type": "Dragon",
+    "subtype": "Water",
+    "hit_dice": "13d12+26",
+    "hp_avg": 110,
+    "initiative": 4,
+    "speed": {
+      "land": 40,
+      "fly": 150,
+      "swim": 60
+    },
+    "armor_class": {
+      "total": 21,
+      "touch": 10,
+      "flat_footed": 21,
+      "components": "+11 natural"
+    },
+    "base_attack": 13,
+    "grapple": 14,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+14",
+        "damage": "1d8+1",
+        "crit_range": "19-20/x2",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "2 Claws",
+        "attack_bonus": "+12",
+        "damage": "1d6",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "2 Wings",
+        "attack_bonus": "+9",
+        "damage": "1d4",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Tail Slap",
+        "attack_bonus": "+9",
+        "damage": "1d6+1",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Breath Weapon (60-ft line lightning, 6d6, or 60-ft cone repulsion gas, DC 18 Reflex negates)",
+      "Spell-Like Abilities (CL 3: create water 3/day, fog cloud 3/day, speak with animals 3/day)"
+    ],
+    "special_qualities": [
+      "Alternate Form (aquatic animals)",
+      "Blindsense 60 ft.",
+      "Darkvision 120 ft.",
+      "Immunity to Electricity",
+      "Keen Senses",
+      "Low-Light Vision",
+      "Water Breathing"
+    ],
+    "saves": {
+      "fort": 10,
+      "ref": 8,
+      "will": 9
+    },
+    "abilities": {
+      "str": 13,
+      "dex": 10,
+      "con": 15,
+      "int": 14,
+      "wis": 15,
+      "cha": 14
+    },
+    "skills": {
+      "Bluff": 19,
+      "Concentration": 18,
+      "Diplomacy": 22,
+      "Hide": 16,
+      "Listen": 19,
+      "Move Silently": 16,
+      "Search": 17,
+      "Sense Motive": 19,
+      "Spot": 19
+    },
+    "feats": [
+      "Alertness",
+      "Flyby Attack",
+      "Improved Initiative",
+      "Multiattack",
+      "Weapon Focus (bite)"
+    ],
+    "alignment": "Always Lawful Good",
+    "advancement": "See Dragon age categories",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 15,
+    "allowed_biomes": [
+      "Coastal",
+      "Ocean",
+      "Temperate_Hills"
+    ],
+    "primary_biome": "Coastal",
+    "ecology_notes": null
+  },
+  {
+    "name": "Dragon, Bronze (Adult)",
+    "cr": 17,
+    "size": "Large",
+    "type": "Dragon",
+    "subtype": "Water",
+    "hit_dice": "24d12+96",
+    "hp_avg": 252,
+    "initiative": 4,
+    "speed": {
+      "land": 40,
+      "fly": 150,
+      "swim": 60
+    },
+    "armor_class": {
+      "total": 32,
+      "touch": 9,
+      "flat_footed": 32,
+      "components": "+23 natural, -1 size"
+    },
+    "base_attack": 24,
+    "grapple": 33,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+28",
+        "damage": "2d6+7",
+        "crit_range": "19-20/x2",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "2 Claws",
+        "attack_bonus": "+26",
+        "damage": "1d8+3",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "2 Wings",
+        "attack_bonus": "+23",
+        "damage": "1d6+3",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Tail Slap",
+        "attack_bonus": "+23",
+        "damage": "1d8+10",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Breath Weapon (80-ft line lightning, 14d6, or 80-ft cone repulsion gas, DC 23 Reflex negates)",
+      "Frightful Presence (DC 23 Will, 180 ft.)",
+      "Spell-Like Abilities (CL 7: create water at will, fog cloud 3/day, speak with animals at will, control water 2/day, control weather 1/day)",
+      "Spells (CL 7)"
+    ],
+    "special_qualities": [
+      "Alternate Form (aquatic animals)",
+      "Blindsense 60 ft.",
+      "Darkvision 120 ft.",
+      "DR 5/Magic",
+      "Immunity to Electricity",
+      "Keen Senses",
+      "Low-Light Vision",
+      "Spell Resistance 22",
+      "Water Breathing"
+    ],
+    "saves": {
+      "fort": 18,
+      "ref": 14,
+      "will": 17
+    },
+    "abilities": {
+      "str": 25,
+      "dex": 10,
+      "con": 19,
+      "int": 18,
+      "wis": 19,
+      "cha": 18
+    },
+    "skills": {
+      "Bluff": 31,
+      "Concentration": 31,
+      "Diplomacy": 35,
+      "Hide": 23,
+      "Listen": 31,
+      "Move Silently": 27,
+      "Search": 31,
+      "Sense Motive": 31,
+      "Spot": 31
+    },
+    "feats": [
+      "Alertness",
+      "Cleave",
+      "Combat Reflexes",
+      "Flyby Attack",
+      "Hover",
+      "Improved Initiative",
+      "Multiattack",
+      "Power Attack",
+      "Quicken Spell"
+    ],
+    "alignment": "Always Lawful Good",
+    "advancement": "See Dragon age categories",
+    "dr": "5/Magic",
+    "sr": 22,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [
+      {
+        "effect_type": "frightful_presence",
+        "range_ft": 180,
+        "save_type": "Will",
+        "save_dc": 23,
+        "effect_on_fail": "Shaken (if <= dragon HD) or Panicked (if < 1/2 dragon HD)",
+        "effect_on_pass": null,
+        "suppress_conditions": [
+          "Shaken",
+          "Frightened",
+          "Panicked"
+        ]
+      }
+    ],
+    "population_base": 5,
+    "allowed_biomes": [
+      "Coastal",
+      "Ocean",
+      "Temperate_Hills"
+    ],
+    "primary_biome": "Coastal",
+    "ecology_notes": null
+  },
+  {
+    "name": "Dragon, Copper (Young)",
+    "cr": 9,
+    "size": "Medium",
+    "type": "Dragon",
+    "subtype": "Earth",
+    "hit_dice": "12d12+24",
+    "hp_avg": 102,
+    "initiative": 4,
+    "speed": {
+      "land": 40,
+      "fly": 150
+    },
+    "armor_class": {
+      "total": 20,
+      "touch": 10,
+      "flat_footed": 20,
+      "components": "+10 natural"
+    },
+    "base_attack": 12,
+    "grapple": 13,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+13",
+        "damage": "1d8+1",
+        "crit_range": "19-20/x2",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "2 Claws",
+        "attack_bonus": "+11",
+        "damage": "1d6",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "2 Wings",
+        "attack_bonus": "+8",
+        "damage": "1d4",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Tail Slap",
+        "attack_bonus": "+8",
+        "damage": "1d6+1",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Breath Weapon (30-ft line acid, 6d4, or 30-ft cone slow gas, DC 17 Fortitude negates)",
+      "Spell-Like Abilities (CL 3: stone shape 2/day, transmute rock to mud 1/day)"
+    ],
+    "special_qualities": [
+      "Blindsense 60 ft.",
+      "Darkvision 120 ft.",
+      "Immunity to Acid",
+      "Keen Senses",
+      "Low-Light Vision",
+      "Spider Climb"
+    ],
+    "saves": {
+      "fort": 10,
+      "ref": 8,
+      "will": 9
+    },
+    "abilities": {
+      "str": 13,
+      "dex": 10,
+      "con": 15,
+      "int": 16,
+      "wis": 17,
+      "cha": 16
+    },
+    "skills": {
+      "Bluff": 18,
+      "Concentration": 17,
+      "Diplomacy": 20,
+      "Escape Artist": 15,
+      "Hide": 15,
+      "Listen": 20,
+      "Move Silently": 15,
+      "Search": 18,
+      "Spot": 20
+    },
+    "feats": [
+      "Alertness",
+      "Flyby Attack",
+      "Improved Initiative",
+      "Multiattack",
+      "Weapon Focus (bite)"
+    ],
+    "alignment": "Always Chaotic Good",
+    "advancement": "See Dragon age categories",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 20,
+    "allowed_biomes": [
+      "Warm_Hills",
+      "Temperate_Hills",
+      "Warm_Mountain"
+    ],
+    "primary_biome": "Warm_Hills",
+    "ecology_notes": null
+  },
+  {
+    "name": "Dragon, Copper (Adult)",
+    "cr": 16,
+    "size": "Large",
+    "type": "Dragon",
+    "subtype": "Earth",
+    "hit_dice": "21d12+84",
+    "hp_avg": 220,
+    "initiative": 4,
+    "speed": {
+      "land": 40,
+      "fly": 150
+    },
+    "armor_class": {
+      "total": 30,
+      "touch": 9,
+      "flat_footed": 30,
+      "components": "+21 natural, -1 size"
+    },
+    "base_attack": 21,
+    "grapple": 30,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+25",
+        "damage": "2d6+7",
+        "crit_range": "19-20/x2",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "2 Claws",
+        "attack_bonus": "+23",
+        "damage": "1d8+3",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "2 Wings",
+        "attack_bonus": "+20",
+        "damage": "1d6+3",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Tail Slap",
+        "attack_bonus": "+20",
+        "damage": "1d8+10",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Breath Weapon (60-ft line acid, 12d4, or 60-ft cone slow gas, DC 22 Fortitude negates)",
+      "Frightful Presence (DC 22 Will, 160 ft.)",
+      "Spell-Like Abilities (CL 7: stone shape at will, transmute rock to mud 3/day, wall of stone 2/day)",
+      "Spells (CL 7)"
+    ],
+    "special_qualities": [
+      "Blindsense 60 ft.",
+      "Darkvision 120 ft.",
+      "DR 5/Magic",
+      "Immunity to Acid",
+      "Keen Senses",
+      "Low-Light Vision",
+      "Spell Resistance 21",
+      "Spider Climb"
+    ],
+    "saves": {
+      "fort": 16,
+      "ref": 12,
+      "will": 15
+    },
+    "abilities": {
+      "str": 25,
+      "dex": 10,
+      "con": 19,
+      "int": 18,
+      "wis": 19,
+      "cha": 18
+    },
+    "skills": {
+      "Bluff": 29,
+      "Concentration": 28,
+      "Diplomacy": 33,
+      "Escape Artist": 25,
+      "Hide": 21,
+      "Listen": 29,
+      "Move Silently": 25,
+      "Search": 29,
+      "Spot": 29
+    },
+    "feats": [
+      "Alertness",
+      "Cleave",
+      "Combat Reflexes",
+      "Flyby Attack",
+      "Hover",
+      "Improved Initiative",
+      "Multiattack",
+      "Power Attack",
+      "Silent Spell"
+    ],
+    "alignment": "Always Chaotic Good",
+    "advancement": "See Dragon age categories",
+    "dr": "5/Magic",
+    "sr": 21,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [
+      {
+        "effect_type": "frightful_presence",
+        "range_ft": 160,
+        "save_type": "Will",
+        "save_dc": 22,
+        "effect_on_fail": "Shaken (if <= dragon HD) or Panicked (if < 1/2 dragon HD)",
+        "effect_on_pass": null,
+        "suppress_conditions": [
+          "Shaken",
+          "Frightened",
+          "Panicked"
+        ]
+      }
+    ],
+    "population_base": 8,
+    "allowed_biomes": [
+      "Warm_Hills",
+      "Temperate_Hills",
+      "Warm_Mountain"
+    ],
+    "primary_biome": "Warm_Hills",
+    "ecology_notes": null
+  },
+  {
+    "name": "Dragon, Gold (Young)",
+    "cr": 12,
+    "size": "Large",
+    "type": "Dragon",
+    "subtype": "Fire",
+    "hit_dice": "16d12+64",
+    "hp_avg": 168,
+    "initiative": 4,
+    "speed": {
+      "land": 60,
+      "fly": 200,
+      "swim": 60
+    },
+    "armor_class": {
+      "total": 24,
+      "touch": 9,
+      "flat_footed": 24,
+      "components": "+15 natural, -1 size"
+    },
+    "base_attack": 16,
+    "grapple": 25,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+20",
+        "damage": "2d6+7",
+        "crit_range": "19-20/x2",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "2 Claws",
+        "attack_bonus": "+18",
+        "damage": "1d8+3",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "2 Wings",
+        "attack_bonus": "+15",
+        "damage": "1d6+3",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Tail Slap",
+        "attack_bonus": "+15",
+        "damage": "1d8+10",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Breath Weapon (30-ft cone fire, 8d10, or 20-ft cone weakening gas, DC 20 Fortitude negates)",
+      "Spell-Like Abilities (CL 5: bless 3/day, cure light wounds 3/day, detect evil 3/day, purify food and drink 3/day)"
+    ],
+    "special_qualities": [
+      "Blindsense 60 ft.",
+      "Darkvision 120 ft.",
+      "Immunity to Fire",
+      "Keen Senses",
+      "Low-Light Vision",
+      "Luck Bonus +1",
+      "Vulnerability to Cold"
+    ],
+    "saves": {
+      "fort": 14,
+      "ref": 10,
+      "will": 13
+    },
+    "abilities": {
+      "str": 25,
+      "dex": 10,
+      "con": 19,
+      "int": 18,
+      "wis": 19,
+      "cha": 18
+    },
+    "skills": {
+      "Bluff": 23,
+      "Concentration": 23,
+      "Diplomacy": 27,
+      "Heal": 23,
+      "Knowledge (any)": 23,
+      "Listen": 25,
+      "Search": 23,
+      "Sense Motive": 23,
+      "Spot": 25
+    },
+    "feats": [
+      "Alertness",
+      "Cleave",
+      "Flyby Attack",
+      "Hover",
+      "Improved Initiative",
+      "Multiattack",
+      "Power Attack"
+    ],
+    "alignment": "Always Lawful Good",
+    "advancement": "See Dragon age categories",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [
+      "Cold"
+    ],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 10,
+    "allowed_biomes": [
+      "Warm_Plains",
+      "Warm_Hills",
+      "Warm_Mountain"
+    ],
+    "primary_biome": "Warm_Hills",
+    "ecology_notes": null
+  },
+  {
+    "name": "Dragon, Gold (Adult)",
+    "cr": 19,
+    "size": "Huge",
+    "type": "Dragon",
+    "subtype": "Fire",
+    "hit_dice": "27d12+162",
+    "hp_avg": 337,
+    "initiative": 4,
+    "speed": {
+      "land": 60,
+      "fly": 200,
+      "swim": 60
+    },
+    "armor_class": {
+      "total": 36,
+      "touch": 8,
+      "flat_footed": 36,
+      "components": "+28 natural, -2 size"
+    },
+    "base_attack": 27,
+    "grapple": 41,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+31",
+        "damage": "2d8+10",
+        "crit_range": "19-20/x2",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "2 Claws",
+        "attack_bonus": "+29",
+        "damage": "2d6+5",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "2 Wings",
+        "attack_bonus": "+26",
+        "damage": "1d8+5",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Tail Slap",
+        "attack_bonus": "+26",
+        "damage": "2d6+15",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Breath Weapon (40-ft cone fire, 16d10, or 30-ft cone weakening gas, DC 25 Fortitude negates)",
+      "Frightful Presence (DC 25 Will, 200 ft.)",
+      "Spell-Like Abilities (CL 11: bless at will, cure moderate wounds 5/day, detect evil at will, geas/quest 1/day, heal 3/day)",
+      "Spells (CL 11)"
+    ],
+    "special_qualities": [
+      "Blindsense 60 ft.",
+      "Darkvision 120 ft.",
+      "DR 10/Magic",
+      "Immunity to Fire",
+      "Keen Senses",
+      "Low-Light Vision",
+      "Luck Bonus +2",
+      "Spell Resistance 24",
+      "Vulnerability to Cold"
+    ],
+    "saves": {
+      "fort": 21,
+      "ref": 15,
+      "will": 20
+    },
+    "abilities": {
+      "str": 31,
+      "dex": 10,
+      "con": 23,
+      "int": 22,
+      "wis": 23,
+      "cha": 22
+    },
+    "skills": {
+      "Bluff": 36,
+      "Concentration": 36,
+      "Diplomacy": 42,
+      "Heal": 36,
+      "Knowledge (any)": 36,
+      "Listen": 38,
+      "Search": 36,
+      "Sense Motive": 38,
+      "Spot": 38
+    },
+    "feats": [
+      "Alertness",
+      "Cleave",
+      "Combat Reflexes",
+      "Flyby Attack",
+      "Great Cleave",
+      "Hover",
+      "Improved Initiative",
+      "Multiattack",
+      "Power Attack",
+      "Quicken Spell",
+      "Snatch",
+      "Wingover"
+    ],
+    "alignment": "Always Lawful Good",
+    "advancement": "See Dragon age categories",
+    "dr": "10/Magic",
+    "sr": 24,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [
+      "Cold"
+    ],
+    "alignment_weaknesses": [],
+    "passive_effects": [
+      {
+        "effect_type": "frightful_presence",
+        "range_ft": 200,
+        "save_type": "Will",
+        "save_dc": 25,
+        "effect_on_fail": "Shaken (if <= dragon HD) or Panicked (if < 1/2 dragon HD)",
+        "effect_on_pass": null,
+        "suppress_conditions": [
+          "Shaken",
+          "Frightened",
+          "Panicked"
+        ]
+      }
+    ],
+    "population_base": 3,
+    "allowed_biomes": [
+      "Warm_Plains",
+      "Warm_Hills",
+      "Warm_Mountain"
+    ],
+    "primary_biome": "Warm_Hills",
+    "ecology_notes": null
+  },
+  {
+    "name": "Dragon, Gold (Great Wyrm)",
+    "cr": 25,
+    "size": "Gargantuan",
+    "type": "Dragon",
+    "subtype": "Fire",
+    "hit_dice": "37d12+259",
+    "hp_avg": 499,
+    "initiative": 4,
+    "speed": {
+      "land": 60,
+      "fly": 250,
+      "swim": 60
+    },
+    "armor_class": {
+      "total": 42,
+      "touch": 6,
+      "flat_footed": 42,
+      "components": "+36 natural, -4 size"
+    },
+    "base_attack": 37,
+    "grapple": 57,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+41",
+        "damage": "4d6+14",
+        "crit_range": "19-20/x2",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "2 Claws",
+        "attack_bonus": "+39",
+        "damage": "2d8+7",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "2 Wings",
+        "attack_bonus": "+36",
+        "damage": "2d6+7",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Tail Slap",
+        "attack_bonus": "+36",
+        "damage": "2d8+21",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Breath Weapon (60-ft cone fire, 20d10, or 40-ft cone weakening gas, DC 29 Fortitude negates)",
+      "Crush (DC 29 Reflex, 4d6+21)",
+      "Frightful Presence (DC 29 Will, 240 ft.)",
+      "Tail Sweep",
+      "Spell-Like Abilities (CL 17: bless at will, cure critical wounds 5/day, detect evil at will, mass heal 1/day, wish 3/day)",
+      "Spells (CL 17)"
+    ],
+    "special_qualities": [
+      "Blindsense 60 ft.",
+      "Darkvision 120 ft.",
+      "DR 15/Magic",
+      "Immunity to Fire",
+      "Keen Senses",
+      "Low-Light Vision",
+      "Luck Bonus +3",
+      "Spell Resistance 28",
+      "Vulnerability to Cold"
+    ],
+    "saves": {
+      "fort": 27,
+      "ref": 20,
+      "will": 26
+    },
+    "abilities": {
+      "str": 39,
+      "dex": 10,
+      "con": 24,
+      "int": 26,
+      "wis": 27,
+      "cha": 26
+    },
+    "skills": {
+      "Bluff": 48,
+      "Concentration": 47,
+      "Diplomacy": 56,
+      "Heal": 48,
+      "Knowledge (any)": 48,
+      "Listen": 50,
+      "Search": 48,
+      "Sense Motive": 50,
+      "Spot": 50
+    },
+    "feats": [
+      "Alertness",
+      "Cleave",
+      "Combat Reflexes",
+      "Flyby Attack",
+      "Great Cleave",
+      "Hover",
+      "Improved Initiative",
+      "Multiattack",
+      "Power Attack",
+      "Quicken Spell",
+      "Skill Focus (Diplomacy)",
+      "Snatch",
+      "Spell Penetration",
+      "Wingover"
+    ],
+    "alignment": "Always Lawful Good",
+    "advancement": "See Dragon age categories",
+    "dr": "15/Magic",
+    "sr": 28,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [
+      "Cold"
+    ],
+    "alignment_weaknesses": [],
+    "passive_effects": [
+      {
+        "effect_type": "frightful_presence",
+        "range_ft": 240,
+        "save_type": "Will",
+        "save_dc": 29,
+        "effect_on_fail": "Shaken (if <= dragon HD) or Panicked (if < 1/2 dragon HD)",
+        "effect_on_pass": null,
+        "suppress_conditions": [
+          "Shaken",
+          "Frightened",
+          "Panicked"
+        ]
+      }
+    ],
+    "population_base": 1,
+    "allowed_biomes": [
+      "Warm_Plains",
+      "Warm_Hills",
+      "Warm_Mountain"
+    ],
+    "primary_biome": "Warm_Hills",
+    "ecology_notes": null
+  },
+  {
+    "name": "Dragon, Silver (Young)",
+    "cr": 11,
+    "size": "Large",
+    "type": "Dragon",
+    "subtype": "Cold",
+    "hit_dice": "14d12+56",
+    "hp_avg": 147,
+    "initiative": 4,
+    "speed": {
+      "land": 40,
+      "fly": 150
+    },
+    "armor_class": {
+      "total": 22,
+      "touch": 9,
+      "flat_footed": 22,
+      "components": "+13 natural, -1 size"
+    },
+    "base_attack": 14,
+    "grapple": 23,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+18",
+        "damage": "2d6+7",
+        "crit_range": "19-20/x2",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "2 Claws",
+        "attack_bonus": "+16",
+        "damage": "1d8+3",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "2 Wings",
+        "attack_bonus": "+13",
+        "damage": "1d6+3",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Tail Slap",
+        "attack_bonus": "+13",
+        "damage": "1d8+10",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Breath Weapon (40-ft cone cold, 7d8, or 40-ft cone paralyzing gas, DC 20 Fortitude negates)",
+      "Spell-Like Abilities (CL 5: detect evil 3/day, feather fall 3/day, fog cloud 3/day, animate objects 1/day)"
+    ],
+    "special_qualities": [
+      "Alternate Form (humanoid or animal)",
+      "Blindsense 60 ft.",
+      "Darkvision 120 ft.",
+      "Immunity to Cold",
+      "Keen Senses",
+      "Low-Light Vision",
+      "Vulnerability to Fire"
+    ],
+    "saves": {
+      "fort": 13,
+      "ref": 9,
+      "will": 11
+    },
+    "abilities": {
+      "str": 25,
+      "dex": 10,
+      "con": 19,
+      "int": 18,
+      "wis": 19,
+      "cha": 18
+    },
+    "skills": {
+      "Bluff": 21,
+      "Concentration": 21,
+      "Diplomacy": 25,
+      "Heal": 21,
+      "Hide": 17,
+      "Listen": 23,
+      "Sense Motive": 21,
+      "Spot": 23
+    },
+    "feats": [
+      "Alertness",
+      "Flyby Attack",
+      "Hover",
+      "Improved Initiative",
+      "Multiattack",
+      "Power Attack"
+    ],
+    "alignment": "Always Lawful Good",
+    "advancement": "See Dragon age categories",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [
+      "Fire"
+    ],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 10,
+    "allowed_biomes": [
+      "Cold_Mountain",
+      "Temperate_Mountain",
+      "Any"
+    ],
+    "primary_biome": "Cold_Mountain",
+    "ecology_notes": null
+  },
+  {
+    "name": "Dragon, Silver (Adult)",
+    "cr": 18,
+    "size": "Huge",
+    "type": "Dragon",
+    "subtype": "Cold",
+    "hit_dice": "26d12+130",
+    "hp_avg": 299,
+    "initiative": 4,
+    "speed": {
+      "land": 40,
+      "fly": 150
+    },
+    "armor_class": {
+      "total": 35,
+      "touch": 8,
+      "flat_footed": 35,
+      "components": "+27 natural, -2 size"
+    },
+    "base_attack": 26,
+    "grapple": 40,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+30",
+        "damage": "2d8+10",
+        "crit_range": "19-20/x2",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "2 Claws",
+        "attack_bonus": "+28",
+        "damage": "2d6+5",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "2 Wings",
+        "attack_bonus": "+25",
+        "damage": "1d8+5",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Tail Slap",
+        "attack_bonus": "+25",
+        "damage": "2d6+15",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Breath Weapon (50-ft cone cold, 15d8, or 40-ft cone paralyzing gas, DC 24 Fortitude negates)",
+      "Frightful Presence (DC 24 Will, 190 ft.)",
+      "Spell-Like Abilities (CL 9: detect evil at will, feather fall at will, fog cloud 3/day, control weather 1/day, reverse gravity 1/day)",
+      "Spells (CL 9)"
+    ],
+    "special_qualities": [
+      "Alternate Form (humanoid or animal)",
+      "Blindsense 60 ft.",
+      "Darkvision 120 ft.",
+      "DR 10/Magic",
+      "Immunity to Cold",
+      "Keen Senses",
+      "Low-Light Vision",
+      "Spell Resistance 23",
+      "Vulnerability to Fire"
+    ],
+    "saves": {
+      "fort": 20,
+      "ref": 15,
+      "will": 19
+    },
+    "abilities": {
+      "str": 31,
+      "dex": 10,
+      "con": 21,
+      "int": 22,
+      "wis": 23,
+      "cha": 22
+    },
+    "skills": {
+      "Bluff": 35,
+      "Concentration": 34,
+      "Diplomacy": 41,
+      "Heal": 35,
+      "Hide": 25,
+      "Listen": 37,
+      "Sense Motive": 35,
+      "Spot": 37
+    },
+    "feats": [
+      "Alertness",
+      "Cleave",
+      "Combat Reflexes",
+      "Flyby Attack",
+      "Great Cleave",
+      "Hover",
+      "Improved Initiative",
+      "Multiattack",
+      "Power Attack",
+      "Quicken Spell",
+      "Snatch",
+      "Wingover"
+    ],
+    "alignment": "Always Lawful Good",
+    "advancement": "See Dragon age categories",
+    "dr": "10/Magic",
+    "sr": 23,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [
+      "Fire"
+    ],
+    "alignment_weaknesses": [],
+    "passive_effects": [
+      {
+        "effect_type": "frightful_presence",
+        "range_ft": 190,
+        "save_type": "Will",
+        "save_dc": 24,
+        "effect_on_fail": "Shaken (if <= dragon HD) or Panicked (if < 1/2 dragon HD)",
+        "effect_on_pass": null,
+        "suppress_conditions": [
+          "Shaken",
+          "Frightened",
+          "Panicked"
+        ]
+      }
+    ],
+    "population_base": 3,
+    "allowed_biomes": [
+      "Cold_Mountain",
+      "Temperate_Mountain",
+      "Any"
+    ],
+    "primary_biome": "Cold_Mountain",
+    "ecology_notes": null
+  },
+  {
+    "name": "Dragon Turtle",
+    "cr": 9,
+    "size": "Huge",
+    "type": "Dragon",
+    "subtype": "Aquatic",
+    "hit_dice": "12d12+60",
+    "hp_avg": 138,
+    "initiative": -1,
+    "speed": {
+      "land": 20,
+      "swim": 30
+    },
+    "armor_class": {
+      "total": 25,
+      "touch": 7,
+      "flat_footed": 25,
+      "components": "+18 natural, -2 size, -1 Dex"
+    },
+    "base_attack": 12,
+    "grapple": 26,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+16",
+        "damage": "4d6+8",
+        "crit_range": "19-20/x2",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "2 Claws",
+        "attack_bonus": "+11",
+        "damage": "2d8+4",
+        "damage_type": "Slashing"
+      }
+    ],
+    "special_attacks": [
+      "Breath Weapon (20-ft radius steam cloud, 12d6, DC 19 Reflex half; recharge 1d4 rounds)",
+      "Capsize"
+    ],
+    "special_qualities": [
+      "Blindsense 30 ft.",
+      "Darkvision 60 ft.",
+      "Immunity to Fire",
+      "Low-Light Vision",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 13,
+      "ref": 7,
+      "will": 9
+    },
+    "abilities": {
+      "str": 27,
+      "dex": 8,
+      "con": 21,
+      "int": 12,
+      "wis": 13,
+      "cha": 12
+    },
+    "skills": {
+      "Diplomacy": 3,
+      "Intimidate": 16,
+      "Listen": 18,
+      "Search": 16,
+      "Sense Motive": 16,
+      "Spot": 18,
+      "Swim": 16
+    },
+    "feats": [
+      "Alertness",
+      "Blind-Fight",
+      "Cleave",
+      "Improved Initiative",
+      "Power Attack"
+    ],
+    "alignment": "Usually Neutral",
+    "advancement": "13-24 HD (Huge)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 5,
+    "allowed_biomes": [
+      "Ocean",
+      "Coastal",
+      "Rivers"
+    ],
+    "primary_biome": "Ocean",
+    "ecology_notes": "Dragon turtles are reclusive and mercenary, often extorting tolls from ships passing their territory."
+  },
+  {
+    "name": "Pseudodragon",
+    "cr": 1,
+    "size": "Tiny",
+    "type": "Dragon",
+    "subtype": null,
+    "hit_dice": "2d12+2",
+    "hp_avg": 15,
+    "initiative": 2,
+    "speed": {
+      "land": 15,
+      "fly": 60
+    },
+    "armor_class": {
+      "total": 18,
+      "touch": 14,
+      "flat_footed": 16,
+      "components": "+2 Dex, +4 natural, +2 size"
+    },
+    "base_attack": 2,
+    "grapple": -4,
+    "attacks": [
+      {
+        "name": "Sting",
+        "attack_bonus": "+6",
+        "damage": "1d3-2 plus poison",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+1",
+        "damage": "1d2-2",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Poison (DC 14 Fortitude; primary: unconscious 1 minute; secondary: unconscious 1d3x10 minutes)"
+    ],
+    "special_qualities": [
+      "Blindsense 60 ft.",
+      "Darkvision 60 ft.",
+      "Empathic Link (1 mile)",
+      "Immunity to Sleep and Paralysis",
+      "Low-Light Vision",
+      "Spell Resistance 19",
+      "Telepathy 60 ft."
+    ],
+    "saves": {
+      "fort": 4,
+      "ref": 5,
+      "will": 4
+    },
+    "abilities": {
+      "str": 6,
+      "dex": 15,
+      "con": 13,
+      "int": 10,
+      "wis": 12,
+      "cha": 10
+    },
+    "skills": {
+      "Diplomacy": 2,
+      "Hide": 20,
+      "Listen": 7,
+      "Search": 6,
+      "Sense Motive": 7,
+      "Spot": 7
+    },
+    "feats": [
+      "Weapon Finesse"
+    ],
+    "alignment": "Always Neutral Good",
+    "advancement": "None",
+    "dr": null,
+    "sr": 19,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 15,
+    "allowed_biomes": [
+      "Forest",
+      "Rural",
+      "Any"
+    ],
+    "primary_biome": "Forest",
+    "ecology_notes": "Pseudodragons are cat-sized true dragons that bond with humanoids as familiars. They communicate telepathically and are playful but fiercely loyal."
+  }
+]
