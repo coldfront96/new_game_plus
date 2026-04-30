@@ -37,24 +37,24 @@ See [`LIVING_WORLD_MM_BUILD_SITE.md`](LIVING_WORLD_MM_BUILD_SITE.md) for the ful
 |---------|----|--------|-------|
 | Aboleth | 7 | ✅ | `data/srd_3.5/monsters/batch_a_c.json` |
 | Beholder | 13 | ✅ | `data/srd_3.5/monsters/batch_a_c.json` |
-| Carrion Crawler | 4 | ❌ | |
-| Chuul | 7 | ❌ | |
-| Cloaker | 5 | ❌ | |
+| Carrion Crawler | 4 | ✅ | `data/srd_3.5/monsters/batch_aberrations.json` |
+| Chuul | 7 | ✅ | `data/srd_3.5/monsters/batch_aberrations.json` |
+| Cloaker | 5 | ✅ | `data/srd_3.5/monsters/batch_aberrations.json` |
 | Darkmantle | 1 | ✅ | `data/srd_3.5/monsters/batch_d_g.json` |
-| Delver | 9 | ❌ | |
-| Destrachan | 8 | ❌ | |
-| Digester | 6 | ❌ | |
-| Ethereal Filcher | 3 | ❌ | |
-| Gibbering Mouther | 5 | ❌ | |
-| Grick | 3 | ❌ | |
-| Mimic | 4 | ❌ | |
+| Delver | 9 | ✅ | `data/srd_3.5/monsters/batch_aberrations.json` |
+| Destrachan | 8 | ✅ | `data/srd_3.5/monsters/batch_aberrations.json` |
+| Digester | 6 | ✅ | `data/srd_3.5/monsters/batch_aberrations.json` |
+| Ethereal Filcher | 3 | ✅ | `data/srd_3.5/monsters/batch_aberrations.json` |
+| Gibbering Mouther | 5 | ✅ | `data/srd_3.5/monsters/batch_aberrations.json` |
+| Grick | 3 | ✅ | `data/srd_3.5/monsters/batch_aberrations.json` |
+| Mimic | 4 | ✅ | `data/srd_3.5/monsters/batch_aberrations.json` |
 | Mind Flayer (Illithid) | 8 | ✅ | `data/srd_3.5/monsters/batch_m_r.json` |
-| Otyugh | 4 | ❌ | |
-| Roper | 12 | ❌ | |
+| Otyugh | 4 | ✅ | `data/srd_3.5/monsters/batch_aberrations.json` |
+| Roper | 12 | ✅ | `data/srd_3.5/monsters/batch_aberrations.json` |
 | Rust Monster | 3 | ✅ | `data/srd_3.5/monsters/batch_m_r.json` |
-| Skum | 2 | ❌ | |
-| Umber Hulk | 7 | ❌ | |
-| Will-o'-Wisp | 6 | 🔲 | stub in `core.json` |
+| Skum | 2 | ✅ | `data/srd_3.5/monsters/batch_aberrations.json` |
+| Umber Hulk | 7 | ✅ | `data/srd_3.5/monsters/batch_aberrations.json` |
+| Will-o'-Wisp | 6 | ✅ | `data/srd_3.5/monsters/batch_aberrations.json` |
 
 ---
 
@@ -62,82 +62,82 @@ See [`LIVING_WORLD_MM_BUILD_SITE.md`](LIVING_WORLD_MM_BUILD_SITE.md) for the ful
 
 | Monster | CR | Status | Notes |
 |---------|----|--------|-------|
-| Ape | 2 | ❌ | |
-| Ape, Dire | 3 | ❌ | |
-| Badger | 1/2 | ❌ | |
-| Badger, Dire | 2 | ❌ | |
-| Bat (swarm) | 2 | ❌ | |
-| Bear, Black | 2 | 🔲 | stub in `core.json` |
-| Bear, Brown (Grizzly) | 4 | ❌ | |
-| Bear, Dire | 7 | ❌ | |
-| Bear, Polar | 4 | 🔲 | stub in `core.json` |
-| Bison | 2 | ❌ | |
-| Boar | 2 | ❌ | |
-| Boar, Dire | 4 | ❌ | |
-| Camel | 1 | ❌ | |
-| Cat | 1/4 | ❌ | |
-| Cheetah | 2 | ❌ | |
-| Crocodile | 2 | 🔲 | stub in `core.json` |
+| Ape | 2 | ✅ | `data/srd_3.5/monsters/batch_animals_a_m.json` |
+| Ape, Dire | 3 | ✅ | `data/srd_3.5/monsters/batch_animals_a_m.json` |
+| Badger | 1/2 | ✅ | `data/srd_3.5/monsters/batch_animals_a_m.json` |
+| Badger, Dire | 2 | ✅ | `data/srd_3.5/monsters/batch_animals_a_m.json` |
+| Bat (swarm) | 2 | ✅ | `data/srd_3.5/monsters/batch_animals_a_m.json` |
+| Bear, Black | 2 | ✅ | `data/srd_3.5/monsters/batch_animals_a_m.json` |
+| Bear, Brown (Grizzly) | 4 | ✅ | `data/srd_3.5/monsters/batch_animals_a_m.json` |
+| Bear, Dire | 7 | ✅ | `data/srd_3.5/monsters/batch_animals_a_m.json` |
+| Bear, Polar | 4 | ✅ | `data/srd_3.5/monsters/batch_animals_a_m.json` |
+| Bison | 2 | ✅ | `data/srd_3.5/monsters/batch_animals_a_m.json` |
+| Boar | 2 | ✅ | `data/srd_3.5/monsters/batch_animals_a_m.json` |
+| Boar, Dire | 4 | ✅ | `data/srd_3.5/monsters/batch_animals_a_m.json` |
+| Camel | 1 | ✅ | `data/srd_3.5/monsters/batch_animals_a_m.json` |
+| Cat | 1/4 | ✅ | `data/srd_3.5/monsters/batch_animals_a_m.json` |
+| Cheetah | 2 | ✅ | `data/srd_3.5/monsters/batch_animals_a_m.json` |
+| Crocodile | 2 | ✅ | `data/srd_3.5/monsters/batch_animals_a_m.json` |
 | Crocodile, Giant | 4 | ✅ | `data/srd_3.5/monsters/batch_a_c.json` |
-| Crocodile, Dire | 9 | ❌ | |
-| Dog | 1/3 | ❌ | |
-| Dog, Riding | 1 | ❌ | |
-| Donkey | 1/6 | ❌ | |
-| Eagle | 1/2 | ❌ | |
-| Eagle, Giant | 3 | 🔲 | stub in `core.json` |
-| Elephant | 7 | ❌ | |
-| Frog, Giant | 1 | 🔲 | stub in `core.json` |
-| Hawk | 1/3 | ❌ | |
-| Horse, Heavy | 1 | ❌ | |
-| Horse, Light | 1 | ❌ | |
-| Horse, Warhorse (Heavy) | 2 | ❌ | |
-| Horse, Warhorse (Light) | 1 | ❌ | |
-| Hyena | 1 | ❌ | |
-| Leopard | 2 | ❌ | |
-| Lion | 3 | 🔲 | stub in `core.json` |
-| Lion, Dire | 5 | 🔲 | stub in `core.json` |
-| Mammoth | 8 | 🔲 | stub in `core.json` |
-| Manta Ray | 1/4 | ❌ | |
-| Monkey | 1/6 | ❌ | |
-| Mule | 1/2 | ❌ | |
-| Octopus | 1 | ❌ | |
-| Octopus, Giant | 8 | ❌ | |
-| Owl | 1/4 | ❌ | |
-| Owl, Giant | 4 | ❌ | |
-| Pony | 1/4 | ❌ | |
-| Porpoise | 1/2 | ❌ | |
-| Rat | 1/4 | ❌ | |
-| Rat, Dire | 1/3 | 🔲 | stub in `core.json` |
-| Raven | 1/6 | ❌ | |
-| Rhinoceros | 4 | ❌ | |
-| Roc | 9 | 🔲 | stub in `core.json` |
-| Shark, Large | 2 | ❌ | |
-| Shark, Huge | 4 | ❌ | |
-| Shark, Dire | 9 | ❌ | |
-| Snake, Constrictor | 2 | ❌ | |
-| Snake, Constrictor (Giant) | 5 | ❌ | |
-| Snake, Viper (Tiny) | 1/3 | ❌ | |
-| Snake, Viper (Small) | 1/2 | ❌ | |
-| Snake, Viper (Medium) | 1 | ❌ | |
-| Snake, Viper (Large) | 2 | ❌ | |
-| Snake, Viper (Huge) | 3 | ❌ | |
-| Snake, Viper (Giant) | 3 | 🔲 | stub in `core.json` |
-| Snow Leopard | 2 | 🔲 | stub in `core.json` |
-| Squid | 1 | ❌ | |
-| Squid, Giant | 9 | ❌ | |
-| Tiger | 4 | ❌ | |
-| Tiger, Dire | 8 | ❌ | |
-| Toad | 1/10 | ❌ | |
-| Weasel | 1/4 | ❌ | |
-| Weasel, Dire | 2 | ❌ | |
-| Whale, Baleen | 6 | ❌ | |
-| Whale, Cachalot | 12 | ❌ | |
-| Whale, Orca | 5 | ❌ | |
-| Wolf | 1 | 🔲 | stub in `core.json` |
-| Wolf, Dire | 3 | 🔲 | stub in `core.json` |
-| Wolverine | 2 | ❌ | |
-| Wolverine, Dire | 4 | ❌ | |
-| Yeti | 3 | 🔲 | stub in `core.json` |
+| Crocodile, Dire | 9 | ✅ | `data/srd_3.5/monsters/batch_animals_a_m.json` |
+| Dog | 1/3 | ✅ | `data/srd_3.5/monsters/batch_animals_a_m.json` |
+| Dog, Riding | 1 | ✅ | `data/srd_3.5/monsters/batch_animals_a_m.json` |
+| Donkey | 1/6 | ✅ | `data/srd_3.5/monsters/batch_animals_a_m.json` |
+| Eagle | 1/2 | ✅ | `data/srd_3.5/monsters/batch_animals_a_m.json` |
+| Eagle, Giant | 3 | ✅ | `data/srd_3.5/monsters/batch_animals_a_m.json` |
+| Elephant | 7 | ✅ | `data/srd_3.5/monsters/batch_animals_a_m.json` |
+| Frog, Giant | 1 | ✅ | `data/srd_3.5/monsters/batch_animals_a_m.json` |
+| Hawk | 1/3 | ✅ | `data/srd_3.5/monsters/batch_animals_a_m.json` |
+| Horse, Heavy | 1 | ✅ | `data/srd_3.5/monsters/batch_animals_a_m.json` |
+| Horse, Light | 1 | ✅ | `data/srd_3.5/monsters/batch_animals_a_m.json` |
+| Horse, Warhorse (Heavy) | 2 | ✅ | `data/srd_3.5/monsters/batch_animals_a_m.json` |
+| Horse, Warhorse (Light) | 1 | ✅ | `data/srd_3.5/monsters/batch_animals_a_m.json` |
+| Hyena | 1 | ✅ | `data/srd_3.5/monsters/batch_animals_a_m.json` |
+| Leopard | 2 | ✅ | `data/srd_3.5/monsters/batch_animals_a_m.json` |
+| Lion | 3 | ✅ | `data/srd_3.5/monsters/batch_animals_a_m.json` |
+| Lion, Dire | 5 | ✅ | `data/srd_3.5/monsters/batch_animals_a_m.json` |
+| Mammoth | 8 | ✅ | `data/srd_3.5/monsters/batch_animals_a_m.json` |
+| Manta Ray | 1/4 | ✅ | `data/srd_3.5/monsters/batch_animals_a_m.json` |
+| Monkey | 1/6 | ✅ | `data/srd_3.5/monsters/batch_animals_a_m.json` |
+| Mule | 1/2 | ✅ | `data/srd_3.5/monsters/batch_animals_a_m.json` |
+| Octopus | 1 | ✅ | `data/srd_3.5/monsters/batch_animals_n_z.json` |
+| Octopus, Giant | 8 | ✅ | `data/srd_3.5/monsters/batch_animals_n_z.json` |
+| Owl | 1/4 | ✅ | `data/srd_3.5/monsters/batch_animals_n_z.json` |
+| Owl, Giant | 4 | ✅ | `data/srd_3.5/monsters/batch_animals_n_z.json` |
+| Pony | 1/4 | ✅ | `data/srd_3.5/monsters/batch_animals_n_z.json` |
+| Porpoise | 1/2 | ✅ | `data/srd_3.5/monsters/batch_animals_n_z.json` |
+| Rat | 1/4 | ✅ | `data/srd_3.5/monsters/batch_animals_n_z.json` |
+| Rat, Dire | 1/3 | ✅ | `data/srd_3.5/monsters/batch_animals_n_z.json` |
+| Raven | 1/6 | ✅ | `data/srd_3.5/monsters/batch_animals_n_z.json` |
+| Rhinoceros | 4 | ✅ | `data/srd_3.5/monsters/batch_animals_n_z.json` |
+| Roc | 9 | ✅ | `data/srd_3.5/monsters/batch_animals_n_z.json` |
+| Shark, Large | 2 | ✅ | `data/srd_3.5/monsters/batch_animals_n_z.json` |
+| Shark, Huge | 4 | ✅ | `data/srd_3.5/monsters/batch_animals_n_z.json` |
+| Shark, Dire | 9 | ✅ | `data/srd_3.5/monsters/batch_animals_n_z.json` |
+| Snake, Constrictor | 2 | ✅ | `data/srd_3.5/monsters/batch_animals_n_z.json` |
+| Snake, Constrictor (Giant) | 5 | ✅ | `data/srd_3.5/monsters/batch_animals_n_z.json` |
+| Snake, Viper (Tiny) | 1/3 | ✅ | `data/srd_3.5/monsters/batch_animals_n_z.json` |
+| Snake, Viper (Small) | 1/2 | ✅ | `data/srd_3.5/monsters/batch_animals_n_z.json` |
+| Snake, Viper (Medium) | 1 | ✅ | `data/srd_3.5/monsters/batch_animals_n_z.json` |
+| Snake, Viper (Large) | 2 | ✅ | `data/srd_3.5/monsters/batch_animals_n_z.json` |
+| Snake, Viper (Huge) | 3 | ✅ | `data/srd_3.5/monsters/batch_animals_n_z.json` |
+| Snake, Viper (Giant) | 3 | ✅ | `data/srd_3.5/monsters/batch_animals_n_z.json` |
+| Snow Leopard | 2 | ✅ | `data/srd_3.5/monsters/batch_animals_n_z.json` |
+| Squid | 1 | ✅ | `data/srd_3.5/monsters/batch_animals_n_z.json` |
+| Squid, Giant | 9 | ✅ | `data/srd_3.5/monsters/batch_animals_n_z.json` |
+| Tiger | 4 | ✅ | `data/srd_3.5/monsters/batch_animals_n_z.json` |
+| Tiger, Dire | 8 | ✅ | `data/srd_3.5/monsters/batch_animals_n_z.json` |
+| Toad | 1/10 | ✅ | `data/srd_3.5/monsters/batch_animals_n_z.json` |
+| Weasel | 1/4 | ✅ | `data/srd_3.5/monsters/batch_animals_n_z.json` |
+| Weasel, Dire | 2 | ✅ | `data/srd_3.5/monsters/batch_animals_n_z.json` |
+| Whale, Baleen | 6 | ✅ | `data/srd_3.5/monsters/batch_animals_n_z.json` |
+| Whale, Cachalot | 12 | ✅ | `data/srd_3.5/monsters/batch_animals_n_z.json` |
+| Whale, Orca | 5 | ✅ | `data/srd_3.5/monsters/batch_animals_n_z.json` |
+| Wolf | 1 | ✅ | `data/srd_3.5/monsters/batch_animals_n_z.json` |
+| Wolf, Dire | 3 | ✅ | `data/srd_3.5/monsters/batch_animals_n_z.json` |
+| Wolverine | 2 | ✅ | `data/srd_3.5/monsters/batch_animals_n_z.json` |
+| Wolverine, Dire | 4 | ✅ | `data/srd_3.5/monsters/batch_animals_n_z.json` |
+| Yeti | 3 | ✅ | `data/srd_3.5/monsters/batch_animals_n_z.json` |
 
 ---
 
@@ -145,19 +145,19 @@ See [`LIVING_WORLD_MM_BUILD_SITE.md`](LIVING_WORLD_MM_BUILD_SITE.md) for the ful
 
 | Monster | CR | Status | Notes |
 |---------|----|--------|-------|
-| Animated Object (Tiny) | 1 | ❌ | |
-| Animated Object (Small) | 2 | ❌ | |
-| Animated Object (Medium) | 3 | ❌ | |
-| Animated Object (Large) | 5 | ❌ | |
-| Animated Object (Huge) | 7 | ❌ | |
-| Animated Object (Gargantuan) | 10 | ❌ | |
-| Animated Object (Colossal) | 14 | ❌ | |
-| Golem, Clay | 10 | ❌ | |
-| Golem, Flesh | 7 | ❌ | |
-| Golem, Iron | 13 | ❌ | |
-| Golem, Stone | 11 | ❌ | |
-| Homunculus | 1 | ❌ | |
-| Shield Guardian | 8 | ❌ | |
+| Animated Object (Tiny) | 1 | ✅ | `data/srd_3.5/monsters/batch_constructs.json` |
+| Animated Object (Small) | 2 | ✅ | `data/srd_3.5/monsters/batch_constructs.json` |
+| Animated Object (Medium) | 3 | ✅ | `data/srd_3.5/monsters/batch_constructs.json` |
+| Animated Object (Large) | 5 | ✅ | `data/srd_3.5/monsters/batch_constructs.json` |
+| Animated Object (Huge) | 7 | ✅ | `data/srd_3.5/monsters/batch_constructs.json` |
+| Animated Object (Gargantuan) | 10 | ✅ | `data/srd_3.5/monsters/batch_constructs.json` |
+| Animated Object (Colossal) | 14 | ✅ | `data/srd_3.5/monsters/batch_constructs.json` |
+| Golem, Clay | 10 | ✅ | `data/srd_3.5/monsters/batch_constructs.json` |
+| Golem, Flesh | 7 | ✅ | `data/srd_3.5/monsters/batch_constructs.json` |
+| Golem, Iron | 13 | ✅ | `data/srd_3.5/monsters/batch_constructs.json` |
+| Golem, Stone | 11 | ✅ | `data/srd_3.5/monsters/batch_constructs.json` |
+| Homunculus | 1 | ✅ | `data/srd_3.5/monsters/batch_constructs.json` |
+| Shield Guardian | 8 | ✅ | `data/srd_3.5/monsters/batch_constructs.json` |
 
 ---
 
@@ -202,40 +202,40 @@ See [`LIVING_WORLD_MM_BUILD_SITE.md`](LIVING_WORLD_MM_BUILD_SITE.md) for the ful
 
 | Monster | CR | Status | Notes |
 |---------|----|--------|-------|
-| Elemental, Air (Small) | 1 | ❌ | |
-| Elemental, Air (Medium) | 3 | ❌ | |
-| Elemental, Air (Large) | 5 | ❌ | |
-| Elemental, Air (Huge) | 7 | ❌ | |
-| Elemental, Air (Greater) | 9 | ❌ | |
-| Elemental, Air (Elder) | 11 | ❌ | |
-| Elemental, Earth (Small) | 1 | ❌ | |
-| Elemental, Earth (Medium) | 3 | ❌ | |
-| Elemental, Earth (Large) | 5 | ❌ | |
-| Elemental, Earth (Huge) | 7 | ❌ | |
-| Elemental, Earth (Greater) | 9 | ❌ | |
-| Elemental, Earth (Elder) | 11 | ❌ | |
-| Elemental, Fire (Small) | 1 | ❌ | |
-| Elemental, Fire (Medium) | 3 | ❌ | |
-| Elemental, Fire (Large) | 5 | ❌ | |
-| Elemental, Fire (Huge) | 7 | ❌ | |
-| Elemental, Fire (Greater) | 9 | ❌ | |
-| Elemental, Fire (Elder) | 11 | ❌ | |
-| Elemental, Water (Small) | 1 | ❌ | |
-| Elemental, Water (Medium) | 3 | ❌ | |
-| Elemental, Water (Large) | 5 | ❌ | |
-| Elemental, Water (Huge) | 7 | ❌ | |
-| Elemental, Water (Greater) | 9 | ❌ | |
-| Elemental, Water (Elder) | 11 | ❌ | |
-| Mephit, Air | 3 | ❌ | |
-| Mephit, Dust | 3 | 🔲 | stub in `core.json` |
-| Mephit, Earth | 3 | ❌ | |
-| Mephit, Fire | 3 | 🔲 | stub in `core.json` |
-| Mephit, Ice | 3 | 🔲 | stub in `core.json` |
-| Mephit, Magma | 4 | ❌ | |
-| Mephit, Ooze | 3 | ❌ | |
-| Mephit, Salt | 3 | ❌ | |
-| Mephit, Steam | 3 | ❌ | |
-| Mephit, Water | 3 | ❌ | |
+| Elemental, Air (Small) | 1 | ✅ | `data/srd_3.5/monsters/batch_elementals.json` |
+| Elemental, Air (Medium) | 3 | ✅ | `data/srd_3.5/monsters/batch_elementals.json` |
+| Elemental, Air (Large) | 5 | ✅ | `data/srd_3.5/monsters/batch_elementals.json` |
+| Elemental, Air (Huge) | 7 | ✅ | `data/srd_3.5/monsters/batch_elementals.json` |
+| Elemental, Air (Greater) | 9 | ✅ | `data/srd_3.5/monsters/batch_elementals.json` |
+| Elemental, Air (Elder) | 11 | ✅ | `data/srd_3.5/monsters/batch_elementals.json` |
+| Elemental, Earth (Small) | 1 | ✅ | `data/srd_3.5/monsters/batch_elementals.json` |
+| Elemental, Earth (Medium) | 3 | ✅ | `data/srd_3.5/monsters/batch_elementals.json` |
+| Elemental, Earth (Large) | 5 | ✅ | `data/srd_3.5/monsters/batch_elementals.json` |
+| Elemental, Earth (Huge) | 7 | ✅ | `data/srd_3.5/monsters/batch_elementals.json` |
+| Elemental, Earth (Greater) | 9 | ✅ | `data/srd_3.5/monsters/batch_elementals.json` |
+| Elemental, Earth (Elder) | 11 | ✅ | `data/srd_3.5/monsters/batch_elementals.json` |
+| Elemental, Fire (Small) | 1 | ✅ | `data/srd_3.5/monsters/batch_elementals.json` |
+| Elemental, Fire (Medium) | 3 | ✅ | `data/srd_3.5/monsters/batch_elementals.json` |
+| Elemental, Fire (Large) | 5 | ✅ | `data/srd_3.5/monsters/batch_elementals.json` |
+| Elemental, Fire (Huge) | 7 | ✅ | `data/srd_3.5/monsters/batch_elementals.json` |
+| Elemental, Fire (Greater) | 9 | ✅ | `data/srd_3.5/monsters/batch_elementals.json` |
+| Elemental, Fire (Elder) | 11 | ✅ | `data/srd_3.5/monsters/batch_elementals.json` |
+| Elemental, Water (Small) | 1 | ✅ | `data/srd_3.5/monsters/batch_elementals.json` |
+| Elemental, Water (Medium) | 3 | ✅ | `data/srd_3.5/monsters/batch_elementals.json` |
+| Elemental, Water (Large) | 5 | ✅ | `data/srd_3.5/monsters/batch_elementals.json` |
+| Elemental, Water (Huge) | 7 | ✅ | `data/srd_3.5/monsters/batch_elementals.json` |
+| Elemental, Water (Greater) | 9 | ✅ | `data/srd_3.5/monsters/batch_elementals.json` |
+| Elemental, Water (Elder) | 11 | ✅ | `data/srd_3.5/monsters/batch_elementals.json` |
+| Mephit, Air | 3 | ✅ | `data/srd_3.5/monsters/batch_elementals.json` |
+| Mephit, Dust | 3 | ✅ | `data/srd_3.5/monsters/batch_elementals.json` |
+| Mephit, Earth | 3 | ✅ | `data/srd_3.5/monsters/batch_elementals.json` |
+| Mephit, Fire | 3 | ✅ | `data/srd_3.5/monsters/batch_elementals.json` |
+| Mephit, Ice | 3 | ✅ | `data/srd_3.5/monsters/batch_elementals.json` |
+| Mephit, Magma | 4 | ✅ | `data/srd_3.5/monsters/batch_elementals.json` |
+| Mephit, Ooze | 3 | ✅ | `data/srd_3.5/monsters/batch_elementals.json` |
+| Mephit, Salt | 3 | ✅ | `data/srd_3.5/monsters/batch_elementals.json` |
+| Mephit, Steam | 3 | ✅ | `data/srd_3.5/monsters/batch_elementals.json` |
+| Mephit, Water | 3 | ✅ | `data/srd_3.5/monsters/batch_elementals.json` |
 
 ---
 
@@ -243,11 +243,11 @@ See [`LIVING_WORLD_MM_BUILD_SITE.md`](LIVING_WORLD_MM_BUILD_SITE.md) for the ful
 
 | Monster | CR | Status | Notes |
 |---------|----|--------|-------|
-| Dryad | 3 | 🔲 | stub in `core.json` |
-| Nymph | 7 | ❌ | |
-| Pixie | 4 | ❌ | |
-| Satyr | 4 | ❌ | |
-| Sprite | 1 | ❌ | |
+| Dryad | 3 | ✅ | `data/srd_3.5/monsters/batch_fey.json` |
+| Nymph | 7 | ✅ | `data/srd_3.5/monsters/batch_fey.json` |
+| Pixie | 4 | ✅ | `data/srd_3.5/monsters/batch_fey.json` |
+| Satyr | 4 | ✅ | `data/srd_3.5/monsters/batch_fey.json` |
+| Sprite | 1 | ✅ | `data/srd_3.5/monsters/batch_fey.json` |
 | Treant | 8 | ✅ | `data/srd_3.5/monsters/batch_s_z.json` |
 
 ---
@@ -256,15 +256,15 @@ See [`LIVING_WORLD_MM_BUILD_SITE.md`](LIVING_WORLD_MM_BUILD_SITE.md) for the ful
 
 | Monster | CR | Status | Notes |
 |---------|----|--------|-------|
-| Cloud Giant | 11 | 🔲 | stub in `core.json` |
-| Ettin | 6 | 🔲 | stub in `core.json` |
-| Giant, Fire | 10 | ❌ | |
-| Giant, Frost | 9 | 🔲 | stub in `core.json` |
-| Giant, Hill | 7 | 🔲 | stub in `core.json` |
-| Giant, Stone | 8 | 🔲 | stub in `core.json` |
-| Giant, Storm | 13 | ❌ | |
+| Cloud Giant | 11 | ✅ | `data/srd_3.5/monsters/batch_giants.json` |
+| Ettin | 6 | ✅ | `data/srd_3.5/monsters/batch_giants.json` |
+| Giant, Fire | 10 | ✅ | `data/srd_3.5/monsters/batch_giants.json` |
+| Giant, Frost | 9 | ✅ | `data/srd_3.5/monsters/batch_giants.json` |
+| Giant, Hill | 7 | ✅ | `data/srd_3.5/monsters/batch_giants.json` |
+| Giant, Stone | 8 | ✅ | `data/srd_3.5/monsters/batch_giants.json` |
+| Giant, Storm | 13 | ✅ | `data/srd_3.5/monsters/batch_giants.json` |
 | Ogre | 3 | ✅ | `data/srd_3.5/monsters/batch_m_r.json` |
-| Ogre Mage | 8 | ❌ | |
+| Ogre Mage | 8 | ✅ | `data/srd_3.5/monsters/batch_giants.json` |
 | Troll | 5 | ✅ | `data/srd_3.5/monsters/batch_s_z.json` |
 
 ---
@@ -273,25 +273,25 @@ See [`LIVING_WORLD_MM_BUILD_SITE.md`](LIVING_WORLD_MM_BUILD_SITE.md) for the ful
 
 | Monster | CR | Status | Notes |
 |---------|----|--------|-------|
-| Bullywug | 1 | 🔲 | stub in `core.json` |
+| Bullywug | 1 | ✅ | `data/srd_3.5/monsters/batch_humanoids_new.json` |
 | Drow (Elf, Drow) | 1 | ✅ | `data/srd_3.5/monsters/batch_d_g.json` |
-| Duergar | 1 | ❌ | |
+| Duergar | 1 | ✅ | `data/srd_3.5/monsters/batch_humanoids_new.json` |
 | Gnoll | 1 | ✅ | `data/srd_3.5/monsters/batch_d_g.json`; also stub in `core.json` |
-| Goblin | 1/3 | 🔲 | stub in `core.json` |
-| Grimlock | 1 | ❌ | |
+| Goblin | 1/3 | ✅ | `data/srd_3.5/monsters/batch_humanoids_new.json` |
+| Grimlock | 1 | ✅ | `data/srd_3.5/monsters/batch_humanoids_new.json` |
 | Hobgoblin | 1/2 | ✅ | `data/srd_3.5/monsters/batch_h_l.json`; also stub in `core.json` |
 | Kobold | 1/4 | ✅ | `data/srd_3.5/monsters/batch_h_l.json`; also stub in `core.json` |
-| Kuo-Toa | 2 | ❌ | |
+| Kuo-Toa | 2 | ✅ | `data/srd_3.5/monsters/batch_humanoids_new.json` |
 | Lizardfolk | 1 | ✅ | `data/srd_3.5/monsters/batch_h_l.json`; also stub in `core.json` |
-| Locathah | 1 | ❌ | |
-| Merfolk | 1/2 | ❌ | |
+| Locathah | 1 | ✅ | `data/srd_3.5/monsters/batch_humanoids_new.json` |
+| Merfolk | 1/2 | ✅ | `data/srd_3.5/monsters/batch_humanoids_new.json` |
 | Orc | 1/2 | ✅ | `data/srd_3.5/monsters/batch_m_r.json`; also stub in `core.json` |
 | Sahuagin | 2 | ✅ | `data/srd_3.5/monsters/batch_s_z.json` |
-| Svirfneblin (Deep Gnome) | 1 | ❌ | |
-| Troglodyte | 1 | ❌ | |
+| Svirfneblin (Deep Gnome) | 1 | ✅ | `data/srd_3.5/monsters/batch_humanoids_new.json` |
+| Troglodyte | 1 | ✅ | `data/srd_3.5/monsters/batch_humanoids_new.json` |
 | Yuan-ti Pureblood | 3 | ✅ | `data/srd_3.5/monsters/batch_s_z.json` |
-| Yuan-ti Halfblood | 5 | ❌ | |
-| Yuan-ti Abomination | 7 | ❌ | |
+| Yuan-ti Halfblood | 5 | ✅ | `data/srd_3.5/monsters/batch_humanoids_new.json` |
+| Yuan-ti Abomination | 7 | ✅ | `data/srd_3.5/monsters/batch_humanoids_new.json` |
 
 ---
 
@@ -299,38 +299,38 @@ See [`LIVING_WORLD_MM_BUILD_SITE.md`](LIVING_WORLD_MM_BUILD_SITE.md) for the ful
 
 | Monster | CR | Status | Notes |
 |---------|----|--------|-------|
-| Basilisk | 5 | 🔲 | stub in `core.json` |
-| Behir | 8 | ❌ | |
-| Blink Dog | 2 | ❌ | |
-| Bulette | 7 | 🔲 | stub in `core.json` |
+| Basilisk | 5 | ✅ | `data/srd_3.5/monsters/batch_magical_beasts.json` |
+| Behir | 8 | ✅ | `data/srd_3.5/monsters/batch_magical_beasts.json` |
+| Blink Dog | 2 | ✅ | `data/srd_3.5/monsters/batch_magical_beasts.json` |
+| Bulette | 7 | ✅ | `data/srd_3.5/monsters/batch_magical_beasts.json` |
 | Chimera | 7 | ✅ | `data/srd_3.5/monsters/batch_a_c.json`; also stub in `core.json` |
-| Cockatrice | 3 | ❌ | |
-| Digester | 6 | ❌ | |
-| Displacer Beast | 4 | ❌ | |
-| Ethereal Marauder | 3 | ❌ | |
-| Girallon | 6 | ❌ | |
-| Gorgon | 8 | ❌ | |
-| Griffon | 4 | 🔲 | stub in `core.json` |
-| Gynosphinx | 8 | ❌ | |
-| Androsphinx | 12 | 🔲 | stub in `core.json` as "Sphinx, Androsphinx" |
-| Hippogriff | 2 | 🔲 | stub in `core.json` |
+| Cockatrice | 3 | ✅ | `data/srd_3.5/monsters/batch_magical_beasts.json` |
+| Digester | 6 | ✅ | `data/srd_3.5/monsters/batch_magical_beasts.json` |
+| Displacer Beast | 4 | ✅ | `data/srd_3.5/monsters/batch_magical_beasts.json` |
+| Ethereal Marauder | 3 | ✅ | `data/srd_3.5/monsters/batch_magical_beasts.json` |
+| Girallon | 6 | ✅ | `data/srd_3.5/monsters/batch_magical_beasts.json` |
+| Gorgon | 8 | ✅ | `data/srd_3.5/monsters/batch_magical_beasts.json` |
+| Griffon | 4 | ✅ | `data/srd_3.5/monsters/batch_magical_beasts.json` |
+| Gynosphinx | 8 | ✅ | `data/srd_3.5/monsters/batch_magical_beasts.json` |
+| Androsphinx | 12 | ✅ | `data/srd_3.5/monsters/batch_magical_beasts.json` |
+| Hippogriff | 2 | ✅ | `data/srd_3.5/monsters/batch_magical_beasts.json` |
 | Hydra (5-headed) | 4 | ✅ | `data/srd_3.5/monsters/batch_h_l.json`; also stub in `core.json` |
 | Kraken | 20 | ✅ | `data/srd_3.5/monsters/batch_h_l.json` |
-| Lamia | 6 | 🔲 | stub in `core.json` |
-| Manticore | 5 | 🔲 | stub in `core.json` |
-| Owlbear | 4 | 🔲 | stub in `core.json` |
-| Pegasus | 3 | ❌ | |
-| Phase Spider | 5 | ❌ | |
+| Lamia | 6 | ✅ | `data/srd_3.5/monsters/batch_magical_beasts.json` |
+| Manticore | 5 | ✅ | `data/srd_3.5/monsters/batch_magical_beasts.json` |
+| Owlbear | 4 | ✅ | `data/srd_3.5/monsters/batch_magical_beasts.json` |
+| Pegasus | 3 | ✅ | `data/srd_3.5/monsters/batch_magical_beasts.json` |
+| Phase Spider | 5 | ✅ | `data/srd_3.5/monsters/batch_magical_beasts.json` |
 | Purple Worm | 12 | ✅ | `data/srd_3.5/monsters/batch_m_r.json` |
-| Remorhaz | 7 | 🔲 | stub in `core.json` |
-| Sea Cat | 4 | ❌ | |
-| Shocker Lizard | 2 | ❌ | |
-| Stirge | 1/2 | ❌ | |
+| Remorhaz | 7 | ✅ | `data/srd_3.5/monsters/batch_magical_beasts.json` |
+| Sea Cat | 4 | ✅ | `data/srd_3.5/monsters/batch_magical_beasts.json` |
+| Shocker Lizard | 2 | ✅ | `data/srd_3.5/monsters/batch_magical_beasts.json` |
+| Stirge | 1/2 | ✅ | `data/srd_3.5/monsters/batch_magical_beasts.json` |
 | Tarrasque | 20 | ✅ | `data/srd_3.5/monsters/batch_s_z.json` |
-| Unicorn | 3 | ❌ | |
-| Winter Wolf | 5 | 🔲 | stub in `core.json` |
-| Worg | 2 | ❌ | |
-| Wyvern | 6 | 🔲 | stub in `core.json` |
+| Unicorn | 3 | ✅ | `data/srd_3.5/monsters/batch_magical_beasts.json` |
+| Winter Wolf | 5 | ✅ | `data/srd_3.5/monsters/batch_magical_beasts.json` |
+| Worg | 2 | ✅ | `data/srd_3.5/monsters/batch_magical_beasts.json` |
+| Wyvern | 6 | ✅ | `data/srd_3.5/monsters/batch_magical_beasts.json` |
 
 ---
 
@@ -338,20 +338,20 @@ See [`LIVING_WORLD_MM_BUILD_SITE.md`](LIVING_WORLD_MM_BUILD_SITE.md) for the ful
 
 | Monster | CR | Status | Notes |
 |---------|----|--------|-------|
-| Annis (Hag) | 6 | ❌ | |
+| Annis (Hag) | 6 | ✅ | `data/srd_3.5/monsters/batch_monstrous_humanoids.json` |
 | Bugbear | 2 | ✅ | `data/srd_3.5/monsters/batch_a_c.json` |
 | Centaur | 3 | ✅ | `data/srd_3.5/monsters/batch_a_c.json`; also stub in `core.json` |
-| Gargoyle | 4 | ❌ | |
-| Green Hag | 5 | 🔲 | stub in `core.json` |
+| Gargoyle | 4 | ✅ | `data/srd_3.5/monsters/batch_monstrous_humanoids.json` |
+| Green Hag | 5 | ✅ | `data/srd_3.5/monsters/batch_monstrous_humanoids.json` |
 | Harpy | 4 | ✅ | `data/srd_3.5/monsters/batch_h_l.json`; also stub in `core.json` |
-| Medusa | 7 | ❌ | |
+| Medusa | 7 | ✅ | `data/srd_3.5/monsters/batch_monstrous_humanoids.json` |
 | Minotaur | 4 | ✅ | `data/srd_3.5/monsters/batch_m_r.json` |
-| Naga, Dark | 8 | ❌ | |
-| Naga, Guardian | 10 | ❌ | |
-| Naga, Spirit | 9 | ❌ | |
-| Naga, Water | 7 | ❌ | |
-| Sea Hag | 4 | 🔲 | stub in `core.json` |
-| Troglodyte | 1 | ❌ | |
+| Naga, Dark | 8 | ✅ | `data/srd_3.5/monsters/batch_monstrous_humanoids.json` |
+| Naga, Guardian | 10 | ✅ | `data/srd_3.5/monsters/batch_monstrous_humanoids.json` |
+| Naga, Spirit | 9 | ✅ | `data/srd_3.5/monsters/batch_monstrous_humanoids.json` |
+| Naga, Water | 7 | ✅ | `data/srd_3.5/monsters/batch_monstrous_humanoids.json` |
+| Sea Hag | 4 | ✅ | `data/srd_3.5/monsters/batch_monstrous_humanoids.json` |
+| Troglodyte | 1 | ✅ | `data/srd_3.5/monsters/batch_monstrous_humanoids.json` |
 
 ---
 
@@ -359,10 +359,10 @@ See [`LIVING_WORLD_MM_BUILD_SITE.md`](LIVING_WORLD_MM_BUILD_SITE.md) for the ful
 
 | Monster | CR | Status | Notes |
 |---------|----|--------|-------|
-| Black Pudding | 7 | ❌ | |
-| Gelatinous Cube | 3 | ❌ | |
-| Gray Ooze | 4 | ❌ | |
-| Ochre Jelly | 5 | ❌ | |
+| Black Pudding | 7 | ✅ | `data/srd_3.5/monsters/batch_oozes.json` |
+| Gelatinous Cube | 3 | ✅ | `data/srd_3.5/monsters/batch_oozes.json` |
+| Gray Ooze | 4 | ✅ | `data/srd_3.5/monsters/batch_oozes.json` |
+| Ochre Jelly | 5 | ✅ | `data/srd_3.5/monsters/batch_oozes.json` |
 
 ---
 
@@ -370,16 +370,16 @@ See [`LIVING_WORLD_MM_BUILD_SITE.md`](LIVING_WORLD_MM_BUILD_SITE.md) for the ful
 
 | Monster | CR | Status | Notes |
 |---------|----|--------|-------|
-| Babau | 6 | ❌ | |
-| Balor | 20 | ❌ | |
-| Dretch | 2 | ❌ | |
-| Glabrezu | 13 | ❌ | |
-| Hezrou | 11 | ❌ | |
-| Marilith | 17 | ❌ | |
-| Nalfeshnee | 14 | ❌ | |
-| Quasit | 2 | ❌ | |
-| Succubus | 7 | ❌ | |
-| Vrock | 9 | ❌ | |
+| Babau | 6 | ✅ | `data/srd_3.5/monsters/batch_outsiders_demons.json` |
+| Balor | 20 | ✅ | `data/srd_3.5/monsters/batch_outsiders_demons.json` |
+| Dretch | 2 | ✅ | `data/srd_3.5/monsters/batch_outsiders_demons.json` |
+| Glabrezu | 13 | ✅ | `data/srd_3.5/monsters/batch_outsiders_demons.json` |
+| Hezrou | 11 | ✅ | `data/srd_3.5/monsters/batch_outsiders_demons.json` |
+| Marilith | 17 | ✅ | `data/srd_3.5/monsters/batch_outsiders_demons.json` |
+| Nalfeshnee | 14 | ✅ | `data/srd_3.5/monsters/batch_outsiders_demons.json` |
+| Quasit | 2 | ✅ | `data/srd_3.5/monsters/batch_outsiders_demons.json` |
+| Succubus | 7 | ✅ | `data/srd_3.5/monsters/batch_outsiders_demons.json` |
+| Vrock | 9 | ✅ | `data/srd_3.5/monsters/batch_outsiders_demons.json` |
 
 ---
 
@@ -387,15 +387,15 @@ See [`LIVING_WORLD_MM_BUILD_SITE.md`](LIVING_WORLD_MM_BUILD_SITE.md) for the ful
 
 | Monster | CR | Status | Notes |
 |---------|----|--------|-------|
-| Devil, Barbed (Hamatula) | 11 | ❌ | |
-| Devil, Bearded (Barbazu) | 5 | ❌ | |
-| Devil, Bone (Osyluth) | 9 | ❌ | |
-| Devil, Chain (Kyton) | 6 | ❌ | |
-| Devil, Erinyes | 8 | ❌ | |
-| Devil, Horned (Cornugon) | 16 | ❌ | |
-| Devil, Ice (Gelugon) | 13 | ❌ | |
-| Devil, Lemure | 1 | ❌ | |
-| Devil, Pit Fiend | 20 | ❌ | |
+| Devil, Barbed (Hamatula) | 11 | ✅ | `data/srd_3.5/monsters/batch_outsiders_devils.json` |
+| Devil, Bearded (Barbazu) | 5 | ✅ | `data/srd_3.5/monsters/batch_outsiders_devils.json` |
+| Devil, Bone (Osyluth) | 9 | ✅ | `data/srd_3.5/monsters/batch_outsiders_devils.json` |
+| Devil, Chain (Kyton) | 6 | ✅ | `data/srd_3.5/monsters/batch_outsiders_devils.json` |
+| Devil, Erinyes | 8 | ✅ | `data/srd_3.5/monsters/batch_outsiders_devils.json` |
+| Devil, Horned (Cornugon) | 16 | ✅ | `data/srd_3.5/monsters/batch_outsiders_devils.json` |
+| Devil, Ice (Gelugon) | 13 | ✅ | `data/srd_3.5/monsters/batch_outsiders_devils.json` |
+| Devil, Lemure | 1 | ✅ | `data/srd_3.5/monsters/batch_outsiders_devils.json` |
+| Devil, Pit Fiend | 20 | ✅ | `data/srd_3.5/monsters/batch_outsiders_devils.json` |
 
 ---
 
@@ -452,12 +452,12 @@ See [`LIVING_WORLD_MM_BUILD_SITE.md`](LIVING_WORLD_MM_BUILD_SITE.md) for the ful
 
 | Monster | CR | Status | Notes |
 |---------|----|--------|-------|
-| Assassin Vine | 3 | ❌ | |
-| Phantom Fungus | 2 | ❌ | |
-| Shrieker | 1 | ❌ | |
-| Tendriculos | 6 | ❌ | |
-| Violet Fungus | 3 | ❌ | |
-| Yellow Musk Creeper | 6 | ❌ | |
+| Assassin Vine | 3 | ✅ | `data/srd_3.5/monsters/batch_plants.json` |
+| Phantom Fungus | 2 | ✅ | `data/srd_3.5/monsters/batch_plants.json` |
+| Shrieker | 1 | ✅ | `data/srd_3.5/monsters/batch_plants.json` |
+| Tendriculos | 6 | ✅ | `data/srd_3.5/monsters/batch_plants.json` |
+| Violet Fungus | 3 | ✅ | `data/srd_3.5/monsters/batch_plants.json` |
+| Yellow Musk Creeper | 6 | ✅ | `data/srd_3.5/monsters/batch_plants.json` |
 
 ---
 
@@ -547,10 +547,10 @@ See [`LIVING_WORLD_MM_BUILD_SITE.md`](LIVING_WORLD_MM_BUILD_SITE.md) for the ful
 
 | Status | Count |
 |--------|-------|
-| ✅ Full stat block | ~89 |
+| ✅ Full stat block | ~253 |
 | 🔲 Stub only (name + CR) | ~5 |
-| ❌ Not started | ~200 |
-| **Total SRD entries** | **~296** |
+| ❌ Not started | ~73 |
+| **Total SRD entries** | **~331** |
 
 > Count excludes multi-size vermin/elemental variants counted individually and dragon age categories.
 > Infrastructure (LW-001–LW-046) is 100% complete — all remaining work is data population.
@@ -579,6 +579,84 @@ Implement as modifier overlays: Celestial, Fiendish, Half-Dragon, Half-Fiend, Ha
 ---
 
 ## Completion Notes
+
+### 2026-04-30 — Aberrations, Animals, Constructs, Elementals, Fey, Giants, Humanoids (new), Magical Beasts, Monstrous Humanoids, Oozes, Outsiders (Demons), Outsiders (Devils), Plants batches
+
+**Aberrations batch — `data/srd_3.5/monsters/batch_aberrations.json`** (15 entries)
+- Carrion Crawler (CR 4), Chuul (CR 7), Cloaker (CR 5), Delver (CR 9), Destrachan (CR 8),
+  Digester/Aberration (CR 6), Ethereal Filcher (CR 3), Gibbering Mouther (CR 5), Grick (CR 3),
+  Mimic (CR 4), Otyugh (CR 4), Roper (CR 12), Skum (CR 2), Umber Hulk (CR 7), Will-o'-Wisp (CR 6).
+- Promotes Will-o'-Wisp stub from `core.json` to full stat block.
+
+**Animals (A–M) batch — `data/srd_3.5/monsters/batch_animals_a_m.json`** (37 entries)
+- Ape, Ape Dire, Badger, Badger Dire, Bat Swarm, Bear (Black/Brown/Dire/Polar), Bison, Boar, Boar Dire,
+  Camel, Cat, Cheetah, Crocodile, Crocodile Dire, Dog, Dog Riding, Donkey, Eagle, Eagle Giant,
+  Elephant, Frog Giant, Hawk, Horse (Heavy/Light/Warhorse Heavy/Warhorse Light), Hyena,
+  Leopard, Lion, Lion Dire, Mammoth, Manta Ray, Monkey, Mule.
+- Promotes stubs (Bear Black, Bear Polar, Crocodile, Eagle Giant, Frog Giant, Lion, Lion Dire, Mammoth) to full stat blocks.
+
+**Animals (N–Z) batch — `data/srd_3.5/monsters/batch_animals_n_z.json`** (35 entries)
+- Octopus, Octopus Giant, Owl, Owl Giant, Pony, Porpoise, Rat, Rat Dire, Raven, Rhinoceros, Roc,
+  Shark (Large/Huge/Dire), Snake Constrictor, Snake Constrictor Giant,
+  Snake Viper (Tiny/Small/Medium/Large/Huge/Giant), Snow Leopard, Squid, Squid Giant,
+  Tiger, Tiger Dire, Toad, Weasel, Weasel Dire, Whale (Baleen/Cachalot/Orca), Wolf, Wolf Dire,
+  Wolverine, Wolverine Dire, Yeti.
+- Promotes stubs (Rat Dire, Roc, Snake Viper Giant, Snow Leopard, Wolf, Wolf Dire, Yeti) to full stat blocks.
+
+**Constructs batch — `data/srd_3.5/monsters/batch_constructs.json`** (13 entries)
+- Animated Object (Tiny/Small/Medium/Large/Huge/Gargantuan/Colossal),
+  Golem (Clay CR 10 / Flesh CR 7 / Iron CR 13 / Stone CR 11), Homunculus (CR 1), Shield Guardian (CR 8).
+
+**Elementals batch — `data/srd_3.5/monsters/batch_elementals.json`** (34 entries)
+- Air/Earth/Fire/Water Elementals (Small/Medium/Large/Huge/Greater/Elder) — 24 entries.
+- Mephit (Air/Dust/Earth/Fire/Ice/Magma/Ooze/Salt/Steam/Water) — 10 entries.
+- Promotes stubs (Mephit Dust, Fire, Ice) to full stat blocks.
+
+**Fey batch — `data/srd_3.5/monsters/batch_fey.json`** (5 entries)
+- Dryad (CR 3), Nymph (CR 7), Pixie (CR 4), Satyr (CR 4), Sprite (CR 1).
+- Promotes Dryad stub from `core.json` to full stat block.
+
+**Giants batch — `data/srd_3.5/monsters/batch_giants.json`** (8 entries)
+- Cloud Giant (CR 11), Ettin (CR 6), Fire Giant (CR 10), Frost Giant (CR 9), Hill Giant (CR 7),
+  Ogre Mage (CR 8), Stone Giant (CR 8), Storm Giant (CR 13).
+- Promotes stubs (Cloud Giant, Ettin, Frost Giant, Hill Giant, Stone Giant) to full stat blocks.
+
+**Humanoids (new) batch — `data/srd_3.5/monsters/batch_humanoids_new.json`** (11 entries)
+- Bullywug (CR 1), Duergar (CR 1), Goblin (CR 1/3), Grimlock (CR 1), Kuo-Toa (CR 2),
+  Locathah (CR 1), Merfolk (CR 1/2), Svirfneblin (CR 1), Troglodyte (CR 1),
+  Yuan-ti Halfblood (CR 5), Yuan-ti Abomination (CR 7).
+- Promotes stubs (Bullywug, Goblin) to full stat blocks.
+
+**Magical Beasts batch — `data/srd_3.5/monsters/batch_magical_beasts.json`** (27 entries)
+- Basilisk, Behir, Blink Dog, Bulette, Cockatrice, Digester/Magical Beast, Displacer Beast,
+  Ethereal Marauder, Girallon, Gorgon, Griffon, Gynosphinx, Androsphinx, Hippogriff, Lamia,
+  Manticore, Owlbear, Pegasus, Phase Spider, Remorhaz, Sea Cat, Shocker Lizard, Stirge,
+  Unicorn, Winter Wolf, Worg, Wyvern.
+- Promotes stubs (Basilisk, Bulette, Griffon, Androsphinx, Hippogriff, Lamia, Manticore, Owlbear,
+  Remorhaz, Winter Wolf, Wyvern) to full stat blocks.
+
+**Monstrous Humanoids batch — `data/srd_3.5/monsters/batch_monstrous_humanoids.json`** (10 entries)
+- Annis Hag (CR 6), Gargoyle (CR 4), Green Hag (CR 5), Medusa (CR 7),
+  Naga (Dark CR 8 / Guardian CR 10 / Spirit CR 9 / Water CR 7), Sea Hag (CR 4), Troglodyte (CR 1).
+- Promotes stubs (Green Hag, Sea Hag) to full stat blocks.
+
+**Oozes batch — `data/srd_3.5/monsters/batch_oozes.json`** (4 entries)
+- Black Pudding (CR 7), Gelatinous Cube (CR 3), Gray Ooze (CR 4), Ochre Jelly (CR 5).
+
+**Outsiders (Demons) batch — `data/srd_3.5/monsters/batch_outsiders_demons.json`** (10 entries)
+- Babau (CR 6), Balor (CR 20), Dretch (CR 2), Glabrezu (CR 13), Hezrou (CR 11),
+  Marilith (CR 17), Nalfeshnee (CR 14), Quasit (CR 2), Succubus (CR 7), Vrock (CR 9).
+
+**Outsiders (Devils) batch — `data/srd_3.5/monsters/batch_outsiders_devils.json`** (9 entries)
+- Devil Barbed/Hamatula (CR 11), Devil Bearded/Barbazu (CR 5), Devil Bone/Osyluth (CR 9),
+  Devil Chain/Kyton (CR 6), Devil Erinyes (CR 8), Devil Horned/Cornugon (CR 16),
+  Devil Ice/Gelugon (CR 13), Devil Lemure (CR 1), Devil Pit Fiend (CR 20).
+
+**Plants batch — `data/srd_3.5/monsters/batch_plants.json`** (6 entries)
+- Assassin Vine (CR 3), Phantom Fungus (CR 2), Shrieker (CR 1), Tendriculos (CR 6),
+  Violet Fungus (CR 3), Yellow Musk Creeper (CR 6).
+
+---
 
 ### 2026-04-30 — Undead batch + Vermin batch
 
