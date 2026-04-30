@@ -1,0 +1,626 @@
+[
+  {
+    "name": "Doppelganger",
+    "cr": 3,
+    "size": "Medium",
+    "type": "Monstrous Humanoid",
+    "subtype": "Shapechanger",
+    "hit_dice": "4d8+4",
+    "hp_avg": 22,
+    "initiative": 1,
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 10,
+      "touch": 10,
+      "flat_footed": 9,
+      "components": "+1 Dex"
+    },
+    "base_attack": 4,
+    "grapple": 4,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+4",
+        "damage": "1d6",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Slam",
+        "attack_bonus": "+4",
+        "damage": "1d6",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Detect Thoughts (DC 13 Will; constant while concentrating)",
+      "Spell-Like Abilities (alter self at will; detect thoughts 3/day)"
+    ],
+    "special_qualities": [
+      "Change Shape (any Small or Medium humanoid)",
+      "Darkvision 60 ft.",
+      "Immunity to Sleep",
+      "Immunity to Charm effects"
+    ],
+    "saves": {
+      "fort": 4,
+      "ref": 5,
+      "will": 6
+    },
+    "abilities": {
+      "str": 10,
+      "dex": 13,
+      "con": 12,
+      "int": 13,
+      "wis": 14,
+      "cha": 13
+    },
+    "skills": {
+      "Bluff": 9,
+      "Diplomacy": 3,
+      "Disguise": 9,
+      "Intimidate": 3,
+      "Listen": 5,
+      "Sense Motive": 5,
+      "Spot": 5
+    },
+    "feats": [
+      "Dodge",
+      "Great Fortitude"
+    ],
+    "alignment": "Usually Neutral",
+    "advancement": "By character class",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 30,
+    "allowed_biomes": [
+      "Any_Urban",
+      "Any_Ruin",
+      "Underground"
+    ],
+    "primary_biome": "Any_Urban",
+    "ecology_notes": "Doppelgangers are master shapeshifters and infiltrators, able to assume the form and surface thoughts of any humanoid. They live among humanoid societies, replacing individuals for personal gain."
+  },
+  {
+    "name": "Merrow",
+    "cr": 3,
+    "size": "Large",
+    "type": "Giant",
+    "subtype": "Aquatic",
+    "hit_dice": "4d8+11",
+    "hp_avg": 29,
+    "initiative": -1,
+    "speed": {
+      "land": 30,
+      "swim": 40
+    },
+    "armor_class": {
+      "total": 13,
+      "touch": 8,
+      "flat_footed": 13,
+      "components": "-1 size, -1 Dex, +5 natural"
+    },
+    "base_attack": 3,
+    "grapple": 11,
+    "attacks": [
+      {
+        "name": "Huge Greatclub",
+        "attack_bonus": "+6",
+        "damage": "1d10+7",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+6",
+        "damage": "1d6+5",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+6",
+        "damage": "1d6+5",
+        "damage_type": "Slashing"
+      }
+    ],
+    "special_attacks": [],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Low-Light Vision",
+      "Amphibious"
+    ],
+    "saves": {
+      "fort": 5,
+      "ref": 0,
+      "will": 1
+    },
+    "abilities": {
+      "str": 21,
+      "dex": 8,
+      "con": 13,
+      "int": 6,
+      "wis": 10,
+      "cha": 7
+    },
+    "skills": {
+      "Listen": 2,
+      "Spot": 3,
+      "Swim": 13
+    },
+    "feats": [
+      "Toughness",
+      "Toughness"
+    ],
+    "alignment": "Usually Chaotic Evil",
+    "advancement": "5-8 HD (Large)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 25,
+    "allowed_biomes": [
+      "Aquatic_Freshwater",
+      "Aquatic_Saltwater",
+      "Temperate_Hill"
+    ],
+    "primary_biome": "Aquatic_Freshwater",
+    "ecology_notes": "Merrows are the aquatic cousins of ogres, inhabiting rivers, lakes, and coastal seas. They raid fishing villages and boats, dragging victims beneath the water."
+  },
+  {
+    "name": "Nixie",
+    "cr": 1,
+    "size": "Small",
+    "type": "Fey",
+    "subtype": "Aquatic",
+    "hit_dice": "1d6",
+    "hp_avg": 3,
+    "initiative": 3,
+    "speed": {
+      "land": 20,
+      "swim": 30
+    },
+    "armor_class": {
+      "total": 14,
+      "touch": 14,
+      "flat_footed": 11,
+      "components": "+1 size, +3 Dex"
+    },
+    "base_attack": 0,
+    "grapple": -5,
+    "attacks": [
+      {
+        "name": "Short Sword",
+        "attack_bonus": "+1",
+        "damage": "1d4-1",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Charm Person (3/day; DC 11 Will)",
+      "Water Breathing (charm effect that also causes target to breathe water; free action)",
+      "Entangle (1/day; as spell)"
+    ],
+    "special_qualities": [
+      "Amphibious",
+      "Darkvision 60 ft.",
+      "Low-Light Vision",
+      "Wild Empathy (+6 with aquatic animals)",
+      "Water Breathing (at will via charm)"
+    ],
+    "saves": {
+      "fort": 0,
+      "ref": 5,
+      "will": 4
+    },
+    "abilities": {
+      "str": 7,
+      "dex": 16,
+      "con": 11,
+      "int": 12,
+      "wis": 13,
+      "cha": 18
+    },
+    "skills": {
+      "Escape Artist": 7,
+      "Handle Animal": 7,
+      "Hide": 11,
+      "Listen": 5,
+      "Search": 3,
+      "Sense Motive": 5,
+      "Spot": 5,
+      "Swim": 11
+    },
+    "feats": [
+      "Dodge"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": null,
+    "dr": null,
+    "sr": 16,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 50,
+    "allowed_biomes": [
+      "Aquatic_Freshwater",
+      "Temperate_Forest"
+    ],
+    "primary_biome": "Aquatic_Freshwater",
+    "ecology_notes": "Nixies are aquatic fey who dwell in lakes and woodland pools. Though mischievous, they are not evil, charming humanoids to work for them for a year as protection rather than from malice."
+  },
+  {
+    "name": "Retriever",
+    "cr": 11,
+    "size": "Huge",
+    "type": "Construct",
+    "subtype": null,
+    "hit_dice": "10d10+80",
+    "hp_avg": 135,
+    "initiative": 3,
+    "speed": {
+      "land": 50
+    },
+    "armor_class": {
+      "total": 21,
+      "touch": 11,
+      "flat_footed": 18,
+      "components": "-2 size, +3 Dex, +10 natural"
+    },
+    "base_attack": 7,
+    "grapple": 23,
+    "attacks": [
+      {
+        "name": "Claw",
+        "attack_bonus": "+13",
+        "damage": "2d6+8",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+13",
+        "damage": "2d6+8",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+13",
+        "damage": "2d6+8",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+13",
+        "damage": "2d6+8",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+8",
+        "damage": "1d8+4",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Eye Rays (4 rays; ranged touch +8; 100 ft.; Fire 3d6, Cold 3d6, Electricity 3d6, Petrification [Fort DC 16 or petrified permanently])"
+    ],
+    "special_qualities": [
+      "Construct Traits",
+      "Darkvision 60 ft.",
+      "Find Target (automatic direction sensing of designated prey)",
+      "Low-Light Vision"
+    ],
+    "saves": {
+      "fort": 3,
+      "ref": 6,
+      "will": 3
+    },
+    "abilities": {
+      "str": 26,
+      "dex": 17,
+      "con": null,
+      "int": null,
+      "wis": 11,
+      "cha": 1
+    },
+    "skills": {
+      "Listen": 5,
+      "Search": 5,
+      "Spot": 10
+    },
+    "feats": [],
+    "alignment": "Always Neutral Evil",
+    "advancement": "11-20 HD (Huge); 21-30 HD (Gargantuan)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 5,
+    "allowed_biomes": [
+      "Underground",
+      "Any_Ruin"
+    ],
+    "primary_biome": "Underground",
+    "ecology_notes": "Retrievers are enormous spider-like constructs created by demon lords to hunt and retrieve specific targets. They relentlessly pursue their quarry across planes, using devastating eye rays."
+  },
+  {
+    "name": "Shambling Mound",
+    "cr": 6,
+    "size": "Large",
+    "type": "Plant",
+    "subtype": null,
+    "hit_dice": "8d8+27",
+    "hp_avg": 63,
+    "initiative": -1,
+    "speed": {
+      "land": 20,
+      "swim": 20
+    },
+    "armor_class": {
+      "total": 20,
+      "touch": 9,
+      "flat_footed": 20,
+      "components": "-1 size, -1 Dex, +12 natural"
+    },
+    "base_attack": 6,
+    "grapple": 14,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+9",
+        "damage": "2d6+5",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Slam",
+        "attack_bonus": "+9",
+        "damage": "2d6+5",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Constrict (2d6+5)",
+      "Improved Grab"
+    ],
+    "special_qualities": [
+      "Blindsight 30 ft.",
+      "Darkvision 60 ft.",
+      "Immunity to Electricity",
+      "Low-Light Vision",
+      "Plant Traits",
+      "Resistance to Fire 10"
+    ],
+    "saves": {
+      "fort": 9,
+      "ref": 1,
+      "will": 4
+    },
+    "abilities": {
+      "str": 21,
+      "dex": 8,
+      "con": 15,
+      "int": 7,
+      "wis": 10,
+      "cha": 9
+    },
+    "skills": {
+      "Hide": 3,
+      "Listen": 8,
+      "Move Silently": 4
+    },
+    "feats": [
+      "Iron Will",
+      "Power Attack",
+      "Toughness"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "9-16 HD (Large); 17-24 HD (Huge)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 20,
+    "allowed_biomes": [
+      "Temperate_Forest",
+      "Warm_Forest",
+      "Aquatic_Freshwater",
+      "Aquatic_Saltwater"
+    ],
+    "primary_biome": "Temperate_Forest",
+    "ecology_notes": "Shambling mounds are semi-intelligent plants that are actually nourished and strengthened by lightning. They lurk in swamps and forests, constricting prey to death and absorbing its nutrients."
+  },
+  {
+    "name": "Triton",
+    "cr": 2,
+    "size": "Medium",
+    "type": "Humanoid",
+    "subtype": "Aquatic",
+    "hit_dice": "3d8+3",
+    "hp_avg": 16,
+    "initiative": 0,
+    "speed": {
+      "land": 5,
+      "swim": 40
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 10,
+      "flat_footed": 16,
+      "components": "+6 natural"
+    },
+    "base_attack": 2,
+    "grapple": 2,
+    "attacks": [
+      {
+        "name": "Trident",
+        "attack_bonus": "+3",
+        "damage": "1d8+1",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Heavy Crossbow",
+        "attack_bonus": "+2",
+        "damage": "1d10",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Spell-Like Abilities (CL 7; summon fish 1/day, summon large fish 1/day, control currents 1/day [as control winds], fog cloud 1/day)"
+    ],
+    "special_qualities": [
+      "Amphibious",
+      "Darkvision 60 ft.",
+      "Low-Light Vision"
+    ],
+    "saves": {
+      "fort": 4,
+      "ref": 3,
+      "will": 4
+    },
+    "abilities": {
+      "str": 12,
+      "dex": 10,
+      "con": 12,
+      "int": 13,
+      "wis": 13,
+      "cha": 11
+    },
+    "skills": {
+      "Listen": 5,
+      "Ride (seahorse)": 5,
+      "Search": 3,
+      "Spot": 5,
+      "Swim": 9
+    },
+    "feats": [
+      "Alertness",
+      "Dodge"
+    ],
+    "alignment": "Usually Neutral Good",
+    "advancement": "By character class",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 100,
+    "allowed_biomes": [
+      "Aquatic_Saltwater"
+    ],
+    "primary_biome": "Aquatic_Saltwater",
+    "ecology_notes": "Tritons are aquatic humanoids who inhabit deep seas and coastlines. They are guardians of the ocean depths, often allied with sea creatures and opposed to evil aquatic beings like sahuagin."
+  },
+  {
+    "name": "Vampire Spawn",
+    "cr": 4,
+    "size": "Medium",
+    "type": "Undead",
+    "subtype": null,
+    "hit_dice": "4d12+3",
+    "hp_avg": 29,
+    "initiative": 6,
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 15,
+      "touch": 12,
+      "flat_footed": 13,
+      "components": "+2 Dex, +3 natural"
+    },
+    "base_attack": 2,
+    "grapple": 5,
+    "attacks": [
+      {
+        "name": "Slam",
+        "attack_bonus": "+5",
+        "damage": "1d6+3 plus energy drain",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Blood Drain (attached; 1d4 Con per round; Con loss becomes temporary negative level for vampire)",
+      "Energy Drain (1 negative level on successful hit; Fort DC 13 to remove after 24 hrs)",
+      "Dominate (gaze; DC 12 Will; 30 ft.)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Fast Healing 2",
+      "Gaseous Form (at will; as gaseous form spell)",
+      "Resistance to Cold 10",
+      "Resistance to Electricity 10",
+      "Spider Climb (at will; as spell)",
+      "Undead Traits",
+      "Vulnerabilities (fire, holy water, silver, sunlight, running water)"
+    ],
+    "saves": {
+      "fort": 1,
+      "ref": 5,
+      "will": 4
+    },
+    "abilities": {
+      "str": 16,
+      "dex": 14,
+      "con": null,
+      "int": 13,
+      "wis": 13,
+      "cha": 14
+    },
+    "skills": {
+      "Bluff": 6,
+      "Climb": 8,
+      "Craft": 2,
+      "Diplomacy": 4,
+      "Handle Animal": 4,
+      "Hide": 8,
+      "Jump": 8,
+      "Listen": 10,
+      "Move Silently": 8,
+      "Search": 8,
+      "Sense Motive": 10,
+      "Spot": 10
+    },
+    "feats": [
+      "Alertness",
+      "Combat Reflexes",
+      "Improved Initiative",
+      "Lightning Reflexes"
+    ],
+    "alignment": "Always Chaotic Evil",
+    "advancement": null,
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": 2,
+    "elemental_weaknesses": [
+      "Fire"
+    ],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 20,
+    "allowed_biomes": [
+      "Any_Urban",
+      "Any_Ruin",
+      "Temperate_Forest"
+    ],
+    "primary_biome": "Any_Urban",
+    "ecology_notes": "Vampire spawn are created when a vampire drains a victim to death and buries the body. They serve as lesser thralls to their vampire masters, possessing many vampiric abilities but with less power and autonomy."
+  }
+]
