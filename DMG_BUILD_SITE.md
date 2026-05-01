@@ -25,14 +25,12 @@ that has not yet been implemented in `src/rules_engine/` or `src/ai_sim/`.
 
 ---
 
-## 1a. Tier 0–3 Audit (2026-04-25)
+## 1a. Tier 0–5 Audit (2026-05-01 — all tiers complete)
 
-Every Tier 0, 1, 2, and 3 task has been cross-referenced against the
-shipped modules under `src/rules_engine/`. All 34 tasks are implemented.
+Every Tier 0, 1, 2, 3, 4, and 5 task has been cross-referenced against the
+shipped modules under `src/rules_engine/`. All 58 tasks are implemented.
 
-Legend: `[x]` = shipped and complete; `[~]` = shipped but the in-code
-registry/table has fewer entries than the spec's target count (treated
-as a residual content-completion item, not a missing feature).
+Legend: `[x]` = shipped and complete.
 
 | Task | Location | Status |
 |------|----------|--------|
@@ -41,27 +39,14 @@ as a residual content-completion item, not a missing feature).
 | T-004, T-016, T-017, T-040, T-041, T-047 | `src/rules_engine/traps.py` | `[x]` |
 | T-005, T-018, T-019, T-020, T-021, T-027, T-028, T-029, T-030, T-031 | `src/rules_engine/consumables.py` | `[x]` |
 | T-006, T-007, T-025, T-026, T-032, T-033, T-042, T-043, T-011, T-044 | `src/rules_engine/item_specials.py` | `[x]` |
-| T-008, T-009, T-022, T-023 | `src/rules_engine/treasure.py` (schemas + randomisers) | `[x]` |
-| T-010 | `src/rules_engine/encounter.py::CR_TO_XP` | `[~]` (dict shipped; no `ChallengeRating` dataclass) |
-| T-024, T-039 | `src/rules_engine/encounter.py` | `[x]` |
-| T-034 | `src/rules_engine/treasure.py::GEM_TABLE` | `[~]` (53/60 entries) |
-| T-035 | `src/rules_engine/treasure.py::ART_OBJECT_TABLE` | `[~]` (51/100 entries) |
+| T-008, T-009, T-022, T-023, T-034, T-035, T-048, T-054 | `src/rules_engine/treasure.py` | `[x]` |
+| T-010, T-024, T-039, T-052, T-055, T-056 | `src/rules_engine/encounter.py` | `[x]` |
 | T-045 | `src/rules_engine/encounter_extended.py::ENCOUNTER_TABLES` | `[x]` |
+| T-049, T-050, T-051, T-058 | `src/rules_engine/consumables.py` / `src/rules_engine/magic_items.py` | `[x]` |
+| T-053 | `src/rules_engine/environment.py::apply_environment` | `[x]` |
+| T-057 | `src/rules_engine/traps.py::generate_dungeon_level` | `[x]` |
 
-### Residual Tier 0–3 backlog
-
-No task is **functionally** missing.  The three items still flagged for
-content-completion polish are:
-
-1. **T-010** — add a proper `ChallengeRating` dataclass wrapping
-   `CR_TO_XP` (the lookup is already in place; this is purely a type
-   hygiene improvement).
-2. **T-034** — expand `GEM_TABLE` from 53 → 60 entries to match the
-   full DMG Table 7-5.
-3. **T-035** — expand `ART_OBJECT_TABLE` from 51 → 100 entries to match
-   the full DMG Table 7-6.
-
-All Tier 0–3 milestones that block Tier 4/5 work have been shipped.
+All tasks (Tier 0–5) are complete. No residual backlog items remain.
 
 ---
 
@@ -80,7 +65,7 @@ All Tier 0–3 milestones that block Tier 4/5 work have been shipped.
 | [x] T-007 | Weapon Special Ability Schema | magic-items | Dataclass `WeaponSpecialAbility` (slots=True): `name`, `bonus_equivalent: int`, `aura`, `cl`, `prerequisites`, `market_price_gp: int \| None`; enum `WeaponAbilityType` | — | S |
 | [x] T-008 | Gem Grade & Base Value Schema | treasure | Dataclass `GemEntry` (slots=True): `name`, `grade` (enum: Ornamental/Semiprecious/Fancy/Precious/Gemstone/Jewel), `base_value_gp`, `value_range_gp: tuple[int,int]` | — | S |
 | [x] T-009 | Art Object Category Schema | treasure | Dataclass `ArtObjectEntry` (slots=True): `name`, `category` (enum: Mundane/Decorated/Masterwork/Exotic), `value_gp`; d%-keyed lookup table (1–100) | — | S |
-| [~] T-010 | CR / EL Numeric Base Types | encounters | Dataclass `ChallengeRating` (slots=True): `value: float`; constant lookup `CR_TO_XP: dict[float, int]` (DMG Table 2-1, CR ¼ through CR 30 → XP award); `EncounterLevel` type alias | — | S |
+| [x] T-010 | CR / EL Numeric Base Types | encounters | Dataclass `ChallengeRating` (slots=True): `value: float`; constant lookup `CR_TO_XP: dict[float, int]` (DMG Table 2-1, CR ¼ through CR 30 → XP award); `EncounterLevel` type alias | — | S |
 | [x] T-011 | Artifact Schema | magic-items | Dataclass `ArtifactEntry` (slots=True): `name`, `artifact_type` (enum: Minor/Major), `powers: list[str]`, `drawbacks: list[str]`, `lore: str`; market price always `None` (priceless) | — | S |
 
 ---
@@ -118,8 +103,8 @@ All Tier 0–3 milestones that block Tier 4/5 work have been shipped.
 | [x] T-031 | SRD Staff Registry | magic-items | `STAFF_REGISTRY: dict[str, StaffBase]` — 17 SRD staffs: Abjuration, Charming, Conjuration, Defense, Divination, Earth and Stone, Evocation, Fire, Frost, Healing, Illumination, Illusion, Life, Necromancy, Passage, Power, Size Alteration, Swarming Insects, Transmutation, Woodlands; prices via `staff_market_price()` | T-021 | L |
 | [x] T-032 | SRD Armor Special Ability Registry | magic-items | `ARMOR_SPECIAL_ABILITY_REGISTRY: dict[str, ArmorSpecialAbility]` — 16 SRD abilities: Glamered (+1 eq), Fortification Light/Moderate/Heavy (+1/+3/+5 eq), Invulnerability (+3 eq), Reflecting (+5 eq), Shadow (+1 eq), Silent Moves (+1 eq), Slick (+1 eq), Spell Resistance 13/15/17/19 (+2/+3/+4/+5 eq), Etherealness (+6 eq), Undead Controlling (+9 eq) | T-025 | M |
 | [x] T-033 | SRD Weapon Special Ability Registry | magic-items | `WEAPON_SPECIAL_ABILITY_REGISTRY: dict[str, WeaponSpecialAbility]` — 25+ SRD abilities: Bane, Defending, Disruption, Distance, Flaming, Flaming Burst, Frost, Holy, Icy Burst, Keen, Ki Focus, Lawful, Merciful, Mighty Cleaving, Returning, Seeking, Shock, Shocking Burst, Speed, Spell Storing, Thundering, Throwing, Unholy, Vicious, Vorpal, Wounding; each with bonus_equivalent, caster_level, aura | T-026 | L |
-| [~] T-034 | SRD Gem Table (d%-keyed) | treasure | `GEM_TABLE: list[GemEntry]` — 60 SRD gem entries across 6 grades, keyed to d100 ranges per DMG Table 7-5; e.g., Ornamental (01–25): azurite, banded agate, blue quartz, eye agate, malachite, moss agate, obsidian, rhodonite, tiger eye, turquoise | T-022 | M |
-| [~] T-035 | SRD Art Object Table (d%-keyed) | treasure | `ART_OBJECT_TABLE: list[ArtObjectEntry]` — 100 SRD art object entries across 4 value bands (10 gp / 25 gp / 50 gp / 100 gp / 250 gp / 500 gp / 1000 gp / 2500 gp / 5000 gp / 7500 gp) keyed to d100 per DMG Table 7-6 | T-023 | M |
+| [x] T-034 | SRD Gem Table (d%-keyed) | treasure | `GEM_TABLE: list[GemEntry]` — 60 SRD gem entries across 6 grades, keyed to d100 ranges per DMG Table 7-5; e.g., Ornamental (01–25): azurite, banded agate, blue quartz, eye agate, malachite, moss agate, obsidian, rhodonite, tiger eye, turquoise | T-022 | M |
+| [x] T-035 | SRD Art Object Table (d%-keyed) | treasure | `ART_OBJECT_TABLE: list[ArtObjectEntry]` — 100 SRD art object entries across 4 value bands (10 gp / 25 gp / 50 gp / 100 gp / 250 gp / 500 gp / 1000 gp / 2500 gp / 5000 gp / 7500 gp) keyed to d100 per DMG Table 7-6 | T-023 | M |
 | [x] T-036 | Underwater Combat Modifier Engine | environment | Dataclass `UnderwaterModifiers`; function `apply_underwater_modifiers(attack_intent: AttackIntent, weapon_type: WeaponType) -> AttackIntent`; slashing/bludgeoning weapons: –2 attack; piercing: no penalty; crossbows: –4 attack; thrown weapons: no range; fire damage: no effect; electricity: +50% if both underwater; swim speed vs land speed penalties | T-014, T-015 | M |
 | [x] T-037 | Aerial Combat Modifier Engine | environment | Dataclass `AerialModifiers`; enum `Maneuverability` (Clumsy/Poor/Average/Good/Perfect); function `apply_aerial_modifiers(attack_intent, maneuverability: Maneuverability, altitude_delta_ft: int) -> AttackIntent`; diving attack +1 attack; upward attack –1; Clumsy: no attacks in same round as direction change; charging while flying restrictions | T-014, T-015 | M |
 | [x] T-038 | Weather State Machine (Escalation) | environment | `WeatherStateMachine` dataclass: current `Precipitation`, `WindStrength`, `Temperature`; method `advance(hours: int, climate: TerrainType) -> WeatherStateMachine`; implements DMG Chapter 3 escalation/de-escalation probabilities (e.g., Moderate Wind → Strong at 10% per hour in storm climate); `generate_weather(climate: TerrainType, season: str, rng) -> WeatherStateMachine` | T-014, T-015 | L |
@@ -146,12 +131,12 @@ All Tier 0–3 milestones that block Tier 4/5 work have been shipped.
 
 | Task | Title | Subsystem | Requirement | blockedBy | Effort |
 |------|-------|-----------|-------------|-----------|--------|
-| T-048 | Treasure Type Tables (A–Z) | treasure | `TREASURE_TYPE_TABLES: dict[str, TreasureTypeEntry]` — `TreasureTypeEntry` dataclass: `coin_rolls: list[CoinRoll]`, `gem_chance_pct: int`, `gem_rolls: str`, `art_chance_pct: int`, `art_rolls: str`, `mundane_item_chance_pct: int`, `magic_item_chance_pct: int`, `magic_item_rolls: str`; all 26 treasure types (A–Z) encoded per DMG Table 7-1 | T-034, T-035, T-043 | L |
-| T-049 | Magic Item Random Type Selector | magic-items | Function `roll_magic_item_type(rng) -> MagicItemCategory`; d100 table per DMG p. 229: Armor/Shields 4%, Weapons 4%, Potions 28%, Rings 7%, Rods 3%, Scrolls 24%, Staffs 3%, Wands 11%, Wondrous Items 16%; function `roll_magic_item(category: MagicItemCategory, rng) -> MagicItemBase` dispatches to appropriate registry | T-027, T-028, T-029, T-030, T-031, T-040, T-042, T-043, T-044 | M |
-| T-050 | Magic Item Caster Level Activation Check | magic-items | Function `check_use_magic_device(item: MagicItemBase, character: Character35e) -> UMDResult`; `UMDResult` dataclass: `success: bool`, `roll: int`, `dc: int`; DCs: Scrolls = 20 + spell_level; Wands = 20; Staffs = 20; Potions automatically succeed; Use Magic Device skill modifier applied | T-027, T-028, T-029, T-030, T-031 | M |
-| T-051 | Magic Item Saving Throw DC Calculator | magic-items | Function `magic_item_save_dc(item: MagicItemBase) -> int \| None`; formula: `10 + (item_caster_level / 2)`; applies to Wands, Staffs, Rods with save-triggering effects; returns `None` for items without saves | T-027, T-029, T-030, T-031 | S |
-| T-052 | Encounter Builder by APL | encounters | Function `build_encounter(apl: int, difficulty: EncounterDifficulty, terrain: TerrainType, rng) -> EncounterBlueprint`; `EncounterDifficulty` enum (Easy/Average/Challenging/Hard/Overwhelming); target EL = APL + difficulty_offset (Easy: –2, Average: ±0, Challenging: +1, Hard: +2, Overwhelming: +4); selects monsters from `ENCOUNTER_TABLES[terrain]`; validates final EL via `calculate_el()` | T-039, T-045 | L |
-| T-053 | Compound Weather + Terrain Integration | environment | Function `apply_environment(character: Character35e, weather: WeatherStateMachine, terrain: TerrainType) -> EnvironmentResult`; `EnvironmentResult` aggregates: `movement_multiplier`, `ranged_attack_penalty`, `visibility_ft`, `passive_perception_penalty`, `fort_dc_cold`, `fort_dc_heat`; feeds into `HazardEngine` (existing hazards.py) for temperature fort save triggers | T-036, T-037, T-038 | M |
+| [x] T-048 | Treasure Type Tables (A–Z) | treasure | `TREASURE_TYPE_TABLES: dict[str, TreasureTypeEntry]` — `TreasureTypeEntry` dataclass: `coin_rolls: list[CoinRoll]`, `gem_chance_pct: int`, `gem_rolls: str`, `art_chance_pct: int`, `art_rolls: str`, `mundane_item_chance_pct: int`, `magic_item_chance_pct: int`, `magic_item_rolls: str`; all 26 treasure types (A–Z) encoded per DMG Table 7-1 | T-034, T-035, T-043 | L |
+| [x] T-049 | Magic Item Random Type Selector | magic-items | Function `roll_magic_item_type(rng) -> MagicItemCategory`; d100 table per DMG p. 229: Armor/Shields 4%, Weapons 4%, Potions 28%, Rings 7%, Rods 3%, Scrolls 24%, Staffs 3%, Wands 11%, Wondrous Items 16%; function `roll_magic_item(category: MagicItemCategory, rng) -> MagicItemBase` dispatches to appropriate registry | T-027, T-028, T-029, T-030, T-031, T-040, T-042, T-043, T-044 | M |
+| [x] T-050 | Magic Item Caster Level Activation Check | magic-items | Function `check_use_magic_device(item: MagicItemBase, character: Character35e) -> UMDResult`; `UMDResult` dataclass: `success: bool`, `roll: int`, `dc: int`; DCs: Scrolls = 20 + spell_level; Wands = 20; Staffs = 20; Potions automatically succeed; Use Magic Device skill modifier applied | T-027, T-028, T-029, T-030, T-031 | M |
+| [x] T-051 | Magic Item Saving Throw DC Calculator | magic-items | Function `magic_item_save_dc(item: MagicItemBase) -> int \| None`; formula: `10 + (item_caster_level / 2)`; applies to Wands, Staffs, Rods with save-triggering effects; returns `None` for items without saves | T-027, T-029, T-030, T-031 | S |
+| [x] T-052 | Encounter Builder by APL | encounters | Function `build_encounter(apl: int, difficulty: EncounterDifficulty, terrain: TerrainType, rng) -> EncounterBlueprint`; `EncounterDifficulty` enum (Easy/Average/Challenging/Hard/Overwhelming); target EL = APL + difficulty_offset (Easy: –2, Average: ±0, Challenging: +1, Hard: +2, Overwhelming: +4); selects monsters from `ENCOUNTER_TABLES[terrain]`; validates final EL via `calculate_el()` | T-039, T-045 | L |
+| [x] T-053 | Compound Weather + Terrain Integration | environment | Function `apply_environment(character: Character35e, weather: WeatherStateMachine, terrain: TerrainType) -> EnvironmentResult`; `EnvironmentResult` aggregates: `movement_multiplier`, `ranged_attack_penalty`, `visibility_ft`, `passive_perception_penalty`, `fort_dc_cold`, `fort_dc_heat`; feeds into `HazardEngine` (existing hazards.py) for temperature fort save triggers | T-036, T-037, T-038 | M |
 
 ---
 
@@ -159,11 +144,11 @@ All Tier 0–3 milestones that block Tier 4/5 work have been shipped.
 
 | Task | Title | Subsystem | Requirement | blockedBy | Effort |
 |------|-------|-----------|-------------|-----------|--------|
-| T-054 | Treasure Hoard Generator (by CR) | treasure | Function `generate_treasure_hoard(cr: float, hoard_type: str, rng) -> TreasureHoard`; `hoard_type` ∈ {`"individual"`, `"lair"`}; `TreasureHoard` dataclass (slots=True): `coins: dict[str,int]`, `gems: list[GemEntry]`, `art_objects: list[ArtObjectEntry]`, `magic_items: list[MagicItemBase]`; CR → Treasure Type letter lookup per DMG Table 7-2 (CR 1 → Type A, CR 5 → Type C, CR 10 → Type H, CR 20 → Type N, etc.); applies all `TREASURE_TYPE_TABLES` coin/gem/art/magic rolls | T-048, T-049 | L |
-| T-055 | XP Distribution Matrix | encounters | Function `distribute_xp(encounter_el: float, party: list[Character35e]) -> dict[str, int]`; `apl = mean(character.level for character in party)`; per-character XP = `xp_for_cr(encounter_el, apl) × level_adjustment_factor(char.level, apl)`; level adjustment factors per DMG Table 2-2 (character ≥3 levels above EL: ½ XP; ≥4 below: ×1.5); awards halved for characters below 0 HP at end of encounter | T-024, T-052 | M |
-| T-056 | Full Encounter Generator | encounters | Function `run_encounter(party: list[Character35e], apl: int, terrain: TerrainType, difficulty: EncounterDifficulty, rng) -> EncounterReport`; `EncounterReport` dataclass: `blueprint: EncounterBlueprint`, `weather: WeatherStateMachine`, `environment: EnvironmentResult`, `treasure: TreasureHoard`, `xp_per_character: dict[str,int]`; calls T-052 → T-053 → T-054 → T-055 in sequence | T-052, T-053, T-054, T-055 | L |
-| T-057 | Trap Hoard Integrator | traps | Function `generate_dungeon_level(dungeon_level: int, num_rooms: int, rng) -> DungeonLevel`; `DungeonLevel` dataclass: `rooms: list[RoomContents]`; each room with `trap: True` triggers `generate_mechanical_trap()` or `generate_magical_trap()` weighted 60/40 at dungeon_level ≤5, 40/60 at dungeon_level ≥6; CR of trap = `dungeon_level + rng.randint(-1, 2)`, clamped to [½, 10] | T-040, T-041, T-047 | M |
-| T-058 | Magic Item Identification Engine | magic-items | Function `identify_magic_item(item: MagicItemBase, character: Character35e, method: IdentificationMethod) -> IdentificationResult`; `IdentificationMethod` enum (Spellcraft/DetectMagic/Identify/AnalyzeDweomer); Spellcraft DC = 15 + caster_level; Identify spell: automatic after 1 hour; Detect Magic: reveals aura school only; AnalyzeDweomer: full identification; `IdentificationResult` dataclass: `identified: bool`, `aura_school: str \| None`, `full_name: str \| None` | T-049, T-050 | M |
+| [x] T-054 | Treasure Hoard Generator (by CR) | treasure | Function `generate_treasure_hoard(cr: float, hoard_type: str, rng) -> TreasureHoard`; `hoard_type` ∈ {`"individual"`, `"lair"`}; `TreasureHoard` dataclass (slots=True): `coins: dict[str,int]`, `gems: list[GemEntry]`, `art_objects: list[ArtObjectEntry]`, `magic_items: list[MagicItemBase]`; CR → Treasure Type letter lookup per DMG Table 7-2 (CR 1 → Type A, CR 5 → Type C, CR 10 → Type H, CR 20 → Type N, etc.); applies all `TREASURE_TYPE_TABLES` coin/gem/art/magic rolls | T-048, T-049 | L |
+| [x] T-055 | XP Distribution Matrix | encounters | Function `distribute_xp(encounter_el: float, party: list[Character35e]) -> dict[str, int]`; `apl = mean(character.level for character in party)`; per-character XP = `xp_for_cr(encounter_el, apl) × level_adjustment_factor(char.level, apl)`; level adjustment factors per DMG Table 2-2 (character ≥3 levels above EL: ½ XP; ≥4 below: ×1.5); awards halved for characters below 0 HP at end of encounter | T-024, T-052 | M |
+| [x] T-056 | Full Encounter Generator | encounters | Function `run_encounter(party: list[Character35e], apl: int, terrain: TerrainType, difficulty: EncounterDifficulty, rng) -> EncounterReport`; `EncounterReport` dataclass: `blueprint: EncounterBlueprint`, `weather: WeatherStateMachine`, `environment: EnvironmentResult`, `treasure: TreasureHoard`, `xp_per_character: dict[str,int]`; calls T-052 → T-053 → T-054 → T-055 in sequence | T-052, T-053, T-054, T-055 | L |
+| [x] T-057 | Trap Hoard Integrator | traps | Function `generate_dungeon_level(dungeon_level: int, num_rooms: int, rng) -> DungeonLevel`; `DungeonLevel` dataclass: `rooms: list[RoomContents]`; each room with `trap: True` triggers `generate_mechanical_trap()` or `generate_magical_trap()` weighted 60/40 at dungeon_level ≤5, 40/60 at dungeon_level ≥6; CR of trap = `dungeon_level + rng.randint(-1, 2)`, clamped to [½, 10] | T-040, T-041, T-047 | M |
+| [x] T-058 | Magic Item Identification Engine | magic-items | Function `identify_magic_item(item: MagicItemBase, character: Character35e, method: IdentificationMethod) -> IdentificationResult`; `IdentificationMethod` enum (Spellcraft/DetectMagic/Identify/AnalyzeDweomer); Spellcraft DC = 15 + caster_level; Identify spell: automatic after 1 hour; Detect Magic: reveals aura school only; AnalyzeDweomer: full identification; `IdentificationResult` dataclass: `identified: bool`, `aura_school: str \| None`, `full_name: str \| None` | T-049, T-050 | M |
 
 ---
 
