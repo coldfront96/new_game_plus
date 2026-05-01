@@ -82,13 +82,8 @@ _DEAD_KEY = "dead"
 
 def _apply_hp_damage(target: Character35e, amount: int) -> None:
     """Reduce *target*'s current HP by *amount* and mark dead if it hits zero."""
-    if amount <= 0:
-        return
-    current = target.metadata.get(_HP_KEY, target.hit_points)
-    new_hp = current - amount
-    target.metadata[_HP_KEY] = new_hp
-    if new_hp <= 0:
-        target.metadata[_DEAD_KEY] = True
+    from src.game.session import apply_damage
+    apply_damage(target, amount)
 
 
 # ---------------------------------------------------------------------------
