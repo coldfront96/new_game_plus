@@ -352,8 +352,8 @@ class SpellDispatcher:
 
         priority = cls.OFFENSIVE_PRIORITY.get(char_class, [])
         if targeting_ally:
-            priority = cls.HEALING_SPELLS
-
+        if targeting_ally:
+            priority = list(reversed(cls.HEALING_SPELLS))
         for name in priority:
             spell = registry.get(name)
             if spell is None:
