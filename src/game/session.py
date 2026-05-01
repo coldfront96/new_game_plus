@@ -259,7 +259,8 @@ def build_monsters_from_srd(
                     isinstance(entry_dict, dict)
                     and "name" in entry_dict
                     and "cr" in entry_dict
-                    and "hp" in entry_dict
+                    and "hp_avg" in entry_dict
+                ):
                 ):
                     continue
                 try:
