@@ -243,7 +243,7 @@ class QuestGenerator:
         )
 
         return Quest(
-            quest_id=str(uuid.uuid4()),
+            quest_id=f"q-{rng.getrandbits(64):016x}",
             title=title,
             description=description,
             giver_name=giver,
