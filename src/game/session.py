@@ -24,6 +24,7 @@ Design (Task 5)
 from __future__ import annotations
 
 import random
+import re
 import sys
 from dataclasses import dataclass, field
 from typing import Callable, Dict, List, Optional, Sequence, TextIO, Tuple
@@ -94,20 +95,206 @@ def is_alive(character: Character35e) -> bool:
 
 
 # ---------------------------------------------------------------------------
-# Monster factory
+# SRD Monster index (loaded lazily, cached for the process lifetime)
+# ---------------------------------------------------------------------------
+
+_MONSTER_INDEX: Dict[str, dict] = {}
+_MONSTER_INDEX_BUILT = False
+
+_SRD_SIZE_MAP: Dict[str, Size] = {
+    "fine": Size.FINE,
+    "diminutive": Size.DIMINUTIVE if hasattr(Size, "DIMINUTIVE") else Size.TINY,
+    "tiny": Size.TINY,
+    "small": Size.SMALL,
+    "medium": Size.MEDIUM,
+    "large": Size.LARGE,
+    "huge": Size.HUGE,
+    "gargantuan": Size.GARGANTUAN,
+    "colossal": Size.COLOSSAL,
+}
+
+_ALIGNMENT_MAP: Dict[str, Alignment] = {
+    "lawful good": Alignment.LAWFUL_GOOD,
+    "neutral good": Alignment.NEUTRAL_GOOD,
+    "chaotic good": Alignment.CHAOTIC_GOOD,
+    "lawful neutral": Alignment.LAWFUL_NEUTRAL,
+    "true neutral": Alignment.TRUE_NEUTRAL,
+    "neutral": Alignment.TRUE_NEUTRAL,
+    "chaotic neutral": Alignment.CHAOTIC_NEUTRAL,
+    "lawful evil": Alignment.LAWFUL_EVIL,
+    "neutral evil": Alignment.NEUTRAL_EVIL,
+    "chaotic evil": Alignment.CHAOTIC_EVIL,
+}
+
+
+def _normalize_name(name: str) -> str:
+    """Lowercase, strip punctuation, collapse spaces for index lookups."""
+    return re.sub(r"[^a-z0-9 ]", "", name.lower()).strip()
+
+
+def _build_monster_index() -> None:
+    global _MONSTER_INDEX, _MONSTER_INDEX_BUILT
+    if _MONSTER_INDEX_BUILT:
+        return
+    from src.rules_engine.srd_loader import load_monsters
+    for entry in load_monsters():
+        key = _normalize_name(entry.get("name", ""))
+        if key:
+            _MONSTER_INDEX[key] = entry
+    _MONSTER_INDEX_BUILT = True
+
+
+def _parse_alignment(raw: str) -> Alignment:
+    for segment in raw.lower().split(","):
+        segment = segment.strip()
+        for key, alignment in _ALIGNMENT_MAP.items():
+            if key in segment:
+                return alignment
+    return Alignment.TRUE_NEUTRAL
+
+
+def _monster_from_srd(entry: dict, display_name: str) -> Character35e:
+    """Build a Character35e from an SRD monster JSON entry."""
+    abilities = entry.get("abilities", {})
+    str_ = int(abilities.get("str", 10))
+    dex = int(abilities.get("dex", 10))
+    con = int(abilities.get("con", 10))
+    int_ = int(abilities.get("int", 10))
+    wis = int(abilities.get("wis", 10))
+    cha = int(abilities.get("cha", 10))
+
+    size_str = entry.get("size", "Medium").split()[0].lower()
+    size = _SRD_SIZE_MAP.get(size_str, Size.MEDIUM)
+
+    alignment = _parse_alignment(entry.get("alignment", "Neutral"))
+
+    base_attack = int(entry.get("base_attack", 1))
+    level = max(1, base_attack)
+
+    speed_data = entry.get("speed", {})
+    base_speed = int(speed_data.get("land", 30)) if isinstance(speed_data, dict) else 30
+
+    monster = Character35e(
+        name=display_name,
+        char_class="Fighter",
+        level=level,
+        race=entry.get("type", "Humanoid"),
+        alignment=alignment,
+        size=size,
+        strength=str_,
+        dexterity=dex,
+        constitution=con,
+        intelligence=int_,
+        wisdom=wis,
+        charisma=cha,
+        base_speed=base_speed,
+    )
+
+    hp_avg = int(entry.get("hp_avg", monster.hit_points))
+    monster.metadata[HP_KEY] = hp_avg
+
+    dex_mod = (dex - 10) // 2
+    srd_ac = int(entry.get("armor_class", {}).get("total", 10))
+    natural_armor = max(0, srd_ac - (10 + dex_mod + size.value))
+    monster.metadata["natural_armor_bonus"] = natural_armor
+    monster.metadata[DEAD_KEY] = False
+
+    return monster
+
+
+def build_monsters_from_srd(
+    blueprint: EncounterBlueprint,
+    rng: Optional[random.Random] = None,
+) -> List[Character35e]:
+    """Build monster combatants using SRD stat blocks where available.
+
+    Looks up each monster by name in the loaded SRD index.  Falls back to
+    the Fighter-approximation path when a name is not found.
+    """
+    _build_monster_index()
+    monsters: List[Character35e] = []
+    for name, count, cr in blueprint.monsters:
+        key = _normalize_name(name)
+        entry = _MONSTER_INDEX.get(key)
+        for idx in range(count):
+            display = f"{name} #{idx + 1}" if count > 1 else name
+            if entry is not None:
+                mon = _monster_from_srd(entry, display)
+            else:
+                level = max(1, int(round(cr)))
+                mon = Character35e(
+                    name=display,
+                    char_class="Fighter",
+                    level=level,
+                    race="Human",
+                    alignment=Alignment.CHAOTIC_EVIL,
+                    size=Size.MEDIUM,
+                    strength=12 + min(4, level),
+                    dexterity=12,
+                    constitution=12 + min(4, level),
+                    intelligence=8,
+                    wisdom=10,
+                    charisma=8,
+                )
+            mon.metadata[SIDE_KEY] = "enemy"
+            mon.metadata["cr"] = cr
+            monsters.append(mon)
+    return monsters
+
+
+# ---------------------------------------------------------------------------
+# Long rest / party rest
+# ---------------------------------------------------------------------------
+
+def long_rest(character: Character35e) -> int:
+    """Apply an 8-hour long rest to *character*.
+
+    Recovers all expended spell slots and restores hit points equal to the
+    character's level (natural healing per the 3.5e SRD).  HP is clamped
+    to the character's maximum.
+
+    Args:
+        character: The character to rest.
+
+    Returns:
+        Number of hit points actually restored.
+    """
+    ssm = character.spell_slot_manager
+    if ssm is not None:
+        ssm.rest()
+
+    max_hp = character.hit_points
+    current = int(character.metadata.get(HP_KEY, max_hp))
+    healed = character.level
+    new_hp = min(max_hp, current + healed)
+    character.metadata[HP_KEY] = new_hp
+    character.metadata[DEAD_KEY] = new_hp <= 0
+    return new_hp - current
+
+
+def rest_party(party: Sequence[Character35e]) -> Dict[str, int]:
+    """Apply a long rest to every member of *party*.
+
+    Args:
+        party: Iterable of characters to rest.
+
+    Returns:
+        Mapping of ``char_id → hp_restored``.
+    """
+    return {c.char_id: long_rest(c) for c in party}
+
+
+# ---------------------------------------------------------------------------
+# Monster factory (legacy — kept for backward compatibility)
 # ---------------------------------------------------------------------------
 
 def build_monsters_from_blueprint(
     blueprint: EncounterBlueprint,
 ) -> List[Character35e]:
-    """Instantiate simple :class:`Character35e` stand-ins for the blueprint.
+    """Instantiate Fighter-approximation stand-ins for the blueprint.
 
-    The encounter system exposes monsters as ``(name, count, cr)`` triples;
-    we need them as combatant objects.  We approximate each monster with a
-    Fighter-class NPC whose level is ``max(1, int(cr))`` so the existing
-    combat resolver can work on them.  This is a playability seed — the
-    Monster Manual import (separate milestone) will replace it with SRD
-    stat blocks.
+    .. deprecated::
+        Use :func:`build_monsters_from_srd` which loads real SRD stat blocks.
     """
     monsters: List[Character35e] = []
     for name, count, cr in blueprint.monsters:
@@ -236,7 +423,7 @@ def play_session(
             apl, EncounterDifficulty(difficulty), terrain, rng
         )
 
-    monsters = build_monsters_from_blueprint(blueprint)
+    monsters = build_monsters_from_srd(blueprint, rng)
     for pc in party:
         _ensure_hp(pc)
         pc.metadata.setdefault(SIDE_KEY, "party")
@@ -393,38 +580,40 @@ def play_session(
             return False
 
         dice_count, dice_sides = _weapon_damage_dice(attacker)
-        result = AttackResolver.resolve_attack(
+        results = AttackResolver.resolve_full_attack(
             attacker,
             target,
             damage_dice_count=dice_count,
             damage_dice_sides=dice_sides,
         )
-        event_bus.publish("attack_resolved", {
-            "attacker": attacker.char_id,
-            "defender": target.char_id,
-            "hit": result.hit,
-            "damage": result.total_damage,
-            "critical": result.critical,
-        })
-        if result.hit:
-            remaining = apply_damage(target, result.total_damage)
-            crit = " (CRITICAL!)" if result.critical else ""
-            _log(
-                f"    {attacker.name} hits {target.name} for "
-                f"{result.total_damage} damage{crit}  [{target.name} HP: "
-                f"{remaining}]"
-            )
-            if remaining <= 0:
-                _log(f"    {target.name} is defeated!")
-                event_bus.publish("combatant_defeated", {
-                    "char_id": target.char_id,
-                    "name": target.name,
-                })
-        else:
-            _log(
-                f"    {attacker.name} misses {target.name} "
-                f"(rolled {result.roll.total} vs AC {result.target_ac})"
-            )
+        for result in results:
+            event_bus.publish("attack_resolved", {
+                "attacker": attacker.char_id,
+                "defender": target.char_id,
+                "hit": result.hit,
+                "damage": result.total_damage,
+                "critical": result.critical,
+            })
+            if result.hit:
+                remaining = apply_damage(target, result.total_damage)
+                crit = " (CRITICAL!)" if result.critical else ""
+                _log(
+                    f"    {attacker.name} hits {target.name} for "
+                    f"{result.total_damage} damage{crit}  [{target.name} HP: "
+                    f"{remaining}]"
+                )
+                if remaining <= 0:
+                    _log(f"    {target.name} is defeated!")
+                    event_bus.publish("combatant_defeated", {
+                        "char_id": target.char_id,
+                        "name": target.name,
+                    })
+                    break
+            else:
+                _log(
+                    f"    {attacker.name} misses {target.name} "
+                    f"(rolled {result.roll.total} vs AC {result.target_ac})"
+                )
         return False
 
     # --- Main combat loop -------------------------------------------------

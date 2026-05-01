@@ -573,6 +573,10 @@ class Character35e:
         if self.magic_item_engine is not None:
             ac += self.magic_item_engine.get_natural_armor_bonus()
 
+        # Natural armour from metadata — used by the SRD monster loader so
+        # real monster AC is applied without requiring an EquipmentManager.
+        ac += self.metadata.get("natural_armor_bonus", 0)
+
         ac += FeatRegistry.get_ac_bonus(self)
         # Monk Wisdom bonus to AC (3.5e SRD: Monk adds WIS bonus to AC even
         # when flat-footed; only positive values apply).

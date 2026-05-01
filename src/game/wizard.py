@@ -26,6 +26,7 @@ from typing import Dict, List, Optional, Sequence, TextIO, Tuple
 
 from src.rules_engine.character_35e import Alignment, Character35e, Size
 from src.rules_engine.feat_engine import FEAT_CATALOG, FeatRegistry
+from src.rules_engine.progression import Progression, XPManager, level_up
 from src.rules_engine.race import RaceRegistry
 from src.rules_engine.skills import SKILL_DEFINITIONS
 
@@ -329,10 +330,19 @@ class CharacterWizard:
         self,
         char_class: str,
         intelligence_mod: int,
+        *,
+        available: Optional[int] = None,
     ) -> Dict[str, int]:
-        """Distribute skill points at level 1 (``(base + INT) × 4``)."""
-        base = _CLASS_SKILL_POINTS_L1.get(char_class, 2)
-        total = max(1, base + intelligence_mod) * 4
+        """Distribute skill points.
+
+        At level 1 the pool is ``(base + INT) × 4``.  For subsequent levels
+        pass *available* directly to skip the first-level quadrupling.
+        """
+        if available is None:
+            base = _CLASS_SKILL_POINTS_L1.get(char_class, 2)
+            total = max(1, base + intelligence_mod) * 4
+        else:
+            total = available
         ranks: Dict[str, int] = {}
         skill_names = sorted(SKILL_DEFINITIONS.keys())
         self._print(
@@ -349,7 +359,7 @@ class CharacterWizard:
             if idx == len(skill_names):
                 break
             skill = skill_names[idx]
-            max_ranks = min(4, remaining)  # level-1 cap is 4 ranks (PHB p.60)
+            max_ranks = min(remaining, remaining)
             amount = self._prompt_int(
                 f"Ranks in {skill} (0–{max_ranks})?",
                 default=0,
@@ -362,13 +372,25 @@ class CharacterWizard:
             remaining -= amount
         return ranks
 
-    def prompt_feats(self, character: Character35e) -> List[str]:
-        """Ask the user to pick up to one starting feat (two for Humans/Fighter)."""
-        slots = 1
-        if character.race == "Human":
-            slots += 1
-        if character.char_class == "Fighter":
-            slots += 1
+    def prompt_feats(
+        self,
+        character: Character35e,
+        *,
+        num_feats: Optional[int] = None,
+    ) -> List[str]:
+        """Ask the user to pick feats.
+
+        *num_feats* overrides the slot count derived from race/class (used
+        during level-up where the slot count is pre-calculated by the caller).
+        """
+        if num_feats is not None:
+            slots = num_feats
+        else:
+            slots = 1
+            if character.race == "Human":
+                slots += 1
+            if character.char_class == "Fighter":
+                slots += 1
         eligible = [
             name for name in sorted(FEAT_CATALOG.keys())
             if FeatRegistry.meets_prerequisites(character, name)
@@ -451,11 +473,7 @@ class CharacterWizard:
 
 
 def _default_alignment(char_class: str) -> Alignment:
-    """Return a class-appropriate default alignment.
-
-    Paladins must be LG; Monks must be Lawful; everyone else defaults to
-    Neutral Good to keep the wizard path friction-free.
-    """
+    """Return a class-appropriate default alignment."""
     if char_class == "Paladin":
         return Alignment.LAWFUL_GOOD
     if char_class == "Monk":
@@ -463,3 +481,74 @@ def _default_alignment(char_class: str) -> Alignment:
     if char_class == "Barbarian":
         return Alignment.CHAOTIC_NEUTRAL
     return Alignment.NEUTRAL_GOOD
+
+
+def _feat_slots_gained(new_level: int, char_class: str) -> int:
+    """Return the number of feat slots gained at *new_level*.
+
+    General rule: +1 feat at every level divisible by 3 (levels 3, 6, 9, …).
+    Fighter bonus rule: +1 extra feat at level 1 and every even level
+    (1, 2, 4, 6, 8, …) for Fighters.
+    """
+    slots = 1 if new_level % 3 == 0 else 0
+    if char_class == "Fighter":
+        if new_level == 1 or new_level % 2 == 0:
+            slots += 1
+    return slots
+
+
+def run_level_up_flow(
+    character: Character35e,
+    xp_manager: XPManager,
+    wizard: CharacterWizard,
+) -> Optional[Progression]:
+    """Check for and interactively run a level-up for *character*.
+
+    If *character* does not yet have enough XP to level, returns ``None``
+    without printing anything.  Otherwise advances the character by one
+    level, presents the HP and skill point gain, prompts the player to
+    distribute new skill ranks and pick any new feats, then returns the
+    :class:`~src.rules_engine.progression.Progression` record.
+
+    Args:
+        character:   The character to potentially level up.
+        xp_manager:  The :class:`XPManager` tracking the character's XP.
+        wizard:      A :class:`CharacterWizard` used for interactive prompts.
+
+    Returns:
+        :class:`Progression` if a level-up occurred, ``None`` otherwise.
+    """
+    check = xp_manager.check_level_up()
+    if not check.leveled_up:
+        return None
+
+    progression = level_up(character, xp_manager)
+    wizard._print(
+        f"\n{'=' * 50}\n"
+        f"*** {character.name} reached level {progression.new_level}! ***\n"
+        f"  HP gained  : +{progression.hp_gained}\n"
+        f"  Skill pts  : {progression.skill_points}\n"
+        f"{'=' * 50}"
+    )
+
+    # Distribute new skill ranks (add to existing ranks)
+    new_ranks = wizard.prompt_skills(
+        character.char_class,
+        character.intelligence_mod,
+        available=progression.skill_points,
+    )
+    for skill, amount in new_ranks.items():
+        character.skills[skill] = character.skills.get(skill, 0) + amount
+
+    # Feat slots
+    feat_slots = _feat_slots_gained(progression.new_level, character.char_class)
+    if feat_slots > 0:
+        wizard._print(f"  You gain {feat_slots} feat slot(s).")
+        new_feats = wizard.prompt_feats(character, num_feats=feat_slots)
+        for feat_name in new_feats:
+            FeatRegistry.add_feat(character, feat_name)
+
+    wizard._print(
+        f"Level-up complete. {character.name} is now level {character.level}."
+    )
+    return progression
