@@ -1,0 +1,404 @@
+[
+  {
+    "name": "Clockwork Horror, Bronze",
+    "cr": 2,
+    "size": "Tiny",
+    "type": "Construct",
+    "subtype": null,
+    "hit_dice": "2d10",
+    "hp_avg": 11,
+    "initiative": 3,
+    "speed": {"land": 20, "fly": 50},
+    "armor_class": {"total": 17, "touch": 15, "flat_footed": 14, "components": "+2 natural, +2 size, +3 Dex"},
+    "base_attack": 1,
+    "grapple": -7,
+    "attacks": [
+      {"name": "2 Claws", "attack_bonus": "+5", "damage": "1d3", "damage_type": "Slashing"},
+      {"name": "Electric Discharge", "attack_bonus": "+6 ranged touch", "damage": "1d6 electricity", "damage_type": "Electricity"}
+    ],
+    "special_attacks": [
+      "Electric Discharge (ranged touch, 1d6 electricity, 30 ft., DC 11 Reflex half)",
+      "Metal Conversion (can convert 1 lb. of nonmagical metal per round into construction material for new Bronze Horrors)"
+    ],
+    "special_qualities": [
+      "Construct Traits",
+      "Darkvision 60 ft.",
+      "DR 2/Adamantine",
+      "Immunity to Electricity",
+      "Low-Light Vision",
+      "Swarm Coordination (gains +1 morale bonus to attack and damage for each other clockwork horror within 30 ft., max +5)"
+    ],
+    "saves": {"fort": 0, "ref": 3, "will": 0},
+    "abilities": {"str": 11, "dex": 17, "con": null, "int": 8, "wis": 11, "cha": 4},
+    "skills": {
+      "Listen": 4,
+      "Spot": 4
+    },
+    "feats": ["Weapon Finesse"],
+    "alignment": "Neutral",
+    "advancement": "3-4 HD (Small)",
+    "dr": "2/Adamantine",
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 40,
+    "allowed_biomes": ["Underground", "Any_Ruin"],
+    "primary_biome": "Underground",
+    "ecology_notes": "Bronze Horrors are the smallest and most numerous clockwork horrors, serving as scouts and workers. They harvest metal from their environment to fuel the construction of higher-tier horrors.",
+    "lair_type": "Cave",
+    "expanded_metadata": {
+      "source_book": "Monster Manual II",
+      "source_page": null,
+      "is_expanded": true,
+      "tags": ["construct", "clockwork_horror", "electricity", "bronze"]
+    }
+  },
+  {
+    "name": "Clockwork Horror, Silver",
+    "cr": 4,
+    "size": "Small",
+    "type": "Construct",
+    "subtype": null,
+    "hit_dice": "4d10+10",
+    "hp_avg": 32,
+    "initiative": 2,
+    "speed": {"land": 30, "fly": 60},
+    "armor_class": {"total": 19, "touch": 13, "flat_footed": 17, "components": "+6 natural, +1 size, +2 Dex"},
+    "base_attack": 3,
+    "grapple": 0,
+    "attacks": [
+      {"name": "2 Claws", "attack_bonus": "+6", "damage": "1d6+1", "damage_type": "Slashing"},
+      {"name": "Electric Discharge", "attack_bonus": "+6 ranged touch", "damage": "2d6 electricity", "damage_type": "Electricity"}
+    ],
+    "special_attacks": [
+      "Electric Discharge (ranged touch, 2d6 electricity, 40 ft., DC 14 Reflex half)",
+      "Gravity Pulse (30 ft. cone, 2d4 bludgeoning, DC 14 Reflex half, usable every 2 rounds)"
+    ],
+    "special_qualities": [
+      "Construct Traits",
+      "Darkvision 60 ft.",
+      "DR 5/Adamantine",
+      "Immunity to Electricity",
+      "Low-Light Vision",
+      "Swarm Coordination (+1 morale per clockwork horror within 30 ft., max +5)"
+    ],
+    "saves": {"fort": 1, "ref": 3, "will": 1},
+    "abilities": {"str": 13, "dex": 15, "con": null, "int": 10, "wis": 12, "cha": 5},
+    "skills": {
+      "Listen": 5,
+      "Search": 4,
+      "Spot": 5
+    },
+    "feats": ["Combat Reflexes", "Weapon Focus (Claw)"],
+    "alignment": "Neutral",
+    "advancement": "5-8 HD (Medium)",
+    "dr": "5/Adamantine",
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 20,
+    "allowed_biomes": ["Underground", "Any_Ruin"],
+    "primary_biome": "Underground",
+    "ecology_notes": "Silver Horrors manage the conversion and refinement of metal ore into usable construction material. They coordinate Bronze Horrors and can generate localized gravity pulses to pin intruders.",
+    "lair_type": "Cave",
+    "expanded_metadata": {
+      "source_book": "Monster Manual II",
+      "source_page": null,
+      "is_expanded": true,
+      "tags": ["construct", "clockwork_horror", "electricity", "silver"]
+    }
+  },
+  {
+    "name": "Clockwork Horror, Electrum",
+    "cr": 6,
+    "size": "Medium",
+    "type": "Construct",
+    "subtype": null,
+    "hit_dice": "7d10+20",
+    "hp_avg": 58,
+    "initiative": 2,
+    "speed": {"land": 30, "fly": 60},
+    "armor_class": {"total": 22, "touch": 12, "flat_footed": 20, "components": "+10 natural, +2 Dex"},
+    "base_attack": 5,
+    "grapple": 8,
+    "attacks": [
+      {"name": "2 Claws", "attack_bonus": "+8", "damage": "1d8+3", "damage_type": "Slashing"},
+      {"name": "Electric Blast", "attack_bonus": "+7 ranged touch", "damage": "3d6 electricity", "damage_type": "Electricity"}
+    ],
+    "special_attacks": [
+      "Electric Blast (ranged touch, 3d6 electricity, 50 ft., DC 16 Reflex half)",
+      "Chain Lightning (60-ft line, 4d6 electricity, DC 16 Reflex half, arcs to secondary targets, usable every 3 rounds)"
+    ],
+    "special_qualities": [
+      "Construct Traits",
+      "Darkvision 60 ft.",
+      "DR 5/Adamantine",
+      "Immunity to Electricity",
+      "Low-Light Vision",
+      "Spell Resistance 15"
+    ],
+    "saves": {"fort": 2, "ref": 4, "will": 2},
+    "abilities": {"str": 17, "dex": 15, "con": null, "int": 12, "wis": 13, "cha": 7},
+    "skills": {
+      "Knowledge (engineering)": 8,
+      "Listen": 8,
+      "Search": 8,
+      "Spot": 8
+    },
+    "feats": ["Combat Reflexes", "Improved Initiative", "Power Attack", "Weapon Focus (Claw)"],
+    "alignment": "Neutral",
+    "advancement": "8-12 HD (Large)",
+    "dr": "5/Adamantine",
+    "sr": 15,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 10,
+    "allowed_biomes": ["Underground", "Any_Ruin"],
+    "primary_biome": "Underground",
+    "ecology_notes": "Electrum Horrors are mid-level commanders in the clockwork horror hierarchy, directing Bronze and Silver Horrors while also functioning as capable combatants.",
+    "lair_type": "Cave",
+    "expanded_metadata": {
+      "source_book": "Monster Manual II",
+      "source_page": null,
+      "is_expanded": true,
+      "tags": ["construct", "clockwork_horror", "electricity", "electrum"]
+    }
+  },
+  {
+    "name": "Clockwork Horror, Gold",
+    "cr": 8,
+    "size": "Medium",
+    "type": "Construct",
+    "subtype": null,
+    "hit_dice": "10d10+20",
+    "hp_avg": 75,
+    "initiative": 3,
+    "speed": {"land": 40, "fly": 80},
+    "armor_class": {"total": 25, "touch": 13, "flat_footed": 22, "components": "+12 natural, +3 Dex"},
+    "base_attack": 7,
+    "grapple": 11,
+    "attacks": [
+      {"name": "2 Claws", "attack_bonus": "+11/+6", "damage": "1d8+4", "damage_type": "Slashing"},
+      {"name": "Electric Lance", "attack_bonus": "+10 ranged touch", "damage": "4d6 electricity", "damage_type": "Electricity"}
+    ],
+    "special_attacks": [
+      "Electric Lance (ranged touch, 4d6 electricity, 60 ft., DC 18 Reflex half)",
+      "Chain Lightning Burst (30-ft radius, 5d6 electricity, DC 18 Reflex half, usable every 3 rounds)",
+      "Overclock (double attacks for 1 round, gains haste-like effect, usable 3/day)"
+    ],
+    "special_qualities": [
+      "Construct Traits",
+      "Darkvision 60 ft.",
+      "DR 10/Adamantine",
+      "Immunity to Electricity",
+      "Low-Light Vision",
+      "Spell Resistance 17"
+    ],
+    "saves": {"fort": 3, "ref": 6, "will": 3},
+    "abilities": {"str": 18, "dex": 17, "con": null, "int": 14, "wis": 14, "cha": 9},
+    "skills": {
+      "Knowledge (engineering)": 12,
+      "Knowledge (arcana)": 10,
+      "Listen": 12,
+      "Search": 12,
+      "Spot": 12
+    },
+    "feats": ["Combat Reflexes", "Improved Initiative", "Point Blank Shot", "Power Attack", "Weapon Focus (Claw)"],
+    "alignment": "Neutral",
+    "advancement": "11-16 HD (Large)",
+    "dr": "10/Adamantine",
+    "sr": 17,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 4,
+    "allowed_biomes": ["Underground", "Any_Ruin"],
+    "primary_biome": "Underground",
+    "ecology_notes": "Gold Horrors serve as master engineers and generals, overseeing entire hive complexes. One Gold Horror can coordinate thousands of lower-tier clockwork horrors simultaneously through mechanical signal pulses.",
+    "lair_type": "Cave",
+    "expanded_metadata": {
+      "source_book": "Monster Manual II",
+      "source_page": null,
+      "is_expanded": true,
+      "tags": ["construct", "clockwork_horror", "electricity", "gold"]
+    }
+  },
+  {
+    "name": "Clockwork Horror, Adamantine",
+    "cr": 10,
+    "size": "Large",
+    "type": "Construct",
+    "subtype": null,
+    "hit_dice": "13d10+30",
+    "hp_avg": 101,
+    "initiative": 1,
+    "speed": {"land": 40, "fly": 80},
+    "armor_class": {"total": 27, "touch": 10, "flat_footed": 26, "components": "+18 natural, -1 size, +1 Dex"},
+    "base_attack": 9,
+    "grapple": 19,
+    "attacks": [
+      {"name": "2 Claws", "attack_bonus": "+15/+10", "damage": "2d6+6", "damage_type": "Slashing"},
+      {"name": "Electric Cannon", "attack_bonus": "+10 ranged touch", "damage": "5d6 electricity", "damage_type": "Electricity"}
+    ],
+    "special_attacks": [
+      "Electric Cannon (ranged touch, 5d6 electricity, 80 ft., DC 21 Reflex half)",
+      "Mass Disruption (60-ft radius electricity burst, 6d6, DC 21 Reflex half, usable 1/day)",
+      "Overclock (as Gold Horror, usable 5/day)"
+    ],
+    "special_qualities": [
+      "Construct Traits",
+      "Darkvision 60 ft.",
+      "DR 15/Adamantine",
+      "Immunity to Electricity",
+      "Low-Light Vision",
+      "Spell Resistance 21"
+    ],
+    "saves": {"fort": 4, "ref": 5, "will": 4},
+    "abilities": {"str": 22, "dex": 13, "con": null, "int": 16, "wis": 16, "cha": 11},
+    "skills": {
+      "Knowledge (engineering)": 16,
+      "Knowledge (arcana)": 14,
+      "Listen": 16,
+      "Search": 16,
+      "Spot": 16
+    },
+    "feats": ["Cleave", "Combat Reflexes", "Improved Initiative", "Power Attack", "Point Blank Shot", "Weapon Focus (Claw)"],
+    "alignment": "Neutral",
+    "advancement": "14-20 HD (Large)",
+    "dr": "15/Adamantine",
+    "sr": 21,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 1,
+    "allowed_biomes": ["Underground", "Any_Ruin"],
+    "primary_biome": "Underground",
+    "ecology_notes": "The Adamantine Horror is the pinnacle of the clockwork horror hierarchy — a singular intelligence that serves as the living factory-mind for entire clockwork horror civilizations. Destroying one causes all subordinate horrors to enter a frenzied state for 1d4 hours.",
+    "lair_type": "Cave",
+    "expanded_metadata": {
+      "source_book": "Monster Manual II",
+      "source_page": null,
+      "is_expanded": true,
+      "tags": ["construct", "clockwork_horror", "electricity", "adamantine"]
+    }
+  },
+  {
+    "name": "Bone Golem",
+    "cr": 8,
+    "size": "Large",
+    "type": "Construct",
+    "subtype": null,
+    "hit_dice": "12d10+30",
+    "hp_avg": 96,
+    "initiative": 0,
+    "speed": {"land": 30},
+    "armor_class": {"total": 24, "touch": 9, "flat_footed": 24, "components": "+16 natural, -1 size"},
+    "base_attack": 9,
+    "grapple": 18,
+    "attacks": [
+      {"name": "2 Slams", "attack_bonus": "+14/+9", "damage": "2d6+6", "damage_type": "Bludgeoning"},
+      {"name": "Bone Shard Spray", "attack_bonus": "+8 ranged", "damage": "3d4 piercing", "damage_type": "Piercing"}
+    ],
+    "special_attacks": [
+      "Bone Shard Spray (30-ft cone, 3d4 piercing damage, DC 20 Reflex half, usable every 3 rounds)",
+      "Rend (if both slams hit: extra 2d6+9 damage)"
+    ],
+    "special_qualities": [
+      "Construct Traits",
+      "Darkvision 60 ft.",
+      "DR 10/Adamantine and Bludgeoning",
+      "Immunity to Magic (as per Clay Golem, immune to all spells except: shatter deals 2d6+1/caster level hp, transmute rock to mud slows for 2d6 rounds, stone to flesh removes immunity for 1 round)",
+      "Low-Light Vision"
+    ],
+    "saves": {"fort": 4, "ref": 4, "will": 4},
+    "abilities": {"str": 22, "dex": 11, "con": null, "int": null, "wis": 11, "cha": 1},
+    "skills": {},
+    "feats": ["Cleave", "Great Cleave", "Improved Bull Rush", "Power Attack"],
+    "alignment": "Neutral",
+    "advancement": "13-24 HD (Large)",
+    "dr": "10/Adamantine and Bludgeoning",
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 2,
+    "allowed_biomes": ["Any_Ruin", "Underground"],
+    "primary_biome": "Any_Ruin",
+    "ecology_notes": "Bone golems are constructed from the remains of hundreds of creatures, bound together with necromantic energy into a single chassis. Their shard spray attack can clear entire corridors of infantry.",
+    "lair_type": "Cave",
+    "expanded_metadata": {
+      "source_book": "Monster Manual II",
+      "source_page": null,
+      "is_expanded": true,
+      "tags": ["construct", "golem", "bone", "undead_adjacent"]
+    }
+  },
+  {
+    "name": "Flesh Golem, Reinforced",
+    "cr": 7,
+    "size": "Large",
+    "type": "Construct",
+    "subtype": null,
+    "hit_dice": "10d10+30",
+    "hp_avg": 85,
+    "initiative": -1,
+    "speed": {"land": 30},
+    "armor_class": {"total": 19, "touch": 8, "flat_footed": 19, "components": "+11 natural, -1 size, -1 Dex"},
+    "base_attack": 7,
+    "grapple": 17,
+    "attacks": [
+      {"name": "2 Slams", "attack_bonus": "+13/+8", "damage": "2d8+6", "damage_type": "Bludgeoning"}
+    ],
+    "special_attacks": [
+      "Rend (if both slams hit: extra 2d8+9 damage)",
+      "Berserk (at 30 hp or below: attacks nearest creature regardless of alignment, DC 20 Will to redirect)"
+    ],
+    "special_qualities": [
+      "Construct Traits",
+      "Darkvision 60 ft.",
+      "DR 5/Adamantine",
+      "Electricity Healing (electricity heals rather than damages: 1d6 hp per 3 points of damage that would have been dealt)",
+      "Immunity to Magic (immune to spells except: cold slows for 2d6 rounds, fire deals normal damage, lightning bolts heal as above)",
+      "Low-Light Vision"
+    ],
+    "saves": {"fort": 3, "ref": 2, "will": 3},
+    "abilities": {"str": 22, "dex": 9, "con": null, "int": null, "wis": 11, "cha": 1},
+    "skills": {},
+    "feats": ["Cleave", "Great Cleave", "Power Attack", "Toughness"],
+    "alignment": "Neutral",
+    "advancement": "11-16 HD (Large)",
+    "dr": "5/Adamantine",
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": ["Cold", "Fire"],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 2,
+    "allowed_biomes": ["Any_Ruin", "Underground"],
+    "primary_biome": "Any_Ruin",
+    "ecology_notes": "This variant Flesh Golem is reinforced with additional stitching and alchemically treated skin, granting greater resilience than the standard model. Its berserk tendency increases once damaged.",
+    "lair_type": "Cave",
+    "expanded_metadata": {
+      "source_book": "Monster Manual II",
+      "source_page": null,
+      "is_expanded": true,
+      "tags": ["construct", "golem", "flesh", "variant"]
+    }
+  }
+]
