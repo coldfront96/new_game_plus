@@ -33,14 +33,17 @@ from src.game.turn_controller import TurnController
 from src.rules_engine.actions import ActionTracker, ActionType
 from src.rules_engine.character_35e import Alignment, Character35e, Size
 from src.rules_engine.combat import AttackResolver, CombatResult
-from src.rules_engine.conditions import ConditionManager
+from src.rules_engine.conditions import Condition, ConditionManager
 from src.rules_engine.encounter import distribute_xp
 from src.rules_engine.encounter_extended import (
     EncounterBlueprint,
     EncounterDifficulty,
     build_encounter,
 )
+from src.rules_engine.magic import create_default_registry
 from src.rules_engine.progression import XPManager
+from src.rules_engine.spell_effects import SpellDispatcher, SpellResult
+from src.rules_engine.spellcasting import SpellResolver, get_key_ability
 from src.rules_engine.treasure import (
     TreasureHoard,
     generate_treasure_hoard,
@@ -244,6 +247,7 @@ def play_session(
 
     event_bus = EventBus()
     conditions = ConditionManager(event_bus=event_bus)
+    spell_registry = create_default_registry()
     log: List[str] = []
 
     def _log(msg: str) -> None:
@@ -278,6 +282,100 @@ def play_session(
         )
     _log("=" * 60)
 
+    def _try_cast_spell(attacker: Character35e, target: Character35e) -> bool:
+        """Attempt to cast the best available spell. Returns True if cast."""
+        if not attacker.is_caster:
+            return False
+        ssm = attacker.spell_slot_manager
+        if ssm is None or ssm.total_available() == 0:
+            return False
+
+        # Clerics heal a badly-wounded ally instead of attacking
+        targeting_ally = False
+        heal_target = target
+        if attacker.char_class == "Cleric":
+            attacker_side = attacker.metadata.get(SIDE_KEY, "party")
+            for c in combatants:
+                if (
+                    c is not attacker
+                    and is_alive(c)
+                    and c.metadata.get(SIDE_KEY) == attacker_side
+                    and current_hp(c) < c.hit_points // 2
+                ):
+                    heal_target = c
+                    targeting_ally = True
+                    break
+
+        spell_name = SpellDispatcher.best_offensive_spell(
+            attacker, spell_registry, targeting_ally=targeting_ally
+        )
+        if spell_name is None:
+            return False
+
+        # Compute save DC from the spell's level and caster's key ability
+        from src.rules_engine.magic import create_default_registry as _reg
+        spell = spell_registry.get(spell_name)
+        if spell is None:
+            return False
+
+        key_ability = get_key_ability(attacker.char_class) if attacker.is_caster else "intelligence"
+        ability_score = getattr(attacker, key_ability, 10)
+        ability_mod = (ability_score - 10) // 2
+        save_dc = 10 + spell.level + ability_mod
+
+        actual_target = heal_target if targeting_ally else target
+        result = SpellDispatcher.dispatch(
+            spell_name,
+            caster=attacker,
+            target=actual_target,
+            caster_level=attacker.caster_level,
+            registry=spell_registry,
+            rng=rng,
+            save_dc=save_dc,
+        )
+
+        # Expend the slot
+        ssm.expend(spell.level)
+
+        # Apply mechanical outcomes
+        if result.damage_dealt > 0:
+            remaining = apply_damage(actual_target, result.damage_dealt)
+            _log(f"    {result.narrative}  [{actual_target.name} HP: {remaining}]")
+            event_bus.publish("spell_resolved", {
+                "caster": attacker.char_id,
+                "target": actual_target.char_id,
+                "spell": spell_name,
+                "damage": result.damage_dealt,
+            })
+            if remaining <= 0:
+                _log(f"    {actual_target.name} is defeated!")
+                event_bus.publish("combatant_defeated", {
+                    "char_id": actual_target.char_id,
+                    "name": actual_target.name,
+                })
+        elif result.healing_done > 0:
+            _ensure_hp(actual_target)
+            new_hp = min(
+                current_hp(actual_target) + result.healing_done,
+                actual_target.hit_points,
+            )
+            actual_target.metadata[HP_KEY] = new_hp
+            _log(f"    {result.narrative}  [{actual_target.name} HP: {new_hp}]")
+        elif result.conditions_applied:
+            for cond_name in result.conditions_applied:
+                duration = int(result.raw_effect.get("duration_rounds", attacker.caster_level))
+                cond = Condition(
+                    name=cond_name,
+                    duration=duration,
+                    cannot_act=(cond_name.lower() in ("unconscious", "paralyzed", "stunned")),
+                )
+                conditions.apply_condition(actual_target, cond)
+            _log(f"    {result.narrative}")
+        else:
+            _log(f"    {result.narrative}")
+
+        return True
+
     def _attack_action(
         attacker: Character35e, tracker: ActionTracker
     ) -> bool:
@@ -289,6 +387,11 @@ def play_session(
         if not tracker.has_action(ActionType.STANDARD):
             return False
         tracker.consume_action(ActionType.STANDARD)
+
+        # Casters try to cast before falling back to weapon attacks
+        if _try_cast_spell(attacker, target):
+            return False
+
         dice_count, dice_sides = _weapon_damage_dice(attacker)
         result = AttackResolver.resolve_attack(
             attacker,
