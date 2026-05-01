@@ -1,0 +1,368 @@
+[
+  {
+    "name": "Clockwork Horror, Adamantine",
+    "cr": 10,
+    "size": "Small",
+    "type": "Construct",
+    "subtype": "",
+    "hit_dice": "15d10",
+    "hp_avg": 82,
+    "initiative": 3,
+    "speed": { "land": 30, "fly": 30 },
+    "armor_class": { "total": 25, "touch": 14, "flat_footed": 22, "components": "+11 natural, +3 Dex, +1 size" },
+    "base_attack": 11,
+    "grapple": 10,
+    "attacks": [
+      { "name": "2 Claws", "attack_bonus": "+14", "damage": "1d6+3", "damage_type": "Slashing" }
+    ],
+    "special_attacks": [
+      "Rend (2 claws, 2d6+4)",
+      "Adamantine Touch (bypass DR; +4d6 damage vs. metal constructs)",
+      "Energy Drain (touch, 1 negative level, DC 19 Will negates)"
+    ],
+    "special_qualities": [
+      "Construct traits",
+      "Damage Reduction 10/Adamantine",
+      "Darkvision 60 ft.",
+      "Immunity to Electricity",
+      "Immunity to Sonic",
+      "Low-Light Vision",
+      "Spell Resistance 21",
+      "Upgrade Construct (can harvest parts from destroyed constructs)"
+    ],
+    "saves": { "fort": 5, "ref": 8, "will": 7 },
+    "abilities": { "str": 16, "dex": 16, "con": 0, "int": 14, "wis": 14, "cha": 8 },
+    "skills": { "Disable Device": 17, "Hide": 21, "Listen": 17, "Move Silently": 21, "Search": 17, "Spot": 17 },
+    "feats": ["Dodge", "Flyby Attack", "Improved Initiative", "Mobility", "Spring Attack", "Weapon Finesse"],
+    "alignment": "Always Lawful Neutral",
+    "advancement": "16-20 HD (Small)",
+    "dr": "10/Adamantine",
+    "sr": 21,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 2,
+    "allowed_biomes": ["Underground", "Dungeon"],
+    "primary_biome": "Underground",
+    "ecology_notes": "The Adamantine Horror is the most feared Clockwork Horror; its energy drain devastates adventuring parties.",
+    "lair_type": "Mechanical Lair",
+    "expanded_metadata": {
+      "source_book": "Monster Manual II",
+      "source_page": 39,
+      "is_expanded": true,
+      "tags": ["construct", "clockwork", "mechanical", "underground"]
+    }
+  },
+  {
+    "name": "Clockwork Horror, Gold",
+    "cr": 8,
+    "size": "Small",
+    "type": "Construct",
+    "subtype": "",
+    "hit_dice": "12d10",
+    "hp_avg": 66,
+    "initiative": 3,
+    "speed": { "land": 30, "fly": 30 },
+    "armor_class": { "total": 23, "touch": 14, "flat_footed": 20, "components": "+9 natural, +3 Dex, +1 size" },
+    "base_attack": 9,
+    "grapple": 7,
+    "attacks": [
+      { "name": "2 Claws", "attack_bonus": "+11", "damage": "1d6+2", "damage_type": "Slashing" }
+    ],
+    "special_attacks": [
+      "Rend (2 claws, 2d6+3)",
+      "Lightning Bolt (as spell, CL 9, 9d6, DC 17 Reflex half, usable 3/day)",
+      "Overcharge (deal 6d6 lightning damage as free action 1/day to all within 10 ft.)"
+    ],
+    "special_qualities": [
+      "Construct traits",
+      "Damage Reduction 10/Magic",
+      "Darkvision 60 ft.",
+      "Immunity to Electricity",
+      "Low-Light Vision",
+      "Spell Resistance 18"
+    ],
+    "saves": { "fort": 4, "ref": 7, "will": 5 },
+    "abilities": { "str": 14, "dex": 16, "con": 0, "int": 12, "wis": 12, "cha": 6 },
+    "skills": { "Disable Device": 14, "Hide": 19, "Listen": 14, "Move Silently": 19, "Search": 14, "Spot": 14 },
+    "feats": ["Dodge", "Flyby Attack", "Improved Initiative", "Mobility", "Spring Attack", "Weapon Finesse"],
+    "alignment": "Always Lawful Neutral",
+    "advancement": "13-16 HD (Small)",
+    "dr": "10/Magic",
+    "sr": 18,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 3,
+    "allowed_biomes": ["Underground", "Dungeon"],
+    "primary_biome": "Underground",
+    "ecology_notes": "Gold Clockwork Horrors serve as commanders in Clockwork Horror swarms; their overcharge ability can devastate clustered foes.",
+    "lair_type": "Mechanical Lair",
+    "expanded_metadata": {
+      "source_book": "Monster Manual II",
+      "source_page": 41,
+      "is_expanded": true,
+      "tags": ["construct", "clockwork", "lightning", "mechanical"]
+    }
+  },
+  {
+    "name": "Clockwork Horror, Electrum",
+    "cr": 6,
+    "size": "Small",
+    "type": "Construct",
+    "subtype": "",
+    "hit_dice": "9d10",
+    "hp_avg": 49,
+    "initiative": 3,
+    "speed": { "land": 30, "fly": 30 },
+    "armor_class": { "total": 20, "touch": 14, "flat_footed": 17, "components": "+6 natural, +3 Dex, +1 size" },
+    "base_attack": 6,
+    "grapple": 3,
+    "attacks": [
+      { "name": "2 Claws", "attack_bonus": "+8", "damage": "1d4+1", "damage_type": "Slashing" }
+    ],
+    "special_attacks": [
+      "Rend (2 claws, 2d4+1)",
+      "Shocking Grasp (as spell, CL 6, 6d6 electricity, touch attack)"
+    ],
+    "special_qualities": [
+      "Construct traits",
+      "Damage Reduction 5/Magic",
+      "Darkvision 60 ft.",
+      "Immunity to Electricity",
+      "Low-Light Vision"
+    ],
+    "saves": { "fort": 3, "ref": 6, "will": 4 },
+    "abilities": { "str": 12, "dex": 16, "con": 0, "int": 10, "wis": 10, "cha": 4 },
+    "skills": { "Disable Device": 11, "Hide": 17, "Listen": 11, "Move Silently": 17, "Search": 11, "Spot": 11 },
+    "feats": ["Dodge", "Flyby Attack", "Improved Initiative", "Mobility", "Weapon Finesse"],
+    "alignment": "Always Lawful Neutral",
+    "advancement": "10-13 HD (Small)",
+    "dr": "5/Magic",
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 5,
+    "allowed_biomes": ["Underground", "Dungeon"],
+    "primary_biome": "Underground",
+    "ecology_notes": "Electrum Clockwork Horrors handle physical security and electrical defence.",
+    "lair_type": "Mechanical Lair",
+    "expanded_metadata": {
+      "source_book": "Monster Manual II",
+      "source_page": 42,
+      "is_expanded": true,
+      "tags": ["construct", "clockwork", "lightning", "mechanical"]
+    }
+  },
+  {
+    "name": "Clockwork Horror, Silver",
+    "cr": 4,
+    "size": "Small",
+    "type": "Construct",
+    "subtype": "",
+    "hit_dice": "6d10",
+    "hp_avg": 33,
+    "initiative": 3,
+    "speed": { "land": 30, "fly": 30 },
+    "armor_class": { "total": 17, "touch": 14, "flat_footed": 14, "components": "+3 natural, +3 Dex, +1 size" },
+    "base_attack": 4,
+    "grapple": 0,
+    "attacks": [
+      { "name": "2 Claws", "attack_bonus": "+6", "damage": "1d4", "damage_type": "Slashing" }
+    ],
+    "special_attacks": [
+      "Rend (2 claws, 1d4+2)",
+      "Acid Spray (30-ft. cone, 4d6 acid, DC 14 Reflex half, 1/day)"
+    ],
+    "special_qualities": [
+      "Construct traits",
+      "Darkvision 60 ft.",
+      "Immunity to Electricity",
+      "Low-Light Vision"
+    ],
+    "saves": { "fort": 2, "ref": 5, "will": 2 },
+    "abilities": { "str": 10, "dex": 16, "con": 0, "int": 8, "wis": 8, "cha": 4 },
+    "skills": { "Disable Device": 8, "Hide": 15, "Listen": 8, "Move Silently": 15, "Search": 8, "Spot": 8 },
+    "feats": ["Dodge", "Improved Initiative", "Weapon Finesse"],
+    "alignment": "Always Lawful Neutral",
+    "advancement": "7-10 HD (Small)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 10,
+    "allowed_biomes": ["Underground", "Dungeon"],
+    "primary_biome": "Underground",
+    "ecology_notes": "Silver Clockwork Horrors are mid-rank soldiers; their acid spray makes them dangerous in confined tunnels.",
+    "lair_type": "Mechanical Lair",
+    "expanded_metadata": {
+      "source_book": "Monster Manual II",
+      "source_page": 43,
+      "is_expanded": true,
+      "tags": ["construct", "clockwork", "acid", "mechanical"]
+    }
+  },
+  {
+    "name": "Clockwork Horror, Bronze",
+    "cr": 2,
+    "size": "Small",
+    "type": "Construct",
+    "subtype": "",
+    "hit_dice": "3d10",
+    "hp_avg": 16,
+    "initiative": 2,
+    "speed": { "land": 30, "fly": 20 },
+    "armor_class": { "total": 15, "touch": 13, "flat_footed": 13, "components": "+2 natural, +2 Dex, +1 size" },
+    "base_attack": 2,
+    "grapple": -3,
+    "attacks": [
+      { "name": "2 Claws", "attack_bonus": "+4", "damage": "1d3", "damage_type": "Slashing" }
+    ],
+    "special_attacks": [
+      "Rend (2 claws, 1d3+2)"
+    ],
+    "special_qualities": [
+      "Construct traits",
+      "Darkvision 60 ft.",
+      "Immunity to Electricity",
+      "Low-Light Vision"
+    ],
+    "saves": { "fort": 1, "ref": 3, "will": 1 },
+    "abilities": { "str": 10, "dex": 14, "con": 0, "int": 6, "wis": 6, "cha": 4 },
+    "skills": { "Hide": 12, "Listen": 4, "Move Silently": 12, "Spot": 4 },
+    "feats": ["Improved Initiative"],
+    "alignment": "Always Lawful Neutral",
+    "advancement": "4-6 HD (Small)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 20,
+    "allowed_biomes": ["Underground", "Dungeon"],
+    "primary_biome": "Underground",
+    "ecology_notes": "Bronze Clockwork Horrors are the lowest caste; they scout and harvest resources for higher caste horrors.",
+    "lair_type": "Mechanical Lair",
+    "expanded_metadata": {
+      "source_book": "Monster Manual II",
+      "source_page": 44,
+      "is_expanded": true,
+      "tags": ["construct", "clockwork", "mechanical"]
+    }
+  },
+  {
+    "name": "Bone Golem",
+    "cr": 8,
+    "size": "Large",
+    "type": "Construct",
+    "subtype": "",
+    "hit_dice": "12d10+30",
+    "hp_avg": 96,
+    "initiative": 0,
+    "speed": { "land": 30 },
+    "armor_class": { "total": 23, "touch": 9, "flat_footed": 23, "components": "+14 natural, -1 size" },
+    "base_attack": 9,
+    "grapple": 18,
+    "attacks": [
+      { "name": "2 Slams", "attack_bonus": "+13", "damage": "2d6+5", "damage_type": "Bludgeoning" }
+    ],
+    "special_attacks": [
+      "Rend Bone (if both slams hit one target, additional 2d6+7 damage and DC 18 Fort or 1 limb disabled)",
+      "Bone Shards (10-ft. burst, 3d6 piercing, DC 18 Reflex half, 1/day)"
+    ],
+    "special_qualities": [
+      "Construct traits",
+      "Damage Reduction 10/Adamantine",
+      "Darkvision 60 ft.",
+      "Immunity to Magic (as stone golem)",
+      "Low-Light Vision"
+    ],
+    "saves": { "fort": 4, "ref": 4, "will": 4 },
+    "abilities": { "str": 20, "dex": 10, "con": 0, "int": 0, "wis": 11, "cha": 1 },
+    "skills": {},
+    "feats": [],
+    "alignment": "Always Neutral",
+    "advancement": "13-16 HD (Large); 17-20 HD (Huge)",
+    "dr": "10/Adamantine",
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 1,
+    "allowed_biomes": ["Dungeon", "Necropolis"],
+    "primary_biome": "Dungeon",
+    "ecology_notes": "Bone Golems are assembled from hundreds of humanoid skeletons; their very forms exude dread.",
+    "lair_type": "Crypt",
+    "expanded_metadata": {
+      "source_book": "Monster Manual II",
+      "source_page": 117,
+      "is_expanded": true,
+      "tags": ["construct", "golem", "undead_theme", "necromancy"]
+    }
+  },
+  {
+    "name": "Flesh Golem (Advanced)",
+    "cr": 7,
+    "size": "Large",
+    "type": "Construct",
+    "subtype": "",
+    "hit_dice": "10d10+30",
+    "hp_avg": 85,
+    "initiative": 0,
+    "speed": { "land": 30 },
+    "armor_class": { "total": 20, "touch": 9, "flat_footed": 20, "components": "+11 natural, -1 size" },
+    "base_attack": 7,
+    "grapple": 17,
+    "attacks": [
+      { "name": "2 Slams", "attack_bonus": "+11", "damage": "2d8+6", "damage_type": "Bludgeoning" }
+    ],
+    "special_attacks": [
+      "Berserk (on damaged: DC 15 CL check or rampage)"
+    ],
+    "special_qualities": [
+      "Construct traits",
+      "Damage Reduction 5/Adamantine",
+      "Darkvision 60 ft.",
+      "Immunity to Magic (slowed by fire/cold, healed by lightning)",
+      "Low-Light Vision"
+    ],
+    "saves": { "fort": 3, "ref": 3, "will": 3 },
+    "abilities": { "str": 22, "dex": 10, "con": 0, "int": 0, "wis": 11, "cha": 1 },
+    "skills": {},
+    "feats": [],
+    "alignment": "Always Neutral",
+    "advancement": "11-14 HD (Large)",
+    "dr": "5/Adamantine",
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 1,
+    "allowed_biomes": ["Dungeon", "Tower"],
+    "primary_biome": "Dungeon",
+    "ecology_notes": "An advanced Flesh Golem stitched from particularly powerful corpses; more durable than its standard counterpart.",
+    "lair_type": "Laboratory",
+    "expanded_metadata": {
+      "source_book": "Monster Manual II",
+      "source_page": 120,
+      "is_expanded": true,
+      "tags": ["construct", "golem", "flesh", "necromancy"]
+    }
+  }
+]

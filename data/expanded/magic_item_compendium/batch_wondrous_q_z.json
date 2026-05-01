@@ -1,0 +1,169 @@
+[
+  {
+    "name": "Ring of Spell Storing",
+    "category": "wondrous",
+    "item_type": "wondrous",
+    "slot": "ring",
+    "caster_level": 9,
+    "price_gp": 50000,
+    "weight_lb": 0.1,
+    "aura_school": "evocation",
+    "bonuses": [],
+    "description": "This ring stores up to 5 levels of spells imbued into it. Any caster can store spells; any wearer can activate them. The ring can hold up to three spells totalling no more than 5 spell levels (e.g., three 1st-level spells, or one 3rd and one 2nd).",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": 120,
+      "is_expanded": true,
+      "tags": ["wondrous", "ring", "spellcasting", "storage"]
+    }
+  },
+  {
+    "name": "Ring of Evasion",
+    "category": "wondrous",
+    "item_type": "wondrous",
+    "slot": "ring",
+    "caster_level": 7,
+    "price_gp": 25000,
+    "weight_lb": 0.1,
+    "aura_school": "transmutation",
+    "bonuses": [],
+    "description": "This ring grants the wearer the evasion ability. If the wearer already has evasion, she instead gains improved evasion.",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": 121,
+      "is_expanded": true,
+      "tags": ["wondrous", "ring", "evasion", "reflex"]
+    }
+  },
+  {
+    "name": "Ring of Regeneration",
+    "category": "wondrous",
+    "item_type": "wondrous",
+    "slot": "ring",
+    "caster_level": 15,
+    "price_gp": 90000,
+    "weight_lb": 0.1,
+    "aura_school": "conjuration",
+    "bonuses": [],
+    "description": "This ring grants the wearer regeneration 1 (heals 1 hp/round; fire and acid deal normal damage). Lost limbs regrow in 1d6×10 minutes.",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": 122,
+      "is_expanded": true,
+      "tags": ["wondrous", "ring", "regeneration", "healing"]
+    }
+  },
+  {
+    "name": "Robe of the Archmagi",
+    "category": "wondrous",
+    "item_type": "wondrous",
+    "slot": "body",
+    "caster_level": 14,
+    "price_gp": 75000,
+    "weight_lb": 1.0,
+    "aura_school": "conjuration",
+    "bonuses": [
+      { "bonus_type": "armor", "stat": "armor_class", "value": 5 }
+    ],
+    "description": "This flowing robe (white for good, gray for neutral, black for evil) grants: +5 armor bonus to AC, spell resistance 18, +4 to saving throws against spells and spell-like abilities.",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": 125,
+      "is_expanded": true,
+      "tags": ["wondrous", "body", "arcane", "wizard", "spell_resistance"]
+    }
+  },
+  {
+    "name": "Robe of Eyes",
+    "category": "wondrous",
+    "item_type": "wondrous",
+    "slot": "body",
+    "caster_level": 11,
+    "price_gp": 120000,
+    "weight_lb": 1.0,
+    "aura_school": "divination",
+    "bonuses": [],
+    "description": "This robe is covered in magical eyes granting 360-degree vision. The wearer gains all-around vision, Spot +10, darkvision 120 ft., and can see invisible and ethereal creatures. Cannot be flanked. Blinded in magical darkness.",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": 126,
+      "is_expanded": true,
+      "tags": ["wondrous", "body", "divination", "perception", "all_around_vision"]
+    }
+  },
+  {
+    "name": "Scarab of Protection",
+    "category": "wondrous",
+    "item_type": "wondrous",
+    "slot": "neck",
+    "caster_level": 18,
+    "price_gp": 38000,
+    "weight_lb": 0.1,
+    "aura_school": "abjuration",
+    "bonuses": [],
+    "description": "This golden scarab protects its wearer from harmful magic. It provides spell resistance 20. When a death effect is cast on the wearer, the scarab absorbs it (it can absorb 12 charges; when depleted, it crumbles to dust).",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": 130,
+      "is_expanded": true,
+      "tags": ["wondrous", "neck", "abjuration", "death_ward", "spell_resistance"]
+    }
+  },
+  {
+    "name": "Scarab of Golembane",
+    "category": "wondrous",
+    "item_type": "wondrous",
+    "slot": "neck",
+    "caster_level": 8,
+    "price_gp": 2500,
+    "weight_lb": 0.1,
+    "aura_school": "divination",
+    "bonuses": [],
+    "description": "This scarab amulet grants the wearer the ability to detect golems and constructs within 60 feet (DC 15 Spot to notice). The wearer's weapons bypass the damage reduction of golems and constructs while the scarab is worn.",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": 131,
+      "is_expanded": true,
+      "tags": ["wondrous", "neck", "anti_golem", "construct"]
+    }
+  },
+  {
+    "name": "Vestments of Faith",
+    "category": "wondrous",
+      "item_type": "wondrous",
+    "slot": "body",
+    "caster_level": 7,
+    "price_gp": 76000,
+    "weight_lb": 1.0,
+    "aura_school": "transmutation",
+    "bonuses": [],
+    "description": "These sacred vestments grant a cleric or favoured soul +5 bonus on Diplomacy, +2 enhancement bonus to Wisdom, and increase effective cleric level by 1 for the purposes of turning/rebuking undead.",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": 133,
+      "is_expanded": true,
+      "tags": ["wondrous", "body", "divine", "cleric"]
+    }
+  },
+  {
+    "name": "Vestments of the Avatar",
+    "category": "wondrous",
+    "item_type": "wondrous",
+    "slot": "body",
+    "caster_level": 15,
+    "price_gp": 250000,
+    "weight_lb": 1.0,
+    "aura_school": "transmutation",
+    "bonuses": [
+      { "bonus_type": "sacred", "stat": "armor_class", "value": 5 },
+      { "bonus_type": "sacred", "stat": "saving_throws", "value": 5 }
+    ],
+    "description": "These divine vestments mark the wearer as the chosen champion of a god. Grants +5 sacred bonus to AC and saves, darkvision 60 ft., a +4 sacred bonus to Strength and Constitution, and use of divine power 1/day.",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": 134,
+      "is_expanded": true,
+      "tags": ["wondrous", "body", "divine", "sacred", "champion"]
+    }
+  }
+]

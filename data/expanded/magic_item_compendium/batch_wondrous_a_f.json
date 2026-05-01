@@ -1,0 +1,192 @@
+[
+  {
+    "name": "Amulet of Mighty Fists +1",
+    "category": "wondrous",
+    "item_type": "wondrous",
+    "slot": "neck",
+    "caster_level": 5,
+    "price_gp": 6000,
+    "weight_lb": 0.1,
+    "aura_school": "transmutation",
+    "bonuses": [
+      { "bonus_type": "enhancement", "stat": "unarmed_attack_and_damage", "value": 1 }
+    ],
+    "description": "This amulet grants a +1 enhancement bonus on attack rolls and damage rolls with unarmed strikes and natural weapons.",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": 71,
+      "is_expanded": true,
+      "tags": ["wondrous", "unarmed", "monk", "neck"]
+    }
+  },
+  {
+    "name": "Amulet of Mighty Fists +2",
+    "category": "wondrous",
+    "item_type": "wondrous",
+    "slot": "neck",
+    "caster_level": 10,
+    "price_gp": 24000,
+    "weight_lb": 0.1,
+    "aura_school": "transmutation",
+    "bonuses": [
+      { "bonus_type": "enhancement", "stat": "unarmed_attack_and_damage", "value": 2 }
+    ],
+    "description": "This amulet grants a +2 enhancement bonus on attack rolls and damage rolls with unarmed strikes and natural weapons.",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": 71,
+      "is_expanded": true,
+      "tags": ["wondrous", "unarmed", "monk", "neck"]
+    }
+  },
+  {
+    "name": "Amulet of Mighty Fists +3",
+    "category": "wondrous",
+    "item_type": "wondrous",
+    "slot": "neck",
+    "caster_level": 15,
+    "price_gp": 54000,
+    "weight_lb": 0.1,
+    "aura_school": "transmutation",
+    "bonuses": [
+      { "bonus_type": "enhancement", "stat": "unarmed_attack_and_damage", "value": 3 }
+    ],
+    "description": "This amulet grants a +3 enhancement bonus on attack rolls and damage rolls with unarmed strikes and natural weapons.",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": 71,
+      "is_expanded": true,
+      "tags": ["wondrous", "unarmed", "monk", "neck"]
+    }
+  },
+  {
+    "name": "Belt of Battle",
+    "category": "wondrous",
+    "item_type": "wondrous",
+    "slot": "belt",
+    "caster_level": 5,
+    "price_gp": 12000,
+    "weight_lb": 0.5,
+    "aura_school": "transmutation",
+    "bonuses": [],
+    "description": "This wide belt grants extra actions in combat. As a free action, spend charges (3 charges max, refreshes daily): 1 charge — gain 1 swift action; 2 charges — gain 1 move action; 3 charges — gain 1 full-round action.",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": 75,
+      "is_expanded": true,
+      "tags": ["wondrous", "belt", "combat", "action_economy"]
+    }
+  },
+  {
+    "name": "Belt of Magnificence +4",
+    "category": "wondrous",
+    "item_type": "wondrous",
+    "slot": "belt",
+    "caster_level": 10,
+    "price_gp": 64000,
+    "weight_lb": 1.0,
+    "aura_school": "transmutation",
+    "bonuses": [
+      { "bonus_type": "enhancement", "stat": "all_ability_scores", "value": 4 }
+    ],
+    "description": "This ornate belt grants a +4 enhancement bonus to all six ability scores.",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": 76,
+      "is_expanded": true,
+      "tags": ["wondrous", "belt", "ability_scores"]
+    }
+  },
+  {
+    "name": "Boots of Temporal Acceleration",
+    "category": "wondrous",
+    "item_type": "wondrous",
+    "slot": "feet",
+    "caster_level": 11,
+    "price_gp": 43200,
+    "weight_lb": 1.0,
+    "aura_school": "transmutation",
+    "bonuses": [],
+    "description": "These boots allow the wearer to experience a brief moment of accelerated time. Once per day as a free action, the wearer can spend a full-round action to gain an additional standard action that may be used immediately.",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": 78,
+      "is_expanded": true,
+      "tags": ["wondrous", "feet", "time", "action_economy"]
+    }
+  },
+  {
+    "name": "Boots of the Winterlands",
+    "category": "wondrous",
+    "item_type": "wondrous",
+    "slot": "feet",
+    "caster_level": 5,
+    "price_gp": 2500,
+    "weight_lb": 1.0,
+    "aura_school": "transmutation",
+    "bonuses": [],
+    "description": "These fur-lined boots protect the wearer from cold weather environments. The wearer can move at full speed across ice or snow, is protected from temperatures as low as -50°F, and gains endure elements (cold only) as a continuous effect.",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": 79,
+      "is_expanded": true,
+      "tags": ["wondrous", "feet", "cold", "environment"]
+    }
+  },
+  {
+    "name": "Cloak of the Salamander",
+    "category": "wondrous",
+    "item_type": "wondrous",
+    "slot": "shoulders",
+    "caster_level": 11,
+    "price_gp": 40000,
+    "weight_lb": 0.5,
+    "aura_school": "transmutation",
+    "bonuses": [
+      { "bonus_type": "resistance", "stat": "fire", "value": 10 }
+    ],
+    "description": "This fiery orange cloak grants the wearer fire resistance 10 and the ability to withstand even greater heat. Once per day the wearer can breathe a 30-foot cone of fire (5d6 damage, DC 16 Reflex half).",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": 82,
+      "is_expanded": true,
+      "tags": ["wondrous", "shoulders", "fire", "resistance"]
+    }
+  },
+  {
+    "name": "Flask of Curses",
+    "category": "wondrous",
+    "item_type": "wondrous",
+    "slot": "none",
+    "caster_level": 7,
+    "price_gp": 1500,
+    "weight_lb": 0.5,
+    "aura_school": "transmutation",
+    "bonuses": [],
+    "description": "This stoppered flask releases a random curse when opened. Upon opening, roll d10: 1-2 Bestow Curse on opener, 3-4 Poison gas (DC 14 Fort, 1d4 Con/1d4 Con), 5-6 Shrink to Small size (1 hour), 7-8 Temporary blindness (1d4 rounds), 9-10 Permanent unluck (–2 on all saves for 1 day).",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": 85,
+      "is_expanded": true,
+      "tags": ["wondrous", "flask", "curse", "trap"]
+    }
+  },
+  {
+    "name": "Flask of Endless Water",
+    "category": "wondrous",
+    "item_type": "wondrous",
+    "slot": "none",
+    "caster_level": 3,
+    "price_gp": 1000,
+    "weight_lb": 0.5,
+    "aura_school": "conjuration",
+    "bonuses": [],
+    "description": "This flask contains an extradimensional reservoir of fresh water. It produces 2 gallons of clean drinking water per minute when unstoppered, refilling magically. The water can be used for drinking, cooking, or minor utility purposes.",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": 85,
+      "is_expanded": true,
+      "tags": ["wondrous", "flask", "utility", "water"]
+    }
+  }
+]

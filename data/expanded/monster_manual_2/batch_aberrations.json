@@ -1,0 +1,277 @@
+[
+  {
+    "name": "Elder Aboleth",
+    "cr": 12,
+    "size": "Huge",
+    "type": "Aberration",
+    "subtype": "Aquatic",
+    "hit_dice": "16d8+112",
+    "hp_avg": 184,
+    "initiative": 1,
+    "speed": { "land": 10, "swim": 60 },
+    "armor_class": { "total": 18, "touch": 9, "flat_footed": 17, "components": "+11 natural, -2 size" },
+    "base_attack": 12,
+    "grapple": 28,
+    "attacks": [
+      { "name": "4 Tentacles", "attack_bonus": "+18", "damage": "2d6+8", "damage_type": "Bludgeoning" }
+    ],
+    "special_attacks": [
+      "Enslave (DC 21 Will, range 30 ft., permanent)",
+      "Psionics (CL 16): Hypnotic Pattern 3/day, Illusory Wall 3/day, Mirage Arcana 3/day, Persistent Image 3/day, Programmed Image 3/day, Project Image 3/day, Veil 3/day",
+      "Slime (DC 23 Fort or skin becomes transparent, vulnerable to sunlight)",
+      "Mucus Cloud (DC 23 Fort or breathe water instead of air)"
+    ],
+    "special_qualities": [
+      "Amphibious",
+      "Darkvision 60 ft.",
+      "Ancient Memory (knows all languages ever spoken in its presence)",
+      "Mental Link (can share senses with enslaved creatures)",
+      "Spell Resistance 22"
+    ],
+    "saves": { "fort": 12, "ref": 6, "will": 15 },
+    "abilities": { "str": 26, "dex": 12, "con": 24, "int": 22, "wis": 17, "cha": 20 },
+    "skills": {
+      "Bluff": 24, "Concentration": 26, "Diplomacy": 9, "Intimidate": 24,
+      "Knowledge (history)": 25, "Knowledge (the planes)": 25, "Listen": 22, "Search": 25,
+      "Sense Motive": 22, "Spot": 22, "Swim": 35
+    },
+    "feats": ["Ability Focus (enslave)", "Alertness", "Combat Casting", "Improved Natural Attack (tentacle)",
+              "Iron Will", "Multiattack"],
+    "alignment": "Always Lawful Evil",
+    "advancement": "17-24 HD (Huge)",
+    "dr": null,
+    "sr": 22,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 1,
+    "allowed_biomes": ["Aquatic_Deep", "Underground_Lake"],
+    "primary_biome": "Aquatic_Deep",
+    "ecology_notes": "Elder Aboleths are ancient masterminds who have enslaved entire underwater civilisations.",
+    "lair_type": "Underwater Cave",
+    "expanded_metadata": {
+      "source_book": "Monster Manual II",
+      "source_page": 8,
+      "is_expanded": true,
+      "tags": ["aberration", "aquatic", "psionic", "mastermind"]
+    }
+  },
+  {
+    "name": "Aboleth Mage",
+    "cr": 14,
+    "size": "Huge",
+    "type": "Aberration",
+    "subtype": "Aquatic",
+    "hit_dice": "16d8+112",
+    "hp_avg": 184,
+    "initiative": 2,
+    "speed": { "land": 10, "swim": 60 },
+    "armor_class": { "total": 19, "touch": 9, "flat_footed": 18, "components": "+11 natural, -2 size, +1 Dex" },
+    "base_attack": 12,
+    "grapple": 28,
+    "attacks": [
+      { "name": "4 Tentacles", "attack_bonus": "+18", "damage": "2d6+8", "damage_type": "Bludgeoning" }
+    ],
+    "special_attacks": [
+      "Enslave (DC 22 Will, range 30 ft., permanent)",
+      "Psionics (CL 16)",
+      "Slime (DC 24 Fort or skin becomes transparent)",
+      "Mucus Cloud (DC 24 Fort or breathe water instead of air)",
+      "Spells as wizard (CL 10): 0-level 4/day, 1st 5/day, 2nd 5/day, 3rd 4/day, 4th 4/day, 5th 2/day"
+    ],
+    "special_qualities": [
+      "Amphibious",
+      "Darkvision 60 ft.",
+      "Ancient Memory",
+      "Mental Link",
+      "Spell Resistance 24"
+    ],
+    "saves": { "fort": 12, "ref": 7, "will": 16 },
+    "abilities": { "str": 26, "dex": 14, "con": 24, "int": 26, "wis": 18, "cha": 22 },
+    "skills": {
+      "Bluff": 25, "Concentration": 28, "Diplomacy": 10, "Intimidate": 25,
+      "Knowledge (arcana)": 27, "Knowledge (history)": 27, "Listen": 23, "Search": 27,
+      "Sense Motive": 23, "Spellcraft": 29, "Spot": 23, "Swim": 35
+    },
+    "feats": ["Ability Focus (enslave)", "Alertness", "Combat Casting", "Empower Spell",
+              "Improved Initiative", "Iron Will", "Maximize Spell", "Multiattack"],
+    "alignment": "Always Lawful Evil",
+    "advancement": "17-24 HD (Huge)",
+    "dr": null,
+    "sr": 24,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 1,
+    "allowed_biomes": ["Aquatic_Deep", "Underground_Lake"],
+    "primary_biome": "Aquatic_Deep",
+    "ecology_notes": "Aboleth Mages combine innate psionics with arcane mastery, making them among the most dangerous beings in the deep.",
+    "lair_type": "Underwater Cave",
+    "expanded_metadata": {
+      "source_book": "Monster Manual II",
+      "source_page": 10,
+      "is_expanded": true,
+      "tags": ["aberration", "aquatic", "psionic", "arcane", "spellcaster"]
+    }
+  },
+  {
+    "name": "Neogi",
+    "cr": 3,
+    "size": "Small",
+    "type": "Aberration",
+    "subtype": "",
+    "hit_dice": "4d8+4",
+    "hp_avg": 22,
+    "initiative": 2,
+    "speed": { "land": 30, "climb": 20 },
+    "armor_class": { "total": 16, "touch": 13, "flat_footed": 14, "components": "+3 natural, +2 Dex, +1 size" },
+    "base_attack": 3,
+    "grapple": -1,
+    "attacks": [
+      { "name": "Bite", "attack_bonus": "+6", "damage": "1d4", "damage_type": "Piercing" },
+      { "name": "Sting", "attack_bonus": "+4", "damage": "1d4", "damage_type": "Piercing" }
+    ],
+    "special_attacks": [
+      "Bite Poison (DC 14 Fort, 1d6 Str/1d6 Str)",
+      "Sting Poison (DC 14 Fort, Enslave: failed save — victim under Neogi telepathic domination for 1d6 days)",
+      "Psionics (CL 4): Charm Person 3/day, Daze Monster 3/day"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Telepathy 100 ft.",
+      "Immunity to Fear"
+    ],
+    "saves": { "fort": 4, "ref": 3, "will": 6 },
+    "abilities": { "str": 8, "dex": 14, "con": 12, "int": 16, "wis": 13, "cha": 15 },
+    "skills": { "Bluff": 9, "Climb": 13, "Intimidate": 9, "Listen": 8, "Search": 10, "Spot": 8 },
+    "feats": ["Ability Focus (sting poison)", "Weapon Finesse"],
+    "alignment": "Always Lawful Evil",
+    "advancement": "5-8 HD (Small); 9-12 HD (Medium)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 20,
+    "allowed_biomes": ["Underground", "Warm_Plains"],
+    "primary_biome": "Underground",
+    "ecology_notes": "Neogi are spider-like slavers; they sting and enslave other creatures through poisonous psychic venom.",
+    "lair_type": "Web-filled Vault",
+    "expanded_metadata": {
+      "source_book": "Monster Manual II",
+      "source_page": 155,
+      "is_expanded": true,
+      "tags": ["aberration", "psionic", "slaver", "poison"]
+    }
+  },
+  {
+    "name": "Neogi Great Old Master",
+    "cr": 7,
+    "size": "Large",
+    "type": "Aberration",
+    "subtype": "",
+    "hit_dice": "10d8+30",
+    "hp_avg": 75,
+    "initiative": 1,
+    "speed": { "land": 20, "climb": 10 },
+    "armor_class": { "total": 18, "touch": 10, "flat_footed": 17, "components": "+9 natural, -1 size" },
+    "base_attack": 7,
+    "grapple": 14,
+    "attacks": [
+      { "name": "Bite", "attack_bonus": "+10", "damage": "2d4+5", "damage_type": "Piercing" }
+    ],
+    "special_attacks": [
+      "Bite Poison (DC 18 Fort, 2d6 Str/2d6 Str)",
+      "Psionics (CL 10): Charm Monster 3/day, Dominate Person 3/day, Modify Memory 1/day",
+      "Spawn Neogi (dying Great Old Master spawns 1d6+2 juvenile Neogi)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Telepathy 200 ft.",
+      "Immunity to Fear"
+    ],
+    "saves": { "fort": 6, "ref": 4, "will": 10 },
+    "abilities": { "str": 20, "dex": 12, "con": 17, "int": 20, "wis": 15, "cha": 18 },
+    "skills": { "Bluff": 17, "Climb": 15, "Intimidate": 17, "Listen": 15, "Search": 18, "Sense Motive": 15, "Spot": 15 },
+    "feats": ["Ability Focus (psionics)", "Combat Casting", "Iron Will", "Maximize Spell-Like Ability", "Weapon Focus (bite)"],
+    "alignment": "Always Lawful Evil",
+    "advancement": "11-15 HD (Large)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 2,
+    "allowed_biomes": ["Underground"],
+    "primary_biome": "Underground",
+    "ecology_notes": "The Great Old Master is a bloated Neogi patriarch that births new Neogi from its dying body.",
+    "lair_type": "Web-filled Vault",
+    "expanded_metadata": {
+      "source_book": "Monster Manual II",
+      "source_page": 157,
+      "is_expanded": true,
+      "tags": ["aberration", "psionic", "slaver"]
+    }
+  },
+  {
+    "name": "Destrachan",
+    "cr": 8,
+    "size": "Large",
+    "type": "Aberration",
+    "subtype": "",
+    "hit_dice": "8d8+40",
+    "hp_avg": 76,
+    "initiative": 5,
+    "speed": { "land": 30 },
+    "armor_class": { "total": 18, "touch": 11, "flat_footed": 16, "components": "+9 natural, -1 size, +1 Dex" },
+    "base_attack": 6,
+    "grapple": 14,
+    "attacks": [
+      { "name": "2 Claws", "attack_bonus": "+10", "damage": "1d6+4", "damage_type": "Slashing" }
+    ],
+    "special_attacks": [
+      "Harmonics (Flesh, 60-ft cone, DC 18 Fort, 4d6 sonic to all organic material)",
+      "Harmonics (Nerves, 60-ft cone, DC 18 Fort, 6d6 sonic and stunned 1 round)",
+      "Harmonics (Bone, 60-ft cone, DC 18 Fort, 4d6 sonic to bone/metal)",
+      "Harmonics (cacophony, 20-ft radius, DC 18 Fort, deafened 1 hour)"
+    ],
+    "special_qualities": [
+      "Blindsight 100 ft.",
+      "Blind (no visual senses)",
+      "Immunity to Sonic",
+      "Protection from Sonics (reduce sonic damage by 10)"
+    ],
+    "saves": { "fort": 7, "ref": 3, "will": 7 },
+    "abilities": { "str": 18, "dex": 13, "con": 20, "int": 12, "wis": 13, "cha": 6 },
+    "skills": { "Hide": 9, "Listen": 16, "Move Silently": 9, "Search": 9, "Survival": 9 },
+    "feats": ["Alertness", "Combat Reflexes", "Improved Initiative", "Improved Natural Attack (claw)"],
+    "alignment": "Always Chaotic Evil",
+    "advancement": "9-12 HD (Large); 13-16 HD (Huge)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 3,
+    "allowed_biomes": ["Underground", "Deep_Cave"],
+    "primary_biome": "Underground",
+    "ecology_notes": "Destrachans are eyeless underground predators that kill with precisely focused harmonics.",
+    "lair_type": "Cave",
+    "expanded_metadata": {
+      "source_book": "Monster Manual II",
+      "source_page": 57,
+      "is_expanded": true,
+      "tags": ["aberration", "sonic", "underground", "blind"]
+    }
+  }
+]

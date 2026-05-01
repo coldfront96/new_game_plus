@@ -84,9 +84,9 @@ source-book boundaries only.
 
 | Task | Title | Target File | Contents | Status |
 |------|-------|-------------|----------|--------|
-| PH7D-001 | Generate batch_true_dragons_epic.json | `data/expanded/draconomicon/batch_true_dragons_epic.json` | Advanced age categories (Wyrm, Great Wyrm, Ancient) for Red, Blue, Green, Black, White true dragons. Each entry must include all required schema fields plus `"source_book": "Draconomicon"`. | 🔲 |
-| PH7D-002 | Generate batch_lesser_dragons.json | `data/expanded/draconomicon/batch_lesser_dragons.json` | Drakes (Fire Drake, Rime Drake, Sand Drake), Wyverns (standard and advanced), Landwyrms (Forest, Desert, Mountain). Each entry must include `"source_book": "Draconomicon"`. | 🔲 |
-| PH7D-003 | Generate batch_dragon_kin.json | `data/expanded/draconomicon/batch_dragon_kin.json` | Dracotaurs, Dragonkin (chromatic variants), Redspawn Arcaniss. Each entry must include `"source_book": "Draconomicon"`. | 🔲 |
+| PH7D-001 | Generate batch_true_dragons_epic.json | `data/expanded/draconomicon/batch_true_dragons_epic.json` | Advanced age categories (Wyrm, Great Wyrm, Ancient) for Red, Blue, Green, Black, White true dragons. Each entry must include all required schema fields plus `"source_book": "Draconomicon"`. | ✅ |
+| PH7D-002 | Generate batch_lesser_dragons.json | `data/expanded/draconomicon/batch_lesser_dragons.json` | Drakes (Fire Drake, Rime Drake, Sand Drake), Wyverns (standard and advanced), Landwyrms (Forest, Desert, Mountain). Each entry must include `"source_book": "Draconomicon"`. | ✅ |
+| PH7D-003 | Generate batch_dragon_kin.json | `data/expanded/draconomicon/batch_dragon_kin.json` | Dracotaurs, Dragonkin (chromatic variants), Redspawn Arcaniss. Each entry must include `"source_book": "Draconomicon"`. | ✅ |
 
 ---
 
@@ -147,11 +147,11 @@ source-book boundaries only.
 
 | Task | Title | Target File | Contents | Status |
 |------|-------|-------------|----------|--------|
-| PH7D-004 | Generate batch_aberrations.json | `data/expanded/monster_manual_2/batch_aberrations.json` | Aboleth variants (Elder Aboleth, Aboleth Mage), Neogi (standard, Great Old Master), Destrachan. Each entry must include `"source_book": "Monster Manual II"`. | 🔲 |
-| PH7D-005 | Generate batch_constructs.json | `data/expanded/monster_manual_2/batch_constructs.json` | Clockwork Horrors (Adamantine, Gold, Electrum, Silver, Bronze), advanced Golems (Bone Golem, Flesh Golem variant). Each entry must include `"source_book": "Monster Manual II"`. | 🔲 |
-| PH7D-006 | Generate batch_fey_and_giants.json | `data/expanded/monster_manual_2/batch_fey_and_giants.json` | Sylphs, Frost Salamanders, Firbolgs (standard warrior and shaman). Each entry must include `"source_book": "Monster Manual II"`. | 🔲 |
-| PH7D-007 | Generate batch_undead.json | `data/expanded/monster_manual_2/batch_undead.json` | Death Knights (generic template), Bone Nagas (standard), Spellstitched undead template examples (Spellstitched Zombie, Spellstitched Skeleton). Each entry must include `"source_book": "Monster Manual II"`. | 🔲 |
-| PH7D-008 | Generate batch_beasts_and_vermin.json | `data/expanded/monster_manual_2/batch_beasts_and_vermin.json` | Dire animals (Dire Shark, Dire Eel), Megapede (standard). Each entry must include `"source_book": "Monster Manual II"`. | 🔲 |
+| PH7D-004 | Generate batch_aberrations.json | `data/expanded/monster_manual_2/batch_aberrations.json` | Aboleth variants (Elder Aboleth, Aboleth Mage), Neogi (standard, Great Old Master), Destrachan. Each entry must include `"source_book": "Monster Manual II"`. | ✅ |
+| PH7D-005 | Generate batch_constructs.json | `data/expanded/monster_manual_2/batch_constructs.json` | Clockwork Horrors (Adamantine, Gold, Electrum, Silver, Bronze), advanced Golems (Bone Golem, Flesh Golem variant). Each entry must include `"source_book": "Monster Manual II"`. | ✅ |
+| PH7D-006 | Generate batch_fey_and_giants.json | `data/expanded/monster_manual_2/batch_fey_and_giants.json` | Sylphs, Frost Salamanders, Firbolgs (standard warrior and shaman). Each entry must include `"source_book": "Monster Manual II"`. | ✅ |
+| PH7D-007 | Generate batch_undead.json | `data/expanded/monster_manual_2/batch_undead.json` | Death Knights (generic template), Bone Nagas (standard), Spellstitched undead template examples (Spellstitched Zombie, Spellstitched Skeleton). Each entry must include `"source_book": "Monster Manual II"`. | ✅ |
+| PH7D-008 | Generate batch_beasts_and_vermin.json | `data/expanded/monster_manual_2/batch_beasts_and_vermin.json` | Dire animals (Dire Shark, Dire Eel), Megapede (standard). Each entry must include `"source_book": "Monster Manual II"`. | ✅ |
 
 ---
 
@@ -247,12 +247,12 @@ source-book boundaries only.
 
 | Task | Title | Target File | Contents | Status |
 |------|-------|-------------|----------|--------|
-| PH7D-009 | Generate batch_wondrous_a_f.json | `data/expanded/magic_item_compendium/batch_wondrous_a_f.json` | Wondrous items A–F: Amulets, Belts, Boots, Cloaks, Flasks. Each entry must include `"source_book": "Magic Item Compendium"`. | 🔲 |
-| PH7D-010 | Generate batch_wondrous_g_p.json | `data/expanded/magic_item_compendium/batch_wondrous_g_p.json` | Wondrous items G–P: Gauntlets, Gloves, Helms, Mantles, Pearls. Each entry must include `"source_book": "Magic Item Compendium"`. | 🔲 |
-| PH7D-011 | Generate batch_wondrous_q_z.json | `data/expanded/magic_item_compendium/batch_wondrous_q_z.json` | Wondrous items Q–Z: Rings, Robes, Scarabs, Vestments. Each entry must include `"source_book": "Magic Item Compendium"`. | 🔲 |
-| PH7D-012 | Generate batch_weapons_melee.json | `data/expanded/magic_item_compendium/batch_weapons_melee.json` | Specific named melee weapons: swords, axes, maces. Each entry must include `"source_book": "Magic Item Compendium"`. | 🔲 |
-| PH7D-013 | Generate batch_weapons_ranged.json | `data/expanded/magic_item_compendium/batch_weapons_ranged.json` | Specific named ranged weapons: bows, crossbows, throwing weapons. Each entry must include `"source_book": "Magic Item Compendium"`. | 🔲 |
-| PH7D-014 | Generate batch_armor_and_shields.json | `data/expanded/magic_item_compendium/batch_armor_and_shields.json` | Specific named armor and shields: plate armors, leather armors, bucklers. Each entry must include `"source_book": "Magic Item Compendium"`. | 🔲 |
+| PH7D-009 | Generate batch_wondrous_a_f.json | `data/expanded/magic_item_compendium/batch_wondrous_a_f.json` | Wondrous items A–F: Amulets, Belts, Boots, Cloaks, Flasks. Each entry must include `"source_book": "Magic Item Compendium"`. | ✅ |
+| PH7D-010 | Generate batch_wondrous_g_p.json | `data/expanded/magic_item_compendium/batch_wondrous_g_p.json` | Wondrous items G–P: Gauntlets, Gloves, Helms, Mantles, Pearls. Each entry must include `"source_book": "Magic Item Compendium"`. | ✅ |
+| PH7D-011 | Generate batch_wondrous_q_z.json | `data/expanded/magic_item_compendium/batch_wondrous_q_z.json` | Wondrous items Q–Z: Rings, Robes, Scarabs, Vestments. Each entry must include `"source_book": "Magic Item Compendium"`. | ✅ |
+| PH7D-012 | Generate batch_weapons_melee.json | `data/expanded/magic_item_compendium/batch_weapons_melee.json` | Specific named melee weapons: swords, axes, maces. Each entry must include `"source_book": "Magic Item Compendium"`. | ✅ |
+| PH7D-013 | Generate batch_weapons_ranged.json | `data/expanded/magic_item_compendium/batch_weapons_ranged.json` | Specific named ranged weapons: bows, crossbows, throwing weapons. Each entry must include `"source_book": "Magic Item Compendium"`. | ✅ |
+| PH7D-014 | Generate batch_armor_and_shields.json | `data/expanded/magic_item_compendium/batch_armor_and_shields.json` | Specific named armor and shields: plate armors, leather armors, bucklers. Each entry must include `"source_book": "Magic Item Compendium"`. | ✅ |
 
 ---
 

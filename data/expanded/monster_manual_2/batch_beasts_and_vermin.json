@@ -1,0 +1,155 @@
+[
+  {
+    "name": "Dire Eel",
+    "cr": 5,
+    "size": "Large",
+    "type": "Animal",
+    "subtype": "Aquatic",
+    "hit_dice": "7d8+21",
+    "hp_avg": 52,
+    "initiative": 4,
+    "speed": { "swim": 60 },
+    "armor_class": { "total": 17, "touch": 13, "flat_footed": 13, "components": "+4 natural, -1 size, +4 Dex" },
+    "base_attack": 5,
+    "grapple": 13,
+    "attacks": [
+      { "name": "Bite", "attack_bonus": "+9", "damage": "2d6+6", "damage_type": "Piercing" }
+    ],
+    "special_attacks": [
+      "Improved Grab (bite)",
+      "Constrict (2d6+9)",
+      "Electric Discharge (DC 16 Fort, 2d6 electricity, all in water within 10 ft., 1/round when grappling)"
+    ],
+    "special_qualities": [
+      "Blindsight 30 ft.",
+      "Low-Light Vision",
+      "Immunity to Electricity"
+    ],
+    "saves": { "fort": 8, "ref": 9, "will": 3 },
+    "abilities": { "str": 18, "dex": 19, "con": 16, "int": 2, "wis": 12, "cha": 3 },
+    "skills": { "Hide": 8, "Listen": 9, "Spot": 9, "Swim": 20 },
+    "feats": ["Alertness", "Improved Initiative", "Power Attack", "Weapon Focus (bite)"],
+    "alignment": "Always Neutral",
+    "advancement": "8-12 HD (Large); 13-18 HD (Huge)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 8,
+    "allowed_biomes": ["Aquatic_Coastal", "Temperate_River"],
+    "primary_biome": "Aquatic_Coastal",
+    "ecology_notes": "Dire Eels are massive aquatic constrictors that electrocute prey while dragging it to the depths.",
+    "lair_type": "Underwater Cave",
+    "expanded_metadata": {
+      "source_book": "Monster Manual II",
+      "source_page": 75,
+      "is_expanded": true,
+      "tags": ["animal", "aquatic", "dire", "electric"]
+    }
+  },
+  {
+    "name": "Dire Shark",
+    "cr": 9,
+    "size": "Huge",
+    "type": "Animal",
+    "subtype": "Aquatic",
+    "hit_dice": "18d8+72",
+    "hp_avg": 153,
+    "initiative": 2,
+    "speed": { "swim": 90 },
+    "armor_class": { "total": 17, "touch": 10, "flat_footed": 15, "components": "+11 natural, -2 size" },
+    "base_attack": 13,
+    "grapple": 27,
+    "attacks": [
+      { "name": "Bite", "attack_bonus": "+18", "damage": "3d6+12", "damage_type": "Piercing" }
+    ],
+    "special_attacks": [
+      "Improved Grab (bite)",
+      "Swallow Whole (2d6+4 bludgeoning +1d8 acid per round; AC 12, 20 hp to cut free)",
+      "Feeding Frenzy (when blood in water, gains +2 attack/damage and attacks every creature)"
+    ],
+    "special_qualities": [
+      "Blindsight 30 ft.",
+      "Keen Scent",
+      "Low-Light Vision"
+    ],
+    "saves": { "fort": 15, "ref": 13, "will": 7 },
+    "abilities": { "str": 27, "dex": 15, "con": 19, "int": 1, "wis": 12, "cha": 2 },
+    "skills": { "Listen": 14, "Search": 8, "Spot": 14, "Swim": 27 },
+    "feats": ["Alertness", "Diehard", "Endurance", "Improved Natural Attack (bite)", "Run", "Weapon Focus (bite)"],
+    "alignment": "Always Neutral",
+    "advancement": "19-26 HD (Huge)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 3,
+    "allowed_biomes": ["Aquatic_Open", "Aquatic_Coastal"],
+    "primary_biome": "Aquatic_Open",
+    "ecology_notes": "The Dire Shark is the apex predator of the open ocean; its swallow whole ability can consume an armoured warrior.",
+    "lair_type": "Open Sea",
+    "expanded_metadata": {
+      "source_book": "Monster Manual II",
+      "source_page": 77,
+      "is_expanded": true,
+      "tags": ["animal", "aquatic", "dire", "shark"]
+    }
+  },
+  {
+    "name": "Megapede",
+    "cr": 4,
+    "size": "Large",
+    "type": "Vermin",
+    "subtype": "",
+    "hit_dice": "6d8+18",
+    "hp_avg": 45,
+    "initiative": 2,
+    "speed": { "land": 40, "climb": 30 },
+    "armor_class": { "total": 18, "touch": 11, "flat_footed": 16, "components": "+9 natural, -1 size, +2 Dex... wait" },
+    "base_attack": 4,
+    "grapple": 13,
+    "attacks": [
+      { "name": "Bite", "attack_bonus": "+8", "damage": "1d8+7", "damage_type": "Piercing" }
+    ],
+    "special_attacks": [
+      "Poison Bite (DC 16 Fort, 1d4 Dex/1d4 Dex)",
+      "Improved Grab (bite)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Mindless (immune to mind-affecting effects)",
+      "Tremorsense 60 ft.",
+      "Vermin traits"
+    ],
+    "saves": { "fort": 8, "ref": 4, "will": 2 },
+    "abilities": { "str": 20, "dex": 15, "con": 16, "int": 0, "wis": 10, "cha": 2 },
+    "skills": { "Climb": 19, "Hide": 6, "Listen": 4, "Spot": 4 },
+    "feats": ["Alertness", "Weapon Focus (bite)"],
+    "alignment": "Always Neutral",
+    "advancement": "7-10 HD (Large); 11-15 HD (Huge)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 10,
+    "allowed_biomes": ["Underground", "Warm_Forest", "Temperate_Forest"],
+    "primary_biome": "Underground",
+    "ecology_notes": "Megapedes are enormous many-legged vermin that drag paralysed prey into underground nesting chambers.",
+    "lair_type": "Burrow",
+    "expanded_metadata": {
+      "source_book": "Monster Manual II",
+      "source_page": 143,
+      "is_expanded": true,
+      "tags": ["vermin", "poison", "underground", "dire"]
+    }
+  }
+]

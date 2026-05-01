@@ -1,0 +1,265 @@
+[
+  {
+    "name": "Dracotaur",
+    "cr": 6,
+    "size": "Large",
+    "type": "Dragon",
+    "subtype": "",
+    "hit_dice": "8d12+24",
+    "hp_avg": 76,
+    "initiative": 1,
+    "speed": { "land": 40 },
+    "armor_class": { "total": 18, "touch": 10, "flat_footed": 17, "components": "+9 natural, -1 size" },
+    "base_attack": 8,
+    "grapple": 17,
+    "attacks": [
+      { "name": "Greatsword", "attack_bonus": "+13", "damage": "3d6+7", "crit_range": "19-20/x2", "damage_type": "Slashing" },
+      { "name": "2 Claws", "attack_bonus": "+8", "damage": "1d6+3", "damage_type": "Slashing" },
+      { "name": "Bite", "attack_bonus": "+8", "damage": "1d8+3", "damage_type": "Piercing" }
+    ],
+    "special_attacks": [
+      "Breath Weapon (30-ft cone fire, 4d8, DC 16 Reflex half, usable every 1d4 rounds)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Draconic Heritage (fire)",
+      "Immunity to Fire",
+      "Low-Light Vision"
+    ],
+    "saves": { "fort": 9, "ref": 7, "will": 6 },
+    "abilities": { "str": 24, "dex": 12, "con": 17, "int": 10, "wis": 11, "cha": 10 },
+    "skills": { "Intimidate": 11, "Listen": 11, "Ride": 12, "Search": 11, "Spot": 11 },
+    "feats": ["Cleave", "Mounted Combat", "Power Attack", "Weapon Focus (greatsword)"],
+    "alignment": "Usually Chaotic Evil",
+    "advancement": "9-12 HD (Large); 13-18 HD (Huge)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 10,
+    "allowed_biomes": ["Warm_Mountain", "Temperate_Mountain", "Warm_Plains"],
+    "primary_biome": "Warm_Mountain",
+    "ecology_notes": "Dracotaurs are centaur-like dragon-kin with equine lower bodies and draconic upper torsos; they serve true dragons as elite cavalry.",
+    "lair_type": "Camp",
+    "expanded_metadata": {
+      "source_book": "Draconomicon",
+      "source_page": 170,
+      "is_expanded": true,
+      "tags": ["dragon", "dragon_kin", "fire", "humanoid"]
+    }
+  },
+  {
+    "name": "Dragonkin, Red-Kin",
+    "cr": 4,
+    "size": "Large",
+    "type": "Dragon",
+    "subtype": "",
+    "hit_dice": "6d12+18",
+    "hp_avg": 57,
+    "initiative": 1,
+    "speed": { "land": 30 },
+    "armor_class": { "total": 17, "touch": 10, "flat_footed": 16, "components": "+8 natural, -1 size" },
+    "base_attack": 6,
+    "grapple": 15,
+    "attacks": [
+      { "name": "Bite", "attack_bonus": "+11", "damage": "1d8+5", "damage_type": "Piercing" },
+      { "name": "2 Claws", "attack_bonus": "+9", "damage": "1d6+2", "damage_type": "Slashing" }
+    ],
+    "special_attacks": [
+      "Breath Weapon (20-ft cone fire, 3d6, DC 15 Reflex half)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Immunity to Fire",
+      "Low-Light Vision",
+      "Telepathic Bond (with bonded red dragon master)"
+    ],
+    "saves": { "fort": 8, "ref": 6, "will": 4 },
+    "abilities": { "str": 21, "dex": 12, "con": 17, "int": 10, "wis": 11, "cha": 10 },
+    "skills": { "Intimidate": 9, "Listen": 9, "Search": 9, "Spot": 9 },
+    "feats": ["Improved Natural Attack (bite)", "Multiattack", "Power Attack"],
+    "alignment": "Usually Chaotic Evil",
+    "advancement": "7-10 HD (Large); 11-16 HD (Huge)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 15,
+    "allowed_biomes": ["Warm_Mountain"],
+    "primary_biome": "Warm_Mountain",
+    "ecology_notes": "Red-kin dragonkin are humanoid draconic creatures bonded to red dragon masters; they serve as scouts and guards.",
+    "lair_type": "Cave",
+    "expanded_metadata": {
+      "source_book": "Draconomicon",
+      "source_page": 175,
+      "is_expanded": true,
+      "tags": ["dragon", "dragon_kin", "fire", "humanoid"]
+    }
+  },
+  {
+    "name": "Dragonkin, Blue-Kin",
+    "cr": 4,
+    "size": "Large",
+    "type": "Dragon",
+    "subtype": "",
+    "hit_dice": "6d12+18",
+    "hp_avg": 57,
+    "initiative": 1,
+    "speed": { "land": 30 },
+    "armor_class": { "total": 17, "touch": 10, "flat_footed": 16, "components": "+8 natural, -1 size" },
+    "base_attack": 6,
+    "grapple": 14,
+    "attacks": [
+      { "name": "Bite", "attack_bonus": "+10", "damage": "1d8+4", "damage_type": "Piercing" },
+      { "name": "2 Claws", "attack_bonus": "+8", "damage": "1d6+2", "damage_type": "Slashing" }
+    ],
+    "special_attacks": [
+      "Breath Weapon (40-ft line lightning, 3d8, DC 15 Reflex half)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Immunity to Electricity",
+      "Low-Light Vision",
+      "Telepathic Bond (with bonded blue dragon master)"
+    ],
+    "saves": { "fort": 8, "ref": 6, "will": 4 },
+    "abilities": { "str": 20, "dex": 12, "con": 17, "int": 12, "wis": 11, "cha": 10 },
+    "skills": { "Intimidate": 9, "Listen": 9, "Search": 10, "Spot": 9 },
+    "feats": ["Improved Natural Attack (bite)", "Multiattack", "Weapon Focus (bite)"],
+    "alignment": "Usually Lawful Evil",
+    "advancement": "7-10 HD (Large); 11-16 HD (Huge)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 15,
+    "allowed_biomes": ["Warm_Desert"],
+    "primary_biome": "Warm_Desert",
+    "ecology_notes": "Blue-kin dragonkin serve blue dragon warlords; they prefer organised ambushes using lightning.",
+    "lair_type": "Cave",
+    "expanded_metadata": {
+      "source_book": "Draconomicon",
+      "source_page": 176,
+      "is_expanded": true,
+      "tags": ["dragon", "dragon_kin", "lightning", "humanoid"]
+    }
+  },
+  {
+    "name": "Dragonkin, Green-Kin",
+    "cr": 3,
+    "size": "Medium",
+    "type": "Dragon",
+    "subtype": "",
+    "hit_dice": "5d12+10",
+    "hp_avg": 42,
+    "initiative": 1,
+    "speed": { "land": 30 },
+    "armor_class": { "total": 16, "touch": 11, "flat_footed": 15, "components": "+5 natural" },
+    "base_attack": 5,
+    "grapple": 8,
+    "attacks": [
+      { "name": "Bite", "attack_bonus": "+8", "damage": "1d6+3", "damage_type": "Piercing" },
+      { "name": "2 Claws", "attack_bonus": "+6", "damage": "1d4+1", "damage_type": "Slashing" }
+    ],
+    "special_attacks": [
+      "Breath Weapon (15-ft cone acid, 2d6, DC 14 Reflex half)",
+      "Suggestion (CL 5, 1/day, DC 13 Will negates)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Immunity to Acid",
+      "Low-Light Vision",
+      "Telepathic Bond (with bonded green dragon master)"
+    ],
+    "saves": { "fort": 6, "ref": 5, "will": 4 },
+    "abilities": { "str": 16, "dex": 12, "con": 14, "int": 14, "wis": 11, "cha": 13 },
+    "skills": { "Bluff": 9, "Diplomacy": 9, "Listen": 8, "Search": 10, "Sense Motive": 8, "Spot": 8 },
+    "feats": ["Improved Natural Attack (bite)", "Multiattack", "Weapon Finesse"],
+    "alignment": "Usually Lawful Evil",
+    "advancement": "6-9 HD (Medium); 10-14 HD (Large)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 20,
+    "allowed_biomes": ["Temperate_Forest", "Warm_Forest"],
+    "primary_biome": "Temperate_Forest",
+    "ecology_notes": "Green-kin dragonkin prefer manipulation and espionage in service of their green dragon masters.",
+    "lair_type": "Cave",
+    "expanded_metadata": {
+      "source_book": "Draconomicon",
+      "source_page": 177,
+      "is_expanded": true,
+      "tags": ["dragon", "dragon_kin", "acid", "humanoid"]
+    }
+  },
+  {
+    "name": "Redspawn Arcaniss",
+    "cr": 8,
+    "size": "Medium",
+    "type": "Dragon",
+    "subtype": "",
+    "hit_dice": "9d12+27",
+    "hp_avg": 85,
+    "initiative": 2,
+    "speed": { "land": 30 },
+    "armor_class": { "total": 19, "touch": 12, "flat_footed": 17, "components": "+7 natural, +2 Dex" },
+    "base_attack": 9,
+    "grapple": 10,
+    "attacks": [
+      { "name": "Bite", "attack_bonus": "+11", "damage": "1d6+1", "damage_type": "Piercing" },
+      { "name": "2 Claws", "attack_bonus": "+9", "damage": "1d4", "damage_type": "Slashing" }
+    ],
+    "special_attacks": [
+      "Breath Weapon (30-ft cone fire, 6d6, DC 18 Reflex half)",
+      "Spells as sorcerer (CL 7): 0-level 6/day, 1st-level 8/day, 2nd-level 6/day, 3rd-level 5/day",
+      "Fireball (as spell, CL 7, 7d6, DC 16 Reflex half)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Immunity to Fire",
+      "Low-Light Vision",
+      "Spell Resistance 18",
+      "Vulnerability to Cold"
+    ],
+    "saves": { "fort": 9, "ref": 9, "will": 9 },
+    "abilities": { "str": 12, "dex": 14, "con": 17, "int": 16, "wis": 13, "cha": 20 },
+    "skills": {
+      "Bluff": 17, "Concentration": 15, "Intimidate": 17, "Knowledge (arcana)": 15,
+      "Listen": 13, "Search": 15, "Spellcraft": 17, "Spot": 13
+    },
+    "feats": ["Combat Casting", "Empower Spell", "Eschew Materials", "Maximize Spell", "Spell Focus (evocation)"],
+    "alignment": "Always Chaotic Evil",
+    "advancement": "10-15 HD (Medium); 16-22 HD (Large)",
+    "dr": null,
+    "sr": 18,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": ["Cold"],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 5,
+    "allowed_biomes": ["Warm_Mountain"],
+    "primary_biome": "Warm_Mountain",
+    "ecology_notes": "Redspawn Arcaniss are sorcerer-kin of the red dragon bloodline, prized as living artillery by chromatic dragon warlords.",
+    "lair_type": "Tower",
+    "expanded_metadata": {
+      "source_book": "Draconomicon",
+      "source_page": 182,
+      "is_expanded": true,
+      "tags": ["dragon", "dragon_kin", "fire", "arcane", "spellcaster"]
+    }
+  }
+]

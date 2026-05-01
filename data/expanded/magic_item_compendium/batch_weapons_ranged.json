@@ -1,0 +1,163 @@
+[
+  {
+    "name": "Bow of Songs",
+    "category": "magic_weapon",
+    "item_type": "weapon",
+    "weapon_category": "ranged",
+    "slot": "none",
+    "caster_level": 7,
+    "price_gp": 35100,
+    "weight_lb": 3.0,
+    "aura_school": "enchantment",
+    "weapon_type": "composite_longbow",
+    "weapon_damage": "1d8",
+    "weapon_crit": "x3",
+    "enhancement_bonus": 2,
+    "special_abilities": ["bardic_amplification"],
+    "description": "This +2 composite longbow resonates with bardic magic. When a bard fires it while maintaining a bardic performance, each arrow deals +1d4 sonic damage and the bardic performance DC increases by 2 until the start of the bard's next turn.",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": 155,
+      "is_expanded": true,
+      "tags": ["weapon", "ranged", "longbow", "bard", "sonic"]
+    }
+  },
+  {
+    "name": "Oathbow",
+    "category": "magic_weapon",
+    "item_type": "weapon",
+    "weapon_category": "ranged",
+    "slot": "none",
+    "caster_level": 15,
+    "price_gp": 25600,
+    "weight_lb": 3.0,
+    "aura_school": "evocation",
+    "weapon_type": "longbow",
+    "weapon_damage": "1d8",
+    "weapon_crit": "x3",
+    "enhancement_bonus": 2,
+    "special_abilities": ["swift_doom"],
+    "description": "This +2 longbow can be used to swear a death oath against one designated enemy. Against that enemy: +5 attack, +2d6 damage, ignore cover and concealment. Against all other targets: -1 attack/damage. The oath ends when the target dies or after 1 week.",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": 156,
+      "is_expanded": true,
+      "tags": ["weapon", "ranged", "longbow", "oath", "ranger"]
+    }
+  },
+  {
+    "name": "Composite Longbow of the Eagle",
+    "category": "magic_weapon",
+    "item_type": "weapon",
+    "weapon_category": "ranged",
+    "slot": "none",
+    "caster_level": 7,
+    "price_gp": 18100,
+    "weight_lb": 3.0,
+    "aura_school": "divination",
+    "weapon_type": "composite_longbow",
+    "weapon_damage": "1d8",
+    "weapon_crit": "x3",
+    "enhancement_bonus": 2,
+    "special_abilities": ["seeking", "eagle_eye"],
+    "description": "This +2 seeking composite longbow (+2 Str bonus) grants the wielder darkvision 60 ft. and a +5 competence bonus on Spot checks. The seeking ability negates miss chances from concealment (but not total concealment).",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": 157,
+      "is_expanded": true,
+      "tags": ["weapon", "ranged", "longbow", "seeking", "perception"]
+    }
+  },
+  {
+    "name": "Crossbow of Speed",
+    "category": "magic_weapon",
+    "item_type": "weapon",
+    "weapon_category": "ranged",
+    "slot": "none",
+    "caster_level": 7,
+    "price_gp": 25750,
+    "weight_lb": 6.0,
+    "aura_school": "transmutation",
+    "weapon_type": "heavy_crossbow",
+    "weapon_damage": "1d10",
+    "weapon_crit": "19-20/x2",
+    "enhancement_bonus": 2,
+    "special_abilities": ["speed"],
+    "description": "This +2 speed heavy crossbow allows an extra attack per round at the wielder's full attack bonus, in addition to the normal full-attack routine. It reloads as a free action.",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": 159,
+      "is_expanded": true,
+      "tags": ["weapon", "ranged", "crossbow", "speed", "extra_attack"]
+    }
+  },
+  {
+    "name": "Crossbow of Accuracy",
+    "category": "magic_weapon",
+    "item_type": "weapon",
+    "weapon_category": "ranged",
+    "slot": "none",
+    "caster_level": 5,
+    "price_gp": 11750,
+    "weight_lb": 6.0,
+    "aura_school": "transmutation",
+    "weapon_type": "heavy_crossbow",
+    "weapon_damage": "1d10",
+    "weapon_crit": "19-20/x2",
+    "enhancement_bonus": 3,
+    "special_abilities": ["distance"],
+    "description": "This +3 distance heavy crossbow doubles the range increment of the weapon and treats the first range increment as point-blank range for the purposes of the Point-Blank Shot feat.",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": 160,
+      "is_expanded": true,
+      "tags": ["weapon", "ranged", "crossbow", "distance", "accuracy"]
+    }
+  },
+  {
+    "name": "Returning Dagger of Defending",
+    "category": "magic_weapon",
+    "item_type": "weapon",
+    "weapon_category": "ranged",
+    "slot": "none",
+    "caster_level": 8,
+    "price_gp": 20302,
+    "weight_lb": 1.0,
+    "aura_school": "transmutation",
+    "weapon_type": "dagger",
+    "weapon_damage": "1d4",
+    "weapon_crit": "19-20/x2",
+    "enhancement_bonus": 2,
+    "special_abilities": ["returning", "defending"],
+    "description": "This +2 returning defending dagger automatically flies back to the thrower's hand after being thrown. Its defending property allows up to +2 of its enhancement bonus to be transferred to the wielder's AC as a free action.",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": 163,
+      "is_expanded": true,
+      "tags": ["weapon", "ranged", "throwing", "dagger", "returning", "defending"]
+    }
+  },
+  {
+    "name": "Javelin of Lightning",
+    "category": "magic_weapon",
+    "item_type": "weapon",
+    "weapon_category": "ranged",
+    "slot": "none",
+    "caster_level": 5,
+    "price_gp": 1500,
+    "weight_lb": 2.0,
+    "aura_school": "evocation",
+    "weapon_type": "javelin",
+    "weapon_damage": "1d6",
+    "weapon_crit": "x2",
+    "enhancement_bonus": 0,
+    "special_abilities": ["lightning_bolt_on_throw"],
+    "description": "When thrown as a ranged attack, this single-use javelin transforms into a bolt of lightning in flight. It deals 1d6 piercing damage plus 5d6 electricity to the target (DC 14 Reflex for half electricity). On a miss, the bolt still fires but deals only electricity damage. Single use.",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": 165,
+      "is_expanded": true,
+      "tags": ["weapon", "ranged", "throwing", "javelin", "lightning", "single_use"]
+    }
+  }
+]

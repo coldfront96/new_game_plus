@@ -1,0 +1,140 @@
+[
+  {
+    "name": "Blade of Orc Slaying",
+    "category": "magic_weapon",
+    "item_type": "weapon",
+    "weapon_category": "melee",
+    "slot": "none",
+    "caster_level": 8,
+    "price_gp": 8335,
+    "weight_lb": 4.0,
+    "aura_school": "conjuration",
+    "weapon_type": "longsword",
+    "weapon_damage": "1d8",
+    "weapon_crit": "19-20/x2",
+    "enhancement_bonus": 2,
+    "special_abilities": ["bane_orc"],
+    "description": "This +2 bane (orcs) longsword deals +2d6 extra damage to orcs and half-orcs. On a critical hit against an orc, the target must succeed a DC 17 Fort save or die.",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": 140,
+      "is_expanded": true,
+      "tags": ["weapon", "melee", "longsword", "bane", "orc_slayer"]
+    }
+  },
+  {
+    "name": "Sword of the Planes",
+    "category": "magic_weapon",
+    "item_type": "weapon",
+    "weapon_category": "melee",
+    "slot": "none",
+    "caster_level": 15,
+    "price_gp": 22315,
+    "weight_lb": 4.0,
+    "aura_school": "transmutation",
+    "weapon_type": "longsword",
+    "weapon_damage": "1d8",
+    "weapon_crit": "19-20/x2",
+    "enhancement_bonus": 1,
+    "special_abilities": ["planar"],
+    "description": "This +1 longsword deals +2d6 extra damage to outsiders (extraplanar creatures). On the Outer Planes or the Elemental Planes, it functions as a +3 weapon.",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": 142,
+      "is_expanded": true,
+      "tags": ["weapon", "melee", "longsword", "outsider_bane", "planar"]
+    }
+  },
+  {
+    "name": "Nine Lives Stealer",
+    "category": "magic_weapon",
+    "item_type": "weapon",
+    "weapon_category": "melee",
+    "slot": "none",
+    "caster_level": 13,
+    "price_gp": 23057,
+    "weight_lb": 4.0,
+    "aura_school": "necromancy",
+    "weapon_type": "longsword",
+    "weapon_damage": "1d8",
+    "weapon_crit": "19-20/x2",
+    "enhancement_bonus": 2,
+    "special_abilities": ["death_strike_9_charges"],
+    "description": "This +2 longsword holds 9 charges. On any successful critical hit, if target fails DC 20 Fort save, they die instantly. One charge is expended per kill. When all charges are exhausted, the sword becomes a non-magical +2 longsword.",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": 143,
+      "is_expanded": true,
+      "tags": ["weapon", "melee", "longsword", "death", "charged"]
+    }
+  },
+  {
+    "name": "Berserking Sword-Axe",
+    "category": "magic_weapon",
+    "item_type": "weapon",
+    "weapon_category": "melee",
+    "slot": "none",
+    "caster_level": 8,
+    "price_gp": 17335,
+    "weight_lb": 6.0,
+    "aura_school": "enchantment",
+    "weapon_type": "greataxe",
+    "weapon_damage": "1d12",
+    "weapon_crit": "x3",
+    "enhancement_bonus": 2,
+    "special_abilities": ["berserking_curse"],
+    "description": "This +2 greataxe is cursed. Once the wielder takes damage in combat, they must succeed a DC 15 Will save or enter a berserker frenzy (+4 Str and Con, -2 AC), attacking the nearest creature including allies until combat ends or they drop to 0 hp.",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": 147,
+      "is_expanded": true,
+      "tags": ["weapon", "melee", "greataxe", "cursed", "berserking"]
+    }
+  },
+  {
+    "name": "Mace of Smiting",
+    "category": "magic_weapon",
+    "item_type": "weapon",
+    "weapon_category": "melee",
+    "slot": "none",
+    "caster_level": 11,
+    "price_gp": 75312,
+    "weight_lb": 8.0,
+    "aura_school": "transmutation",
+    "weapon_type": "heavy_mace",
+    "weapon_damage": "1d8",
+    "weapon_crit": "x2",
+    "enhancement_bonus": 3,
+    "special_abilities": ["construct_bane_x4", "undead_bane_x4"],
+    "description": "This +3 heavy mace deals x4 critical damage to constructs. If it scores a critical hit on an outsider, the outsider must succeed a DC 17 Fort save or be destroyed.",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": 149,
+      "is_expanded": true,
+      "tags": ["weapon", "melee", "mace", "construct_bane", "smite"]
+    }
+  },
+  {
+    "name": "Mace of Terror",
+    "category": "magic_weapon",
+    "item_type": "weapon",
+    "weapon_category": "melee",
+    "slot": "none",
+    "caster_level": 13,
+    "price_gp": 38552,
+    "weight_lb": 8.0,
+    "aura_school": "necromancy",
+    "weapon_type": "heavy_mace",
+    "weapon_damage": "1d8",
+    "weapon_crit": "x2",
+    "enhancement_bonus": 2,
+    "special_abilities": ["fear_aura_cone"],
+    "description": "This +2 heavy mace can cast fear (60-ft cone, DC 16 Will or Panicked 1d4 rounds) 3/day as a free action. Creatures that save are immune for 24 hours.",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": 150,
+      "is_expanded": true,
+      "tags": ["weapon", "melee", "mace", "fear", "necromancy"]
+    }
+  }
+]

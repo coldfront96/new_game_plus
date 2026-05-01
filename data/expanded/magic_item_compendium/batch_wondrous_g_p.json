@@ -1,0 +1,172 @@
+[
+  {
+    "name": "Gauntlets of the Talon",
+    "category": "wondrous",
+    "item_type": "wondrous",
+    "slot": "gloves",
+    "caster_level": 7,
+    "price_gp": 18000,
+    "weight_lb": 2.0,
+    "aura_school": "transmutation",
+    "bonuses": [
+      { "bonus_type": "enhancement", "stat": "natural_claw_attacks", "value": 2 }
+    ],
+    "description": "These gauntlets transform the wearer's hands into razor-tipped talons. They grant 2 claw attacks (1d6 + Str) as primary natural attacks and a +2 enhancement bonus to those claw attacks.",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": 100,
+      "is_expanded": true,
+      "tags": ["wondrous", "gloves", "natural_weapon", "claws"]
+    }
+  },
+  {
+    "name": "Gloves of the Balanced Hand",
+    "category": "wondrous",
+    "item_type": "wondrous",
+    "slot": "gloves",
+    "caster_level": 8,
+    "price_gp": 8000,
+    "weight_lb": 0.1,
+    "aura_school": "transmutation",
+    "bonuses": [
+      { "bonus_type": "competence", "stat": "two_weapon_fighting_penalty_reduction", "value": 2 }
+    ],
+    "description": "These gloves reduce the penalties for two-weapon fighting by 2 (to a minimum of 0). They also grant the wearer the Two-Weapon Fighting feat if they do not already have it.",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": 102,
+      "is_expanded": true,
+      "tags": ["wondrous", "gloves", "two_weapon_fighting", "combat"]
+    }
+  },
+  {
+    "name": "Helm of Brilliance",
+    "category": "wondrous",
+    "item_type": "wondrous",
+    "slot": "head",
+    "caster_level": 13,
+    "price_gp": 125000,
+    "weight_lb": 3.0,
+    "aura_school": "evocation",
+    "bonuses": [],
+    "description": "This brilliant helm is studded with gems (10 diamonds, 20 rubies, 30 fire opals, 40 opals). Fire resistance 30. Lights as a torch. Gems grant spell-like abilities: Diamonds — prismatic spray 1/gem; Rubies — wall of fire 1/gem; Fire Opals — fireball 1/gem; Opals — daylight 1/gem.",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": 105,
+      "is_expanded": true,
+      "tags": ["wondrous", "head", "fire", "light", "gem_powered"]
+    }
+  },
+  {
+    "name": "Helm of Telepathy",
+    "category": "wondrous",
+    "item_type": "wondrous",
+    "slot": "head",
+    "caster_level": 5,
+    "price_gp": 27000,
+    "weight_lb": 3.0,
+    "aura_school": "divination",
+    "bonuses": [],
+    "description": "This helm grants the wearer the ability to use detect thoughts at will, and telepathy with any creature within 90 feet whose thoughts can be detected.",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": 107,
+      "is_expanded": true,
+      "tags": ["wondrous", "head", "telepathy", "divination"]
+    }
+  },
+  {
+    "name": "Mantle of Spell Resistance",
+    "category": "wondrous",
+    "item_type": "wondrous",
+    "slot": "shoulders",
+    "caster_level": 9,
+    "price_gp": 90000,
+    "weight_lb": 1.0,
+    "aura_school": "abjuration",
+    "bonuses": [
+      { "bonus_type": "resistance", "stat": "spell_resistance", "value": 21 }
+    ],
+    "description": "This heavy mantle grants the wearer spell resistance 21.",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": 110,
+      "is_expanded": true,
+      "tags": ["wondrous", "shoulders", "spell_resistance", "abjuration"]
+    }
+  },
+  {
+    "name": "Mantle of the Fiery Spirit",
+    "category": "wondrous",
+    "item_type": "wondrous",
+    "slot": "shoulders",
+    "caster_level": 11,
+    "price_gp": 36000,
+    "weight_lb": 1.0,
+    "aura_school": "transmutation",
+    "bonuses": [
+      { "bonus_type": "enhancement", "stat": "charisma", "value": 4 }
+    ],
+    "description": "This blazing red mantle grants a +4 enhancement bonus to Charisma and fire resistance 10. The wearer can cast produce flame at will as a spell-like ability (CL 11).",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": 111,
+      "is_expanded": true,
+      "tags": ["wondrous", "shoulders", "fire", "charisma"]
+    }
+  },
+  {
+    "name": "Pearl of Power I",
+    "category": "wondrous",
+    "item_type": "wondrous",
+    "slot": "none",
+    "caster_level": 17,
+    "price_gp": 1000,
+    "weight_lb": 0.1,
+    "aura_school": "transmutation",
+    "bonuses": [],
+    "description": "This iridescent pearl allows a spellcaster to recover one expended spell slot of 1st level once per day. Activation is a free action.",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": 115,
+      "is_expanded": true,
+      "tags": ["wondrous", "pearl", "spellcasting", "spell_recovery"]
+    }
+  },
+  {
+    "name": "Pearl of Power II",
+    "category": "wondrous",
+    "item_type": "wondrous",
+    "slot": "none",
+    "caster_level": 17,
+    "price_gp": 4000,
+    "weight_lb": 0.1,
+    "aura_school": "transmutation",
+    "bonuses": [],
+    "description": "This iridescent pearl allows a spellcaster to recover one expended spell slot of 2nd level once per day.",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": 115,
+      "is_expanded": true,
+      "tags": ["wondrous", "pearl", "spellcasting", "spell_recovery"]
+    }
+  },
+  {
+    "name": "Pearl of Power III",
+    "category": "wondrous",
+    "item_type": "wondrous",
+    "slot": "none",
+    "caster_level": 17,
+    "price_gp": 9000,
+    "weight_lb": 0.1,
+    "aura_school": "transmutation",
+    "bonuses": [],
+    "description": "This iridescent pearl allows a spellcaster to recover one expended spell slot of 3rd level once per day.",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": 115,
+      "is_expanded": true,
+      "tags": ["wondrous", "pearl", "spellcasting", "spell_recovery"]
+    }
+  }
+]
