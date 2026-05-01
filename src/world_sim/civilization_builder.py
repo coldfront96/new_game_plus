@@ -301,7 +301,6 @@ _LOOT_PRICES: dict[str, int] = {
     "Bone":        1,
     "Bear Hide":  10,
     "Bear Claw":   4,
-    "Bear Pelt":   8,
     "Rabbit Fur":  1,
     "Antler":      3,
     "Fox Pelt":    4,

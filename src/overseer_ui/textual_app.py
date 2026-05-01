@@ -102,7 +102,6 @@ class DialoguePanel:
         """Clear all dialogue history from the panel."""
         self._log.clear()
         self._active_speaker = None
-    from src.game.player_controller import PlayerController
 
 
 # ---------------------------------------------------------------------------
