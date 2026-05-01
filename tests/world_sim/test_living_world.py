@@ -309,7 +309,7 @@ class TestAnomalyLoreAsync(unittest.TestCase):
         async def _run():
             return await request_anomaly_lore(anomaly, mock_llm, species_notes=None)
 
-        result = asyncio.get_event_loop().run_until_complete(_run())
+        result = asyncio.run(_run())
         self.assertIsNotNone(result.lore_text)
         self.assertIn("wizard", result.lore_text)
 

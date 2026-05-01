@@ -22,7 +22,54 @@ Usage::
 from __future__ import annotations
 
 import math
+from dataclasses import dataclass
 from typing import Optional
+
+
+# ---------------------------------------------------------------------------
+# ChallengeRating dataclass (T-010)
+# ---------------------------------------------------------------------------
+
+@dataclass(slots=True, frozen=True, order=True)
+class ChallengeRating:
+    """A typed wrapper around a CR numeric value.
+
+    Supports equality and ordering so CR values can be compared directly
+    (e.g. ``ChallengeRating(3.0) < ChallengeRating(7.0)``).
+
+    Common fractional CRs use the nearest float:
+    - CR 1/8  → 0.125
+    - CR 1/6  → 0.167
+    - CR 1/4  → 0.25
+    - CR 1/3  → 0.33
+    - CR 1/2  → 0.5
+    """
+    value: float
+
+    @classmethod
+    def from_fraction(cls, numerator: int, denominator: int) -> "ChallengeRating":
+        return cls(value=round(numerator / denominator, 3))
+
+    def xp(self) -> int:
+        """Return the base XP award for this CR (DMG Table 2-1)."""
+        return xp_for_cr(self.value)
+
+    def __str__(self) -> str:
+        if self.value == 0.125:
+            return "CR 1/8"
+        if self.value == 0.167:
+            return "CR 1/6"
+        if self.value == 0.25:
+            return "CR 1/4"
+        if self.value == 0.33:
+            return "CR 1/3"
+        if self.value == 0.5:
+            return "CR 1/2"
+        return f"CR {int(self.value)}" if self.value == int(self.value) else f"CR {self.value}"
+
+
+# EncounterLevel is semantically equivalent: same numeric domain, same table.
+EncounterLevel = ChallengeRating
 
 
 # ---------------------------------------------------------------------------

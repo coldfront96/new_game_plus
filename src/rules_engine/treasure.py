@@ -101,11 +101,13 @@ class TreasureHoard:
 # ---------------------------------------------------------------------------
 
 GEM_TABLE: list[GemEntry] = [
-    # Ornamental — base 10 gp, range 4–16 gp
+    # Ornamental — base 10 gp, range 4–16 gp  (12 entries)
     GemEntry("Azurite",         GemGrade.ORNAMENTAL,  10, (4,  16)),
     GemEntry("Banded Agate",    GemGrade.ORNAMENTAL,  10, (4,  16)),
     GemEntry("Blue Quartz",     GemGrade.ORNAMENTAL,  10, (4,  16)),
     GemEntry("Eye Agate",       GemGrade.ORNAMENTAL,  10, (4,  16)),
+    GemEntry("Hematite",        GemGrade.ORNAMENTAL,  10, (4,  16)),
+    GemEntry("Lapis Lazuli",    GemGrade.ORNAMENTAL,  10, (4,  16)),
     GemEntry("Malachite",       GemGrade.ORNAMENTAL,  10, (4,  16)),
     GemEntry("Moss Agate",      GemGrade.ORNAMENTAL,  10, (4,  16)),
     GemEntry("Obsidian",        GemGrade.ORNAMENTAL,  10, (4,  16)),
@@ -130,17 +132,20 @@ GEM_TABLE: list[GemEntry] = [
     GemEntry("Star Quartz",     GemGrade.SEMIPRECIOUS, 50, (20, 80)),
     GemEntry("Zircon",          GemGrade.SEMIPRECIOUS, 50, (20, 80)),
 
-    # Fancy — base 100 gp, range 40–160 gp
-    GemEntry("Amber",           GemGrade.FANCY,       100, (40,  160)),
-    GemEntry("Amethyst",        GemGrade.FANCY,       100, (40,  160)),
-    GemEntry("Chrysoberyl",     GemGrade.FANCY,       100, (40,  160)),
-    GemEntry("Coral",           GemGrade.FANCY,       100, (40,  160)),
-    GemEntry("Red Garnet",      GemGrade.FANCY,       100, (40,  160)),
-    GemEntry("Jade",            GemGrade.FANCY,       100, (40,  160)),
-    GemEntry("Jet",             GemGrade.FANCY,       100, (40,  160)),
-    GemEntry("White Pearl",     GemGrade.FANCY,       100, (40,  160)),
-    GemEntry("Red Spinel",      GemGrade.FANCY,       100, (40,  160)),
-    GemEntry("Tourmaline",      GemGrade.FANCY,       100, (40,  160)),
+    # Fancy — base 100 gp, range 40–160 gp  (13 entries)
+    GemEntry("Amber",              GemGrade.FANCY,       100, (40,  160)),
+    GemEntry("Amethyst",           GemGrade.FANCY,       100, (40,  160)),
+    GemEntry("Brown-Green Garnet", GemGrade.FANCY,       100, (40,  160)),
+    GemEntry("Chrysoberyl",        GemGrade.FANCY,       100, (40,  160)),
+    GemEntry("Coral",              GemGrade.FANCY,       100, (40,  160)),
+    GemEntry("Golden Pearl",       GemGrade.FANCY,       100, (40,  160)),
+    GemEntry("Red Garnet",         GemGrade.FANCY,       100, (40,  160)),
+    GemEntry("Jade",               GemGrade.FANCY,       100, (40,  160)),
+    GemEntry("Jet",                GemGrade.FANCY,       100, (40,  160)),
+    GemEntry("Pink Pearl",         GemGrade.FANCY,       100, (40,  160)),
+    GemEntry("White Pearl",        GemGrade.FANCY,       100, (40,  160)),
+    GemEntry("Red Spinel",         GemGrade.FANCY,       100, (40,  160)),
+    GemEntry("Tourmaline",         GemGrade.FANCY,       100, (40,  160)),
 
     # Precious — base 500 gp, range 200–800 gp
     GemEntry("Alexandrite",         GemGrade.PRECIOUS,  500, (200, 800)),
@@ -150,13 +155,15 @@ GEM_TABLE: list[GemEntry] = [
     GemEntry("Deep Blue Spinel",    GemGrade.PRECIOUS,  500, (200, 800)),
     GemEntry("Golden Yellow Topaz", GemGrade.PRECIOUS,  500, (200, 800)),
 
-    # Gemstone — base 1000 gp, range 500–2000 gp
+    # Gemstone — base 1000 gp, range 500–2000 gp  (8 entries)
     GemEntry("Emerald",              GemGrade.GEMSTONE, 1000, (500, 2000)),
     GemEntry("White Opal",           GemGrade.GEMSTONE, 1000, (500, 2000)),
     GemEntry("Black Opal",           GemGrade.GEMSTONE, 1000, (500, 2000)),
     GemEntry("Fire Opal",            GemGrade.GEMSTONE, 1000, (500, 2000)),
     GemEntry("Blue Sapphire",        GemGrade.GEMSTONE, 1000, (500, 2000)),
     GemEntry("Fiery Yellow Corundum",GemGrade.GEMSTONE, 1000, (500, 2000)),
+    GemEntry("Star Ruby",            GemGrade.GEMSTONE, 1000, (500, 2000)),
+    GemEntry("Star Sapphire",        GemGrade.GEMSTONE, 1000, (500, 2000)),
 
     # Jewel — base 5000 gp, range 1000–8000 gp
     GemEntry("Bright Green Emerald", GemGrade.JEWEL, 5000, (1000, 8000)),
@@ -169,86 +176,139 @@ GEM_TABLE: list[GemEntry] = [
 
 
 # ---------------------------------------------------------------------------
-# Art Object Table (DMG Table 7-6, 50+ entries across value bands)
+# Art Object Table (DMG Table 7-6, 100 entries across value bands)
 # ---------------------------------------------------------------------------
 
 ART_OBJECT_TABLE: list[ArtObjectEntry] = [
-    # 10 gp — Mundane
-    ArtObjectEntry("Fur Pelt",                  ArtObjectCategory.MUNDANE,    10),
-    ArtObjectEntry("Carved Bone Statuette",     ArtObjectCategory.MUNDANE,    10),
-    ArtObjectEntry("Small Bronze Mirror",       ArtObjectCategory.MUNDANE,    10),
-    ArtObjectEntry("Painted Cloth",             ArtObjectCategory.MUNDANE,    10),
-    ArtObjectEntry("Woven Basket",              ArtObjectCategory.MUNDANE,    10),
+    # 10 gp — Mundane  (10 entries)
+    ArtObjectEntry("Fur Pelt",                      ArtObjectCategory.MUNDANE,    10),
+    ArtObjectEntry("Carved Bone Statuette",         ArtObjectCategory.MUNDANE,    10),
+    ArtObjectEntry("Small Bronze Mirror",           ArtObjectCategory.MUNDANE,    10),
+    ArtObjectEntry("Painted Cloth",                 ArtObjectCategory.MUNDANE,    10),
+    ArtObjectEntry("Woven Basket",                  ArtObjectCategory.MUNDANE,    10),
+    ArtObjectEntry("Dried Flower Arrangement",      ArtObjectCategory.MUNDANE,    10),
+    ArtObjectEntry("Clay Water Jug",                ArtObjectCategory.MUNDANE,    10),
+    ArtObjectEntry("Carved Stone Pendant",          ArtObjectCategory.MUNDANE,    10),
+    ArtObjectEntry("Animal Hide Pouch",             ArtObjectCategory.MUNDANE,    10),
+    ArtObjectEntry("Reed Woven Mat",                ArtObjectCategory.MUNDANE,    10),
 
-    # 25 gp — Mundane/Decorated
-    ArtObjectEntry("Carved Ivory Statuette",    ArtObjectCategory.DECORATED,  25),
-    ArtObjectEntry("Silver Ewer",               ArtObjectCategory.DECORATED,  25),
-    ArtObjectEntry("Cloth-of-Gold Vestments",   ArtObjectCategory.DECORATED,  25),
-    ArtObjectEntry("Black Velvet Mask",         ArtObjectCategory.DECORATED,  25),
-    ArtObjectEntry("Copper Chalice",            ArtObjectCategory.DECORATED,  25),
+    # 25 gp — Decorated  (10 entries)
+    ArtObjectEntry("Carved Ivory Statuette",        ArtObjectCategory.DECORATED,  25),
+    ArtObjectEntry("Silver Ewer",                   ArtObjectCategory.DECORATED,  25),
+    ArtObjectEntry("Cloth-of-Gold Vestments",       ArtObjectCategory.DECORATED,  25),
+    ArtObjectEntry("Black Velvet Mask",             ArtObjectCategory.DECORATED,  25),
+    ArtObjectEntry("Copper Chalice",                ArtObjectCategory.DECORATED,  25),
+    ArtObjectEntry("Silver Ring",                   ArtObjectCategory.DECORATED,  25),
+    ArtObjectEntry("Bone Dice Set in Carved Case",  ArtObjectCategory.DECORATED,  25),
+    ArtObjectEntry("Decorated Leather Belt",        ArtObjectCategory.DECORATED,  25),
+    ArtObjectEntry("Copper Bracelet with Engravings",ArtObjectCategory.DECORATED, 25),
+    ArtObjectEntry("Painted Wooden Music Box",      ArtObjectCategory.DECORATED,  25),
 
-    # 50 gp — Decorated
+    # 50 gp — Decorated  (10 entries)
     ArtObjectEntry("Silver Comb with Moonstones",       ArtObjectCategory.DECORATED,  50),
     ArtObjectEntry("Silver-Plated Steel Longsword",     ArtObjectCategory.DECORATED,  50),
     ArtObjectEntry("Carved Harp",                       ArtObjectCategory.DECORATED,  50),
     ArtObjectEntry("Gold Idol",                         ArtObjectCategory.DECORATED,  50),
     ArtObjectEntry("Painted Portrait",                  ArtObjectCategory.DECORATED,  50),
+    ArtObjectEntry("Jade Carving of a Dragon",          ArtObjectCategory.DECORATED,  50),
+    ArtObjectEntry("Lacquered Wooden Box",              ArtObjectCategory.DECORATED,  50),
+    ArtObjectEntry("Silk Ceremonial Scarf",             ArtObjectCategory.DECORATED,  50),
+    ArtObjectEntry("Bronze Wine Cup with Relief",       ArtObjectCategory.DECORATED,  50),
+    ArtObjectEntry("Engraved Silver Toothpick Case",    ArtObjectCategory.DECORATED,  50),
 
-    # 100 gp — Decorated/Masterwork
+    # 100 gp — Masterwork  (10 entries)
     ArtObjectEntry("Gold Ring with Bloodstone",         ArtObjectCategory.MASTERWORK, 100),
     ArtObjectEntry("Carved Ivory Charm",                ArtObjectCategory.MASTERWORK, 100),
     ArtObjectEntry("Obsidian Statuette",                ArtObjectCategory.MASTERWORK, 100),
     ArtObjectEntry("Painted Gold Idol",                 ArtObjectCategory.MASTERWORK, 100),
     ArtObjectEntry("Stitched Silk Tapestry",            ArtObjectCategory.MASTERWORK, 100),
+    ArtObjectEntry("Pearl Earrings (pair)",             ArtObjectCategory.MASTERWORK, 100),
+    ArtObjectEntry("Wrought Gold Bracelet",             ArtObjectCategory.MASTERWORK, 100),
+    ArtObjectEntry("Amber Pendant on Silver Chain",     ArtObjectCategory.MASTERWORK, 100),
+    ArtObjectEntry("Fine Silk Tapestry (small)",        ArtObjectCategory.MASTERWORK, 100),
+    ArtObjectEntry("Gold-Inlaid Ivory Chess Set",       ArtObjectCategory.MASTERWORK, 100),
 
-    # 250 gp — Masterwork
+    # 250 gp — Masterwork  (8 entries)
     ArtObjectEntry("Golden Yellow Topaz Bracelet",      ArtObjectCategory.MASTERWORK, 250),
     ArtObjectEntry("Embroidered Silk Satin Cloak",      ArtObjectCategory.MASTERWORK, 250),
     ArtObjectEntry("Silver Necklace with Fire Opal",    ArtObjectCategory.MASTERWORK, 250),
     ArtObjectEntry("Carved Jade Figurine",              ArtObjectCategory.MASTERWORK, 250),
     ArtObjectEntry("Gold and Silver Brooch",            ArtObjectCategory.MASTERWORK, 250),
+    ArtObjectEntry("Embroidered Satin Ceremonial Robe", ArtObjectCategory.MASTERWORK, 250),
+    ArtObjectEntry("Carved Teak Chest with Silver Clasps",ArtObjectCategory.MASTERWORK,250),
+    ArtObjectEntry("Rose Gold Hairpin with Coral Inlay",ArtObjectCategory.MASTERWORK, 250),
 
-    # 500 gp — Masterwork
+    # 500 gp — Masterwork  (8 entries)
     ArtObjectEntry("Ivory and Gold Bracelet with Aquamarine",   ArtObjectCategory.MASTERWORK, 500),
     ArtObjectEntry("Silver and Gold Brooch",                    ArtObjectCategory.MASTERWORK, 500),
     ArtObjectEntry("Onyx Goblet with Gold Filigree",            ArtObjectCategory.MASTERWORK, 500),
     ArtObjectEntry("Enameled Gold Locket",                      ArtObjectCategory.MASTERWORK, 500),
     ArtObjectEntry("Amber and Gold Ring",                       ArtObjectCategory.MASTERWORK, 500),
+    ArtObjectEntry("Ruby-Set Silver Ring",                      ArtObjectCategory.MASTERWORK, 500),
+    ArtObjectEntry("Diamond-Chip Tiara",                        ArtObjectCategory.MASTERWORK, 500),
+    ArtObjectEntry("Small Emerald Earrings (pair)",             ArtObjectCategory.MASTERWORK, 500),
 
-    # 750 gp — Masterwork
+    # 750 gp — Masterwork  (5 entries)
     ArtObjectEntry("Jeweled Silver Goblet",                     ArtObjectCategory.MASTERWORK, 750),
     ArtObjectEntry("Platinum Comb with Sapphires",              ArtObjectCategory.MASTERWORK, 750),
+    ArtObjectEntry("Mithral Chalice with Engraving",            ArtObjectCategory.MASTERWORK, 750),
+    ArtObjectEntry("Obsidian Idol with Gem Eyes",               ArtObjectCategory.MASTERWORK, 750),
+    ArtObjectEntry("Electrum Music Box",                        ArtObjectCategory.MASTERWORK, 750),
 
-    # 1000 gp — Exotic
+    # 1000 gp — Exotic  (7 entries)
     ArtObjectEntry("Jeweled Gold Crown",                        ArtObjectCategory.EXOTIC,   1000),
     ArtObjectEntry("Jeweled Electrum Ring",                     ArtObjectCategory.EXOTIC,   1000),
     ArtObjectEntry("Gold Music Box",                            ArtObjectCategory.EXOTIC,   1000),
     ArtObjectEntry("Painted Silver Dragon Statuette",           ArtObjectCategory.EXOTIC,   1000),
     ArtObjectEntry("Sapphire Pendant on Gold Chain",            ArtObjectCategory.EXOTIC,   1000),
+    ArtObjectEntry("Portrait of a Noble in Gold Frame",         ArtObjectCategory.EXOTIC,   1000),
+    ArtObjectEntry("Gold Phoenix Statuette",                    ArtObjectCategory.EXOTIC,   1000),
 
-    # 1500 gp — Exotic
+    # 1500 gp — Exotic  (5 entries)
     ArtObjectEntry("Ruby-Inlaid Gold Chalice",                  ArtObjectCategory.EXOTIC,   1500),
     ArtObjectEntry("Emerald-Set Platinum Brooch",               ArtObjectCategory.EXOTIC,   1500),
+    ArtObjectEntry("Crystal Ball in Silver Stand",              ArtObjectCategory.EXOTIC,   1500),
+    ArtObjectEntry("Diamond and Ruby Ring",                     ArtObjectCategory.EXOTIC,   1500),
+    ArtObjectEntry("Platinum Jewelry Set (necklace + earrings)",ArtObjectCategory.EXOTIC,   1500),
 
-    # 2500 gp — Exotic
+    # 2500 gp — Exotic  (7 entries)
     ArtObjectEntry("Fine Gold Chain with Fire Opal",            ArtObjectCategory.EXOTIC,   2500),
     ArtObjectEntry("Ornate Gold Ring with Diamond",             ArtObjectCategory.EXOTIC,   2500),
     ArtObjectEntry("Jeweled Platinum Necklace",                 ArtObjectCategory.EXOTIC,   2500),
     ArtObjectEntry("Diamond-Studded Gold Tiara",                ArtObjectCategory.EXOTIC,   2500),
     ArtObjectEntry("Ruby and Sapphire Medallion",               ArtObjectCategory.EXOTIC,   2500),
+    ArtObjectEntry("Imperial Jade Sculpture",                   ArtObjectCategory.EXOTIC,   2500),
+    ArtObjectEntry("Diamond Necklace (small stones)",           ArtObjectCategory.EXOTIC,   2500),
 
-    # 3500 gp — Exotic
+    # 3500 gp — Exotic  (4 entries)
     ArtObjectEntry("Platinum and Diamond Bracelet",             ArtObjectCategory.EXOTIC,   3500),
     ArtObjectEntry("Gold Dragon Idol with Gem Eyes",            ArtObjectCategory.EXOTIC,   3500),
+    ArtObjectEntry("Mithral and Diamond Brooch",                ArtObjectCategory.EXOTIC,   3500),
+    ArtObjectEntry("Emerald Dragon Statuette",                  ArtObjectCategory.EXOTIC,   3500),
 
-    # 5000 gp — Exotic
+    # 5000 gp — Exotic  (5 entries)
     ArtObjectEntry("Jeweled Platinum Crown",                    ArtObjectCategory.EXOTIC,   5000),
     ArtObjectEntry("Marble Idol with Ruby Eyes",                ArtObjectCategory.EXOTIC,   5000),
     ArtObjectEntry("Ornate Platinum and Diamond Tiara",         ArtObjectCategory.EXOTIC,   5000),
+    ArtObjectEntry("Sunstone Crown",                            ArtObjectCategory.EXOTIC,   5000),
+    ArtObjectEntry("Gold Orrery with Gem Inlay",                ArtObjectCategory.EXOTIC,   5000),
 
-    # 7500 gp — Exotic
+    # 7500 gp — Exotic  (4 entries)
     ArtObjectEntry("Jeweled Gold and Platinum Crown",           ArtObjectCategory.EXOTIC,   7500),
     ArtObjectEntry("Platinum Idol with Diamond and Sapphire Inlay", ArtObjectCategory.EXOTIC, 7500),
+    ArtObjectEntry("Platinum Reliquary with Gem Panels",        ArtObjectCategory.EXOTIC,   7500),
+    ArtObjectEntry("Adamantine Art Object with Gem Inlay",      ArtObjectCategory.EXOTIC,   7500),
+
+    # 10000 gp — Exotic  (5 entries)
+    ArtObjectEntry("Miniature Gold Throne",                     ArtObjectCategory.EXOTIC,  10000),
+    ArtObjectEntry("Dragon Skull Trophy (gilded)",              ArtObjectCategory.EXOTIC,  10000),
+    ArtObjectEntry("Ancient Hand-Painted Imperial Vase",        ArtObjectCategory.EXOTIC,  10000),
+    ArtObjectEntry("Imperial Diamond Scepter",                  ArtObjectCategory.EXOTIC,  10000),
+    ArtObjectEntry("Star Sapphire Crown",                       ArtObjectCategory.EXOTIC,  10000),
+
+    # 25000 gp — Exotic  (2 entries)
+    ArtObjectEntry("Legendary Gem-Encrusted Idol",              ArtObjectCategory.EXOTIC,  25000),
+    ArtObjectEntry("Perfect Diamond of Unusual Size",           ArtObjectCategory.EXOTIC,  25000),
 ]
 
 
