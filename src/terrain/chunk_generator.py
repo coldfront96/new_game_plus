@@ -234,9 +234,6 @@ class ChunkGenerator:
             manifest = populate_dungeon_floor(floor, party_level=party_level, rng=rng)
             manifests.append(manifest)
 
-        # (4) Apply dungeon carve into the chunk
-        _apply_dungeon_floors(chunk, floors)
-
         return chunk, floors, manifests
 
     @staticmethod

@@ -360,7 +360,7 @@ def inject_artifact_quest(
     Quest properties:
         * ``quest_id``:   Deterministic UUID from ``artifact.artifact_id + str(world_seed)``.
         * ``title``:      ``"Retrieve the {artifact.lore_name}"``.
-        * ``description``: First 280 chars of artifact lore + triggering context suffix.
+        * ``description``: First :data:`_LORE_EXCERPT_MAX_CHARS` chars of artifact lore + triggering context suffix.
         * ``objective``:  ``"Locate and recover artifact {artifact.artifact_id} from the world."``.
         * ``reward_gp``:  10 % of artifact market value (finder's fee).
         * ``status``:     :attr:`~QuestStatus.ACTIVE`.
@@ -381,13 +381,16 @@ def inject_artifact_quest(
     """
     import uuid as _uuid
 
+    # Maximum characters of artifact lore included in the quest description.
+    _LORE_EXCERPT_MAX_CHARS = 280
+
     # Deterministic quest_id
     quest_id = str(_uuid.uuid5(_uuid.NAMESPACE_DNS, f"{artifact.artifact_id}{world_seed}"))
 
     title = f"Retrieve the {artifact.lore_name}"
 
-    # Description: first 280 chars of lore + triggering context
-    lore_excerpt = (artifact.lore_history or "")[:280]
+    # Description: first _LORE_EXCERPT_MAX_CHARS chars of lore + triggering context
+    lore_excerpt = (artifact.lore_history or "")[:_LORE_EXCERPT_MAX_CHARS]
     faction_name = getattr(threshold, "faction_name", None)
     chunk_id = getattr(threshold, "chunk_id", None)
     if faction_name:

@@ -620,10 +620,22 @@ def evaluate_mythos_threshold(
 
 
 def _faction_population(faction_name: str, population_ledger: "PopulationLedger") -> float:
-    """Sum global population counts for a faction identified by name as species_id."""
+    """Sum global population counts for a faction identified by name as species_id.
+
+    Exact match is tried first; if no exact match exists, falls back to
+    case-insensitive prefix matching (faction_name is a prefix of species_id).
+    This avoids false positives from broad substring matching.
+    """
     total: float = 0.0
     for species_id, rec in population_ledger.items():
-        if species_id == faction_name or faction_name.lower() in species_id.lower():
+        if species_id == faction_name:
+            total += rec.global_count
+    if total > 0:
+        return total
+    # Prefix fallback: "Orc Warband" matches "Orc Warband Chieftain" but not "Enforcer"
+    lower_faction = faction_name.lower()
+    for species_id, rec in population_ledger.items():
+        if species_id.lower().startswith(lower_faction):
             total += rec.global_count
     return total
 
@@ -668,7 +680,7 @@ async def trigger_forge_on_threshold(
     artifact = await forge.generate_artifact_async(tier=tier)
 
     # Write the artifact ID back to the threshold record
-    object.__setattr__(threshold, "artifact_id", artifact.artifact_id) if hasattr(threshold, "__slots__") else setattr(threshold, "artifact_id", artifact.artifact_id)
+    threshold.artifact_id = artifact.artifact_id
 
     # Structured log entry
     faction_or_chunk = (
