@@ -28,6 +28,8 @@ from src.terrain.chunk import Chunk, CHUNK_WIDTH, CHUNK_DEPTH, CHUNK_HEIGHT
 
 if TYPE_CHECKING:
     from src.world_sim.lairs import LairRecord
+    from src.world_sim.anomaly import AnomalyRecord
+    from src.terrain.dungeon_carver import DungeonFloor, DungeonSpawnManifest
 
 
 # ---------------------------------------------------------------------------
@@ -52,6 +54,13 @@ GOLD_ORE_CHANCE: float = 0.005
 DIRT_LAYER_DEPTH: int = 3
 
 
+# Biomes that qualify a chunk for dungeon generation (PH3-004).
+# Imported lazily to avoid circular imports.
+def _get_ruin_biomes() -> "frozenset":
+    from src.world_sim.biome import Biome
+    return frozenset({Biome.Any_Ruin, Biome.Underdark})
+
+
 @dataclass(slots=True)
 class ChunkGenerator:
     """Procedural terrain generator using Simplex noise.
@@ -62,7 +71,12 @@ class ChunkGenerator:
 
     seed: int
 
-    def generate_chunk(self, cx: int, cz: int) -> Chunk:
+    def generate_chunk(
+        self,
+        cx: int,
+        cz: int,
+        dungeon_floors: "list[DungeonFloor] | None" = None,
+    ) -> Chunk:
         """Generate a fully populated Chunk at the given chunk coordinates.
 
         Terrain layout per column (x, z):
@@ -77,8 +91,13 @@ class ChunkGenerator:
             GOLD_ORE replaces STONE between Y=5 and Y=32 at ~0.5% chance.
 
         Args:
-            cx: Chunk X coordinate in chunk-space.
-            cz: Chunk Z coordinate in chunk-space.
+            cx:            Chunk X coordinate in chunk-space.
+            cz:            Chunk Z coordinate in chunk-space.
+            dungeon_floors: Optional list of :class:`DungeonFloor` objects to
+                            apply after surface generation.  When provided,
+                            :meth:`_apply_dungeon_floors` is called to zero out
+                            the underground voxels for each floor's rooms and
+                            hallways.
 
         Returns:
             A populated :class:`Chunk` ready for use.
@@ -138,6 +157,10 @@ class ChunkGenerator:
                             material=material,
                         ))
 
+        # Apply dungeon floors if provided (PH3-004)
+        if dungeon_floors:
+            _apply_dungeon_floors(chunk, dungeon_floors)
+
         # Freshly generated — not dirty
         chunk.dirty = False
         return chunk
@@ -155,6 +178,63 @@ class ChunkGenerator:
         """
         chunk = self.generate_chunk(cx, cz)
         return carve_lair(chunk, lair_record)
+
+    def generate_chunk_with_dungeon(
+        self,
+        cx: int,
+        cz: int,
+        num_floors: int,
+        anomaly: "AnomalyRecord | None",
+        rng: random.Random,
+    ) -> "tuple[Chunk, list[DungeonFloor], list[DungeonSpawnManifest]]":
+        """Generate a surface chunk with a full multi-floor dungeon carved beneath it.
+
+        This is the single public API surface the :class:`~src.terrain.chunk_manager.ChunkManager`
+        calls when loading a chunk that qualifies for dungeon generation.
+
+        Qualifier: ``anomaly is not None and anomaly.current_biome in RUIN_BIOMES``
+        where ``RUIN_BIOMES = {Biome.Any_Ruin, Biome.Underdark}``.
+
+        Pipeline:
+            1. Generate surface terrain via :meth:`generate_chunk`.
+            2. Carve dungeon floors via :func:`~src.terrain.dungeon_carver.carve_dungeon`.
+            3. Populate each floor via :func:`~src.terrain.dungeon_carver.populate_dungeon_floor`.
+            4. Apply the carved floors back into the chunk voxel grid.
+
+        Args:
+            cx:         Chunk X coordinate in chunk-space.
+            cz:         Chunk Z coordinate in chunk-space.
+            num_floors: Number of dungeon levels to generate.
+            anomaly:    Optional anomaly record (biases room placement when present).
+            rng:        Seeded RNG for reproducible generation.
+
+        Returns:
+            A 3-tuple of ``(Chunk, list[DungeonFloor], list[DungeonSpawnManifest])``.
+        """
+        from src.terrain.dungeon_carver import carve_dungeon, populate_dungeon_floor
+
+        anchor_chunk_id = f"{cx},{cz}"
+
+        # (1) Surface terrain
+        chunk = self.generate_chunk(cx, cz)
+
+        # (2) Carve dungeon floors
+        floors = carve_dungeon(
+            chunk=chunk,
+            num_floors=num_floors,
+            anchor_chunk_id=anchor_chunk_id,
+            anomaly=anomaly,
+            rng=rng,
+        )
+
+        # (3) Populate each floor
+        manifests: list[DungeonSpawnManifest] = []
+        party_level = 1  # default; caller may override via separate call
+        for floor in floors:
+            manifest = populate_dungeon_floor(floor, party_level=party_level, rng=rng)
+            manifests.append(manifest)
+
+        return chunk, floors, manifests
 
     @staticmethod
     def _pick_stone_or_ore(y: int, rng: random.Random) -> Material:
@@ -179,6 +259,62 @@ class ChunkGenerator:
                 return Material.IRON_ORE
 
         return Material.STONE
+
+
+# ---------------------------------------------------------------------------
+# PH3-004 · _apply_dungeon_floors helper
+# ---------------------------------------------------------------------------
+
+def _apply_dungeon_floors(chunk: Chunk, floors: "list[DungeonFloor]") -> None:
+    """Zero-out voxels in *chunk* for every room and hallway in *floors*.
+
+    Iterates each :class:`~src.terrain.dungeon_carver.DungeonFloor`,
+    :class:`~src.terrain.dungeon_carver.DungeonRoom`, and
+    :class:`~src.terrain.dungeon_carver.DungeonHallway` within it, setting
+    the corresponding voxels to ``None`` (air) at the correct negative-Y offset.
+
+    This is a secondary application pass — :func:`~src.terrain.dungeon_carver.carve_dungeon`
+    already writes to the chunk directly during generation.  This helper is
+    called by :meth:`ChunkGenerator.generate_chunk` when ``dungeon_floors`` is
+    provided, ensuring that pre-built floor descriptors are always reflected in
+    the chunk's voxel grid.
+
+    Args:
+        chunk:  The :class:`Chunk` to modify in-place.
+        floors: Dungeon floor descriptors to apply.
+    """
+    _SURFACE_Y = BASE_HEIGHT
+
+    def _safe_clear(x: int, y: int, z: int) -> None:
+        if 0 <= x < CHUNK_WIDTH and 0 < y < CHUNK_HEIGHT and 0 <= z < CHUNK_DEPTH:
+            chunk.set_block(x, y, z, None)
+
+    for floor in floors:
+        for room in floor.rooms:
+            rx, ry_neg, rz = room.origin
+            y_top = _SURFACE_Y + ry_neg
+            y_bot = max(1, y_top - room.height + 1)
+            for x in range(rx, rx + room.width):
+                for z in range(rz, rz + room.depth):
+                    for y in range(y_bot, y_top + 1):
+                        _safe_clear(x, y, z)
+
+        for hall in floor.hallways:
+            sx, sy_neg, sz = hall.start_voxel
+            ex, _, ez = hall.end_voxel
+            y_mid = _SURFACE_Y + sy_neg
+            y_floor = max(1, y_mid - hall.width + 1)
+            w = hall.width
+            x_lo, x_hi = min(sx, ex), max(sx, ex)
+            for x in range(x_lo, x_hi + w):
+                for dz in range(w):
+                    for y in range(y_floor, y_mid + 1):
+                        _safe_clear(x, y, sz + dz)
+            z_lo, z_hi = min(sz, ez), max(sz, ez)
+            for z in range(z_lo, z_hi + w):
+                for dx in range(w):
+                    for y in range(y_floor, y_mid + 1):
+                        _safe_clear(ex + dx, y, z)
 
 
 # ---------------------------------------------------------------------------

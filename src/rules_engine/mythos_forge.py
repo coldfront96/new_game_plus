@@ -31,12 +31,13 @@ from __future__ import annotations
 
 import asyncio
 import json
+import logging
 import random
 import re
 import uuid
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
 from src.ai_sim.llm_bridge import LLMClient, CognitiveState
 from src.rules_engine.item_specials import (
@@ -46,6 +47,12 @@ from src.rules_engine.item_specials import (
     validate_armor_ability_stack,
     validate_weapon_ability_stack,
 )
+
+if TYPE_CHECKING:
+    from src.world_sim.factions import FactionRecord
+    from src.world_sim.population import PopulationLedger
+
+_forge_log = logging.getLogger(__name__)
 
 # ---------------------------------------------------------------------------
 # Persistence path — data/ at project root
@@ -484,3 +491,208 @@ class ProceduralArtifactGenerator:
     def all_artifacts(self) -> list[GeneratedArtifact]:
         """Return all artifacts currently in the world registry."""
         return [_dict_to_artifact(d) for d in self._cache.values()]
+
+
+# ---------------------------------------------------------------------------
+# PH3-010 — MythosThresholdRecord schema & module-level constants
+# ---------------------------------------------------------------------------
+
+#: Ratio of hostile faction population vs. opposing faction population at
+#: which a Mythos threshold breach is triggered.
+FACTION_GROWTH_THRESHOLD: float = 2.5
+
+#: Sum of encounter-level ratings for all lairs in a single chunk at which
+#: a chunk danger threshold breach is triggered.
+CHUNK_DANGER_THRESHOLD: float = 8.0
+
+
+@dataclass(slots=True)
+class MythosThresholdRecord:
+    """A recorded breach of a Mythos safety threshold.
+
+    Attributes:
+        record_id:         Unique identifier for this breach record.
+        faction_name:      Faction that triggered the breach (faction-origin
+                           triggers only; ``None`` for chunk-danger triggers).
+        chunk_id:          Chunk that triggered the breach (chunk-danger
+                           triggers only; ``None`` for faction triggers).
+        trigger_value:     The growth ratio or danger score that crossed the
+                           threshold.
+        threshold_cutoff:  The configured ceiling that was exceeded.
+        triggered_at_tick: World-simulation tick at which the breach occurred.
+        artifact_id:       Populated by :func:`trigger_forge_on_threshold`
+                           after the forge generates an artifact; ``None``
+                           until that function runs.
+    """
+
+    record_id:         str
+    faction_name:      str | None
+    chunk_id:          str | None
+    trigger_value:     float
+    threshold_cutoff:  float
+    triggered_at_tick: int
+    artifact_id:       str | None = None
+
+
+# ---------------------------------------------------------------------------
+# PH3-011 — Faction / Chunk Danger Evaluator
+# ---------------------------------------------------------------------------
+
+def evaluate_mythos_threshold(
+    faction_registry: "dict[str, FactionRecord]",
+    population_ledger: "PopulationLedger",
+    chunk_danger_map: dict[str, float],
+    current_tick: int,
+) -> list[MythosThresholdRecord]:
+    """Scan factions and chunk danger scores for Mythos threshold breaches.
+
+    Emits a :class:`MythosThresholdRecord` for every faction pair whose
+    hostile-to-opposing population ratio meets or exceeds
+    :data:`FACTION_GROWTH_THRESHOLD`, and for every chunk whose summed
+    encounter-level danger score meets or exceeds :data:`CHUNK_DANGER_THRESHOLD`.
+
+    Args:
+        faction_registry:  Mapping of faction name → :class:`FactionRecord`.
+        population_ledger: Current world :class:`~src.world_sim.population.PopulationLedger`
+                           (maps species_id → :class:`~src.world_sim.population.SpeciesPopRecord`).
+        chunk_danger_map:  Mapping of chunk_id → summed encounter-level rating.
+        current_tick:      Current world-simulation tick number.
+
+    Returns:
+        List of newly triggered :class:`MythosThresholdRecord` objects
+        (may be empty).
+    """
+    from src.world_sim.factions import FactionRecord
+
+    triggered: list[MythosThresholdRecord] = []
+    seen_pairs: set[frozenset[str]] = set()
+
+    faction_list = list(faction_registry.values())
+
+    # --- Faction growth scan ---
+    for hostile_faction in faction_list:
+        for opposing_faction in faction_list:
+            if hostile_faction.name == opposing_faction.name:
+                continue
+            pair_key = frozenset({hostile_faction.name, opposing_faction.name})
+            if pair_key in seen_pairs:
+                continue
+
+            # Check mutual hostility
+            if opposing_faction.name not in hostile_faction.hostile_to:
+                continue
+
+            # Compute populations by summing local_counts across all chunks in
+            # the ledger where both factions (treated as species_id by name) appear.
+            hostile_pop = _faction_population(hostile_faction.name, population_ledger)
+            opposing_pop = _faction_population(opposing_faction.name, population_ledger)
+
+            if opposing_pop <= 0:
+                continue
+
+            growth_ratio = hostile_pop / opposing_pop
+            if growth_ratio >= FACTION_GROWTH_THRESHOLD:
+                seen_pairs.add(pair_key)
+                triggered.append(MythosThresholdRecord(
+                    record_id=str(uuid.uuid4()),
+                    faction_name=hostile_faction.name,
+                    chunk_id=None,
+                    trigger_value=growth_ratio,
+                    threshold_cutoff=FACTION_GROWTH_THRESHOLD,
+                    triggered_at_tick=current_tick,
+                    artifact_id=None,
+                ))
+
+    # --- Chunk danger scan ---
+    for chunk_id, danger_score in chunk_danger_map.items():
+        if danger_score >= CHUNK_DANGER_THRESHOLD:
+            triggered.append(MythosThresholdRecord(
+                record_id=str(uuid.uuid4()),
+                faction_name=None,
+                chunk_id=chunk_id,
+                trigger_value=danger_score,
+                threshold_cutoff=CHUNK_DANGER_THRESHOLD,
+                triggered_at_tick=current_tick,
+                artifact_id=None,
+            ))
+
+    return triggered
+
+
+def _faction_population(faction_name: str, population_ledger: "PopulationLedger") -> float:
+    """Sum global population counts for a faction identified by name as species_id.
+
+    Exact match is tried first; if no exact match exists, falls back to
+    case-insensitive prefix matching (faction_name is a prefix of species_id).
+    This avoids false positives from broad substring matching.
+    """
+    total: float = 0.0
+    for species_id, rec in population_ledger.items():
+        if species_id == faction_name:
+            total += rec.global_count
+    if total > 0:
+        return total
+    # Prefix fallback: "Orc Warband" matches "Orc Warband Chieftain" but not "Enforcer"
+    lower_faction = faction_name.lower()
+    for species_id, rec in population_ledger.items():
+        if species_id.lower().startswith(lower_faction):
+            total += rec.global_count
+    return total
+
+
+# ---------------------------------------------------------------------------
+# PH3-012 — Forge Trigger → Artifact Generator
+# ---------------------------------------------------------------------------
+
+async def trigger_forge_on_threshold(
+    threshold: MythosThresholdRecord,
+    forge: "ProceduralArtifactGenerator",
+    campaign: Any,
+    rng: random.Random,
+) -> "GeneratedArtifact":
+    """Generate an artifact in response to a Mythos threshold breach.
+
+    Determines the artifact tier from the ratio of ``trigger_value`` to
+    ``threshold_cutoff``:
+
+    * ratio ≥ 2.0 → ``"major"``
+    * otherwise   → ``"standard"`` (mapped to ``"minor"`` for forge compatibility)
+
+    Persists the artifact via the forge's JSON store, writes back
+    ``threshold.artifact_id``, and emits a ``WARNING``-level log entry.
+
+    Args:
+        threshold: The :class:`MythosThresholdRecord` that triggered the forge.
+        forge:     A :class:`ProceduralArtifactGenerator` instance.
+        campaign:  The active :class:`~src.game.campaign.CampaignSession` (unused
+                   directly; present for future integration).
+        rng:       :class:`random.Random` instance (forwarded to the forge).
+
+    Returns:
+        The generated :class:`GeneratedArtifact`.
+    """
+    ratio = threshold.trigger_value / threshold.threshold_cutoff if threshold.threshold_cutoff else 1.0
+    tier = "major" if ratio >= 2.0 else "minor"
+
+    # Inject the caller's rng into the forge for reproducibility
+    forge._rng = rng
+
+    artifact = await forge.generate_artifact_async(tier=tier)
+
+    # Write the artifact ID back to the threshold record
+    threshold.artifact_id = artifact.artifact_id
+
+    # Structured log entry
+    faction_or_chunk = (
+        f"Faction '{threshold.faction_name}'"
+        if threshold.faction_name
+        else f"Chunk '{threshold.chunk_id}'"
+    )
+    _forge_log.warning(
+        "MYTHOS FORGE: %s breached threshold. Artifact forged: %s (%s)",
+        faction_or_chunk,
+        artifact.lore_name,
+        artifact.artifact_id,
+    )
+
+    return artifact

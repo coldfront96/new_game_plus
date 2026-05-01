@@ -338,3 +338,98 @@ class QuestJournal:
         for rec in records:
             journal.add(Quest.from_dict(rec))
         return journal
+
+
+# ---------------------------------------------------------------------------
+# PH3-013 — Artifact Quest Objective Injector
+# ---------------------------------------------------------------------------
+
+def inject_artifact_quest(
+    artifact: Any,
+    threshold: Any,
+    journal: "QuestJournal",
+    world_seed: int,
+    campaign: Any = None,
+) -> Quest:
+    """Create a quest tied to a freshly forged Mythos artifact and add it to *journal*.
+
+    The quest directs the party to locate and recover the artifact, with a
+    description derived from the artifact's lore text and the triggering world
+    context (faction growth or chunk danger).
+
+    Quest properties:
+        * ``quest_id``:   Deterministic UUID from ``artifact.artifact_id + str(world_seed)``.
+        * ``title``:      ``"Retrieve the {artifact.lore_name}"``.
+        * ``description``: First :data:`_LORE_EXCERPT_MAX_CHARS` chars of artifact lore + triggering context suffix.
+        * ``objective``:  ``"Locate and recover artifact {artifact.artifact_id} from the world."``.
+        * ``reward_gp``:  10 % of artifact market value (finder's fee).
+        * ``status``:     :attr:`~QuestStatus.ACTIVE`.
+
+    The quest is appended to *journal* via :meth:`QuestJournal.add` and, when
+    *campaign* is provided, also to ``campaign.journal``.
+
+    Args:
+        artifact:   A :class:`~src.rules_engine.mythos_forge.GeneratedArtifact`.
+        threshold:  A :class:`~src.rules_engine.mythos_forge.MythosThresholdRecord`.
+        journal:    The active :class:`QuestJournal` for the party.
+        world_seed: Integer world seed used for UUID derivation.
+        campaign:   Optional active :class:`~src.game.campaign.CampaignSession`;
+                    when provided, the quest is also added to ``campaign.journal``.
+
+    Returns:
+        The created :class:`Quest`.
+    """
+    import uuid as _uuid
+
+    # Maximum characters of artifact lore included in the quest description.
+    _LORE_EXCERPT_MAX_CHARS = 280
+
+    # Deterministic quest_id
+    quest_id = str(_uuid.uuid5(_uuid.NAMESPACE_DNS, f"{artifact.artifact_id}{world_seed}"))
+
+    title = f"Retrieve the {artifact.lore_name}"
+
+    # Description: first _LORE_EXCERPT_MAX_CHARS chars of lore + triggering context
+    lore_excerpt = (artifact.lore_history or "")[:_LORE_EXCERPT_MAX_CHARS]
+    faction_name = getattr(threshold, "faction_name", None)
+    chunk_id = getattr(threshold, "chunk_id", None)
+    if faction_name:
+        context_suffix = (
+            f"The {faction_name} has grown beyond reckoning — only this relic can turn the tide."
+        )
+    else:
+        context_suffix = (
+            f"A darkness stirs in chunk {chunk_id} — only this relic can restore balance."
+        )
+    description = f"{lore_excerpt} {context_suffix}".strip()
+
+    objective = f"Locate and recover artifact {artifact.artifact_id} from the world."
+
+    # Reward: 10 % of artifact market value
+    price_gp = getattr(getattr(artifact, "properties", None), "calculated_price_gp", 0)
+    reward_gp = int(price_gp * 0.1)
+
+    quest = Quest(
+        quest_id=quest_id,
+        title=title,
+        description=description,
+        giver_name="The Mythos Oracle",
+        faction_id="",
+        target_monster="",
+        target_lair_id="",
+        encounter_level=1,
+        reward_gp=reward_gp,
+        reward_xp=0,
+        status=QuestStatus.ACTIVE,
+    )
+    quest.add_note(objective)
+
+    journal.add(quest)
+
+    # Wire into campaign journal if provided
+    if campaign is not None:
+        camp_journal = getattr(campaign, "journal", None)
+        if camp_journal is not None and camp_journal is not journal:
+            camp_journal.add(quest)
+
+    return quest
