@@ -265,6 +265,29 @@ def load_party(
     ]
 
 
+def load_active_books(
+    name: str,
+    *,
+    directory: Optional[Path] = None,
+) -> List[str]:
+    """Return the ``active_books`` list from a saved party file.
+
+    Returns an empty list when the save file predates PH7 or the key is absent.
+
+    Args:
+        name:      Party name (file stem).
+        directory: Override for the save directory (tests).
+
+    Raises:
+        FileNotFoundError: If no save file exists for *name*.
+    """
+    path = _party_path(name, directory)
+    if not path.exists():
+        raise FileNotFoundError(f"No saved party named {name!r} at {path}")
+    payload = json.loads(path.read_text())
+    return payload.get("active_books", [])
+
+
 def load_party_with_state(
     name: str,
     *,

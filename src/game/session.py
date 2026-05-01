@@ -27,7 +27,7 @@ import random
 import re
 import sys
 from dataclasses import dataclass, field
-from typing import Callable, Dict, List, Optional, Sequence, TextIO, Tuple
+from typing import Any, Callable, Dict, List, Optional, Sequence, TextIO, Tuple
 
 from src.core.event_bus import EventBus
 from src.game.turn_controller import TurnController
@@ -42,7 +42,7 @@ from src.rules_engine.encounter_extended import (
     build_encounter,
 )
 from src.rules_engine.magic import create_default_registry
-from src.rules_engine.progression import XPManager
+from src.rules_engine.progression import XPManager, level_up, Progression
 from src.rules_engine.spell_effects import SpellDispatcher, SpellResult
 from src.rules_engine.spellcasting import SpellResolver, get_key_ability
 from src.rules_engine.treasure import (
@@ -205,20 +205,22 @@ def _monster_from_srd(entry: dict, display_name: str) -> Character35e:
 def build_monsters_from_srd(
     blueprint: EncounterBlueprint,
     rng: Optional[random.Random] = None,
-    expanded: Optional[Dict] = None,
+    *,
+    expanded: Optional[Dict[str, Any]] = None,
 ) -> List[Character35e]:
     """Build monster combatants using SRD stat blocks where available.
 
     Looks up each monster by name in the loaded SRD index.  Falls back to
     the Fighter-approximation path when a name is not found.
 
+    When *expanded* is provided, any dicts containing at minimum ``"name"``,
+    ``"cr"``, and ``"hp"`` are built directly from those fields and appended
+    to the result alongside SRD monsters.
+
     Args:
-        blueprint: Encounter specification with monster name/count/CR tuples.
-        rng:       Optional seeded random for deterministic builds.
-        expanded:  Optional dict returned by ``load_expanded_rules()``.  When
-                   provided and non-empty, any monster dicts that contain the
-                   required fields (``"name"``, ``"cr"``, ``"hp"``) are
-                   injected into the returned list alongside core SRD monsters.
+        blueprint: :class:`EncounterBlueprint` describing the encounter.
+        rng:       Optional RNG for reproducibility.
+        expanded:  Supplemental monster dicts from :func:`~src.rules_engine.srd_loader.load_expanded_rules`.
     """
     _build_monster_index()
     monsters: List[Character35e] = []
@@ -262,22 +264,49 @@ def build_monsters_from_srd(
             mon.metadata["cr"] = cr
             monsters.append(mon)
 
-    # Inject expanded-only monsters (not referenced in the blueprint) when
+# Inject expanded-only monsters (not referenced in the blueprint) when
     # requested books contain entries with valid stat blocks.
     if expanded:
         for book_slug, book_entries in expanded.items():
             for candidate in book_entries:
                 if not isinstance(candidate, dict):
                     continue
-                req = {"name", "cr", "hp"}
-                if not req <= set(candidate):
+                
+                # Support varying JSON schemas safely
+                if "name" not in candidate or "cr" not in candidate:
                     continue
-                cname = candidate["name"]
+                if "hp" not in candidate and "hp_avg" not in candidate:
+                    continue
+
+                cname = str(candidate["name"])
+                
+                # Prevent duplicating monsters already handled by the blueprint
                 if any(m.name == cname for m in monsters):
                     continue
-                mon = _monster_from_srd(candidate, cname)
+                
+                try:
+                    mon = _monster_from_srd(candidate, cname)
+                except Exception:
+                    # Absolute safety net: Fall back to Fighter approximation if JSON fails
+                    cr_val = float(candidate.get("cr", 1))
+                    lvl = max(1, int(round(cr_val)))
+                    mon = Character35e(
+                        name=cname,
+                        char_class="Fighter",
+                        level=lvl,
+                        race="Human",
+                        alignment=Alignment.CHAOTIC_EVIL,
+                        size=Size.MEDIUM,
+                        strength=12 + min(4, lvl),
+                        dexterity=12,
+                        constitution=12 + min(4, lvl),
+                        intelligence=8,
+                        wisdom=10,
+                        charisma=8,
+                    )
+                
                 mon.metadata[SIDE_KEY] = "enemy"
-                mon.metadata["cr"] = candidate["cr"]
+                mon.metadata["cr"] = candidate.get("cr", 1)
                 monsters.append(mon)
 
     return monsters
@@ -388,6 +417,39 @@ class SessionReport:
     survivors: List[Character35e] = field(default_factory=list)
     casualties: List[Character35e] = field(default_factory=list)
     log: List[str] = field(default_factory=list)
+
+
+def apply_session_report(
+    report: SessionReport,
+    xp_managers: Dict[str, XPManager],
+) -> List[Progression]:
+    """Apply XP from *report* to each party member and trigger any level-ups.
+
+    Call this immediately after :func:`play_session` returns to close the
+    combat → progression loop.  Both survivors and casualties receive XP;
+    only those with enough accumulated XP are advanced via
+    :func:`~src.rules_engine.progression.level_up`.
+
+    Args:
+        report:       The :class:`SessionReport` returned by :func:`play_session`.
+        xp_managers:  Mapping of ``char_id → XPManager`` for every party member.
+
+    Returns:
+        List of :class:`~src.rules_engine.progression.Progression` records for
+        every character that leveled up this session (may be empty).
+    """
+    progressions: List[Progression] = []
+    for char in report.survivors + report.casualties:
+        xp = report.xp_awarded.get(char.char_id, 0)
+        mgr = xp_managers.get(char.char_id)
+        if mgr is None or xp <= 0:
+            continue
+        mgr.award_xp(xp)
+        level_result = mgr.check_level_up()
+        if level_result.leveled_up:
+            prog = level_up(char, mgr)
+            progressions.append(prog)
+    return progressions
 
 
 # ---------------------------------------------------------------------------

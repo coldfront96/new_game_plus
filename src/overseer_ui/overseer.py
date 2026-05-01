@@ -27,7 +27,7 @@ from dataclasses import dataclass, field
 from datetime import date, datetime, timezone
 from enum import Enum
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Optional, TextIO
+from typing import Any, Callable, Dict, Iterable, List, Optional, TextIO
 
 from src.agent_orchestration.agent_task import AgentTask, TaskStatus
 
@@ -97,6 +97,19 @@ class OverseerQueue:
         self._pending: "deque[AgentTask]" = deque()
         self._history: List[_LogRecord] = []
         self.log_path: Path = log_path or log_path_for(directory=logs_dir)
+        self._dispatch_callbacks: List[Callable[[AgentTask], None]] = []
+
+    def register_dispatch_callback(self, callback: Callable[[AgentTask], None]) -> None:
+        """Register *callback* to be invoked with the task when it is approved.
+
+        Callbacks are called in registration order after the task is marked
+        COMPLETED and before the audit log entry is written.  Exceptions in
+        callbacks propagate to the caller.
+
+        Args:
+            callback: Any callable that accepts a single :class:`AgentTask`.
+        """
+        self._dispatch_callbacks.append(callback)
 
     # ------------------------------------------------------------------
     # Queue state
@@ -173,6 +186,8 @@ class OverseerQueue:
             task.mark_in_progress()
         if task.status is TaskStatus.IN_PROGRESS and task.result is not None:
             task.complete(task.result)
+        for cb in self._dispatch_callbacks:
+            cb(task)
         self._log(OverseerDecision.APPROVED, task, note)
         return task
 

@@ -5,6 +5,7 @@
   "properties": {
     "expanded_metadata": {
       "type": "object",
+      "additionalProperties": false,
       "properties": {
         "source_book": {
           "type": "string",
@@ -26,8 +27,8 @@
           },
           "description": "Freeform classification tags such as [\"dragon\", \"undead\"]"
         }
-      },
-      "additionalProperties": false
+      }
     }
-  }
+  },
+  "additionalProperties": true
 }

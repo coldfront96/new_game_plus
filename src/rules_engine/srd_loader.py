@@ -216,3 +216,39 @@ def load_everything(data_dir: Optional[Path] = None) -> Dict[str, Any]:
         "gems_art": load_gems_art(data_dir),
         "encounter_tables": load_encounter_tables(data_dir),
     }
+
+
+def load_expanded_rules(active_books: List[str]) -> Dict[str, List[Dict[str, Any]]]:
+    """Load supplemental rulebook data from ``data/expanded/``.
+
+    Only directories whose name is present in *active_books* are loaded.
+    Returns an empty dict if ``data/expanded/`` does not exist.
+
+    Args:
+        active_books: Slugs of books to load (e.g. ``["draconomicon"]``).
+
+    Returns:
+        Mapping of book slug → list of content dicts loaded from that
+        book's ``*.json`` files.
+    """
+    expanded_root = _REPO_ROOT / "data" / "expanded"
+    expanded: Dict[str, List[Dict[str, Any]]] = {}
+
+    try:
+        book_dirs = [p for p in expanded_root.iterdir() if p.is_dir()]
+    except FileNotFoundError:
+        return expanded
+
+    for book_dir in book_dirs:
+        if book_dir.name not in active_books:
+            continue
+        entries: List[Dict[str, Any]] = []
+        for json_path in sorted(book_dir.glob("*.json")):
+            data = _read_json(json_path)
+            if isinstance(data, list):
+                entries.extend(data)
+            elif isinstance(data, dict):
+                entries.append(data)
+        expanded[book_dir.name] = entries
+
+    return expanded

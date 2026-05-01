@@ -91,6 +91,26 @@ class Quest:
     # Convenience helpers
     # ------------------------------------------------------------------
 
+    def is_objective_met(self, report: Any) -> bool:
+        """Return True if *report* satisfies this quest's completion criteria.
+
+        Requires the session outcome to be ``"victory"`` and, when
+        ``target_monster`` is set, at least one monster in the encounter
+        blueprint must match (case-insensitive substring).
+        """
+        if getattr(report, "outcome", None) != "victory":
+            return False
+        if not self.target_monster or self.target_monster == "monsters":
+            return True
+        target = self.target_monster.lower()
+        blueprint = getattr(report, "blueprint", None)
+        if blueprint is None:
+            return False
+        for name, _count, _cr in getattr(blueprint, "monsters", []):
+            if target in name.lower():
+                return True
+        return False
+
     def complete(self) -> None:
         """Mark this quest as completed."""
         self.status = QuestStatus.COMPLETED
@@ -290,6 +310,27 @@ class QuestJournal:
     def get(self, quest_id: str) -> Optional[Quest]:
         """Return the quest with *quest_id*, or ``None``."""
         return self._quests.get(quest_id)
+
+    def evaluate_all(self, report: Any) -> List[str]:
+        """Auto-complete every active quest whose objective is met by *report*.
+
+        Iterates all :attr:`~QuestStatus.ACTIVE` quests and calls
+        :meth:`Quest.is_objective_met`.  Matching quests are marked
+        :attr:`~QuestStatus.COMPLETED` in place.
+
+        Args:
+            report: A :class:`~src.game.session.SessionReport` (or any object
+                    with ``outcome`` and ``blueprint`` attributes).
+
+        Returns:
+            List of ``quest_id`` strings for every quest that was completed.
+        """
+        completed_ids: List[str] = []
+        for quest in self.active():
+            if quest.is_objective_met(report):
+                quest.complete()
+                completed_ids.append(quest.quest_id)
+        return completed_ids
 
     def complete(self, quest_id: str) -> bool:
         """Mark *quest_id* as completed. Returns ``False`` if not found."""
