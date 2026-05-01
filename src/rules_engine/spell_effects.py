@@ -138,7 +138,7 @@ class SpellDispatcher:
             "Magic Missile", "Sleep", "Color Spray",
         ],
         "Cleric": [
-            "Cure Light Wounds", "Bless", "Bane",
+            "Bless", "Bane",
             "Hold Person", "Cause Fear",
         ],
         "Druid": [
