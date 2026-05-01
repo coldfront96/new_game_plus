@@ -60,6 +60,8 @@ class Entity:
     is_active: bool = True
     tags: set = field(default_factory=set)
     _components: dict = field(default_factory=dict, repr=False)
+    metadata: dict = field(default_factory=dict, repr=False)
+    deep_lore_filepath: Optional[str] = None
 
     # ------------------------------------------------------------------
     # Component management
@@ -180,14 +182,18 @@ class Entity:
             Component instances are **not** included in this representation
             because component serialisation is the responsibility of each
             component class. The dict contains only identity and tag data.
+            ``deep_lore_filepath`` is included only when it is not ``None``.
         """
-        return {
+        d = {
             "entity_id": self.entity_id,
             "name": self.name,
             "is_active": self.is_active,
             "tags": sorted(self.tags),
             "component_types": [t.__name__ for t in self._components],
         }
+        if self.deep_lore_filepath is not None:
+            d["deep_lore_filepath"] = self.deep_lore_filepath
+        return d
 
     @classmethod
     def from_dict(cls, data: dict) -> "Entity":
@@ -208,6 +214,8 @@ class Entity:
             is_active=data.get("is_active", True),
         )
         entity.tags = set(data.get("tags", []))
+        if data.get("deep_lore_filepath") is not None:
+            entity.deep_lore_filepath = data["deep_lore_filepath"]
         return entity
 
     def to_json(self) -> str:

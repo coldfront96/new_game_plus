@@ -26,10 +26,13 @@ Usage::
 
 from __future__ import annotations
 
+import gc
 import math
 import textwrap
 from dataclasses import dataclass, field
 from typing import List, Optional
+
+from src.ai_sim.entity import Entity
 
 
 # ---------------------------------------------------------------------------
@@ -185,6 +188,100 @@ class ContextManager:
     def chunk_count(self, system_prompt: str, user_prompt: str) -> int:
         """Return the number of chunks :meth:`chunk_prompt` would produce."""
         return len(self.chunk_prompt(system_prompt, user_prompt))
+
+
+# ---------------------------------------------------------------------------
+# PH6-009 · JIT Backstory hooks (module-level helpers)
+# ---------------------------------------------------------------------------
+
+def load_deep_lore(entity: "Entity") -> Optional[str]:
+    """Load an NPC's deep backstory prose from the filesystem, if configured.
+
+    Reads the file pointed to by :attr:`~src.ai_sim.entity.Entity.deep_lore_filepath`
+    and returns its full text content.  Returns ``None`` if the field is unset
+    or the target file does not exist.
+
+    Args:
+        entity: The :class:`~src.ai_sim.entity.Entity` whose lore to load.
+
+    Returns:
+        The full text content of the lore file, or ``None``.
+    """
+    if entity.deep_lore_filepath is None:
+        return None
+    try:
+        with open(entity.deep_lore_filepath, "r", encoding="utf-8") as fh:
+            return fh.read()
+    except FileNotFoundError:
+        return None
+
+
+def build_dialogue_context(
+    system_prompt: str,
+    user_prompt: str,
+    entity: "Entity",
+    *,
+    window: Optional["ContextWindow"] = None,
+) -> List[str]:
+    """Build a list of prompt chunk strings for an NPC dialogue turn.
+
+    Optionally prepends the entity's deep-lore text as an additional system
+    message before chunking the combined prompt.
+
+    If ``window`` is not provided a default :class:`ContextWindow` (4 096 token
+    model, 512-token response reserve) is created internally.
+
+    Callers **must** invoke :func:`clear_dialogue_lore` in a ``finally`` block
+    to ensure the lore string is evicted from memory after the LLM call
+    completes — even if the call raises an exception.
+
+    Args:
+        system_prompt: Instruction context (role, rules, constraints).
+        user_prompt:   The variable content for this dialogue turn.
+        entity:        The NPC entity whose ``deep_lore_filepath`` is consulted.
+        window:        Optional :class:`ContextWindow` specifying model capacity.
+
+    Returns:
+        List of fully-formed prompt strings ready to be sent to the LLM.
+    """
+    lore_text = load_deep_lore(entity)
+    if lore_text is not None:
+        augmented_system = f"{lore_text.strip()}\n\n{system_prompt}"
+    else:
+        augmented_system = system_prompt
+
+    if window is None:
+        window = ContextWindow(model_id="default", max_tokens=4096, reserved_for_response=512)
+
+    cm = ContextManager(window)
+    return cm.chunk_prompt(augmented_system, user_prompt)
+
+
+def clear_dialogue_lore(lore_text: Optional[str]) -> None:
+    """Evict *lore_text* from memory immediately after a dialogue turn ends.
+
+    Callers **must** invoke this function in a ``finally`` block to guarantee
+    cleanup even if the LLM call raises an exception.  This prevents VRAM
+    accumulation across successive NPC conversations when a large lore file
+    was loaded for this turn.
+
+    Example::
+
+        lore_text = None
+        try:
+            lore_text = load_deep_lore(entity)
+            chunks = build_dialogue_context(sys_prompt, user_prompt, entity)
+            result = llm.query(chunks)
+        finally:
+            clear_dialogue_lore(lore_text)
+
+    Args:
+        lore_text: The string previously returned by :func:`load_deep_lore`.
+                   If ``None``, this function is a no-op.
+    """
+    if lore_text is not None:
+        del lore_text
+        gc.collect()
 
 
 # ---------------------------------------------------------------------------
