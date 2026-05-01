@@ -84,6 +84,9 @@ def dispatch_player_input(
     controller: PlayerController,
     action: PlayerAction,
     combat_registry: "dict[str, Character35e]",
+    *,
+    world_state: "object | None" = None,
+    overseer_queue: "object | None" = None,
 ) -> PlayerController:
     """Apply *action* to the player's bound entity and update the controller.
 
@@ -95,10 +98,24 @@ def dispatch_player_input(
     ``Wait`` advances the entity's turn without moving.
     ``Interact`` is a no-op stub reserved for future object interaction.
 
+    PH5-005: After each movement, checks for screen transition triggers
+    (entering a town or dungeon entry voxel).  When a transition is detected,
+    posts a ``switch_screen`` message to *overseer_queue*.
+
+    PH5-009: Reads ``character_metadata["weather_speed_multiplier"]`` (written
+    by :func:`~src.world_sim.chronos.apply_weather_debuffs`) and applies it as
+    a movement budget multiplier.  When the multiplier reduces the effective
+    budget below 1.0, the move is still applied (voxel movement is always
+    integer) but the metadata field is checked pre-move.
+
     Args:
         controller:       The player's current controller state.
         action:           The :class:`PlayerAction` to process.
         combat_registry:  ``entity_id → Character35e`` mapping.
+        world_state:      Optional world state used for screen transition checks
+                          (PH5-005).  May be ``None`` to skip transition logic.
+        overseer_queue:   Optional :class:`~src.overseer_ui.overseer.OverseerQueue`
+                          to post ``switch_screen`` messages (PH5-005).
 
     Returns:
         The updated :class:`PlayerController` (mutated in place and returned).
@@ -109,6 +126,12 @@ def dispatch_player_input(
     dx, dy, dz = _ACTION_DELTAS[action]
 
     if entity is not None and (dx, dy, dz) != (0, 0, 0):
+        # PH5-009: apply weather speed multiplier.
+        speed_mult: float = float(entity.metadata.get("weather_speed_multiplier", 1.0))
+        # If the multiplier reduces budget to zero, skip movement entirely.
+        if speed_mult <= 0.0:
+            return controller
+
         pos = entity.metadata.setdefault("position", [0, 64, 0])
         pos[0] += dx
         pos[1] += dy
@@ -125,6 +148,23 @@ def dispatch_player_input(
         if _chunk_id_is_numeric(controller.chunk_id):
             controller.chunk_id = derived
 
+        # PH5-005: post-move screen transition check.
+        if world_state is not None:
+            new_pos = (pos[0], pos[1], pos[2])
+            new_mode = _resolve_screen_transition(new_pos, world_state)
+            if new_mode is not None and overseer_queue is not None:
+                try:
+                    from src.agent_orchestration.agent_task import AgentTask
+                    task = AgentTask(
+                        task_type="switch_screen",
+                        prompt=f'{{"cmd": "switch_screen", "mode": "{new_mode}"}}',
+                        max_tokens=32,
+                        priority=10,
+                    )
+                    overseer_queue.enqueue(task)
+                except Exception:  # noqa: BLE001
+                    pass
+
     return controller
 
 
@@ -139,6 +179,72 @@ def _chunk_id_is_numeric(chunk_id: str) -> bool:
         return True
     except ValueError:
         return False
+
+
+# ---------------------------------------------------------------------------
+# PH5-005 · Screen transition resolver
+# ---------------------------------------------------------------------------
+
+def _resolve_screen_transition(
+    new_pos: tuple[int, int, int],
+    world_state: "object",
+) -> "str | None":
+    """Check whether *new_pos* triggers a UI screen transition.
+
+    Checks (in order):
+
+    1. Town entry — if *new_pos* matches any ``TownRecord.voxel_position``,
+       transition to ``TOWN_MERCHANT`` and return the mode value.
+    2. Dungeon entry — if *new_pos* matches any ``DungeonFloor``'s entry
+       coordinate stored in the world state, transition to
+       ``TACTICAL_DUNGEON`` and return the mode value.
+    3. No transition — return ``None``.
+
+    The function imports :class:`~src.overseer_ui.textual_app.UIMode` and
+    :class:`~src.overseer_ui.textual_app.AppStateManager` lazily to avoid
+    circular imports at module load time.
+
+    Args:
+        new_pos:     Player's new ``(x, y, z)`` voxel coordinate.
+        world_state: Opaque world state object; may expose ``towns`` (a list of
+                     :class:`~src.world_sim.civilization_builder.TownRecord`)
+                     and ``dungeon_floors`` (a list of
+                     :class:`~src.terrain.dungeon_carver.DungeonFloor`).
+
+    Returns:
+        The :class:`~src.overseer_ui.textual_app.UIMode` value string if a
+        transition was triggered, or ``None`` otherwise.
+    """
+    try:
+        from src.overseer_ui.textual_app import UIMode, _app_state
+    except ImportError:
+        return None
+
+    # 1. Town entry check.
+    towns = getattr(world_state, "towns", []) or []
+    for town in towns:
+        town_voxel = getattr(town, "voxel_position", None)
+        if town_voxel is not None and tuple(town_voxel) == new_pos:
+            try:
+                _app_state.transition(UIMode.TOWN_MERCHANT, town_id=town.town_id)
+                return UIMode.TOWN_MERCHANT.value
+            except (ValueError, Exception):  # noqa: BLE001
+                pass
+
+    # 2. Dungeon entry check.
+    dungeon_floors = getattr(world_state, "dungeon_floors", []) or []
+    for floor_index, floor in enumerate(dungeon_floors):
+        entry = getattr(floor, "entry_voxel", None)
+        if entry is not None and tuple(entry) == new_pos:
+            try:
+                _app_state.transition(
+                    UIMode.TACTICAL_DUNGEON, dungeon_floor=floor_index
+                )
+                return UIMode.TACTICAL_DUNGEON.value
+            except (ValueError, Exception):  # noqa: BLE001
+                pass
+
+    return None
 
 
 # ---------------------------------------------------------------------------

@@ -29,19 +29,105 @@ import json
 import re
 import threading
 from dataclasses import dataclass, field
+from enum import Enum
 from typing import TYPE_CHECKING, Optional
 
 from rich.markup import escape
 from rich.text import Text
 from textual.app import App, ComposeResult
 from textual.containers import Horizontal, Vertical
-from textual.widgets import Footer, Header, Input, RichLog, Static
+from textual.screen import Screen
+from textual.widgets import DataTable, Footer, Header, Input, RichLog, Static
 
 from src.overseer_ui.overseer import OverseerQueue
 
 if TYPE_CHECKING:
     from src.terrain.chunk_manager import ChunkManager
     from src.game.player_controller import PlayerController
+
+
+# ---------------------------------------------------------------------------
+# PH5-001 · UIMode enum + AppStateManager dataclass
+# ---------------------------------------------------------------------------
+
+class UIMode(str, Enum):
+    """Active screen mode for the multi-screen Textual UI.
+
+    Members:
+        OVERWORLD:        Top-down world exploration view.
+        TOWN_MERCHANT:    Town merchant shop screen.
+        TACTICAL_DUNGEON: Dungeon combat / exploration screen.
+    """
+
+    OVERWORLD = "overworld"
+    TOWN_MERCHANT = "town_merchant"
+    TACTICAL_DUNGEON = "tactical_dungeon"
+
+
+#: Valid mode transitions: ``{from_mode: {to_mode, ...}}``.
+_VALID_TRANSITIONS: dict[UIMode, set[UIMode]] = {
+    UIMode.OVERWORLD: {UIMode.TOWN_MERCHANT, UIMode.TACTICAL_DUNGEON},
+    UIMode.TOWN_MERCHANT: {UIMode.OVERWORLD},
+    UIMode.TACTICAL_DUNGEON: {UIMode.OVERWORLD},
+}
+
+
+@dataclass(slots=True)
+class AppStateManager:
+    """Thread-safe singleton that tracks the active UI screen and related context.
+
+    Attributes:
+        mode:                  Current :class:`UIMode`.
+        active_town_id:        ID of the town currently being visited, or ``None``.
+        active_dungeon_floor:  Index of the active dungeon floor (0-based).
+        transition_lock:       Re-entrant lock protecting all field mutations.
+    """
+
+    mode: UIMode = UIMode.OVERWORLD
+    active_town_id: str | None = None
+    active_dungeon_floor: int = 0
+    transition_lock: threading.Lock = field(default_factory=threading.Lock)
+
+    def transition(
+        self,
+        new_mode: UIMode,
+        *,
+        town_id: str | None = None,
+        dungeon_floor: int = 0,
+    ) -> bool:
+        """Atomically switch to *new_mode*, updating context fields.
+
+        Acquires :attr:`transition_lock` before mutating any field.
+
+        Args:
+            new_mode:      The target :class:`UIMode`.
+            town_id:       Town identifier; required when *new_mode* is
+                           ``TOWN_MERCHANT``.
+            dungeon_floor: Floor index; relevant when *new_mode* is
+                           ``TACTICAL_DUNGEON``.
+
+        Returns:
+            ``True`` on success.
+
+        Raises:
+            ValueError: If the transition from the current mode to *new_mode*
+                        is not permitted by :data:`_VALID_TRANSITIONS`.
+        """
+        with self.transition_lock:
+            allowed = _VALID_TRANSITIONS.get(self.mode, set())
+            if new_mode not in allowed:
+                raise ValueError(
+                    f"Invalid transition: {self.mode!r} → {new_mode!r}. "
+                    f"Allowed: {allowed!r}"
+                )
+            self.mode = new_mode
+            self.active_town_id = town_id
+            self.active_dungeon_floor = dungeon_floor
+        return True
+
+
+#: Module-level singleton consumed by all screen classes.
+_app_state = AppStateManager()
 
 
 # ---------------------------------------------------------------------------
@@ -680,3 +766,407 @@ class OverseerApp(App[None]):
                 _post(f"[red]Session error:[/red] {escape(str(exc))}")
 
         threading.Thread(target=_run, daemon=True).start()
+
+
+# ---------------------------------------------------------------------------
+# PH5-002 · OverworldScreen widget
+# ---------------------------------------------------------------------------
+
+class OverworldScreen(Screen):
+    """Full-viewport top-down ASCII overworld exploration screen.
+
+    Composes a full-viewport ``Static`` voxel grid (reusing
+    :func:`_render_chunk_with_fog`) and a one-line status bar.
+
+    Key bindings:
+        Arrow keys / WASD — move the player avatar.
+        ``t``             — open NPC dialogue.
+
+    On mount, asserts that ``_app_state.mode`` equals ``UIMode.OVERWORLD``.
+    """
+
+    BINDINGS = [
+        ("up",    "move_north", "North"),
+        ("down",  "move_south", "South"),
+        ("right", "move_east",  "East"),
+        ("left",  "move_west",  "West"),
+        ("w",     "move_north", "North"),
+        ("s",     "move_south", "South"),
+        ("d",     "move_east",  "East"),
+        ("a",     "move_west",  "West"),
+        ("t",     "talk",       "Talk"),
+        ("ctrl+c","quit",       "Quit"),
+    ]
+
+    CSS = """
+    OverworldScreen {
+        layout: vertical;
+    }
+    #ow-viewport {
+        height: 1fr;
+        border: solid $accent;
+    }
+    #ow-status {
+        height: 1;
+        background: $panel;
+        color: $text;
+    }
+    """
+
+    def __init__(
+        self,
+        chunk_manager: Optional["ChunkManager"] = None,
+        player_controller: Optional["PlayerController"] = None,
+        combat_registry: Optional[dict] = None,
+        world_tick: int = 0,
+        **kwargs,
+    ) -> None:
+        super().__init__(**kwargs)
+        self._chunk_manager = chunk_manager
+        self._player_controller = player_controller
+        self._combat_registry: dict = combat_registry or {}
+        self._world_tick: int = world_tick
+        self._cx = 0
+        self._cz = 0
+
+    def compose(self) -> ComposeResult:
+        yield Static(id="ow-viewport")
+        yield Static(
+            f"[Overworld] Tick: {self._world_tick}  Pos: (0,0)",
+            id="ow-status",
+        )
+
+    def on_mount(self) -> None:
+        if _app_state.mode != UIMode.OVERWORLD:
+            raise RuntimeError(
+                f"OverworldScreen mounted with incorrect mode: {_app_state.mode!r}"
+            )
+        self._refresh_viewport()
+
+    def _refresh_viewport(self) -> None:
+        vp = self.query_one("#ow-viewport", Static)
+        if self._chunk_manager is None:
+            vp.update("[dim]No terrain loaded.[/dim]")
+            return
+        try:
+            ctrl = self._player_controller
+            player_pos: Optional[tuple[int, int, int]] = None
+            if ctrl is not None:
+                entity = self._combat_registry.get(ctrl.entity_id)
+                if entity is not None:
+                    raw_pos = entity.metadata.get("position")
+                    if raw_pos is not None and len(raw_pos) >= 3:
+                        player_pos = (int(raw_pos[0]), int(raw_pos[1]), int(raw_pos[2]))
+            vp.update(
+                _render_chunk_with_fog(
+                    self._chunk_manager,
+                    self._cx,
+                    self._cz,
+                    ctrl,
+                    player_pos,
+                )
+            )
+            # Update status bar.
+            x, z = (player_pos[0], player_pos[2]) if player_pos else (0, 0)
+            self.query_one("#ow-status", Static).update(
+                f"[Overworld] Tick: {self._world_tick}  Pos: ({x},{z})"
+            )
+        except Exception as exc:  # noqa: BLE001
+            vp.update(f"[red]Terrain error:[/red] {escape(str(exc))}")
+
+    def _move(self, action: str) -> None:
+        """Dispatch a movement action and refresh the viewport."""
+        from src.game.player_controller import PlayerAction, dispatch_player_input
+
+        _action_map = {
+            "north": PlayerAction.MoveNorth,
+            "south": PlayerAction.MoveSouth,
+            "east":  PlayerAction.MoveEast,
+            "west":  PlayerAction.MoveWest,
+        }
+        pa = _action_map.get(action)
+        if pa is None or self._player_controller is None:
+            return
+        dispatch_player_input(self._player_controller, pa, self._combat_registry)
+        self.call_after_refresh(self._refresh_viewport)
+
+    def action_move_north(self) -> None:
+        self._move("north")
+
+    def action_move_south(self) -> None:
+        self._move("south")
+
+    def action_move_east(self) -> None:
+        self._move("east")
+
+    def action_move_west(self) -> None:
+        self._move("west")
+
+    async def action_talk(self) -> None:
+        """Stream NPC dialogue for the nearest NPC (delegates to main app)."""
+        # Notify the parent app to open dialogue.
+        self.app.post_message_no_wait(self.app.OverseerMessage({"cmd": "talk"}))  # type: ignore[attr-defined]
+
+
+# ---------------------------------------------------------------------------
+# PH5-003 · TownMerchantScreen widget
+# ---------------------------------------------------------------------------
+
+class TownMerchantScreen(Screen):
+    """Two-column merchant shop screen.
+
+    Left column: scrollable ``DataTable`` of the town's merchant inventory.
+    Right column: ``RichLog`` showing party gold and equipped items.
+
+    Key bindings:
+        ``b``      — buy highlighted item.
+        ``Escape`` — exit to overworld.
+
+    On mount, loads the :class:`~src.world_sim.civilization_builder.TownRecord`
+    whose ``town_id`` matches ``_app_state.active_town_id``.
+    """
+
+    BINDINGS = [
+        ("b",      "buy",       "Buy"),
+        ("escape", "exit_town", "Exit"),
+        ("ctrl+c", "quit",      "Quit"),
+    ]
+
+    CSS = """
+    TownMerchantScreen {
+        layout: vertical;
+    }
+    #tm-header {
+        height: 1;
+        background: $panel;
+        text-align: center;
+    }
+    #tm-main {
+        height: 1fr;
+        layout: horizontal;
+    }
+    #tm-inventory {
+        width: 2fr;
+        border: solid $accent;
+    }
+    #tm-party {
+        width: 1fr;
+        border: solid $accent-darken-1;
+    }
+    """
+
+    def __init__(
+        self,
+        town_registry: Optional[dict] = None,
+        merchant_registry: Optional[dict] = None,
+        party_record: Optional[object] = None,
+        **kwargs,
+    ) -> None:
+        super().__init__(**kwargs)
+        self._town_registry: dict = town_registry or {}
+        self._merchant_registry: dict = merchant_registry or {}
+        self._party_record = party_record
+        self._town_record: Optional[object] = None
+
+    def compose(self) -> ComposeResult:
+        yield Static("[bold cyan]Town Merchant[/bold cyan]", id="tm-header")
+        with Horizontal(id="tm-main"):
+            yield DataTable(id="tm-inventory")
+            yield RichLog(id="tm-party", highlight=True, markup=True)
+
+    def on_mount(self) -> None:
+        # Load the active town.
+        town_id = _app_state.active_town_id
+        if town_id and town_id in self._town_registry:
+            self._town_record = self._town_registry[town_id]
+
+        table = self.query_one("#tm-inventory", DataTable)
+        table.add_columns("Name", "Price gp", "Weight lb")
+
+        if self._town_record is not None:
+            # Populate inventory from all merchants in the town.
+            for mid in getattr(self._town_record, "merchant_ids", []):
+                inv_record = self._merchant_registry.get(mid)
+                if inv_record is None:
+                    continue
+                for item in getattr(inv_record, "items", []):
+                    table.add_row(
+                        getattr(item, "name", str(item)),
+                        str(getattr(item, "price_gp", 0)),
+                        str(getattr(item, "weight_lb", 0)),
+                    )
+
+        # Update party panel.
+        self._refresh_party_panel()
+
+    def _refresh_party_panel(self) -> None:
+        log = self.query_one("#tm-party", RichLog)
+        log.clear()
+        if self._party_record is None:
+            log.write("[dim]No party loaded.[/dim]")
+            return
+        gold = getattr(self._party_record, "gold", 0)
+        log.write(f"[bold yellow]Gold:[/bold yellow] {gold} gp")
+        equipped = getattr(self._party_record, "inventory", [])
+        if equipped:
+            log.write("[bold]Inventory:[/bold]")
+            for it in equipped:
+                log.write(f"  • {escape(str(it))}")
+
+    def action_buy(self) -> None:
+        """Deduct gold and add the highlighted item to party inventory."""
+        table = self.query_one("#tm-inventory", DataTable)
+        if table.cursor_row is None or self._party_record is None:
+            return
+        try:
+            row_data = table.get_row_at(table.cursor_row)
+        except Exception:  # noqa: BLE001
+            return
+        if not row_data:
+            return
+        name = str(row_data[0])
+        try:
+            price_gp = int(str(row_data[1]))
+        except (ValueError, IndexError):
+            price_gp = 0
+
+        # Deduct gold, clamped at 0.
+        current_gold = getattr(self._party_record, "gold", 0)
+        new_gold = max(0, current_gold - price_gp)
+        try:
+            object.__setattr__(self._party_record, "gold", new_gold)
+        except (AttributeError, TypeError):
+            try:
+                self._party_record.gold = new_gold  # type: ignore[union-attr]
+            except Exception:  # noqa: BLE001
+                pass
+
+        # Add to inventory.
+        inv = getattr(self._party_record, "inventory", None)
+        if inv is not None:
+            inv.append(name)
+
+        self._refresh_party_panel()
+
+    def action_exit_town(self) -> None:
+        """Transition back to OVERWORLD and switch screen."""
+        _app_state.transition(UIMode.OVERWORLD)
+        self.app.switch_screen("overworld")
+
+    def action_quit(self) -> None:
+        self.app.exit()
+
+
+# ---------------------------------------------------------------------------
+# PH5-004 · TacticalDungeonScreen widget
+# ---------------------------------------------------------------------------
+
+class TacticalDungeonScreen(Screen):
+    """Tactical dungeon combat / exploration screen.
+
+    Renders :class:`~src.terrain.dungeon_carver.DungeonFloor` walls (``#``),
+    floors (``.``), and entity tokens as single uppercase letters.
+
+    Key bindings:
+        ``f``      — execute a full-attack combat round.
+        ``Escape`` — ascend to overworld.
+
+    Floor index is read from ``_app_state.active_dungeon_floor``.
+    """
+
+    BINDINGS = [
+        ("f",      "full_attack", "Attack"),
+        ("escape", "ascend",      "Ascend"),
+        ("ctrl+c", "quit",        "Quit"),
+    ]
+
+    CSS = """
+    TacticalDungeonScreen {
+        layout: horizontal;
+    }
+    #td-grid {
+        width: 3fr;
+        border: solid $accent;
+    }
+    #td-log {
+        width: 1fr;
+        border: solid $accent-darken-1;
+    }
+    """
+
+    def __init__(
+        self,
+        dungeon_floors: Optional[list] = None,
+        overseer_queue: Optional[OverseerQueue] = None,
+        **kwargs,
+    ) -> None:
+        super().__init__(**kwargs)
+        self._dungeon_floors: list = dungeon_floors or []
+        self._overseer_queue = overseer_queue
+
+    def compose(self) -> ComposeResult:
+        yield Static(id="td-grid")
+        yield RichLog(id="td-log", highlight=True, markup=True)
+
+    def on_mount(self) -> None:
+        floor_idx = _app_state.active_dungeon_floor
+        self._render_dungeon_floor(floor_idx)
+        log = self.query_one("#td-log", RichLog)
+        log.write(f"[bold cyan]Dungeon — Floor {floor_idx}[/bold cyan]")
+        log.write("[dim]f = attack  Escape = ascend[/dim]")
+
+    def _render_dungeon_floor(self, floor_index: int) -> None:
+        """Render *floor_index* from :attr:`_dungeon_floors` to the grid widget."""
+        grid = self.query_one("#td-grid", Static)
+
+        if not self._dungeon_floors or floor_index >= len(self._dungeon_floors):
+            grid.update("[dim]No dungeon floor loaded.[/dim]")
+            return
+
+        floor = self._dungeon_floors[floor_index]
+        # Build a simple ASCII map: chunk-sized grid of '.' (floor) and '#' (wall).
+        from src.terrain.chunk import CHUNK_WIDTH, CHUNK_DEPTH
+
+        rows: list[list[str]] = [
+            ["#"] * CHUNK_WIDTH for _ in range(CHUNK_DEPTH)
+        ]
+
+        # Carve rooms.
+        for room in getattr(floor, "rooms", []):
+            ox, _oy, oz = room.origin
+            for dz in range(room.depth):
+                for dx in range(room.width):
+                    rx, rz = ox + dx, oz + dz
+                    if 0 <= rz < CHUNK_DEPTH and 0 <= rx < CHUNK_WIDTH:
+                        rows[rz][rx] = "."
+
+        from rich.text import Text
+        out = Text()
+        for row in rows:
+            out.append("".join(row) + "\n")
+
+        grid.update(out)
+
+    def action_full_attack(self) -> None:
+        """Enqueue a combat round via OverseerQueue and log results."""
+        log = self.query_one("#td-log", RichLog)
+        if self._overseer_queue is not None:
+            from src.agent_orchestration.agent_task import AgentTask
+            task = AgentTask(
+                task_type="combat_round",
+                prompt="Execute a full-attack round.",
+                max_tokens=256,
+                priority=5,
+            )
+            self._overseer_queue.enqueue(task)
+            log.write("[yellow]Combat round queued.[/yellow]")
+        else:
+            log.write("[dim]No combat queue configured.[/dim]")
+
+    def action_ascend(self) -> None:
+        """Transition back to OVERWORLD."""
+        _app_state.transition(UIMode.OVERWORLD)
+        self.app.switch_screen("overworld")
+
+    def action_quit(self) -> None:
+        self.app.exit()
