@@ -24,7 +24,7 @@ import json
 from dataclasses import dataclass
 from typing import Any, Awaitable, Callable, Dict, List, Optional, Sequence, Union
 
-from src.agent_orchestration.agent_task import AgentTask, TaskStatus
+from src.agent_orchestration.agent_task import AgentTask, TaskStatus, TaskType
 from src.agent_orchestration.prompt_builder import PromptBuilder
 from src.agent_orchestration.result_parser import ParseResult, ResultParser
 from src.agent_orchestration.scheduler import Scheduler
@@ -42,17 +42,24 @@ class LLMTaskRunner:
     """Wires the scheduler + prompt builder + LLM client + result parser.
 
     Attributes:
-        scheduler:      The :class:`Scheduler` to pull tasks from.
-        prompt_builder: A :class:`PromptBuilder` for context injection.
-        result_parser:  A :class:`ResultParser` for validating responses.
-        completion_fn:  Callable returning the LLM's raw text response.
-                        For production use, wrap an :class:`LLMClient`;
-                        for tests, inject a deterministic stub.
-        overseer_queue: Optional :class:`~src.overseer_ui.OverseerQueue`
-                        — failed parses are forwarded here so a human
-                        can review/edit/reject.
-        model_id:       Optional model identifier passed to
-                        :meth:`AgentTask.mark_in_progress`.
+        scheduler:          The :class:`Scheduler` to pull tasks from.
+        prompt_builder:     A :class:`PromptBuilder` for context injection.
+        result_parser:      A :class:`ResultParser` for validating responses.
+        completion_fn:      Callable returning the LLM's raw text response.
+                            For production use, wrap an :class:`LLMClient`;
+                            for tests, inject a deterministic stub.
+        overseer_queue:     Optional :class:`~src.overseer_ui.OverseerQueue`
+                            — failed parses are forwarded here so a human
+                            can review/edit/reject.
+        model_id:           Optional model identifier passed to
+                            :meth:`AgentTask.mark_in_progress`.
+        action_dispatcher:  Optional :class:`~src.agent_orchestration
+                            .action_dispatcher.ActionDispatcher`.  When
+                            present, AGENT_DECISION tasks are validated via
+                            :func:`~src.agent_orchestration.action_dispatcher
+                            .decode_action` immediately after parsing so that
+                            unrecognised action types fail fast — before the
+                            task reaches ``COMPLETED`` and the OverseerQueue.
     """
 
     scheduler: Scheduler
@@ -61,6 +68,7 @@ class LLMTaskRunner:
     completion_fn: CompletionFn
     overseer_queue: Any = None
     model_id: Optional[str] = None
+    action_dispatcher: Any = None  # Optional[ActionDispatcher] — typed as Any to avoid circular import
 
     # ------------------------------------------------------------------
     # Internal helpers
@@ -105,7 +113,32 @@ class LLMTaskRunner:
             raw = await self._invoke_completion(messages)
             parsed = self.result_parser.parse(raw, task.task_type)
             if parsed.ok:
-                self.scheduler.complete(task, result=parsed.data or {})
+                result_data = parsed.data or {}
+                # For AGENT_DECISION tasks, validate the decoded action type
+                # immediately so unrecognised action_type values fail at the
+                # runner level rather than silently completing.
+                if (
+                    task.task_type == TaskType.AGENT_DECISION.value
+                    and self.action_dispatcher is not None
+                ):
+                    from src.agent_orchestration.action_dispatcher import (
+                        ActionDecodeError,
+                        decode_action,
+                    )
+                    try:
+                        decode_action(result_data)
+                    except ActionDecodeError as decode_err:
+                        bad = ParseResult(
+                            ok=False,
+                            data=result_data,
+                            error=str(decode_err),
+                            raw_text=parsed.raw_text,
+                        )
+                        self.scheduler.fail(task, str(decode_err))
+                        if task.status is not TaskStatus.PENDING:
+                            self._handle_parse_failure(task, bad)
+                        return task
+                self.scheduler.complete(task, result=result_data)
             else:
                 self.scheduler.fail(task, parsed.error)
                 # If the failure isn't auto-retried, escalate to the Overseer.

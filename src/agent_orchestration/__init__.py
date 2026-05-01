@@ -14,6 +14,14 @@ Public surface (Task 10):
   result, surfacing failures back to the Overseer.
 """
 
+from src.agent_orchestration.action_dispatcher import (
+    ActionDecodeError,
+    ActionDispatcher,
+    AgentAction,
+    AgentActionType,
+    DispatchResult,
+    decode_action,
+)
 from src.agent_orchestration.agent_task import AgentTask, TaskStatus, TaskType
 from src.agent_orchestration.prompt_builder import PromptBuilder
 from src.agent_orchestration.result_parser import (
@@ -25,7 +33,12 @@ from src.agent_orchestration.scheduler import Scheduler
 from src.agent_orchestration.task_runner import LLMTaskRunner
 
 __all__ = [
+    "ActionDecodeError",
+    "ActionDispatcher",
+    "AgentAction",
+    "AgentActionType",
     "AgentTask",
+    "DispatchResult",
     "LLMTaskRunner",
     "ParseResult",
     "PromptBuilder",
@@ -34,4 +47,5 @@ __all__ = [
     "Scheduler",
     "TaskStatus",
     "TaskType",
+    "decode_action",
 ]
