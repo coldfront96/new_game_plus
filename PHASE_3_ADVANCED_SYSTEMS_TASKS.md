@@ -32,9 +32,9 @@
 | Campaign Session | `src/game/campaign.py` | ✅ Shipped |
 | Player Controller & Fog of War | `src/game/player_controller.py` | ✅ Shipped |
 | Textual UI (Dialogue Panel, FoW renderer) | `src/overseer_ui/textual_app.py` | ✅ Shipped |
-| Dungeon Carver | `src/terrain/dungeon_carver.py` | 🔲 Phase 3 target |
-| Party Manager | `src/game/party_manager.py` | 🔲 Phase 3 target |
-| Mythos ↔ Campaign/Quest wiring | `src/rules_engine/mythos_forge.py` (extension) | 🔲 Phase 3 target |
+| Dungeon Carver | `src/terrain/dungeon_carver.py` | ✅ Shipped |
+| Party Manager | `src/game/party_manager.py` | ✅ Shipped |
+| Mythos ↔ Campaign/Quest wiring | `src/rules_engine/mythos_forge.py` (extension) | ✅ Shipped |
 
 ---
 

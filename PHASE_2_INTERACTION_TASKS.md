@@ -24,9 +24,9 @@
 | LLM Bridge (async inference client) | `src/ai_sim/llm_bridge.py` | ✅ Shipped |
 | Combat Engine & Conditions | `src/rules_engine/combat.py`, `src/rules_engine/conditions.py` | ✅ Shipped |
 | Character Sheet (3.5e) | `src/rules_engine/character_35e.py` | ✅ Shipped |
-| Civilization Builder | `src/world_sim/civilization_builder.py` | 🔲 Phase 2 target |
-| NPC Dialogue System | `src/ai_sim/llm_bridge.py` (extension) | 🔲 Phase 2 target |
-| Player Controller | `src/game/player_controller.py` | 🔲 Phase 2 target |
+| Civilization Builder | `src/world_sim/civilization_builder.py` | ✅ Shipped |
+| NPC Dialogue System | `src/ai_sim/llm_bridge.py` (extension) | ✅ Shipped |
+| Player Controller | `src/game/player_controller.py` | ✅ Shipped |
 
 ---
 
