@@ -104,6 +104,9 @@ def run_world_tick(
     # Step 5 — Anomaly lore (fire-and-forget; does not block tick return)
     _trigger_anomaly_lore_tasks(world_state, tick, llm_client, rng)
 
+    # Step 6 — PH5-009: Apply weather debuffs to each chunk's entity metadata.
+    _apply_weather_debuffs(world_state)
+
     return world_state
 
 
@@ -172,3 +175,33 @@ def _trigger_anomaly_lore_tasks(
                     loop.create_task(request_anomaly_lore(anomaly, llm_client, notes))
                 except RuntimeError:
                     pass   # no running event loop in sync context — lore skipped
+
+
+def _apply_weather_debuffs(world_state: WorldState) -> None:
+    """PH5-009: Apply weather debuffs to each chunk's entity_metadata dict.
+
+    Iterates every :class:`~src.world_sim.population.WorldChunk` that carries
+    a ``weather_state`` attribute (a :class:`~src.world_sim.chronos.WeatherState`).
+    For each such chunk, calls
+    :func:`~src.world_sim.chronos.apply_weather_debuffs` on the chunk's
+    ``entity_metadata`` dict.
+
+    Args:
+        world_state: The current :class:`WorldState`.
+    """
+    try:
+        from src.world_sim.chronos import apply_weather_debuffs
+    except ImportError:
+        return
+
+    for chunk in world_state.world_chunks:
+        weather = getattr(chunk, "weather_state", None)
+        if weather is None:
+            continue
+        entity_metadata = getattr(chunk, "entity_metadata", None)
+        if entity_metadata is None:
+            continue
+        try:
+            apply_weather_debuffs(entity_metadata, weather)
+        except Exception:  # noqa: BLE001
+            pass
