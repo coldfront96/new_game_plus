@@ -219,4 +219,54 @@ def identify_magic_item(
         else:
             return IdentificationResult(identified=False, aura_school=aura_school, full_name=None)
 
+
+# ---------------------------------------------------------------------------
+# PH7-005 · Expanded wondrous item merge
+# ---------------------------------------------------------------------------
+
+def merge_expanded_wondrous(expanded: dict) -> None:
+    """Merge supplemental wondrous items from *expanded* into the live registry.
+
+    Only processes entries keyed under ``"magic_item_compendium"``.
+    Each item dict must contain at minimum a ``"name"`` field; all other
+    fields fall back to safe defaults.
+
+    Deduplicates by name — last writer wins when names collide, preserving
+    the expanded book's version.  Safe to call multiple times; repeated
+    calls do not accumulate duplicates.
+
+    Args:
+        expanded: Dict returned by :func:`~src.rules_engine.srd_loader.load_expanded_rules`.
+    """
+    from src.rules_engine.magic_items import WondrousItem, MagicItemCategory, MagicBonus
+
+    mic_entries = expanded.get("magic_item_compendium")
+    if not mic_entries:
+        return
+
+    for item_dict in mic_entries:
+        if not isinstance(item_dict, dict) or not item_dict.get("name"):
+            continue
+        name = str(item_dict["name"])
+        slug = name.lower().replace(" ", "_").replace("(", "").replace(")", "").replace("+", "plus")
+        new_item = WondrousItem(
+            name=name,
+            category=MagicItemCategory.WONDROUS,
+            slot=str(item_dict.get("slot", "none")),
+            caster_level=int(item_dict.get("caster_level", 1)),
+            price_gp=int(item_dict.get("price_gp", 0)),
+            weight_lb=float(item_dict.get("weight_lb", 0.0)),
+            bonuses=[],
+            aura=str(item_dict.get("aura_school", "moderate transmutation")),
+            description=str(item_dict.get("description", "")),
+        )
+        WONDROUS_ITEM_REGISTRY[slug] = new_item
+
+    # Deduplicate by name — keep latest entry per name key.
+    seen_names: dict[str, str] = {}
+    for slug, wi in list(WONDROUS_ITEM_REGISTRY.items()):
+        if wi.name in seen_names:
+            del WONDROUS_ITEM_REGISTRY[seen_names[wi.name]]
+        seen_names[wi.name] = slug
+
     return IdentificationResult(identified=False, aura_school=None, full_name=None)

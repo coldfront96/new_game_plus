@@ -209,17 +209,20 @@ def save_party(
     directory: Optional[Path] = None,
     conditions: Optional[ConditionManager] = None,
     xp_managers: Optional[Dict[str, XPManager]] = None,
+    active_books: Optional[List[str]] = None,
 ) -> Path:
     """Write *party* to ``<directory or saves/>/<name>.json``.
 
     Args:
-        name:         Party name (used as the file stem).
-        party:        Iterable of :class:`Character35e` instances.
-        directory:    Override for the destination directory (tests).
-        conditions:   Optional :class:`ConditionManager` whose state will be
-                      saved alongside each character.
-        xp_managers:  Mapping of ``char_id → XPManager`` so each character's
-                      XP is round-tripped.
+        name:          Party name (used as the file stem).
+        party:         Iterable of :class:`Character35e` instances.
+        directory:     Override for the destination directory (tests).
+        conditions:    Optional :class:`ConditionManager` whose state will be
+                       saved alongside each character.
+        xp_managers:   Mapping of ``char_id → XPManager`` so each character's
+                       XP is round-tripped.
+        active_books:  List of supplemental book slugs active for this
+                       campaign (PH7-008).  Defaults to ``[]``.
 
     Returns:
         The absolute :class:`~pathlib.Path` that was written.
@@ -234,7 +237,7 @@ def save_party(
         )
         for c in party
     ]
-    payload = {"name": name, "party": records}
+    payload = {"name": name, "party": records, "active_books": active_books or []}
     path.write_text(json.dumps(payload, indent=2))
     return path
 
@@ -260,6 +263,29 @@ def load_party(
     ]
 
 
+def load_active_books(
+    name: str,
+    *,
+    directory: Optional[Path] = None,
+) -> List[str]:
+    """Return the ``active_books`` list from a saved party file.
+
+    Returns an empty list when the save file predates PH7 or the key is absent.
+
+    Args:
+        name:      Party name (file stem).
+        directory: Override for the save directory (tests).
+
+    Raises:
+        FileNotFoundError: If no save file exists for *name*.
+    """
+    path = _party_path(name, directory)
+    if not path.exists():
+        raise FileNotFoundError(f"No saved party named {name!r} at {path}")
+    payload = json.loads(path.read_text())
+    return payload.get("active_books", [])
+
+
 def load_party_with_state(
     name: str,
     *,
@@ -280,7 +306,12 @@ def load_party_with_state(
         deserialize_character(rec, condition_manager=condition_manager)
         for rec in records
     ]
-    return {"party": characters, "records": records, "name": payload.get("name", name)}
+    return {
+        "party": characters,
+        "records": records,
+        "name": payload.get("name", name),
+        "active_books": payload.get("active_books", []),
+    }
 
 
 def list_saved_parties(directory: Optional[Path] = None) -> List[str]:

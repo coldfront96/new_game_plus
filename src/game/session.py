@@ -27,7 +27,7 @@ import random
 import re
 import sys
 from dataclasses import dataclass, field
-from typing import Callable, Dict, List, Optional, Sequence, TextIO, Tuple
+from typing import Any, Callable, Dict, List, Optional, Sequence, TextIO, Tuple
 
 from src.core.event_bus import EventBus
 from src.game.turn_controller import TurnController
@@ -205,11 +205,22 @@ def _monster_from_srd(entry: dict, display_name: str) -> Character35e:
 def build_monsters_from_srd(
     blueprint: EncounterBlueprint,
     rng: Optional[random.Random] = None,
+    *,
+    expanded: Optional[Dict[str, Any]] = None,
 ) -> List[Character35e]:
     """Build monster combatants using SRD stat blocks where available.
 
     Looks up each monster by name in the loaded SRD index.  Falls back to
     the Fighter-approximation path when a name is not found.
+
+    When *expanded* is provided, any dicts containing at minimum ``"name"``,
+    ``"cr"``, and ``"hp"`` are built directly from those fields and appended
+    to the result alongside SRD monsters.
+
+    Args:
+        blueprint: :class:`EncounterBlueprint` describing the encounter.
+        rng:       Optional RNG for reproducibility.
+        expanded:  Supplemental monster dicts from :func:`~src.rules_engine.srd_loader.load_expanded_rules`.
     """
     _build_monster_index()
     monsters: List[Character35e] = []
@@ -239,6 +250,41 @@ def build_monsters_from_srd(
             mon.metadata[SIDE_KEY] = "enemy"
             mon.metadata["cr"] = cr
             monsters.append(mon)
+
+    # Append expanded-book monsters when provided.
+    if expanded:
+        for book_entries in expanded.values():
+            for entry_dict in book_entries:
+                if not (
+                    isinstance(entry_dict, dict)
+                    and "name" in entry_dict
+                    and "cr" in entry_dict
+                    and "hp" in entry_dict
+                ):
+                    continue
+                try:
+                    mon = _monster_from_srd(entry_dict, str(entry_dict["name"]))
+                except Exception:
+                    cr_val = float(entry_dict.get("cr", 1))
+                    lvl = max(1, int(round(cr_val)))
+                    mon = Character35e(
+                        name=str(entry_dict["name"]),
+                        char_class="Fighter",
+                        level=lvl,
+                        race="Human",
+                        alignment=Alignment.CHAOTIC_EVIL,
+                        size=Size.MEDIUM,
+                        strength=12 + min(4, lvl),
+                        dexterity=12,
+                        constitution=12 + min(4, lvl),
+                        intelligence=8,
+                        wisdom=10,
+                        charisma=8,
+                    )
+                mon.metadata[SIDE_KEY] = "enemy"
+                mon.metadata["cr"] = entry_dict.get("cr", 1)
+                monsters.append(mon)
+
     return monsters
 
 

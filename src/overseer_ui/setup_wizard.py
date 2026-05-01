@@ -35,7 +35,7 @@ from typing import Optional
 
 from textual.app import ComposeResult
 from textual.screen import Screen
-from textual.widgets import Button, Static
+from textual.widgets import Button, Checkbox, Static
 
 # ---------------------------------------------------------------------------
 # PH6-001 · CampaignWizardState dataclass
@@ -47,17 +47,23 @@ class CampaignWizardState:
     """Mutable state produced by the :class:`CampaignWizardScreen`.
 
     Attributes:
-        selected_mode: One of ``"sandbox"``, ``"premade"``, or
-                       ``"world_builder"``; ``None`` until the player clicks.
-        seed:          Random seed chosen for sandbox generation; ``None``
-                       until sandbox mode is selected.
+        selected_mode:    One of ``"sandbox"``, ``"premade"``, or
+                          ``"world_builder"``; ``None`` until the player clicks.
+        seed:             Random seed chosen for sandbox generation; ``None``
+                          until sandbox mode is selected.
         campaign_session: The loaded :class:`~src.game.campaign.CampaignSession`
                           instance, if one has been created.
+        active_books:     Slugs of supplemental rulebooks the player has opted
+                          into (e.g. ``["draconomicon"]``).
+        expanded_data:    Loaded expanded content dict returned by
+                          :func:`~src.rules_engine.srd_loader.load_expanded_rules`.
     """
 
     selected_mode: Optional[str] = None
     seed: Optional[int] = None
     campaign_session: Optional[object] = None
+    active_books: list = field(default_factory=list)
+    expanded_data: dict = field(default_factory=dict)
 
 
 #: Module-level singleton consumed by all downstream handlers.
@@ -87,7 +93,7 @@ class CampaignWizardScreen(Screen):
         align: center middle;
     }
     #wizard-container {
-        width: 40;
+        width: 44;
         height: auto;
         padding: 1 2;
         border: round $accent;
@@ -97,11 +103,22 @@ class CampaignWizardScreen(Screen):
         text-style: bold;
         margin-bottom: 1;
     }
+    #books-label {
+        margin-top: 1;
+        color: $text-muted;
+    }
     Button {
         width: 100%;
         margin-bottom: 1;
     }
     """
+
+    #: Mapping of checkbox id → book slug
+    _BOOK_CHECKBOXES: dict = {
+        "chk_draconomicon":       "draconomicon",
+        "chk_monster_manual_2":   "monster_manual_2",
+        "chk_magic_item_compendium": "magic_item_compendium",
+    }
 
     def compose(self) -> ComposeResult:
         from textual.containers import Vertical
@@ -111,6 +128,29 @@ class CampaignWizardScreen(Screen):
             yield Button("[True Random Sandbox]", id="btn_sandbox")
             yield Button("[Premade Modules]", id="btn_premade")
             yield Button("[World Builder]", id="btn_world_builder")
+            yield Static("── Supplemental Books ──", id="books-label")
+            yield Checkbox("Load Draconomicon",        id="chk_draconomicon",          value=False)
+            yield Checkbox("Load Monster Manual II",   id="chk_monster_manual_2",      value=False)
+            yield Checkbox("Load Magic Item Compendium", id="chk_magic_item_compendium", value=False)
+
+    # ------------------------------------------------------------------
+    # PH7-006 · Checkbox handlers
+    # ------------------------------------------------------------------
+
+    def on_checkbox_changed(self, event: Checkbox.Changed) -> None:
+        """Toggle book slugs in :data:`_wizard_state` ``active_books``."""
+        chk_id = event.checkbox.id or ""
+        slug = self._BOOK_CHECKBOXES.get(chk_id)
+        if slug is None:
+            return
+        if event.value:
+            if slug not in _wizard_state.active_books:
+                _wizard_state.active_books.append(slug)
+        else:
+            try:
+                _wizard_state.active_books.remove(slug)
+            except ValueError:
+                pass
 
     # ------------------------------------------------------------------
     # PH6-001 · Button handlers
@@ -137,15 +177,21 @@ class CampaignWizardScreen(Screen):
         """Generate a 500-year world and load it as a CampaignSession.
 
         1. Generate a random seed.
-        2. Run ``fast_forward_simulation(500, seed)``.
-        3. Write the result to ``data/campaigns/generated_sandbox.json``.
-        4. Construct a ``CampaignSession`` and switch to the overworld screen.
+        2. Load any active supplemental books via ``load_expanded_rules``.
+        3. Run ``fast_forward_simulation(500, seed)``.
+        4. Write the result to ``data/campaigns/generated_sandbox.json``.
+        5. Construct a ``CampaignSession`` and switch to the overworld screen.
         """
         from src.world_sim.genesis import fast_forward_simulation
         from src.game.campaign import CampaignSession
+        from src.rules_engine.srd_loader import load_expanded_rules
+        from src.rules_engine.magic_item_engine import merge_expanded_wondrous
 
         random_seed = random.randint(0, 2**32 - 1)
         _wizard_state.seed = random_seed
+
+        _wizard_state.expanded_data = load_expanded_rules(_wizard_state.active_books)
+        merge_expanded_wondrous(_wizard_state.expanded_data)
 
         try:
             result = fast_forward_simulation(500, random_seed)
@@ -171,10 +217,16 @@ class CampaignWizardScreen(Screen):
     def _handle_premade(self) -> None:
         """Load the first available premade campaign JSON.
 
-        Scans ``data/campaigns/`` for ``.json`` files.  Constructs a
-        ``CampaignSession`` from the first file found and switches to the
-        overworld screen.  Shows an error toast if none are found.
+        Scans ``data/campaigns/`` for ``.json`` files.  Loads any active
+        supplemental books, then constructs a ``CampaignSession`` from the
+        first file found and switches to the overworld screen.
         """
+        from src.rules_engine.srd_loader import load_expanded_rules
+        from src.rules_engine.magic_item_engine import merge_expanded_wondrous
+
+        _wizard_state.expanded_data = load_expanded_rules(_wizard_state.active_books)
+        merge_expanded_wondrous(_wizard_state.expanded_data)
+
         if not _CAMPAIGNS_DIR.exists():
             self.app.notify(
                 "No premade campaigns found in data/campaigns/",
