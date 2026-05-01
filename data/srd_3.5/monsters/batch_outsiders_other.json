@@ -8,7 +8,10 @@
     "hit_dice": "7d8+7",
     "hp_avg": 38,
     "initiative": 8,
-    "speed": {"land": 20, "fly": 60},
+    "speed": {
+      "land": 20,
+      "fly": 60
+    },
     "armor_class": {
       "total": 16,
       "touch": 13,
@@ -18,9 +21,24 @@
     "base_attack": 7,
     "grapple": 13,
     "attacks": [
-      {"name": "Slam", "attack_bonus": "+9", "damage": "1d8+4", "damage_type": "Bludgeoning"},
-      {"name": "Slam (2nd)", "attack_bonus": "+9", "damage": "1d8+4", "damage_type": "Bludgeoning"},
-      {"name": "Scimitar", "attack_bonus": "+9/+4", "damage": "2d6+4/18-20", "damage_type": "Slashing"}
+      {
+        "name": "Slam",
+        "attack_bonus": "+9",
+        "damage": "1d8+4",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Slam (2nd)",
+        "attack_bonus": "+9",
+        "damage": "1d8+4",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Scimitar",
+        "attack_bonus": "+9/+4",
+        "damage": "2d6+4/18-20",
+        "damage_type": "Slashing"
+      }
     ],
     "special_attacks": [
       "Air Mastery (+1 atk/dmg vs. flying creatures)",
@@ -33,8 +51,19 @@
       "Immunity to Electricity",
       "Telepathy 100 ft."
     ],
-    "saves": {"fort": 6, "ref": 9, "will": 5},
-    "abilities": {"str": 18, "dex": 19, "con": 12, "int": 14, "wis": 13, "cha": 16},
+    "saves": {
+      "fort": 6,
+      "ref": 9,
+      "will": 5
+    },
+    "abilities": {
+      "str": 18,
+      "dex": 19,
+      "con": 12,
+      "int": 14,
+      "wis": 13,
+      "cha": 16
+    },
     "skills": {
       "Concentration": 11,
       "Craft (any)": 12,
@@ -45,7 +74,12 @@
       "Spellcraft": 12,
       "Spot": 13
     },
-    "feats": ["Combat Casting", "Dodge", "Improved Initiative", "Weapon Focus (slam)"],
+    "feats": [
+      "Combat Casting",
+      "Dodge",
+      "Improved Initiative",
+      "Weapon Focus (slam)"
+    ],
     "alignment": "Always Chaotic Good",
     "advancement": "8-14 HD (Large)",
     "dr": null,
@@ -56,8 +90,11 @@
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 8,
-    "allowed_biomes": ["Air Plane", "Desert"],
-    "primary_biome": "Air Plane",
+    "allowed_biomes": [
+      "Elemental_Air",
+      "Warm_Desert"
+    ],
+    "primary_biome": "Elemental_Air",
     "ecology_notes": "Djinn are noble genies of the air plane, masters of wind and sky. They view themselves as superior to other genies and often appear in tales as wish-granters bound to service."
   },
   {
@@ -69,7 +106,10 @@
     "hit_dice": "10d8+20",
     "hp_avg": 65,
     "initiative": 7,
-    "speed": {"land": 20, "fly": 40},
+    "speed": {
+      "land": 20,
+      "fly": 40
+    },
     "armor_class": {
       "total": 18,
       "touch": 12,
@@ -79,9 +119,24 @@
     "base_attack": 10,
     "grapple": 19,
     "attacks": [
-      {"name": "Slam", "attack_bonus": "+15", "damage": "1d8+7 plus 1d6 fire", "damage_type": "Bludgeoning/Fire"},
-      {"name": "Slam (2nd)", "attack_bonus": "+15", "damage": "1d8+7 plus 1d6 fire", "damage_type": "Bludgeoning/Fire"},
-      {"name": "Scimitar", "attack_bonus": "+15/+10", "damage": "2d6+7/18-20 plus 1d6 fire", "damage_type": "Slashing/Fire"}
+      {
+        "name": "Slam",
+        "attack_bonus": "+15",
+        "damage": "1d8+7 plus 1d6 fire",
+        "damage_type": "Bludgeoning/Fire"
+      },
+      {
+        "name": "Slam (2nd)",
+        "attack_bonus": "+15",
+        "damage": "1d8+7 plus 1d6 fire",
+        "damage_type": "Bludgeoning/Fire"
+      },
+      {
+        "name": "Scimitar",
+        "attack_bonus": "+15/+10",
+        "damage": "2d6+7/18-20 plus 1d6 fire",
+        "damage_type": "Slashing/Fire"
+      }
     ],
     "special_attacks": [
       "Heat (1d6 fire damage on contact)",
@@ -94,8 +149,19 @@
       "Telepathy 100 ft.",
       "Vulnerability to Cold"
     ],
-    "saves": {"fort": 9, "ref": 10, "will": 7},
-    "abilities": {"str": 25, "dex": 17, "con": 14, "int": 12, "wis": 13, "cha": 16},
+    "saves": {
+      "fort": 9,
+      "ref": 10,
+      "will": 7
+    },
+    "abilities": {
+      "str": 25,
+      "dex": 17,
+      "con": 14,
+      "int": 12,
+      "wis": 13,
+      "cha": 16
+    },
     "skills": {
       "Bluff": 16,
       "Concentration": 15,
@@ -107,19 +173,30 @@
       "Spellcraft": 14,
       "Spot": 16
     },
-    "feats": ["Combat Casting", "Dodge", "Improved Initiative", "Power Attack", "Weapon Focus (slam)"],
+    "feats": [
+      "Combat Casting",
+      "Dodge",
+      "Improved Initiative",
+      "Power Attack",
+      "Weapon Focus (slam)"
+    ],
     "alignment": "Always Lawful Evil",
     "advancement": "11-20 HD (Large)",
     "dr": null,
     "sr": null,
     "regen": null,
     "fast_heal": null,
-    "elemental_weaknesses": ["Cold"],
+    "elemental_weaknesses": [
+      "Cold"
+    ],
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 5,
-    "allowed_biomes": ["Fire Plane", "Any Desert"],
-    "primary_biome": "Fire Plane",
+    "allowed_biomes": [
+      "Elemental_Fire",
+      "Warm_Desert"
+    ],
+    "primary_biome": "Elemental_Fire",
     "ecology_notes": "Efreet are the powerful and cruel genies of the Elemental Plane of Fire. They despise all other genies, especially djinn, and keep humanoid slaves in their brass cities."
   },
   {
@@ -131,7 +208,10 @@
     "hit_dice": "6d8+6",
     "hp_avg": 33,
     "initiative": 6,
-    "speed": {"land": 30, "fly": 20},
+    "speed": {
+      "land": 30,
+      "fly": 20
+    },
     "armor_class": {
       "total": 17,
       "touch": 12,
@@ -141,9 +221,24 @@
     "base_attack": 6,
     "grapple": 7,
     "attacks": [
-      {"name": "Scimitar", "attack_bonus": "+7", "damage": "1d6+1/18-20", "damage_type": "Slashing"},
-      {"name": "Scimitar (2nd)", "attack_bonus": "+7", "damage": "1d6+1/18-20", "damage_type": "Slashing"},
-      {"name": "Slam", "attack_bonus": "+7", "damage": "1d6+1", "damage_type": "Bludgeoning"}
+      {
+        "name": "Scimitar",
+        "attack_bonus": "+7",
+        "damage": "1d6+1/18-20",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Scimitar (2nd)",
+        "attack_bonus": "+7",
+        "damage": "1d6+1/18-20",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Slam",
+        "attack_bonus": "+7",
+        "damage": "1d6+1",
+        "damage_type": "Bludgeoning"
+      }
     ],
     "special_attacks": [
       "Spell-Like Abilities (CL 6): create food and water, ethereal jaunt 1/day, invisibility 2/day, plane shift 1/day, speak with animals"
@@ -157,8 +252,19 @@
       "Resistance to electricity 10",
       "Resistance to acid 10"
     ],
-    "saves": {"fort": 6, "ref": 7, "will": 5},
-    "abilities": {"str": 13, "dex": 15, "con": 13, "int": 12, "wis": 13, "cha": 12},
+    "saves": {
+      "fort": 6,
+      "ref": 7,
+      "will": 5
+    },
+    "abilities": {
+      "str": 13,
+      "dex": 15,
+      "con": 13,
+      "int": 12,
+      "wis": 13,
+      "cha": 12
+    },
     "skills": {
       "Concentration": 10,
       "Listen": 12,
@@ -166,7 +272,11 @@
       "Spot": 12,
       "Survival": 10
     },
-    "feats": ["Combat Reflexes", "Dodge", "Improved Initiative"],
+    "feats": [
+      "Combat Reflexes",
+      "Dodge",
+      "Improved Initiative"
+    ],
     "alignment": "Always Neutral (sometimes Chaotic Good)",
     "advancement": "7-12 HD (Medium)",
     "dr": null,
@@ -177,8 +287,11 @@
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 10,
-    "allowed_biomes": ["Any (Material Plane)", "Elemental Planes"],
-    "primary_biome": "Material Plane",
+    "allowed_biomes": [
+      "Any",
+      "Outer_Plane"
+    ],
+    "primary_biome": "Any",
     "ecology_notes": "Jann are the weakest of the genie-kin, born of all four elements. They are the only genies who make the Material Plane their primary home, often working as guides, mercenaries, or scouts."
   },
   {
@@ -190,7 +303,10 @@
     "hit_dice": "9d8+27",
     "hp_avg": 67,
     "initiative": 8,
-    "speed": {"land": 20, "swim": 60},
+    "speed": {
+      "land": 20,
+      "swim": 60
+    },
     "armor_class": {
       "total": 19,
       "touch": 13,
@@ -200,9 +316,24 @@
     "base_attack": 9,
     "grapple": 18,
     "attacks": [
-      {"name": "Slam", "attack_bonus": "+13", "damage": "1d8+5", "damage_type": "Bludgeoning"},
-      {"name": "Slam (2nd)", "attack_bonus": "+13", "damage": "1d8+5", "damage_type": "Bludgeoning"},
-      {"name": "Scimitar", "attack_bonus": "+13/+8", "damage": "2d6+5/18-20", "damage_type": "Slashing"}
+      {
+        "name": "Slam",
+        "attack_bonus": "+13",
+        "damage": "1d8+5",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Slam (2nd)",
+        "attack_bonus": "+13",
+        "damage": "1d8+5",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Scimitar",
+        "attack_bonus": "+13/+8",
+        "damage": "2d6+5/18-20",
+        "damage_type": "Slashing"
+      }
     ],
     "special_attacks": [
       "Drench (extinguish non-magical flames by touch)",
@@ -213,8 +344,19 @@
       "Immunity to cold",
       "Speak with Aquatic Animals"
     ],
-    "saves": {"fort": 9, "ref": 10, "will": 7},
-    "abilities": {"str": 21, "dex": 18, "con": 17, "int": 16, "wis": 14, "cha": 16},
+    "saves": {
+      "fort": 9,
+      "ref": 10,
+      "will": 7
+    },
+    "abilities": {
+      "str": 21,
+      "dex": 18,
+      "con": 17,
+      "int": 16,
+      "wis": 14,
+      "cha": 16
+    },
     "skills": {
       "Concentration": 15,
       "Craft (any)": 15,
@@ -226,19 +368,29 @@
       "Spot": 16,
       "Swim": 13
     },
-    "feats": ["Combat Casting", "Combat Reflexes", "Dodge", "Improved Initiative"],
+    "feats": [
+      "Combat Casting",
+      "Combat Reflexes",
+      "Dodge",
+      "Improved Initiative"
+    ],
     "alignment": "Always Chaotic Neutral",
     "advancement": "10-18 HD (Large)",
     "dr": null,
     "sr": null,
     "regen": null,
     "fast_heal": null,
-    "elemental_weaknesses": ["Fire"],
+    "elemental_weaknesses": [
+      "Fire"
+    ],
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 5,
-    "allowed_biomes": ["Water Plane", "Any Ocean"],
-    "primary_biome": "Water Plane",
+    "allowed_biomes": [
+      "Elemental_Water",
+      "Aquatic"
+    ],
+    "primary_biome": "Elemental_Water",
     "ecology_notes": "Marids are the greatest of the water genies, proud and capricious masters of the seas. They rule vast underwater realms and have power over water and weather."
   },
   {
@@ -250,7 +402,9 @@
     "hit_dice": "4d8+8",
     "hp_avg": 26,
     "initiative": 3,
-    "speed": {"land": 40},
+    "speed": {
+      "land": 40
+    },
     "armor_class": {
       "total": 18,
       "touch": 13,
@@ -260,10 +414,30 @@
     "base_attack": 4,
     "grapple": 6,
     "attacks": [
-      {"name": "Sting", "attack_bonus": "+7", "damage": "2d4+3 plus poison", "damage_type": "Piercing/Poison"},
-      {"name": "Claw", "attack_bonus": "+2", "damage": "1d4+1", "damage_type": "Slashing"},
-      {"name": "Claw (2nd)", "attack_bonus": "+2", "damage": "1d4+1", "damage_type": "Slashing"},
-      {"name": "Bite", "attack_bonus": "+2", "damage": "1d4+1", "damage_type": "Piercing"}
+      {
+        "name": "Sting",
+        "attack_bonus": "+7",
+        "damage": "2d4+3 plus poison",
+        "damage_type": "Piercing/Poison"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+2",
+        "damage": "1d4+1",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw (2nd)",
+        "attack_bonus": "+2",
+        "damage": "1d4+1",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+2",
+        "damage": "1d4+1",
+        "damage_type": "Piercing"
+      }
     ],
     "special_attacks": [
       "Poison (DC 14 Fort; 1d6 Str primary / 1d6 Str secondary)"
@@ -276,8 +450,19 @@
       "Resistance to fire 10",
       "SR 18"
     ],
-    "saves": {"fort": 6, "ref": 7, "will": 3},
-    "abilities": {"str": 14, "dex": 16, "con": 14, "int": 10, "wis": 12, "cha": 9},
+    "saves": {
+      "fort": 6,
+      "ref": 7,
+      "will": 3
+    },
+    "abilities": {
+      "str": 14,
+      "dex": 16,
+      "con": 14,
+      "int": 10,
+      "wis": 12,
+      "cha": 9
+    },
     "skills": {
       "Climb": 9,
       "Hide": 10,
@@ -285,7 +470,10 @@
       "Listen": 8,
       "Spot": 8
     },
-    "feats": ["Multiattack", "Toughness"],
+    "feats": [
+      "Multiattack",
+      "Toughness"
+    ],
     "alignment": "Always Lawful Neutral",
     "advancement": "5-8 HD (Medium)",
     "dr": null,
@@ -296,7 +484,10 @@
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 40,
-    "allowed_biomes": ["Underground", "Any Lawful"],
+    "allowed_biomes": [
+      "Underground",
+      "Outer_Plane"
+    ],
     "primary_biome": "Underground",
     "ecology_notes": "Formian Warriors are the soldiers of the hive, equipped with venomous stingers and hardened carapaces. They fight in coordinated groups directed by the hive mind."
   },
@@ -309,7 +500,9 @@
     "hit_dice": "9d8+18",
     "hp_avg": 58,
     "initiative": 5,
-    "speed": {"land": 40},
+    "speed": {
+      "land": 40
+    },
     "armor_class": {
       "total": 22,
       "touch": 11,
@@ -319,10 +512,30 @@
     "base_attack": 9,
     "grapple": 12,
     "attacks": [
-      {"name": "Sting", "attack_bonus": "+12", "damage": "2d4+3 plus poison", "damage_type": "Piercing/Poison"},
-      {"name": "Claw", "attack_bonus": "+7", "damage": "1d6+1", "damage_type": "Slashing"},
-      {"name": "Claw (2nd)", "attack_bonus": "+7", "damage": "1d6+1", "damage_type": "Slashing"},
-      {"name": "Bite", "attack_bonus": "+7", "damage": "1d6+1", "damage_type": "Piercing"}
+      {
+        "name": "Sting",
+        "attack_bonus": "+12",
+        "damage": "2d4+3 plus poison",
+        "damage_type": "Piercing/Poison"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+7",
+        "damage": "1d6+1",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw (2nd)",
+        "attack_bonus": "+7",
+        "damage": "1d6+1",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+7",
+        "damage": "1d6+1",
+        "damage_type": "Piercing"
+      }
     ],
     "special_attacks": [
       "Dominate Monster (once/week)",
@@ -337,8 +550,19 @@
       "SR 20",
       "Telepathy 60 ft."
     ],
-    "saves": {"fort": 8, "ref": 7, "will": 8},
-    "abilities": {"str": 17, "dex": 12, "con": 14, "int": 16, "wis": 16, "cha": 16},
+    "saves": {
+      "fort": 8,
+      "ref": 7,
+      "will": 8
+    },
+    "abilities": {
+      "str": 17,
+      "dex": 12,
+      "con": 14,
+      "int": 16,
+      "wis": 16,
+      "cha": 16
+    },
     "skills": {
       "Concentration": 14,
       "Diplomacy": 17,
@@ -347,7 +571,12 @@
       "Sense Motive": 17,
       "Spot": 17
     },
-    "feats": ["Alertness", "Combat Casting", "Improved Initiative", "Lightning Reflexes"],
+    "feats": [
+      "Alertness",
+      "Combat Casting",
+      "Improved Initiative",
+      "Lightning Reflexes"
+    ],
     "alignment": "Always Lawful Neutral",
     "advancement": "10-18 HD (Medium)",
     "dr": null,
@@ -358,7 +587,10 @@
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 5,
-    "allowed_biomes": ["Underground", "Any Lawful"],
+    "allowed_biomes": [
+      "Underground",
+      "Outer_Plane"
+    ],
     "primary_biome": "Underground",
     "ecology_notes": "Formian Taskmasters oversee the labor of enslaved workers and other creatures. They can dominate the minds of powerful creatures to force them into service."
   },
@@ -371,7 +603,9 @@
     "hit_dice": "12d8+24",
     "hp_avg": 78,
     "initiative": 4,
-    "speed": {"land": 50},
+    "speed": {
+      "land": 50
+    },
     "armor_class": {
       "total": 28,
       "touch": 13,
@@ -381,13 +615,48 @@
     "base_attack": 12,
     "grapple": 19,
     "attacks": [
-      {"name": "Javelin (ranged)", "attack_bonus": "+16", "damage": "2d6+4", "damage_type": "Piercing"},
-      {"name": "Sting", "attack_bonus": "+14", "damage": "2d6+4 plus poison", "damage_type": "Piercing/Poison"},
-      {"name": "Claw", "attack_bonus": "+9", "damage": "2d4+2", "damage_type": "Slashing"},
-      {"name": "Claw (2nd)", "attack_bonus": "+9", "damage": "2d4+2", "damage_type": "Slashing"},
-      {"name": "Claw (3rd)", "attack_bonus": "+9", "damage": "2d4+2", "damage_type": "Slashing"},
-      {"name": "Claw (4th)", "attack_bonus": "+9", "damage": "2d4+2", "damage_type": "Slashing"},
-      {"name": "Bite", "attack_bonus": "+9", "damage": "2d6+2", "damage_type": "Piercing"}
+      {
+        "name": "Javelin (ranged)",
+        "attack_bonus": "+16",
+        "damage": "2d6+4",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Sting",
+        "attack_bonus": "+14",
+        "damage": "2d6+4 plus poison",
+        "damage_type": "Piercing/Poison"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+9",
+        "damage": "2d4+2",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw (2nd)",
+        "attack_bonus": "+9",
+        "damage": "2d4+2",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw (3rd)",
+        "attack_bonus": "+9",
+        "damage": "2d4+2",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw (4th)",
+        "attack_bonus": "+9",
+        "damage": "2d4+2",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+9",
+        "damage": "2d6+2",
+        "damage_type": "Piercing"
+      }
     ],
     "special_attacks": [
       "Poison (DC 20 Fort; 2d6 Str primary / 2d6 Str secondary)",
@@ -401,8 +670,19 @@
       "SR 25",
       "Telepathy 60 ft."
     ],
-    "saves": {"fort": 10, "ref": 12, "will": 11},
-    "abilities": {"str": 19, "dex": 18, "con": 15, "int": 18, "wis": 16, "cha": 16},
+    "saves": {
+      "fort": 10,
+      "ref": 12,
+      "will": 11
+    },
+    "abilities": {
+      "str": 19,
+      "dex": 18,
+      "con": 15,
+      "int": 18,
+      "wis": 16,
+      "cha": 16
+    },
     "skills": {
       "Concentration": 17,
       "Diplomacy": 20,
@@ -412,7 +692,13 @@
       "Sense Motive": 18,
       "Spot": 18
     },
-    "feats": ["Alertness", "Combat Casting", "Combat Expertise", "Improved Disarm", "Iron Will"],
+    "feats": [
+      "Alertness",
+      "Combat Casting",
+      "Combat Expertise",
+      "Improved Disarm",
+      "Iron Will"
+    ],
     "alignment": "Always Lawful Neutral",
     "advancement": "13-24 HD (Large)",
     "dr": null,
@@ -423,7 +709,10 @@
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 3,
-    "allowed_biomes": ["Underground", "Any Lawful"],
+    "allowed_biomes": [
+      "Underground",
+      "Outer_Plane"
+    ],
     "primary_biome": "Underground",
     "ecology_notes": "Formian Myrmarchs serve as generals and commanders of formian armies, guiding strategy and wielding powerful spell-like abilities in addition to formidable physical combat power."
   },
@@ -436,7 +725,9 @@
     "hit_dice": "20d8+60",
     "hp_avg": 150,
     "initiative": -1,
-    "speed": {"land": 0},
+    "speed": {
+      "land": 0
+    },
     "armor_class": {
       "total": 30,
       "touch": 8,
@@ -446,7 +737,12 @@
     "base_attack": 20,
     "grapple": 24,
     "attacks": [
-      {"name": "Sting", "attack_bonus": "+24", "damage": "4d6+4 plus poison", "damage_type": "Piercing/Poison"}
+      {
+        "name": "Sting",
+        "attack_bonus": "+24",
+        "damage": "4d6+4 plus poison",
+        "damage_type": "Piercing/Poison"
+      }
     ],
     "special_attacks": [
       "Hive Mind (500-mile radius)",
@@ -461,8 +757,19 @@
       "SR 30",
       "Telepathy (unlimited range with hive)"
     ],
-    "saves": {"fort": 15, "ref": 11, "will": 17},
-    "abilities": {"str": 18, "dex": 8, "con": 17, "int": 22, "wis": 20, "cha": 22},
+    "saves": {
+      "fort": 15,
+      "ref": 11,
+      "will": 17
+    },
+    "abilities": {
+      "str": 18,
+      "dex": 8,
+      "con": 17,
+      "int": 22,
+      "wis": 20,
+      "cha": 22
+    },
     "skills": {
       "Concentration": 26,
       "Diplomacy": 30,
@@ -472,7 +779,16 @@
       "Sense Motive": 28,
       "Spot": 30
     },
-    "feats": ["Alertness", "Cleave", "Combat Casting", "Great Cleave", "Iron Will", "Power Attack", "Quicken Spell-Like Ability (charm monster)", "Toughness"],
+    "feats": [
+      "Alertness",
+      "Cleave",
+      "Combat Casting",
+      "Great Cleave",
+      "Iron Will",
+      "Power Attack",
+      "Quicken Spell-Like Ability (charm monster)",
+      "Toughness"
+    ],
     "alignment": "Always Lawful Neutral",
     "advancement": "21+ HD (Large)",
     "dr": null,
@@ -483,7 +799,9 @@
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 1,
-    "allowed_biomes": ["Underground"],
+    "allowed_biomes": [
+      "Underground"
+    ],
     "primary_biome": "Underground",
     "ecology_notes": "The Formian Queen is the center of the hive. She is immobile and focuses entirely on breeding, directing the hive mind, and protecting the colony. Each hive has exactly one queen."
   },
@@ -496,7 +814,9 @@
     "hit_dice": "13d8+26",
     "hp_avg": 84,
     "initiative": 0,
-    "speed": {"land": 30},
+    "speed": {
+      "land": 30
+    },
     "armor_class": {
       "total": 27,
       "touch": 10,
@@ -506,7 +826,12 @@
     "base_attack": 13,
     "grapple": 16,
     "attacks": [
-      {"name": "+3 Vampiric Longsword", "attack_bonus": "+19/+14/+9", "damage": "1d8+7/19-20 plus vampiric touch 1d6 temp hp", "damage_type": "Slashing/Negative Energy"}
+      {
+        "name": "+3 Vampiric Longsword",
+        "attack_bonus": "+19/+14/+9",
+        "damage": "1d8+7/19-20 plus vampiric touch 1d6 temp hp",
+        "damage_type": "Slashing/Negative Energy"
+      }
     ],
     "special_attacks": [
       "Enervation Ray (60 ft., +13 ranged touch, 1d4 negative levels, DC 18 Fort to remove after 24 hrs)",
@@ -521,8 +846,19 @@
       "Immunity to electricity",
       "SR 22"
     ],
-    "saves": {"fort": 10, "ref": 8, "will": 10},
-    "abilities": {"str": 17, "dex": 11, "con": 14, "int": 12, "wis": 12, "cha": 14},
+    "saves": {
+      "fort": 10,
+      "ref": 8,
+      "will": 10
+    },
+    "abilities": {
+      "str": 17,
+      "dex": 11,
+      "con": 14,
+      "int": 12,
+      "wis": 12,
+      "cha": 14
+    },
     "skills": {
       "Diplomacy": 20,
       "Intimidate": 18,
@@ -532,7 +868,14 @@
       "Sense Motive": 19,
       "Spot": 19
     },
-    "feats": ["Alertness", "Combat Expertise", "Dodge", "Improved Disarm", "Mobility", "Track"],
+    "feats": [
+      "Alertness",
+      "Combat Expertise",
+      "Dodge",
+      "Improved Disarm",
+      "Mobility",
+      "Track"
+    ],
     "alignment": "Always Lawful Neutral",
     "advancement": "14-26 HD (Medium)",
     "dr": "10/Chaotic",
@@ -543,7 +886,9 @@
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 2,
-    "allowed_biomes": ["Any"],
+    "allowed_biomes": [
+      "Any"
+    ],
     "primary_biome": "Any",
     "ecology_notes": "Kolyaruts enforce contracts and oaths. They hunt those who break their word and will not stop until the contract-breaker has faced justice. They appear as amber-colored metal humanoids."
   },
@@ -556,7 +901,9 @@
     "hit_dice": "15d8+75",
     "hp_avg": 142,
     "initiative": 0,
-    "speed": {"land": 40},
+    "speed": {
+      "land": 40
+    },
     "armor_class": {
       "total": 34,
       "touch": 9,
@@ -566,8 +913,18 @@
     "base_attack": 15,
     "grapple": 26,
     "attacks": [
-      {"name": "Slam (Thunder)", "attack_bonus": "+21", "damage": "2d6+7 plus thunderclap", "damage_type": "Bludgeoning/Sonic"},
-      {"name": "Slam (Lightning)", "attack_bonus": "+21", "damage": "2d6+7 plus lightning", "damage_type": "Bludgeoning/Electricity"}
+      {
+        "name": "Slam (Thunder)",
+        "attack_bonus": "+21",
+        "damage": "2d6+7 plus thunderclap",
+        "damage_type": "Bludgeoning/Sonic"
+      },
+      {
+        "name": "Slam (Lightning)",
+        "attack_bonus": "+21",
+        "damage": "2d6+7 plus lightning",
+        "damage_type": "Bludgeoning/Electricity"
+      }
     ],
     "special_attacks": [
       "Fists of Thunder (on hit, DC 23 Fort or deafened 1 hour)",
@@ -583,8 +940,19 @@
       "Immunity to electricity",
       "SR 25"
     ],
-    "saves": {"fort": 14, "ref": 9, "will": 13},
-    "abilities": {"str": 24, "dex": 11, "con": 21, "int": 12, "wis": 17, "cha": 18},
+    "saves": {
+      "fort": 14,
+      "ref": 9,
+      "will": 13
+    },
+    "abilities": {
+      "str": 24,
+      "dex": 11,
+      "con": 21,
+      "int": 12,
+      "wis": 17,
+      "cha": 18
+    },
     "skills": {
       "Concentration": 23,
       "Diplomacy": 26,
@@ -595,7 +963,15 @@
       "Sense Motive": 21,
       "Spot": 21
     },
-    "feats": ["Alertness", "Awesome Blow", "Cleave", "Combat Expertise", "Great Cleave", "Improved Bull Rush", "Power Attack"],
+    "feats": [
+      "Alertness",
+      "Awesome Blow",
+      "Cleave",
+      "Combat Expertise",
+      "Great Cleave",
+      "Improved Bull Rush",
+      "Power Attack"
+    ],
     "alignment": "Always Lawful Neutral",
     "advancement": "16-30 HD (Large)",
     "dr": "15/Chaotic",
@@ -606,7 +982,9 @@
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 1,
-    "allowed_biomes": ["Any"],
+    "allowed_biomes": [
+      "Any"
+    ],
     "primary_biome": "Any",
     "ecology_notes": "Maruts pursue those who have unnaturally extended their lives past their allotted span, hunting liches, vampires, and others who cheat death. They appear as towering, golden humanoids of imposing mass."
   },
@@ -619,7 +997,9 @@
     "hit_dice": "8d8+16",
     "hp_avg": 52,
     "initiative": 2,
-    "speed": {"land": 50},
+    "speed": {
+      "land": 50
+    },
     "armor_class": {
       "total": 22,
       "touch": 11,
@@ -629,8 +1009,18 @@
     "base_attack": 8,
     "grapple": 15,
     "attacks": [
-      {"name": "Spiked Chain", "attack_bonus": "+11", "damage": "2d6+5", "damage_type": "Slashing"},
-      {"name": "Spiked Chain (2nd)", "attack_bonus": "+11", "damage": "2d6+5", "damage_type": "Slashing"}
+      {
+        "name": "Spiked Chain",
+        "attack_bonus": "+11",
+        "damage": "2d6+5",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Spiked Chain (2nd)",
+        "attack_bonus": "+11",
+        "damage": "2d6+5",
+        "damage_type": "Slashing"
+      }
     ],
     "special_attacks": [
       "Chains (trip attempt on hit, no AoO; reach 10 ft.)",
@@ -645,8 +1035,19 @@
       "Immunity to electricity",
       "SR 20"
     ],
-    "saves": {"fort": 8, "ref": 8, "will": 8},
-    "abilities": {"str": 20, "dex": 14, "con": 15, "int": 10, "wis": 17, "cha": 14},
+    "saves": {
+      "fort": 8,
+      "ref": 8,
+      "will": 8
+    },
+    "abilities": {
+      "str": 20,
+      "dex": 14,
+      "con": 15,
+      "int": 10,
+      "wis": 17,
+      "cha": 14
+    },
     "skills": {
       "Diplomacy": 15,
       "Intimidate": 13,
@@ -657,7 +1058,12 @@
       "Spot": 16,
       "Survival": 14
     },
-    "feats": ["Alertness", "Combat Expertise", "Combat Reflexes", "Weapon Focus (spiked chain)"],
+    "feats": [
+      "Alertness",
+      "Combat Expertise",
+      "Combat Reflexes",
+      "Weapon Focus (spiked chain)"
+    ],
     "alignment": "Always Lawful Neutral",
     "advancement": "9-16 HD (Large)",
     "dr": "10/Chaotic",
@@ -668,7 +1074,9 @@
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 3,
-    "allowed_biomes": ["Any"],
+    "allowed_biomes": [
+      "Any"
+    ],
     "primary_biome": "Any",
     "ecology_notes": "Zelekhuts hunt escaped criminals and those who flee from justice. They appear as centaur-like constructs of gold and silver with great chained weapons."
   },
@@ -681,7 +1089,9 @@
     "hit_dice": "8d8+24",
     "hp_avg": 60,
     "initiative": 1,
-    "speed": {"land": 30},
+    "speed": {
+      "land": 30
+    },
     "armor_class": {
       "total": 22,
       "touch": 11,
@@ -691,9 +1101,24 @@
     "base_attack": 8,
     "grapple": 12,
     "attacks": [
-      {"name": "Claw", "attack_bonus": "+12", "damage": "1d4+4", "damage_type": "Slashing"},
-      {"name": "Claw (2nd)", "attack_bonus": "+12", "damage": "1d4+4", "damage_type": "Slashing"},
-      {"name": "Bite", "attack_bonus": "+7", "damage": "2d6+2 plus disease", "damage_type": "Piercing/Disease"}
+      {
+        "name": "Claw",
+        "attack_bonus": "+12",
+        "damage": "1d4+4",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw (2nd)",
+        "attack_bonus": "+12",
+        "damage": "1d4+4",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+7",
+        "damage": "2d6+2 plus disease",
+        "damage_type": "Piercing/Disease"
+      }
     ],
     "special_attacks": [
       "Dream Haunting (enter dreams of sleeping victim; DC 16 Will or gain a negative level each night)",
@@ -709,8 +1134,19 @@
       "Immunity to fear",
       "SR 24"
     ],
-    "saves": {"fort": 9, "ref": 7, "will": 8},
-    "abilities": {"str": 19, "dex": 13, "con": 17, "int": 11, "wis": 15, "cha": 12},
+    "saves": {
+      "fort": 9,
+      "ref": 7,
+      "will": 8
+    },
+    "abilities": {
+      "str": 19,
+      "dex": 13,
+      "con": 17,
+      "int": 11,
+      "wis": 15,
+      "cha": 12
+    },
     "skills": {
       "Bluff": 12,
       "Diplomacy": 5,
@@ -721,7 +1157,12 @@
       "Sense Motive": 13,
       "Spot": 13
     },
-    "feats": ["Alertness", "Combat Casting", "Dodge", "Toughness"],
+    "feats": [
+      "Alertness",
+      "Combat Casting",
+      "Dodge",
+      "Toughness"
+    ],
     "alignment": "Always Neutral Evil",
     "advancement": "9-16 HD (Medium)",
     "dr": "10/Cold Iron and Magic",
@@ -732,8 +1173,10 @@
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 3,
-    "allowed_biomes": ["Outer Planes", "Any Evil"],
-    "primary_biome": "Outer Planes",
+    "allowed_biomes": [
+      "Outer_Plane"
+    ],
+    "primary_biome": "Outer_Plane",
     "ecology_notes": "Night Hags exist on the ethereal plane and haunt the dreams of evil mortals, slowly stealing their souls to sell to the highest bidder in the Lower Planes."
   },
   {
@@ -745,7 +1188,10 @@
     "hit_dice": "6d8+18",
     "hp_avg": 45,
     "initiative": 6,
-    "speed": {"land": 40, "fly": 90},
+    "speed": {
+      "land": 40,
+      "fly": 90
+    },
     "armor_class": {
       "total": 24,
       "touch": 12,
@@ -755,9 +1201,24 @@
     "base_attack": 6,
     "grapple": 14,
     "attacks": [
-      {"name": "Hoof", "attack_bonus": "+9", "damage": "1d8+6 plus 1d4 fire", "damage_type": "Bludgeoning/Fire"},
-      {"name": "Hoof (2nd)", "attack_bonus": "+9", "damage": "1d8+6 plus 1d4 fire", "damage_type": "Bludgeoning/Fire"},
-      {"name": "Bite", "attack_bonus": "+4", "damage": "1d8+3", "damage_type": "Piercing"}
+      {
+        "name": "Hoof",
+        "attack_bonus": "+9",
+        "damage": "1d8+6 plus 1d4 fire",
+        "damage_type": "Bludgeoning/Fire"
+      },
+      {
+        "name": "Hoof (2nd)",
+        "attack_bonus": "+9",
+        "damage": "1d8+6 plus 1d4 fire",
+        "damage_type": "Bludgeoning/Fire"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+4",
+        "damage": "1d8+3",
+        "damage_type": "Piercing"
+      }
     ],
     "special_attacks": [
       "Smoke (riders must make DC 13 Fort each round or choke, -2 to atk/dmg; smoke fills 5-ft. radius around Nightmare)"
@@ -767,8 +1228,19 @@
       "Flaming Hooves",
       "Smoke"
     ],
-    "saves": {"fort": 8, "ref": 11, "will": 5},
-    "abilities": {"str": 22, "dex": 22, "con": 17, "int": 13, "wis": 13, "cha": 12},
+    "saves": {
+      "fort": 8,
+      "ref": 11,
+      "will": 5
+    },
+    "abilities": {
+      "str": 22,
+      "dex": 22,
+      "con": 17,
+      "int": 13,
+      "wis": 13,
+      "cha": 12
+    },
     "skills": {
       "Concentration": 12,
       "Intimidate": 10,
@@ -777,7 +1249,11 @@
       "Sense Motive": 10,
       "Spot": 12
     },
-    "feats": ["Alertness", "Run", "Weapon Focus (hoof)"],
+    "feats": [
+      "Alertness",
+      "Run",
+      "Weapon Focus (hoof)"
+    ],
     "alignment": "Always Neutral Evil",
     "advancement": "7-12 HD (Large)",
     "dr": null,
@@ -788,8 +1264,10 @@
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 5,
-    "allowed_biomes": ["Outer Planes", "Any Evil"],
-    "primary_biome": "Outer Planes",
+    "allowed_biomes": [
+      "Outer_Plane"
+    ],
+    "primary_biome": "Outer_Plane",
     "ecology_notes": "Nightmares are terrifying fiendish horses with flaming hooves and billowing smoke. They serve as mounts for powerful evil creatures and can travel between planes."
   },
   {
@@ -801,7 +1279,9 @@
     "hit_dice": "8d8+32",
     "hp_avg": 68,
     "initiative": 2,
-    "speed": {"land": 30},
+    "speed": {
+      "land": 30
+    },
     "armor_class": {
       "total": 17,
       "touch": 11,
@@ -811,11 +1291,36 @@
     "base_attack": 8,
     "grapple": 17,
     "attacks": [
-      {"name": "Claw", "attack_bonus": "+12", "damage": "2d6+5 plus implant on critical", "damage_type": "Slashing"},
-      {"name": "Claw (2nd)", "attack_bonus": "+12", "damage": "2d6+5 plus implant on critical", "damage_type": "Slashing"},
-      {"name": "Claw (3rd)", "attack_bonus": "+12", "damage": "2d6+5 plus implant on critical", "damage_type": "Slashing"},
-      {"name": "Claw (4th)", "attack_bonus": "+12", "damage": "2d6+5 plus implant on critical", "damage_type": "Slashing"},
-      {"name": "Bite", "attack_bonus": "+7", "damage": "2d8+2", "damage_type": "Piercing"}
+      {
+        "name": "Claw",
+        "attack_bonus": "+12",
+        "damage": "2d6+5 plus implant on critical",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw (2nd)",
+        "attack_bonus": "+12",
+        "damage": "2d6+5 plus implant on critical",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw (3rd)",
+        "attack_bonus": "+12",
+        "damage": "2d6+5 plus implant on critical",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw (4th)",
+        "attack_bonus": "+12",
+        "damage": "2d6+5 plus implant on critical",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+7",
+        "damage": "2d8+2",
+        "damage_type": "Piercing"
+      }
     ],
     "special_attacks": [
       "Implant (on critical hit; DC 17 Fort or slaad egg develops; after 90 days rips out as blue slaad tadpole)"
@@ -829,15 +1334,30 @@
       "Resistance to fire 5",
       "Resistance to electricity 5"
     ],
-    "saves": {"fort": 10, "ref": 8, "will": 4},
-    "abilities": {"str": 21, "dex": 15, "con": 19, "int": 6, "wis": 8, "cha": 8},
+    "saves": {
+      "fort": 10,
+      "ref": 8,
+      "will": 4
+    },
+    "abilities": {
+      "str": 21,
+      "dex": 15,
+      "con": 19,
+      "int": 6,
+      "wis": 8,
+      "cha": 8
+    },
     "skills": {
       "Climb": 16,
       "Jump": 20,
       "Listen": 12,
       "Spot": 12
     },
-    "feats": ["Multiattack", "Power Attack", "Weapon Focus (claw)"],
+    "feats": [
+      "Multiattack",
+      "Power Attack",
+      "Weapon Focus (claw)"
+    ],
     "alignment": "Always Chaotic Neutral",
     "advancement": "9-16 HD (Large)",
     "dr": null,
@@ -848,8 +1368,10 @@
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 8,
-    "allowed_biomes": ["Limbo", "Any Chaotic"],
-    "primary_biome": "Limbo",
+    "allowed_biomes": [
+      "Outer_Plane"
+    ],
+    "primary_biome": "Outer_Plane",
     "ecology_notes": "Red Slaadi are brutish frog-like creatures that implant their eggs in hosts. The least intelligent of the slaadi, they exist mainly to fight and breed."
   },
   {
@@ -861,7 +1383,9 @@
     "hit_dice": "10d8+30",
     "hp_avg": 75,
     "initiative": 2,
-    "speed": {"land": 30},
+    "speed": {
+      "land": 30
+    },
     "armor_class": {
       "total": 18,
       "touch": 11,
@@ -871,11 +1395,36 @@
     "base_attack": 10,
     "grapple": 19,
     "attacks": [
-      {"name": "Claw", "attack_bonus": "+14", "damage": "2d4+5 plus disease", "damage_type": "Slashing/Disease"},
-      {"name": "Claw (2nd)", "attack_bonus": "+14", "damage": "2d4+5 plus disease", "damage_type": "Slashing/Disease"},
-      {"name": "Claw (3rd)", "attack_bonus": "+14", "damage": "2d4+5 plus disease", "damage_type": "Slashing/Disease"},
-      {"name": "Claw (4th)", "attack_bonus": "+14", "damage": "2d4+5 plus disease", "damage_type": "Slashing/Disease"},
-      {"name": "Bite", "attack_bonus": "+9", "damage": "2d6+2", "damage_type": "Piercing"}
+      {
+        "name": "Claw",
+        "attack_bonus": "+14",
+        "damage": "2d4+5 plus disease",
+        "damage_type": "Slashing/Disease"
+      },
+      {
+        "name": "Claw (2nd)",
+        "attack_bonus": "+14",
+        "damage": "2d4+5 plus disease",
+        "damage_type": "Slashing/Disease"
+      },
+      {
+        "name": "Claw (3rd)",
+        "attack_bonus": "+14",
+        "damage": "2d4+5 plus disease",
+        "damage_type": "Slashing/Disease"
+      },
+      {
+        "name": "Claw (4th)",
+        "attack_bonus": "+14",
+        "damage": "2d4+5 plus disease",
+        "damage_type": "Slashing/Disease"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+9",
+        "damage": "2d6+2",
+        "damage_type": "Piercing"
+      }
     ],
     "special_attacks": [
       "Disease (claws; DC 16 Fort or infected; after 1d6+6 weeks transforms into red slaad)"
@@ -889,15 +1438,31 @@
       "Resistance to fire 5",
       "Resistance to electricity 5"
     ],
-    "saves": {"fort": 10, "ref": 9, "will": 5},
-    "abilities": {"str": 21, "dex": 15, "con": 17, "int": 7, "wis": 8, "cha": 8},
+    "saves": {
+      "fort": 10,
+      "ref": 9,
+      "will": 5
+    },
+    "abilities": {
+      "str": 21,
+      "dex": 15,
+      "con": 17,
+      "int": 7,
+      "wis": 8,
+      "cha": 8
+    },
     "skills": {
       "Climb": 18,
       "Jump": 22,
       "Listen": 13,
       "Spot": 13
     },
-    "feats": ["Alertness", "Multiattack", "Power Attack", "Weapon Focus (claw)"],
+    "feats": [
+      "Alertness",
+      "Multiattack",
+      "Power Attack",
+      "Weapon Focus (claw)"
+    ],
     "alignment": "Always Chaotic Neutral",
     "advancement": "11-20 HD (Large)",
     "dr": null,
@@ -908,8 +1473,10 @@
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 5,
-    "allowed_biomes": ["Limbo", "Any Chaotic"],
-    "primary_biome": "Limbo",
+    "allowed_biomes": [
+      "Outer_Plane"
+    ],
+    "primary_biome": "Outer_Plane",
     "ecology_notes": "Blue Slaadi are larger and more dangerous than red. Their claws carry a disease that transforms victims into red slaadi if not cured."
   },
   {
@@ -921,7 +1488,9 @@
     "hit_dice": "9d8+36",
     "hp_avg": 76,
     "initiative": 3,
-    "speed": {"land": 30},
+    "speed": {
+      "land": 30
+    },
     "armor_class": {
       "total": 19,
       "touch": 12,
@@ -931,9 +1500,24 @@
     "base_attack": 9,
     "grapple": 18,
     "attacks": [
-      {"name": "Claw", "attack_bonus": "+13", "damage": "2d6+5", "damage_type": "Slashing"},
-      {"name": "Claw (2nd)", "attack_bonus": "+13", "damage": "2d6+5", "damage_type": "Slashing"},
-      {"name": "Bite", "attack_bonus": "+8", "damage": "2d8+2", "damage_type": "Piercing"}
+      {
+        "name": "Claw",
+        "attack_bonus": "+13",
+        "damage": "2d6+5",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw (2nd)",
+        "attack_bonus": "+13",
+        "damage": "2d6+5",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+8",
+        "damage": "2d8+2",
+        "damage_type": "Piercing"
+      }
     ],
     "special_attacks": [
       "Spell-Like Abilities (CL 9): chaos hammer, detect thoughts, fear, passwall, shatter, telekinesis"
@@ -949,8 +1533,19 @@
       "Resistance to electricity 5",
       "SR 18"
     ],
-    "saves": {"fort": 10, "ref": 9, "will": 6},
-    "abilities": {"str": 20, "dex": 17, "con": 19, "int": 11, "wis": 11, "cha": 12},
+    "saves": {
+      "fort": 10,
+      "ref": 9,
+      "will": 6
+    },
+    "abilities": {
+      "str": 20,
+      "dex": 17,
+      "con": 19,
+      "int": 11,
+      "wis": 11,
+      "cha": 12
+    },
     "skills": {
       "Climb": 17,
       "Disguise": 11,
@@ -958,7 +1553,12 @@
       "Listen": 14,
       "Spot": 14
     },
-    "feats": ["Alertness", "Combat Reflexes", "Multiattack", "Power Attack"],
+    "feats": [
+      "Alertness",
+      "Combat Reflexes",
+      "Multiattack",
+      "Power Attack"
+    ],
     "alignment": "Always Chaotic Neutral",
     "advancement": "10-18 HD (Large)",
     "dr": null,
@@ -969,8 +1569,10 @@
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 4,
-    "allowed_biomes": ["Limbo", "Any Chaotic"],
-    "primary_biome": "Limbo",
+    "allowed_biomes": [
+      "Outer_Plane"
+    ],
+    "primary_biome": "Outer_Plane",
     "ecology_notes": "Green Slaadi are more intelligent than their lesser kin and can polymorph into humanoid form to infiltrate societies. They have powerful spell-like abilities and can command red and blue slaadi."
   },
   {
@@ -982,7 +1584,9 @@
     "hit_dice": "10d8+40",
     "hp_avg": 85,
     "initiative": 4,
-    "speed": {"land": 30},
+    "speed": {
+      "land": 30
+    },
     "armor_class": {
       "total": 22,
       "touch": 14,
@@ -992,9 +1596,24 @@
     "base_attack": 10,
     "grapple": 13,
     "attacks": [
-      {"name": "Slam", "attack_bonus": "+13", "damage": "2d6+3", "damage_type": "Bludgeoning"},
-      {"name": "Slam (2nd)", "attack_bonus": "+13", "damage": "2d6+3", "damage_type": "Bludgeoning"},
-      {"name": "Bite", "attack_bonus": "+8", "damage": "2d8+1", "damage_type": "Piercing"}
+      {
+        "name": "Slam",
+        "attack_bonus": "+13",
+        "damage": "2d6+3",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Slam (2nd)",
+        "attack_bonus": "+13",
+        "damage": "2d6+3",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+8",
+        "damage": "2d8+1",
+        "damage_type": "Piercing"
+      }
     ],
     "special_attacks": [
       "Spell-Like Abilities (CL 14): animate dead, chaos hammer, circle of chaos, confusion, detect thoughts, dispel law, fireball, fly, identify, magic missile, passwall, shatter, telekinesis, true seeing"
@@ -1010,8 +1629,19 @@
       "Resistance to electricity 5",
       "SR 21"
     ],
-    "saves": {"fort": 11, "ref": 11, "will": 9},
-    "abilities": {"str": 17, "dex": 18, "con": 18, "int": 16, "wis": 14, "cha": 16},
+    "saves": {
+      "fort": 11,
+      "ref": 11,
+      "will": 9
+    },
+    "abilities": {
+      "str": 17,
+      "dex": 18,
+      "con": 18,
+      "int": 16,
+      "wis": 14,
+      "cha": 16
+    },
     "skills": {
       "Bluff": 16,
       "Climb": 16,
@@ -1023,7 +1653,13 @@
       "Sense Motive": 15,
       "Spot": 15
     },
-    "feats": ["Alertness", "Combat Casting", "Combat Reflexes", "Dodge", "Improved Initiative"],
+    "feats": [
+      "Alertness",
+      "Combat Casting",
+      "Combat Reflexes",
+      "Dodge",
+      "Improved Initiative"
+    ],
     "alignment": "Always Chaotic Neutral",
     "advancement": "11-20 HD (Medium)",
     "dr": null,
@@ -1034,8 +1670,10 @@
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 2,
-    "allowed_biomes": ["Limbo", "Any Chaotic"],
-    "primary_biome": "Limbo",
+    "allowed_biomes": [
+      "Outer_Plane"
+    ],
+    "primary_biome": "Outer_Plane",
     "ecology_notes": "Gray Slaadi are the most intelligent of the lesser slaadi. They serve as leaders and generals, with powerful magic and the ability to assume any humanoid form at will."
   },
   {
@@ -1047,7 +1685,9 @@
     "hit_dice": "15d8+75",
     "hp_avg": 142,
     "initiative": 6,
-    "speed": {"land": 30},
+    "speed": {
+      "land": 30
+    },
     "armor_class": {
       "total": 26,
       "touch": 12,
@@ -1057,9 +1697,24 @@
     "base_attack": 15,
     "grapple": 19,
     "attacks": [
-      {"name": "Slam", "attack_bonus": "+19", "damage": "2d6+4", "damage_type": "Bludgeoning"},
-      {"name": "Slam (2nd)", "attack_bonus": "+19", "damage": "2d6+4", "damage_type": "Bludgeoning"},
-      {"name": "Bite", "attack_bonus": "+14", "damage": "2d8+2", "damage_type": "Piercing"}
+      {
+        "name": "Slam",
+        "attack_bonus": "+19",
+        "damage": "2d6+4",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Slam (2nd)",
+        "attack_bonus": "+19",
+        "damage": "2d6+4",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+14",
+        "damage": "2d8+2",
+        "damage_type": "Piercing"
+      }
     ],
     "special_attacks": [
       "Spell-Like Abilities (CL 18): animate dead, chaos hammer, circle of chaos, confusion, cure critical wounds, detect magic, dispel law, fireball, fly, inflict critical wounds, magic missile, passwall, plane shift, shatter, telekinesis, true seeing, word of chaos"
@@ -1075,8 +1730,19 @@
       "Resistance to electricity 10",
       "SR 25"
     ],
-    "saves": {"fort": 14, "ref": 11, "will": 12},
-    "abilities": {"str": 18, "dex": 15, "con": 20, "int": 18, "wis": 18, "cha": 18},
+    "saves": {
+      "fort": 14,
+      "ref": 11,
+      "will": 12
+    },
+    "abilities": {
+      "str": 18,
+      "dex": 15,
+      "con": 20,
+      "int": 18,
+      "wis": 18,
+      "cha": 18
+    },
     "skills": {
       "Bluff": 22,
       "Climb": 22,
@@ -1088,7 +1754,14 @@
       "Sense Motive": 22,
       "Spot": 24
     },
-    "feats": ["Alertness", "Combat Casting", "Combat Reflexes", "Dodge", "Improved Initiative", "Lightning Reflexes"],
+    "feats": [
+      "Alertness",
+      "Combat Casting",
+      "Combat Reflexes",
+      "Dodge",
+      "Improved Initiative",
+      "Lightning Reflexes"
+    ],
     "alignment": "Always Chaotic Neutral",
     "advancement": "16-30 HD (Medium)",
     "dr": null,
@@ -1099,8 +1772,10 @@
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 1,
-    "allowed_biomes": ["Limbo", "Any Chaotic"],
-    "primary_biome": "Limbo",
+    "allowed_biomes": [
+      "Outer_Plane"
+    ],
+    "primary_biome": "Outer_Plane",
     "ecology_notes": "Death Slaadi are the most powerful of their kind, barely distinguishable from powerful humanoids in their natural form. They are the true slaad lords and can draw on massive divine-like power."
   },
   {
@@ -1112,7 +1787,10 @@
     "hit_dice": "3d8+6",
     "hp_avg": 19,
     "initiative": 3,
-    "speed": {"land": 5, "swim": 90},
+    "speed": {
+      "land": 5,
+      "swim": 90
+    },
     "armor_class": {
       "total": 22,
       "touch": 14,
@@ -1122,11 +1800,36 @@
     "base_attack": 3,
     "grapple": 1,
     "attacks": [
-      {"name": "Bite", "attack_bonus": "+6", "damage": "1d6+1", "damage_type": "Piercing"},
-      {"name": "Claw", "attack_bonus": "+1", "damage": "1d4", "damage_type": "Slashing"},
-      {"name": "Claw (2nd)", "attack_bonus": "+1", "damage": "1d4", "damage_type": "Slashing"},
-      {"name": "Claw (3rd)", "attack_bonus": "+1", "damage": "1d4", "damage_type": "Slashing"},
-      {"name": "Claw (4th)", "attack_bonus": "+1", "damage": "1d4", "damage_type": "Slashing"}
+      {
+        "name": "Bite",
+        "attack_bonus": "+6",
+        "damage": "1d6+1",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+1",
+        "damage": "1d4",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw (2nd)",
+        "attack_bonus": "+1",
+        "damage": "1d4",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw (3rd)",
+        "attack_bonus": "+1",
+        "damage": "1d4",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw (4th)",
+        "attack_bonus": "+1",
+        "damage": "1d4",
+        "damage_type": "Slashing"
+      }
     ],
     "special_attacks": [
       "Ink Cloud (10 ft. radius, blinds creatures 1 round)"
@@ -1138,8 +1841,19 @@
       "Immunity to fire",
       "Shell"
     ],
-    "saves": {"fort": 5, "ref": 6, "will": 4},
-    "abilities": {"str": 12, "dex": 16, "con": 14, "int": 11, "wis": 12, "cha": 11},
+    "saves": {
+      "fort": 5,
+      "ref": 6,
+      "will": 4
+    },
+    "abilities": {
+      "str": 12,
+      "dex": 16,
+      "con": 14,
+      "int": 11,
+      "wis": 12,
+      "cha": 11
+    },
     "skills": {
       "Diplomacy": 2,
       "Escape Artist": 9,
@@ -1150,7 +1864,10 @@
       "Spot": 9,
       "Swim": 9
     },
-    "feats": ["Alertness", "Weapon Finesse"],
+    "feats": [
+      "Alertness",
+      "Weapon Finesse"
+    ],
     "alignment": "Always Neutral",
     "advancement": "4-6 HD (Small)",
     "dr": null,
@@ -1161,8 +1878,10 @@
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 8,
-    "allowed_biomes": ["Water Plane"],
-    "primary_biome": "Water Plane",
+    "allowed_biomes": [
+      "Elemental_Water"
+    ],
+    "primary_biome": "Elemental_Water",
     "ecology_notes": "Tojanida are turtle-like outsiders native to the Elemental Plane of Water. Their hard shells and multiple eyes make them difficult to surprise or flank."
   },
   {
@@ -1174,7 +1893,10 @@
     "hit_dice": "7d8+14",
     "hp_avg": 45,
     "initiative": 3,
-    "speed": {"land": 10, "swim": 90},
+    "speed": {
+      "land": 10,
+      "swim": 90
+    },
     "armor_class": {
       "total": 22,
       "touch": 13,
@@ -1184,11 +1906,36 @@
     "base_attack": 7,
     "grapple": 9,
     "attacks": [
-      {"name": "Bite", "attack_bonus": "+9", "damage": "1d8+2", "damage_type": "Piercing"},
-      {"name": "Claw", "attack_bonus": "+4", "damage": "1d6+1", "damage_type": "Slashing"},
-      {"name": "Claw (2nd)", "attack_bonus": "+4", "damage": "1d6+1", "damage_type": "Slashing"},
-      {"name": "Claw (3rd)", "attack_bonus": "+4", "damage": "1d6+1", "damage_type": "Slashing"},
-      {"name": "Claw (4th)", "attack_bonus": "+4", "damage": "1d6+1", "damage_type": "Slashing"}
+      {
+        "name": "Bite",
+        "attack_bonus": "+9",
+        "damage": "1d8+2",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+4",
+        "damage": "1d6+1",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw (2nd)",
+        "attack_bonus": "+4",
+        "damage": "1d6+1",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw (3rd)",
+        "attack_bonus": "+4",
+        "damage": "1d6+1",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw (4th)",
+        "attack_bonus": "+4",
+        "damage": "1d6+1",
+        "damage_type": "Slashing"
+      }
     ],
     "special_attacks": [
       "Ink Cloud (30 ft. radius, blinds creatures 1 round)"
@@ -1200,8 +1947,19 @@
       "Immunity to fire",
       "Shell"
     ],
-    "saves": {"fort": 7, "ref": 8, "will": 5},
-    "abilities": {"str": 15, "dex": 16, "con": 14, "int": 11, "wis": 12, "cha": 11},
+    "saves": {
+      "fort": 7,
+      "ref": 8,
+      "will": 5
+    },
+    "abilities": {
+      "str": 15,
+      "dex": 16,
+      "con": 14,
+      "int": 11,
+      "wis": 12,
+      "cha": 11
+    },
     "skills": {
       "Diplomacy": 2,
       "Escape Artist": 13,
@@ -1212,7 +1970,11 @@
       "Spot": 15,
       "Swim": 10
     },
-    "feats": ["Alertness", "Blind-Fight", "Multiattack"],
+    "feats": [
+      "Alertness",
+      "Blind-Fight",
+      "Multiattack"
+    ],
     "alignment": "Always Neutral",
     "advancement": "8-14 HD (Medium)",
     "dr": null,
@@ -1223,8 +1985,10 @@
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 5,
-    "allowed_biomes": ["Water Plane"],
-    "primary_biome": "Water Plane",
+    "allowed_biomes": [
+      "Elemental_Water"
+    ],
+    "primary_biome": "Elemental_Water",
     "ecology_notes": "Adult Tojanida are larger and stronger than juveniles, their shells nearly impenetrable. They are known to be cantankerous and territorial."
   },
   {
@@ -1236,7 +2000,10 @@
     "hit_dice": "15d8+45",
     "hp_avg": 112,
     "initiative": 3,
-    "speed": {"land": 10, "swim": 90},
+    "speed": {
+      "land": 10,
+      "swim": 90
+    },
     "armor_class": {
       "total": 24,
       "touch": 12,
@@ -1246,11 +2013,36 @@
     "base_attack": 15,
     "grapple": 22,
     "attacks": [
-      {"name": "Bite", "attack_bonus": "+17", "damage": "2d6+5", "damage_type": "Piercing"},
-      {"name": "Claw", "attack_bonus": "+12", "damage": "1d8+2", "damage_type": "Slashing"},
-      {"name": "Claw (2nd)", "attack_bonus": "+12", "damage": "1d8+2", "damage_type": "Slashing"},
-      {"name": "Claw (3rd)", "attack_bonus": "+12", "damage": "1d8+2", "damage_type": "Slashing"},
-      {"name": "Claw (4th)", "attack_bonus": "+12", "damage": "1d8+2", "damage_type": "Slashing"}
+      {
+        "name": "Bite",
+        "attack_bonus": "+17",
+        "damage": "2d6+5",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+12",
+        "damage": "1d8+2",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw (2nd)",
+        "attack_bonus": "+12",
+        "damage": "1d8+2",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw (3rd)",
+        "attack_bonus": "+12",
+        "damage": "1d8+2",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw (4th)",
+        "attack_bonus": "+12",
+        "damage": "1d8+2",
+        "damage_type": "Slashing"
+      }
     ],
     "special_attacks": [
       "Ink Cloud (60 ft. radius, blinds creatures 1 round)"
@@ -1262,8 +2054,19 @@
       "Immunity to fire",
       "Shell"
     ],
-    "saves": {"fort": 12, "ref": 12, "will": 9},
-    "abilities": {"str": 20, "dex": 17, "con": 17, "int": 11, "wis": 12, "cha": 11},
+    "saves": {
+      "fort": 12,
+      "ref": 12,
+      "will": 9
+    },
+    "abilities": {
+      "str": 20,
+      "dex": 17,
+      "con": 17,
+      "int": 11,
+      "wis": 12,
+      "cha": 11
+    },
     "skills": {
       "Diplomacy": 3,
       "Escape Artist": 21,
@@ -1274,7 +2077,14 @@
       "Spot": 23,
       "Swim": 13
     },
-    "feats": ["Alertness", "Blind-Fight", "Cleave", "Great Cleave", "Multiattack", "Power Attack"],
+    "feats": [
+      "Alertness",
+      "Blind-Fight",
+      "Cleave",
+      "Great Cleave",
+      "Multiattack",
+      "Power Attack"
+    ],
     "alignment": "Always Neutral",
     "advancement": "16-30 HD (Large)",
     "dr": null,
@@ -1285,8 +2095,10 @@
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 2,
-    "allowed_biomes": ["Water Plane"],
-    "primary_biome": "Water Plane",
+    "allowed_biomes": [
+      "Elemental_Water"
+    ],
+    "primary_biome": "Elemental_Water",
     "ecology_notes": "Elder Tojanida are ancient and massive, with shells thick enough to deflect most weapons. They are among the oldest creatures of the Elemental Plane of Water."
   },
   {
@@ -1298,7 +2110,10 @@
     "hit_dice": "3d8+9",
     "hp_avg": 22,
     "initiative": 0,
-    "speed": {"land": 20, "burrow": 20},
+    "speed": {
+      "land": 20,
+      "burrow": 20
+    },
     "armor_class": {
       "total": 23,
       "touch": 11,
@@ -1308,10 +2123,30 @@
     "base_attack": 3,
     "grapple": 3,
     "attacks": [
-      {"name": "Bite", "attack_bonus": "+6", "damage": "2d8+2", "damage_type": "Piercing"},
-      {"name": "Claw", "attack_bonus": "+4", "damage": "1d3+1", "damage_type": "Slashing"},
-      {"name": "Claw (2nd)", "attack_bonus": "+4", "damage": "1d3+1", "damage_type": "Slashing"},
-      {"name": "Claw (3rd)", "attack_bonus": "+4", "damage": "1d3+1", "damage_type": "Slashing"}
+      {
+        "name": "Bite",
+        "attack_bonus": "+6",
+        "damage": "2d8+2",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+4",
+        "damage": "1d3+1",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw (2nd)",
+        "attack_bonus": "+4",
+        "damage": "1d3+1",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw (3rd)",
+        "attack_bonus": "+4",
+        "damage": "1d3+1",
+        "damage_type": "Slashing"
+      }
     ],
     "special_attacks": [],
     "special_qualities": [
@@ -1323,8 +2158,19 @@
       "Resistance to electricity 10",
       "Tremorsense 60 ft."
     ],
-    "saves": {"fort": 6, "ref": 3, "will": 4},
-    "abilities": {"str": 15, "dex": 10, "con": 17, "int": 10, "wis": 12, "cha": 10},
+    "saves": {
+      "fort": 6,
+      "ref": 3,
+      "will": 4
+    },
+    "abilities": {
+      "str": 15,
+      "dex": 10,
+      "con": 17,
+      "int": 10,
+      "wis": 12,
+      "cha": 10
+    },
     "skills": {
       "Hide": 8,
       "Knowledge (dungeoneering)": 6,
@@ -1334,7 +2180,10 @@
       "Spot": 9,
       "Survival": 7
     },
-    "feats": ["Alertness", "Toughness"],
+    "feats": [
+      "Alertness",
+      "Toughness"
+    ],
     "alignment": "Always Neutral",
     "advancement": "4-6 HD (Small)",
     "dr": null,
@@ -1345,8 +2194,11 @@
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 10,
-    "allowed_biomes": ["Underground", "Earth Plane"],
-    "primary_biome": "Earth Plane",
+    "allowed_biomes": [
+      "Underground",
+      "Elemental_Earth"
+    ],
+    "primary_biome": "Elemental_Earth",
     "ecology_notes": "Minor Xorn are the smallest of their kind, sifting through stone for metals and gems. They are not hostile unless threatened or denied their diet of precious minerals."
   },
   {
@@ -1358,7 +2210,10 @@
     "hit_dice": "7d8+28",
     "hp_avg": 59,
     "initiative": 0,
-    "speed": {"land": 20, "burrow": 20},
+    "speed": {
+      "land": 20,
+      "burrow": 20
+    },
     "armor_class": {
       "total": 24,
       "touch": 10,
@@ -1368,10 +2223,30 @@
     "base_attack": 7,
     "grapple": 10,
     "attacks": [
-      {"name": "Bite", "attack_bonus": "+10", "damage": "4d6+3", "damage_type": "Piercing"},
-      {"name": "Claw", "attack_bonus": "+8", "damage": "1d4+1", "damage_type": "Slashing"},
-      {"name": "Claw (2nd)", "attack_bonus": "+8", "damage": "1d4+1", "damage_type": "Slashing"},
-      {"name": "Claw (3rd)", "attack_bonus": "+8", "damage": "1d4+1", "damage_type": "Slashing"}
+      {
+        "name": "Bite",
+        "attack_bonus": "+10",
+        "damage": "4d6+3",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+8",
+        "damage": "1d4+1",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw (2nd)",
+        "attack_bonus": "+8",
+        "damage": "1d4+1",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw (3rd)",
+        "attack_bonus": "+8",
+        "damage": "1d4+1",
+        "damage_type": "Slashing"
+      }
     ],
     "special_attacks": [],
     "special_qualities": [
@@ -1383,8 +2258,19 @@
       "Resistance to electricity 10",
       "Tremorsense 60 ft."
     ],
-    "saves": {"fort": 9, "ref": 5, "will": 6},
-    "abilities": {"str": 17, "dex": 10, "con": 19, "int": 10, "wis": 12, "cha": 10},
+    "saves": {
+      "fort": 9,
+      "ref": 5,
+      "will": 6
+    },
+    "abilities": {
+      "str": 17,
+      "dex": 10,
+      "con": 19,
+      "int": 10,
+      "wis": 12,
+      "cha": 10
+    },
     "skills": {
       "Hide": 10,
       "Knowledge (dungeoneering)": 10,
@@ -1394,7 +2280,11 @@
       "Spot": 13,
       "Survival": 13
     },
-    "feats": ["Alertness", "Cleave", "Power Attack"],
+    "feats": [
+      "Alertness",
+      "Cleave",
+      "Power Attack"
+    ],
     "alignment": "Always Neutral",
     "advancement": "8-14 HD (Medium)",
     "dr": null,
@@ -1405,8 +2295,11 @@
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 8,
-    "allowed_biomes": ["Underground", "Earth Plane"],
-    "primary_biome": "Earth Plane",
+    "allowed_biomes": [
+      "Underground",
+      "Elemental_Earth"
+    ],
+    "primary_biome": "Elemental_Earth",
     "ecology_notes": "Average Xorn are the most commonly encountered size, burrowing through the Elemental Plane of Earth in search of metals and gems for sustenance."
   },
   {
@@ -1418,7 +2311,10 @@
     "hit_dice": "15d8+75",
     "hp_avg": 142,
     "initiative": 0,
-    "speed": {"land": 20, "burrow": 20},
+    "speed": {
+      "land": 20,
+      "burrow": 20
+    },
     "armor_class": {
       "total": 26,
       "touch": 9,
@@ -1428,10 +2324,30 @@
     "base_attack": 15,
     "grapple": 24,
     "attacks": [
-      {"name": "Bite", "attack_bonus": "+19", "damage": "4d8+7", "damage_type": "Piercing"},
-      {"name": "Claw", "attack_bonus": "+17", "damage": "1d6+3", "damage_type": "Slashing"},
-      {"name": "Claw (2nd)", "attack_bonus": "+17", "damage": "1d6+3", "damage_type": "Slashing"},
-      {"name": "Claw (3rd)", "attack_bonus": "+17", "damage": "1d6+3", "damage_type": "Slashing"}
+      {
+        "name": "Bite",
+        "attack_bonus": "+19",
+        "damage": "4d8+7",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+17",
+        "damage": "1d6+3",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw (2nd)",
+        "attack_bonus": "+17",
+        "damage": "1d6+3",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw (3rd)",
+        "attack_bonus": "+17",
+        "damage": "1d6+3",
+        "damage_type": "Slashing"
+      }
     ],
     "special_attacks": [],
     "special_qualities": [
@@ -1443,8 +2359,19 @@
       "Resistance to electricity 10",
       "Tremorsense 60 ft."
     ],
-    "saves": {"fort": 14, "ref": 9, "will": 10},
-    "abilities": {"str": 24, "dex": 10, "con": 21, "int": 10, "wis": 13, "cha": 10},
+    "saves": {
+      "fort": 14,
+      "ref": 9,
+      "will": 10
+    },
+    "abilities": {
+      "str": 24,
+      "dex": 10,
+      "con": 21,
+      "int": 10,
+      "wis": 13,
+      "cha": 10
+    },
     "skills": {
       "Hide": 14,
       "Knowledge (dungeoneering)": 18,
@@ -1454,7 +2381,13 @@
       "Spot": 21,
       "Survival": 19
     },
-    "feats": ["Alertness", "Cleave", "Great Cleave", "Improved Bull Rush", "Power Attack"],
+    "feats": [
+      "Alertness",
+      "Cleave",
+      "Great Cleave",
+      "Improved Bull Rush",
+      "Power Attack"
+    ],
     "alignment": "Always Neutral",
     "advancement": "16-30 HD (Large)",
     "dr": null,
@@ -1465,8 +2398,11 @@
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 3,
-    "allowed_biomes": ["Underground", "Earth Plane"],
-    "primary_biome": "Earth Plane",
+    "allowed_biomes": [
+      "Underground",
+      "Elemental_Earth"
+    ],
+    "primary_biome": "Elemental_Earth",
     "ecology_notes": "Elder Xorn are massive and powerful, capable of consuming entire veins of ore. They are among the most feared creatures of the Earth plane."
   }
 ]

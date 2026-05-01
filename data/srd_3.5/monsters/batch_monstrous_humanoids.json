@@ -89,7 +89,7 @@
     "allowed_biomes": [
       "Cold_Swamp",
       "Cold_Forest",
-      "Mountain"
+      "Temperate_Mountain"
     ],
     "primary_biome": "Cold_Swamp",
     "ecology_notes": "The annis is the most physically powerful of the hags, a massive iron-skinned monster that haunts cold bogs, frozen forests, and mountain passes. Unlike other hags that rely on trickery and magic, the annis prefers to simply tear prey apart with her rending claws. She still employs illusion and fog to set up ambushes, vanishing into the mist before tearing victims apart."
@@ -181,11 +181,11 @@
     "passive_effects": [],
     "population_base": 30,
     "allowed_biomes": [
-      "Mountain",
+      "Temperate_Mountain",
       "Any_Ruin",
       "Underground"
     ],
-    "primary_biome": "Mountain",
+    "primary_biome": "Temperate_Mountain",
     "ecology_notes": "Gargoyles are cunning ambush predators that roost on stone buildings and cliff faces, where their stony skin allows them to blend perfectly with their surroundings. They wait motionless for hours, then drop on unsuspecting prey. Gargoyles often guard ruins or dungeons, serving evil masters or simply claiming territory they consider their own."
   },
   {

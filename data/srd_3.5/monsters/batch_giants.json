@@ -76,10 +76,10 @@
     "passive_effects": [],
     "population_base": 10,
     "allowed_biomes": [
-      "Mountain",
+      "Temperate_Mountain",
       "Cold_Plain"
     ],
-    "primary_biome": "Mountain",
+    "primary_biome": "Temperate_Mountain",
     "ecology_notes": "Cloud giants dwell in mountaintop castles or grand structures in the clouds. Their alignment varies widely; Good cloud giants are reclusive and artistic while Evil ones raid lowland settlements."
   },
   {
@@ -159,7 +159,7 @@
     "population_base": 20,
     "allowed_biomes": [
       "Cold_Plain",
-      "Mountain"
+      "Temperate_Mountain"
     ],
     "primary_biome": "Cold_Plain",
     "ecology_notes": "Ettins are two-headed giants notorious for their constant arguments between heads and their brutal raiding. Their two heads grant them remarkable vigilance, making them nearly impossible to surprise."
@@ -240,10 +240,10 @@
     "passive_effects": [],
     "population_base": 15,
     "allowed_biomes": [
-      "Mountain",
+      "Temperate_Mountain",
       "Warm_Desert"
     ],
-    "primary_biome": "Mountain",
+    "primary_biome": "Temperate_Mountain",
     "ecology_notes": "Fire giants are militaristic giants that dwell in volcanic mountains and forge powerful weapons. Their disciplined society contrasts sharply with most giant-kin, and their smithcraft is legendary."
   },
   {
@@ -322,7 +322,7 @@
     "allowed_biomes": [
       "Arctic",
       "Cold_Plain",
-      "Mountain"
+      "Temperate_Mountain"
     ],
     "primary_biome": "Arctic",
     "ecology_notes": "Frost giants are raiders from arctic wastes, their immunity to cold allowing them to thrive where others perish. They organize into war-bands and serve powerful ice giants or dragon overlords."
@@ -399,7 +399,7 @@
     "population_base": 30,
     "allowed_biomes": [
       "Temperate_Plain",
-      "Mountain",
+      "Temperate_Mountain",
       "Cold_Plain"
     ],
     "primary_biome": "Temperate_Plain",
@@ -478,10 +478,10 @@
     "passive_effects": [],
     "population_base": 10,
     "allowed_biomes": [
-      "Mountain",
+      "Temperate_Mountain",
       "Temperate_Forest"
     ],
-    "primary_biome": "Mountain",
+    "primary_biome": "Temperate_Mountain",
     "ecology_notes": "Ogre mages are rare and intelligent oni-like giants with potent magical abilities. They use their shape-changing and spells to manipulate lesser creatures, sometimes ruling humanoid or ogre tribes from the shadows."
   },
   {
@@ -557,9 +557,9 @@
     "passive_effects": [],
     "population_base": 15,
     "allowed_biomes": [
-      "Mountain"
+      "Temperate_Mountain"
     ],
-    "primary_biome": "Mountain",
+    "primary_biome": "Temperate_Mountain",
     "ecology_notes": "Stone giants are reclusive mountain dwellers who prefer to be left alone. They are master rock-throwers and use their natural camouflage to avoid conflict, though they defend their territory ferociously."
   },
   {
@@ -642,10 +642,10 @@
     "passive_effects": [],
     "population_base": 5,
     "allowed_biomes": [
-      "Mountain",
+      "Temperate_Mountain",
       "Cold_Aquatic"
     ],
-    "primary_biome": "Mountain",
+    "primary_biome": "Temperate_Mountain",
     "ecology_notes": "Storm giants are the mightiest of the true giants, dwelling atop the highest peaks or beneath the deepest seas. They are generally benevolent and wise, serving as mediators among giantkind."
   }
 ]

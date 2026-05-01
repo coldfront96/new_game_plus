@@ -78,8 +78,7 @@
     "population_base": 200,
     "allowed_biomes": [
       "Any_Ruin",
-      "Underground",
-      "Any_Graveyard"
+      "Underground"
     ],
     "primary_biome": "Any_Ruin",
     "ecology_notes": "Ghouls are ravenous undead that haunt graveyards and dungeons, feeding on corpses and fresh kills. Their paralytic bite makes them dangerous in groups, and victims who die of ghoul fever rise as ghouls themselves. Elves are uniquely immune to ghoul paralysis."
@@ -175,8 +174,7 @@
     "population_base": 100,
     "allowed_biomes": [
       "Any_Ruin",
-      "Underground",
-      "Any_Graveyard"
+      "Underground"
     ],
     "primary_biome": "Any_Ruin",
     "ecology_notes": "Ghasts are more powerful versions of ghouls with a nauseating stench. Unlike regular ghouls, ghast paralysis affects elves as well. They are cunning hunters who lead packs of ghouls and prefer to disable prey before feasting."
@@ -253,7 +251,6 @@
     "population_base": 150,
     "allowed_biomes": [
       "Any_Ruin",
-      "Any_Graveyard",
       "Underground"
     ],
     "primary_biome": "Any_Ruin",
@@ -345,7 +342,6 @@
     "population_base": 30,
     "allowed_biomes": [
       "Any_Ruin",
-      "Any_Graveyard",
       "Underground"
     ],
     "primary_biome": "Any_Ruin",
@@ -439,7 +435,7 @@
     "allowed_biomes": [
       "Warm_Desert",
       "Any_Ruin",
-      "Any_Tomb"
+      "Underground"
     ],
     "primary_biome": "Warm_Desert",
     "ecology_notes": "Mummies are preserved undead created through ancient funerary rituals or dark magic. They guard tombs and treasure hordes, striking fear into intruders with their fearsome appearance. Mummy rot is particularly feared as it can only be cured by magic, not natural healing. Mummies are highly flammable and take extra damage from fire."
@@ -525,7 +521,6 @@
     "population_base": 75,
     "allowed_biomes": [
       "Any_Ruin",
-      "Any_Graveyard",
       "Underground"
     ],
     "primary_biome": "Any_Ruin",
@@ -619,7 +614,7 @@
     "allowed_biomes": [
       "Any_Ruin",
       "Underground",
-      "Any_Planar"
+      "Outer_Plane"
     ],
     "primary_biome": "Any_Ruin",
     "ecology_notes": "Bodaks are horrific undead created when a mortal is destroyed by the power of Orcus or similar dark forces on the lower planes. Their death gaze can slay any living creature that meets their eyes. They burn in direct sunlight and seek dark places to hide. Bodaks retain no memory of their former lives."
@@ -791,11 +786,9 @@
     "passive_effects": [],
     "population_base": 0,
     "allowed_biomes": [
-      "Any_Ruin",
-      "Any_Graveyard",
-      "Any_Haunted"
+      "Any_Ruin"
     ],
-    "primary_biome": "Any_Haunted",
+    "primary_biome": "Any_Ruin",
     "ecology_notes": "This ghost represents a typical example using a Human Warrior 5 base. Ghosts are incorporeal undead created when a creature dies with strong unfinished business. They retain abilities from life and gain ghost-template powers. The ghost can only be permanently destroyed when its unresolved purpose is fulfilled or by special means. CHA score represents the ghost template bonus (+4 to CHA)."
   },
   {
@@ -878,11 +871,11 @@
     "passive_effects": [],
     "population_base": 5,
     "allowed_biomes": [
-      "Any_Planar",
+      "Outer_Plane",
       "Any_Ruin",
       "Underground"
     ],
-    "primary_biome": "Any_Planar",
+    "primary_biome": "Outer_Plane",
     "ecology_notes": "Devourers are horrific extraplanar undead that consume the souls of the living. They originate on the lower planes and travel to the material plane to harvest souls, which they store in their ribcages as spell energy. A devourer whose soul supply runs out becomes dormant. They are among the most feared undead for their ability to permanently destroy souls."
   },
   {
@@ -988,7 +981,6 @@
     "population_base": 0,
     "allowed_biomes": [
       "Any_Ruin",
-      "Any_Dungeon",
       "Underground"
     ],
     "primary_biome": "Any_Ruin",

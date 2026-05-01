@@ -1635,8 +1635,8 @@
     "population_base": 200,
     "allowed_biomes": [
       "Underground",
-      "Forest",
-      "Swamp"
+      "Temperate_Forest",
+      "Temperate_Swamp"
     ],
     "primary_biome": "Underground",
     "ecology_notes": "Tiny monstrous centipedes are more nuisance than threat, but their venom can weaken the unwary."
@@ -1864,11 +1864,11 @@
     "passive_effects": [],
     "population_base": 200,
     "allowed_biomes": [
-      "Desert",
+      "Warm_Desert",
       "Underground",
-      "Jungle"
+      "Warm_Forest"
     ],
-    "primary_biome": "Desert",
+    "primary_biome": "Warm_Desert",
     "ecology_notes": "Tiny monstrous scorpions are barely noticeable but can surprise the unwary with their venomous sting."
   },
   {
@@ -1945,10 +1945,10 @@
     "passive_effects": [],
     "population_base": 100,
     "allowed_biomes": [
-      "Desert",
+      "Warm_Desert",
       "Underground"
     ],
-    "primary_biome": "Desert",
+    "primary_biome": "Warm_Desert",
     "ecology_notes": "Small monstrous scorpions are common hazards in desert regions and underground passages."
   },
   {
@@ -2029,11 +2029,11 @@
     "passive_effects": [],
     "population_base": 3,
     "allowed_biomes": [
-      "Desert",
+      "Warm_Desert",
       "Underground",
       "Underdark"
     ],
-    "primary_biome": "Desert",
+    "primary_biome": "Warm_Desert",
     "ecology_notes": "Gargantuan monstrous scorpions are apex predators of the deep desert and underdark, capable of killing elephants."
   },
   {
@@ -2115,10 +2115,10 @@
     "passive_effects": [],
     "population_base": 1,
     "allowed_biomes": [
-      "Desert",
+      "Warm_Desert",
       "Underdark"
     ],
-    "primary_biome": "Desert",
+    "primary_biome": "Warm_Desert",
     "ecology_notes": "Colossal monstrous scorpions are legendary terrors. Their venom can kill a giant in seconds and their claws can crush stone."
   },
   {
@@ -2192,11 +2192,11 @@
     "passive_effects": [],
     "population_base": 300,
     "allowed_biomes": [
-      "Forest",
+      "Temperate_Forest",
       "Underground",
       "Any"
     ],
-    "primary_biome": "Forest",
+    "primary_biome": "Temperate_Forest",
     "ecology_notes": "Tiny monstrous spiders are nearly indistinguishable from large normal spiders. Their webs are more of an annoyance than a real trap."
   },
   {
@@ -2274,7 +2274,7 @@
     "allowed_biomes": [
       "Underground",
       "Underdark",
-      "Forest"
+      "Temperate_Forest"
     ],
     "primary_biome": "Underground",
     "ecology_notes": "Gargantuan monstrous spiders can cover chambers with their webs and easily pull in large prey."
