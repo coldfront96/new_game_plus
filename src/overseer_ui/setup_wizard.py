@@ -31,11 +31,11 @@ import json
 import random
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Optional
+from typing import Any, Dict, List, Optional
 
 from textual.app import ComposeResult
 from textual.screen import Screen
-from textual.widgets import Button, Static
+from textual.widgets import Button, SelectionList, Static
 
 # ---------------------------------------------------------------------------
 # PH6-001 · CampaignWizardState dataclass
@@ -53,11 +53,17 @@ class CampaignWizardState:
                        until sandbox mode is selected.
         campaign_session: The loaded :class:`~src.game.campaign.CampaignSession`
                           instance, if one has been created.
+        active_books:  List of supplemental book slugs opted-in by the player
+                       (e.g. ``["draconomicon", "monster_manual_2"]``).
+        expanded_data: Loaded expanded content dict returned by
+                       :func:`~src.rules_engine.srd_loader.load_expanded_rules`.
     """
 
     selected_mode: Optional[str] = None
     seed: Optional[int] = None
     campaign_session: Optional[object] = None
+    active_books: List[str] = field(default_factory=list)
+    expanded_data: Dict[str, Any] = field(default_factory=dict)
 
 
 #: Module-level singleton consumed by all downstream handlers.
@@ -101,6 +107,9 @@ class CampaignWizardScreen(Screen):
         width: 100%;
         margin-bottom: 1;
     }
+    #book-selection {
+        margin-top: 1;
+    }
     """
 
     def compose(self) -> ComposeResult:
@@ -111,6 +120,18 @@ class CampaignWizardScreen(Screen):
             yield Button("[True Random Sandbox]", id="btn_sandbox")
             yield Button("[Premade Modules]", id="btn_premade")
             yield Button("[World Builder]", id="btn_world_builder")
+            yield SelectionList(
+                ("Load Draconomicon", "draconomicon", False),
+                ("Load Monster Manual II", "monster_manual_2", False),
+                ("Load Magic Item Compendium", "magic_item_compendium", False),
+                id="book-selection",
+            )
+
+    def on_selection_list_selected_changed(
+        self, event: SelectionList.SelectedChanged
+    ) -> None:
+        """Update active_books when the player toggles a supplemental book."""
+        _wizard_state.active_books = list(event.selection_list.selected)
 
     # ------------------------------------------------------------------
     # PH6-001 · Button handlers
@@ -143,11 +164,17 @@ class CampaignWizardScreen(Screen):
         """
         from src.world_sim.genesis import fast_forward_simulation
         from src.game.campaign import CampaignSession
+        from src.rules_engine.srd_loader import load_expanded_rules
+        from src.game.session import build_monsters_from_srd
+        from src.rules_engine.magic_item_engine import merge_expanded_wondrous
 
         random_seed = random.randint(0, 2**32 - 1)
         _wizard_state.seed = random_seed
 
         try:
+            _wizard_state.expanded_data = load_expanded_rules(_wizard_state.active_books)
+            merge_expanded_wondrous(_wizard_state.expanded_data)
+
             result = fast_forward_simulation(500, random_seed)
 
             _CAMPAIGNS_DIR.mkdir(parents=True, exist_ok=True)
@@ -175,6 +202,9 @@ class CampaignWizardScreen(Screen):
         ``CampaignSession`` from the first file found and switches to the
         overworld screen.  Shows an error toast if none are found.
         """
+        from src.rules_engine.srd_loader import load_expanded_rules
+        from src.rules_engine.magic_item_engine import merge_expanded_wondrous
+
         if not _CAMPAIGNS_DIR.exists():
             self.app.notify(
                 "No premade campaigns found in data/campaigns/",
@@ -191,6 +221,9 @@ class CampaignWizardScreen(Screen):
             return
 
         try:
+            _wizard_state.expanded_data = load_expanded_rules(_wizard_state.active_books)
+            merge_expanded_wondrous(_wizard_state.expanded_data)
+
             campaign_dict = json.loads(json_files[0].read_text())
             session = _load_campaign_from_dict(campaign_dict)
             _wizard_state.campaign_session = session
@@ -207,7 +240,13 @@ class CampaignWizardScreen(Screen):
 
     def _handle_world_builder(self) -> None:
         """Switch to the WorldBuilderScreen."""
+        from src.rules_engine.srd_loader import load_expanded_rules
+        from src.rules_engine.magic_item_engine import merge_expanded_wondrous
+
         try:
+            _wizard_state.expanded_data = load_expanded_rules(_wizard_state.active_books)
+            merge_expanded_wondrous(_wizard_state.expanded_data)
+
             from src.overseer_ui.world_builder import WorldBuilderScreen
 
             self.app.push_screen(WorldBuilderScreen())

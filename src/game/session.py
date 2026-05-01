@@ -205,17 +205,39 @@ def _monster_from_srd(entry: dict, display_name: str) -> Character35e:
 def build_monsters_from_srd(
     blueprint: EncounterBlueprint,
     rng: Optional[random.Random] = None,
+    expanded: Optional[Dict] = None,
 ) -> List[Character35e]:
     """Build monster combatants using SRD stat blocks where available.
 
     Looks up each monster by name in the loaded SRD index.  Falls back to
     the Fighter-approximation path when a name is not found.
+
+    Args:
+        blueprint: Encounter specification with monster name/count/CR tuples.
+        rng:       Optional seeded random for deterministic builds.
+        expanded:  Optional dict returned by ``load_expanded_rules()``.  When
+                   provided and non-empty, any monster dicts that contain the
+                   required fields (``"name"``, ``"cr"``, ``"hp"``) are
+                   injected into the returned list alongside core SRD monsters.
     """
     _build_monster_index()
     monsters: List[Character35e] = []
     for name, count, cr in blueprint.monsters:
         key = _normalize_name(name)
         entry = _MONSTER_INDEX.get(key)
+
+        # Check expanded books for a matching entry when not found in core SRD.
+        if entry is None and expanded:
+            for book_entries in expanded.values():
+                for candidate in book_entries:
+                    if isinstance(candidate, dict) and _normalize_name(
+                        candidate.get("name", "")
+                    ) == key:
+                        entry = candidate
+                        break
+                if entry is not None:
+                    break
+
         for idx in range(count):
             display = f"{name} #{idx + 1}" if count > 1 else name
             if entry is not None:
@@ -239,6 +261,25 @@ def build_monsters_from_srd(
             mon.metadata[SIDE_KEY] = "enemy"
             mon.metadata["cr"] = cr
             monsters.append(mon)
+
+    # Inject expanded-only monsters (not referenced in the blueprint) when
+    # requested books contain entries with valid stat blocks.
+    if expanded:
+        for book_slug, book_entries in expanded.items():
+            for candidate in book_entries:
+                if not isinstance(candidate, dict):
+                    continue
+                req = {"name", "cr", "hp"}
+                if not req <= set(candidate):
+                    continue
+                cname = candidate["name"]
+                if any(m.name == cname for m in monsters):
+                    continue
+                mon = _monster_from_srd(candidate, cname)
+                mon.metadata[SIDE_KEY] = "enemy"
+                mon.metadata["cr"] = candidate["cr"]
+                monsters.append(mon)
+
     return monsters
 
 
