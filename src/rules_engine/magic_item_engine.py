@@ -238,7 +238,7 @@ def merge_expanded_wondrous(expanded: dict) -> None:
     Args:
         expanded: Dict returned by :func:`~src.rules_engine.srd_loader.load_expanded_rules`.
     """
-    from src.rules_engine.magic_items import WondrousItem, MagicItemCategory, MagicBonus
+    from src.rules_engine.magic_items import WondrousItem, MagicBonus
 
     mic_entries = expanded.get("magic_item_compendium")
     if not mic_entries:
