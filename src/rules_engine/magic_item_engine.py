@@ -9,7 +9,7 @@ from __future__ import annotations
 import random
 from dataclasses import dataclass
 from enum import Enum
-from typing import Union
+from typing import Dict, Union
 
 from src.rules_engine.consumables import (
     POTION_REGISTRY, SCROLL_REGISTRY, WAND_REGISTRY, ROD_REGISTRY, STAFF_REGISTRY,
@@ -220,3 +220,72 @@ def identify_magic_item(
             return IdentificationResult(identified=False, aura_school=aura_school, full_name=None)
 
     return IdentificationResult(identified=False, aura_school=None, full_name=None)
+
+
+# ---------------------------------------------------------------------------
+# PH7-005 — Expanded wondrous item merge
+# ---------------------------------------------------------------------------
+
+def _slug_from_name(name: str) -> str:
+    """Convert an item name to a registry-style slug key."""
+    import re as _re
+    return _re.sub(r"[^a-z0-9]+", "_", name.lower()).strip("_")
+
+
+def merge_expanded_wondrous(expanded: dict) -> None:
+    """Merge Magic Item Compendium wondrous items into :data:`WONDROUS_ITEM_REGISTRY`.
+
+    Reads every item dict stored at ``expanded["magic_item_compendium"]`` and
+    constructs a :class:`~src.rules_engine.magic_items.WondrousItem` for each.
+    The merged items are added to (or overwrite) ``WONDROUS_ITEM_REGISTRY``
+    using a slug derived from the item name.  A final deduplication pass by
+    name ensures that repeated calls do not accumulate duplicates.
+
+    Args:
+        expanded: Dict returned by :func:`~src.rules_engine.srd_loader.load_expanded_rules`.
+    """
+    from src.rules_engine.magic_items import (
+        MagicItemCategory,
+        MagicBonus,
+        BonusType,
+        WondrousItem,
+        WONDROUS_ITEM_REGISTRY,
+    )
+
+    book_entries = expanded.get("magic_item_compendium")
+    if not book_entries:
+        return
+
+    for item_dict in book_entries:
+        if not isinstance(item_dict, dict):
+            continue
+        name = item_dict.get("name")
+        if not name:
+            continue
+
+        # Build a minimal WondrousItem from the available fields.
+        item = WondrousItem(
+            name=name,
+            category=MagicItemCategory.WONDROUS,
+            slot=item_dict.get("slot", "none"),
+            caster_level=int(item_dict.get("caster_level", 1)),
+            price_gp=int(item_dict.get("price_gp", 0)),
+            weight_lb=float(item_dict.get("weight", item_dict.get("weight_lb", 0.0))),
+            bonuses=[],
+            aura=item_dict.get("aura_school", item_dict.get("aura", "")),
+            description=item_dict.get("description", ""),
+        )
+        slug = _slug_from_name(name)
+        WONDROUS_ITEM_REGISTRY[slug] = item
+
+    # Deduplicate by name (last writer wins) — collect unique items by name.
+    seen_names: Dict[str, str] = {}
+    for key, entry in list(WONDROUS_ITEM_REGISTRY.items()):
+        seen_names[entry.name] = key
+
+    # Remove any earlier slugs that were superseded by a later one with the same name.
+    surviving_keys = set(seen_names.values())
+    for key in list(WONDROUS_ITEM_REGISTRY.keys()):
+        if key not in surviving_keys:
+            del WONDROUS_ITEM_REGISTRY[key]
+

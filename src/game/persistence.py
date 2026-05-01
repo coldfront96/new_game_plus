@@ -209,6 +209,7 @@ def save_party(
     directory: Optional[Path] = None,
     conditions: Optional[ConditionManager] = None,
     xp_managers: Optional[Dict[str, XPManager]] = None,
+    active_books: Optional[List[str]] = None,
 ) -> Path:
     """Write *party* to ``<directory or saves/>/<name>.json``.
 
@@ -220,6 +221,10 @@ def save_party(
                       saved alongside each character.
         xp_managers:  Mapping of ``char_id → XPManager`` so each character's
                       XP is round-tripped.
+        active_books: List of active supplemental book slugs (PH7).  Saved
+                      under ``"active_books"`` and restored on load so the
+                      engine can re-invoke ``load_expanded_rules()`` when
+                      resuming a session.  Defaults to ``[]``.
 
     Returns:
         The absolute :class:`~pathlib.Path` that was written.
@@ -234,7 +239,7 @@ def save_party(
         )
         for c in party
     ]
-    payload = {"name": name, "party": records}
+    payload = {"name": name, "party": records, "active_books": active_books or []}
     path.write_text(json.dumps(payload, indent=2))
     return path
 
@@ -268,8 +273,10 @@ def load_party_with_state(
 ) -> Dict[str, Any]:
     """Load a party plus its raw record list (for XP / condition recovery).
 
-    Returns a dict with keys ``party`` (list of characters) and ``records``
-    (list of per-character record dicts matching :func:`serialize_character`).
+    Returns a dict with keys ``party`` (list of characters), ``records``
+    (list of per-character record dicts matching :func:`serialize_character`),
+    and ``active_books`` (list of supplemental book slugs, defaults to ``[]``
+    for saves that predate PH7).
     """
     path = _party_path(name, directory)
     if not path.exists():
@@ -280,7 +287,12 @@ def load_party_with_state(
         deserialize_character(rec, condition_manager=condition_manager)
         for rec in records
     ]
-    return {"party": characters, "records": records, "name": payload.get("name", name)}
+    return {
+        "party": characters,
+        "records": records,
+        "name": payload.get("name", name),
+        "active_books": payload.get("active_books", []),
+    }
 
 
 def list_saved_parties(directory: Optional[Path] = None) -> List[str]:
