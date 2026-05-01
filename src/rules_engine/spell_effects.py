@@ -107,6 +107,8 @@ def _saving_throw(
         save_mod = getattr(target, "will_save", 0)
     elif "fortitude" in label:
         save_mod = getattr(target, "fortitude_save", 0)
+    if roll == 1: return False
+    if roll == 20: return True
     return (roll + save_mod) >= dc
 
 
