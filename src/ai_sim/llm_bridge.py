@@ -43,7 +43,11 @@ import json
 import urllib.error
 import urllib.request
 from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional
+from typing import Any, AsyncIterator, Dict, List, Optional, TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from src.rules_engine.character_35e import Character35e
+    from src.world_sim.factions import FactionRecord
 
 
 # ---------------------------------------------------------------------------
@@ -323,3 +327,164 @@ class LLMClient:
                 )
         except (urllib.error.URLError, OSError, json.JSONDecodeError, IndexError):
             return ""
+
+
+# ---------------------------------------------------------------------------
+# PH2-007 · NPC Context Snapshot Builder
+# ---------------------------------------------------------------------------
+
+class EntityNotFoundError(KeyError):
+    """Raised when an entity_id is absent from the combat registry."""
+
+
+def build_npc_context(
+    entity_id: str,
+    combat_registry: "dict[str, Character35e]",
+    faction_registry: "dict[str, FactionRecord]",
+) -> dict[str, Any]:
+    """Construct a serialisable snapshot of an NPC's current state.
+
+    The snapshot is the sole data passed to the LLM prompt builder in
+    :func:`generate_npc_dialogue` — the LLM never receives raw stat-block
+    objects directly.
+
+    Snapshot keys
+    ~~~~~~~~~~~~~
+    ``name``, ``current_hp``, ``max_hp``, ``ac``, ``bab``,
+    ``conditions``, ``faction_name``, ``alignment``,
+    ``hostile_factions``, ``chunk_id``.
+
+    Args:
+        entity_id:        ID of the :class:`~src.rules_engine.character_35e.Character35e`
+                          to snapshot.
+        combat_registry:  ``entity_id → Character35e`` mapping.
+        faction_registry: ``faction_name → FactionRecord`` mapping.
+
+    Returns:
+        A plain ``dict`` suitable for JSON serialisation.
+
+    Raises:
+        :class:`EntityNotFoundError`: If *entity_id* is not in *combat_registry*.
+    """
+    entity = combat_registry.get(entity_id)
+    if entity is None:
+        raise EntityNotFoundError(
+            f"Entity {entity_id!r} not found in combat_registry."
+        )
+
+    # Determine faction from metadata or first name-matching registry entry.
+    faction_name: str | None = entity.metadata.get("faction_name")
+    alignment_str: str = entity.alignment.value if hasattr(entity.alignment, "value") else str(entity.alignment)
+
+    # Resolve hostile factions.
+    hostile: list[str] = []
+    if faction_name and faction_name in faction_registry:
+        faction = faction_registry[faction_name]
+        hostile = list(faction.hostile_to)
+        alignment_str = faction.alignment.value if hasattr(faction.alignment, "value") else alignment_str
+
+    current_hp = entity.metadata.get("current_hp", entity.hit_points)
+    conditions: list[str] = list(entity.metadata.get("active_conditions", []))
+
+    return {
+        "entity_id":       entity_id,
+        "name":            entity.name,
+        "current_hp":      int(current_hp),
+        "max_hp":          int(entity.hit_points),
+        "ac":              int(entity.armor_class),
+        "bab":             int(entity.base_attack_bonus),
+        "conditions":      conditions,
+        "faction_name":    faction_name,
+        "alignment":       alignment_str,
+        "hostile_factions": hostile,
+        "chunk_id":        entity.metadata.get("chunk_id"),
+    }
+
+
+# ---------------------------------------------------------------------------
+# PH2-008 · Async NPC Dialogue Generator
+# ---------------------------------------------------------------------------
+
+async def generate_npc_dialogue(
+    entity_id: str,
+    player_prompt: str,
+    combat_registry: "dict[str, Character35e]",
+    faction_registry: "dict[str, FactionRecord]",
+    api_url: str = "http://localhost:11434/api/generate",
+    model: str = "llama3",
+) -> AsyncIterator[str]:
+    """Stream an NPC's in-character dialogue response token by token.
+
+    Calls :func:`build_npc_context` to obtain a factual entity snapshot,
+    constructs a character-appropriate system prompt, and POSTs a streaming
+    JSON request to *api_url* (Ollama ``/api/generate`` NDJSON format).
+
+    Each decoded ``response`` token from the NDJSON stream is yielded as it
+    arrives.  On HTTP error or connection refused, a single fallback line is
+    yielded instead.
+
+    Args:
+        entity_id:        ID of the NPC speaking.
+        player_prompt:    The player's dialogue prompt / question.
+        combat_registry:  ``entity_id → Character35e`` mapping.
+        faction_registry: ``faction_name → FactionRecord`` mapping.
+        api_url:          Ollama-compatible generate endpoint.
+        model:            Model identifier to request.
+
+    Yields:
+        Decoded response tokens (strings) as they stream from the server.
+    """
+    # Build context snapshot.
+    try:
+        ctx = build_npc_context(entity_id, combat_registry, faction_registry)
+    except EntityNotFoundError:
+        yield f"[Unknown NPC says nothing.]"
+        return
+
+    name = ctx["name"]
+    alignment = ctx["alignment"] or "Unknown"
+    faction = ctx["faction_name"] or "Independent"
+    hp = ctx["current_hp"]
+    max_hp = ctx["max_hp"]
+    ac = ctx["ac"]
+    hostile = ", ".join(ctx["hostile_factions"]) if ctx["hostile_factions"] else "none"
+
+    system_prompt = (
+        f"You are {name}, a {alignment} {faction} NPC. "
+        f"HP: {hp}/{max_hp}. AC: {ac}. "
+        f"Hostile to: {hostile}. "
+        f"Stay in character."
+    )
+
+    payload = {
+        "model": model,
+        "system": system_prompt,
+        "prompt": player_prompt,
+        "stream": True,
+    }
+
+    body = json.dumps(payload).encode("utf-8")
+    req = urllib.request.Request(
+        api_url,
+        data=body,
+        headers={"Content-Type": "application/json"},
+        method="POST",
+    )
+
+    try:
+        with urllib.request.urlopen(req, timeout=30.0) as resp:
+            for raw_line in resp:
+                line = raw_line.strip()
+                if not line:
+                    continue
+                try:
+                    token_data = json.loads(line.decode("utf-8"))
+                    token = token_data.get("response", "")
+                    if token:
+                        yield token
+                    if token_data.get("done", False):
+                        break
+                except (json.JSONDecodeError, UnicodeDecodeError):
+                    continue
+    except (urllib.error.URLError, OSError):
+        yield f"[{name} says nothing.]"
