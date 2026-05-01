@@ -170,6 +170,39 @@ def load_encounter_tables(
     return data
 
 
+def load_expanded_rules(active_books: List[str]) -> Dict[str, List[Dict[str, Any]]]:
+    """Load supplemental content from ``data/expanded/`` for the requested books.
+
+    Args:
+        active_books: List of book slug strings (e.g. ``["draconomicon"]``).
+            Only directories whose name appears in this list are loaded.
+
+    Returns:
+        A dict keyed by book slug, each value being a list of content dicts
+        loaded from all ``*.json`` files inside the matching sub-directory.
+        Returns ``{}`` if ``data/expanded/`` does not exist.
+    """
+    expanded_root = _REPO_ROOT / "data" / "expanded"
+    expanded: Dict[str, List[Dict[str, Any]]] = {}
+    try:
+        for directory in expanded_root.iterdir():
+            if not directory.is_dir():
+                continue
+            if directory.name not in active_books:
+                continue
+            book_entries: List[Dict[str, Any]] = []
+            for json_path in directory.glob("*.json"):
+                data = json.loads(json_path.read_text(encoding="utf-8"))
+                if isinstance(data, list):
+                    book_entries.extend(data)
+                elif isinstance(data, dict):
+                    book_entries.append(data)
+            expanded[directory.name] = book_entries
+    except FileNotFoundError:
+        return {}
+    return expanded
+
+
 def load_everything(data_dir: Optional[Path] = None) -> Dict[str, Any]:
     """Return a single dict holding every SRD data category."""
     return {
