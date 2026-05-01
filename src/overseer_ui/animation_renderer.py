@@ -21,8 +21,11 @@ Visual effects implemented
 from __future__ import annotations
 
 import asyncio
+import logging
 from dataclasses import dataclass, field
 from typing import TYPE_CHECKING, Any
+
+_log = logging.getLogger(__name__)
 
 if TYPE_CHECKING:
     from textual.widgets import Static
@@ -253,8 +256,8 @@ class AnimationRenderer:
                     combat_log.write(
                         f"[red][-{abs(hp_delta)} HP][/red]"
                     )
-                except Exception:  # noqa: BLE001
-                    pass
+                except Exception as exc:  # noqa: BLE001
+                    _log.debug("Combat log write failed: %r", exc)
 
     def enqueue_damage_flash(
         self,

@@ -7,6 +7,7 @@ calculator, and dynamic chunk load/unload logic.
 from __future__ import annotations
 
 import enum
+import logging
 import math
 from dataclasses import dataclass, field
 from typing import TYPE_CHECKING
@@ -14,7 +15,10 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from src.rules_engine.character_35e import Character35e
     from src.terrain.chunk_manager import ChunkManager
+    from src.world_sim.chronos import ChronosRecord
     from src.world_sim.population import WorldChunk
+
+_log = logging.getLogger(__name__)
 
 
 # ---------------------------------------------------------------------------
@@ -87,6 +91,8 @@ def dispatch_player_input(
     *,
     world_state: "object | None" = None,
     overseer_queue: "object | None" = None,
+    chronos: "ChronosRecord | None" = None,
+    character_metadata: "dict | None" = None,
 ) -> PlayerController:
     """Apply *action* to the player's bound entity and update the controller.
 
@@ -102,6 +108,10 @@ def dispatch_player_input(
     (entering a town or dungeon entry voxel).  When a transition is detected,
     posts a ``switch_screen`` message to *overseer_queue*.
 
+    PH5-007/VIS-001: When *chronos* and *character_metadata* are supplied,
+    calls :func:`~src.rules_engine.vision.build_vision_state` after each move
+    and writes the resulting radius to ``controller.vision_radius``.
+
     PH5-009: Reads ``character_metadata["weather_speed_multiplier"]`` (written
     by :func:`~src.world_sim.chronos.apply_weather_debuffs`) and applies it as
     a movement budget multiplier.  When the multiplier reduces the effective
@@ -109,13 +119,17 @@ def dispatch_player_input(
     integer) but the metadata field is checked pre-move.
 
     Args:
-        controller:       The player's current controller state.
-        action:           The :class:`PlayerAction` to process.
-        combat_registry:  ``entity_id → Character35e`` mapping.
-        world_state:      Optional world state used for screen transition checks
-                          (PH5-005).  May be ``None`` to skip transition logic.
-        overseer_queue:   Optional :class:`~src.overseer_ui.overseer.OverseerQueue`
-                          to post ``switch_screen`` messages (PH5-005).
+        controller:          The player's current controller state.
+        action:              The :class:`PlayerAction` to process.
+        combat_registry:     ``entity_id → Character35e`` mapping.
+        world_state:         Optional world state used for screen transition
+                             checks (PH5-005).  May be ``None`` to skip.
+        overseer_queue:      Optional :class:`~src.overseer_ui.overseer.OverseerQueue`
+                             to post ``switch_screen`` messages (PH5-005).
+        chronos:             Optional :class:`~src.world_sim.chronos.ChronosRecord`
+                             for time-of-day vision attenuation (VIS-001).
+        character_metadata:  Optional metadata dict for the player entity;
+                             used for darkvision / light-source vision checks.
 
     Returns:
         The updated :class:`PlayerController` (mutated in place and returned).
@@ -158,6 +172,15 @@ def dispatch_player_input(
         if _chunk_id_is_numeric(controller.chunk_id):
             controller.chunk_id = derived
 
+        # VIS-001: update vision radius based on time-of-day / character senses.
+        if chronos is not None and character_metadata is not None:
+            try:
+                from src.rules_engine.vision import build_vision_state
+                vision_state = build_vision_state(chronos, character_metadata)
+                controller.vision_radius = vision_state.radius
+            except Exception as exc:  # noqa: BLE001
+                _log.debug("vision update failed: %r", exc)
+
         # PH5-005: post-move screen transition check.
         if world_state is not None:
             new_pos = (pos[0], pos[1], pos[2])
@@ -172,8 +195,8 @@ def dispatch_player_input(
                         priority=10,
                     )
                     overseer_queue.enqueue(task)
-                except Exception:  # noqa: BLE001
-                    pass
+                except Exception as exc:  # noqa: BLE001
+                    _log.debug("Screen-switch enqueue failed: %r", exc)
 
     return controller
 
@@ -238,8 +261,10 @@ def _resolve_screen_transition(
             try:
                 _app_state.transition(UIMode.TOWN_MERCHANT, town_id=town.town_id)
                 return UIMode.TOWN_MERCHANT.value
-            except (ValueError, Exception):  # noqa: BLE001
-                pass
+            except ValueError as exc:
+                _log.warning("Invalid town screen transition: %r", exc)
+            except Exception as exc:  # noqa: BLE001
+                _log.debug("Town transition failed: %r", exc)
 
     # 2. Dungeon entry check.
     dungeon_floors = getattr(world_state, "dungeon_floors", []) or []
@@ -251,8 +276,10 @@ def _resolve_screen_transition(
                     UIMode.TACTICAL_DUNGEON, dungeon_floor=floor_index
                 )
                 return UIMode.TACTICAL_DUNGEON.value
-            except (ValueError, Exception):  # noqa: BLE001
-                pass
+            except ValueError as exc:
+                _log.warning("Invalid dungeon screen transition: %r", exc)
+            except Exception as exc:  # noqa: BLE001
+                _log.debug("Dungeon transition failed: %r", exc)
 
     return None
 

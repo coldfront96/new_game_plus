@@ -222,7 +222,7 @@ FEAT_CATALOG: Dict[str, Feat] = {
         prerequisites="Proficient with weapon, BAB +8",
         bonus_type=BonusType.UNTYPED,
     ),
-    # ---- Metamagic feats (placeholder — effect resolved in spellcasting) ----
+    # ---- Metamagic feats --------------------------------------------------------
     "Empower Spell": Feat(
         name="Empower Spell",
         description=(
@@ -239,6 +239,16 @@ FEAT_CATALOG: Dict[str, Feat] = {
             "All variable, numeric effects of a spell modified by this feat are "
             "maximized. Saving throws and opposed rolls are not affected. A "
             "maximized spell uses a spell slot three levels higher than normal."
+        ),
+        prerequisites="None",
+        bonus_type=BonusType.UNTYPED,
+    ),
+    "Quicken Spell": Feat(
+        name="Quicken Spell",
+        description=(
+            "Casting a quickened spell is a swift action. You can perform "
+            "another action, even casting another spell, in the same round. "
+            "A quickened spell uses a spell slot four levels higher than normal."
         ),
         prerequisites="None",
         bonus_type=BonusType.UNTYPED,
@@ -693,6 +703,13 @@ class FeatRegistry:
 
     # Set of feat names that support Power Attack mechanic
     _POWER_ATTACK_FEATS: set = {"Power Attack"}
+
+    # All recognised metamagic feat names (for quick membership test)
+    _METAMAGIC_FEATS: frozenset = frozenset({
+        "Empower Spell",
+        "Maximize Spell",
+        "Quicken Spell",
+    })
 
     # Structured prerequisites per feat (omitted → no prerequisites)
     _PREREQUISITES: Dict[str, FeatPrerequisite] = {
@@ -1236,6 +1253,27 @@ class FeatRegistry:
         for feat_name in character.feats:
             bonus += cls._EXTRA_TURNING.get(feat_name, 0)
         return bonus
+
+    # ------------------------------------------------------------------
+    # Metamagic
+    # ------------------------------------------------------------------
+
+    @classmethod
+    def get_active_metamagic(cls, character: "Character35e") -> "frozenset[str]":
+        """Return all metamagic feats the character possesses.
+
+        Used by :class:`~src.rules_engine.spell_effects.SpellDispatcher` to
+        determine which metamagic modifiers to apply when casting.
+
+        Args:
+            character: The caster whose feats are examined.
+
+        Returns:
+            Frozenset of metamagic feat names (e.g. ``{"Empower Spell"}``).
+        """
+        return frozenset(
+            f for f in character.feats if f in cls._METAMAGIC_FEATS
+        )
 
     # ------------------------------------------------------------------
     # Two-weapon fighting

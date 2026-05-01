@@ -36,6 +36,22 @@ from typing import Any, Dict, List, Optional
 from src.rules_engine.dice import roll_damage, roll_d20
 from src.rules_engine.magic import SpellRegistry
 
+# ---------------------------------------------------------------------------
+# Metamagic helpers
+# ---------------------------------------------------------------------------
+
+_METAMAGIC_EMPOWER = "Empower Spell"
+_METAMAGIC_MAXIMIZE = "Maximize Spell"
+_METAMAGIC_QUICKEN = "Quicken Spell"
+
+
+def _max_roll_expr(expression: str) -> int:
+    """Return the maximum possible value for a dice expression (Maximize Spell)."""
+    m = _DICE_RE.match(str(expression))
+    if m:
+        return int(m.group("count")) * int(m.group("sides"))
+    return max(0, _roll_expr(expression))
+
 
 # ---------------------------------------------------------------------------
 # SpellResult
@@ -168,17 +184,21 @@ class SpellDispatcher:
         registry: SpellRegistry,
         rng: Optional[random.Random] = None,
         save_dc: int = 14,
+        metamagic_flags: "Optional[frozenset[str]]" = None,
     ) -> SpellResult:
         """Execute *spell_name* from *caster* against *target*.
 
         Args:
-            spell_name:    Name of the spell to cast.
-            caster:        The casting :class:`~src.rules_engine.character_35e.Character35e`.
-            target:        The target character (may be the same as caster for self-buffs).
-            caster_level:  Effective caster level for scaling.
-            registry:      Populated :class:`SpellRegistry` to look up the spell.
-            rng:           RNG for determinism.
-            save_dc:       The spell's save DC (10 + spell_level + ability_mod).
+            spell_name:       Name of the spell to cast.
+            caster:           The casting character.
+            target:           The target character.
+            caster_level:     Effective caster level for scaling.
+            registry:         Populated :class:`SpellRegistry`.
+            rng:              RNG for determinism.
+            save_dc:          The spell's save DC.
+            metamagic_flags:  Frozenset of active metamagic feat names.
+                              Use :meth:`~src.rules_engine.feat_engine.FeatRegistry.get_active_metamagic`
+                              to build this from the caster's feat list.
 
         Returns:
             A :class:`SpellResult` describing what happened.
@@ -205,7 +225,21 @@ class SpellDispatcher:
             caster_level=caster_level,
             save_dc=save_dc,
             rng=rng,
+            metamagic_flags=metamagic_flags or frozenset(),
         )
+
+    @classmethod
+    def get_active_metamagic(cls, caster: Any) -> "frozenset[str]":
+        """Convenience wrapper: return active metamagic feats from *caster*.
+
+        Delegates to :meth:`~src.rules_engine.feat_engine.FeatRegistry.get_active_metamagic`.
+        Returns an empty frozenset when *caster* has no ``feats`` attribute.
+        """
+        try:
+            from src.rules_engine.feat_engine import FeatRegistry
+            return FeatRegistry.get_active_metamagic(caster)
+        except Exception:  # noqa: BLE001
+            return frozenset()
 
     @classmethod
     def _resolve_effect(
@@ -217,6 +251,7 @@ class SpellDispatcher:
         caster_level: int,
         save_dc: int,
         rng: random.Random,
+        metamagic_flags: "frozenset[str]" = frozenset(),
     ) -> SpellResult:
         caster_name = getattr(caster, "name", "Caster")
         target_name = getattr(target, "name", "Target")
@@ -225,7 +260,12 @@ class SpellDispatcher:
         if effect.get("auto_hit") and "damage_per_missile" in effect:
             expr = effect["damage_per_missile"]
             num = int(effect.get("num_missiles", 1))
-            total = sum(max(1, _roll_expr(expr, rng)) for _ in range(num))
+            if _METAMAGIC_MAXIMIZE in metamagic_flags:
+                total = num * _max_roll_expr(expr)
+            else:
+                total = sum(max(1, _roll_expr(expr, rng)) for _ in range(num))
+            if _METAMAGIC_EMPOWER in metamagic_flags:
+                total = int(total * 1.5)
             return SpellResult(
                 spell_name=spell_name,
                 outcome="damage",
@@ -239,7 +279,15 @@ class SpellDispatcher:
 
         # --- Standard damage spell (damage key, optional Reflex save) ---
         if "damage" in effect and _DICE_RE.match(str(effect["damage"])):
-            rolled = _roll_expr(str(effect["damage"]), rng)
+            dmg_expr = str(effect["damage"])
+            # MM-002: Maximize Spell → use max value; Empower Spell → ×1.5.
+            if _METAMAGIC_MAXIMIZE in metamagic_flags:
+                rolled = _max_roll_expr(dmg_expr)
+            else:
+                rolled = _roll_expr(dmg_expr, rng)
+            if _METAMAGIC_EMPOWER in metamagic_flags:
+                rolled = int(rolled * 1.5)
+
             save_spec: str = str(effect.get("save", ""))
             saved = False
             if save_spec:
@@ -247,6 +295,10 @@ class SpellDispatcher:
             final_dmg = (rolled // 2) if (saved and "half" in save_spec.lower()) else rolled
             dmg_type = effect.get("damage_type", "")
             save_note = f" ({target_name} saved, half damage)" if saved else ""
+            meta_note = (
+                " [Maximized]" if _METAMAGIC_MAXIMIZE in metamagic_flags else
+                " [Empowered]" if _METAMAGIC_EMPOWER in metamagic_flags else ""
+            )
             return SpellResult(
                 spell_name=spell_name,
                 outcome="damage",
@@ -254,22 +306,29 @@ class SpellDispatcher:
                 saved=saved,
                 raw_effect=effect,
                 narrative=(
-                    f"{caster_name} casts {spell_name} dealing {final_dmg} "
-                    f"{dmg_type} damage to {target_name}{save_note}."
+                    f"{caster_name} casts {spell_name}{meta_note} dealing "
+                    f"{final_dmg} {dmg_type} damage to {target_name}{save_note}."
                 ),
             )
 
         # --- Healing spell ---
         if "healing" in effect:
-            rolled = max(1, _roll_expr(str(effect["healing"]), rng))
+            heal_expr = str(effect["healing"])
+            if _METAMAGIC_MAXIMIZE in metamagic_flags:
+                healed = _max_roll_expr(heal_expr)
+            else:
+                healed = _roll_expr(heal_expr, rng)
+            if _METAMAGIC_EMPOWER in metamagic_flags:
+                healed = int(healed * 1.5)
+            healed = max(1, healed)
             return SpellResult(
                 spell_name=spell_name,
                 outcome="healing",
-                healing_done=rolled,
+                healing_done=healed,
                 raw_effect=effect,
                 narrative=(
                     f"{caster_name} casts {spell_name} on {target_name}, "
-                    f"restoring {rolled} HP."
+                    f"restoring {healed} HP."
                 ),
             )
 

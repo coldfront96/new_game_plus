@@ -235,23 +235,68 @@ def _forge_state() -> CognitiveState:
     )
 
 
-def _fallback_lore(props: ArtifactProperties) -> tuple[str, str]:
-    """Generate deterministic placeholder lore when the LLM is unavailable."""
-    adjectives = ["Ancient", "Forgotten", "Infernal", "Celestial", "Accursed", "Radiant"]
-    nouns = {
-        "weapon":  ["Blade", "Edge", "Fang", "Cleaver"],
-        "armor":   ["Shield", "Ward", "Aegis", "Mantle"],
-        "wondrous": ["Relic", "Shard", "Orb", "Talisman"],
-    }
-    rng = random.Random(hash(props.artifact_id))
-    adj  = rng.choice(adjectives)
-    noun = rng.choice(nouns.get(props.item_type, ["Relic"]))
+_FALLBACK_PREFIXES: list[str] = [
+    "Ancient", "Forgotten", "Infernal", "Celestial", "Accursed", "Radiant",
+    "Twilight", "Sundered", "Abyssal", "Mythic",
+]
+_FALLBACK_SUFFIXES: dict[str, list[str]] = {
+    "weapon":   ["Blade", "Edge", "Fang", "Cleaver", "Reaver", "Sorrow"],
+    "armor":    ["Shield", "Ward", "Aegis", "Mantle", "Bulwark", "Carapace"],
+    "wondrous": ["Relic", "Shard", "Orb", "Talisman", "Prism", "Sigil"],
+}
+
+_FALLBACK_HISTORIES: list[str] = [
+    (
+        "Recovered from the ruins of a long-dead empire, {name} bears "
+        "the mark of its forgotten maker. Its power is undiminished by time."
+    ),
+    (
+        "Forged during the Age of Ruin by a mage whose name has been "
+        "deliberately erased from all records, {name} carries a legacy "
+        "of desperate deeds."
+    ),
+    (
+        "Catalogued in the Library of Echoes as artefact #7741, {name} "
+        "passed through a dozen hands before vanishing into legend. "
+        "It has since returned."
+    ),
+    (
+        "The dwarven smith-priests of the Ashen Hold created {name} as "
+        "a votive offering to a god who never answered. "
+        "The item endures; the god does not."
+    ),
+]
+
+
+def _generate_fallback_lore(
+    artifact_type: str,
+    tier: str,
+    properties: "ArtifactProperties",
+    rng: "random.Random | None" = None,
+) -> tuple[str, str]:
+    """Procedurally generate a name and backstory without LLM access.
+
+    Args:
+        artifact_type: Item type string (``"weapon"``, ``"armor"``, ``"wondrous"``).
+        tier:          ``"minor"`` or ``"major"``.
+        properties:    The assembled :class:`ArtifactProperties` for seeding.
+        rng:           Optional RNG; defaults to a seed derived from artifact_id.
+
+    Returns:
+        A ``(lore_name, backstory)`` tuple.
+    """
+    _rng = rng or random.Random(hash(properties.artifact_id))
+    adj  = _rng.choice(_FALLBACK_PREFIXES)
+    noun = _rng.choice(_FALLBACK_SUFFIXES.get(artifact_type, ["Relic"]))
     name = f"The {adj} {noun}"
-    history = (
-        f"Recovered from the ruins of a long-dead empire, {name} bears "
-        f"the mark of its forgotten maker.  Its power is undiminished by time."
-    )
+    template = _rng.choice(_FALLBACK_HISTORIES)
+    history = template.format(name=name)
     return name, history
+
+
+def _fallback_lore(props: "ArtifactProperties") -> tuple[str, str]:
+    """Compatibility shim — delegates to :func:`_generate_fallback_lore`."""
+    return _generate_fallback_lore(props.item_type, "minor", props)
 
 
 # ---------------------------------------------------------------------------
@@ -449,6 +494,10 @@ class ProceduralArtifactGenerator:
                 except (json.JSONDecodeError, KeyError):
                     pass
 
+        _forge_log.warning(
+            "LLM lore unavailable for artifact %s; using deterministic fallback.",
+            props.artifact_id,
+        )
         return _fallback_lore(props)
 
     # ------------------------------------------------------------------

@@ -30,9 +30,13 @@ Usage::
 from __future__ import annotations
 
 import heapq
+import logging
 import math
+import time
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Tuple
+
+_log = logging.getLogger(__name__)
 
 from src.terrain.chunk_manager import ChunkManager
 
@@ -124,6 +128,8 @@ class VoxelPathfinder:
         Returns:
             A :class:`PathResult` with the path and metadata.
         """
+        _t0 = time.perf_counter()
+
         if start == goal:
             return PathResult(path=[start], success=True, nodes_explored=0)
 
@@ -167,6 +173,10 @@ class VoxelPathfinder:
             # Goal reached
             if pos == goal:
                 path = self._reconstruct_path(came_from, goal)
+                _log.debug(
+                    "A* found path len=%d nodes=%d elapsed=%.4f s",
+                    len(path), nodes_explored, time.perf_counter() - _t0,
+                )
                 return PathResult(path=path, success=True, nodes_explored=nodes_explored)
 
             # Expand neighbours
@@ -191,6 +201,10 @@ class VoxelPathfinder:
                     )
 
         # No path found within iteration budget
+        _log.debug(
+            "A* exhausted budget: nodes=%d elapsed=%.4f s (no path found)",
+            nodes_explored, time.perf_counter() - _t0,
+        )
         return PathResult(path=[], success=False, nodes_explored=nodes_explored)
 
     def _is_walkable(self, pos: Coord3) -> bool:
