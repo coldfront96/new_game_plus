@@ -26,11 +26,14 @@ from __future__ import annotations
 
 import asyncio
 import json
+import logging
 import re
 import threading
 from dataclasses import dataclass, field
 from enum import Enum
 from typing import TYPE_CHECKING, Optional
+
+_log = logging.getLogger(__name__)
 
 from rich.markup import escape
 from rich.text import Text
@@ -44,6 +47,7 @@ from src.overseer_ui.overseer import OverseerQueue
 if TYPE_CHECKING:
     from src.terrain.chunk_manager import ChunkManager
     from src.game.player_controller import PlayerController
+    from src.overseer_ui.animation_renderer import AnimationRenderer
 
 
 # ---------------------------------------------------------------------------
@@ -488,6 +492,7 @@ class OverseerApp(App[None]):
             else:
                 vp.update(_render_chunk(self.chunk_manager, self._cx, self._cz))
         except Exception as exc:  # noqa: BLE001
+            _log.debug("OverseerApp viewport render failed: %r", exc)
             vp.update(f"[red]Terrain error:[/red] {escape(str(exc))}")
 
     # ------------------------------------------------------------------
@@ -872,6 +877,7 @@ class OverworldScreen(Screen):
                 f"[Overworld] Tick: {self._world_tick}  Pos: ({x},{z})"
             )
         except Exception as exc:  # noqa: BLE001
+            _log.debug("OverworldScreen viewport render failed: %r", exc)
             vp.update(f"[red]Terrain error:[/red] {escape(str(exc))}")
 
     def _move(self, action: str) -> None:
@@ -1098,11 +1104,17 @@ class TacticalDungeonScreen(Screen):
         self,
         dungeon_floors: Optional[list] = None,
         overseer_queue: Optional[OverseerQueue] = None,
+        party: Optional[list] = None,
+        monster_registry: Optional[dict] = None,
+        animation_renderer: Optional["AnimationRenderer"] = None,
         **kwargs,
     ) -> None:
         super().__init__(**kwargs)
         self._dungeon_floors: list = dungeon_floors or []
         self._overseer_queue = overseer_queue
+        self._party: list = party or []
+        self._monster_registry: dict = monster_registry or {}
+        self._animation_renderer: Optional["AnimationRenderer"] = animation_renderer
 
     def compose(self) -> ComposeResult:
         yield Static(id="td-grid")
@@ -1148,20 +1160,67 @@ class TacticalDungeonScreen(Screen):
         grid.update(out)
 
     def action_full_attack(self) -> None:
-        """Enqueue a combat round via OverseerQueue and log results."""
+        """Resolve a full-attack combat round and log results.
+
+        Uses :class:`~src.rules_engine.combat.AttackResolver` to resolve one
+        attack from the first party member against a random monster.  Damage
+        flash VFX is triggered via :attr:`_animation_renderer` when available.
+        An audit :class:`~src.agent_orchestration.agent_task.AgentTask` is also
+        enqueued for the OverseerQueue log.
+        """
         log = self.query_one("#td-log", RichLog)
+
+        if not self._party or not self._monster_registry:
+            log.write("[dim]No combatants configured.[/dim]")
+            return
+
+        import random as _random
+        try:
+            from src.rules_engine.combat import AttackResolver
+            attacker = self._party[0]
+            monster_id, defender = next(iter(self._monster_registry.items()))
+
+            result = AttackResolver.resolve_attack(
+                attacker,
+                defender,
+                damage_dice_count=1,
+                damage_dice_sides=8,
+                damage_bonus=max(0, (getattr(attacker, "strength", 10) - 10) // 2),
+            )
+
+            if result.hit:
+                dmg = result.total_damage
+                crit_tag = " [bold red](CRIT!)[/bold red]" if result.critical else ""
+                log.write(
+                    f"[green]{escape(getattr(attacker, 'name', 'Hero'))}[/green] "
+                    f"hits [red]{escape(getattr(defender, 'name', 'Monster'))}[/red] "
+                    f"for [bold]{dmg}[/bold] damage{crit_tag}"
+                )
+                if self._animation_renderer is not None:
+                    self._animation_renderer.enqueue_damage_flash(
+                        position=(0, 0),
+                        hp_delta=-dmg,
+                        combat_log=log,
+                    )
+            else:
+                log.write(
+                    f"[dim]{escape(getattr(attacker, 'name', 'Hero'))} misses "
+                    f"{escape(getattr(defender, 'name', 'Monster'))} "
+                    f"(roll {result.roll.total} vs AC {result.target_ac}).[/dim]"
+                )
+        except Exception as exc:  # noqa: BLE001
+            log.write(f"[red]Combat error:[/red] {escape(str(exc))}")
+
+        # Audit trail — enqueue after local resolution.
         if self._overseer_queue is not None:
             from src.agent_orchestration.agent_task import AgentTask
             task = AgentTask(
                 task_type="combat_round",
-                prompt="Execute a full-attack round.",
+                prompt="Full-attack round resolved locally.",
                 max_tokens=256,
                 priority=5,
             )
             self._overseer_queue.enqueue(task)
-            log.write("[yellow]Combat round queued.[/yellow]")
-        else:
-            log.write("[dim]No combat queue configured.[/dim]")
 
     def action_ascend(self) -> None:
         """Transition back to OVERWORLD."""

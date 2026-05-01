@@ -17,9 +17,13 @@ Usage::
 
 from __future__ import annotations
 
+import logging
 import random
+import time
 from dataclasses import dataclass
 from typing import TYPE_CHECKING
+
+_log = logging.getLogger(__name__)
 
 from opensimplex import OpenSimplex
 
@@ -102,6 +106,7 @@ class ChunkGenerator:
         Returns:
             A populated :class:`Chunk` ready for use.
         """
+        _t0 = time.perf_counter()
         noise = OpenSimplex(seed=self.seed)
         # Per-chunk deterministic RNG for ore placement.
         # Large primes for spatial hashing ensure unique RNG sequences per chunk.
@@ -163,6 +168,7 @@ class ChunkGenerator:
 
         # Freshly generated — not dirty
         chunk.dirty = False
+        _log.debug("chunk (%d,%d) generated in %.4f s", cx, cz, time.perf_counter() - _t0)
         return chunk
 
     def generate_chunk_with_lair(self, cx: int, cz: int, lair_record: "LairRecord") -> Chunk:

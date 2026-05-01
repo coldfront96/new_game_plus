@@ -174,7 +174,10 @@ def _trigger_anomaly_lore_tasks(
                     loop = asyncio.get_event_loop()
                     loop.create_task(request_anomaly_lore(anomaly, llm_client, notes))
                 except RuntimeError:
-                    pass   # no running event loop in sync context — lore skipped
+                    _log.debug(
+                        "Anomaly lore skipped for %s at tick %d: no running event loop.",
+                        entity_id, tick,
+                    )
 
 
 def _apply_weather_debuffs(world_state: WorldState) -> None:
@@ -203,5 +206,8 @@ def _apply_weather_debuffs(world_state: WorldState) -> None:
             continue
         try:
             apply_weather_debuffs(entity_metadata, weather)
-        except Exception:  # noqa: BLE001
-            pass
+        except Exception as exc:  # noqa: BLE001
+            _log.debug(
+                "Weather debuff failed for chunk %s: %r",
+                getattr(chunk, "chunk_id", "?"), exc,
+            )
