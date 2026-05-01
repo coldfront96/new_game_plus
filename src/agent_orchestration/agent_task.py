@@ -85,6 +85,9 @@ class TaskType(Enum):
     CODE_GENERATION = "code_generation"
     """Generate or refactor Python source code."""
 
+    AGENT_DECISION = "agent_decision"
+    """Autonomous in-game action decision for a character on their turn."""
+
     CUSTOM = "custom"
     """Catch-all for user-defined tasks."""
 

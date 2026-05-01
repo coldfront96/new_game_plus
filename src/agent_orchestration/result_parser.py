@@ -78,6 +78,16 @@ _DEFAULT_SCHEMAS: Dict[str, SchemaSpec] = {
         "language": str,
         "code": str,
     },
+    TaskType.AGENT_DECISION.value: {
+        "action_type": str,
+        "?target_id": str,
+        "?spell_name": str,
+        "?use_ranged": bool,
+        "?skill_name": str,
+        "?dc": (int, float),
+        "?destination": list,
+        "?item_name": str,
+    },
 }
 
 
