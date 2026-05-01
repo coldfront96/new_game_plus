@@ -1,0 +1,617 @@
+[
+  {
+    "name": "Aranea",
+    "cr": 4,
+    "size": "Medium",
+    "type": "Magical Beast",
+    "subtype": "Shapechanger",
+    "hit_dice": "3d10+6",
+    "hp_avg": 22,
+    "initiative": 7,
+    "speed": {
+      "land": 50,
+      "climb": 25
+    },
+    "armor_class": {
+      "total": 13,
+      "touch": 13,
+      "flat_footed": 10,
+      "components": "+3 Dex"
+    },
+    "base_attack": 3,
+    "grapple": 3,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+6",
+        "damage": "1d6 plus poison",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Poison (Bite; Fort DC 13; 1d6 Str / 2d6 Str)",
+      "Spells (as 3rd-level sorcerer)",
+      "Web (ranged touch, entangle; as giant spider)"
+    ],
+    "special_qualities": [
+      "Change Shape (Small or Medium humanoid or spider form)",
+      "Darkvision 60 ft."
+    ],
+    "saves": {
+      "fort": 6,
+      "ref": 8,
+      "will": 5
+    },
+    "abilities": {
+      "str": 11,
+      "dex": 17,
+      "con": 14,
+      "int": 14,
+      "wis": 13,
+      "cha": 14
+    },
+    "skills": {
+      "Climb": 13,
+      "Concentration": 8,
+      "Escape Artist": 7,
+      "Jump": 12,
+      "Listen": 5,
+      "Spot": 7
+    },
+    "feats": [
+      "Improved Initiative",
+      "Iron Will",
+      "Run"
+    ],
+    "alignment": "Usually Neutral",
+    "advancement": "4-9 HD (Medium)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 20,
+    "allowed_biomes": [
+      "Temperate_Forest",
+      "Warm_Forest"
+    ],
+    "primary_biome": "Temperate_Forest",
+    "ecology_notes": "Araneas are intelligent magical beasts resembling giant spiders that can assume humanoid or spider-humanoid form. They are natural sorcerers and often gather webs of minions and information."
+  },
+  {
+    "name": "Arrowhawk, Juvenile",
+    "cr": 1,
+    "size": "Small",
+    "type": "Outsider",
+    "subtype": "Air, Extraplanar",
+    "hit_dice": "3d8",
+    "hp_avg": 13,
+    "initiative": 3,
+    "speed": {
+      "fly": 60
+    },
+    "armor_class": {
+      "total": 14,
+      "touch": 14,
+      "flat_footed": 11,
+      "components": "+1 size, +3 Dex"
+    },
+    "base_attack": 3,
+    "grapple": -1,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+6",
+        "damage": "1d4",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Electricity Ray",
+        "attack_bonus": "+7",
+        "damage": "2d6 electricity",
+        "damage_type": "Electricity"
+      }
+    ],
+    "special_attacks": [
+      "Electricity Ray (ranged touch; 30 ft.; 2d6 electricity)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Immunity to Acid",
+      "Immunity to Electricity",
+      "Resistance to Cold 10",
+      "Resistance to Fire 10"
+    ],
+    "saves": {
+      "fort": 3,
+      "ref": 6,
+      "will": 4
+    },
+    "abilities": {
+      "str": 10,
+      "dex": 17,
+      "con": 10,
+      "int": 10,
+      "wis": 13,
+      "cha": 13
+    },
+    "skills": {
+      "Diplomacy": 3,
+      "Escape Artist": 9,
+      "Knowledge (planes)": 6,
+      "Listen": 7,
+      "Move Silently": 9,
+      "Search": 6,
+      "Sense Motive": 5,
+      "Spot": 7
+    },
+    "feats": [
+      "Dodge",
+      "Weapon Finesse"
+    ],
+    "alignment": "Always True Neutral",
+    "advancement": "see Arrowhawk, Adult",
+    "dr": null,
+    "sr": 12,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 30,
+    "allowed_biomes": [
+      "Cold_Mountain",
+      "Temperate_Mountain",
+      "Warm_Mountain"
+    ],
+    "primary_biome": "Temperate_Mountain",
+    "ecology_notes": "Arrowhawks are native to the Elemental Plane of Air. Juveniles are fast and aggressive, using electricity rays to disable prey. They occasionally cross to the Material Plane through planar rifts, typically haunting exposed mountain heights."
+  },
+  {
+    "name": "Arrowhawk, Adult",
+    "cr": 5,
+    "size": "Medium",
+    "type": "Outsider",
+    "subtype": "Air, Extraplanar",
+    "hit_dice": "7d8+7",
+    "hp_avg": 38,
+    "initiative": 3,
+    "speed": {
+      "fly": 60
+    },
+    "armor_class": {
+      "total": 20,
+      "touch": 13,
+      "flat_footed": 17,
+      "components": "+3 Dex, +7 natural"
+    },
+    "base_attack": 7,
+    "grapple": 8,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+10",
+        "damage": "1d8+4",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Electricity Ray",
+        "attack_bonus": "+10",
+        "damage": "2d8 electricity",
+        "damage_type": "Electricity"
+      }
+    ],
+    "special_attacks": [
+      "Electricity Ray (ranged touch; 30 ft.; 2d8 electricity)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Immunity to Acid",
+      "Immunity to Electricity",
+      "Resistance to Cold 10",
+      "Resistance to Fire 10"
+    ],
+    "saves": {
+      "fort": 6,
+      "ref": 8,
+      "will": 6
+    },
+    "abilities": {
+      "str": 16,
+      "dex": 17,
+      "con": 12,
+      "int": 10,
+      "wis": 13,
+      "cha": 13
+    },
+    "skills": {
+      "Diplomacy": 3,
+      "Escape Artist": 13,
+      "Knowledge (planes)": 10,
+      "Listen": 11,
+      "Move Silently": 13,
+      "Search": 10,
+      "Sense Motive": 9,
+      "Spot": 11
+    },
+    "feats": [
+      "Dodge",
+      "Flyby Attack",
+      "Weapon Finesse"
+    ],
+    "alignment": "Always True Neutral",
+    "advancement": "see Arrowhawk, Elder",
+    "dr": null,
+    "sr": 16,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 15,
+    "allowed_biomes": [
+      "Cold_Mountain",
+      "Temperate_Mountain",
+      "Warm_Mountain"
+    ],
+    "primary_biome": "Temperate_Mountain",
+    "ecology_notes": "Adult arrowhawks are formidable aerial predators from the Elemental Plane of Air. They use Flyby Attack to strafe enemies with electricity rays while staying in constant motion, and their thickening hide makes them notably resilient."
+  },
+  {
+    "name": "Arrowhawk, Elder",
+    "cr": 8,
+    "size": "Large",
+    "type": "Outsider",
+    "subtype": "Air, Extraplanar",
+    "hit_dice": "12d8+24",
+    "hp_avg": 78,
+    "initiative": 3,
+    "speed": {
+      "fly": 60
+    },
+    "armor_class": {
+      "total": 22,
+      "touch": 12,
+      "flat_footed": 19,
+      "components": "-1 size, +3 Dex, +10 natural"
+    },
+    "base_attack": 12,
+    "grapple": 20,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+16",
+        "damage": "2d6+6",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Electricity Ray",
+        "attack_bonus": "+14",
+        "damage": "2d8 electricity",
+        "damage_type": "Electricity"
+      }
+    ],
+    "special_attacks": [
+      "Electricity Ray (ranged touch; 30 ft.; 2d8 electricity)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Immunity to Acid",
+      "Immunity to Electricity",
+      "Resistance to Cold 10",
+      "Resistance to Fire 10"
+    ],
+    "saves": {
+      "fort": 10,
+      "ref": 11,
+      "will": 9
+    },
+    "abilities": {
+      "str": 22,
+      "dex": 17,
+      "con": 14,
+      "int": 10,
+      "wis": 13,
+      "cha": 13
+    },
+    "skills": {
+      "Diplomacy": 3,
+      "Escape Artist": 18,
+      "Knowledge (planes)": 15,
+      "Listen": 16,
+      "Move Silently": 18,
+      "Search": 15,
+      "Sense Motive": 14,
+      "Spot": 16
+    },
+    "feats": [
+      "Dodge",
+      "Flyby Attack",
+      "Multiattack",
+      "Weapon Finesse"
+    ],
+    "alignment": "Always True Neutral",
+    "advancement": null,
+    "dr": null,
+    "sr": 20,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 5,
+    "allowed_biomes": [
+      "Cold_Mountain",
+      "Temperate_Mountain",
+      "Warm_Mountain"
+    ],
+    "primary_biome": "Temperate_Mountain",
+    "ecology_notes": "Elder arrowhawks are ancient and powerful predators from the Elemental Plane of Air. Massive and nearly immune to harm, they dominate the skies of their home plane and are occasionally summoned as guardians by powerful spellcasters."
+  },
+  {
+    "name": "Frost Worm",
+    "cr": 12,
+    "size": "Huge",
+    "type": "Magical Beast",
+    "subtype": null,
+    "hit_dice": "14d10+56",
+    "hp_avg": 133,
+    "initiative": 4,
+    "speed": {
+      "land": 30,
+      "burrow": 10
+    },
+    "armor_class": {
+      "total": 18,
+      "touch": 8,
+      "flat_footed": 18,
+      "components": "-2 size, +10 natural"
+    },
+    "base_attack": 14,
+    "grapple": 28,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+18",
+        "damage": "2d8+9 plus 1d8 cold",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Cold (1d8 cold extra damage on bite)",
+      "Trill (60 ft.; DC 17 Fort or fascinated 2d4 rounds)",
+      "Death Throes (on death: 6d6 cold in 100-ft. radius; Ref DC 21 half)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Immunity to Cold",
+      "Low-Light Vision",
+      "Vulnerability to Fire"
+    ],
+    "saves": {
+      "fort": 13,
+      "ref": 9,
+      "will": 5
+    },
+    "abilities": {
+      "str": 26,
+      "dex": 10,
+      "con": 18,
+      "int": 2,
+      "wis": 11,
+      "cha": 11
+    },
+    "skills": {
+      "Hide": 0,
+      "Listen": 12,
+      "Spot": 12
+    },
+    "feats": [
+      "Alertness",
+      "Improved Initiative",
+      "Toughness",
+      "Toughness",
+      "Toughness"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "15-28 HD (Huge)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [
+      "Fire"
+    ],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 10,
+    "allowed_biomes": [
+      "Arctic",
+      "Cold_Plain",
+      "Cold_Mountain"
+    ],
+    "primary_biome": "Arctic",
+    "ecology_notes": "Frost worms lurk beneath Arctic ice and snow, ambushing prey with their trill. When slain they explode in a burst of deadly cold."
+  },
+  {
+    "name": "Gray Render",
+    "cr": 8,
+    "size": "Large",
+    "type": "Magical Beast",
+    "subtype": null,
+    "hit_dice": "10d10+70",
+    "hp_avg": 125,
+    "initiative": -1,
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 19,
+      "touch": 8,
+      "flat_footed": 19,
+      "components": "-1 size, -1 Dex, +11 natural"
+    },
+    "base_attack": 10,
+    "grapple": 22,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+17",
+        "damage": "2d6+8",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+12",
+        "damage": "1d6+4",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+12",
+        "damage": "1d6+4",
+        "damage_type": "Slashing"
+      }
+    ],
+    "special_attacks": [
+      "Improved Grab",
+      "Rend (additional 2d6+12 if both claws hit same target)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 14,
+      "ref": 6,
+      "will": 4
+    },
+    "abilities": {
+      "str": 27,
+      "dex": 9,
+      "con": 24,
+      "int": 3,
+      "wis": 12,
+      "cha": 8
+    },
+    "skills": {
+      "Listen": 6,
+      "Spot": 6
+    },
+    "feats": [
+      "Alertness",
+      "Cleave",
+      "Power Attack",
+      "Track"
+    ],
+    "alignment": "Usually Neutral",
+    "advancement": "11-20 HD (Large); 21-30 HD (Huge)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 15,
+    "allowed_biomes": [
+      "Temperate_Forest",
+      "Temperate_Hill",
+      "Warm_Forest"
+    ],
+    "primary_biome": "Temperate_Forest",
+    "ecology_notes": "Gray renders are massive, hulking predators with slate-colored skin. Despite their fearsome appearance they sometimes bond with lone humanoids, becoming protective guardians."
+  },
+  {
+    "name": "Krenshar",
+    "cr": 1,
+    "size": "Medium",
+    "type": "Magical Beast",
+    "subtype": null,
+    "hit_dice": "2d10+2",
+    "hp_avg": 13,
+    "initiative": 2,
+    "speed": {
+      "land": 40,
+      "climb": 20
+    },
+    "armor_class": {
+      "total": 15,
+      "touch": 12,
+      "flat_footed": 13,
+      "components": "+2 Dex, +3 natural"
+    },
+    "base_attack": 2,
+    "grapple": 3,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+3",
+        "damage": "1d6+1",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+1",
+        "damage": "1d4",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+1",
+        "damage": "1d4",
+        "damage_type": "Slashing"
+      }
+    ],
+    "special_attacks": [
+      "Scare (retract skin to bare skull; DC 11 Will or shaken 2d4 rounds; 30 ft. range)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Low-Light Vision",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 4,
+      "ref": 5,
+      "will": 1
+    },
+    "abilities": {
+      "str": 13,
+      "dex": 14,
+      "con": 13,
+      "int": 6,
+      "wis": 12,
+      "cha": 13
+    },
+    "skills": {
+      "Hide": 4,
+      "Jump": 9,
+      "Listen": 4,
+      "Move Silently": 5,
+      "Spot": 4
+    },
+    "feats": [
+      "Multiattack"
+    ],
+    "alignment": "Usually Neutral",
+    "advancement": "3-4 HD (Medium)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 40,
+    "allowed_biomes": [
+      "Temperate_Forest",
+      "Temperate_Hill",
+      "Warm_Forest"
+    ],
+    "primary_biome": "Temperate_Forest",
+    "ecology_notes": "Krenshars are feline pack hunters that terrify prey by retracting the skin from their skull, revealing a horrifying bare-bone visage accompanied by an unearthly howl."
+  }
+]

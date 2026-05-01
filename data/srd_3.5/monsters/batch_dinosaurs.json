@@ -1,0 +1,549 @@
+[
+  {
+    "name": "Bat, Dire",
+    "cr": 2,
+    "size": "Large",
+    "type": "Animal",
+    "subtype": null,
+    "hit_dice": "4d8+12",
+    "hp_avg": 30,
+    "initiative": 6,
+    "speed": {
+      "land": 20,
+      "fly": 40
+    },
+    "armor_class": {
+      "total": 20,
+      "touch": 11,
+      "flat_footed": 18,
+      "components": "-1 size, +2 Dex, +9 natural"
+    },
+    "base_attack": 3,
+    "grapple": 8,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+4",
+        "damage": "1d8+4",
+        "crit_range": "x2",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [],
+    "special_qualities": [
+      "Blindsense 40 ft.",
+      "Darkvision 60 ft."
+    ],
+    "saves": {
+      "fort": 7,
+      "ref": 6,
+      "will": 4
+    },
+    "abilities": {
+      "str": 17,
+      "dex": 15,
+      "con": 17,
+      "int": 2,
+      "wis": 14,
+      "cha": 6
+    },
+    "skills": {
+      "Hide": 3,
+      "Listen": 12,
+      "Move Silently": 9,
+      "Spot": 4
+    },
+    "feats": [
+      "Alertness",
+      "Improved Initiative"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "5-12 HD (Large)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 60,
+    "allowed_biomes": [
+      "Temperate_Forest",
+      "Temperate_Hill",
+      "Warm_Forest",
+      "Warm_Hill",
+      "Warm_Mountain",
+      "Underground",
+      "Any_Ruin"
+    ],
+    "primary_biome": "Temperate_Forest",
+    "ecology_notes": "Dire bats are massive nocturnal predators that roost in large caves and abandoned ruins. They navigate by blindsense rather than sight, making darkness no obstacle. Dire bats hunt medium-sized prey including deer and humanoids, diving from above with surprising speed. They are sometimes tamed as mounts by underground-dwelling races."
+  },
+  {
+    "name": "Deinonychus",
+    "cr": 3,
+    "size": "Medium",
+    "type": "Animal",
+    "subtype": null,
+    "hit_dice": "4d8+16",
+    "hp_avg": 34,
+    "initiative": 2,
+    "speed": {
+      "land": 60
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 12,
+      "flat_footed": 14,
+      "components": "+2 Dex, +4 natural"
+    },
+    "base_attack": 3,
+    "grapple": 4,
+    "attacks": [
+      {
+        "name": "Talons",
+        "attack_bonus": "+4",
+        "damage": "1d8+1",
+        "crit_range": "x2",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Foreclaw",
+        "attack_bonus": "+2",
+        "damage": "1d3+1",
+        "crit_range": "x2",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Foreclaw",
+        "attack_bonus": "+2",
+        "damage": "1d3+1",
+        "crit_range": "x2",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+2",
+        "damage": "2d4+1",
+        "crit_range": "x2",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Pounce"
+    ],
+    "special_qualities": [
+      "Low-Light Vision",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 8,
+      "ref": 6,
+      "will": 2
+    },
+    "abilities": {
+      "str": 11,
+      "dex": 15,
+      "con": 19,
+      "int": 2,
+      "wis": 12,
+      "cha": 10
+    },
+    "skills": {
+      "Hide": 12,
+      "Jump": 15,
+      "Listen": 10,
+      "Spot": 10,
+      "Survival": 10
+    },
+    "feats": [
+      "Run",
+      "Track"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "5-8 HD (Medium); 9-12 HD (Large)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 40,
+    "allowed_biomes": [
+      "Warm_Forest",
+      "Warm_Plain",
+      "Warm_Hill",
+      "Temperate_Forest",
+      "Temperate_Plain"
+    ],
+    "primary_biome": "Warm_Forest",
+    "ecology_notes": "Deinonychus are fast, agile pack hunters that coordinate attacks on prey much larger than themselves. Their enlarged sickle-shaped talons can disembowel prey on a pouncing charge. Highly intelligent for animals, they use flanking tactics and pursue wounded prey relentlessly. They are found in warm and temperate forests and plains, often hunting in packs of three to six."
+  },
+  {
+    "name": "Elasmosaurus",
+    "cr": 7,
+    "size": "Huge",
+    "type": "Animal",
+    "subtype": null,
+    "hit_dice": "10d8+66",
+    "hp_avg": 111,
+    "initiative": 2,
+    "speed": {
+      "land": 20,
+      "swim": 50
+    },
+    "armor_class": {
+      "total": 13,
+      "touch": 10,
+      "flat_footed": 11,
+      "components": "-2 size, +2 Dex, +3 natural"
+    },
+    "base_attack": 7,
+    "grapple": 23,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+13",
+        "damage": "2d8+12",
+        "crit_range": "x2",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [],
+    "special_qualities": [
+      "Low-Light Vision",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 14,
+      "ref": 9,
+      "will": 4
+    },
+    "abilities": {
+      "str": 26,
+      "dex": 14,
+      "con": 22,
+      "int": 2,
+      "wis": 13,
+      "cha": 9
+    },
+    "skills": {
+      "Hide": -4,
+      "Listen": 4,
+      "Spot": 9,
+      "Swim": 16
+    },
+    "feats": [
+      "Alertness",
+      "Diehard",
+      "Endurance",
+      "Run",
+      "Toughness"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "11-20 HD (Huge); 21-30 HD (Gargantuan)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 15,
+    "allowed_biomes": [
+      "Aquatic_Saltwater",
+      "Aquatic_Freshwater",
+      "Warm_Plain"
+    ],
+    "primary_biome": "Aquatic_Saltwater",
+    "ecology_notes": "Elasmosauruses are enormous prehistoric plesiosaurs with extremely long necks that allow them to strike at prey from a distance. Though clumsy on land, they are superb swimmers capable of sustained pursuit. They hunt fish and marine animals near the surface, occasionally ambushing prey at the water's edge. Their endurance and toughness make them formidable opponents even when heavily wounded."
+  },
+  {
+    "name": "Megaraptor",
+    "cr": 6,
+    "size": "Large",
+    "type": "Animal",
+    "subtype": null,
+    "hit_dice": "8d8+43",
+    "hp_avg": 79,
+    "initiative": 2,
+    "speed": {
+      "land": 60
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 11,
+      "flat_footed": 14,
+      "components": "-1 size, +2 Dex, +5 natural"
+    },
+    "base_attack": 6,
+    "grapple": 14,
+    "attacks": [
+      {
+        "name": "Talons",
+        "attack_bonus": "+9",
+        "damage": "2d8+4",
+        "crit_range": "x2",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Foreclaw",
+        "attack_bonus": "+4",
+        "damage": "1d4+2",
+        "crit_range": "x2",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Foreclaw",
+        "attack_bonus": "+4",
+        "damage": "1d4+2",
+        "crit_range": "x2",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+4",
+        "damage": "2d6+2",
+        "crit_range": "x2",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Pounce"
+    ],
+    "special_qualities": [
+      "Low-Light Vision",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 11,
+      "ref": 8,
+      "will": 3
+    },
+    "abilities": {
+      "str": 21,
+      "dex": 15,
+      "con": 21,
+      "int": 2,
+      "wis": 15,
+      "cha": 10
+    },
+    "skills": {
+      "Hide": 5,
+      "Jump": 27,
+      "Listen": 12,
+      "Spot": 12,
+      "Survival": 12
+    },
+    "feats": [
+      "Run",
+      "Toughness",
+      "Track"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "9-16 HD (Large); 17-24 HD (Huge)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 20,
+    "allowed_biomes": [
+      "Warm_Forest",
+      "Warm_Plain",
+      "Warm_Hill",
+      "Temperate_Forest",
+      "Temperate_Plain"
+    ],
+    "primary_biome": "Warm_Plain",
+    "ecology_notes": "Megaraptors are massive theropod dinosaurs combining the speed of smaller raptors with formidable size. Their huge sickle talons deliver devastating wounds and their pouncing charge can bring down megafauna. Solitary apex predators, they patrol large territories in warm and temperate regions. Their extraordinary jumping ability allows them to tackle prey on broken terrain with ease."
+  },
+  {
+    "name": "Triceratops",
+    "cr": 9,
+    "size": "Huge",
+    "type": "Animal",
+    "subtype": null,
+    "hit_dice": "16d8+124",
+    "hp_avg": 196,
+    "initiative": -1,
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 18,
+      "touch": 7,
+      "flat_footed": 18,
+      "components": "-2 size, -1 Dex, +11 natural"
+    },
+    "base_attack": 12,
+    "grapple": 30,
+    "attacks": [
+      {
+        "name": "Gore",
+        "attack_bonus": "+20",
+        "damage": "2d8+15",
+        "crit_range": "x2",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Stamp",
+        "attack_bonus": "+15",
+        "damage": "2d6+7",
+        "crit_range": "x2",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Powerful Charge (gore 4d8+20 on a charge)",
+      "Stampede (1d8+4 bludgeoning; Fort DC 26 or knocked prone)"
+    ],
+    "special_qualities": [
+      "Low-Light Vision",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 19,
+      "ref": 9,
+      "will": 6
+    },
+    "abilities": {
+      "str": 30,
+      "dex": 9,
+      "con": 25,
+      "int": 1,
+      "wis": 12,
+      "cha": 7
+    },
+    "skills": {
+      "Listen": 13,
+      "Spot": 13
+    },
+    "feats": [
+      "Alertness",
+      "Great Fortitude",
+      "Toughness",
+      "Toughness",
+      "Toughness",
+      "Toughness"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "17-32 HD (Huge); 33-48 HD (Gargantuan)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 25,
+    "allowed_biomes": [
+      "Warm_Plain",
+      "Warm_Forest",
+      "Warm_Hill",
+      "Temperate_Plain"
+    ],
+    "primary_biome": "Warm_Plain",
+    "ecology_notes": "Triceratops are massive, heavily armored ceratopsian dinosaurs that travel in small herds across open plains. Their three horns and bony frill are formidable weapons and defensive armor. When threatened, a herd will stampede, trampling anything in its path. Despite their bulk, a charging triceratops is capable of impaling even the largest predators on its gore attack."
+  },
+  {
+    "name": "Tyrannosaurus",
+    "cr": 8,
+    "size": "Huge",
+    "type": "Animal",
+    "subtype": null,
+    "hit_dice": "18d8+99",
+    "hp_avg": 180,
+    "initiative": 1,
+    "speed": {
+      "land": 40
+    },
+    "armor_class": {
+      "total": 14,
+      "touch": 9,
+      "flat_footed": 13,
+      "components": "-2 size, +1 Dex, +5 natural"
+    },
+    "base_attack": 13,
+    "grapple": 30,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+20",
+        "damage": "3d6+13",
+        "crit_range": "x2",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Stamp",
+        "attack_bonus": "+15",
+        "damage": "2d6+4",
+        "crit_range": "x2",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Stamp",
+        "attack_bonus": "+15",
+        "damage": "2d6+4",
+        "crit_range": "x2",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Improved Grab",
+      "Swallow Whole (2d8+13 crushing damage; interior AC 12, 18 hp)",
+      "Frightful Presence (30 ft. radius; creatures with HD 8 or fewer; Will DC 21 or shaken)"
+    ],
+    "special_qualities": [
+      "Low-Light Vision",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 16,
+      "ref": 12,
+      "will": 7
+    },
+    "abilities": {
+      "str": 28,
+      "dex": 12,
+      "con": 21,
+      "int": 2,
+      "wis": 15,
+      "cha": 10
+    },
+    "skills": {
+      "Hide": -2,
+      "Listen": 14,
+      "Spot": 14
+    },
+    "feats": [
+      "Alertness",
+      "Improved Natural Attack (bite)",
+      "Run",
+      "Toughness",
+      "Track"
+    ],
+    "alignment": "Always Neutral",
+    "advancement": "19-36 HD (Huge); 37-54 HD (Gargantuan)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 10,
+    "allowed_biomes": [
+      "Warm_Plain",
+      "Warm_Forest",
+      "Warm_Hill",
+      "Temperate_Plain",
+      "Temperate_Forest"
+    ],
+    "primary_biome": "Warm_Plain",
+    "ecology_notes": "Tyrannosauruses are the apex predators of the dinosaur age, combining immense strength with a bone-crushing bite. Their frightful presence can rout lesser creatures before combat even begins. They hunt by ambush and pursuit, using scent to track prey over long distances. A tyrannosaurus that grapples prey can swallow it whole, crushing it internally. Solitary hunters, they each patrol vast territories."
+  }
+]

@@ -36,15 +36,19 @@ See [`LIVING_WORLD_MM_BUILD_SITE.md`](LIVING_WORLD_MM_BUILD_SITE.md) for the ful
 | Monster | CR | Status | Notes |
 |---------|----|--------|-------|
 | Aboleth | 7 | ✅ | `data/srd_3.5/monsters/batch_a_c.json` |
+| Athach | 8 | ✅ | `data/srd_3.5/monsters/batch_missing_aberrations.json` |
 | Beholder | 13 | ✅ | `data/srd_3.5/monsters/batch_a_c.json` |
 | Carrion Crawler | 4 | ✅ | `data/srd_3.5/monsters/batch_aberrations.json` |
+| Choker | 2 | ✅ | `data/srd_3.5/monsters/batch_missing_aberrations.json` |
 | Chuul | 7 | ✅ | `data/srd_3.5/monsters/batch_aberrations.json` |
 | Cloaker | 5 | ✅ | `data/srd_3.5/monsters/batch_aberrations.json` |
 | Darkmantle | 1 | ✅ | `data/srd_3.5/monsters/batch_d_g.json` |
 | Delver | 9 | ✅ | `data/srd_3.5/monsters/batch_aberrations.json` |
 | Destrachan | 8 | ✅ | `data/srd_3.5/monsters/batch_aberrations.json` |
 | Digester | 6 | ✅ | `data/srd_3.5/monsters/batch_aberrations.json` |
+| Drider | 7 | ✅ | `data/srd_3.5/monsters/batch_missing_aberrations.json` |
 | Ethereal Filcher | 3 | ✅ | `data/srd_3.5/monsters/batch_aberrations.json` |
+| Ettercap | 3 | ✅ | `data/srd_3.5/monsters/batch_missing_aberrations.json` |
 | Gibbering Mouther | 5 | ✅ | `data/srd_3.5/monsters/batch_aberrations.json` |
 | Grick | 3 | ✅ | `data/srd_3.5/monsters/batch_aberrations.json` |
 | Mimic | 4 | ✅ | `data/srd_3.5/monsters/batch_aberrations.json` |
@@ -67,6 +71,7 @@ See [`LIVING_WORLD_MM_BUILD_SITE.md`](LIVING_WORLD_MM_BUILD_SITE.md) for the ful
 | Badger | 1/2 | ✅ | `data/srd_3.5/monsters/batch_animals_a_m.json` |
 | Badger, Dire | 2 | ✅ | `data/srd_3.5/monsters/batch_animals_a_m.json` |
 | Bat (swarm) | 2 | ✅ | `data/srd_3.5/monsters/batch_animals_a_m.json` |
+| Bat, Dire | 2 | ✅ | `data/srd_3.5/monsters/batch_dinosaurs.json` |
 | Bear, Black | 2 | ✅ | `data/srd_3.5/monsters/batch_animals_a_m.json` |
 | Bear, Brown (Grizzly) | 4 | ✅ | `data/srd_3.5/monsters/batch_animals_a_m.json` |
 | Bear, Dire | 7 | ✅ | `data/srd_3.5/monsters/batch_animals_a_m.json` |
@@ -141,6 +146,18 @@ See [`LIVING_WORLD_MM_BUILD_SITE.md`](LIVING_WORLD_MM_BUILD_SITE.md) for the ful
 
 ---
 
+### Dinosaurs
+
+| Monster | CR | Status | Notes |
+|---------|----|--------|-------|
+| Deinonychus | 3 | ✅ | `data/srd_3.5/monsters/batch_dinosaurs.json` |
+| Elasmosaurus | 7 | ✅ | `data/srd_3.5/monsters/batch_dinosaurs.json` |
+| Megaraptor | 6 | ✅ | `data/srd_3.5/monsters/batch_dinosaurs.json` |
+| Triceratops | 9 | ✅ | `data/srd_3.5/monsters/batch_dinosaurs.json` |
+| Tyrannosaurus | 8 | ✅ | `data/srd_3.5/monsters/batch_dinosaurs.json` |
+
+---
+
 ### Constructs
 
 | Monster | CR | Status | Notes |
@@ -157,6 +174,7 @@ See [`LIVING_WORLD_MM_BUILD_SITE.md`](LIVING_WORLD_MM_BUILD_SITE.md) for the ful
 | Golem, Iron | 13 | ✅ | `data/srd_3.5/monsters/batch_constructs.json` |
 | Golem, Stone | 11 | ✅ | `data/srd_3.5/monsters/batch_constructs.json` |
 | Homunculus | 1 | ✅ | `data/srd_3.5/monsters/batch_constructs.json` |
+| Retriever | 11 | ✅ | `data/srd_3.5/monsters/batch_missing_misc.json` |
 | Shield Guardian | 8 | ✅ | `data/srd_3.5/monsters/batch_constructs.json` |
 
 ---
@@ -244,6 +262,7 @@ See [`LIVING_WORLD_MM_BUILD_SITE.md`](LIVING_WORLD_MM_BUILD_SITE.md) for the ful
 | Monster | CR | Status | Notes |
 |---------|----|--------|-------|
 | Dryad | 3 | ✅ | `data/srd_3.5/monsters/batch_fey.json` |
+| Nixie | 1 | ✅ | `data/srd_3.5/monsters/batch_missing_misc.json` |
 | Nymph | 7 | ✅ | `data/srd_3.5/monsters/batch_fey.json` |
 | Pixie | 4 | ✅ | `data/srd_3.5/monsters/batch_fey.json` |
 | Satyr | 4 | ✅ | `data/srd_3.5/monsters/batch_fey.json` |
@@ -263,6 +282,7 @@ See [`LIVING_WORLD_MM_BUILD_SITE.md`](LIVING_WORLD_MM_BUILD_SITE.md) for the ful
 | Giant, Hill | 7 | ✅ | `data/srd_3.5/monsters/batch_giants.json` |
 | Giant, Stone | 8 | ✅ | `data/srd_3.5/monsters/batch_giants.json` |
 | Giant, Storm | 13 | ✅ | `data/srd_3.5/monsters/batch_giants.json` |
+| Merrow (Aquatic Ogre) | 3 | ✅ | `data/srd_3.5/monsters/batch_missing_misc.json` |
 | Ogre | 3 | ✅ | `data/srd_3.5/monsters/batch_m_r.json` |
 | Ogre Mage | 8 | ✅ | `data/srd_3.5/monsters/batch_giants.json` |
 | Troll | 5 | ✅ | `data/srd_3.5/monsters/batch_s_z.json` |
@@ -288,6 +308,7 @@ See [`LIVING_WORLD_MM_BUILD_SITE.md`](LIVING_WORLD_MM_BUILD_SITE.md) for the ful
 | Orc | 1/2 | ✅ | `data/srd_3.5/monsters/batch_m_r.json`; also stub in `core.json` |
 | Sahuagin | 2 | ✅ | `data/srd_3.5/monsters/batch_s_z.json` |
 | Svirfneblin (Deep Gnome) | 1 | ✅ | `data/srd_3.5/monsters/batch_humanoids_new.json` |
+| Triton | 2 | ✅ | `data/srd_3.5/monsters/batch_missing_misc.json` |
 | Troglodyte | 1 | ✅ | `data/srd_3.5/monsters/batch_humanoids_new.json` |
 | Yuan-ti Pureblood | 3 | ✅ | `data/srd_3.5/monsters/batch_s_z.json` |
 | Yuan-ti Halfblood | 5 | ✅ | `data/srd_3.5/monsters/batch_humanoids_new.json` |
@@ -299,6 +320,11 @@ See [`LIVING_WORLD_MM_BUILD_SITE.md`](LIVING_WORLD_MM_BUILD_SITE.md) for the ful
 
 | Monster | CR | Status | Notes |
 |---------|----|--------|-------|
+| Ankheg | 3 | ✅ | `data/srd_3.5/monsters/batch_a_c.json` |
+| Aranea | 4 | ✅ | `data/srd_3.5/monsters/batch_missing_magical_beasts.json` |
+| Arrowhawk, Juvenile | 1 | ✅ | `data/srd_3.5/monsters/batch_missing_magical_beasts.json` |
+| Arrowhawk, Adult | 5 | ✅ | `data/srd_3.5/monsters/batch_missing_magical_beasts.json` |
+| Arrowhawk, Elder | 8 | ✅ | `data/srd_3.5/monsters/batch_missing_magical_beasts.json` |
 | Basilisk | 5 | ✅ | `data/srd_3.5/monsters/batch_magical_beasts.json` |
 | Behir | 8 | ✅ | `data/srd_3.5/monsters/batch_magical_beasts.json` |
 | Blink Dog | 2 | ✅ | `data/srd_3.5/monsters/batch_magical_beasts.json` |
@@ -308,14 +334,17 @@ See [`LIVING_WORLD_MM_BUILD_SITE.md`](LIVING_WORLD_MM_BUILD_SITE.md) for the ful
 | Digester | 6 | ✅ | `data/srd_3.5/monsters/batch_magical_beasts.json` |
 | Displacer Beast | 4 | ✅ | `data/srd_3.5/monsters/batch_magical_beasts.json` |
 | Ethereal Marauder | 3 | ✅ | `data/srd_3.5/monsters/batch_magical_beasts.json` |
+| Frost Worm | 12 | ✅ | `data/srd_3.5/monsters/batch_missing_magical_beasts.json` |
 | Girallon | 6 | ✅ | `data/srd_3.5/monsters/batch_magical_beasts.json` |
 | Gorgon | 8 | ✅ | `data/srd_3.5/monsters/batch_magical_beasts.json` |
+| Gray Render | 8 | ✅ | `data/srd_3.5/monsters/batch_missing_magical_beasts.json` |
 | Griffon | 4 | ✅ | `data/srd_3.5/monsters/batch_magical_beasts.json` |
 | Gynosphinx | 8 | ✅ | `data/srd_3.5/monsters/batch_magical_beasts.json` |
 | Androsphinx | 12 | ✅ | `data/srd_3.5/monsters/batch_magical_beasts.json` |
 | Hippogriff | 2 | ✅ | `data/srd_3.5/monsters/batch_magical_beasts.json` |
 | Hydra (5-headed) | 4 | ✅ | `data/srd_3.5/monsters/batch_h_l.json`; also stub in `core.json` |
 | Kraken | 20 | ✅ | `data/srd_3.5/monsters/batch_h_l.json` |
+| Krenshar | 1 | ✅ | `data/srd_3.5/monsters/batch_missing_magical_beasts.json` |
 | Lamia | 6 | ✅ | `data/srd_3.5/monsters/batch_magical_beasts.json` |
 | Manticore | 5 | ✅ | `data/srd_3.5/monsters/batch_magical_beasts.json` |
 | Owlbear | 4 | ✅ | `data/srd_3.5/monsters/batch_magical_beasts.json` |
@@ -341,6 +370,7 @@ See [`LIVING_WORLD_MM_BUILD_SITE.md`](LIVING_WORLD_MM_BUILD_SITE.md) for the ful
 | Annis (Hag) | 6 | ✅ | `data/srd_3.5/monsters/batch_monstrous_humanoids.json` |
 | Bugbear | 2 | ✅ | `data/srd_3.5/monsters/batch_a_c.json` |
 | Centaur | 3 | ✅ | `data/srd_3.5/monsters/batch_a_c.json`; also stub in `core.json` |
+| Doppelganger | 3 | ✅ | `data/srd_3.5/monsters/batch_missing_misc.json` |
 | Gargoyle | 4 | ✅ | `data/srd_3.5/monsters/batch_monstrous_humanoids.json` |
 | Green Hag | 5 | ✅ | `data/srd_3.5/monsters/batch_monstrous_humanoids.json` |
 | Harpy | 4 | ✅ | `data/srd_3.5/monsters/batch_h_l.json`; also stub in `core.json` |
@@ -418,6 +448,14 @@ See [`LIVING_WORLD_MM_BUILD_SITE.md`](LIVING_WORLD_MM_BUILD_SITE.md) for the ful
 
 | Monster | CR | Status | Notes |
 |---------|----|--------|-------|
+| Achaierai | 5 | ✅ | `data/srd_3.5/monsters/batch_missing_outsiders.json` |
+| Avoral (Guardinal) | 9 | ✅ | `data/srd_3.5/monsters/batch_missing_outsiders.json` |
+| Azer | 2 | ✅ | `data/srd_3.5/monsters/batch_missing_outsiders.json` |
+| Barghest | 4 | ✅ | `data/srd_3.5/monsters/batch_missing_outsiders.json` |
+| Barghest, Greater | 5 | ✅ | `data/srd_3.5/monsters/batch_missing_outsiders.json` |
+| Belker | 6 | ✅ | `data/srd_3.5/monsters/batch_missing_outsiders.json` |
+| Chaos Beast | 7 | ✅ | `data/srd_3.5/monsters/batch_missing_outsiders.json` |
+| Couatl | 10 | ✅ | `data/srd_3.5/monsters/batch_missing_outsiders.json` |
 | Djinni | 5 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
 | Efreeti | 8 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
 | Formian Worker | 1/2 | ✅ | `data/srd_3.5/monsters/batch_d_g.json` |
@@ -426,22 +464,34 @@ See [`LIVING_WORLD_MM_BUILD_SITE.md`](LIVING_WORLD_MM_BUILD_SITE.md) for the ful
 | Formian Myrmarch | 10 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
 | Formian Queen | 17 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
 | Hell Hound | 3 | ✅ | `data/srd_3.5/monsters/batch_h_l.json` |
+| Howler | 3 | ✅ | `data/srd_3.5/monsters/batch_missing_outsiders.json` |
+| Imp | 2 | ✅ | `data/srd_3.5/monsters/batch_missing_outsiders.json` |
 | Inevitable, Kolyarut | 12 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
 | Inevitable, Marut | 15 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
 | Inevitable, Zelekhut | 9 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
+| Invisible Stalker | 7 | ✅ | `data/srd_3.5/monsters/batch_missing_outsiders.json` |
 | Jann | 4 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
+| Leonal (Guardinal) | 12 | ✅ | `data/srd_3.5/monsters/batch_missing_outsiders.json` |
+| Lillend | 7 | ✅ | `data/srd_3.5/monsters/batch_missing_outsiders.json` |
 | Marid | 9 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
 | Night Hag | 9 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
 | Nightmare | 5 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
 | Rakshasa | 10 | ✅ | `data/srd_3.5/monsters/batch_m_r.json` |
+| Ravid | 5 | ✅ | `data/srd_3.5/monsters/batch_missing_outsiders.json` |
+| Salamander, Flamebrother | 2 | ✅ | `data/srd_3.5/monsters/batch_missing_outsiders.json` |
+| Salamander, Average | 8 | ✅ | `data/srd_3.5/monsters/batch_missing_outsiders.json` |
+| Salamander, Noble | 13 | ✅ | `data/srd_3.5/monsters/batch_missing_outsiders.json` |
 | Slaad, Red | 7 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
 | Slaad, Blue | 8 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
 | Slaad, Green | 9 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
 | Slaad, Gray | 10 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
 | Slaad, Death | 13 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
+| Titan | 21 | ✅ | `data/srd_3.5/monsters/batch_missing_outsiders.json` |
 | Tojanida (Juvenile) | 3 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
 | Tojanida (Adult) | 5 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
 | Tojanida (Elder) | 9 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
+| Vargouille | 2 | ✅ | `data/srd_3.5/monsters/batch_missing_outsiders.json` |
+| Xill | 6 | ✅ | `data/srd_3.5/monsters/batch_missing_outsiders.json` |
 | Xorn (Minor) | 3 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
 | Xorn (Average) | 6 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
 | Xorn (Elder) | 8 | ✅ | `data/srd_3.5/monsters/batch_outsiders_other.json` |
@@ -454,6 +504,7 @@ See [`LIVING_WORLD_MM_BUILD_SITE.md`](LIVING_WORLD_MM_BUILD_SITE.md) for the ful
 |---------|----|--------|-------|
 | Assassin Vine | 3 | ✅ | `data/srd_3.5/monsters/batch_plants.json` |
 | Phantom Fungus | 2 | ✅ | `data/srd_3.5/monsters/batch_plants.json` |
+| Shambling Mound | 6 | ✅ | `data/srd_3.5/monsters/batch_missing_misc.json` |
 | Shrieker | 1 | ✅ | `data/srd_3.5/monsters/batch_plants.json` |
 | Tendriculos | 6 | ✅ | `data/srd_3.5/monsters/batch_plants.json` |
 | Violet Fungus | 3 | ✅ | `data/srd_3.5/monsters/batch_plants.json` |
@@ -500,6 +551,7 @@ See [`LIVING_WORLD_MM_BUILD_SITE.md`](LIVING_WORLD_MM_BUILD_SITE.md) for the ful
 | Shadow | 3 | ✅ | `data/srd_3.5/monsters/batch_s_z.json` |
 | Specter | 7 | ✅ | `data/srd_3.5/monsters/batch_undead.json` |
 | Vampire (example) | 8+ | ✅ | `data/srd_3.5/monsters/batch_s_z.json` |
+| Vampire Spawn | 4 | ✅ | `data/srd_3.5/monsters/batch_missing_misc.json` |
 | Wight | 3 | ✅ | `data/srd_3.5/monsters/batch_undead.json` (was stub in `core.json`) |
 | Wraith | 5 | ✅ | `data/srd_3.5/monsters/batch_s_z.json`; also stub in `core.json` |
 
@@ -539,7 +591,13 @@ See [`LIVING_WORLD_MM_BUILD_SITE.md`](LIVING_WORLD_MM_BUILD_SITE.md) for the ful
 | Spider, Monstrous (Gargantuan) | 8 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
 | Spider, Monstrous (Colossal) | 11 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
 | Spider, Giant | 1 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` (was stub in `core.json`) |
+| Spider Swarm | 1 | ✅ | `data/srd_3.5/monsters/batch_swarms.json` |
 | Wasp, Giant | 3 | ✅ | `data/srd_3.5/monsters/batch_vermin.json` |
+| **Swarms** | | | |
+| Centipede Swarm | 4 | ✅ | `data/srd_3.5/monsters/batch_swarms.json` |
+| Hellwasp Swarm | 8 | ✅ | `data/srd_3.5/monsters/batch_swarms.json` |
+| Locust Swarm | 3 | ✅ | `data/srd_3.5/monsters/batch_swarms.json` |
+| Rat Swarm | 2 | ✅ | `data/srd_3.5/monsters/batch_swarms.json` |
 
 ---
 
@@ -547,13 +605,14 @@ See [`LIVING_WORLD_MM_BUILD_SITE.md`](LIVING_WORLD_MM_BUILD_SITE.md) for the ful
 
 | Status | Count |
 |--------|-------|
-| ✅ Full stat block | ~353 |
+| ✅ Full stat block | ~446 |
 | 🔲 Stub only (name + CR) | ~0 |
 | ❌ Not started | ~0 |
-| **Total SRD entries** | **~353** |
+| **Total SRD entries** | **~446** |
 
 > Count excludes multi-size vermin/elemental variants counted individually and dragon age categories.
-> Infrastructure (LW-001–LW-046) is 100% complete — all remaining work is data population.
+> Infrastructure (LW-001–LW-046) is 100% complete.
+> 2026-04-30 gap audit added 49 previously-missing SRD monsters (aberrations, dinosaurs, magical beasts, outsiders, misc, swarms).
 
 ---
 
@@ -727,3 +786,35 @@ Implement as modifier overlays: Celestial, Fiendish, Half-Dragon, Half-Fiend, Ha
 - Spider, Monstrous (Tiny CR 1/4 / Gargantuan CR 8 / Colossal CR 11).
 
 **Full-suite pass count (post all batches): 3 406 tests passing (2 pre-existing failures unchanged).**
+
+---
+
+### 2026-04-30 — SRD Gap Audit: 49 Previously-Missing Monsters Added
+
+Comprehensive gap analysis against the full SRD 3.5e monster list revealed 49 missing entries, all now implemented.
+
+**Aberrations — `data/srd_3.5/monsters/batch_missing_aberrations.json`** (4 entries)
+- Athach (CR 8), Choker (CR 2), Drider (CR 7), Ettercap (CR 3).
+
+**Dinosaurs & Dire Bat — `data/srd_3.5/monsters/batch_dinosaurs.json`** (6 entries)
+- Bat Dire (CR 2), Deinonychus (CR 3), Elasmosaurus (CR 7), Megaraptor (CR 6), Triceratops (CR 9), Tyrannosaurus (CR 8).
+
+**Magical Beasts — `data/srd_3.5/monsters/batch_missing_magical_beasts.json`** (7 entries)
+- Aranea (CR 4), Arrowhawk Juvenile (CR 1) / Adult (CR 5) / Elder (CR 8), Frost Worm (CR 12), Gray Render (CR 8), Krenshar (CR 1).
+
+**Outsiders — `data/srd_3.5/monsters/batch_missing_outsiders.json`** (20 entries)
+- Achaierai (CR 5), Avoral Guardinal (CR 9), Azer (CR 2), Barghest (CR 4), Greater Barghest (CR 5),
+  Belker (CR 6), Chaos Beast (CR 7), Couatl (CR 10), Howler (CR 3), Imp (CR 2),
+  Invisible Stalker (CR 7), Leonal (CR 12), Lillend (CR 7), Ravid (CR 5),
+  Salamander Flamebrother (CR 2) / Average (CR 8) / Noble (CR 13),
+  Titan (CR 21), Vargouille (CR 2), Xill (CR 6).
+
+**Miscellaneous — `data/srd_3.5/monsters/batch_missing_misc.json`** (7 entries)
+- Doppelganger (CR 3, Monstrous Humanoid), Merrow (CR 3, Giant), Nixie (CR 1, Fey),
+  Retriever (CR 11, Construct), Shambling Mound (CR 6, Plant), Triton (CR 2, Humanoid),
+  Vampire Spawn (CR 4, Undead).
+
+**Swarms — `data/srd_3.5/monsters/batch_swarms.json`** (5 entries)
+- Centipede Swarm (CR 4), Hellwasp Swarm (CR 8), Locust Swarm (CR 3), Rat Swarm (CR 2), Spider Swarm (CR 1).
+
+**Full-suite pass count (post gap-audit): 3 406 tests passing (2 pre-existing failures unchanged).**

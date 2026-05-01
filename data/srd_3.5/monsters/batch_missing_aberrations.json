@@ -1,0 +1,400 @@
+[
+  {
+    "name": "Athach",
+    "cr": 8,
+    "size": "Huge",
+    "type": "Aberration",
+    "subtype": null,
+    "hit_dice": "14d8+56",
+    "hp_avg": 119,
+    "initiative": 1,
+    "speed": {
+      "land": 35
+    },
+    "armor_class": {
+      "total": 20,
+      "touch": 9,
+      "flat_footed": 19,
+      "components": "-2 size, +1 Dex, +11 natural"
+    },
+    "base_attack": 10,
+    "grapple": 26,
+    "attacks": [
+      {
+        "name": "Club",
+        "attack_bonus": "+16/+11",
+        "damage": "2d6+8",
+        "crit_range": "x2",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+11",
+        "damage": "1d6+4",
+        "crit_range": "x2",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+11",
+        "damage": "1d6+4",
+        "crit_range": "x2",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+11",
+        "damage": "2d6+4 plus poison",
+        "crit_range": "x2",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Rock (ranged)",
+        "attack_bonus": "+9",
+        "damage": "2d8+8",
+        "crit_range": "x2",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Improved Grab",
+      "Rend 2d6+12",
+      "Rock Throwing (120 ft. range)",
+      "Poison (Bite; Fort DC 22; 1d6 Str / 2d6 Str)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Low-Light Vision",
+      "Rock Catching"
+    ],
+    "saves": {
+      "fort": 9,
+      "ref": 5,
+      "will": 5
+    },
+    "abilities": {
+      "str": 26,
+      "dex": 12,
+      "con": 18,
+      "int": 7,
+      "wis": 12,
+      "cha": 6
+    },
+    "skills": {
+      "Listen": 10,
+      "Spot": 10
+    },
+    "feats": [
+      "Cleave",
+      "Great Cleave",
+      "Improved Bull Rush",
+      "Point Blank Shot",
+      "Power Attack"
+    ],
+    "alignment": "Always Chaotic Evil",
+    "advancement": "15-28 HD (Huge)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 20,
+    "allowed_biomes": [
+      "Cold_Hill",
+      "Cold_Mountain",
+      "Temperate_Hill",
+      "Temperate_Mountain",
+      "Underground"
+    ],
+    "primary_biome": "Cold_Mountain",
+    "ecology_notes": "Athachs are monstrous three-armed giants that lurk in cold hills and mountains. Their extra limb grants them fearsome combat prowess, and their venomous bite can sap a victim's strength dramatically. They are savage and cruel, often enslaving smaller creatures. Rock-throwing and catching make them dangerous at range as well as in melee."
+  },
+  {
+    "name": "Choker",
+    "cr": 2,
+    "size": "Small",
+    "type": "Aberration",
+    "subtype": null,
+    "hit_dice": "3d8+3",
+    "hp_avg": 16,
+    "initiative": 6,
+    "speed": {
+      "land": 20,
+      "climb": 10
+    },
+    "armor_class": {
+      "total": 17,
+      "touch": 13,
+      "flat_footed": 15,
+      "components": "+1 size, +2 Dex, +4 natural"
+    },
+    "base_attack": 2,
+    "grapple": 5,
+    "attacks": [
+      {
+        "name": "Tentacle",
+        "attack_bonus": "+6",
+        "damage": "1d3+3",
+        "crit_range": "x2",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Tentacle",
+        "attack_bonus": "+6",
+        "damage": "1d3+3",
+        "crit_range": "x2",
+        "damage_type": "Bludgeoning"
+      }
+    ],
+    "special_attacks": [
+      "Constrict 1d3+3",
+      "Improved Grab"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Quickness (acts as if hasted; gains 1 extra partial action each round)"
+    ],
+    "saves": {
+      "fort": 4,
+      "ref": 5,
+      "will": 4
+    },
+    "abilities": {
+      "str": 16,
+      "dex": 14,
+      "con": 13,
+      "int": 4,
+      "wis": 13,
+      "cha": 7
+    },
+    "skills": {
+      "Climb": 13,
+      "Hide": 10,
+      "Move Silently": 6,
+      "Spot": 3
+    },
+    "feats": [
+      "Improved Initiative",
+      "Stealthy"
+    ],
+    "alignment": "Usually Chaotic Evil",
+    "advancement": "4-9 HD (Small)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 80,
+    "allowed_biomes": [
+      "Underground",
+      "Any_Ruin",
+      "Temperate_Forest",
+      "Temperate_Hill"
+    ],
+    "primary_biome": "Underground",
+    "ecology_notes": "Chokers are small, rubbery ambush predators that haunt caves and underground passages. Their supernaturally quick reflexes and long, cartilaginous tentacles allow them to seize prey suddenly and strangle it before it can react. They prefer to attack from above, dropping onto victims from ledges or ceilings."
+  },
+  {
+    "name": "Drider",
+    "cr": 7,
+    "size": "Large",
+    "type": "Aberration",
+    "subtype": null,
+    "hit_dice": "6d8+18",
+    "hp_avg": 45,
+    "initiative": 2,
+    "speed": {
+      "land": 30,
+      "climb": 15
+    },
+    "armor_class": {
+      "total": 17,
+      "touch": 11,
+      "flat_footed": 15,
+      "components": "-1 size, +2 Dex, +6 natural"
+    },
+    "base_attack": 4,
+    "grapple": 12,
+    "attacks": [
+      {
+        "name": "Claw",
+        "attack_bonus": "+7",
+        "damage": "1d4+4",
+        "crit_range": "x2",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+7",
+        "damage": "1d4+4",
+        "crit_range": "x2",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Longsword",
+        "attack_bonus": "+7/+2",
+        "damage": "1d8+4",
+        "crit_range": "19-20/x2",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Short Bow (ranged)",
+        "attack_bonus": "+5",
+        "damage": "1d6",
+        "crit_range": "x3",
+        "damage_type": "Piercing"
+      }
+    ],
+    "special_attacks": [
+      "Spell-Like Abilities (CL 6): clairaudience/clairvoyance 1/day, dancing lights at will, detect good at will, detect law at will, detect magic at will, dispel magic 1/day, faerie fire 1/day, levitate at will, suggestion (DC 15) 1/day",
+      "Spells (as 6th-level wizard or 6th-level cleric)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft."
+    ],
+    "saves": {
+      "fort": 6,
+      "ref": 4,
+      "will": 7
+    },
+    "abilities": {
+      "str": 19,
+      "dex": 15,
+      "con": 16,
+      "int": 15,
+      "wis": 16,
+      "cha": 16
+    },
+    "skills": {
+      "Climb": 14,
+      "Concentration": 12,
+      "Hide": 6,
+      "Listen": 14,
+      "Move Silently": 6,
+      "Search": 8,
+      "Spellcraft": 12,
+      "Spot": 14
+    },
+    "feats": [
+      "Combat Casting",
+      "Two-Weapon Fighting",
+      "Weapon Focus (longsword)"
+    ],
+    "alignment": "Usually Chaotic Evil",
+    "advancement": "By character class",
+    "dr": null,
+    "sr": 17,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 30,
+    "allowed_biomes": [
+      "Underground"
+    ],
+    "primary_biome": "Underground",
+    "ecology_notes": "Driders are drow who failed Lolth's tests and were transformed into spider-centaur hybrids as punishment. They haunt the deep Underdark, wielding both steel and magic. Despite their cursed nature they retain their intelligence and spellcasting ability, making them exceptionally dangerous. They are shunned by other drow and hunt alone or in small groups."
+  },
+  {
+    "name": "Ettercap",
+    "cr": 3,
+    "size": "Medium",
+    "type": "Aberration",
+    "subtype": null,
+    "hit_dice": "5d8+5",
+    "hp_avg": 27,
+    "initiative": 3,
+    "speed": {
+      "land": 30,
+      "climb": 30
+    },
+    "armor_class": {
+      "total": 14,
+      "touch": 13,
+      "flat_footed": 11,
+      "components": "+3 Dex, +1 natural"
+    },
+    "base_attack": 3,
+    "grapple": 5,
+    "attacks": [
+      {
+        "name": "Bite",
+        "attack_bonus": "+5",
+        "damage": "1d8+2 plus poison",
+        "crit_range": "x2",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+3",
+        "damage": "1d3+1",
+        "crit_range": "x2",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+3",
+        "damage": "1d3+1",
+        "crit_range": "x2",
+        "damage_type": "Slashing"
+      }
+    ],
+    "special_attacks": [
+      "Improved Grab",
+      "Poison (Bite; Fort DC 15; 1d6 Dex / 1d6 Dex)",
+      "Web (ranged touch +6, entangle; 50 ft. range; Str DC 17 to break or Escape Artist DC 13 to escape)"
+    ],
+    "special_qualities": [
+      "Low-Light Vision"
+    ],
+    "saves": {
+      "fort": 4,
+      "ref": 7,
+      "will": 5
+    },
+    "abilities": {
+      "str": 14,
+      "dex": 17,
+      "con": 13,
+      "int": 6,
+      "wis": 15,
+      "cha": 8
+    },
+    "skills": {
+      "Climb": 9,
+      "Craft (trapmaking)": 4,
+      "Hide": 9,
+      "Listen": 5,
+      "Spot": 5
+    },
+    "feats": [
+      "Great Fortitude",
+      "Multiattack",
+      "Weapon Focus (bite)"
+    ],
+    "alignment": "Usually Neutral Evil",
+    "advancement": "6-15 HD (Medium)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 60,
+    "allowed_biomes": [
+      "Temperate_Forest",
+      "Warm_Forest",
+      "Temperate_Hill",
+      "Underground",
+      "Any_Ruin"
+    ],
+    "primary_biome": "Temperate_Forest",
+    "ecology_notes": "Ettercaps are spider-like aberrations that lurk in forests and ruins, spinning elaborate webs to ensnare prey. They are primitive but cunning trapmakers, working alongside giant spiders as allies. Their venomous bite saps agility from victims caught in their sticky snares. They are solitary or found in small family groups near web-choked forest clearings."
+  }
+]
