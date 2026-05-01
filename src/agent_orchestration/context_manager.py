@@ -267,12 +267,13 @@ def clear_dialogue_lore(lore_text: Optional[str]) -> None:
 
     Example::
 
-        lore = None
+        lore_text = None
         try:
+            lore_text = load_deep_lore(entity)
             chunks = build_dialogue_context(sys_prompt, user_prompt, entity)
             result = llm.query(chunks)
         finally:
-            clear_dialogue_lore(lore)
+            clear_dialogue_lore(lore_text)
 
     Args:
         lore_text: The string previously returned by :func:`load_deep_lore`.

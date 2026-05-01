@@ -53,7 +53,7 @@ _SEED_SPECIES: list[tuple[str, str]] = [
     ("merfolk",   "Temperate_Aquatic"),
     ("myconid",   "Underground"),
     ("tiger",     "Warm_Forest"),
-    ("polar_bear","Cold_Forest"),
+    ("polar_bear", "Cold_Forest"),
 ]
 
 
