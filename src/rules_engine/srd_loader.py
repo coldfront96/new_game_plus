@@ -104,9 +104,21 @@ def load_classes(data_dir: Optional[Path] = None) -> List[Dict[str, Any]]:
 
 
 def load_monsters(data_dir: Optional[Path] = None) -> List[Dict[str, Any]]:
-    """Return every monster record under ``monsters/*.json``."""
+    """Return every monster record under ``monsters/*.json``.
+
+    The ``schema_v2.json`` meta-file is excluded automatically.
+    """
     base = (data_dir or DEFAULT_DATA_DIR) / "monsters"
-    return _load_dir_as_list(base)
+    out: List[Dict[str, Any]] = []
+    for path in _list_json_files(base):
+        if path.name == "schema_v2.json":
+            continue
+        data = _read_json(path)
+        if isinstance(data, list):
+            out.extend(data)
+        elif isinstance(data, dict):
+            out.append(data)
+    return out
 
 
 def load_magic_items(data_dir: Optional[Path] = None) -> List[Dict[str, Any]]:

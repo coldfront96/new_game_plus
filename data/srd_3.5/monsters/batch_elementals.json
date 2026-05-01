@@ -500,10 +500,10 @@
     "passive_effects": [],
     "population_base": 40,
     "allowed_biomes": [
-      "Mountain",
+      "Temperate_Mountain",
       "Underground"
     ],
-    "primary_biome": "Mountain",
+    "primary_biome": "Temperate_Mountain",
     "ecology_notes": "Small earth elementals burst from rocky ground to attack, using their surprising strength to shove opponents aside before retreating underground."
   },
   {
@@ -572,10 +572,10 @@
     "passive_effects": [],
     "population_base": 30,
     "allowed_biomes": [
-      "Mountain",
+      "Temperate_Mountain",
       "Underground"
     ],
-    "primary_biome": "Mountain",
+    "primary_biome": "Temperate_Mountain",
     "ecology_notes": "Medium earth elementals are patient hunters, lying dormant within stone until prey walks near. Their great strength allows them to cleave through multiple foes."
   },
   {
@@ -645,10 +645,10 @@
     "passive_effects": [],
     "population_base": 20,
     "allowed_biomes": [
-      "Mountain",
+      "Temperate_Mountain",
       "Underground"
     ],
-    "primary_biome": "Mountain",
+    "primary_biome": "Temperate_Mountain",
     "ecology_notes": "Large earth elementals can move through solid rock as easily as water, making them formidable ambush predators in cavern environments."
   },
   {
@@ -719,10 +719,10 @@
     "passive_effects": [],
     "population_base": 15,
     "allowed_biomes": [
-      "Mountain",
+      "Temperate_Mountain",
       "Underground"
     ],
-    "primary_biome": "Mountain",
+    "primary_biome": "Temperate_Mountain",
     "ecology_notes": "Huge earth elementals reshape the battlefield, smashing through walls and floors. Their push ability can send even armored warriors flying."
   },
   {
@@ -794,10 +794,10 @@
     "passive_effects": [],
     "population_base": 10,
     "allowed_biomes": [
-      "Mountain",
+      "Temperate_Mountain",
       "Underground"
     ],
-    "primary_biome": "Mountain",
+    "primary_biome": "Temperate_Mountain",
     "ecology_notes": "Greater earth elementals are ancient forces of geological power, able to trigger minor earthquakes with their movement and topple stone fortifications."
   },
   {
@@ -870,10 +870,10 @@
     "passive_effects": [],
     "population_base": 5,
     "allowed_biomes": [
-      "Mountain",
+      "Temperate_Mountain",
       "Underground"
     ],
-    "primary_biome": "Mountain",
+    "primary_biome": "Temperate_Mountain",
     "ecology_notes": "Elder earth elementals are mountains given life, primordial entities of immeasurable strength whose movements cause avalanches and reshape terrain."
   },
   {
@@ -2052,10 +2052,10 @@
     "passive_effects": [],
     "population_base": 10,
     "allowed_biomes": [
-      "Mountain",
+      "Temperate_Mountain",
       "Underground"
     ],
-    "primary_biome": "Mountain",
+    "primary_biome": "Temperate_Mountain",
     "ecology_notes": "Earth mephits are squat, heavy-limbed creatures that haunt mines and caverns. Their stone-sharp breath makes them dangerous despite their small stature."
   },
   {
@@ -2325,10 +2325,10 @@
     "passive_effects": [],
     "population_base": 5,
     "allowed_biomes": [
-      "Mountain",
+      "Temperate_Mountain",
       "Underground"
     ],
-    "primary_biome": "Mountain",
+    "primary_biome": "Temperate_Mountain",
     "ecology_notes": "Magma mephits dwell near volcanic vents and lava flows, creatures born from the border between Earth and Fire planes. Their superheated claws can melt stone over time."
   },
   {

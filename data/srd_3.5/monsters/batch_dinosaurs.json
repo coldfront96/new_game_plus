@@ -252,11 +252,10 @@
     "passive_effects": [],
     "population_base": 15,
     "allowed_biomes": [
-      "Aquatic_Saltwater",
-      "Aquatic_Freshwater",
+      "Aquatic",
       "Warm_Plain"
     ],
-    "primary_biome": "Aquatic_Saltwater",
+    "primary_biome": "Aquatic",
     "ecology_notes": "Elasmosauruses are enormous prehistoric plesiosaurs with extremely long necks that allow them to strike at prey from a distance. Though clumsy on land, they are superb swimmers capable of sustained pursuit. They hunt fish and marine animals near the surface, occasionally ambushing prey at the water's edge. Their endurance and toughness make them formidable opponents even when heavily wounded."
   },
   {

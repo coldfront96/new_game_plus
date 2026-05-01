@@ -167,11 +167,10 @@
     "passive_effects": [],
     "population_base": 25,
     "allowed_biomes": [
-      "Aquatic_Freshwater",
-      "Aquatic_Saltwater",
+      "Aquatic",
       "Temperate_Hill"
     ],
-    "primary_biome": "Aquatic_Freshwater",
+    "primary_biome": "Aquatic",
     "ecology_notes": "Merrows are the aquatic cousins of ogres, inhabiting rivers, lakes, and coastal seas. They raid fishing villages and boats, dragging victims beneath the water."
   },
   {
@@ -252,10 +251,10 @@
     "passive_effects": [],
     "population_base": 50,
     "allowed_biomes": [
-      "Aquatic_Freshwater",
+      "Aquatic",
       "Temperate_Forest"
     ],
-    "primary_biome": "Aquatic_Freshwater",
+    "primary_biome": "Aquatic",
     "ecology_notes": "Nixies are aquatic fey who dwell in lakes and woodland pools. Though mischievous, they are not evil, charming humanoids to work for them for a year as protection rather than from malice."
   },
   {
@@ -438,8 +437,7 @@
     "allowed_biomes": [
       "Temperate_Forest",
       "Warm_Forest",
-      "Aquatic_Freshwater",
-      "Aquatic_Saltwater"
+      "Aquatic"
     ],
     "primary_biome": "Temperate_Forest",
     "ecology_notes": "Shambling mounds are semi-intelligent plants that are actually nourished and strengthened by lightning. They lurk in swamps and forests, constricting prey to death and absorbing its nutrients."
@@ -522,9 +520,9 @@
     "passive_effects": [],
     "population_base": 100,
     "allowed_biomes": [
-      "Aquatic_Saltwater"
+      "Aquatic"
     ],
-    "primary_biome": "Aquatic_Saltwater",
+    "primary_biome": "Aquatic",
     "ecology_notes": "Tritons are aquatic humanoids who inhabit deep seas and coastlines. They are guardians of the ocean depths, often allied with sea creatures and opposed to evil aquatic beings like sahuagin."
   },
   {

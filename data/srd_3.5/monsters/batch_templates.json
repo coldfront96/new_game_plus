@@ -95,7 +95,7 @@
     "grapple": 22,
     "attacks": [
       {
-        "name": "Claw (\u00d72)",
+        "name": "Claw (×2)",
         "attack_bonus": "+17",
         "damage": "2d4+10",
         "damage_type": "Slashing"
@@ -154,9 +154,9 @@
     "passive_effects": [],
     "population_base": 0,
     "allowed_biomes": [
-      "Any Good"
+      "Outer_Plane"
     ],
-    "primary_biome": "Any Good",
+    "primary_biome": "Outer_Plane",
     "ecology_notes": "The Celestial template is applied to animals or magical beasts summoned from good-aligned outer planes. Representative example: Celestial Dire Bear. The template adds Smite Evil, DR/Magic, resistance to energy types, SR, and darkvision 60 ft."
   },
   {
@@ -247,9 +247,9 @@
     "passive_effects": [],
     "population_base": 0,
     "allowed_biomes": [
-      "Any Evil"
+      "Outer_Plane"
     ],
-    "primary_biome": "Any Evil",
+    "primary_biome": "Outer_Plane",
     "ecology_notes": "The Fiendish template is applied to animals or magical beasts summoned from evil-aligned outer planes. Representative example: Fiendish Constrictor Snake. Adds Smite Good, DR/Magic, resistance to cold and fire, SR, and darkvision 60 ft."
   },
   {
@@ -336,9 +336,9 @@
     "passive_effects": [],
     "population_base": 0,
     "allowed_biomes": [
-      "Any Good"
+      "Outer_Plane"
     ],
-    "primary_biome": "Any Good",
+    "primary_biome": "Outer_Plane",
     "ecology_notes": "Half-Celestials are mortals with one celestial parent. Representative example: Half-Celestial Human Paladin 5. Template adds wings (fly speed), DR, energy resistance, SR, SLAs, and boosts abilities."
   },
   {
@@ -448,7 +448,7 @@
     "grapple": 7,
     "attacks": [
       {
-        "name": "Claw (\u00d72)",
+        "name": "Claw (×2)",
         "attack_bonus": "+7",
         "damage": "1d6+1",
         "damage_type": "Slashing"
@@ -519,9 +519,9 @@
     "passive_effects": [],
     "population_base": 0,
     "allowed_biomes": [
-      "Any Evil"
+      "Outer_Plane"
     ],
-    "primary_biome": "Any Evil",
+    "primary_biome": "Outer_Plane",
     "ecology_notes": "Half-Fiends are the offspring of fiends and other creatures. Representative example: Half-Fiend Succubus. Template adds dark wings, DR, immunities, resistances, SR, and dark spell-like abilities."
   },
   {
@@ -604,11 +604,11 @@
     "passive_effects": [],
     "population_base": 3,
     "allowed_biomes": [
-      "Forest",
-      "Rural",
-      "Urban"
+      "Temperate_Forest",
+      "Temperate_Plain",
+      "Any_Urban"
     ],
-    "primary_biome": "Forest",
+    "primary_biome": "Temperate_Forest",
     "ecology_notes": "Werewolves are lycanthropes who transform into wolves or wolf-humanoid hybrids. Representative example: Werewolf (Human Fighter 2). They spread their curse through bite attacks."
   },
   {
@@ -702,11 +702,10 @@
     "passive_effects": [],
     "population_base": 5,
     "allowed_biomes": [
-      "Urban",
-      "Sewer",
+      "Any_Urban",
       "Underground"
     ],
-    "primary_biome": "Urban",
+    "primary_biome": "Any_Urban",
     "ecology_notes": "Wererats are cunning shapeshifters who prefer urban environments. Representative example: Wererat (Human Rogue 3). They often form secret guilds and work as spies, thieves, and assassins."
   },
   {
@@ -733,7 +732,7 @@
       {
         "name": "Greataxe",
         "attack_bonus": "+7",
-        "damage": "1d12+4/\u00d73",
+        "damage": "1d12+4/×3",
         "damage_type": "Slashing"
       },
       {
@@ -791,11 +790,11 @@
     "passive_effects": [],
     "population_base": 2,
     "allowed_biomes": [
-      "Forest",
-      "Hills",
-      "Rural"
+      "Temperate_Forest",
+      "Temperate_Hill",
+      "Temperate_Plain"
     ],
-    "primary_biome": "Forest",
+    "primary_biome": "Temperate_Forest",
     "ecology_notes": "Wereboars are aggressive and stubborn lycanthropes who share the boar's ferocity. Representative example: Wereboar (Human Barbarian 3). They rarely form groups but are territorial and dangerous."
   },
   {
@@ -826,7 +825,7 @@
         "damage_type": "Slashing"
       },
       {
-        "name": "Claw \u00d72 (hybrid/tiger)",
+        "name": "Claw ×2 (hybrid/tiger)",
         "attack_bonus": "+13",
         "damage": "1d8+6",
         "damage_type": "Slashing"
@@ -891,10 +890,10 @@
     "passive_effects": [],
     "population_base": 1,
     "allowed_biomes": [
-      "Forest",
-      "Jungle"
+      "Temperate_Forest",
+      "Warm_Forest"
     ],
-    "primary_biome": "Forest",
+    "primary_biome": "Temperate_Forest",
     "ecology_notes": "Weretigers are proud and solitary lycanthropes. Representative example: Weretiger (Human Fighter 5). They combine human cunning with feline ferocity and hunting instinct."
   },
   {
@@ -925,7 +924,7 @@
         "damage_type": "Slashing"
       },
       {
-        "name": "Claw \u00d72 (hybrid/bear)",
+        "name": "Claw ×2 (hybrid/bear)",
         "attack_bonus": "+13",
         "damage": "1d8+5",
         "damage_type": "Slashing"
@@ -991,10 +990,10 @@
     "passive_effects": [],
     "population_base": 2,
     "allowed_biomes": [
-      "Forest",
-      "Hills"
+      "Temperate_Forest",
+      "Temperate_Hill"
     ],
-    "primary_biome": "Forest",
+    "primary_biome": "Temperate_Forest",
     "ecology_notes": "Werebears are the most benevolent of the common lycanthropes, often acting as forest guardians. Representative example: Werebear (Human Ranger 5). Their curse rarely spreads beyond willing recipients."
   },
   {
@@ -1147,9 +1146,9 @@
     "passive_effects": [],
     "population_base": 0,
     "allowed_biomes": [
-      "Any Good"
+      "Outer_Plane"
     ],
-    "primary_biome": "Any Good",
+    "primary_biome": "Outer_Plane",
     "ecology_notes": "Representative example: Celestial Heavy Horse (CR 2). The Celestial template grants Smite Evil, DR 5/Magic, energy resistance to acid/cold/electricity (5 for up to 4 HD, 10 for 5-10 HD, 15 for 11+ HD), SR equal to HD+5, darkvision 60 ft., and alignment subtype (Good)."
   }
 ]

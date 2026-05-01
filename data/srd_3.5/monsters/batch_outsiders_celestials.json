@@ -8,13 +8,33 @@
     "hit_dice": "12d8+60",
     "hp_avg": 114,
     "initiative": 8,
-    "speed": {"land": 50, "fly": 100, "fly_maneuverability": "good"},
-    "armor_class": {"total": 29, "touch": 14, "flat_footed": 25, "components": "+4 Dex, +15 natural, -1 size"},
+    "speed": {
+      "land": 50,
+      "fly": 100,
+      "fly_maneuverability": "good"
+    },
+    "armor_class": {
+      "total": 29,
+      "touch": 14,
+      "flat_footed": 25,
+      "components": "+4 Dex, +15 natural, -1 size"
+    },
     "base_attack": 12,
     "grapple": 21,
     "attacks": [
-      {"name": "+1 heavy mace of disruption", "attack_bonus": "+20/+15/+10", "damage": "1d8+10", "crit_range": "19-20", "damage_type": "Bludgeoning"},
-      {"name": "Slam (×2)", "attack_bonus": "+19", "damage": "1d8+9", "damage_type": "Bludgeoning"}
+      {
+        "name": "+1 heavy mace of disruption",
+        "attack_bonus": "+20/+15/+10",
+        "damage": "1d8+10",
+        "crit_range": "19-20",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Slam (×2)",
+        "attack_bonus": "+19",
+        "damage": "1d8+9",
+        "damage_type": "Bludgeoning"
+      }
     ],
     "special_attacks": [
       "Smite Evil 1/day (+20 attack, +12 damage vs evil creatures, CL 12)",
@@ -30,8 +50,19 @@
       "SR 30",
       "Tongues (continuous, as the spell)"
     ],
-    "saves": {"fort": 13, "ref": 12, "will": 11},
-    "abilities": {"str": 28, "dex": 18, "con": 20, "int": 18, "wis": 18, "cha": 20},
+    "saves": {
+      "fort": 13,
+      "ref": 12,
+      "will": 11
+    },
+    "abilities": {
+      "str": 28,
+      "dex": 18,
+      "con": 20,
+      "int": 18,
+      "wis": 18,
+      "cha": 20
+    },
     "skills": {
       "Concentration": 20,
       "Diplomacy": 22,
@@ -45,7 +76,13 @@
       "Spot": 21,
       "Use Rope": 4
     },
-    "feats": ["Alertness", "Cleave", "Great Fortitude", "Improved Initiative", "Power Attack"],
+    "feats": [
+      "Alertness",
+      "Cleave",
+      "Great Fortitude",
+      "Improved Initiative",
+      "Power Attack"
+    ],
     "alignment": "Always Good (Neutral Good or Lawful Good)",
     "advancement": "13-22 HD (Large); 23+ HD (Huge)",
     "dr": "10/Evil",
@@ -53,11 +90,18 @@
     "regen": null,
     "fast_heal": null,
     "elemental_weaknesses": [],
-    "alignment_weaknesses": ["Evil"],
-    "passive_effects": ["Protective Aura (DR 10 vs evil, +4 resistance to saves vs evil within 20 ft.)", "Tongues (continuous)"],
+    "alignment_weaknesses": [
+      "Evil"
+    ],
+    "passive_effects": [
+      "Protective Aura (DR 10 vs evil, +4 resistance to saves vs evil within 20 ft.)",
+      "Tongues (continuous)"
+    ],
     "population_base": 5,
-    "allowed_biomes": ["Any Good"],
-    "primary_biome": "Any Good",
+    "allowed_biomes": [
+      "Outer_Plane"
+    ],
+    "primary_biome": "Outer_Plane",
     "ecology_notes": "Astral Devas serve as divine messengers and champions of the good-aligned outer planes, often descending to the Material Plane on quests granted by their divine patrons."
   },
   {
@@ -69,13 +113,33 @@
     "hit_dice": "14d8+70",
     "hp_avg": 133,
     "initiative": 8,
-    "speed": {"land": 30, "fly": 90, "fly_maneuverability": "good"},
-    "armor_class": {"total": 32, "touch": 13, "flat_footed": 28, "components": "+4 Dex, +19 natural, -1 size"},
+    "speed": {
+      "land": 30,
+      "fly": 90,
+      "fly_maneuverability": "good"
+    },
+    "armor_class": {
+      "total": 32,
+      "touch": 13,
+      "flat_footed": 28,
+      "components": "+4 Dex, +19 natural, -1 size"
+    },
     "base_attack": 14,
     "grapple": 23,
     "attacks": [
-      {"name": "+3 greatsword", "attack_bonus": "+21/+16/+11", "damage": "3d6+12", "crit_range": "17-20", "damage_type": "Slashing"},
-      {"name": "Slam (×2)", "attack_bonus": "+18", "damage": "2d6+7", "damage_type": "Bludgeoning"}
+      {
+        "name": "+3 greatsword",
+        "attack_bonus": "+21/+16/+11",
+        "damage": "3d6+12",
+        "crit_range": "17-20",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Slam (×2)",
+        "attack_bonus": "+18",
+        "damage": "2d6+7",
+        "damage_type": "Bludgeoning"
+      }
     ],
     "special_attacks": [
       "Spell-Like Abilities (CL 17): aid, animate objects, commune, continual flame, detect evil, dispel evil (DC 19), dispel magic, flame strike (DC 19), holy aura (DC 22), holy smite (DC 18), holy word (DC 21), invisibility (self only), lesser restoration, remove curse, remove disease, remove fear, speak with dead (DC 17)",
@@ -92,8 +156,19 @@
       "SR 30",
       "Tongues (continuous, as the spell)"
     ],
-    "saves": {"fort": 14, "ref": 13, "will": 14},
-    "abilities": {"str": 25, "dex": 19, "con": 20, "int": 22, "wis": 23, "cha": 22},
+    "saves": {
+      "fort": 14,
+      "ref": 13,
+      "will": 14
+    },
+    "abilities": {
+      "str": 25,
+      "dex": 19,
+      "con": 20,
+      "int": 22,
+      "wis": 23,
+      "cha": 22
+    },
     "skills": {
       "Concentration": 22,
       "Diplomacy": 27,
@@ -105,7 +180,13 @@
       "Sense Motive": 23,
       "Spot": 25
     },
-    "feats": ["Alertness", "Blind-Fight", "Cleave", "Improved Initiative", "Power Attack"],
+    "feats": [
+      "Alertness",
+      "Blind-Fight",
+      "Cleave",
+      "Improved Initiative",
+      "Power Attack"
+    ],
     "alignment": "Always Lawful Good",
     "advancement": "15-28 HD (Large); 29+ HD (Huge)",
     "dr": "10/Evil",
@@ -113,11 +194,19 @@
     "regen": 10,
     "fast_heal": null,
     "elemental_weaknesses": [],
-    "alignment_weaknesses": ["Evil"],
-    "passive_effects": ["Protective Aura (DR 10 vs evil, +4 resistance to saves vs evil within 20 ft.)", "Tongues (continuous)", "Regeneration 10 (suppressed by evil effects and epic weapons)"],
+    "alignment_weaknesses": [
+      "Evil"
+    ],
+    "passive_effects": [
+      "Protective Aura (DR 10 vs evil, +4 resistance to saves vs evil within 20 ft.)",
+      "Tongues (continuous)",
+      "Regeneration 10 (suppressed by evil effects and epic weapons)"
+    ],
     "population_base": 2,
-    "allowed_biomes": ["Any Good"],
-    "primary_biome": "Any Good",
+    "allowed_biomes": [
+      "Outer_Plane"
+    ],
+    "primary_biome": "Outer_Plane",
     "ecology_notes": "Planetars are powerful angelic warriors who serve as generals and commanders in the armies of the good-aligned outer planes."
   },
   {
@@ -129,13 +218,34 @@
     "hit_dice": "22d8+110",
     "hp_avg": 209,
     "initiative": 9,
-    "speed": {"land": 50, "fly": 150, "fly_maneuverability": "good"},
-    "armor_class": {"total": 35, "touch": 14, "flat_footed": 30, "components": "+5 Dex, +21 natural, -1 size"},
+    "speed": {
+      "land": 50,
+      "fly": 150,
+      "fly_maneuverability": "good"
+    },
+    "armor_class": {
+      "total": 35,
+      "touch": 14,
+      "flat_footed": 30,
+      "components": "+5 Dex, +21 natural, -1 size"
+    },
     "base_attack": 22,
     "grapple": 35,
     "attacks": [
-      {"name": "+5 dancing vorpal greatsword", "attack_bonus": "+35/+30/+25/+20", "damage": "3d6+18", "crit_range": "17-20", "damage_type": "Slashing"},
-      {"name": "+5 composite longbow (+5 Str bonus)", "attack_bonus": "+32/+27/+22/+17", "damage": "2d6+10", "crit_multiplier": "x3", "damage_type": "Piercing plus Arrow of Slaying"}
+      {
+        "name": "+5 dancing vorpal greatsword",
+        "attack_bonus": "+35/+30/+25/+20",
+        "damage": "3d6+18",
+        "crit_range": "17-20",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "+5 composite longbow (+5 Str bonus)",
+        "attack_bonus": "+32/+27/+22/+17",
+        "damage": "2d6+10",
+        "crit_multiplier": "x3",
+        "damage_type": "Piercing plus Arrow of Slaying"
+      }
     ],
     "special_attacks": [
       "Arrow of Slaying (DC 20 Fortitude or die, one creature type per arrow)",
@@ -153,8 +263,19 @@
       "SR 32",
       "Tongues (continuous, as the spell)"
     ],
-    "saves": {"fort": 18, "ref": 18, "will": 19},
-    "abilities": {"str": 28, "dex": 20, "con": 20, "int": 23, "wis": 25, "cha": 25},
+    "saves": {
+      "fort": 18,
+      "ref": 18,
+      "will": 19
+    },
+    "abilities": {
+      "str": 28,
+      "dex": 20,
+      "con": 20,
+      "int": 23,
+      "wis": 25,
+      "cha": 25
+    },
     "skills": {
       "Concentration": 30,
       "Diplomacy": 34,
@@ -168,7 +289,17 @@
       "Spot": 34,
       "Use Rope": 5
     },
-    "feats": ["Alertness", "Blind-Fight", "Cleave", "Dodge", "Great Cleave", "Improved Initiative", "Mobility", "Power Attack", "Quicken Spell-Like Ability (holy smite)"],
+    "feats": [
+      "Alertness",
+      "Blind-Fight",
+      "Cleave",
+      "Dodge",
+      "Great Cleave",
+      "Improved Initiative",
+      "Mobility",
+      "Power Attack",
+      "Quicken Spell-Like Ability (holy smite)"
+    ],
     "alignment": "Always Lawful Good",
     "advancement": "23+ HD (Large)",
     "dr": "15/Epic and Evil",
@@ -176,11 +307,19 @@
     "regen": 15,
     "fast_heal": null,
     "elemental_weaknesses": [],
-    "alignment_weaknesses": ["Evil"],
-    "passive_effects": ["Protective Aura major (magic circle against evil + globe of invulnerability, 20 ft. radius)", "Tongues (continuous)", "Regeneration 15 (suppressed by evil effects and epic weapons)"],
+    "alignment_weaknesses": [
+      "Evil"
+    ],
+    "passive_effects": [
+      "Protective Aura major (magic circle against evil + globe of invulnerability, 20 ft. radius)",
+      "Tongues (continuous)",
+      "Regeneration 15 (suppressed by evil effects and epic weapons)"
+    ],
     "population_base": 1,
-    "allowed_biomes": ["Any Good"],
-    "primary_biome": "Any Good",
+    "allowed_biomes": [
+      "Outer_Plane"
+    ],
+    "primary_biome": "Outer_Plane",
     "ecology_notes": "Solars are the most powerful angels, generals and champions of the divine. They are among the strongest beings in all existence and serve their deities directly."
   },
   {
@@ -192,13 +331,31 @@
     "hit_dice": "6d8+6",
     "hp_avg": 33,
     "initiative": 4,
-    "speed": {"land": 40},
-    "armor_class": {"total": 19, "touch": 10, "flat_footed": 19, "components": "+9 natural"},
+    "speed": {
+      "land": 40
+    },
+    "armor_class": {
+      "total": 19,
+      "touch": 10,
+      "flat_footed": 19,
+      "components": "+9 natural"
+    },
     "base_attack": 6,
     "grapple": 8,
     "attacks": [
-      {"name": "Bite", "attack_bonus": "+8", "damage": "1d8+3", "damage_type": "Piercing"},
-      {"name": "Greatsword", "attack_bonus": "+8/+3", "damage": "2d6+3", "crit_range": "19-20", "damage_type": "Slashing"}
+      {
+        "name": "Bite",
+        "attack_bonus": "+8",
+        "damage": "1d8+3",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Greatsword",
+        "attack_bonus": "+8/+3",
+        "damage": "2d6+3",
+        "crit_range": "19-20",
+        "damage_type": "Slashing"
+      }
     ],
     "special_attacks": [
       "Smite Evil 1/day (+4 to hit, +6 damage vs evil creatures)",
@@ -213,8 +370,19 @@
       "Scent",
       "SR 16"
     ],
-    "saves": {"fort": 6, "ref": 5, "will": 7},
-    "abilities": {"str": 15, "dex": 10, "con": 13, "int": 8, "wis": 13, "cha": 10},
+    "saves": {
+      "fort": 6,
+      "ref": 5,
+      "will": 7
+    },
+    "abilities": {
+      "str": 15,
+      "dex": 10,
+      "con": 13,
+      "int": 8,
+      "wis": 13,
+      "cha": 10
+    },
     "skills": {
       "Concentration": 7,
       "Hide": 6,
@@ -224,7 +392,11 @@
       "Spot": 13,
       "Survival": 7
     },
-    "feats": ["Improved Initiative", "Iron Will", "Track"],
+    "feats": [
+      "Improved Initiative",
+      "Iron Will",
+      "Track"
+    ],
     "alignment": "Always Lawful Good",
     "advancement": "7-12 HD (Medium)",
     "dr": "10/Evil",
@@ -232,11 +404,18 @@
     "regen": null,
     "fast_heal": null,
     "elemental_weaknesses": [],
-    "alignment_weaknesses": ["Evil"],
-    "passive_effects": ["Magic Circle Against Evil (continuous)", "Scent"],
+    "alignment_weaknesses": [
+      "Evil"
+    ],
+    "passive_effects": [
+      "Magic Circle Against Evil (continuous)",
+      "Scent"
+    ],
     "population_base": 20,
-    "allowed_biomes": ["Any Lawful Good"],
-    "primary_biome": "Any Lawful Good",
+    "allowed_biomes": [
+      "Outer_Plane"
+    ],
+    "primary_biome": "Outer_Plane",
     "ecology_notes": "Hound Archons appear as powerfully built humans with canine heads. They patrol the lower planes hunting evil and serve as soldiers of the lawful good outer planes."
   },
   {
@@ -248,12 +427,26 @@
     "hit_dice": "1d8+2",
     "hp_avg": 6,
     "initiative": 4,
-    "speed": {"fly": 60, "fly_maneuverability": "perfect"},
-    "armor_class": {"total": 17, "touch": 15, "flat_footed": 13, "components": "+4 Dex, +2 natural, +1 size"},
+    "speed": {
+      "fly": 60,
+      "fly_maneuverability": "perfect"
+    },
+    "armor_class": {
+      "total": 17,
+      "touch": 15,
+      "flat_footed": 13,
+      "components": "+4 Dex, +2 natural, +1 size"
+    },
     "base_attack": 1,
     "grapple": -3,
     "attacks": [
-      {"name": "Light Ray", "attack_bonus": "+6 ranged touch", "damage": "1d6", "damage_type": "Fire", "range": "30 ft."}
+      {
+        "name": "Light Ray",
+        "attack_bonus": "+6 ranged touch",
+        "damage": "1d6",
+        "damage_type": "Fire",
+        "range": "30 ft."
+      }
     ],
     "special_attacks": [
       "Spell-Like Abilities (CL 3): aid 3/day"
@@ -265,13 +458,26 @@
       "Low-light vision",
       "SR 11"
     ],
-    "saves": {"fort": 4, "ref": 6, "will": 4},
-    "abilities": {"str": 10, "dex": 18, "con": 14, "int": 6, "wis": 11, "cha": 10},
+    "saves": {
+      "fort": 4,
+      "ref": 6,
+      "will": 4
+    },
+    "abilities": {
+      "str": 10,
+      "dex": 18,
+      "con": 14,
+      "int": 6,
+      "wis": 11,
+      "cha": 10
+    },
     "skills": {
       "Listen": 4,
       "Spot": 4
     },
-    "feats": ["Alertness"],
+    "feats": [
+      "Alertness"
+    ],
     "alignment": "Always Lawful Good",
     "advancement": "2-4 HD (Small)",
     "dr": "10/Evil and Magic",
@@ -279,11 +485,15 @@
     "regen": null,
     "fast_heal": null,
     "elemental_weaknesses": [],
-    "alignment_weaknesses": ["Evil"],
+    "alignment_weaknesses": [
+      "Evil"
+    ],
     "passive_effects": [],
     "population_base": 30,
-    "allowed_biomes": ["Any Lawful Good"],
-    "primary_biome": "Any Lawful Good",
+    "allowed_biomes": [
+      "Outer_Plane"
+    ],
+    "primary_biome": "Outer_Plane",
     "ecology_notes": "Lantern Archons appear as glowing balls of light. They are the weakest of the archons, serving as scouts and messengers."
   },
   {
@@ -295,13 +505,33 @@
     "hit_dice": "12d8+60",
     "hp_avg": 114,
     "initiative": 7,
-    "speed": {"land": 40, "fly": 90, "fly_maneuverability": "good"},
-    "armor_class": {"total": 27, "touch": 13, "flat_footed": 24, "components": "+3 Dex, +14 natural"},
+    "speed": {
+      "land": 40,
+      "fly": 90,
+      "fly_maneuverability": "good"
+    },
+    "armor_class": {
+      "total": 27,
+      "touch": 13,
+      "flat_footed": 24,
+      "components": "+3 Dex, +14 natural"
+    },
     "base_attack": 12,
     "grapple": 16,
     "attacks": [
-      {"name": "+4 greatsword", "attack_bonus": "+20/+15/+10", "damage": "2d6+10", "crit_range": "17-20", "damage_type": "Slashing"},
-      {"name": "Slam", "attack_bonus": "+16", "damage": "1d8+6", "damage_type": "Bludgeoning"}
+      {
+        "name": "+4 greatsword",
+        "attack_bonus": "+20/+15/+10",
+        "damage": "2d6+10",
+        "crit_range": "17-20",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Slam",
+        "attack_bonus": "+16",
+        "damage": "1d8+6",
+        "damage_type": "Bludgeoning"
+      }
     ],
     "special_attacks": [
       "Spell-Like Abilities (CL 12): aid, blur, continual flame, detect evil, dimension door, dispel evil (DC 21), holy aura (DC 24), holy smite (DC 20), holy word (DC 23), magic circle against evil, polymorph (self only), power word stun, see invisibility, teleport",
@@ -315,8 +545,19 @@
       "Magic Circle Against Evil (continuous)",
       "SR 29"
     ],
-    "saves": {"fort": 13, "ref": 11, "will": 12},
-    "abilities": {"str": 23, "dex": 17, "con": 21, "int": 16, "wis": 16, "cha": 22},
+    "saves": {
+      "fort": 13,
+      "ref": 11,
+      "will": 12
+    },
+    "abilities": {
+      "str": 23,
+      "dex": 17,
+      "con": 21,
+      "int": 16,
+      "wis": 16,
+      "cha": 22
+    },
     "skills": {
       "Concentration": 20,
       "Diplomacy": 23,
@@ -329,7 +570,13 @@
       "Sense Motive": 18,
       "Spot": 20
     },
-    "feats": ["Blind-Fight", "Cleave", "Dodge", "Improved Initiative", "Power Attack"],
+    "feats": [
+      "Blind-Fight",
+      "Cleave",
+      "Dodge",
+      "Improved Initiative",
+      "Power Attack"
+    ],
     "alignment": "Always Lawful Good",
     "advancement": "13-18 HD (Medium); 19+ HD (Large)",
     "dr": "10/Evil",
@@ -337,11 +584,17 @@
     "regen": null,
     "fast_heal": null,
     "elemental_weaknesses": [],
-    "alignment_weaknesses": ["Evil"],
-    "passive_effects": ["Magic Circle Against Evil (continuous)"],
+    "alignment_weaknesses": [
+      "Evil"
+    ],
+    "passive_effects": [
+      "Magic Circle Against Evil (continuous)"
+    ],
     "population_base": 3,
-    "allowed_biomes": ["Any Lawful Good"],
-    "primary_biome": "Any Lawful Good",
+    "allowed_biomes": [
+      "Outer_Plane"
+    ],
+    "primary_biome": "Outer_Plane",
     "ecology_notes": "Trumpet Archons are the heralds of the lawful good outer planes, serving as elite soldiers and champions. Their trumpet can sound notes of power that weaken and stun evil creatures."
   },
   {
@@ -353,14 +606,40 @@
     "hit_dice": "6d8+12",
     "hp_avg": 39,
     "initiative": 8,
-    "speed": {"land": 40, "fly": 100, "fly_maneuverability": "perfect"},
-    "armor_class": {"total": 20, "touch": 14, "flat_footed": 16, "components": "+4 Dex, +6 natural"},
+    "speed": {
+      "land": 40,
+      "fly": 100,
+      "fly_maneuverability": "perfect"
+    },
+    "armor_class": {
+      "total": 20,
+      "touch": 14,
+      "flat_footed": 16,
+      "components": "+4 Dex, +6 natural"
+    },
     "base_attack": 6,
     "grapple": 9,
     "attacks": [
-      {"name": "Slam (×2)", "attack_bonus": "+9", "damage": "1d6+3", "damage_type": "Bludgeoning"},
-      {"name": "+1 scimitar", "attack_bonus": "+10/+5", "damage": "1d6+4", "crit_range": "18-20", "damage_type": "Slashing"},
-      {"name": "+1 composite shortbow (+3 Str)", "attack_bonus": "+11/+6", "damage": "1d6+4", "crit_multiplier": "x3", "damage_type": "Piercing"}
+      {
+        "name": "Slam (×2)",
+        "attack_bonus": "+9",
+        "damage": "1d6+3",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "+1 scimitar",
+        "attack_bonus": "+10/+5",
+        "damage": "1d6+4",
+        "crit_range": "18-20",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "+1 composite shortbow (+3 Str)",
+        "attack_bonus": "+11/+6",
+        "damage": "1d6+4",
+        "crit_multiplier": "x3",
+        "damage_type": "Piercing"
+      }
     ],
     "special_attacks": [
       "Spell-Like Abilities (CL 6): blur, charm person (DC 12), gust of wind (DC 13), mirror image, whirlwind blast (as gust of wind but deals 3d6 damage, DC 13 Reflex half)"
@@ -374,8 +653,19 @@
       "Resistance to cold 10, fire 10",
       "SR 17"
     ],
-    "saves": {"fort": 7, "ref": 9, "will": 7},
-    "abilities": {"str": 16, "dex": 18, "con": 14, "int": 13, "wis": 14, "cha": 14},
+    "saves": {
+      "fort": 7,
+      "ref": 9,
+      "will": 7
+    },
+    "abilities": {
+      "str": 16,
+      "dex": 18,
+      "con": 14,
+      "int": 13,
+      "wis": 14,
+      "cha": 14
+    },
     "skills": {
       "Diplomacy": 13,
       "Escape Artist": 13,
@@ -387,7 +677,11 @@
       "Sense Motive": 11,
       "Spot": 13
     },
-    "feats": ["Alertness", "Improved Initiative", "Weapon Finesse"],
+    "feats": [
+      "Alertness",
+      "Improved Initiative",
+      "Weapon Finesse"
+    ],
     "alignment": "Always Chaotic Good",
     "advancement": "7-12 HD (Medium); 13+ HD (Large)",
     "dr": "10/Cold Iron and Evil",
@@ -395,11 +689,15 @@
     "regen": null,
     "fast_heal": null,
     "elemental_weaknesses": [],
-    "alignment_weaknesses": ["Evil"],
+    "alignment_weaknesses": [
+      "Evil"
+    ],
     "passive_effects": [],
     "population_base": 15,
-    "allowed_biomes": ["Any Chaotic Good"],
-    "primary_biome": "Any Chaotic Good",
+    "allowed_biomes": [
+      "Outer_Plane"
+    ],
+    "primary_biome": "Outer_Plane",
     "ecology_notes": "Bralani Azata resemble wind-blown elves with silver-white hair. They love freedom and spontaneity, often appearing in storms to oppose tyranny and protect the innocent."
   },
   {
@@ -411,13 +709,33 @@
     "hit_dice": "10d8+50",
     "hp_avg": 95,
     "initiative": 7,
-    "speed": {"land": 50, "fly": 150, "fly_maneuverability": "good"},
-    "armor_class": {"total": 25, "touch": 13, "flat_footed": 22, "components": "+3 Dex, +12 natural"},
+    "speed": {
+      "land": 50,
+      "fly": 150,
+      "fly_maneuverability": "good"
+    },
+    "armor_class": {
+      "total": 25,
+      "touch": 13,
+      "flat_footed": 22,
+      "components": "+3 Dex, +12 natural"
+    },
     "base_attack": 10,
     "grapple": 14,
     "attacks": [
-      {"name": "+1 holy cold iron longsword", "attack_bonus": "+15/+10", "damage": "1d8+5 plus 1d6 holy", "crit_range": "19-20", "damage_type": "Slashing"},
-      {"name": "Slam (×2)", "attack_bonus": "+14", "damage": "1d6+4", "damage_type": "Bludgeoning"}
+      {
+        "name": "+1 holy cold iron longsword",
+        "attack_bonus": "+15/+10",
+        "damage": "1d8+5 plus 1d6 holy",
+        "crit_range": "19-20",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Slam (×2)",
+        "attack_bonus": "+14",
+        "damage": "1d6+4",
+        "damage_type": "Bludgeoning"
+      }
     ],
     "special_attacks": [
       "Gaze (60 ft., DC 20 Will or shaken for 2d10 rounds; evil creatures are rendered unconscious for 1d4 minutes on a failed save)",
@@ -432,8 +750,19 @@
       "Resistance to cold 10, fire 10",
       "SR 28"
     ],
-    "saves": {"fort": 12, "ref": 10, "will": 11},
-    "abilities": {"str": 18, "dex": 17, "con": 20, "int": 17, "wis": 17, "cha": 20},
+    "saves": {
+      "fort": 12,
+      "ref": 10,
+      "will": 11
+    },
+    "abilities": {
+      "str": 18,
+      "dex": 17,
+      "con": 20,
+      "int": 17,
+      "wis": 17,
+      "cha": 20
+    },
     "skills": {
       "Concentration": 18,
       "Diplomacy": 20,
@@ -447,7 +776,13 @@
       "Sense Motive": 16,
       "Spot": 18
     },
-    "feats": ["Alertness", "Combat Casting", "Dodge", "Improved Initiative", "Mobility"],
+    "feats": [
+      "Alertness",
+      "Combat Casting",
+      "Dodge",
+      "Improved Initiative",
+      "Mobility"
+    ],
     "alignment": "Always Chaotic Good",
     "advancement": "11-20 HD (Medium); 21+ HD (Large)",
     "dr": "10/Cold Iron and Evil",
@@ -455,11 +790,17 @@
     "regen": null,
     "fast_heal": null,
     "elemental_weaknesses": [],
-    "alignment_weaknesses": ["Evil"],
-    "passive_effects": ["Gaze attack (passive; affects all who meet the Ghaele's eyes within 60 ft.)"],
+    "alignment_weaknesses": [
+      "Evil"
+    ],
+    "passive_effects": [
+      "Gaze attack (passive; affects all who meet the Ghaele's eyes within 60 ft.)"
+    ],
     "population_base": 5,
-    "allowed_biomes": ["Any Chaotic Good"],
-    "primary_biome": "Any Chaotic Good",
+    "allowed_biomes": [
+      "Outer_Plane"
+    ],
+    "primary_biome": "Outer_Plane",
     "ecology_notes": "Ghaele Azata appear as humans or elves of breathtaking beauty. Their gaze can incapacitate mortals and slay the evil. They serve as champions of freedom and personal excellence on the chaotic good outer planes."
   }
 ]

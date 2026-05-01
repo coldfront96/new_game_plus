@@ -597,7 +597,7 @@
     "population_base": 20,
     "allowed_biomes": [
       "Warm_Desert",
-      "Warm_Hills"
+      "Warm_Hill"
     ],
     "primary_biome": "Warm_Desert",
     "ecology_notes": null
@@ -726,7 +726,7 @@
     "population_base": 8,
     "allowed_biomes": [
       "Warm_Desert",
-      "Warm_Hills"
+      "Warm_Hill"
     ],
     "primary_biome": "Warm_Desert",
     "ecology_notes": null
@@ -859,7 +859,7 @@
     "population_base": 2,
     "allowed_biomes": [
       "Warm_Desert",
-      "Warm_Hills"
+      "Warm_Hill"
     ],
     "primary_biome": "Warm_Desert",
     "ecology_notes": null
@@ -1210,7 +1210,7 @@
     "population_base": 15,
     "allowed_biomes": [
       "Warm_Mountain",
-      "Warm_Hills"
+      "Warm_Hill"
     ],
     "primary_biome": "Warm_Mountain",
     "ecology_notes": null
@@ -1342,7 +1342,7 @@
     "population_base": 5,
     "allowed_biomes": [
       "Warm_Mountain",
-      "Warm_Hills"
+      "Warm_Hill"
     ],
     "primary_biome": "Warm_Mountain",
     "ecology_notes": null
@@ -1450,7 +1450,7 @@
     "population_base": 30,
     "allowed_biomes": [
       "Cold_Mountain",
-      "Cold_Plains",
+      "Cold_Plain",
       "Arctic"
     ],
     "primary_biome": "Cold_Mountain",
@@ -1583,7 +1583,7 @@
     "population_base": 10,
     "allowed_biomes": [
       "Cold_Mountain",
-      "Cold_Plains",
+      "Cold_Plain",
       "Arctic"
     ],
     "primary_biome": "Cold_Mountain",
@@ -1694,7 +1694,7 @@
     "population_base": 20,
     "allowed_biomes": [
       "Warm_Desert",
-      "Warm_Hills"
+      "Warm_Hill"
     ],
     "primary_biome": "Warm_Desert",
     "ecology_notes": null
@@ -1826,7 +1826,7 @@
     "population_base": 8,
     "allowed_biomes": [
       "Warm_Desert",
-      "Warm_Hills"
+      "Warm_Hill"
     ],
     "primary_biome": "Warm_Desert",
     "ecology_notes": null
@@ -1935,11 +1935,11 @@
     "passive_effects": [],
     "population_base": 15,
     "allowed_biomes": [
-      "Coastal",
-      "Ocean",
-      "Temperate_Hills"
+      "Temperate_Aquatic",
+      "Aquatic",
+      "Temperate_Hill"
     ],
-    "primary_biome": "Coastal",
+    "primary_biome": "Temperate_Aquatic",
     "ecology_notes": null
   },
   {
@@ -2068,11 +2068,11 @@
     ],
     "population_base": 5,
     "allowed_biomes": [
-      "Coastal",
-      "Ocean",
-      "Temperate_Hills"
+      "Temperate_Aquatic",
+      "Aquatic",
+      "Temperate_Hill"
     ],
-    "primary_biome": "Coastal",
+    "primary_biome": "Temperate_Aquatic",
     "ecology_notes": null
   },
   {
@@ -2177,11 +2177,11 @@
     "passive_effects": [],
     "population_base": 20,
     "allowed_biomes": [
-      "Warm_Hills",
-      "Temperate_Hills",
+      "Warm_Hill",
+      "Temperate_Hill",
       "Warm_Mountain"
     ],
-    "primary_biome": "Warm_Hills",
+    "primary_biome": "Warm_Hill",
     "ecology_notes": null
   },
   {
@@ -2308,11 +2308,11 @@
     ],
     "population_base": 8,
     "allowed_biomes": [
-      "Warm_Hills",
-      "Temperate_Hills",
+      "Warm_Hill",
+      "Temperate_Hill",
       "Warm_Mountain"
     ],
-    "primary_biome": "Warm_Hills",
+    "primary_biome": "Warm_Hill",
     "ecology_notes": null
   },
   {
@@ -2423,11 +2423,11 @@
     "passive_effects": [],
     "population_base": 10,
     "allowed_biomes": [
-      "Warm_Plains",
-      "Warm_Hills",
+      "Warm_Plain",
+      "Warm_Hill",
       "Warm_Mountain"
     ],
-    "primary_biome": "Warm_Hills",
+    "primary_biome": "Warm_Hill",
     "ecology_notes": null
   },
   {
@@ -2561,11 +2561,11 @@
     ],
     "population_base": 3,
     "allowed_biomes": [
-      "Warm_Plains",
-      "Warm_Hills",
+      "Warm_Plain",
+      "Warm_Hill",
       "Warm_Mountain"
     ],
-    "primary_biome": "Warm_Hills",
+    "primary_biome": "Warm_Hill",
     "ecology_notes": null
   },
   {
@@ -2703,11 +2703,11 @@
     ],
     "population_base": 1,
     "allowed_biomes": [
-      "Warm_Plains",
-      "Warm_Hills",
+      "Warm_Plain",
+      "Warm_Hill",
       "Warm_Mountain"
     ],
-    "primary_biome": "Warm_Hills",
+    "primary_biome": "Warm_Hill",
     "ecology_notes": null
   },
   {
@@ -3045,11 +3045,10 @@
     "passive_effects": [],
     "population_base": 5,
     "allowed_biomes": [
-      "Ocean",
-      "Coastal",
-      "Rivers"
+      "Aquatic",
+      "Temperate_Aquatic"
     ],
-    "primary_biome": "Ocean",
+    "primary_biome": "Aquatic",
     "ecology_notes": "Dragon turtles are reclusive and mercenary, often extorting tolls from ships passing their territory."
   },
   {
@@ -3134,11 +3133,11 @@
     "passive_effects": [],
     "population_base": 15,
     "allowed_biomes": [
-      "Forest",
-      "Rural",
+      "Temperate_Forest",
+      "Temperate_Plain",
       "Any"
     ],
-    "primary_biome": "Forest",
+    "primary_biome": "Temperate_Forest",
     "ecology_notes": "Pseudodragons are cat-sized true dragons that bond with humanoids as familiars. They communicate telepathically and are playful but fiercely loyal."
   }
 ]

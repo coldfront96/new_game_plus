@@ -168,11 +168,11 @@
     "passive_effects": [],
     "population_base": 15,
     "allowed_biomes": [
-      "Mountain",
+      "Temperate_Mountain",
       "Underground",
       "Temperate_Plain"
     ],
-    "primary_biome": "Mountain",
+    "primary_biome": "Temperate_Mountain",
     "ecology_notes": "The behir is a massive serpentine creature with twelve legs that allow it to move quickly and climb stone walls. It hunts large prey, discharging a bolt of lightning before constricting and swallowing victims whole. Behirs have an intense hatred of dragons and will attack them on sight."
   },
   {
@@ -837,7 +837,7 @@
     "population_base": 15,
     "allowed_biomes": [
       "Temperate_Plain",
-      "Mountain"
+      "Temperate_Mountain"
     ],
     "primary_biome": "Temperate_Plain",
     "ecology_notes": "The gorgon is a bull-like creature covered in overlapping iron scales. It can exhale a cone of breath that permanently petrifies living creatures. Gorgons are aggressive and territorial, charging at anything that enters their grazing range. Statues of their former victims frequently litter the landscape around their territory."
@@ -927,7 +927,7 @@
     "population_base": 25,
     "allowed_biomes": [
       "Temperate_Plain",
-      "Mountain",
+      "Temperate_Mountain",
       "Cold_Plain"
     ],
     "primary_biome": "Temperate_Plain",
@@ -1194,7 +1194,7 @@
     "population_base": 40,
     "allowed_biomes": [
       "Temperate_Plain",
-      "Mountain",
+      "Temperate_Mountain",
       "Cold_Plain"
     ],
     "primary_biome": "Temperate_Plain",
@@ -1371,7 +1371,7 @@
     "allowed_biomes": [
       "Temperate_Plain",
       "Warm_Plain",
-      "Mountain"
+      "Temperate_Mountain"
     ],
     "primary_biome": "Temperate_Plain",
     "ecology_notes": "The manticore is a monstrous predator with a human-like face, lion's body, bat wings, and a tail studded with iron spikes it can hurl at prey. It is cunning enough to speak, and it sometimes toys with victims or negotiates for food. Manticores are territorial and voracious, consuming every part of their prey including bones."
@@ -1546,7 +1546,7 @@
     "population_base": 30,
     "allowed_biomes": [
       "Temperate_Plain",
-      "Mountain"
+      "Temperate_Mountain"
     ],
     "primary_biome": "Temperate_Plain",
     "ecology_notes": "Pegasi are winged horses of noble spirit and keen intelligence. They only accept good-aligned riders and are highly prized as aerial mounts. They are surprisingly social creatures, able to communicate with other magical beasts, and form tight bonds with their riders. Pegasi herds roam freely through mountain meadows and high plains."
@@ -2299,10 +2299,10 @@
     "passive_effects": [],
     "population_base": 15,
     "allowed_biomes": [
-      "Mountain",
+      "Temperate_Mountain",
       "Temperate_Plain"
     ],
-    "primary_biome": "Mountain",
+    "primary_biome": "Temperate_Mountain",
     "ecology_notes": "The wyvern is a lesser dragon-kin with a barbed, venomous tail and powerful talons. It lacks the intelligence and breath weapon of true dragons but compensates with its highly lethal venom. Wyverns nest in mountain crags and hunt across wide territories, attacking anything they can carry off. They are sometimes tamed as mounts by powerful warlords."
   }
 ]
