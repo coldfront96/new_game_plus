@@ -51,6 +51,7 @@ class TownRecord:
     faction_name: str | None
     population_count: int
     merchant_ids: list[str] = field(default_factory=list)
+    npcs: list = field(default_factory=list)
 
 
 # ---------------------------------------------------------------------------
@@ -150,6 +151,63 @@ def _faction_affinity_score(faction: "FactionRecord", biome: "Biome") -> int:
     return 1
 
 
+def _generate_town_npcs(town_id: str, town_name: str, roll_hash: int) -> list:
+    """Return a list of three :class:`~src.rules_engine.character_35e.Character35e` NPCs.
+
+    Generates an innkeeper (Expert 3), a merchant (Expert 2), and a town guard
+    (Warrior 2) whose stats are varied deterministically from *roll_hash*.
+    """
+    from src.rules_engine.character_35e import Character35e
+
+    # Vary ability scores slightly so each town feels distinct.
+    stat_offset = roll_hash % 4  # 0-3
+
+    innkeeper = Character35e(
+        name=f"Innkeeper of {town_name}",
+        char_class="Expert",
+        level=3,
+        char_id=f"npc_{town_id}_innkeeper",
+        strength=9 + stat_offset,
+        dexterity=10,
+        constitution=10,
+        intelligence=12 + stat_offset,
+        wisdom=11,
+        charisma=13 + stat_offset,
+        skills={"Diplomacy": 6, "Sense Motive": 5, "Appraise": 4},
+        metadata={"role": "innkeeper", "town_id": town_id},
+    )
+    merchant = Character35e(
+        name=f"Merchant of {town_name}",
+        char_class="Expert",
+        level=2,
+        char_id=f"npc_{town_id}_merchant",
+        strength=9,
+        dexterity=11,
+        constitution=10,
+        intelligence=13 + stat_offset,
+        wisdom=10,
+        charisma=12 + stat_offset,
+        skills={"Appraise": 7, "Bluff": 4, "Diplomacy": 5},
+        metadata={"role": "merchant", "town_id": town_id},
+    )
+    guard = Character35e(
+        name=f"Town Guard of {town_name}",
+        char_class="Warrior",
+        level=2,
+        char_id=f"npc_{town_id}_guard",
+        strength=13 + stat_offset,
+        dexterity=11,
+        constitution=12,
+        intelligence=9,
+        wisdom=10,
+        charisma=8,
+        equipment=["Longsword", "Chain Shirt"],
+        skills={"Spot": 3, "Listen": 3},
+        metadata={"role": "guard", "town_id": town_id},
+    )
+    return [innkeeper, merchant, guard]
+
+
 def generate_towns(
     world_chunks: "list[WorldChunk]",
     faction_registry: "dict[str, FactionRecord]",
@@ -212,14 +270,17 @@ def generate_towns(
                 best_faction = faction
 
         merchant_id = f"merchant_{town_id}"
+        town_name = _town_name_from_id(town_id)
+        npcs = _generate_town_npcs(town_id, town_name, roll_hash)
         record = TownRecord(
             town_id=town_id,
-            name=_town_name_from_id(town_id),
+            name=town_name,
             chunk_id=chunk.chunk_id,
             biome=chunk.biome,
             faction_name=best_faction.name if best_faction else None,
             population_count=100 + (roll_hash % 900),
             merchant_ids=[merchant_id],
+            npcs=npcs,
         )
         registry[town_id] = record
         biome_counts[biome_key] = biome_counts.get(biome_key, 0) + 1

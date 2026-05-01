@@ -42,7 +42,7 @@ from src.rules_engine.encounter_extended import (
     build_encounter,
 )
 from src.rules_engine.magic import create_default_registry
-from src.rules_engine.progression import XPManager
+from src.rules_engine.progression import XPManager, level_up, Progression
 from src.rules_engine.spell_effects import SpellDispatcher, SpellResult
 from src.rules_engine.spellcasting import SpellResolver, get_key_ability
 from src.rules_engine.treasure import (
@@ -393,6 +393,39 @@ class SessionReport:
     survivors: List[Character35e] = field(default_factory=list)
     casualties: List[Character35e] = field(default_factory=list)
     log: List[str] = field(default_factory=list)
+
+
+def apply_session_report(
+    report: SessionReport,
+    xp_managers: Dict[str, XPManager],
+) -> List[Progression]:
+    """Apply XP from *report* to each party member and trigger any level-ups.
+
+    Call this immediately after :func:`play_session` returns to close the
+    combat → progression loop.  Both survivors and casualties receive XP;
+    only those with enough accumulated XP are advanced via
+    :func:`~src.rules_engine.progression.level_up`.
+
+    Args:
+        report:       The :class:`SessionReport` returned by :func:`play_session`.
+        xp_managers:  Mapping of ``char_id → XPManager`` for every party member.
+
+    Returns:
+        List of :class:`~src.rules_engine.progression.Progression` records for
+        every character that leveled up this session (may be empty).
+    """
+    progressions: List[Progression] = []
+    for char in report.survivors + report.casualties:
+        xp = report.xp_awarded.get(char.char_id, 0)
+        mgr = xp_managers.get(char.char_id)
+        if mgr is None or xp <= 0:
+            continue
+        mgr.award_xp(xp)
+        level_result = mgr.check_level_up()
+        if level_result.leveled_up:
+            prog = level_up(char, mgr)
+            progressions.append(prog)
+    return progressions
 
 
 # ---------------------------------------------------------------------------

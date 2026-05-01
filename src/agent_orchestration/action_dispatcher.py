@@ -70,9 +70,25 @@ from src.agent_orchestration.agent_task import AgentTask
 from src.rules_engine.actions import ActionTracker, ActionType
 from src.rules_engine.character_35e import Character35e
 from src.rules_engine.combat import AttackResolver, CombatResult
-from src.rules_engine.dice import roll_d20
+from src.rules_engine.dice import roll_d20, roll_damage
 from src.rules_engine.skills import SkillCheckResult
 from src.rules_engine.spellcasting import SpellResolver
+
+
+# Metadata keys — must match session.py HP_KEY / DEAD_KEY constants.
+_HP_KEY = "current_hp"
+_DEAD_KEY = "dead"
+
+
+def _apply_hp_damage(target: Character35e, amount: int) -> None:
+    """Reduce *target*'s current HP by *amount* and mark dead if it hits zero."""
+    if amount <= 0:
+        return
+    current = target.metadata.get(_HP_KEY, target.hit_points)
+    new_hp = current - amount
+    target.metadata[_HP_KEY] = new_hp
+    if new_hp <= 0:
+        target.metadata[_DEAD_KEY] = True
 
 
 # ---------------------------------------------------------------------------
@@ -348,6 +364,8 @@ class ActionDispatcher:
                 error="target not found",
             )
         result = AttackResolver.resolve_attack(actor, target, use_ranged=action.use_ranged)
+        if result.hit:
+            _apply_hp_damage(target, result.total_damage)
         return DispatchResult(
             action_type=action.action_type,
             success=result.hit,
@@ -375,7 +393,9 @@ class ActionDispatcher:
                 error="target not found",
             )
         results = AttackResolver.resolve_full_attack(actor, target, use_ranged=action.use_ranged)
-        total_damage = sum(r.total_damage for r in results)
+        total_damage = sum(r.total_damage for r in results if r.hit)
+        if total_damage:
+            _apply_hp_damage(target, total_damage)
         return DispatchResult(
             action_type=action.action_type,
             success=any(r.hit for r in results),
@@ -433,12 +453,22 @@ class ActionDispatcher:
                 error=f"spell {action.spell_name!r} has no effect callback",
             )
         target_label = target.name if target else "the area"
+        spell_damage = 0
+        if target is not None and isinstance(spell_result, dict):
+            raw_dmg = spell_result.get("damage")
+            if raw_dmg and isinstance(raw_dmg, str):
+                try:
+                    spell_damage = roll_damage(raw_dmg).total
+                    _apply_hp_damage(target, spell_damage)
+                except ValueError:
+                    pass
         return DispatchResult(
             action_type=action.action_type,
             success=True,
             narrative=f"{actor.name} casts {action.spell_name} at {target_label}. Effect: {spell_result}",
             spell_result=spell_result,
             action_cost=ActionType.STANDARD,
+            damage_dealt=spell_damage,
         )
 
     def _resolve_move(
@@ -451,6 +481,7 @@ class ActionDispatcher:
         tracker.consume_action(ActionType.MOVE)
         dest = action.destination
         if dest and len(dest) >= 2:
+            actor.metadata["position"] = list(dest)
             coord = ", ".join(str(c) for c in dest)
             narrative = f"{actor.name} moves to [{coord}]."
         else:
@@ -522,6 +553,7 @@ class ActionDispatcher:
                 action_cost=ActionType.STANDARD,
                 error=f"{item_name!r} not in equipment",
             )
+        actor.equipment.remove(item_name)
         return DispatchResult(
             action_type=action.action_type,
             success=True,
