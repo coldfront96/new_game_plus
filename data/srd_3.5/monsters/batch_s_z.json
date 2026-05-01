@@ -8,20 +8,70 @@
     "hit_dice": "2d8+2",
     "hp_avg": 11,
     "initiative": 1,
-    "speed": { "land": 30, "swim": 60 },
-    "armor_class": { "total": 16, "touch": 11, "flat_footed": 15, "components": "+1 Dex, +5 natural" },
+    "speed": {
+      "land": 30,
+      "swim": 60
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 11,
+      "flat_footed": 15,
+      "components": "+1 Dex, +5 natural"
+    },
     "base_attack": 2,
     "grapple": 3,
     "attacks": [
-      { "name": "Trident", "attack_bonus": "+3", "damage": "1d8+1", "crit_range": "x2", "damage_type": "Piercing" },
-      { "name": "Bite", "attack_bonus": "-2", "damage": "1d4", "damage_type": "Piercing" }
+      {
+        "name": "Trident",
+        "attack_bonus": "+3",
+        "damage": "1d8+1",
+        "crit_range": "x2",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "-2",
+        "damage": "1d4",
+        "damage_type": "Piercing"
+      }
     ],
-    "special_attacks": ["Blood Frenzy", "Rake 1d4+1"],
-    "special_qualities": ["Blindsense 30 ft.", "Darkvision 60 ft.", "Freshwater Sensitivity", "Light Blindness", "Speak with Sharks", "Water Breathing"],
-    "saves": { "fort": 1, "ref": 4, "will": 4 },
-    "abilities": { "str": 13, "dex": 13, "con": 12, "int": 14, "wis": 13, "cha": 9 },
-    "skills": { "Handle Animal": 4, "Hide": 4, "Listen": 7, "Ride": 3, "Spot": 7, "Survival": 4, "Swim": 9 },
-    "feats": ["Multiattack"],
+    "special_attacks": [
+      "Blood Frenzy",
+      "Rake 1d4+1"
+    ],
+    "special_qualities": [
+      "Blindsense 30 ft.",
+      "Darkvision 60 ft.",
+      "Freshwater Sensitivity",
+      "Light Blindness",
+      "Speak with Sharks",
+      "Water Breathing"
+    ],
+    "saves": {
+      "fort": 1,
+      "ref": 4,
+      "will": 4
+    },
+    "abilities": {
+      "str": 13,
+      "dex": 13,
+      "con": 12,
+      "int": 14,
+      "wis": 13,
+      "cha": 9
+    },
+    "skills": {
+      "Handle Animal": 4,
+      "Hide": 4,
+      "Listen": 7,
+      "Ride": 3,
+      "Spot": 7,
+      "Survival": 4,
+      "Swim": 9
+    },
+    "feats": [
+      "Multiattack"
+    ],
     "alignment": "Usually Lawful Evil",
     "advancement": "3-4 HD (Medium); 5-6 HD (Large)",
     "dr": null,
@@ -32,9 +82,12 @@
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 3000,
-    "allowed_biomes": ["Aquatic"],
+    "allowed_biomes": [
+      "Aquatic"
+    ],
     "primary_biome": "Aquatic",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Fortress"
   },
   {
     "name": "Shadow",
@@ -45,19 +98,57 @@
     "hit_dice": "3d12",
     "hp_avg": 19,
     "initiative": 2,
-    "speed": { "fly": 40 },
-    "armor_class": { "total": 13, "touch": 13, "flat_footed": 11, "components": "+2 Dex, +1 deflection (incorporeal)" },
+    "speed": {
+      "fly": 40
+    },
+    "armor_class": {
+      "total": 13,
+      "touch": 13,
+      "flat_footed": 11,
+      "components": "+2 Dex, +1 deflection (incorporeal)"
+    },
     "base_attack": 1,
     "grapple": -1,
     "attacks": [
-      { "name": "Incorporeal Touch", "attack_bonus": "+3", "damage": "1d6 STR damage", "damage_type": "Strength damage" }
+      {
+        "name": "Incorporeal Touch",
+        "attack_bonus": "+3",
+        "damage": "1d6 STR damage",
+        "damage_type": "Strength damage"
+      }
     ],
-    "special_attacks": ["Create Spawn", "Strength Damage"],
-    "special_qualities": ["Darkvision 60 ft.", "Incorporeal Traits", "Undead Traits"],
-    "saves": { "fort": 1, "ref": 3, "will": 3 },
-    "abilities": { "str": null, "dex": 14, "con": null, "int": 6, "wis": 12, "cha": 13 },
-    "skills": { "Hide": 10, "Listen": 6, "Search": 3, "Spot": 6 },
-    "feats": ["Alertness", "Dodge"],
+    "special_attacks": [
+      "Create Spawn",
+      "Strength Damage"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Incorporeal Traits",
+      "Undead Traits"
+    ],
+    "saves": {
+      "fort": 1,
+      "ref": 3,
+      "will": 3
+    },
+    "abilities": {
+      "str": null,
+      "dex": 14,
+      "con": null,
+      "int": 6,
+      "wis": 12,
+      "cha": 13
+    },
+    "skills": {
+      "Hide": 10,
+      "Listen": 6,
+      "Search": 3,
+      "Spot": 6
+    },
+    "feats": [
+      "Alertness",
+      "Dodge"
+    ],
     "alignment": "Always Chaotic Evil",
     "advancement": "4-9 HD (Medium)",
     "dr": null,
@@ -68,9 +159,14 @@
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 500,
-    "allowed_biomes": ["Any_Ruin", "Underground", "Any_Urban"],
+    "allowed_biomes": [
+      "Any_Ruin",
+      "Underground",
+      "Any_Urban"
+    ],
     "primary_biome": "Any_Ruin",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Tarrasque",
@@ -81,22 +177,98 @@
     "hit_dice": "48d10+594",
     "hp_avg": 858,
     "initiative": 7,
-    "speed": { "land": 20 },
-    "armor_class": { "total": 35, "touch": -1, "flat_footed": 32, "components": "+3 Dex, +36 natural, -8 size, -4 deflection excluded" },
+    "speed": {
+      "land": 20
+    },
+    "armor_class": {
+      "total": 35,
+      "touch": -1,
+      "flat_footed": 32,
+      "components": "+3 Dex, +36 natural, -8 size, -4 deflection excluded"
+    },
     "base_attack": 48,
     "grapple": 78,
     "attacks": [
-      { "name": "Bite", "attack_bonus": "+57", "damage": "4d8+17", "crit_range": "18-20/x3", "damage_type": "Piercing" },
-      { "name": "2 Horns", "attack_bonus": "+52", "damage": "1d10+8", "crit_range": "x2", "damage_type": "Piercing" },
-      { "name": "2 Claws", "attack_bonus": "+52", "damage": "1d12+8", "crit_range": "x2", "damage_type": "Slashing" },
-      { "name": "Tail Slap", "attack_bonus": "+52", "damage": "3d8+8", "crit_range": "x2", "damage_type": "Bludgeoning" }
+      {
+        "name": "Bite",
+        "attack_bonus": "+57",
+        "damage": "4d8+17",
+        "crit_range": "18-20/x3",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "2 Horns",
+        "attack_bonus": "+52",
+        "damage": "1d10+8",
+        "crit_range": "x2",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "2 Claws",
+        "attack_bonus": "+52",
+        "damage": "1d12+8",
+        "crit_range": "x2",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Tail Slap",
+        "attack_bonus": "+52",
+        "damage": "3d8+8",
+        "crit_range": "x2",
+        "damage_type": "Bludgeoning"
+      }
     ],
-    "special_attacks": ["Augmented Critical (bite)", "Frightful Presence", "Improved Grab", "Rush", "Swallow Whole"],
-    "special_qualities": ["Carapace (reflects targeted spells on natural 1-5)", "Darkvision 60 ft.", "Fast Healing 40", "Immunity to Fire/Poison", "Low-Light Vision", "Regeneration 40", "Resistance to Energy", "Scent", "SR 32"],
-    "saves": { "fort": 35, "ref": 19, "will": 16 },
-    "abilities": { "str": 45, "dex": 16, "con": 35, "int": 3, "wis": 14, "cha": 14 },
-    "skills": { "Listen": 31, "Search": 6, "Spot": 31, "Survival": 6 },
-    "feats": ["Alertness", "Awesome Blow", "Blind-Fight", "Cleave", "Combat Reflexes", "Dodge", "Great Cleave", "Great Fortitude", "Improved Bull Rush", "Improved Initiative", "Iron Will", "Power Attack"],
+    "special_attacks": [
+      "Augmented Critical (bite)",
+      "Frightful Presence",
+      "Improved Grab",
+      "Rush",
+      "Swallow Whole"
+    ],
+    "special_qualities": [
+      "Carapace (reflects targeted spells on natural 1-5)",
+      "Darkvision 60 ft.",
+      "Fast Healing 40",
+      "Immunity to Fire/Poison",
+      "Low-Light Vision",
+      "Regeneration 40",
+      "Resistance to Energy",
+      "Scent",
+      "SR 32"
+    ],
+    "saves": {
+      "fort": 35,
+      "ref": 19,
+      "will": 16
+    },
+    "abilities": {
+      "str": 45,
+      "dex": 16,
+      "con": 35,
+      "int": 3,
+      "wis": 14,
+      "cha": 14
+    },
+    "skills": {
+      "Listen": 31,
+      "Search": 6,
+      "Spot": 31,
+      "Survival": 6
+    },
+    "feats": [
+      "Alertness",
+      "Awesome Blow",
+      "Blind-Fight",
+      "Cleave",
+      "Combat Reflexes",
+      "Dodge",
+      "Great Cleave",
+      "Great Fortitude",
+      "Improved Bull Rush",
+      "Improved Initiative",
+      "Iron Will",
+      "Power Attack"
+    ],
     "alignment": "Always Neutral",
     "advancement": "None",
     "dr": "15/Epic",
@@ -113,13 +285,19 @@
         "save_dc": 27,
         "effect_on_fail": "Panicked for 4d6 rounds",
         "effect_on_pass": null,
-        "suppress_conditions": ["Frightened", "Panicked"]
+        "suppress_conditions": [
+          "Frightened",
+          "Panicked"
+        ]
       }
     ],
     "population_base": 1,
-    "allowed_biomes": ["Any"],
+    "allowed_biomes": [
+      "Any"
+    ],
     "primary_biome": "Any",
-    "ecology_notes": "Unique entity — only one Tarrasque exists in the world at any time; population_base of 1 is an absolute cap enforced at world generation. It cannot be permanently slain by normal means — only a Wish or Miracle spell can keep it dead."
+    "ecology_notes": "Unique entity \u2014 only one Tarrasque exists in the world at any time; population_base of 1 is an absolute cap enforced at world generation. It cannot be permanently slain by normal means \u2014 only a Wish or Miracle spell can keep it dead.",
+    "lair_type": "Cave"
   },
   {
     "name": "Treant",
@@ -130,32 +308,82 @@
     "hit_dice": "7d8+35",
     "hp_avg": 66,
     "initiative": -1,
-    "speed": { "land": 30 },
-    "armor_class": { "total": 20, "touch": 7, "flat_footed": 20, "components": "-1 Dex, +13 natural, -2 size" },
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 20,
+      "touch": 7,
+      "flat_footed": 20,
+      "components": "-1 Dex, +13 natural, -2 size"
+    },
     "base_attack": 5,
     "grapple": 22,
     "attacks": [
-      { "name": "2 Slams", "attack_bonus": "+14", "damage": "2d6+9", "damage_type": "Bludgeoning" }
+      {
+        "name": "2 Slams",
+        "attack_bonus": "+14",
+        "damage": "2d6+9",
+        "damage_type": "Bludgeoning"
+      }
     ],
-    "special_attacks": ["Animate Trees", "Double Damage Against Objects", "Trample 2d6+13"],
-    "special_qualities": ["Damage Reduction 10/Slashing", "Low-Light Vision", "Plant Traits", "Vulnerability to Fire"],
-    "saves": { "fort": 10, "ref": 1, "will": 6 },
-    "abilities": { "str": 29, "dex": 8, "con": 21, "int": 12, "wis": 15, "cha": 12 },
-    "skills": { "Diplomacy": 3, "Hide": -9, "Intimidate": 11, "Knowledge (nature)": 6, "Listen": 10, "Sense Motive": 8, "Spot": 10, "Survival": 4 },
-    "feats": ["Improved Sunder", "Iron Will", "Power Attack"],
+    "special_attacks": [
+      "Animate Trees",
+      "Double Damage Against Objects",
+      "Trample 2d6+13"
+    ],
+    "special_qualities": [
+      "Damage Reduction 10/Slashing",
+      "Low-Light Vision",
+      "Plant Traits",
+      "Vulnerability to Fire"
+    ],
+    "saves": {
+      "fort": 10,
+      "ref": 1,
+      "will": 6
+    },
+    "abilities": {
+      "str": 29,
+      "dex": 8,
+      "con": 21,
+      "int": 12,
+      "wis": 15,
+      "cha": 12
+    },
+    "skills": {
+      "Diplomacy": 3,
+      "Hide": -9,
+      "Intimidate": 11,
+      "Knowledge (nature)": 6,
+      "Listen": 10,
+      "Sense Motive": 8,
+      "Spot": 10,
+      "Survival": 4
+    },
+    "feats": [
+      "Improved Sunder",
+      "Iron Will",
+      "Power Attack"
+    ],
     "alignment": "Usually Neutral Good",
     "advancement": "8-16 HD (Huge); 17-21 HD (Gargantuan)",
     "dr": "10/Slashing",
     "sr": null,
     "regen": null,
     "fast_heal": null,
-    "elemental_weaknesses": ["Fire"],
+    "elemental_weaknesses": [
+      "Fire"
+    ],
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 500,
-    "allowed_biomes": ["Temperate_Forest"],
+    "allowed_biomes": [
+      "Temperate_Forest"
+    ],
     "primary_biome": "Temperate_Forest",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Troll",
@@ -166,33 +394,83 @@
     "hit_dice": "6d8+36",
     "hp_avg": 63,
     "initiative": 2,
-    "speed": { "land": 30 },
-    "armor_class": { "total": 16, "touch": 11, "flat_footed": 14, "components": "+2 Dex, +5 natural, -1 size" },
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 11,
+      "flat_footed": 14,
+      "components": "+2 Dex, +5 natural, -1 size"
+    },
     "base_attack": 4,
     "grapple": 14,
     "attacks": [
-      { "name": "Bite", "attack_bonus": "+9", "damage": "1d6+5", "damage_type": "Piercing" },
-      { "name": "2 Claws", "attack_bonus": "+9", "damage": "1d6+5", "damage_type": "Slashing" }
+      {
+        "name": "Bite",
+        "attack_bonus": "+9",
+        "damage": "1d6+5",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "2 Claws",
+        "attack_bonus": "+9",
+        "damage": "1d6+5",
+        "damage_type": "Slashing"
+      }
     ],
-    "special_attacks": ["Rend 2d6+7 (if both claws hit)"],
-    "special_qualities": ["Darkvision 90 ft.", "Low-Light Vision", "Regeneration 5", "Scent"],
-    "saves": { "fort": 11, "ref": 4, "will": 3 },
-    "abilities": { "str": 23, "dex": 14, "con": 23, "int": 6, "wis": 9, "cha": 6 },
-    "skills": { "Listen": 6, "Spot": 7 },
-    "feats": ["Alertness", "Iron Will", "Track"],
+    "special_attacks": [
+      "Rend 2d6+7 (if both claws hit)"
+    ],
+    "special_qualities": [
+      "Darkvision 90 ft.",
+      "Low-Light Vision",
+      "Regeneration 5",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 11,
+      "ref": 4,
+      "will": 3
+    },
+    "abilities": {
+      "str": 23,
+      "dex": 14,
+      "con": 23,
+      "int": 6,
+      "wis": 9,
+      "cha": 6
+    },
+    "skills": {
+      "Listen": 6,
+      "Spot": 7
+    },
+    "feats": [
+      "Alertness",
+      "Iron Will",
+      "Track"
+    ],
     "alignment": "Usually Chaotic Evil",
     "advancement": "7-10 HD (Large); 11-18 HD (Huge)",
     "dr": null,
     "sr": null,
     "regen": 5,
     "fast_heal": null,
-    "elemental_weaknesses": ["Fire", "Acid"],
+    "elemental_weaknesses": [
+      "Fire",
+      "Acid"
+    ],
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 300,
-    "allowed_biomes": ["Cold_Mountain", "Cold_Hill", "Temperate_Swamp"],
+    "allowed_biomes": [
+      "Cold_Mountain",
+      "Cold_Hill",
+      "Temperate_Swamp"
+    ],
     "primary_biome": "Cold_Hill",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Fortress"
   },
   {
     "name": "Vampire",
@@ -203,19 +481,76 @@
     "hit_dice": "as base creature +2d12",
     "hp_avg": 0,
     "initiative": 7,
-    "speed": { "land": 30, "fly": 50 },
-    "armor_class": { "total": 0, "touch": 0, "flat_footed": 0, "components": "Base creature +6 natural armor bonus" },
+    "speed": {
+      "land": 30,
+      "fly": 50
+    },
+    "armor_class": {
+      "total": 0,
+      "touch": 0,
+      "flat_footed": 0,
+      "components": "Base creature +6 natural armor bonus"
+    },
     "base_attack": 0,
     "grapple": 0,
     "attacks": [
-      { "name": "Slam", "attack_bonus": "+varies", "damage": "1d6 + energy drain (2 negative levels)", "damage_type": "Bludgeoning + Negative" }
+      {
+        "name": "Slam",
+        "attack_bonus": "+varies",
+        "damage": "1d6 + energy drain (2 negative levels)",
+        "damage_type": "Bludgeoning + Negative"
+      }
     ],
-    "special_attacks": ["Blood Drain", "Children of the Night", "Create Spawn", "Dominate", "Energy Drain (2 levels, Fort DC 17 to resist)"],
-    "special_qualities": ["Alternate Form (wolf or gaseous)", "Damage Reduction 10/Silver and Magic", "Darkvision 60 ft.", "Fast Healing 5", "Gaseous Form", "Resistance to Cold and Electricity 10", "Spell Resistance as base creature +5", "Spider Climb", "Turn Resistance +4", "Undead Traits"],
-    "saves": { "fort": 0, "ref": 3, "will": 4 },
-    "abilities": { "str": 4, "dex": 6, "con": null, "int": 2, "wis": 2, "cha": 4 },
-    "skills": { "Bluff": 8, "Diplomacy": 4, "Intimidate": 4, "Listen": 8, "Move Silently": 8, "Search": 8, "Sense Motive": 8, "Spot": 8 },
-    "feats": ["Alertness", "Combat Reflexes", "Dodge", "Improved Initiative", "Lightning Reflexes", "plus base feats"],
+    "special_attacks": [
+      "Blood Drain",
+      "Children of the Night",
+      "Create Spawn",
+      "Dominate",
+      "Energy Drain (2 levels, Fort DC 17 to resist)"
+    ],
+    "special_qualities": [
+      "Alternate Form (wolf or gaseous)",
+      "Damage Reduction 10/Silver and Magic",
+      "Darkvision 60 ft.",
+      "Fast Healing 5",
+      "Gaseous Form",
+      "Resistance to Cold and Electricity 10",
+      "Spell Resistance as base creature +5",
+      "Spider Climb",
+      "Turn Resistance +4",
+      "Undead Traits"
+    ],
+    "saves": {
+      "fort": 0,
+      "ref": 3,
+      "will": 4
+    },
+    "abilities": {
+      "str": 4,
+      "dex": 6,
+      "con": null,
+      "int": 2,
+      "wis": 2,
+      "cha": 4
+    },
+    "skills": {
+      "Bluff": 8,
+      "Diplomacy": 4,
+      "Intimidate": 4,
+      "Listen": 8,
+      "Move Silently": 8,
+      "Search": 8,
+      "Sense Motive": 8,
+      "Spot": 8
+    },
+    "feats": [
+      "Alertness",
+      "Combat Reflexes",
+      "Dodge",
+      "Improved Initiative",
+      "Lightning Reflexes",
+      "plus base feats"
+    ],
     "alignment": "Always evil (usually Lawful Evil or Chaotic Evil)",
     "advancement": "By character class",
     "dr": "10/Silver and Magic",
@@ -223,12 +558,18 @@
     "regen": null,
     "fast_heal": 5,
     "elemental_weaknesses": [],
-    "alignment_weaknesses": ["Good"],
+    "alignment_weaknesses": [
+      "Good"
+    ],
     "passive_effects": [],
     "population_base": 50,
-    "allowed_biomes": ["Any_Urban", "Any_Ruin"],
+    "allowed_biomes": [
+      "Any_Urban",
+      "Any_Ruin"
+    ],
     "primary_biome": "Any_Urban",
-    "ecology_notes": "Population represents active vampires; does not count spawn under their control. Vampires do not naturally increase in number through births — each new vampire requires deliberate creation."
+    "ecology_notes": "Population represents active vampires; does not count spawn under their control. Vampires do not naturally increase in number through births \u2014 each new vampire requires deliberate creation.",
+    "lair_type": "Cave"
   },
   {
     "name": "Wraith",
@@ -239,19 +580,66 @@
     "hit_dice": "5d12",
     "hp_avg": 32,
     "initiative": 7,
-    "speed": { "fly": 60 },
-    "armor_class": { "total": 15, "touch": 15, "flat_footed": 12, "components": "+3 Dex, +2 deflection (incorporeal)" },
+    "speed": {
+      "fly": 60
+    },
+    "armor_class": {
+      "total": 15,
+      "touch": 15,
+      "flat_footed": 12,
+      "components": "+3 Dex, +2 deflection (incorporeal)"
+    },
     "base_attack": 2,
     "grapple": -1,
     "attacks": [
-      { "name": "Incorporeal Touch", "attack_bonus": "+5", "damage": "1d4 CON drain", "damage_type": "Constitution drain" }
+      {
+        "name": "Incorporeal Touch",
+        "attack_bonus": "+5",
+        "damage": "1d4 CON drain",
+        "damage_type": "Constitution drain"
+      }
     ],
-    "special_attacks": ["Constitution Drain", "Create Spawn", "Unnatural Aura"],
-    "special_qualities": ["Darkvision 60 ft.", "Daylight Powerlessness", "Incorporeal Traits", "Undead Traits", "Sunlight Powerlessness"],
-    "saves": { "fort": 1, "ref": 4, "will": 6 },
-    "abilities": { "str": null, "dex": 16, "con": null, "int": 14, "wis": 14, "cha": 15 },
-    "skills": { "Diplomacy": 4, "Hide": 12, "Intimidate": 10, "Listen": 12, "Search": 12, "Sense Motive": 10, "Spot": 12, "Survival": 2 },
-    "feats": ["Alertness", "Blind-Fight", "Combat Reflexes", "Improved Initiative"],
+    "special_attacks": [
+      "Constitution Drain",
+      "Create Spawn",
+      "Unnatural Aura"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Daylight Powerlessness",
+      "Incorporeal Traits",
+      "Undead Traits",
+      "Sunlight Powerlessness"
+    ],
+    "saves": {
+      "fort": 1,
+      "ref": 4,
+      "will": 6
+    },
+    "abilities": {
+      "str": null,
+      "dex": 16,
+      "con": null,
+      "int": 14,
+      "wis": 14,
+      "cha": 15
+    },
+    "skills": {
+      "Diplomacy": 4,
+      "Hide": 12,
+      "Intimidate": 10,
+      "Listen": 12,
+      "Search": 12,
+      "Sense Motive": 10,
+      "Spot": 12,
+      "Survival": 2
+    },
+    "feats": [
+      "Alertness",
+      "Blind-Fight",
+      "Combat Reflexes",
+      "Improved Initiative"
+    ],
     "alignment": "Always Lawful Evil",
     "advancement": "6-10 HD (Medium)",
     "dr": null,
@@ -262,9 +650,12 @@
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 150,
-    "allowed_biomes": ["Any_Ruin"],
+    "allowed_biomes": [
+      "Any_Ruin"
+    ],
     "primary_biome": "Any_Ruin",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Yuan-ti Pureblood",
@@ -275,19 +666,61 @@
     "hit_dice": "4d8+8",
     "hp_avg": 26,
     "initiative": 1,
-    "speed": { "land": 30 },
-    "armor_class": { "total": 17, "touch": 11, "flat_footed": 16, "components": "+1 Dex, +4 natural, +2 light fortification armor" },
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 17,
+      "touch": 11,
+      "flat_footed": 16,
+      "components": "+1 Dex, +4 natural, +2 light fortification armor"
+    },
     "base_attack": 4,
     "grapple": 5,
     "attacks": [
-      { "name": "Scimitar", "attack_bonus": "+5", "damage": "1d6+1", "crit_range": "18-20/x2", "damage_type": "Slashing" }
+      {
+        "name": "Scimitar",
+        "attack_bonus": "+5",
+        "damage": "1d6+1",
+        "crit_range": "18-20/x2",
+        "damage_type": "Slashing"
+      }
     ],
-    "special_attacks": ["Spell-Like Abilities (Cause Fear, Charm Person, Darkness, Detect Poison at will)", "Alternate Form"],
-    "special_qualities": ["Darkvision 60 ft.", "Scent", "Spell Resistance 14"],
-    "saves": { "fort": 3, "ref": 5, "will": 6 },
-    "abilities": { "str": 13, "dex": 13, "con": 15, "int": 14, "wis": 14, "cha": 16 },
-    "skills": { "Bluff": 8, "Concentration": 7, "Disguise": 7, "Hide": 7, "Knowledge (arcana)": 7, "Listen": 7, "Spot": 7 },
-    "feats": ["Alertness", "Dodge"],
+    "special_attacks": [
+      "Spell-Like Abilities (Cause Fear, Charm Person, Darkness, Detect Poison at will)",
+      "Alternate Form"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Scent",
+      "Spell Resistance 14"
+    ],
+    "saves": {
+      "fort": 3,
+      "ref": 5,
+      "will": 6
+    },
+    "abilities": {
+      "str": 13,
+      "dex": 13,
+      "con": 15,
+      "int": 14,
+      "wis": 14,
+      "cha": 16
+    },
+    "skills": {
+      "Bluff": 8,
+      "Concentration": 7,
+      "Disguise": 7,
+      "Hide": 7,
+      "Knowledge (arcana)": 7,
+      "Listen": 7,
+      "Spot": 7
+    },
+    "feats": [
+      "Alertness",
+      "Dodge"
+    ],
     "alignment": "Always Chaotic Evil",
     "advancement": "By character class",
     "dr": null,
@@ -298,9 +731,13 @@
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 300,
-    "allowed_biomes": ["Warm_Forest", "Warm_Plain"],
+    "allowed_biomes": [
+      "Warm_Forest",
+      "Warm_Plain"
+    ],
     "primary_biome": "Warm_Forest",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Fortress"
   },
   {
     "name": "Zombie (Human)",
@@ -311,19 +748,48 @@
     "hit_dice": "2d12+3",
     "hp_avg": 16,
     "initiative": -1,
-    "speed": { "land": 30 },
-    "armor_class": { "total": 11, "touch": 9, "flat_footed": 11, "components": "-1 Dex, +2 natural" },
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 11,
+      "touch": 9,
+      "flat_footed": 11,
+      "components": "-1 Dex, +2 natural"
+    },
     "base_attack": 1,
     "grapple": 2,
     "attacks": [
-      { "name": "Slam", "attack_bonus": "+2", "damage": "1d6+1", "damage_type": "Bludgeoning" }
+      {
+        "name": "Slam",
+        "attack_bonus": "+2",
+        "damage": "1d6+1",
+        "damage_type": "Bludgeoning"
+      }
     ],
     "special_attacks": [],
-    "special_qualities": ["Single Actions Only", "Darkvision 60 ft.", "Undead Traits"],
-    "saves": { "fort": 0, "ref": -1, "will": 3 },
-    "abilities": { "str": 12, "dex": 8, "con": null, "int": null, "wis": 10, "cha": 1 },
+    "special_qualities": [
+      "Single Actions Only",
+      "Darkvision 60 ft.",
+      "Undead Traits"
+    ],
+    "saves": {
+      "fort": 0,
+      "ref": -1,
+      "will": 3
+    },
+    "abilities": {
+      "str": 12,
+      "dex": 8,
+      "con": null,
+      "int": null,
+      "wis": 10,
+      "cha": 1
+    },
     "skills": {},
-    "feats": ["Toughness"],
+    "feats": [
+      "Toughness"
+    ],
     "alignment": "Always Neutral Evil",
     "advancement": "None",
     "dr": null,
@@ -334,8 +800,11 @@
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 0,
-    "allowed_biomes": ["Any"],
+    "allowed_biomes": [
+      "Any"
+    ],
     "primary_biome": "Any",
-    "ecology_notes": "Zombies are raised, not naturally occurring — population_base 0 means they are never auto-spawned at world generation. Each zombie requires a necromancer or similar source."
+    "ecology_notes": "Zombies are raised, not naturally occurring \u2014 population_base 0 means they are never auto-spawned at world generation. Each zombie requires a necromancer or similar source.",
+    "lair_type": "Cave"
   }
 ]

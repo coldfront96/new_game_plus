@@ -92,7 +92,8 @@
       "Temperate_Mountain"
     ],
     "primary_biome": "Cold_Swamp",
-    "ecology_notes": "The annis is the most physically powerful of the hags, a massive iron-skinned monster that haunts cold bogs, frozen forests, and mountain passes. Unlike other hags that rely on trickery and magic, the annis prefers to simply tear prey apart with her rending claws. She still employs illusion and fog to set up ambushes, vanishing into the mist before tearing victims apart."
+    "ecology_notes": "The annis is the most physically powerful of the hags, a massive iron-skinned monster that haunts cold bogs, frozen forests, and mountain passes. Unlike other hags that rely on trickery and magic, the annis prefers to simply tear prey apart with her rending claws. She still employs illusion and fog to set up ambushes, vanishing into the mist before tearing victims apart.",
+    "lair_type": "Fortress"
   },
   {
     "name": "Gargoyle",
@@ -186,7 +187,8 @@
       "Underground"
     ],
     "primary_biome": "Temperate_Mountain",
-    "ecology_notes": "Gargoyles are cunning ambush predators that roost on stone buildings and cliff faces, where their stony skin allows them to blend perfectly with their surroundings. They wait motionless for hours, then drop on unsuspecting prey. Gargoyles often guard ruins or dungeons, serving evil masters or simply claiming territory they consider their own."
+    "ecology_notes": "Gargoyles are cunning ambush predators that roost on stone buildings and cliff faces, where their stony skin allows them to blend perfectly with their surroundings. They wait motionless for hours, then drop on unsuspecting prey. Gargoyles often guard ruins or dungeons, serving evil masters or simply claiming territory they consider their own.",
+    "lair_type": "Fortress"
   },
   {
     "name": "Green Hag",
@@ -276,7 +278,8 @@
       "Temperate_Forest"
     ],
     "primary_biome": "Temperate_Swamp",
-    "ecology_notes": "Green hags are cunning swamp witches who use illusion and shapeshifting to infiltrate communities, spreading misery and discord. They particularly delight in corrupting good people, using their weakness touch to debilitate strong warriors. Green hags often form covens of three with other hags, dramatically increasing their magical power."
+    "ecology_notes": "Green hags are cunning swamp witches who use illusion and shapeshifting to infiltrate communities, spreading misery and discord. They particularly delight in corrupting good people, using their weakness touch to debilitate strong warriors. Green hags often form covens of three with other hags, dramatically increasing their magical power.",
+    "lair_type": "Fortress"
   },
   {
     "name": "Medusa",
@@ -376,7 +379,8 @@
       "Any_Ruin"
     ],
     "primary_biome": "Temperate_Forest",
-    "ecology_notes": "The medusa is a fearsome creature with a woman's body and a head writhing with venomous snakes. Her gaze can permanently petrify any creature that meets her eyes, and her hair-snakes can inject a strength-sapping venom. Medusas often collect the stone statues of their victims as art. They wear veils in public and are cunning enough to negotiate when it suits them."
+    "ecology_notes": "The medusa is a fearsome creature with a woman's body and a head writhing with venomous snakes. Her gaze can permanently petrify any creature that meets her eyes, and her hair-snakes can inject a strength-sapping venom. Medusas often collect the stone statues of their victims as art. They wear veils in public and are cunning enough to negotiate when it suits them.",
+    "lair_type": "Fortress"
   },
   {
     "name": "Naga, Dark",
@@ -466,7 +470,8 @@
       "Underdark"
     ],
     "primary_biome": "Underground",
-    "ecology_notes": "Dark nagas are sinister serpentine beings who dwell in underground lairs, accumulating power and wealth. They use their detect thoughts ability to read the minds of those who approach, making them nearly impossible to deceive. Dark nagas are scheming and manipulative, building networks of humanoid servants and alliances with other evil beings in the Underdark."
+    "ecology_notes": "Dark nagas are sinister serpentine beings who dwell in underground lairs, accumulating power and wealth. They use their detect thoughts ability to read the minds of those who approach, making them nearly impossible to deceive. Dark nagas are scheming and manipulative, building networks of humanoid servants and alliances with other evil beings in the Underdark.",
+    "lair_type": "Fortress"
   },
   {
     "name": "Naga, Guardian",
@@ -549,7 +554,8 @@
       "Temperate_Plain"
     ],
     "primary_biome": "Temperate_Forest",
-    "ecology_notes": "Guardian nagas are noble, lawful-good serpents who serve as protectors of sacred places, tombs, and temples. They possess powerful clerical spellcasting and are immune to many effects through their spell resistance. Guardian nagas are willing to negotiate with good-aligned visitors but are relentless in defending their charges against evil intruders."
+    "ecology_notes": "Guardian nagas are noble, lawful-good serpents who serve as protectors of sacred places, tombs, and temples. They possess powerful clerical spellcasting and are immune to many effects through their spell resistance. Guardian nagas are willing to negotiate with good-aligned visitors but are relentless in defending their charges against evil intruders.",
+    "lair_type": "Fortress"
   },
   {
     "name": "Naga, Spirit",
@@ -639,7 +645,8 @@
       "Any_Ruin"
     ],
     "primary_biome": "Temperate_Forest",
-    "ecology_notes": "Spirit nagas are malevolent serpents that combine powerful spellcasting with a hypnotic gaze that can charm victims into willing servitude. They dwell in ruins and dark forests, gathering cults of charmed humanoids to serve them. Spirit nagas use their thralls to gather food, treasure, and information, ruling over them with casual cruelty."
+    "ecology_notes": "Spirit nagas are malevolent serpents that combine powerful spellcasting with a hypnotic gaze that can charm victims into willing servitude. They dwell in ruins and dark forests, gathering cults of charmed humanoids to serve them. Spirit nagas use their thralls to gather food, treasure, and information, ruling over them with casual cruelty.",
+    "lair_type": "Fortress"
   },
   {
     "name": "Naga, Water",
@@ -721,7 +728,8 @@
       "Temperate_Swamp"
     ],
     "primary_biome": "Temperate_Aquatic",
-    "ecology_notes": "Water nagas are aquatic serpents that dwell in deep lakes, slow rivers, and flooded ruins. They are capricious and self-serving, using their sorcerous magic and venomous bite to control their aquatic territories. Water nagas sometimes make deals with sailors or fishermen, demanding tribute in exchange for safe passage across their waters."
+    "ecology_notes": "Water nagas are aquatic serpents that dwell in deep lakes, slow rivers, and flooded ruins. They are capricious and self-serving, using their sorcerous magic and venomous bite to control their aquatic territories. Water nagas sometimes make deals with sailors or fishermen, demanding tribute in exchange for safe passage across their waters.",
+    "lair_type": "Fortress"
   },
   {
     "name": "Sea Hag",
@@ -804,6 +812,7 @@
       "Temperate_Aquatic"
     ],
     "primary_biome": "Cold_Aquatic",
-    "ecology_notes": "Sea hags are hideous aquatic hags that dwell in sunken ruins, sea caves, and cold coastal waters. Their appearance alone can stun the unprepared, and their evil eye weakens those who lock gazes with them. Sea hags sometimes form covens with other hags, and they prey on sailors and coastal villagers, drowning victims and keeping their possessions in underwater lairs."
+    "ecology_notes": "Sea hags are hideous aquatic hags that dwell in sunken ruins, sea caves, and cold coastal waters. Their appearance alone can stun the unprepared, and their evil eye weakens those who lock gazes with them. Sea hags sometimes form covens with other hags, and they prey on sailors and coastal villagers, drowning victims and keeping their possessions in underwater lairs.",
+    "lair_type": "Fortress"
   }
 ]

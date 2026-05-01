@@ -30,7 +30,7 @@
         "damage_type": "Bludgeoning"
       },
       {
-        "name": "Slam (×2)",
+        "name": "Slam (\u00d72)",
         "attack_bonus": "+19",
         "damage": "1d8+9",
         "damage_type": "Bludgeoning"
@@ -102,7 +102,8 @@
       "Outer_Plane"
     ],
     "primary_biome": "Outer_Plane",
-    "ecology_notes": "Astral Devas serve as divine messengers and champions of the good-aligned outer planes, often descending to the Material Plane on quests granted by their divine patrons."
+    "ecology_notes": "Astral Devas serve as divine messengers and champions of the good-aligned outer planes, often descending to the Material Plane on quests granted by their divine patrons.",
+    "lair_type": "Cave"
   },
   {
     "name": "Angel, Planetar",
@@ -135,7 +136,7 @@
         "damage_type": "Slashing"
       },
       {
-        "name": "Slam (×2)",
+        "name": "Slam (\u00d72)",
         "attack_bonus": "+18",
         "damage": "2d6+7",
         "damage_type": "Bludgeoning"
@@ -207,7 +208,8 @@
       "Outer_Plane"
     ],
     "primary_biome": "Outer_Plane",
-    "ecology_notes": "Planetars are powerful angelic warriors who serve as generals and commanders in the armies of the good-aligned outer planes."
+    "ecology_notes": "Planetars are powerful angelic warriors who serve as generals and commanders in the armies of the good-aligned outer planes.",
+    "lair_type": "Cave"
   },
   {
     "name": "Angel, Solar",
@@ -320,7 +322,8 @@
       "Outer_Plane"
     ],
     "primary_biome": "Outer_Plane",
-    "ecology_notes": "Solars are the most powerful angels, generals and champions of the divine. They are among the strongest beings in all existence and serve their deities directly."
+    "ecology_notes": "Solars are the most powerful angels, generals and champions of the divine. They are among the strongest beings in all existence and serve their deities directly.",
+    "lair_type": "Cave"
   },
   {
     "name": "Archon, Hound",
@@ -416,7 +419,8 @@
       "Outer_Plane"
     ],
     "primary_biome": "Outer_Plane",
-    "ecology_notes": "Hound Archons appear as powerfully built humans with canine heads. They patrol the lower planes hunting evil and serve as soldiers of the lawful good outer planes."
+    "ecology_notes": "Hound Archons appear as powerfully built humans with canine heads. They patrol the lower planes hunting evil and serve as soldiers of the lawful good outer planes.",
+    "lair_type": "Cave"
   },
   {
     "name": "Archon, Lantern",
@@ -494,7 +498,8 @@
       "Outer_Plane"
     ],
     "primary_biome": "Outer_Plane",
-    "ecology_notes": "Lantern Archons appear as glowing balls of light. They are the weakest of the archons, serving as scouts and messengers."
+    "ecology_notes": "Lantern Archons appear as glowing balls of light. They are the weakest of the archons, serving as scouts and messengers.",
+    "lair_type": "Cave"
   },
   {
     "name": "Archon, Trumpet",
@@ -595,7 +600,8 @@
       "Outer_Plane"
     ],
     "primary_biome": "Outer_Plane",
-    "ecology_notes": "Trumpet Archons are the heralds of the lawful good outer planes, serving as elite soldiers and champions. Their trumpet can sound notes of power that weaken and stun evil creatures."
+    "ecology_notes": "Trumpet Archons are the heralds of the lawful good outer planes, serving as elite soldiers and champions. Their trumpet can sound notes of power that weaken and stun evil creatures.",
+    "lair_type": "Cave"
   },
   {
     "name": "Azata, Bralani",
@@ -621,7 +627,7 @@
     "grapple": 9,
     "attacks": [
       {
-        "name": "Slam (×2)",
+        "name": "Slam (\u00d72)",
         "attack_bonus": "+9",
         "damage": "1d6+3",
         "damage_type": "Bludgeoning"
@@ -698,7 +704,8 @@
       "Outer_Plane"
     ],
     "primary_biome": "Outer_Plane",
-    "ecology_notes": "Bralani Azata resemble wind-blown elves with silver-white hair. They love freedom and spontaneity, often appearing in storms to oppose tyranny and protect the innocent."
+    "ecology_notes": "Bralani Azata resemble wind-blown elves with silver-white hair. They love freedom and spontaneity, often appearing in storms to oppose tyranny and protect the innocent.",
+    "lair_type": "Cave"
   },
   {
     "name": "Azata, Ghaele",
@@ -731,7 +738,7 @@
         "damage_type": "Slashing"
       },
       {
-        "name": "Slam (×2)",
+        "name": "Slam (\u00d72)",
         "attack_bonus": "+14",
         "damage": "1d6+4",
         "damage_type": "Bludgeoning"
@@ -801,6 +808,7 @@
       "Outer_Plane"
     ],
     "primary_biome": "Outer_Plane",
-    "ecology_notes": "Ghaele Azata appear as humans or elves of breathtaking beauty. Their gaze can incapacitate mortals and slay the evil. They serve as champions of freedom and personal excellence on the chaotic good outer planes."
+    "ecology_notes": "Ghaele Azata appear as humans or elves of breathtaking beauty. Their gaze can incapacitate mortals and slay the evil. They serve as champions of freedom and personal excellence on the chaotic good outer planes.",
+    "lair_type": "Cave"
   }
 ]

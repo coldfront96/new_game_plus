@@ -71,7 +71,8 @@
       "Any_Ruin"
     ],
     "primary_biome": "Temperate_Forest",
-    "ecology_notes": "Assassin vines lie dormant among normal vegetation, lashing out to constrict prey when creatures draw close. They use entangle to prevent escape."
+    "ecology_notes": "Assassin vines lie dormant among normal vegetation, lashing out to constrict prey when creatures draw close. They use entangle to prevent escape.",
+    "lair_type": "Cave"
   },
   {
     "name": "Phantom Fungus",
@@ -142,7 +143,8 @@
       "Temperate_Forest"
     ],
     "primary_biome": "Underground",
-    "ecology_notes": "Phantom fungi are ambulatory mushrooms that are permanently invisible, making them difficult to detect before they strike."
+    "ecology_notes": "Phantom fungi are ambulatory mushrooms that are permanently invisible, making them difficult to detect before they strike.",
+    "lair_type": "Cave"
   },
   {
     "name": "Shrieker",
@@ -202,7 +204,8 @@
       "Underdark"
     ],
     "primary_biome": "Underground",
-    "ecology_notes": "Shriekers are stationary fungi that emit a piercing wail when light or movement comes within 10 feet, alerting nearby monsters to prey."
+    "ecology_notes": "Shriekers are stationary fungi that emit a piercing wail when light or movement comes within 10 feet, alerting nearby monsters to prey.",
+    "lair_type": "Cave"
   },
   {
     "name": "Tendriculos",
@@ -288,7 +291,8 @@
       "Temperate_Swamp"
     ],
     "primary_biome": "Temperate_Forest",
-    "ecology_notes": "The tendriculos is a massive ambulatory plant that resembles a tangle of vines and leaves. It envelops prey with paralyzing spores before swallowing them whole."
+    "ecology_notes": "The tendriculos is a massive ambulatory plant that resembles a tangle of vines and leaves. It envelops prey with paralyzing spores before swallowing them whole.",
+    "lair_type": "Cave"
   },
   {
     "name": "Violet Fungus",
@@ -355,7 +359,8 @@
       "Temperate_Forest"
     ],
     "primary_biome": "Underground",
-    "ecology_notes": "Violet fungi are ambulatory purple mushrooms whose tentacles spread a devastating rotting disease. They often cluster in dungeon areas with other fungi."
+    "ecology_notes": "Violet fungi are ambulatory purple mushrooms whose tentacles spread a devastating rotting disease. They often cluster in dungeon areas with other fungi.",
+    "lair_type": "Cave"
   },
   {
     "name": "Yellow Musk Creeper",
@@ -426,6 +431,7 @@
       "Temperate_Forest"
     ],
     "primary_biome": "Warm_Forest",
-    "ecology_notes": "Yellow musk creepers lure creatures with their intoxicating pollen, draining their intelligence before converting them into yellow musk zombies that serve as guards and seed-spreaders."
+    "ecology_notes": "Yellow musk creepers lure creatures with their intoxicating pollen, draining their intelligence before converting them into yellow musk zombies that serve as guards and seed-spreaders.",
+    "lair_type": "Cave"
   }
 ]

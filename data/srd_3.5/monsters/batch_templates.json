@@ -71,7 +71,8 @@
       "Any"
     ],
     "primary_biome": "Any",
-    "ecology_notes": "Skeleton templates are applied to any creature with a skeleton. This entry represents a human warrior skeleton. Skeletons retain the shape and size of the base creature but lose all flesh and bodily organs."
+    "ecology_notes": "Skeleton templates are applied to any creature with a skeleton. This entry represents a human warrior skeleton. Skeletons retain the shape and size of the base creature but lose all flesh and bodily organs.",
+    "lair_type": "Cave"
   },
   {
     "name": "Celestial Creature (Dire Bear)",
@@ -95,7 +96,7 @@
     "grapple": 22,
     "attacks": [
       {
-        "name": "Claw (×2)",
+        "name": "Claw (\u00d72)",
         "attack_bonus": "+17",
         "damage": "2d4+10",
         "damage_type": "Slashing"
@@ -157,7 +158,8 @@
       "Outer_Plane"
     ],
     "primary_biome": "Outer_Plane",
-    "ecology_notes": "The Celestial template is applied to animals or magical beasts summoned from good-aligned outer planes. Representative example: Celestial Dire Bear. The template adds Smite Evil, DR/Magic, resistance to energy types, SR, and darkvision 60 ft."
+    "ecology_notes": "The Celestial template is applied to animals or magical beasts summoned from good-aligned outer planes. Representative example: Celestial Dire Bear. The template adds Smite Evil, DR/Magic, resistance to energy types, SR, and darkvision 60 ft.",
+    "lair_type": "Cave"
   },
   {
     "name": "Fiendish Creature (Giant Constrictor Snake)",
@@ -250,7 +252,8 @@
       "Outer_Plane"
     ],
     "primary_biome": "Outer_Plane",
-    "ecology_notes": "The Fiendish template is applied to animals or magical beasts summoned from evil-aligned outer planes. Representative example: Fiendish Constrictor Snake. Adds Smite Good, DR/Magic, resistance to cold and fire, SR, and darkvision 60 ft."
+    "ecology_notes": "The Fiendish template is applied to animals or magical beasts summoned from evil-aligned outer planes. Representative example: Fiendish Constrictor Snake. Adds Smite Good, DR/Magic, resistance to cold and fire, SR, and darkvision 60 ft.",
+    "lair_type": "Fortress"
   },
   {
     "name": "Half-Celestial (Human Paladin 5)",
@@ -339,7 +342,8 @@
       "Outer_Plane"
     ],
     "primary_biome": "Outer_Plane",
-    "ecology_notes": "Half-Celestials are mortals with one celestial parent. Representative example: Half-Celestial Human Paladin 5. Template adds wings (fly speed), DR, energy resistance, SR, SLAs, and boosts abilities."
+    "ecology_notes": "Half-Celestials are mortals with one celestial parent. Representative example: Half-Celestial Human Paladin 5. Template adds wings (fly speed), DR, energy resistance, SR, SLAs, and boosts abilities.",
+    "lair_type": "Cave"
   },
   {
     "name": "Half-Dragon (Human Fighter 5)",
@@ -423,7 +427,8 @@
       "Any"
     ],
     "primary_biome": "Any",
-    "ecology_notes": "Half-Dragons have one dragon parent. Representative example: Half-Red Dragon Human Fighter 5. Template adds +8 STR/+6 CON, wings, natural armor +4, breath weapon matching parent's, and immunities."
+    "ecology_notes": "Half-Dragons have one dragon parent. Representative example: Half-Red Dragon Human Fighter 5. Template adds +8 STR/+6 CON, wings, natural armor +4, breath weapon matching parent's, and immunities.",
+    "lair_type": "Cave"
   },
   {
     "name": "Half-Fiend (Succubus)",
@@ -448,7 +453,7 @@
     "grapple": 7,
     "attacks": [
       {
-        "name": "Claw (×2)",
+        "name": "Claw (\u00d72)",
         "attack_bonus": "+7",
         "damage": "1d6+1",
         "damage_type": "Slashing"
@@ -522,7 +527,8 @@
       "Outer_Plane"
     ],
     "primary_biome": "Outer_Plane",
-    "ecology_notes": "Half-Fiends are the offspring of fiends and other creatures. Representative example: Half-Fiend Succubus. Template adds dark wings, DR, immunities, resistances, SR, and dark spell-like abilities."
+    "ecology_notes": "Half-Fiends are the offspring of fiends and other creatures. Representative example: Half-Fiend Succubus. Template adds dark wings, DR, immunities, resistances, SR, and dark spell-like abilities.",
+    "lair_type": "Cave"
   },
   {
     "name": "Lycanthrope, Werewolf (Human Fighter 2)",
@@ -609,7 +615,8 @@
       "Any_Urban"
     ],
     "primary_biome": "Temperate_Forest",
-    "ecology_notes": "Werewolves are lycanthropes who transform into wolves or wolf-humanoid hybrids. Representative example: Werewolf (Human Fighter 2). They spread their curse through bite attacks."
+    "ecology_notes": "Werewolves are lycanthropes who transform into wolves or wolf-humanoid hybrids. Representative example: Werewolf (Human Fighter 2). They spread their curse through bite attacks.",
+    "lair_type": "Fortress"
   },
   {
     "name": "Lycanthrope, Wererat (Human Rogue 3)",
@@ -706,7 +713,8 @@
       "Underground"
     ],
     "primary_biome": "Any_Urban",
-    "ecology_notes": "Wererats are cunning shapeshifters who prefer urban environments. Representative example: Wererat (Human Rogue 3). They often form secret guilds and work as spies, thieves, and assassins."
+    "ecology_notes": "Wererats are cunning shapeshifters who prefer urban environments. Representative example: Wererat (Human Rogue 3). They often form secret guilds and work as spies, thieves, and assassins.",
+    "lair_type": "Fortress"
   },
   {
     "name": "Lycanthrope, Wereboar (Human Barbarian 3)",
@@ -732,7 +740,7 @@
       {
         "name": "Greataxe",
         "attack_bonus": "+7",
-        "damage": "1d12+4/×3",
+        "damage": "1d12+4/\u00d73",
         "damage_type": "Slashing"
       },
       {
@@ -795,7 +803,8 @@
       "Temperate_Plain"
     ],
     "primary_biome": "Temperate_Forest",
-    "ecology_notes": "Wereboars are aggressive and stubborn lycanthropes who share the boar's ferocity. Representative example: Wereboar (Human Barbarian 3). They rarely form groups but are territorial and dangerous."
+    "ecology_notes": "Wereboars are aggressive and stubborn lycanthropes who share the boar's ferocity. Representative example: Wereboar (Human Barbarian 3). They rarely form groups but are territorial and dangerous.",
+    "lair_type": "Fortress"
   },
   {
     "name": "Lycanthrope, Weretiger (Human Fighter 5)",
@@ -825,7 +834,7 @@
         "damage_type": "Slashing"
       },
       {
-        "name": "Claw ×2 (hybrid/tiger)",
+        "name": "Claw \u00d72 (hybrid/tiger)",
         "attack_bonus": "+13",
         "damage": "1d8+6",
         "damage_type": "Slashing"
@@ -894,7 +903,8 @@
       "Warm_Forest"
     ],
     "primary_biome": "Temperate_Forest",
-    "ecology_notes": "Weretigers are proud and solitary lycanthropes. Representative example: Weretiger (Human Fighter 5). They combine human cunning with feline ferocity and hunting instinct."
+    "ecology_notes": "Weretigers are proud and solitary lycanthropes. Representative example: Weretiger (Human Fighter 5). They combine human cunning with feline ferocity and hunting instinct.",
+    "lair_type": "Fortress"
   },
   {
     "name": "Lycanthrope, Werebear (Human Ranger 5)",
@@ -924,7 +934,7 @@
         "damage_type": "Slashing"
       },
       {
-        "name": "Claw ×2 (hybrid/bear)",
+        "name": "Claw \u00d72 (hybrid/bear)",
         "attack_bonus": "+13",
         "damage": "1d8+5",
         "damage_type": "Slashing"
@@ -994,7 +1004,8 @@
       "Temperate_Hill"
     ],
     "primary_biome": "Temperate_Forest",
-    "ecology_notes": "Werebears are the most benevolent of the common lycanthropes, often acting as forest guardians. Representative example: Werebear (Human Ranger 5). Their curse rarely spreads beyond willing recipients."
+    "ecology_notes": "Werebears are the most benevolent of the common lycanthropes, often acting as forest guardians. Representative example: Werebear (Human Ranger 5). Their curse rarely spreads beyond willing recipients.",
+    "lair_type": "Fortress"
   },
   {
     "name": "Lich Template (Generic)",
@@ -1067,7 +1078,8 @@
       "Any"
     ],
     "primary_biome": "Any",
-    "ecology_notes": "The Lich template can be applied to any humanoid spellcaster. Ability deltas: STR/DEX unchanged (0), INT +2, WIS +2, CHA +2, CON removed (null). Adds paralyzing touch, fear aura, DR, immunities, and phylactery. See batch_undead.json for a representative example (Lich Human Wizard 11)."
+    "ecology_notes": "The Lich template can be applied to any humanoid spellcaster. Ability deltas: STR/DEX unchanged (0), INT +2, WIS +2, CHA +2, CON removed (null). Adds paralyzing touch, fear aura, DR, immunities, and phylactery. See batch_undead.json for a representative example (Lich Human Wizard 11).",
+    "lair_type": "Cave"
   },
   {
     "name": "Celestial Creature (Heavy Horse)",
@@ -1149,6 +1161,7 @@
       "Outer_Plane"
     ],
     "primary_biome": "Outer_Plane",
-    "ecology_notes": "Representative example: Celestial Heavy Horse (CR 2). The Celestial template grants Smite Evil, DR 5/Magic, energy resistance to acid/cold/electricity (5 for up to 4 HD, 10 for 5-10 HD, 15 for 11+ HD), SR equal to HD+5, darkvision 60 ft., and alignment subtype (Good)."
+    "ecology_notes": "Representative example: Celestial Heavy Horse (CR 2). The Celestial template grants Smite Evil, DR 5/Magic, energy resistance to acid/cold/electricity (5 for up to 4 HD, 10 for 5-10 HD, 15 for 11+ HD), SR equal to HD+5, darkvision 60 ft., and alignment subtype (Good).",
+    "lair_type": "Cave"
   }
 ]

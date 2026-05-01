@@ -77,7 +77,8 @@
       "Any_Ruin"
     ],
     "primary_biome": "Temperate_Forest",
-    "ecology_notes": "Dire bats are massive nocturnal predators that roost in large caves and abandoned ruins. They navigate by blindsense rather than sight, making darkness no obstacle. Dire bats hunt medium-sized prey including deer and humanoids, diving from above with surprising speed. They are sometimes tamed as mounts by underground-dwelling races."
+    "ecology_notes": "Dire bats are massive nocturnal predators that roost in large caves and abandoned ruins. They navigate by blindsense rather than sight, making darkness no obstacle. Dire bats hunt medium-sized prey including deer and humanoids, diving from above with surprising speed. They are sometimes tamed as mounts by underground-dwelling races.",
+    "lair_type": "Cave"
   },
   {
     "name": "Deinonychus",
@@ -178,7 +179,8 @@
       "Temperate_Plain"
     ],
     "primary_biome": "Warm_Forest",
-    "ecology_notes": "Deinonychus are fast, agile pack hunters that coordinate attacks on prey much larger than themselves. Their enlarged sickle-shaped talons can disembowel prey on a pouncing charge. Highly intelligent for animals, they use flanking tactics and pursue wounded prey relentlessly. They are found in warm and temperate forests and plains, often hunting in packs of three to six."
+    "ecology_notes": "Deinonychus are fast, agile pack hunters that coordinate attacks on prey much larger than themselves. Their enlarged sickle-shaped talons can disembowel prey on a pouncing charge. Highly intelligent for animals, they use flanking tactics and pursue wounded prey relentlessly. They are found in warm and temperate forests and plains, often hunting in packs of three to six.",
+    "lair_type": "Cave"
   },
   {
     "name": "Elasmosaurus",
@@ -256,7 +258,8 @@
       "Warm_Plain"
     ],
     "primary_biome": "Aquatic",
-    "ecology_notes": "Elasmosauruses are enormous prehistoric plesiosaurs with extremely long necks that allow them to strike at prey from a distance. Though clumsy on land, they are superb swimmers capable of sustained pursuit. They hunt fish and marine animals near the surface, occasionally ambushing prey at the water's edge. Their endurance and toughness make them formidable opponents even when heavily wounded."
+    "ecology_notes": "Elasmosauruses are enormous prehistoric plesiosaurs with extremely long necks that allow them to strike at prey from a distance. Though clumsy on land, they are superb swimmers capable of sustained pursuit. They hunt fish and marine animals near the surface, occasionally ambushing prey at the water's edge. Their endurance and toughness make them formidable opponents even when heavily wounded.",
+    "lair_type": "Cave"
   },
   {
     "name": "Megaraptor",
@@ -358,7 +361,8 @@
       "Temperate_Plain"
     ],
     "primary_biome": "Warm_Plain",
-    "ecology_notes": "Megaraptors are massive theropod dinosaurs combining the speed of smaller raptors with formidable size. Their huge sickle talons deliver devastating wounds and their pouncing charge can bring down megafauna. Solitary apex predators, they patrol large territories in warm and temperate regions. Their extraordinary jumping ability allows them to tackle prey on broken terrain with ease."
+    "ecology_notes": "Megaraptors are massive theropod dinosaurs combining the speed of smaller raptors with formidable size. Their huge sickle talons deliver devastating wounds and their pouncing charge can bring down megafauna. Solitary apex predators, they patrol large territories in warm and temperate regions. Their extraordinary jumping ability allows them to tackle prey on broken terrain with ease.",
+    "lair_type": "Cave"
   },
   {
     "name": "Triceratops",
@@ -446,7 +450,8 @@
       "Temperate_Plain"
     ],
     "primary_biome": "Warm_Plain",
-    "ecology_notes": "Triceratops are massive, heavily armored ceratopsian dinosaurs that travel in small herds across open plains. Their three horns and bony frill are formidable weapons and defensive armor. When threatened, a herd will stampede, trampling anything in its path. Despite their bulk, a charging triceratops is capable of impaling even the largest predators on its gore attack."
+    "ecology_notes": "Triceratops are massive, heavily armored ceratopsian dinosaurs that travel in small herds across open plains. Their three horns and bony frill are formidable weapons and defensive armor. When threatened, a herd will stampede, trampling anything in its path. Despite their bulk, a charging triceratops is capable of impaling even the largest predators on its gore attack.",
+    "lair_type": "Cave"
   },
   {
     "name": "Tyrannosaurus",
@@ -543,6 +548,7 @@
       "Temperate_Forest"
     ],
     "primary_biome": "Warm_Plain",
-    "ecology_notes": "Tyrannosauruses are the apex predators of the dinosaur age, combining immense strength with a bone-crushing bite. Their frightful presence can rout lesser creatures before combat even begins. They hunt by ambush and pursuit, using scent to track prey over long distances. A tyrannosaurus that grapples prey can swallow it whole, crushing it internally. Solitary hunters, they each patrol vast territories."
+    "ecology_notes": "Tyrannosauruses are the apex predators of the dinosaur age, combining immense strength with a bone-crushing bite. Their frightful presence can rout lesser creatures before combat even begins. They hunt by ambush and pursuit, using scent to track prey over long distances. A tyrannosaurus that grapples prey can swallow it whole, crushing it internally. Solitary hunters, they each patrol vast territories.",
+    "lair_type": "Cave"
   }
 ]

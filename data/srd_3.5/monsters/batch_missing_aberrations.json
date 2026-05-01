@@ -109,7 +109,8 @@
       "Underground"
     ],
     "primary_biome": "Cold_Mountain",
-    "ecology_notes": "Athachs are monstrous three-armed giants that lurk in cold hills and mountains. Their extra limb grants them fearsome combat prowess, and their venomous bite can sap a victim's strength dramatically. They are savage and cruel, often enslaving smaller creatures. Rock-throwing and catching make them dangerous at range as well as in melee."
+    "ecology_notes": "Athachs are monstrous three-armed giants that lurk in cold hills and mountains. Their extra limb grants them fearsome combat prowess, and their venomous bite can sap a victim's strength dramatically. They are savage and cruel, often enslaving smaller creatures. Rock-throwing and catching make them dangerous at range as well as in melee.",
+    "lair_type": "Cave"
   },
   {
     "name": "Choker",
@@ -196,7 +197,8 @@
       "Temperate_Hill"
     ],
     "primary_biome": "Underground",
-    "ecology_notes": "Chokers are small, rubbery ambush predators that haunt caves and underground passages. Their supernaturally quick reflexes and long, cartilaginous tentacles allow them to seize prey suddenly and strangle it before it can react. They prefer to attack from above, dropping onto victims from ledges or ceilings."
+    "ecology_notes": "Chokers are small, rubbery ambush predators that haunt caves and underground passages. Their supernaturally quick reflexes and long, cartilaginous tentacles allow them to seize prey suddenly and strangle it before it can react. They prefer to attack from above, dropping onto victims from ledges or ceilings.",
+    "lair_type": "Cave"
   },
   {
     "name": "Drider",
@@ -298,7 +300,8 @@
       "Underground"
     ],
     "primary_biome": "Underground",
-    "ecology_notes": "Driders are drow who failed Lolth's tests and were transformed into spider-centaur hybrids as punishment. They haunt the deep Underdark, wielding both steel and magic. Despite their cursed nature they retain their intelligence and spellcasting ability, making them exceptionally dangerous. They are shunned by other drow and hunt alone or in small groups."
+    "ecology_notes": "Driders are drow who failed Lolth's tests and were transformed into spider-centaur hybrids as punishment. They haunt the deep Underdark, wielding both steel and magic. Despite their cursed nature they retain their intelligence and spellcasting ability, making them exceptionally dangerous. They are shunned by other drow and hunt alone or in small groups.",
+    "lair_type": "Cave"
   },
   {
     "name": "Ettercap",
@@ -395,6 +398,7 @@
       "Any_Ruin"
     ],
     "primary_biome": "Temperate_Forest",
-    "ecology_notes": "Ettercaps are spider-like aberrations that lurk in forests and ruins, spinning elaborate webs to ensnare prey. They are primitive but cunning trapmakers, working alongside giant spiders as allies. Their venomous bite saps agility from victims caught in their sticky snares. They are solitary or found in small family groups near web-choked forest clearings."
+    "ecology_notes": "Ettercaps are spider-like aberrations that lurk in forests and ruins, spinning elaborate webs to ensnare prey. They are primitive but cunning trapmakers, working alongside giant spiders as allies. Their venomous bite saps agility from victims caught in their sticky snares. They are solitary or found in small family groups near web-choked forest clearings.",
+    "lair_type": "Cave"
   }
 ]

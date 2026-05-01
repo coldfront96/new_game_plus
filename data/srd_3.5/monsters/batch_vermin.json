@@ -73,7 +73,8 @@
       "Warm_Forest"
     ],
     "primary_biome": "Temperate_Plain",
-    "ecology_notes": "Giant ant workers are the backbone of their colonies, foraging for food and defending the nest. They are mindless insects that follow pheromone signals from their queen. Worker ants are faster than they look and can carry objects many times their own weight. They attack any creature that threatens the colony."
+    "ecology_notes": "Giant ant workers are the backbone of their colonies, foraging for food and defending the nest. They are mindless insects that follow pheromone signals from their queen. Worker ants are faster than they look and can carry objects many times their own weight. They attack any creature that threatens the colony.",
+    "lair_type": "Hive"
   },
   {
     "name": "Ant, Giant (Soldier)",
@@ -152,7 +153,8 @@
       "Warm_Forest"
     ],
     "primary_biome": "Temperate_Plain",
-    "ecology_notes": "Giant ant soldiers are larger and more aggressive than workers, defending the colony with powerful bites and a stinging acid spray. They respond rapidly to any threat to the nest, swarming intruders in coordinated groups."
+    "ecology_notes": "Giant ant soldiers are larger and more aggressive than workers, defending the colony with powerful bites and a stinging acid spray. They respond rapidly to any threat to the nest, swarming intruders in coordinated groups.",
+    "lair_type": "Hive"
   },
   {
     "name": "Ant, Giant (Queen)",
@@ -226,7 +228,8 @@
       "Underground"
     ],
     "primary_biome": "Underground",
-    "ecology_notes": "The giant ant queen is the most powerful member of the colony, rarely leaving the brood chamber. She is responsible for laying eggs and directing the colony through chemical signals. Killing the queen disrupts the colony and may cause the worker and soldier ants to become confused or dispersed."
+    "ecology_notes": "The giant ant queen is the most powerful member of the colony, rarely leaving the brood chamber. She is responsible for laying eggs and directing the colony through chemical signals. Killing the queen disrupts the colony and may cause the worker and soldier ants to become confused or dispersed.",
+    "lair_type": "Hive"
   },
   {
     "name": "Bee, Giant",
@@ -300,7 +303,8 @@
       "Temperate_Hill"
     ],
     "primary_biome": "Temperate_Forest",
-    "ecology_notes": "Giant bees form large colonies like their smaller kin, gathering nectar and pollen. They are aggressive when disturbed near their hive and will sting intruders repeatedly. A giant bee that stings often disembowels itself in the process, dying from its own attack."
+    "ecology_notes": "Giant bees form large colonies like their smaller kin, gathering nectar and pollen. They are aggressive when disturbed near their hive and will sting intruders repeatedly. A giant bee that stings often disembowels itself in the process, dying from its own attack.",
+    "lair_type": "Hive"
   },
   {
     "name": "Beetle, Giant Bombardier",
@@ -373,7 +377,8 @@
       "Temperate_Swamp"
     ],
     "primary_biome": "Temperate_Forest",
-    "ecology_notes": "Giant bombardier beetles defend themselves by spraying a caustic, boiling acid from their abdomens. This spray is accurate and can hit multiple enemies in a cone. Adventurers who hear a clicking sound from a beetle's abdomen would be wise to take cover."
+    "ecology_notes": "Giant bombardier beetles defend themselves by spraying a caustic, boiling acid from their abdomens. This spray is accurate and can hit multiple enemies in a cone. Adventurers who hear a clicking sound from a beetle's abdomen would be wise to take cover.",
+    "lair_type": "Hive"
   },
   {
     "name": "Beetle, Giant Fire",
@@ -444,7 +449,8 @@
       "Temperate_Plain"
     ],
     "primary_biome": "Temperate_Forest",
-    "ecology_notes": "Giant fire beetles produce a bioluminescent glow from glands near their abdomens. This light has made them popular as living lanterns for dungeon explorers. Their glands remain luminescent for 1d6 days after the beetle dies. Fire beetles are not aggressive unless cornered."
+    "ecology_notes": "Giant fire beetles produce a bioluminescent glow from glands near their abdomens. This light has made them popular as living lanterns for dungeon explorers. Their glands remain luminescent for 1d6 days after the beetle dies. Fire beetles are not aggressive unless cornered.",
+    "lair_type": "Hive"
   },
   {
     "name": "Centipede, Monstrous (Small)",
@@ -521,7 +527,8 @@
       "Warm_Forest"
     ],
     "primary_biome": "Underground",
-    "ecology_notes": "Monstrous centipedes are predatory multi-legged vermin found in damp places. They inject venom through their mandibles and can move quickly across walls and ceilings. Small centipedes are a common hazard in dungeons and caves."
+    "ecology_notes": "Monstrous centipedes are predatory multi-legged vermin found in damp places. They inject venom through their mandibles and can move quickly across walls and ceilings. Small centipedes are a common hazard in dungeons and caves.",
+    "lair_type": "Hive"
   },
   {
     "name": "Centipede, Monstrous (Medium)",
@@ -598,7 +605,8 @@
       "Warm_Forest"
     ],
     "primary_biome": "Underground",
-    "ecology_notes": "Medium monstrous centipedes are aggressive predators that use their venomous bite to debilitate prey. They are fast movers and excellent climbers."
+    "ecology_notes": "Medium monstrous centipedes are aggressive predators that use their venomous bite to debilitate prey. They are fast movers and excellent climbers.",
+    "lair_type": "Hive"
   },
   {
     "name": "Centipede, Monstrous (Large)",
@@ -675,7 +683,8 @@
       "Warm_Forest"
     ],
     "primary_biome": "Underground",
-    "ecology_notes": "Large monstrous centipedes pose a significant threat with their potent venom and powerful bite. They hunt rodents and small humanoids in dark caverns."
+    "ecology_notes": "Large monstrous centipedes pose a significant threat with their potent venom and powerful bite. They hunt rodents and small humanoids in dark caverns.",
+    "lair_type": "Hive"
   },
   {
     "name": "Centipede, Monstrous (Huge)",
@@ -752,7 +761,8 @@
       "Warm_Forest"
     ],
     "primary_biome": "Underground",
-    "ecology_notes": "Huge monstrous centipedes are cave-dwelling predators capable of killing large humanoids. Their venom is highly potent."
+    "ecology_notes": "Huge monstrous centipedes are cave-dwelling predators capable of killing large humanoids. Their venom is highly potent.",
+    "lair_type": "Hive"
   },
   {
     "name": "Scorpion, Monstrous (Medium)",
@@ -835,7 +845,8 @@
       "Temperate_Hill"
     ],
     "primary_biome": "Warm_Desert",
-    "ecology_notes": "Monstrous scorpions are ambush predators that use their powerful claws to grab prey before delivering a venomous sting. They are common in deserts, badlands, and underground environments."
+    "ecology_notes": "Monstrous scorpions are ambush predators that use their powerful claws to grab prey before delivering a venomous sting. They are common in deserts, badlands, and underground environments.",
+    "lair_type": "Hive"
   },
   {
     "name": "Scorpion, Monstrous (Large)",
@@ -920,7 +931,8 @@
       "Temperate_Hill"
     ],
     "primary_biome": "Warm_Desert",
-    "ecology_notes": "Large monstrous scorpions can grab and sting humanoid prey. They often lurk beneath sand or in cave entrances, waiting for prey to walk within reach."
+    "ecology_notes": "Large monstrous scorpions can grab and sting humanoid prey. They often lurk beneath sand or in cave entrances, waiting for prey to walk within reach.",
+    "lair_type": "Hive"
   },
   {
     "name": "Scorpion, Monstrous (Huge)",
@@ -1007,7 +1019,8 @@
       "Warm_Plain"
     ],
     "primary_biome": "Warm_Desert",
-    "ecology_notes": "Huge monstrous scorpions are apex predators of the desert and underdark. Large enough to grab and crush an ogre, these creatures are among the most feared vermin in the world."
+    "ecology_notes": "Huge monstrous scorpions are apex predators of the desert and underdark. Large enough to grab and crush an ogre, these creatures are among the most feared vermin in the world.",
+    "lair_type": "Hive"
   },
   {
     "name": "Spider, Monstrous (Small)",
@@ -1087,7 +1100,8 @@
       "Any_Ruin"
     ],
     "primary_biome": "Temperate_Forest",
-    "ecology_notes": "Small monstrous spiders are ambush hunters that use webs to trap prey. They are common in forests, dungeons, and ruins."
+    "ecology_notes": "Small monstrous spiders are ambush hunters that use webs to trap prey. They are common in forests, dungeons, and ruins.",
+    "lair_type": "Hive"
   },
   {
     "name": "Spider, Monstrous (Medium)",
@@ -1167,7 +1181,8 @@
       "Any_Ruin"
     ],
     "primary_biome": "Temperate_Forest",
-    "ecology_notes": "Medium monstrous spiders are common dungeon and forest predators. Their venom weakens prey, and their webs make excellent traps."
+    "ecology_notes": "Medium monstrous spiders are common dungeon and forest predators. Their venom weakens prey, and their webs make excellent traps.",
+    "lair_type": "Hive"
   },
   {
     "name": "Spider, Monstrous (Large)",
@@ -1248,7 +1263,8 @@
       "Any_Ruin"
     ],
     "primary_biome": "Underground",
-    "ecology_notes": "Large monstrous spiders are capable of tackling humans and other medium-sized creatures. Their webs are strong enough to hold most prey."
+    "ecology_notes": "Large monstrous spiders are capable of tackling humans and other medium-sized creatures. Their webs are strong enough to hold most prey.",
+    "lair_type": "Hive"
   },
   {
     "name": "Spider, Monstrous (Huge)",
@@ -1328,7 +1344,8 @@
       "Temperate_Swamp"
     ],
     "primary_biome": "Underground",
-    "ecology_notes": "Huge monstrous spiders are terrifying predators capable of immobilizing large creatures in their webs. Their webs are virtually inescapable without strength comparable to a giant."
+    "ecology_notes": "Huge monstrous spiders are terrifying predators capable of immobilizing large creatures in their webs. Their webs are virtually inescapable without strength comparable to a giant.",
+    "lair_type": "Hive"
   },
   {
     "name": "Spider, Giant",
@@ -1408,7 +1425,8 @@
       "Temperate_Swamp"
     ],
     "primary_biome": "Underground",
-    "ecology_notes": "Giant spiders are large arachnids commonly found in dungeons and caves. Unlike web-spinning monstrous spiders, giant spiders rely on speed and ambush tactics. Their venom is highly effective, rapidly sapping the strength of prey."
+    "ecology_notes": "Giant spiders are large arachnids commonly found in dungeons and caves. Unlike web-spinning monstrous spiders, giant spiders rely on speed and ambush tactics. Their venom is highly effective, rapidly sapping the strength of prey.",
+    "lair_type": "Hive"
   },
   {
     "name": "Wasp, Giant",
@@ -1487,7 +1505,8 @@
       "Warm_Plain"
     ],
     "primary_biome": "Temperate_Forest",
-    "ecology_notes": "Giant wasps are aggressive colonial insects that fiercely defend their paper-like nests. They inject venom that rapidly paralyzes prey, which they then carry back to feed their larvae. Giant wasp nests can contain dozens of workers and are extremely dangerous to disturb."
+    "ecology_notes": "Giant wasps are aggressive colonial insects that fiercely defend their paper-like nests. They inject venom that rapidly paralyzes prey, which they then carry back to feed their larvae. Giant wasp nests can contain dozens of workers and are extremely dangerous to disturb.",
+    "lair_type": "Hive"
   },
   {
     "name": "Leech, Giant",
@@ -1563,7 +1582,8 @@
       "Warm_Aquatic"
     ],
     "primary_biome": "Temperate_Swamp",
-    "ecology_notes": "Giant leeches lurk in swamps and murky water, attaching to prey with a powerful bite. Once attached they drain blood rapidly, weakening their host. They detect prey through vibrations and body heat. Salt or fire can cause them to detach."
+    "ecology_notes": "Giant leeches lurk in swamps and murky water, attaching to prey with a powerful bite. Once attached they drain blood rapidly, weakening their host. They detect prey through vibrations and body heat. Salt or fire can cause them to detach.",
+    "lair_type": "Hive"
   },
   {
     "name": "Centipede, Monstrous (Tiny)",
@@ -1624,7 +1644,7 @@
       "Weapon Finesse"
     ],
     "alignment": "Always Neutral",
-    "advancement": "—",
+    "advancement": "\u2014",
     "dr": null,
     "sr": null,
     "regen": null,
@@ -1639,7 +1659,8 @@
       "Temperate_Swamp"
     ],
     "primary_biome": "Underground",
-    "ecology_notes": "Tiny monstrous centipedes are more nuisance than threat, but their venom can weaken the unwary."
+    "ecology_notes": "Tiny monstrous centipedes are more nuisance than threat, but their venom can weaken the unwary.",
+    "lair_type": "Hive"
   },
   {
     "name": "Centipede, Monstrous (Gargantuan)",
@@ -1713,7 +1734,8 @@
       "Underdark"
     ],
     "primary_biome": "Underground",
-    "ecology_notes": "Gargantuan monstrous centipedes are massive predators capable of engulfing large creatures in their enormous mandibles."
+    "ecology_notes": "Gargantuan monstrous centipedes are massive predators capable of engulfing large creatures in their enormous mandibles.",
+    "lair_type": "Hive"
   },
   {
     "name": "Centipede, Monstrous (Colossal)",
@@ -1788,7 +1810,8 @@
       "Underdark"
     ],
     "primary_biome": "Underground",
-    "ecology_notes": "Colossal monstrous centipedes dwarf most buildings and can wipe out entire dungeon populations with their highly toxic venom."
+    "ecology_notes": "Colossal monstrous centipedes dwarf most buildings and can wipe out entire dungeon populations with their highly toxic venom.",
+    "lair_type": "Hive"
   },
   {
     "name": "Scorpion, Monstrous (Tiny)",
@@ -1812,7 +1835,7 @@
     "grapple": -9,
     "attacks": [
       {
-        "name": "Claw (×2)",
+        "name": "Claw (\u00d72)",
         "attack_bonus": "+5",
         "damage": "1d2-3",
         "damage_type": "Slashing"
@@ -1854,7 +1877,7 @@
       "Weapon Finesse"
     ],
     "alignment": "Always Neutral",
-    "advancement": "—",
+    "advancement": "\u2014",
     "dr": null,
     "sr": null,
     "regen": null,
@@ -1869,7 +1892,8 @@
       "Warm_Forest"
     ],
     "primary_biome": "Warm_Desert",
-    "ecology_notes": "Tiny monstrous scorpions are barely noticeable but can surprise the unwary with their venomous sting."
+    "ecology_notes": "Tiny monstrous scorpions are barely noticeable but can surprise the unwary with their venomous sting.",
+    "lair_type": "Hive"
   },
   {
     "name": "Scorpion, Monstrous (Small)",
@@ -1893,7 +1917,7 @@
     "grapple": -2,
     "attacks": [
       {
-        "name": "Claw (×2)",
+        "name": "Claw (\u00d72)",
         "attack_bonus": "+5",
         "damage": "1d3-1",
         "damage_type": "Slashing"
@@ -1949,7 +1973,8 @@
       "Underground"
     ],
     "primary_biome": "Warm_Desert",
-    "ecology_notes": "Small monstrous scorpions are common hazards in desert regions and underground passages."
+    "ecology_notes": "Small monstrous scorpions are common hazards in desert regions and underground passages.",
+    "lair_type": "Hive"
   },
   {
     "name": "Scorpion, Monstrous (Gargantuan)",
@@ -1973,7 +1998,7 @@
     "grapple": 33,
     "attacks": [
       {
-        "name": "Claw (×2)",
+        "name": "Claw (\u00d72)",
         "attack_bonus": "+19",
         "damage": "2d6+10",
         "damage_type": "Slashing"
@@ -2034,7 +2059,8 @@
       "Underdark"
     ],
     "primary_biome": "Warm_Desert",
-    "ecology_notes": "Gargantuan monstrous scorpions are apex predators of the deep desert and underdark, capable of killing elephants."
+    "ecology_notes": "Gargantuan monstrous scorpions are apex predators of the deep desert and underdark, capable of killing elephants.",
+    "lair_type": "Hive"
   },
   {
     "name": "Scorpion, Monstrous (Colossal)",
@@ -2058,7 +2084,7 @@
     "grapple": 54,
     "attacks": [
       {
-        "name": "Claw (×2)",
+        "name": "Claw (\u00d72)",
         "attack_bonus": "+30",
         "damage": "2d8+14",
         "damage_type": "Slashing"
@@ -2119,7 +2145,8 @@
       "Underdark"
     ],
     "primary_biome": "Warm_Desert",
-    "ecology_notes": "Colossal monstrous scorpions are legendary terrors. Their venom can kill a giant in seconds and their claws can crush stone."
+    "ecology_notes": "Colossal monstrous scorpions are legendary terrors. Their venom can kill a giant in seconds and their claws can crush stone.",
+    "lair_type": "Hive"
   },
   {
     "name": "Spider, Monstrous (Tiny)",
@@ -2182,7 +2209,7 @@
       "Weapon Finesse"
     ],
     "alignment": "Always Neutral",
-    "advancement": "—",
+    "advancement": "\u2014",
     "dr": null,
     "sr": null,
     "regen": null,
@@ -2197,7 +2224,8 @@
       "Any"
     ],
     "primary_biome": "Temperate_Forest",
-    "ecology_notes": "Tiny monstrous spiders are nearly indistinguishable from large normal spiders. Their webs are more of an annoyance than a real trap."
+    "ecology_notes": "Tiny monstrous spiders are nearly indistinguishable from large normal spiders. Their webs are more of an annoyance than a real trap.",
+    "lair_type": "Hive"
   },
   {
     "name": "Spider, Monstrous (Gargantuan)",
@@ -2277,7 +2305,8 @@
       "Temperate_Forest"
     ],
     "primary_biome": "Underground",
-    "ecology_notes": "Gargantuan monstrous spiders can cover chambers with their webs and easily pull in large prey."
+    "ecology_notes": "Gargantuan monstrous spiders can cover chambers with their webs and easily pull in large prey.",
+    "lair_type": "Hive"
   },
   {
     "name": "Spider, Monstrous (Colossal)",
@@ -2357,6 +2386,7 @@
       "Underground"
     ],
     "primary_biome": "Underdark",
-    "ecology_notes": "Colossal monstrous spiders are nightmarish dungeon predators. Their massive webs can span entire caverns, and their venom can kill a giant quickly."
+    "ecology_notes": "Colossal monstrous spiders are nightmarish dungeon predators. Their massive webs can span entire caverns, and their venom can kill a giant quickly.",
+    "lair_type": "Hive"
   }
 ]

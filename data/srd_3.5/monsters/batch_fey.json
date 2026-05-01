@@ -87,7 +87,8 @@
       "Warm_Forest"
     ],
     "primary_biome": "Temperate_Forest",
-    "ecology_notes": "Dryads are fey spirits bound to a specific tree. They never willingly travel more than 300 yards from their bonded tree, and dying if it is destroyed."
+    "ecology_notes": "Dryads are fey spirits bound to a specific tree. They never willingly travel more than 300 yards from their bonded tree, and dying if it is destroyed.",
+    "lair_type": "Cave"
   },
   {
     "name": "Nymph",
@@ -188,7 +189,8 @@
       "Temperate_Aquatic"
     ],
     "primary_biome": "Temperate_Forest",
-    "ecology_notes": "Nymphs are the most beautiful of fey. Their unearthly grace adds their CHA bonus to all saves and AC. Their blinding beauty can permanently blind those who look upon them unveiled."
+    "ecology_notes": "Nymphs are the most beautiful of fey. Their unearthly grace adds their CHA bonus to all saves and AC. Their blinding beauty can permanently blind those who look upon them unveiled.",
+    "lair_type": "Cave"
   },
   {
     "name": "Pixie",
@@ -278,7 +280,8 @@
       "Warm_Forest"
     ],
     "primary_biome": "Temperate_Forest",
-    "ecology_notes": "Pixies are mischievous fey who delight in playing pranks on larger creatures. Their spell-like abilities and natural invisibility make them elusive tricksters."
+    "ecology_notes": "Pixies are mischievous fey who delight in playing pranks on larger creatures. Their spell-like abilities and natural invisibility make them elusive tricksters.",
+    "lair_type": "Cave"
   },
   {
     "name": "Satyr",
@@ -364,7 +367,8 @@
       "Warm_Forest"
     ],
     "primary_biome": "Temperate_Forest",
-    "ecology_notes": "Satyrs are hedonistic fey with the upper body of a man and the legs and horns of a goat. Their enchanted pipes can charm, terrify, or lull creatures to sleep."
+    "ecology_notes": "Satyrs are hedonistic fey with the upper body of a man and the legs and horns of a goat. Their enchanted pipes can charm, terrify, or lull creatures to sleep.",
+    "lair_type": "Cave"
   },
   {
     "name": "Sprite",
@@ -445,6 +449,7 @@
       "Warm_Forest"
     ],
     "primary_biome": "Temperate_Forest",
-    "ecology_notes": "Sprites are tiny winged fey who serve as guardians of unspoiled woodlands. They use detect evil to identify and drive away threats to their forest homes."
+    "ecology_notes": "Sprites are tiny winged fey who serve as guardians of unspoiled woodlands. They use detect evil to identify and drive away threats to their forest homes.",
+    "lair_type": "Cave"
   }
 ]

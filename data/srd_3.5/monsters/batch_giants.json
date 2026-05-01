@@ -80,7 +80,8 @@
       "Cold_Plain"
     ],
     "primary_biome": "Temperate_Mountain",
-    "ecology_notes": "Cloud giants dwell in mountaintop castles or grand structures in the clouds. Their alignment varies widely; Good cloud giants are reclusive and artistic while Evil ones raid lowland settlements."
+    "ecology_notes": "Cloud giants dwell in mountaintop castles or grand structures in the clouds. Their alignment varies widely; Good cloud giants are reclusive and artistic while Evil ones raid lowland settlements.",
+    "lair_type": "Fortress"
   },
   {
     "name": "Ettin",
@@ -162,7 +163,8 @@
       "Temperate_Mountain"
     ],
     "primary_biome": "Cold_Plain",
-    "ecology_notes": "Ettins are two-headed giants notorious for their constant arguments between heads and their brutal raiding. Their two heads grant them remarkable vigilance, making them nearly impossible to surprise."
+    "ecology_notes": "Ettins are two-headed giants notorious for their constant arguments between heads and their brutal raiding. Their two heads grant them remarkable vigilance, making them nearly impossible to surprise.",
+    "lair_type": "Fortress"
   },
   {
     "name": "Fire Giant",
@@ -244,7 +246,8 @@
       "Warm_Desert"
     ],
     "primary_biome": "Temperate_Mountain",
-    "ecology_notes": "Fire giants are militaristic giants that dwell in volcanic mountains and forge powerful weapons. Their disciplined society contrasts sharply with most giant-kin, and their smithcraft is legendary."
+    "ecology_notes": "Fire giants are militaristic giants that dwell in volcanic mountains and forge powerful weapons. Their disciplined society contrasts sharply with most giant-kin, and their smithcraft is legendary.",
+    "lair_type": "Fortress"
   },
   {
     "name": "Frost Giant",
@@ -325,7 +328,8 @@
       "Temperate_Mountain"
     ],
     "primary_biome": "Arctic",
-    "ecology_notes": "Frost giants are raiders from arctic wastes, their immunity to cold allowing them to thrive where others perish. They organize into war-bands and serve powerful ice giants or dragon overlords."
+    "ecology_notes": "Frost giants are raiders from arctic wastes, their immunity to cold allowing them to thrive where others perish. They organize into war-bands and serve powerful ice giants or dragon overlords.",
+    "lair_type": "Fortress"
   },
   {
     "name": "Hill Giant",
@@ -403,7 +407,8 @@
       "Cold_Plain"
     ],
     "primary_biome": "Temperate_Plain",
-    "ecology_notes": "Hill giants are the most common and least intelligent of giantkind, living in rough-hewn caves and raiding nearby settlements for food. They are bullied by higher giants but bully everything smaller."
+    "ecology_notes": "Hill giants are the most common and least intelligent of giantkind, living in rough-hewn caves and raiding nearby settlements for food. They are bullied by higher giants but bully everything smaller.",
+    "lair_type": "Fortress"
   },
   {
     "name": "Ogre Mage",
@@ -482,7 +487,8 @@
       "Temperate_Forest"
     ],
     "primary_biome": "Temperate_Mountain",
-    "ecology_notes": "Ogre mages are rare and intelligent oni-like giants with potent magical abilities. They use their shape-changing and spells to manipulate lesser creatures, sometimes ruling humanoid or ogre tribes from the shadows."
+    "ecology_notes": "Ogre mages are rare and intelligent oni-like giants with potent magical abilities. They use their shape-changing and spells to manipulate lesser creatures, sometimes ruling humanoid or ogre tribes from the shadows.",
+    "lair_type": "Fortress"
   },
   {
     "name": "Stone Giant",
@@ -560,7 +566,8 @@
       "Temperate_Mountain"
     ],
     "primary_biome": "Temperate_Mountain",
-    "ecology_notes": "Stone giants are reclusive mountain dwellers who prefer to be left alone. They are master rock-throwers and use their natural camouflage to avoid conflict, though they defend their territory ferociously."
+    "ecology_notes": "Stone giants are reclusive mountain dwellers who prefer to be left alone. They are master rock-throwers and use their natural camouflage to avoid conflict, though they defend their territory ferociously.",
+    "lair_type": "Fortress"
   },
   {
     "name": "Storm Giant",
@@ -646,6 +653,7 @@
       "Cold_Aquatic"
     ],
     "primary_biome": "Temperate_Mountain",
-    "ecology_notes": "Storm giants are the mightiest of the true giants, dwelling atop the highest peaks or beneath the deepest seas. They are generally benevolent and wise, serving as mediators among giantkind."
+    "ecology_notes": "Storm giants are the mightiest of the true giants, dwelling atop the highest peaks or beneath the deepest seas. They are generally benevolent and wise, serving as mediators among giantkind.",
+    "lair_type": "Fortress"
   }
 ]

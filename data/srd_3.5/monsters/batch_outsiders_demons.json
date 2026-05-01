@@ -92,7 +92,8 @@
       "Any"
     ],
     "primary_biome": "Any",
-    "ecology_notes": "Babaus are lean, predatory demons that serve as assassins and shock troops in the Abyss. Coated in a transparent crimson jelly that grants them uncanny stealth, they slip onto the Material Plane at the behest of greater demon lords to murder and sow chaos. Their elongated skulls and whip-thin frames belie a brutal cunning."
+    "ecology_notes": "Babaus are lean, predatory demons that serve as assassins and shock troops in the Abyss. Coated in a transparent crimson jelly that grants them uncanny stealth, they slip onto the Material Plane at the behest of greater demon lords to murder and sow chaos. Their elongated skulls and whip-thin frames belie a brutal cunning.",
+    "lair_type": "Cave"
   },
   {
     "name": "Balor",
@@ -207,7 +208,8 @@
       "Any"
     ],
     "primary_biome": "Any",
-    "ecology_notes": "Balors stand at the apex of tanar'ri society\u2014terrifying demon lords of fire and violence that command entire layers of the Abyss. Wreathed in unholy flame and wielding a vorpal sword paired with an entangling whip, a Balor commands legions and can lay waste to armies. Their very death is catastrophic: a Balor that falls explodes in a 20-foot blast of divine fire."
+    "ecology_notes": "Balors stand at the apex of tanar'ri society\u2014terrifying demon lords of fire and violence that command entire layers of the Abyss. Wreathed in unholy flame and wielding a vorpal sword paired with an entangling whip, a Balor commands legions and can lay waste to armies. Their very death is catastrophic: a Balor that falls explodes in a 20-foot blast of divine fire.",
+    "lair_type": "Cave"
   },
   {
     "name": "Dretch",
@@ -293,7 +295,8 @@
       "Any"
     ],
     "primary_biome": "Any",
-    "ecology_notes": "Dretches are the most wretched and numerous of the tanar'ri, little more than mindless cannon fodder in the vast demon armies of the Abyss. Bloated, foul-smelling, and feeble of mind, they are conjured in enormous numbers and hurled at enemies. Despite their weakness individually, dretches in large packs are a genuine threat, and their stinking cloud ability can neutralise far stronger foes."
+    "ecology_notes": "Dretches are the most wretched and numerous of the tanar'ri, little more than mindless cannon fodder in the vast demon armies of the Abyss. Bloated, foul-smelling, and feeble of mind, they are conjured in enormous numbers and hurled at enemies. Despite their weakness individually, dretches in large packs are a genuine threat, and their stinking cloud ability can neutralise far stronger foes.",
+    "lair_type": "Cave"
   },
   {
     "name": "Glabrezu",
@@ -398,7 +401,8 @@
       "Any"
     ],
     "primary_biome": "Any",
-    "ecology_notes": "Glabrezus are towering, grotesque demons that combine brute force with cunning treachery. Standing four-armed and hulking\u2014two powerful pincers above and two smaller humanoid arms below\u2014they specialise in tempting mortals with the power of their wish ability, twisting desires into ruin. They act as tempters and deal-brokers across the planes, especially on the Material Plane where their veil magic allows them to hide their true form."
+    "ecology_notes": "Glabrezus are towering, grotesque demons that combine brute force with cunning treachery. Standing four-armed and hulking\u2014two powerful pincers above and two smaller humanoid arms below\u2014they specialise in tempting mortals with the power of their wish ability, twisting desires into ruin. They act as tempters and deal-brokers across the planes, especially on the Material Plane where their veil magic allows them to hide their true form.",
+    "lair_type": "Cave"
   },
   {
     "name": "Hezrou",
@@ -493,7 +497,8 @@
       "Any"
     ],
     "primary_biome": "Any",
-    "ecology_notes": "Hezrous are toad-like brutes\u2014massive, squat demons that serve as shock infantry in demonic armies. Their overwhelming stench can incapacitate entire squads before combat even begins, and their powerful grapple makes them living restraints for prey. Found in fetid swamps and sewers of the Abyss, they are brutish but effective soldiers who respect only power."
+    "ecology_notes": "Hezrous are toad-like brutes\u2014massive, squat demons that serve as shock infantry in demonic armies. Their overwhelming stench can incapacitate entire squads before combat even begins, and their powerful grapple makes them living restraints for prey. Found in fetid swamps and sewers of the Abyss, they are brutish but effective soldiers who respect only power.",
+    "lair_type": "Cave"
   },
   {
     "name": "Marilith",
@@ -594,7 +599,8 @@
       "Any"
     ],
     "primary_biome": "Any",
-    "ecology_notes": "Mariliths are six-armed serpentine generals of the tanar'ri\u2014brilliant tacticians who command entire demonic armies from the field. Each arm wields a longsword with fearsome precision, and their serpentine lower body can constrict foes into submission. They are among the most intelligent of the tanar'ri and are feared as much for their strategic cunning as for their terrifying combat prowess."
+    "ecology_notes": "Mariliths are six-armed serpentine generals of the tanar'ri\u2014brilliant tacticians who command entire demonic armies from the field. Each arm wields a longsword with fearsome precision, and their serpentine lower body can constrict foes into submission. They are among the most intelligent of the tanar'ri and are feared as much for their strategic cunning as for their terrifying combat prowess.",
+    "lair_type": "Cave"
   },
   {
     "name": "Nalfeshnee",
@@ -693,7 +699,8 @@
       "Any"
     ],
     "primary_biome": "Any",
-    "ecology_notes": "Nalfeshnees are obese, boar-headed demons of tremendous supernatural power who sit as judges and tyrants in the lower Abyss. Despite their hulking, ugly forms, they are wickedly intelligent and wield formidable magical abilities. Their Smite power\u2014a burst of unholy radiance\u2014can destroy entire parties of lesser adventurers. They serve as counsellors to demon princes and despise weakness in any form."
+    "ecology_notes": "Nalfeshnees are obese, boar-headed demons of tremendous supernatural power who sit as judges and tyrants in the lower Abyss. Despite their hulking, ugly forms, they are wickedly intelligent and wield formidable magical abilities. Their Smite power\u2014a burst of unholy radiance\u2014can destroy entire parties of lesser adventurers. They serve as counsellors to demon princes and despise weakness in any form.",
+    "lair_type": "Cave"
   },
   {
     "name": "Quasit",
@@ -792,7 +799,8 @@
       "Any"
     ],
     "primary_biome": "Any",
-    "ecology_notes": "Quasits are diminutive, imp-like demons often bound as familiars to chaotic evil spellcasters. Their small size and invisibility make them excellent spies and messengers across the planes. Despite being weak individually, their fast healing, venomous claws, and supernatural abilities make them surprisingly durable. Many operate as advisors, informants, and familiar-spies throughout the Material Plane."
+    "ecology_notes": "Quasits are diminutive, imp-like demons often bound as familiars to chaotic evil spellcasters. Their small size and invisibility make them excellent spies and messengers across the planes. Despite being weak individually, their fast healing, venomous claws, and supernatural abilities make them surprisingly durable. Many operate as advisors, informants, and familiar-spies throughout the Material Plane.",
+    "lair_type": "Cave"
   },
   {
     "name": "Succubus",
@@ -886,7 +894,8 @@
       "Any"
     ],
     "primary_biome": "Any",
-    "ecology_notes": "Succubi are seductive demons who corrupt mortals through temptation, manipulation, and the fatal energy drain of their kiss. Masters of disguise and social manipulation, they infiltrate courts, temples, and households to corrupt powerful mortals to demonic service. A succubus rarely fights openly, preferring to charm, suggest, and drain victims in private. They report directly to demon lords and act as spies across the planes."
+    "ecology_notes": "Succubi are seductive demons who corrupt mortals through temptation, manipulation, and the fatal energy drain of their kiss. Masters of disguise and social manipulation, they infiltrate courts, temples, and households to corrupt powerful mortals to demonic service. A succubus rarely fights openly, preferring to charm, suggest, and drain victims in private. They report directly to demon lords and act as spies across the planes.",
+    "lair_type": "Cave"
   },
   {
     "name": "Vrock",
@@ -989,6 +998,7 @@
       "Any"
     ],
     "primary_biome": "Any",
-    "ecology_notes": "Vrocks are vulture-headed, winged demons of chaos that serve as shock troops and scouts in demonic armies. Their combination of lethal fungal spores, deafening screeches, and devastating multi-attack makes them fearsome battlefield predators. They nest in the volcanic crags of the Abyss and are often summoned by chaotic evil spellcasters who need aerial firepower or intimidating guards."
+    "ecology_notes": "Vrocks are vulture-headed, winged demons of chaos that serve as shock troops and scouts in demonic armies. Their combination of lethal fungal spores, deafening screeches, and devastating multi-attack makes them fearsome battlefield predators. They nest in the volcanic crags of the Abyss and are often summoned by chaotic evil spellcasters who need aerial firepower or intimidating guards.",
+    "lair_type": "Cave"
   }
 ]

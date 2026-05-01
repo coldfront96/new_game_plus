@@ -96,7 +96,8 @@
       "Any"
     ],
     "primary_biome": "Any",
-    "ecology_notes": "Hamatulas\u2014barbed devils\u2014are bristling, spine-covered fiends that serve as prison guards and tormentors in the Nine Hells. Their bodies are literally weapons: any creature grappling them is skewered by their barbs. They are meticulous record-keepers and contract enforcers for devil hierarchies, and on the Material Plane they are summoned to guard valuable locations or torture prisoners."
+    "ecology_notes": "Hamatulas\u2014barbed devils\u2014are bristling, spine-covered fiends that serve as prison guards and tormentors in the Nine Hells. Their bodies are literally weapons: any creature grappling them is skewered by their barbs. They are meticulous record-keepers and contract enforcers for devil hierarchies, and on the Material Plane they are summoned to guard valuable locations or torture prisoners.",
+    "lair_type": "Cave"
   },
   {
     "name": "Devil, Bearded (Barbazu)",
@@ -189,7 +190,8 @@
       "Any"
     ],
     "primary_biome": "Any",
-    "ecology_notes": "Barbazus\u2014bearded devils\u2014are Avernus's front-line soldiers, aggressive and battle-hungry fiends that form the rank-and-file of infernal armies. Named for the writhing, filth-encrusted tentacles that hang from their jaws, they inflict cursed wounds that bleed endlessly. They relish melee combat and will enter a terrifying frenzy when wounded, making them unpredictable foes. On the Material Plane they are summoned for muscle and intimidation."
+    "ecology_notes": "Barbazus\u2014bearded devils\u2014are Avernus's front-line soldiers, aggressive and battle-hungry fiends that form the rank-and-file of infernal armies. Named for the writhing, filth-encrusted tentacles that hang from their jaws, they inflict cursed wounds that bleed endlessly. They relish melee combat and will enter a terrifying frenzy when wounded, making them unpredictable foes. On the Material Plane they are summoned for muscle and intimidation.",
+    "lair_type": "Cave"
   },
   {
     "name": "Devil, Bone (Osyluth)",
@@ -291,7 +293,8 @@
       "Any"
     ],
     "primary_biome": "Any",
-    "ecology_notes": "Osyluths\u2014bone devils\u2014are the spies and tormentors of the Nine Hells, skeletal fiends with long scorpion-like tails and a burning hatred of all living things. They serve as interrogators, informants, and internal affairs officers in the infernal hierarchy, watching other devils for signs of disloyalty. On the Material Plane they are summoned as investigators and assassins, lurking invisibly while gathering information for their diabolical masters."
+    "ecology_notes": "Osyluths\u2014bone devils\u2014are the spies and tormentors of the Nine Hells, skeletal fiends with long scorpion-like tails and a burning hatred of all living things. They serve as interrogators, informants, and internal affairs officers in the infernal hierarchy, watching other devils for signs of disloyalty. On the Material Plane they are summoned as investigators and assassins, lurking invisibly while gathering information for their diabolical masters.",
+    "lair_type": "Cave"
   },
   {
     "name": "Devil, Chain (Kyton)",
@@ -378,7 +381,8 @@
       "Any"
     ],
     "primary_biome": "Any",
-    "ecology_notes": "Kytons\u2014chain devils\u2014are bound entirely in writhing, animated chains that they wield as both armour and weapons. They dwell in the darkest pits of Stygia and Malbolge, where they serve as torturers and sadistic custodians. Kytons are unique among devils in their immunity to cold and vulnerability to fire. They are drawn to places of suffering and are occasionally summoned to restrain, torture, or guard prisoners on the Material Plane."
+    "ecology_notes": "Kytons\u2014chain devils\u2014are bound entirely in writhing, animated chains that they wield as both armour and weapons. They dwell in the darkest pits of Stygia and Malbolge, where they serve as torturers and sadistic custodians. Kytons are unique among devils in their immunity to cold and vulnerability to fire. They are drawn to places of suffering and are occasionally summoned to restrain, torture, or guard prisoners on the Material Plane.",
+    "lair_type": "Cave"
   },
   {
     "name": "Devil, Erinyes",
@@ -479,7 +483,8 @@
       "Any"
     ],
     "primary_biome": "Any",
-    "ecology_notes": "Erinyes are fallen celestials\u2014angelic figures of terrible beauty corrupted to serve the Nine Hells. Swift, winged hunters, they pursue escaped souls and oath-breakers across the planes wielding enchanted longswords and magical binding ropes. Their combination of supernatural flight, charm magic, and true seeing makes them nearly impossible to hide from. On the Material Plane they are often dispatched to enforce hellish contracts and retrieve defaulters."
+    "ecology_notes": "Erinyes are fallen celestials\u2014angelic figures of terrible beauty corrupted to serve the Nine Hells. Swift, winged hunters, they pursue escaped souls and oath-breakers across the planes wielding enchanted longswords and magical binding ropes. Their combination of supernatural flight, charm magic, and true seeing makes them nearly impossible to hide from. On the Material Plane they are often dispatched to enforce hellish contracts and retrieve defaulters.",
+    "lair_type": "Cave"
   },
   {
     "name": "Devil, Horned (Cornugon)",
@@ -583,7 +588,8 @@
       "Any"
     ],
     "primary_biome": "Any",
-    "ecology_notes": "Cornugons\u2014horned devils\u2014are towering, draconic fiends that serve as elite shock troops and generals in the infernal legions of the Nine Hells. Armoured in scales, armed with an unholy spiked chain and a venomous scorpion tail, they radiate an aura of terror that breaks lesser warriors before battle begins. Their regenerative bodies make them nearly impossible to slay without holy weapons. On the Material Plane they are summoned only for the most dire infernal missions."
+    "ecology_notes": "Cornugons\u2014horned devils\u2014are towering, draconic fiends that serve as elite shock troops and generals in the infernal legions of the Nine Hells. Armoured in scales, armed with an unholy spiked chain and a venomous scorpion tail, they radiate an aura of terror that breaks lesser warriors before battle begins. Their regenerative bodies make them nearly impossible to slay without holy weapons. On the Material Plane they are summoned only for the most dire infernal missions.",
+    "lair_type": "Cave"
   },
   {
     "name": "Devil, Ice (Gelugon)",
@@ -681,7 +687,8 @@
       "Any"
     ],
     "primary_biome": "Any",
-    "ecology_notes": "Gelugons\u2014ice devils\u2014are the powerful, insectoid commanders of the Nine Hells, towering mantis-like fiends of supernatural cold who serve as generals and advisors in Cania, the eighth layer. Their spears deal numbing cold and their tails slow enemies to a crawl. Despite the irony of a fire-immune creature of ice, they are among the most strategically brilliant of all devils, and their summon ability lets them call powerful reinforcements at need."
+    "ecology_notes": "Gelugons\u2014ice devils\u2014are the powerful, insectoid commanders of the Nine Hells, towering mantis-like fiends of supernatural cold who serve as generals and advisors in Cania, the eighth layer. Their spears deal numbing cold and their tails slow enemies to a crawl. Despite the irony of a fire-immune creature of ice, they are among the most strategically brilliant of all devils, and their summon ability lets them call powerful reinforcements at need.",
+    "lair_type": "Cave"
   },
   {
     "name": "Devil, Lemure",
@@ -755,7 +762,8 @@
       "Any"
     ],
     "primary_biome": "Any",
-    "ecology_notes": "Lemures are the wretched, mindless masses of the Nine Hells\u2014the tormented souls of evil mortals that have been reshaped into blobs of protoplasmic flesh that vaguely resemble their former selves. They shuffle and claw feebly at the living, driven only by dim instinct. Lemures form in enormous numbers on Avernus and are fodder in the Blood War. Over millennia they can be promoted to higher devil forms as reward for service."
+    "ecology_notes": "Lemures are the wretched, mindless masses of the Nine Hells\u2014the tormented souls of evil mortals that have been reshaped into blobs of protoplasmic flesh that vaguely resemble their former selves. They shuffle and claw feebly at the living, driven only by dim instinct. Lemures form in enormous numbers on Avernus and are fodder in the Blood War. Over millennia they can be promoted to higher devil forms as reward for service.",
+    "lair_type": "Cave"
   },
   {
     "name": "Devil, Pit Fiend",
@@ -874,6 +882,7 @@
       "Any"
     ],
     "primary_biome": "Any",
-    "ecology_notes": "Pit fiends are the supreme lords of the Nine Hells\u2014colossal, draconic devils of immense magical and physical power who serve as generals, governors, and right hands to the archdevils themselves. Armed with a dizzying array of spell-like abilities, devastating physical attacks, and wish-granting power, a pit fiend at full strength can challenge demigods. Their regenerating bodies, sky-high spell resistance, and fear aura make them among the most dangerous creatures in existence. A pit fiend's presence on the Material Plane is an event of world-shaking consequence."
+    "ecology_notes": "Pit fiends are the supreme lords of the Nine Hells\u2014colossal, draconic devils of immense magical and physical power who serve as generals, governors, and right hands to the archdevils themselves. Armed with a dizzying array of spell-like abilities, devastating physical attacks, and wish-granting power, a pit fiend at full strength can challenge demigods. Their regenerating bodies, sky-high spell resistance, and fear aura make them among the most dangerous creatures in existence. A pit fiend's presence on the Material Plane is an event of world-shaking consequence.",
+    "lair_type": "Cave"
   }
 ]

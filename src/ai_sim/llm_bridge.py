@@ -1,4 +1,5 @@
-"""
+"""EM-008 · EM-009 — LLM Bridge System for New Game Plus.
+
 src/ai_sim/llm_bridge.py
 ------------------------
 LLM Bridge System for New Game Plus.
@@ -260,6 +261,33 @@ class LLMClient:
             "stream": False,
         }
 
+        return await asyncio.to_thread(self._post, payload)
+
+    async def query_text(
+        self,
+        system_prompt: str,
+        user_prompt: str,
+    ) -> str:
+        """Send a simple text query to the LLM without a CognitiveState.
+
+        Useful for non-entity tasks such as faction lore generation and
+        spellcaster daily preparation that don't require a mechanical snapshot.
+
+        Args:
+            system_prompt: Role/context description for the model.
+            user_prompt:   The question or instruction for the model.
+
+        Returns:
+            The model's raw text response, or an empty string on failure.
+        """
+        payload = {
+            "model": self._model,
+            "messages": [
+                {"role": "system", "content": system_prompt},
+                {"role": "user",   "content": user_prompt},
+            ],
+            "stream": False,
+        }
         return await asyncio.to_thread(self._post, payload)
 
     # ------------------------------------------------------------------

@@ -85,7 +85,8 @@
       "Underground"
     ],
     "primary_biome": "Any_Urban",
-    "ecology_notes": "Doppelgangers are master shapeshifters and infiltrators, able to assume the form and surface thoughts of any humanoid. They live among humanoid societies, replacing individuals for personal gain."
+    "ecology_notes": "Doppelgangers are master shapeshifters and infiltrators, able to assume the form and surface thoughts of any humanoid. They live among humanoid societies, replacing individuals for personal gain.",
+    "lair_type": "Fortress"
   },
   {
     "name": "Merrow",
@@ -171,7 +172,8 @@
       "Temperate_Hill"
     ],
     "primary_biome": "Aquatic",
-    "ecology_notes": "Merrows are the aquatic cousins of ogres, inhabiting rivers, lakes, and coastal seas. They raid fishing villages and boats, dragging victims beneath the water."
+    "ecology_notes": "Merrows are the aquatic cousins of ogres, inhabiting rivers, lakes, and coastal seas. They raid fishing villages and boats, dragging victims beneath the water.",
+    "lair_type": "Fortress"
   },
   {
     "name": "Nixie",
@@ -255,7 +257,8 @@
       "Temperate_Forest"
     ],
     "primary_biome": "Aquatic",
-    "ecology_notes": "Nixies are aquatic fey who dwell in lakes and woodland pools. Though mischievous, they are not evil, charming humanoids to work for them for a year as protection rather than from malice."
+    "ecology_notes": "Nixies are aquatic fey who dwell in lakes and woodland pools. Though mischievous, they are not evil, charming humanoids to work for them for a year as protection rather than from malice.",
+    "lair_type": "Cave"
   },
   {
     "name": "Retriever",
@@ -352,7 +355,8 @@
       "Any_Ruin"
     ],
     "primary_biome": "Underground",
-    "ecology_notes": "Retrievers are enormous spider-like constructs created by demon lords to hunt and retrieve specific targets. They relentlessly pursue their quarry across planes, using devastating eye rays."
+    "ecology_notes": "Retrievers are enormous spider-like constructs created by demon lords to hunt and retrieve specific targets. They relentlessly pursue their quarry across planes, using devastating eye rays.",
+    "lair_type": "Cave"
   },
   {
     "name": "Shambling Mound",
@@ -440,7 +444,8 @@
       "Aquatic"
     ],
     "primary_biome": "Temperate_Forest",
-    "ecology_notes": "Shambling mounds are semi-intelligent plants that are actually nourished and strengthened by lightning. They lurk in swamps and forests, constricting prey to death and absorbing its nutrients."
+    "ecology_notes": "Shambling mounds are semi-intelligent plants that are actually nourished and strengthened by lightning. They lurk in swamps and forests, constricting prey to death and absorbing its nutrients.",
+    "lair_type": "Cave"
   },
   {
     "name": "Triton",
@@ -523,7 +528,8 @@
       "Aquatic"
     ],
     "primary_biome": "Aquatic",
-    "ecology_notes": "Tritons are aquatic humanoids who inhabit deep seas and coastlines. They are guardians of the ocean depths, often allied with sea creatures and opposed to evil aquatic beings like sahuagin."
+    "ecology_notes": "Tritons are aquatic humanoids who inhabit deep seas and coastlines. They are guardians of the ocean depths, often allied with sea creatures and opposed to evil aquatic beings like sahuagin.",
+    "lair_type": "Fortress"
   },
   {
     "name": "Vampire Spawn",
@@ -619,6 +625,7 @@
       "Temperate_Forest"
     ],
     "primary_biome": "Any_Urban",
-    "ecology_notes": "Vampire spawn are created when a vampire drains a victim to death and buries the body. They serve as lesser thralls to their vampire masters, possessing many vampiric abilities but with less power and autonomy."
+    "ecology_notes": "Vampire spawn are created when a vampire drains a victim to death and buries the body. They serve as lesser thralls to their vampire masters, possessing many vampiric abilities but with less power and autonomy.",
+    "lair_type": "Cave"
   }
 ]

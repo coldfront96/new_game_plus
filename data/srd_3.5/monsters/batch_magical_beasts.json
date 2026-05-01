@@ -82,7 +82,8 @@
       "Warm_Desert"
     ],
     "primary_biome": "Temperate_Plain",
-    "ecology_notes": "The basilisk is a slow-moving reptile whose gaze can turn flesh to stone. It haunts rocky plains and scrublands, leaving a trail of petrified prey. Adventurers approaching a basilisk carry mirrors to redirect its gaze, as the creature can petrify even itself when confronted with its own reflection."
+    "ecology_notes": "The basilisk is a slow-moving reptile whose gaze can turn flesh to stone. It haunts rocky plains and scrublands, leaving a trail of petrified prey. Adventurers approaching a basilisk carry mirrors to redirect its gaze, as the creature can petrify even itself when confronted with its own reflection.",
+    "lair_type": "Cave"
   },
   {
     "name": "Behir",
@@ -173,7 +174,8 @@
       "Temperate_Plain"
     ],
     "primary_biome": "Temperate_Mountain",
-    "ecology_notes": "The behir is a massive serpentine creature with twelve legs that allow it to move quickly and climb stone walls. It hunts large prey, discharging a bolt of lightning before constricting and swallowing victims whole. Behirs have an intense hatred of dragons and will attack them on sight."
+    "ecology_notes": "The behir is a massive serpentine creature with twelve legs that allow it to move quickly and climb stone walls. It hunts large prey, discharging a bolt of lightning before constricting and swallowing victims whole. Behirs have an intense hatred of dragons and will attack them on sight.",
+    "lair_type": "Cave"
   },
   {
     "name": "Blink Dog",
@@ -248,7 +250,8 @@
       "Temperate_Forest"
     ],
     "primary_biome": "Temperate_Plain",
-    "ecology_notes": "Blink dogs are intelligent, dog-like creatures with the innate ability to teleport short distances, seemingly winking in and out of existence. They live in packs with a strong lawful social structure and are generally friendly toward good-aligned beings. They use their blinking to confuse and outmaneuver enemies in combat."
+    "ecology_notes": "Blink dogs are intelligent, dog-like creatures with the innate ability to teleport short distances, seemingly winking in and out of existence. They live in packs with a strong lawful social structure and are generally friendly toward good-aligned beings. They use their blinking to confuse and outmaneuver enemies in combat.",
+    "lair_type": "Cave"
   },
   {
     "name": "Bulette",
@@ -339,7 +342,8 @@
       "Temperate_Forest"
     ],
     "primary_biome": "Temperate_Plain",
-    "ecology_notes": "The bulette, or landshark, is a terrifying predator that burrows through earth and stone, launching itself upward to seize prey from below. Its incredibly thick, layered armor plating makes it nearly impervious to attack. Bulettes follow herds and migrations, devouring anything they detect through tremorsense."
+    "ecology_notes": "The bulette, or landshark, is a terrifying predator that burrows through earth and stone, launching itself upward to seize prey from below. Its incredibly thick, layered armor plating makes it nearly impervious to attack. Bulettes follow herds and migrations, devouring anything they detect through tremorsense.",
+    "lair_type": "Burrow"
   },
   {
     "name": "Cockatrice",
@@ -414,7 +418,8 @@
       "Temperate_Forest"
     ],
     "primary_biome": "Temperate_Plain",
-    "ecology_notes": "The cockatrice is a bizarre creature resembling a two-legged dragon with a rooster's head. Its bite can permanently petrify living flesh, and its lairs are often decorated with stone statues of its former victims. Cockatrices flock in small groups and are territorial, attacking larger creatures that wander too close."
+    "ecology_notes": "The cockatrice is a bizarre creature resembling a two-legged dragon with a rooster's head. Its bite can permanently petrify living flesh, and its lairs are often decorated with stone statues of its former victims. Cockatrices flock in small groups and are territorial, attacking larger creatures that wander too close.",
+    "lair_type": "Cave"
   },
   {
     "name": "Digester",
@@ -492,7 +497,8 @@
       "Warm_Plain"
     ],
     "primary_biome": "Temperate_Forest",
-    "ecology_notes": "The digester is an extraordinarily fast predator that sprays a cone of concentrated acid from a tube-like organ in its chest. It is completely immune to acid, even that of other digesters. Digesters hunt by running prey down at incredible speed, softening them with acid before finishing with claws."
+    "ecology_notes": "The digester is an extraordinarily fast predator that sprays a cone of concentrated acid from a tube-like organ in its chest. It is completely immune to acid, even that of other digesters. Digesters hunt by running prey down at incredible speed, softening them with acid before finishing with claws.",
+    "lair_type": "Cave"
   },
   {
     "name": "Displacer Beast",
@@ -581,7 +587,8 @@
       "Underground"
     ],
     "primary_biome": "Temperate_Forest",
-    "ecology_notes": "The displacer beast is a panther-like creature with six legs and two long tentacles sprouting from its shoulders. It appears to be two feet from its actual location due to its displacement ability, causing attacks to frequently miss. Displacer beasts have an instinctive hatred of blink dogs and will fight them to the death."
+    "ecology_notes": "The displacer beast is a panther-like creature with six legs and two long tentacles sprouting from its shoulders. It appears to be two feet from its actual location due to its displacement ability, causing attacks to frequently miss. Displacer beasts have an instinctive hatred of blink dogs and will fight them to the death.",
+    "lair_type": "Cave"
   },
   {
     "name": "Ethereal Marauder",
@@ -652,7 +659,8 @@
       "Any"
     ],
     "primary_biome": "Any",
-    "ecology_notes": "Ethereal marauders are predators native to the Ethereal Plane that slip between the planes to hunt on the Material. They phase in, bite their prey, and immediately phase back out, making them difficult to target. They will repeatedly attack from the safety of the Ethereal Plane until their prey is dead."
+    "ecology_notes": "Ethereal marauders are predators native to the Ethereal Plane that slip between the planes to hunt on the Material. They phase in, bite their prey, and immediately phase back out, making them difficult to target. They will repeatedly attack from the safety of the Ethereal Plane until their prey is dead.",
+    "lair_type": "Cave"
   },
   {
     "name": "Girallon",
@@ -752,7 +760,8 @@
       "Warm_Forest"
     ],
     "primary_biome": "Warm_Forest",
-    "ecology_notes": "The girallon is a massive four-armed ape that inhabits warm jungles and forests. It is an aggressive, territorial predator that can rend prey apart with its multiple claws. Girallons are occasionally worshipped by primitive humanoid tribes and may be kept as guardian creatures, though they are extremely difficult to control."
+    "ecology_notes": "The girallon is a massive four-armed ape that inhabits warm jungles and forests. It is an aggressive, territorial predator that can rend prey apart with its multiple claws. Girallons are occasionally worshipped by primitive humanoid tribes and may be kept as guardian creatures, though they are extremely difficult to control.",
+    "lair_type": "Cave"
   },
   {
     "name": "Gorgon",
@@ -840,7 +849,8 @@
       "Temperate_Mountain"
     ],
     "primary_biome": "Temperate_Plain",
-    "ecology_notes": "The gorgon is a bull-like creature covered in overlapping iron scales. It can exhale a cone of breath that permanently petrifies living creatures. Gorgons are aggressive and territorial, charging at anything that enters their grazing range. Statues of their former victims frequently litter the landscape around their territory."
+    "ecology_notes": "The gorgon is a bull-like creature covered in overlapping iron scales. It can exhale a cone of breath that permanently petrifies living creatures. Gorgons are aggressive and territorial, charging at anything that enters their grazing range. Statues of their former victims frequently litter the landscape around their territory.",
+    "lair_type": "Cave"
   },
   {
     "name": "Griffon",
@@ -931,7 +941,8 @@
       "Cold_Plain"
     ],
     "primary_biome": "Temperate_Plain",
-    "ecology_notes": "Griffons are majestic creatures with the body of a lion and the head, wings, and forelegs of an eagle. They nest in eyries on mountainsides and hunt across open plains. Griffons have an insatiable appetite for horseflesh and will aggressively target horses. They can be trained as mounts by skilled handlers."
+    "ecology_notes": "Griffons are majestic creatures with the body of a lion and the head, wings, and forelegs of an eagle. They nest in eyries on mountainsides and hunt across open plains. Griffons have an insatiable appetite for horseflesh and will aggressively target horses. They can be trained as mounts by skilled handlers.",
+    "lair_type": "Cave"
   },
   {
     "name": "Gynosphinx",
@@ -1021,7 +1032,8 @@
       "Warm_Desert"
     ],
     "primary_biome": "Warm_Desert",
-    "ecology_notes": "Gynosphinxes are female sphinxes of immense intelligence and arcane knowledge, dwelling in ancient ruins and desert wastes. They are obsessed with riddles and knowledge, demanding answers to puzzles before they will reveal information. They are less aggressive than androsphinxes but can be deadly foes when provoked, wielding powerful symbol spells."
+    "ecology_notes": "Gynosphinxes are female sphinxes of immense intelligence and arcane knowledge, dwelling in ancient ruins and desert wastes. They are obsessed with riddles and knowledge, demanding answers to puzzles before they will reveal information. They are less aggressive than androsphinxes but can be deadly foes when provoked, wielding powerful symbol spells.",
+    "lair_type": "Cave"
   },
   {
     "name": "Androsphinx",
@@ -1110,7 +1122,8 @@
       "Warm_Desert"
     ],
     "primary_biome": "Warm_Desert",
-    "ecology_notes": "Androsphinxes are male sphinxes of great power, wisdom, and fury. Their roar is legendary — it can paralyze, terrify, or even deafen and destroy entire groups of adventurers. Despite their chaotic good alignment, they are fiercely territorial and test intruders harshly before determining their worthiness. They guard ancient holy sites in desert regions."
+    "ecology_notes": "Androsphinxes are male sphinxes of great power, wisdom, and fury. Their roar is legendary \u2014 it can paralyze, terrify, or even deafen and destroy entire groups of adventurers. Despite their chaotic good alignment, they are fiercely territorial and test intruders harshly before determining their worthiness. They guard ancient holy sites in desert regions.",
+    "lair_type": "Cave"
   },
   {
     "name": "Hippogriff",
@@ -1198,7 +1211,8 @@
       "Cold_Plain"
     ],
     "primary_biome": "Temperate_Plain",
-    "ecology_notes": "Hippogriffs are horse-eagle hybrids related to the griffon. They are fast fliers that nest on cliffsides and hunt horses and ponies — a trait that puts them in conflict with farming communities. Hippogriffs are commonly tamed and used as flying mounts, as they are more tractable than griffons."
+    "ecology_notes": "Hippogriffs are horse-eagle hybrids related to the griffon. They are fast fliers that nest on cliffsides and hunt horses and ponies \u2014 a trait that puts them in conflict with farming communities. Hippogriffs are commonly tamed and used as flying mounts, as they are more tractable than griffons.",
+    "lair_type": "Cave"
   },
   {
     "name": "Lamia",
@@ -1284,7 +1298,8 @@
       "Warm_Plain"
     ],
     "primary_biome": "Warm_Desert",
-    "ecology_notes": "Lamias are predatory creatures with a humanoid upper body and the lower body of a great lion or serpent. They use illusion magic to lure victims close, then permanently drain their wisdom with a touch. A victim with insufficient Wisdom becomes a willing slave to the lamia. They often establish cults around themselves, worshipped by Wisdom-drained humanoids."
+    "ecology_notes": "Lamias are predatory creatures with a humanoid upper body and the lower body of a great lion or serpent. They use illusion magic to lure victims close, then permanently drain their wisdom with a touch. A victim with insufficient Wisdom becomes a willing slave to the lamia. They often establish cults around themselves, worshipped by Wisdom-drained humanoids.",
+    "lair_type": "Cave"
   },
   {
     "name": "Manticore",
@@ -1374,7 +1389,8 @@
       "Temperate_Mountain"
     ],
     "primary_biome": "Temperate_Plain",
-    "ecology_notes": "The manticore is a monstrous predator with a human-like face, lion's body, bat wings, and a tail studded with iron spikes it can hurl at prey. It is cunning enough to speak, and it sometimes toys with victims or negotiates for food. Manticores are territorial and voracious, consuming every part of their prey including bones."
+    "ecology_notes": "The manticore is a monstrous predator with a human-like face, lion's body, bat wings, and a tail studded with iron spikes it can hurl at prey. It is cunning enough to speak, and it sometimes toys with victims or negotiates for food. Manticores are territorial and voracious, consuming every part of their prey including bones.",
+    "lair_type": "Cave"
   },
   {
     "name": "Owlbear",
@@ -1461,7 +1477,8 @@
       "Cold_Forest"
     ],
     "primary_biome": "Temperate_Forest",
-    "ecology_notes": "The owlbear is thought to be the magical crossbreed of an owl and a bear, combining the worst traits of both. It is aggressive to an extreme, attacking anything it encounters, and will fight to the death. Owlbear cubs are occasionally captured and raised as guard animals, though they remain unpredictable and dangerous."
+    "ecology_notes": "The owlbear is thought to be the magical crossbreed of an owl and a bear, combining the worst traits of both. It is aggressive to an extreme, attacking anything it encounters, and will fight to the death. Owlbear cubs are occasionally captured and raised as guard animals, though they remain unpredictable and dangerous.",
+    "lair_type": "Cave"
   },
   {
     "name": "Pegasus",
@@ -1549,7 +1566,8 @@
       "Temperate_Mountain"
     ],
     "primary_biome": "Temperate_Plain",
-    "ecology_notes": "Pegasi are winged horses of noble spirit and keen intelligence. They only accept good-aligned riders and are highly prized as aerial mounts. They are surprisingly social creatures, able to communicate with other magical beasts, and form tight bonds with their riders. Pegasi herds roam freely through mountain meadows and high plains."
+    "ecology_notes": "Pegasi are winged horses of noble spirit and keen intelligence. They only accept good-aligned riders and are highly prized as aerial mounts. They are surprisingly social creatures, able to communicate with other magical beasts, and form tight bonds with their riders. Pegasi herds roam freely through mountain meadows and high plains.",
+    "lair_type": "Cave"
   },
   {
     "name": "Phase Spider",
@@ -1626,7 +1644,8 @@
       "Underground"
     ],
     "primary_biome": "Underground",
-    "ecology_notes": "Phase spiders are enormous spiders that can shift to the Ethereal Plane at will, using this ability to ambush prey. They phase in, inject a fast-acting venom, then phase back out before the target can retaliate. Their venom is highly lethal; phase spiders will pursue victims between planes until the poison finishes the job."
+    "ecology_notes": "Phase spiders are enormous spiders that can shift to the Ethereal Plane at will, using this ability to ambush prey. They phase in, inject a fast-acting venom, then phase back out before the target can retaliate. Their venom is highly lethal; phase spiders will pursue victims between planes until the poison finishes the job.",
+    "lair_type": "Cave"
   },
   {
     "name": "Remorhaz",
@@ -1707,7 +1726,8 @@
       "Cold_Plain"
     ],
     "primary_biome": "Arctic",
-    "ecology_notes": "The remorhaz is a massive centipede-like creature that generates tremendous internal heat, allowing it to burrow through ice and frozen ground with ease. Despite living in arctic environments, it is completely immune to cold and radiates enough heat to burn those who touch it. It swallows prey whole, where the internal fire kills quickly."
+    "ecology_notes": "The remorhaz is a massive centipede-like creature that generates tremendous internal heat, allowing it to burrow through ice and frozen ground with ease. Despite living in arctic environments, it is completely immune to cold and radiates enough heat to burn those who touch it. It swallows prey whole, where the internal fire kills quickly.",
+    "lair_type": "Burrow"
   },
   {
     "name": "Sea Cat",
@@ -1797,7 +1817,8 @@
       "Cold_Aquatic"
     ],
     "primary_biome": "Temperate_Aquatic",
-    "ecology_notes": "Sea cats are walrus-sized aquatic predators that resemble a lion or large cat adapted for life in the sea. They hunt fish, seals, and humanoids with equal ferocity, using powerful claws and raking rear legs to shred prey once grappled. They are encountered both in open water and in coastal caves where they haul out to rest."
+    "ecology_notes": "Sea cats are walrus-sized aquatic predators that resemble a lion or large cat adapted for life in the sea. They hunt fish, seals, and humanoids with equal ferocity, using powerful claws and raking rear legs to shred prey once grappled. They are encountered both in open water and in coastal caves where they haul out to rest.",
+    "lair_type": "Cave"
   },
   {
     "name": "Shocker Lizard",
@@ -1875,7 +1896,8 @@
       "Temperate_Swamp"
     ],
     "primary_biome": "Warm_Swamp",
-    "ecology_notes": "Shocker lizards are small reptiles that generate and store electrical energy. Individually they can stun prey, but when multiple shocker lizards cooperate they can unleash lethal bolts of electricity. They congregate in herds and are completely immune to electrical attacks, making them dangerous even to creatures with lightning-based abilities."
+    "ecology_notes": "Shocker lizards are small reptiles that generate and store electrical energy. Individually they can stun prey, but when multiple shocker lizards cooperate they can unleash lethal bolts of electricity. They congregate in herds and are completely immune to electrical attacks, making them dangerous even to creatures with lightning-based abilities.",
+    "lair_type": "Cave"
   },
   {
     "name": "Stirge",
@@ -1952,7 +1974,8 @@
       "Temperate_Forest"
     ],
     "primary_biome": "Temperate_Swamp",
-    "ecology_notes": "Stirges are mosquito-like flying creatures that attack in swarms, latching on to prey to drain blood. A single stirge is a minor threat, but dozens attacking simultaneously can drain the life from a heavily armored warrior in moments. They roost in caves, hollow trees, and dungeon ceilings, dropping on prey from above."
+    "ecology_notes": "Stirges are mosquito-like flying creatures that attack in swarms, latching on to prey to drain blood. A single stirge is a minor threat, but dozens attacking simultaneously can drain the life from a heavily armored warrior in moments. They roost in caves, hollow trees, and dungeon ceilings, dropping on prey from above.",
+    "lair_type": "Cave"
   },
   {
     "name": "Unicorn",
@@ -2042,7 +2065,8 @@
       "Warm_Forest"
     ],
     "primary_biome": "Temperate_Forest",
-    "ecology_notes": "Unicorns are legendary creatures of purity and grace, appearing as magnificent white horses with a single spiraling horn. They are innately able to detect evil and will only accept a pure-hearted rider. Their horn has healing properties, and their very presence is said to purify tainted ground. Unicorn herds guard ancient forests."
+    "ecology_notes": "Unicorns are legendary creatures of purity and grace, appearing as magnificent white horses with a single spiraling horn. They are innately able to detect evil and will only accept a pure-hearted rider. Their horn has healing properties, and their very presence is said to purify tainted ground. Unicorn herds guard ancient forests.",
+    "lair_type": "Cave"
   },
   {
     "name": "Winter Wolf",
@@ -2126,7 +2150,8 @@
       "Cold_Forest"
     ],
     "primary_biome": "Arctic",
-    "ecology_notes": "Winter wolves are large, intelligent wolves with icy-white fur and the ability to exhale blasts of freezing cold. They are capable of speech and often serve as leaders of ordinary wolf packs or as mounts for frost giants. Winter wolves hunt cooperatively, using their breath weapon to slow and freeze prey before moving in for the kill."
+    "ecology_notes": "Winter wolves are large, intelligent wolves with icy-white fur and the ability to exhale blasts of freezing cold. They are capable of speech and often serve as leaders of ordinary wolf packs or as mounts for frost giants. Winter wolves hunt cooperatively, using their breath weapon to slow and freeze prey before moving in for the kill.",
+    "lair_type": "Cave"
   },
   {
     "name": "Worg",
@@ -2203,7 +2228,8 @@
       "Cold_Plain"
     ],
     "primary_biome": "Temperate_Plain",
-    "ecology_notes": "Worgs are large, intelligent wolves that speak their own language and are sometimes capable of speech in the common tongue. They serve as mounts for goblins, forming a symbiotic relationship where the goblin scouts provide intelligence and the worg provides speed and combat power. Worgs hunt cooperatively, using their trip ability to bring down running prey."
+    "ecology_notes": "Worgs are large, intelligent wolves that speak their own language and are sometimes capable of speech in the common tongue. They serve as mounts for goblins, forming a symbiotic relationship where the goblin scouts provide intelligence and the worg provides speed and combat power. Worgs hunt cooperatively, using their trip ability to bring down running prey.",
+    "lair_type": "Cave"
   },
   {
     "name": "Wyvern",
@@ -2303,6 +2329,7 @@
       "Temperate_Plain"
     ],
     "primary_biome": "Temperate_Mountain",
-    "ecology_notes": "The wyvern is a lesser dragon-kin with a barbed, venomous tail and powerful talons. It lacks the intelligence and breath weapon of true dragons but compensates with its highly lethal venom. Wyverns nest in mountain crags and hunt across wide territories, attacking anything they can carry off. They are sometimes tamed as mounts by powerful warlords."
+    "ecology_notes": "The wyvern is a lesser dragon-kin with a barbed, venomous tail and powerful talons. It lacks the intelligence and breath weapon of true dragons but compensates with its highly lethal venom. Wyverns nest in mountain crags and hunt across wide territories, attacking anything they can carry off. They are sometimes tamed as mounts by powerful warlords.",
+    "lair_type": "Cave"
   }
 ]

@@ -8,19 +8,65 @@
     "hit_dice": "8d8+8",
     "hp_avg": 44,
     "initiative": 5,
-    "speed": { "land": 30 },
-    "armor_class": { "total": 15, "touch": 11, "flat_footed": 14, "components": "+1 Dex, +4 natural" },
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 15,
+      "touch": 11,
+      "flat_footed": 14,
+      "components": "+1 Dex, +4 natural"
+    },
     "base_attack": 6,
     "grapple": 6,
     "attacks": [
-      { "name": "4 Tentacles", "attack_bonus": "+6", "damage": "1d4", "damage_type": "Piercing" }
+      {
+        "name": "4 Tentacles",
+        "attack_bonus": "+6",
+        "damage": "1d4",
+        "damage_type": "Piercing"
+      }
     ],
-    "special_attacks": ["Improved Grab", "Mind Blast (60 ft. cone, stun 3d4 rounds, DC 17 Will)", "Psionics", "Extract"],
-    "special_qualities": ["Darkvision 60 ft.", "Spell Resistance 25", "Telepathy 100 ft."],
-    "saves": { "fort": 3, "ref": 3, "will": 11 },
-    "abilities": { "str": 10, "dex": 12, "con": 12, "int": 19, "wis": 17, "cha": 17 },
-    "skills": { "Bluff": 14, "Concentration": 12, "Hide": 12, "Intimidate": 16, "Knowledge (arcana)": 15, "Listen": 16, "Move Silently": 12, "Sense Motive": 14, "Spot": 16 },
-    "feats": ["Combat Manifestation", "Dodge", "Improved Initiative"],
+    "special_attacks": [
+      "Improved Grab",
+      "Mind Blast (60 ft. cone, stun 3d4 rounds, DC 17 Will)",
+      "Psionics",
+      "Extract"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Spell Resistance 25",
+      "Telepathy 100 ft."
+    ],
+    "saves": {
+      "fort": 3,
+      "ref": 3,
+      "will": 11
+    },
+    "abilities": {
+      "str": 10,
+      "dex": 12,
+      "con": 12,
+      "int": 19,
+      "wis": 17,
+      "cha": 17
+    },
+    "skills": {
+      "Bluff": 14,
+      "Concentration": 12,
+      "Hide": 12,
+      "Intimidate": 16,
+      "Knowledge (arcana)": 15,
+      "Listen": 16,
+      "Move Silently": 12,
+      "Sense Motive": 14,
+      "Spot": 16
+    },
+    "feats": [
+      "Combat Manifestation",
+      "Dodge",
+      "Improved Initiative"
+    ],
     "alignment": "Usually Lawful Evil",
     "advancement": "By character class",
     "dr": null,
@@ -31,9 +77,12 @@
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 200,
-    "allowed_biomes": ["Underdark"],
+    "allowed_biomes": [
+      "Underdark"
+    ],
     "primary_biome": "Underdark",
-    "ecology_notes": "Mind Flayers require intelligent brains for sustenance and build their civilizations around enslaved populations of other intelligent beings. They exist exclusively in the Underdark, where they are among the most feared predators."
+    "ecology_notes": "Mind Flayers require intelligent brains for sustenance and build their civilizations around enslaved populations of other intelligent beings. They exist exclusively in the Underdark, where they are among the most feared predators.",
+    "lair_type": "Cave"
   },
   {
     "name": "Minotaur",
@@ -44,20 +93,64 @@
     "hit_dice": "6d8+12",
     "hp_avg": 39,
     "initiative": 0,
-    "speed": { "land": 30 },
-    "armor_class": { "total": 14, "touch": 9, "flat_footed": 14, "components": "+5 natural, -1 size" },
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 14,
+      "touch": 9,
+      "flat_footed": 14,
+      "components": "+5 natural, -1 size"
+    },
     "base_attack": 6,
     "grapple": 14,
     "attacks": [
-      { "name": "Greataxe", "attack_bonus": "+9/+4", "damage": "3d6+6", "crit_range": "x3", "damage_type": "Slashing" },
-      { "name": "Gore", "attack_bonus": "+4", "damage": "1d8+2", "damage_type": "Piercing" }
+      {
+        "name": "Greataxe",
+        "attack_bonus": "+9/+4",
+        "damage": "3d6+6",
+        "crit_range": "x3",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Gore",
+        "attack_bonus": "+4",
+        "damage": "1d8+2",
+        "damage_type": "Piercing"
+      }
     ],
-    "special_attacks": ["Powerful Charge (4d6+6)"],
-    "special_qualities": ["Darkvision 60 ft.", "Natural Cunning", "Scent"],
-    "saves": { "fort": 6, "ref": 5, "will": 5 },
-    "abilities": { "str": 19, "dex": 10, "con": 15, "int": 7, "wis": 10, "cha": 8 },
-    "skills": { "Intimidate": 4, "Listen": 7, "Search": 4, "Spot": 7 },
-    "feats": ["Great Fortitude", "Power Attack", "Track"],
+    "special_attacks": [
+      "Powerful Charge (4d6+6)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Natural Cunning",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 6,
+      "ref": 5,
+      "will": 5
+    },
+    "abilities": {
+      "str": 19,
+      "dex": 10,
+      "con": 15,
+      "int": 7,
+      "wis": 10,
+      "cha": 8
+    },
+    "skills": {
+      "Intimidate": 4,
+      "Listen": 7,
+      "Search": 4,
+      "Spot": 7
+    },
+    "feats": [
+      "Great Fortitude",
+      "Power Attack",
+      "Track"
+    ],
     "alignment": "Usually Chaotic Evil",
     "advancement": "7-12 HD (Large); 13-18 HD (Huge)",
     "dr": null,
@@ -68,9 +161,13 @@
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 300,
-    "allowed_biomes": ["Underground", "Any_Ruin"],
+    "allowed_biomes": [
+      "Underground",
+      "Any_Ruin"
+    ],
     "primary_biome": "Underground",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Fortress"
   },
   {
     "name": "Ogre",
@@ -81,20 +178,59 @@
     "hit_dice": "4d8+11",
     "hp_avg": 29,
     "initiative": -1,
-    "speed": { "land": 40 },
-    "armor_class": { "total": 16, "touch": 8, "flat_footed": 16, "components": "-1 Dex, +5 natural, +3 hide armor, -1 size" },
+    "speed": {
+      "land": 40
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 8,
+      "flat_footed": 16,
+      "components": "-1 Dex, +5 natural, +3 hide armor, -1 size"
+    },
     "base_attack": 3,
     "grapple": 12,
     "attacks": [
-      { "name": "Greatclub", "attack_bonus": "+8", "damage": "2d8+7", "crit_range": "x2", "damage_type": "Bludgeoning" },
-      { "name": "Javelin", "attack_bonus": "+1 ranged", "damage": "1d8+5", "damage_type": "Piercing" }
+      {
+        "name": "Greatclub",
+        "attack_bonus": "+8",
+        "damage": "2d8+7",
+        "crit_range": "x2",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Javelin",
+        "attack_bonus": "+1 ranged",
+        "damage": "1d8+5",
+        "damage_type": "Piercing"
+      }
     ],
     "special_attacks": [],
-    "special_qualities": ["Darkvision 60 ft.", "Low-Light Vision"],
-    "saves": { "fort": 6, "ref": 0, "will": 1 },
-    "abilities": { "str": 21, "dex": 8, "con": 15, "int": 6, "wis": 10, "cha": 7 },
-    "skills": { "Climb": 5, "Listen": 4, "Spot": 4 },
-    "feats": ["Toughness", "Weapon Focus (greatclub)"],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Low-Light Vision"
+    ],
+    "saves": {
+      "fort": 6,
+      "ref": 0,
+      "will": 1
+    },
+    "abilities": {
+      "str": 21,
+      "dex": 8,
+      "con": 15,
+      "int": 6,
+      "wis": 10,
+      "cha": 7
+    },
+    "skills": {
+      "Climb": 5,
+      "Listen": 4,
+      "Spot": 4
+    },
+    "feats": [
+      "Toughness",
+      "Weapon Focus (greatclub)"
+    ],
     "alignment": "Usually Chaotic Evil",
     "advancement": "5-8 HD (Large); 9-12 HD (Huge)",
     "dr": null,
@@ -105,9 +241,14 @@
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 1000,
-    "allowed_biomes": ["Cold_Hill", "Temperate_Hill", "Temperate_Mountain"],
+    "allowed_biomes": [
+      "Cold_Hill",
+      "Temperate_Hill",
+      "Temperate_Mountain"
+    ],
     "primary_biome": "Temperate_Hill",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Fortress"
   },
   {
     "name": "Orc",
@@ -118,20 +259,59 @@
     "hit_dice": "1d8+1",
     "hp_avg": 5,
     "initiative": 0,
-    "speed": { "land": 30 },
-    "armor_class": { "total": 13, "touch": 10, "flat_footed": 13, "components": "+3 studded leather" },
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 13,
+      "touch": 10,
+      "flat_footed": 13,
+      "components": "+3 studded leather"
+    },
     "base_attack": 1,
     "grapple": 4,
     "attacks": [
-      { "name": "Falchion", "attack_bonus": "+4", "damage": "2d4+4", "crit_range": "18-20/x2", "damage_type": "Slashing" },
-      { "name": "Javelin", "attack_bonus": "+1 ranged", "damage": "1d6+3", "damage_type": "Piercing" }
+      {
+        "name": "Falchion",
+        "attack_bonus": "+4",
+        "damage": "2d4+4",
+        "crit_range": "18-20/x2",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Javelin",
+        "attack_bonus": "+1 ranged",
+        "damage": "1d6+3",
+        "damage_type": "Piercing"
+      }
     ],
-    "special_attacks": ["Ferocity"],
-    "special_qualities": ["Darkvision 60 ft.", "Light Sensitivity"],
-    "saves": { "fort": 3, "ref": 0, "will": -2 },
-    "abilities": { "str": 17, "dex": 11, "con": 12, "int": 8, "wis": 7, "cha": 6 },
-    "skills": { "Listen": 1, "Spot": 1 },
-    "feats": ["Alertness"],
+    "special_attacks": [
+      "Ferocity"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Light Sensitivity"
+    ],
+    "saves": {
+      "fort": 3,
+      "ref": 0,
+      "will": -2
+    },
+    "abilities": {
+      "str": 17,
+      "dex": 11,
+      "con": 12,
+      "int": 8,
+      "wis": 7,
+      "cha": 6
+    },
+    "skills": {
+      "Listen": 1,
+      "Spot": 1
+    },
+    "feats": [
+      "Alertness"
+    ],
     "alignment": "Usually Chaotic Evil",
     "advancement": "By character class",
     "dr": null,
@@ -142,9 +322,14 @@
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 15000,
-    "allowed_biomes": ["Temperate_Hill", "Temperate_Plain", "Underground"],
+    "allowed_biomes": [
+      "Temperate_Hill",
+      "Temperate_Plain",
+      "Underground"
+    ],
     "primary_biome": "Temperate_Hill",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Fortress"
   },
   {
     "name": "Purple Worm",
@@ -155,20 +340,67 @@
     "hit_dice": "16d10+112",
     "hp_avg": 200,
     "initiative": -2,
-    "speed": { "land": 20, "burrow": 20, "swim": 10 },
-    "armor_class": { "total": 19, "touch": 0, "flat_footed": 19, "components": "-2 Dex, +11 natural, -8 size" },
+    "speed": {
+      "land": 20,
+      "burrow": 20,
+      "swim": 10
+    },
+    "armor_class": {
+      "total": 19,
+      "touch": 0,
+      "flat_footed": 19,
+      "components": "-2 Dex, +11 natural, -8 size"
+    },
     "base_attack": 16,
     "grapple": 44,
     "attacks": [
-      { "name": "Bite", "attack_bonus": "+24", "damage": "2d8+12", "crit_range": "x2", "damage_type": "Piercing" },
-      { "name": "Sting", "attack_bonus": "+19", "damage": "2d6+6 plus poison", "damage_type": "Piercing" }
+      {
+        "name": "Bite",
+        "attack_bonus": "+24",
+        "damage": "2d8+12",
+        "crit_range": "x2",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Sting",
+        "attack_bonus": "+19",
+        "damage": "2d6+6 plus poison",
+        "damage_type": "Piercing"
+      }
     ],
-    "special_attacks": ["Improved Grab", "Poison (sting, Fort DC 28, 1d6 STR/2d6 STR)", "Swallow Whole"],
-    "special_qualities": ["Tremorsense 60 ft."],
-    "saves": { "fort": 17, "ref": 8, "will": 4 },
-    "abilities": { "str": 35, "dex": 6, "con": 25, "int": 1, "wis": 8, "cha": 8 },
-    "skills": { "Listen": 18, "Spot": 3, "Swim": 20 },
-    "feats": ["Awesome Blow", "Cleave", "Improved Bull Rush", "Power Attack", "Toughness"],
+    "special_attacks": [
+      "Improved Grab",
+      "Poison (sting, Fort DC 28, 1d6 STR/2d6 STR)",
+      "Swallow Whole"
+    ],
+    "special_qualities": [
+      "Tremorsense 60 ft."
+    ],
+    "saves": {
+      "fort": 17,
+      "ref": 8,
+      "will": 4
+    },
+    "abilities": {
+      "str": 35,
+      "dex": 6,
+      "con": 25,
+      "int": 1,
+      "wis": 8,
+      "cha": 8
+    },
+    "skills": {
+      "Listen": 18,
+      "Spot": 3,
+      "Swim": 20
+    },
+    "feats": [
+      "Awesome Blow",
+      "Cleave",
+      "Improved Bull Rush",
+      "Power Attack",
+      "Toughness"
+    ],
     "alignment": "Always Neutral",
     "advancement": "17-32 HD (Colossal)",
     "dr": null,
@@ -179,9 +411,12 @@
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 40,
-    "allowed_biomes": ["Underground"],
+    "allowed_biomes": [
+      "Underground"
+    ],
     "primary_biome": "Underground",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Burrow"
   },
   {
     "name": "Rakshasa",
@@ -192,20 +427,72 @@
     "hit_dice": "7d8+21",
     "hp_avg": 52,
     "initiative": 2,
-    "speed": { "land": 40 },
-    "armor_class": { "total": 21, "touch": 12, "flat_footed": 19, "components": "+2 Dex, +9 natural" },
+    "speed": {
+      "land": 40
+    },
+    "armor_class": {
+      "total": 21,
+      "touch": 12,
+      "flat_footed": 19,
+      "components": "+2 Dex, +9 natural"
+    },
     "base_attack": 7,
     "grapple": 8,
     "attacks": [
-      { "name": "2 Claws", "attack_bonus": "+8", "damage": "1d4+1", "damage_type": "Slashing" },
-      { "name": "Bite", "attack_bonus": "+3", "damage": "1d6", "damage_type": "Piercing" }
+      {
+        "name": "2 Claws",
+        "attack_bonus": "+8",
+        "damage": "1d4+1",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+3",
+        "damage": "1d6",
+        "damage_type": "Piercing"
+      }
     ],
-    "special_attacks": ["Spells", "Change Shape"],
-    "special_qualities": ["Damage Reduction 15/Good and Piercing", "Darkvision 60 ft.", "Detect Thoughts", "Spell Resistance 27"],
-    "saves": { "fort": 8, "ref": 7, "will": 7 },
-    "abilities": { "str": 12, "dex": 14, "con": 16, "int": 13, "wis": 13, "cha": 17 },
-    "skills": { "Bluff": 20, "Concentration": 12, "Diplomacy": 7, "Disguise": 20, "Intimidate": 5, "Listen": 11, "Move Silently": 12, "Perform": 12, "Sense Motive": 11, "Spellcraft": 11, "Spot": 11 },
-    "feats": ["Dodge", "Improved Initiative", "Toughness"],
+    "special_attacks": [
+      "Spells",
+      "Change Shape"
+    ],
+    "special_qualities": [
+      "Damage Reduction 15/Good and Piercing",
+      "Darkvision 60 ft.",
+      "Detect Thoughts",
+      "Spell Resistance 27"
+    ],
+    "saves": {
+      "fort": 8,
+      "ref": 7,
+      "will": 7
+    },
+    "abilities": {
+      "str": 12,
+      "dex": 14,
+      "con": 16,
+      "int": 13,
+      "wis": 13,
+      "cha": 17
+    },
+    "skills": {
+      "Bluff": 20,
+      "Concentration": 12,
+      "Diplomacy": 7,
+      "Disguise": 20,
+      "Intimidate": 5,
+      "Listen": 11,
+      "Move Silently": 12,
+      "Perform": 12,
+      "Sense Motive": 11,
+      "Spellcraft": 11,
+      "Spot": 11
+    },
+    "feats": [
+      "Dodge",
+      "Improved Initiative",
+      "Toughness"
+    ],
     "alignment": "Always Lawful Evil",
     "advancement": "8-14 HD (Medium)",
     "dr": "15/Good and Piercing",
@@ -216,9 +503,14 @@
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 30,
-    "allowed_biomes": ["Warm_Plain", "Warm_Forest", "Any_Urban"],
+    "allowed_biomes": [
+      "Warm_Plain",
+      "Warm_Forest",
+      "Any_Urban"
+    ],
     "primary_biome": "Warm_Plain",
-    "ecology_notes": "Rakshasas are born into mortal flesh but possessed of ancient fiendish souls. They infiltrate civilizations rather than confronting them, making Any_Urban a common environment despite Warm regions being their natural preference."
+    "ecology_notes": "Rakshasas are born into mortal flesh but possessed of ancient fiendish souls. They infiltrate civilizations rather than confronting them, making Any_Urban a common environment despite Warm regions being their natural preference.",
+    "lair_type": "Cave"
   },
   {
     "name": "Rust Monster",
@@ -229,20 +521,59 @@
     "hit_dice": "5d8+5",
     "hp_avg": 27,
     "initiative": 3,
-    "speed": { "land": 40 },
-    "armor_class": { "total": 18, "touch": 13, "flat_footed": 15, "components": "+3 Dex, +5 natural" },
+    "speed": {
+      "land": 40
+    },
+    "armor_class": {
+      "total": 18,
+      "touch": 13,
+      "flat_footed": 15,
+      "components": "+3 Dex, +5 natural"
+    },
     "base_attack": 3,
     "grapple": 3,
     "attacks": [
-      { "name": "Antennae Touch", "attack_bonus": "+3 touch", "damage": "Rust (corrodes all metal on contact)", "damage_type": "Special" },
-      { "name": "Bite", "attack_bonus": "+3", "damage": "1d3", "damage_type": "Piercing" }
+      {
+        "name": "Antennae Touch",
+        "attack_bonus": "+3 touch",
+        "damage": "Rust (corrodes all metal on contact)",
+        "damage_type": "Special"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+3",
+        "damage": "1d3",
+        "damage_type": "Piercing"
+      }
     ],
-    "special_attacks": ["Rust"],
-    "special_qualities": ["Darkvision 60 ft.", "Scent"],
-    "saves": { "fort": 2, "ref": 4, "will": 5 },
-    "abilities": { "str": 10, "dex": 17, "con": 13, "int": 2, "wis": 13, "cha": 8 },
-    "skills": { "Listen": 8, "Spot": 8 },
-    "feats": ["Alertness", "Track"],
+    "special_attacks": [
+      "Rust"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 2,
+      "ref": 4,
+      "will": 5
+    },
+    "abilities": {
+      "str": 10,
+      "dex": 17,
+      "con": 13,
+      "int": 2,
+      "wis": 13,
+      "cha": 8
+    },
+    "skills": {
+      "Listen": 8,
+      "Spot": 8
+    },
+    "feats": [
+      "Alertness",
+      "Track"
+    ],
     "alignment": "Always Neutral",
     "advancement": "6-10 HD (Medium); 11-15 HD (Large)",
     "dr": null,
@@ -253,8 +584,11 @@
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 200,
-    "allowed_biomes": ["Underground"],
+    "allowed_biomes": [
+      "Underground"
+    ],
     "primary_biome": "Underground",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   }
 ]
