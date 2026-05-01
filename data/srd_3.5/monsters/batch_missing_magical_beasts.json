@@ -78,7 +78,8 @@
       "Warm_Forest"
     ],
     "primary_biome": "Temperate_Forest",
-    "ecology_notes": "Araneas are intelligent magical beasts resembling giant spiders that can assume humanoid or spider-humanoid form. They are natural sorcerers and often gather webs of minions and information."
+    "ecology_notes": "Araneas are intelligent magical beasts resembling giant spiders that can assume humanoid or spider-humanoid form. They are natural sorcerers and often gather webs of minions and information.",
+    "lair_type": "Cave"
   },
   {
     "name": "Arrowhawk, Juvenile",
@@ -167,7 +168,8 @@
       "Warm_Mountain"
     ],
     "primary_biome": "Temperate_Mountain",
-    "ecology_notes": "Arrowhawks are native to the Elemental Plane of Air. Juveniles are fast and aggressive, using electricity rays to disable prey. They occasionally cross to the Material Plane through planar rifts, typically haunting exposed mountain heights."
+    "ecology_notes": "Arrowhawks are native to the Elemental Plane of Air. Juveniles are fast and aggressive, using electricity rays to disable prey. They occasionally cross to the Material Plane through planar rifts, typically haunting exposed mountain heights.",
+    "lair_type": "Cave"
   },
   {
     "name": "Arrowhawk, Adult",
@@ -257,7 +259,8 @@
       "Warm_Mountain"
     ],
     "primary_biome": "Temperate_Mountain",
-    "ecology_notes": "Adult arrowhawks are formidable aerial predators from the Elemental Plane of Air. They use Flyby Attack to strafe enemies with electricity rays while staying in constant motion, and their thickening hide makes them notably resilient."
+    "ecology_notes": "Adult arrowhawks are formidable aerial predators from the Elemental Plane of Air. They use Flyby Attack to strafe enemies with electricity rays while staying in constant motion, and their thickening hide makes them notably resilient.",
+    "lair_type": "Cave"
   },
   {
     "name": "Arrowhawk, Elder",
@@ -348,7 +351,8 @@
       "Warm_Mountain"
     ],
     "primary_biome": "Temperate_Mountain",
-    "ecology_notes": "Elder arrowhawks are ancient and powerful predators from the Elemental Plane of Air. Massive and nearly immune to harm, they dominate the skies of their home plane and are occasionally summoned as guardians by powerful spellcasters."
+    "ecology_notes": "Elder arrowhawks are ancient and powerful predators from the Elemental Plane of Air. Massive and nearly immune to harm, they dominate the skies of their home plane and are occasionally summoned as guardians by powerful spellcasters.",
+    "lair_type": "Cave"
   },
   {
     "name": "Frost Worm",
@@ -433,7 +437,8 @@
       "Cold_Mountain"
     ],
     "primary_biome": "Arctic",
-    "ecology_notes": "Frost worms lurk beneath Arctic ice and snow, ambushing prey with their trill. When slain they explode in a burst of deadly cold."
+    "ecology_notes": "Frost worms lurk beneath Arctic ice and snow, ambushing prey with their trill. When slain they explode in a burst of deadly cold.",
+    "lair_type": "Burrow"
   },
   {
     "name": "Gray Render",
@@ -522,7 +527,8 @@
       "Warm_Forest"
     ],
     "primary_biome": "Temperate_Forest",
-    "ecology_notes": "Gray renders are massive, hulking predators with slate-colored skin. Despite their fearsome appearance they sometimes bond with lone humanoids, becoming protective guardians."
+    "ecology_notes": "Gray renders are massive, hulking predators with slate-colored skin. Despite their fearsome appearance they sometimes bond with lone humanoids, becoming protective guardians.",
+    "lair_type": "Cave"
   },
   {
     "name": "Krenshar",
@@ -612,6 +618,7 @@
       "Warm_Forest"
     ],
     "primary_biome": "Temperate_Forest",
-    "ecology_notes": "Krenshars are feline pack hunters that terrify prey by retracting the skin from their skull, revealing a horrifying bare-bone visage accompanied by an unearthly howl."
+    "ecology_notes": "Krenshars are feline pack hunters that terrify prey by retracting the skin from their skull, revealing a horrifying bare-bone visage accompanied by an unearthly howl.",
+    "lair_type": "Cave"
   }
 ]

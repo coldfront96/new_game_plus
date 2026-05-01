@@ -8,28 +8,80 @@
     "hit_dice": "2d8+2",
     "hp_avg": 11,
     "initiative": 2,
-    "speed": { "land": 20, "swim": 30 },
-    "armor_class": { "total": 13, "touch": 12, "flat_footed": 10, "components": "+2 Dex, +1 natural" },
+    "speed": {
+      "land": 20,
+      "swim": 30
+    },
+    "armor_class": {
+      "total": 13,
+      "touch": 12,
+      "flat_footed": 10,
+      "components": "+2 Dex, +1 natural"
+    },
     "base_attack": 1,
     "grapple": 1,
     "attacks": [
-      { "name": "8 Arms", "attack_bonus": "+3", "damage": "0", "damage_type": "Grapple" },
-      { "name": "Bite", "attack_bonus": "-2", "damage": "1d3", "damage_type": "Piercing" }
+      {
+        "name": "8 Arms",
+        "attack_bonus": "+3",
+        "damage": "0",
+        "damage_type": "Grapple"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "-2",
+        "damage": "1d3",
+        "damage_type": "Piercing"
+      }
     ],
-    "special_attacks": ["Improved Grab"],
-    "special_qualities": ["Ink Cloud", "Jet", "Low-Light Vision"],
-    "saves": { "fort": 2, "ref": 5, "will": 1 },
-    "abilities": { "str": 11, "dex": 15, "con": 12, "int": 2, "wis": 12, "cha": 3 },
-    "skills": { "Hide": 10, "Listen": 4, "Move Silently": 6, "Spot": 5, "Swim": 8 },
-    "feats": ["Weapon Finesse"],
+    "special_attacks": [
+      "Improved Grab"
+    ],
+    "special_qualities": [
+      "Ink Cloud",
+      "Jet",
+      "Low-Light Vision"
+    ],
+    "saves": {
+      "fort": 2,
+      "ref": 5,
+      "will": 1
+    },
+    "abilities": {
+      "str": 11,
+      "dex": 15,
+      "con": 12,
+      "int": 2,
+      "wis": 12,
+      "cha": 3
+    },
+    "skills": {
+      "Hide": 10,
+      "Listen": 4,
+      "Move Silently": 6,
+      "Spot": 5,
+      "Swim": 8
+    },
+    "feats": [
+      "Weapon Finesse"
+    ],
     "alignment": "Always N",
     "advancement": "3-4 HD Small",
-    "dr": null, "sr": null, "regen": null, "fast_heal": null,
-    "elemental_weaknesses": [], "alignment_weaknesses": [], "passive_effects": [],
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
     "population_base": 800,
-    "allowed_biomes": ["Temperate_Aquatic", "Warm_Aquatic"],
+    "allowed_biomes": [
+      "Temperate_Aquatic",
+      "Warm_Aquatic"
+    ],
     "primary_biome": "Temperate_Aquatic",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Octopus, Giant",
@@ -40,28 +92,82 @@
     "hit_dice": "8d8+11",
     "hp_avg": 47,
     "initiative": 2,
-    "speed": { "land": 20, "swim": 30 },
-    "armor_class": { "total": 18, "touch": 13, "flat_footed": 15, "components": "+2 Dex, +5 natural, +1 size penalty negated by natural" },
+    "speed": {
+      "land": 20,
+      "swim": 30
+    },
+    "armor_class": {
+      "total": 18,
+      "touch": 13,
+      "flat_footed": 15,
+      "components": "+2 Dex, +5 natural, +1 size penalty negated by natural"
+    },
     "base_attack": 6,
     "grapple": 17,
     "attacks": [
-      { "name": "8 Arms", "attack_bonus": "+12", "damage": "1d4+5", "damage_type": "Bludgeoning" },
-      { "name": "Bite", "attack_bonus": "+7", "damage": "1d8+2", "damage_type": "Piercing" }
+      {
+        "name": "8 Arms",
+        "attack_bonus": "+12",
+        "damage": "1d4+5",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+7",
+        "damage": "1d8+2",
+        "damage_type": "Piercing"
+      }
     ],
-    "special_attacks": ["Constrict 1d4+5", "Improved Grab"],
-    "special_qualities": ["Ink Cloud", "Jet", "Low-Light Vision"],
-    "saves": { "fort": 6, "ref": 8, "will": 4 },
-    "abilities": { "str": 20, "dex": 15, "con": 13, "int": 2, "wis": 12, "cha": 3 },
-    "skills": { "Hide": 10, "Listen": 8, "Move Silently": 10, "Spot": 8, "Swim": 14 },
-    "feats": ["Alertness", "Endurance"],
+    "special_attacks": [
+      "Constrict 1d4+5",
+      "Improved Grab"
+    ],
+    "special_qualities": [
+      "Ink Cloud",
+      "Jet",
+      "Low-Light Vision"
+    ],
+    "saves": {
+      "fort": 6,
+      "ref": 8,
+      "will": 4
+    },
+    "abilities": {
+      "str": 20,
+      "dex": 15,
+      "con": 13,
+      "int": 2,
+      "wis": 12,
+      "cha": 3
+    },
+    "skills": {
+      "Hide": 10,
+      "Listen": 8,
+      "Move Silently": 10,
+      "Spot": 8,
+      "Swim": 14
+    },
+    "feats": [
+      "Alertness",
+      "Endurance"
+    ],
     "alignment": "Always N",
     "advancement": "9-12 HD Large, 13-24 HD Huge",
-    "dr": null, "sr": null, "regen": null, "fast_heal": null,
-    "elemental_weaknesses": [], "alignment_weaknesses": [], "passive_effects": [],
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
     "population_base": 150,
-    "allowed_biomes": ["Temperate_Aquatic", "Warm_Aquatic"],
+    "allowed_biomes": [
+      "Temperate_Aquatic",
+      "Warm_Aquatic"
+    ],
     "primary_biome": "Temperate_Aquatic",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Fortress"
   },
   {
     "name": "Owl",
@@ -72,27 +178,68 @@
     "hit_dice": "1d8",
     "hp_avg": 4,
     "initiative": 3,
-    "speed": { "land": 10, "fly": 40 },
-    "armor_class": { "total": 17, "touch": 15, "flat_footed": 15, "components": "+3 Dex, +2 natural, +2 size" },
+    "speed": {
+      "land": 10,
+      "fly": 40
+    },
+    "armor_class": {
+      "total": 17,
+      "touch": 15,
+      "flat_footed": 15,
+      "components": "+3 Dex, +2 natural, +2 size"
+    },
     "base_attack": 0,
     "grapple": -9,
     "attacks": [
-      { "name": "2 Talons", "attack_bonus": "+5", "damage": "1d4-3", "damage_type": "Slashing" }
+      {
+        "name": "2 Talons",
+        "attack_bonus": "+5",
+        "damage": "1d4-3",
+        "damage_type": "Slashing"
+      }
     ],
     "special_attacks": [],
-    "special_qualities": ["Low-Light Vision"],
-    "saves": { "fort": 2, "ref": 5, "will": 2 },
-    "abilities": { "str": 4, "dex": 17, "con": 10, "int": 2, "wis": 14, "cha": 4 },
-    "skills": { "Listen": 14, "Move Silently": 17, "Spot": 6 },
-    "feats": ["Weapon Finesse"],
+    "special_qualities": [
+      "Low-Light Vision"
+    ],
+    "saves": {
+      "fort": 2,
+      "ref": 5,
+      "will": 2
+    },
+    "abilities": {
+      "str": 4,
+      "dex": 17,
+      "con": 10,
+      "int": 2,
+      "wis": 14,
+      "cha": 4
+    },
+    "skills": {
+      "Listen": 14,
+      "Move Silently": 17,
+      "Spot": 6
+    },
+    "feats": [
+      "Weapon Finesse"
+    ],
     "alignment": "Always N",
     "advancement": null,
-    "dr": null, "sr": null, "regen": null, "fast_heal": null,
-    "elemental_weaknesses": [], "alignment_weaknesses": [], "passive_effects": [],
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
     "population_base": 2000,
-    "allowed_biomes": ["Temperate_Forest", "Cold_Forest"],
+    "allowed_biomes": [
+      "Temperate_Forest",
+      "Cold_Forest"
+    ],
     "primary_biome": "Temperate_Forest",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Owl, Giant",
@@ -103,28 +250,78 @@
     "hit_dice": "4d8+4",
     "hp_avg": 22,
     "initiative": 3,
-    "speed": { "land": 10, "fly": 70 },
-    "armor_class": { "total": 17, "touch": 12, "flat_footed": 15, "components": "+3 Dex, +5 natural, -1 size" },
+    "speed": {
+      "land": 10,
+      "fly": 70
+    },
+    "armor_class": {
+      "total": 17,
+      "touch": 12,
+      "flat_footed": 15,
+      "components": "+3 Dex, +5 natural, -1 size"
+    },
     "base_attack": 3,
     "grapple": 9,
     "attacks": [
-      { "name": "2 Talons", "attack_bonus": "+7", "damage": "1d6+4", "damage_type": "Slashing" },
-      { "name": "Bite", "attack_bonus": "+2", "damage": "1d8+2", "damage_type": "Piercing" }
+      {
+        "name": "2 Talons",
+        "attack_bonus": "+7",
+        "damage": "1d6+4",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+2",
+        "damage": "1d8+2",
+        "damage_type": "Piercing"
+      }
     ],
     "special_attacks": [],
-    "special_qualities": ["Low-Light Vision"],
-    "saves": { "fort": 5, "ref": 7, "will": 4 },
-    "abilities": { "str": 16, "dex": 17, "con": 13, "int": 10, "wis": 14, "cha": 10 },
-    "skills": { "Knowledge (nature)": 4, "Listen": 18, "Move Silently": 13, "Sense Motive": 8, "Spot": 16 },
-    "feats": ["Alertness", "Flyby Attack"],
+    "special_qualities": [
+      "Low-Light Vision"
+    ],
+    "saves": {
+      "fort": 5,
+      "ref": 7,
+      "will": 4
+    },
+    "abilities": {
+      "str": 16,
+      "dex": 17,
+      "con": 13,
+      "int": 10,
+      "wis": 14,
+      "cha": 10
+    },
+    "skills": {
+      "Knowledge (nature)": 4,
+      "Listen": 18,
+      "Move Silently": 13,
+      "Sense Motive": 8,
+      "Spot": 16
+    },
+    "feats": [
+      "Alertness",
+      "Flyby Attack"
+    ],
     "alignment": "Neutral Good",
     "advancement": "5-8 HD Large",
-    "dr": null, "sr": null, "regen": null, "fast_heal": null,
-    "elemental_weaknesses": [], "alignment_weaknesses": [], "passive_effects": [],
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
     "population_base": 300,
-    "allowed_biomes": ["Temperate_Forest", "Cold_Forest", "Temperate_Mountain"],
+    "allowed_biomes": [
+      "Temperate_Forest",
+      "Cold_Forest",
+      "Temperate_Mountain"
+    ],
     "primary_biome": "Temperate_Forest",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Fortress"
   },
   {
     "name": "Pony",
@@ -135,27 +332,67 @@
     "hit_dice": "2d8+2",
     "hp_avg": 11,
     "initiative": 1,
-    "speed": { "land": 40 },
-    "armor_class": { "total": 13, "touch": 11, "flat_footed": 12, "components": "+1 Dex, +2 natural" },
+    "speed": {
+      "land": 40
+    },
+    "armor_class": {
+      "total": 13,
+      "touch": 11,
+      "flat_footed": 12,
+      "components": "+1 Dex, +2 natural"
+    },
     "base_attack": 1,
     "grapple": 2,
     "attacks": [
-      { "name": "2 Hooves", "attack_bonus": "-3", "damage": "1d3+1", "damage_type": "Bludgeoning" }
+      {
+        "name": "2 Hooves",
+        "attack_bonus": "-3",
+        "damage": "1d3+1",
+        "damage_type": "Bludgeoning"
+      }
     ],
     "special_attacks": [],
-    "special_qualities": ["Low-Light Vision", "Scent"],
-    "saves": { "fort": 4, "ref": 4, "will": 1 },
-    "abilities": { "str": 13, "dex": 13, "con": 12, "int": 2, "wis": 11, "cha": 4 },
-    "skills": { "Listen": 5, "Spot": 5 },
-    "feats": ["Endurance"],
+    "special_qualities": [
+      "Low-Light Vision",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 4,
+      "ref": 4,
+      "will": 1
+    },
+    "abilities": {
+      "str": 13,
+      "dex": 13,
+      "con": 12,
+      "int": 2,
+      "wis": 11,
+      "cha": 4
+    },
+    "skills": {
+      "Listen": 5,
+      "Spot": 5
+    },
+    "feats": [
+      "Endurance"
+    ],
     "alignment": "Always N",
     "advancement": null,
-    "dr": null, "sr": null, "regen": null, "fast_heal": null,
-    "elemental_weaknesses": [], "alignment_weaknesses": [], "passive_effects": [],
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
     "population_base": 1500,
-    "allowed_biomes": ["Temperate_Plain", "Any_Urban"],
+    "allowed_biomes": [
+      "Temperate_Plain",
+      "Any_Urban"
+    ],
     "primary_biome": "Temperate_Plain",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Porpoise",
@@ -166,27 +403,69 @@
     "hit_dice": "2d8+2",
     "hp_avg": 11,
     "initiative": 3,
-    "speed": { "swim": 80 },
-    "armor_class": { "total": 15, "touch": 13, "flat_footed": 14, "components": "+3 Dex, +2 natural" },
+    "speed": {
+      "swim": 80
+    },
+    "armor_class": {
+      "total": 15,
+      "touch": 13,
+      "flat_footed": 14,
+      "components": "+3 Dex, +2 natural"
+    },
     "base_attack": 1,
     "grapple": 2,
     "attacks": [
-      { "name": "Slam", "attack_bonus": "+2", "damage": "2d4", "damage_type": "Bludgeoning" }
+      {
+        "name": "Slam",
+        "attack_bonus": "+2",
+        "damage": "2d4",
+        "damage_type": "Bludgeoning"
+      }
     ],
     "special_attacks": [],
-    "special_qualities": ["Blindsense 120 ft.", "Hold Breath", "Low-Light Vision"],
-    "saves": { "fort": 4, "ref": 6, "will": 1 },
-    "abilities": { "str": 11, "dex": 17, "con": 13, "int": 2, "wis": 12, "cha": 6 },
-    "skills": { "Listen": 10, "Spot": 7, "Swim": 8 },
-    "feats": ["Weapon Finesse"],
+    "special_qualities": [
+      "Blindsense 120 ft.",
+      "Hold Breath",
+      "Low-Light Vision"
+    ],
+    "saves": {
+      "fort": 4,
+      "ref": 6,
+      "will": 1
+    },
+    "abilities": {
+      "str": 11,
+      "dex": 17,
+      "con": 13,
+      "int": 2,
+      "wis": 12,
+      "cha": 6
+    },
+    "skills": {
+      "Listen": 10,
+      "Spot": 7,
+      "Swim": 8
+    },
+    "feats": [
+      "Weapon Finesse"
+    ],
     "alignment": "Always N",
     "advancement": "3-4 HD Medium",
-    "dr": null, "sr": null, "regen": null, "fast_heal": null,
-    "elemental_weaknesses": [], "alignment_weaknesses": [], "passive_effects": [],
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
     "population_base": 500,
-    "allowed_biomes": ["Temperate_Aquatic", "Cold_Aquatic"],
+    "allowed_biomes": [
+      "Temperate_Aquatic",
+      "Cold_Aquatic"
+    ],
     "primary_biome": "Temperate_Aquatic",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Rat",
@@ -197,27 +476,73 @@
     "hit_dice": "1d8",
     "hp_avg": 1,
     "initiative": 2,
-    "speed": { "land": 15, "climb": 15, "swim": 15 },
-    "armor_class": { "total": 14, "touch": 14, "flat_footed": 12, "components": "+2 Dex, +2 size" },
+    "speed": {
+      "land": 15,
+      "climb": 15,
+      "swim": 15
+    },
+    "armor_class": {
+      "total": 14,
+      "touch": 14,
+      "flat_footed": 12,
+      "components": "+2 Dex, +2 size"
+    },
     "base_attack": 0,
     "grapple": -12,
     "attacks": [
-      { "name": "Bite", "attack_bonus": "+4", "damage": "1d3-4", "damage_type": "Piercing" }
+      {
+        "name": "Bite",
+        "attack_bonus": "+4",
+        "damage": "1d3-4",
+        "damage_type": "Piercing"
+      }
     ],
     "special_attacks": [],
-    "special_qualities": ["Low-Light Vision", "Scent"],
-    "saves": { "fort": 2, "ref": 4, "will": 1 },
-    "abilities": { "str": 2, "dex": 15, "con": 10, "int": 2, "wis": 12, "cha": 2 },
-    "skills": { "Balance": 10, "Climb": 12, "Hide": 16, "Move Silently": 10, "Swim": 10 },
-    "feats": ["Weapon Finesse"],
+    "special_qualities": [
+      "Low-Light Vision",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 2,
+      "ref": 4,
+      "will": 1
+    },
+    "abilities": {
+      "str": 2,
+      "dex": 15,
+      "con": 10,
+      "int": 2,
+      "wis": 12,
+      "cha": 2
+    },
+    "skills": {
+      "Balance": 10,
+      "Climb": 12,
+      "Hide": 16,
+      "Move Silently": 10,
+      "Swim": 10
+    },
+    "feats": [
+      "Weapon Finesse"
+    ],
     "alignment": "Always N",
     "advancement": null,
-    "dr": null, "sr": null, "regen": null, "fast_heal": null,
-    "elemental_weaknesses": [], "alignment_weaknesses": [], "passive_effects": [],
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
     "population_base": 10000,
-    "allowed_biomes": ["Any_Urban", "Temperate_Forest", "Underground"],
+    "allowed_biomes": [
+      "Any_Urban",
+      "Temperate_Forest",
+      "Underground"
+    ],
     "primary_biome": "Any_Urban",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Rat, Dire",
@@ -228,27 +553,76 @@
     "hit_dice": "1d8+1",
     "hp_avg": 5,
     "initiative": 3,
-    "speed": { "land": 40, "climb": 20 },
-    "armor_class": { "total": 15, "touch": 13, "flat_footed": 13, "components": "+3 Dex, +1 natural, +1 size" },
+    "speed": {
+      "land": 40,
+      "climb": 20
+    },
+    "armor_class": {
+      "total": 15,
+      "touch": 13,
+      "flat_footed": 13,
+      "components": "+3 Dex, +1 natural, +1 size"
+    },
     "base_attack": 0,
     "grapple": -4,
     "attacks": [
-      { "name": "Bite", "attack_bonus": "+4", "damage": "1d4", "damage_type": "Piercing" }
+      {
+        "name": "Bite",
+        "attack_bonus": "+4",
+        "damage": "1d4",
+        "damage_type": "Piercing"
+      }
     ],
-    "special_attacks": ["Disease (filth fever, DC 11 Fort)"],
-    "special_qualities": ["Low-Light Vision", "Scent"],
-    "saves": { "fort": 3, "ref": 5, "will": 3 },
-    "abilities": { "str": 10, "dex": 17, "con": 12, "int": 1, "wis": 12, "cha": 4 },
-    "skills": { "Climb": 11, "Hide": 8, "Listen": 4, "Move Silently": 4, "Spot": 4, "Swim": 11 },
-    "feats": ["Alertness", "Weapon Finesse"],
+    "special_attacks": [
+      "Disease (filth fever, DC 11 Fort)"
+    ],
+    "special_qualities": [
+      "Low-Light Vision",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 3,
+      "ref": 5,
+      "will": 3
+    },
+    "abilities": {
+      "str": 10,
+      "dex": 17,
+      "con": 12,
+      "int": 1,
+      "wis": 12,
+      "cha": 4
+    },
+    "skills": {
+      "Climb": 11,
+      "Hide": 8,
+      "Listen": 4,
+      "Move Silently": 4,
+      "Spot": 4,
+      "Swim": 11
+    },
+    "feats": [
+      "Alertness",
+      "Weapon Finesse"
+    ],
     "alignment": "Always N",
     "advancement": "2-3 HD Small",
-    "dr": null, "sr": null, "regen": null, "fast_heal": null,
-    "elemental_weaknesses": [], "alignment_weaknesses": [], "passive_effects": [],
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
     "population_base": 3000,
-    "allowed_biomes": ["Any_Urban", "Temperate_Forest", "Underground"],
+    "allowed_biomes": [
+      "Any_Urban",
+      "Temperate_Forest",
+      "Underground"
+    ],
     "primary_biome": "Any_Urban",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Raven",
@@ -259,27 +633,67 @@
     "hit_dice": "1d8",
     "hp_avg": 4,
     "initiative": 2,
-    "speed": { "land": 10, "fly": 40 },
-    "armor_class": { "total": 14, "touch": 14, "flat_footed": 12, "components": "+2 Dex, +2 size" },
+    "speed": {
+      "land": 10,
+      "fly": 40
+    },
+    "armor_class": {
+      "total": 14,
+      "touch": 14,
+      "flat_footed": 12,
+      "components": "+2 Dex, +2 size"
+    },
     "base_attack": 0,
     "grapple": -9,
     "attacks": [
-      { "name": "Claws", "attack_bonus": "+4", "damage": "1d2-5", "damage_type": "Slashing" }
+      {
+        "name": "Claws",
+        "attack_bonus": "+4",
+        "damage": "1d2-5",
+        "damage_type": "Slashing"
+      }
     ],
     "special_attacks": [],
-    "special_qualities": ["Low-Light Vision"],
-    "saves": { "fort": 2, "ref": 4, "will": 2 },
-    "abilities": { "str": 1, "dex": 15, "con": 10, "int": 2, "wis": 14, "cha": 6 },
-    "skills": { "Listen": 3, "Spot": 5 },
-    "feats": ["Weapon Finesse"],
+    "special_qualities": [
+      "Low-Light Vision"
+    ],
+    "saves": {
+      "fort": 2,
+      "ref": 4,
+      "will": 2
+    },
+    "abilities": {
+      "str": 1,
+      "dex": 15,
+      "con": 10,
+      "int": 2,
+      "wis": 14,
+      "cha": 6
+    },
+    "skills": {
+      "Listen": 3,
+      "Spot": 5
+    },
+    "feats": [
+      "Weapon Finesse"
+    ],
     "alignment": "Always N",
     "advancement": null,
-    "dr": null, "sr": null, "regen": null, "fast_heal": null,
-    "elemental_weaknesses": [], "alignment_weaknesses": [], "passive_effects": [],
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
     "population_base": 2000,
-    "allowed_biomes": ["Temperate_Forest", "Cold_Forest"],
+    "allowed_biomes": [
+      "Temperate_Forest",
+      "Cold_Forest"
+    ],
     "primary_biome": "Temperate_Forest",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Rhinoceros",
@@ -290,27 +704,70 @@
     "hit_dice": "8d8+32",
     "hp_avg": 68,
     "initiative": -1,
-    "speed": { "land": 30 },
-    "armor_class": { "total": 16, "touch": 8, "flat_footed": 16, "components": "-1 Dex, +8 natural, -1 size" },
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 8,
+      "flat_footed": 16,
+      "components": "-1 Dex, +8 natural, -1 size"
+    },
     "base_attack": 6,
     "grapple": 16,
     "attacks": [
-      { "name": "Gore", "attack_bonus": "+11", "damage": "2d6+9", "damage_type": "Piercing" }
+      {
+        "name": "Gore",
+        "attack_bonus": "+11",
+        "damage": "2d6+9",
+        "damage_type": "Piercing"
+      }
     ],
-    "special_attacks": ["Powerful Charge (4d6+9)"],
-    "special_qualities": ["Low-Light Vision", "Scent"],
-    "saves": { "fort": 10, "ref": 5, "will": 3 },
-    "abilities": { "str": 26, "dex": 8, "con": 21, "int": 2, "wis": 13, "cha": 2 },
-    "skills": { "Listen": 10, "Spot": 4 },
-    "feats": ["Alertness", "Endurance"],
+    "special_attacks": [
+      "Powerful Charge (4d6+9)"
+    ],
+    "special_qualities": [
+      "Low-Light Vision",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 10,
+      "ref": 5,
+      "will": 3
+    },
+    "abilities": {
+      "str": 26,
+      "dex": 8,
+      "con": 21,
+      "int": 2,
+      "wis": 13,
+      "cha": 2
+    },
+    "skills": {
+      "Listen": 10,
+      "Spot": 4
+    },
+    "feats": [
+      "Alertness",
+      "Endurance"
+    ],
     "alignment": "Always N",
     "advancement": "9-16 HD Large, 17-24 HD Huge",
-    "dr": null, "sr": null, "regen": null, "fast_heal": null,
-    "elemental_weaknesses": [], "alignment_weaknesses": [], "passive_effects": [],
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
     "population_base": 400,
-    "allowed_biomes": ["Warm_Plain", "Warm_Desert"],
+    "allowed_biomes": [
+      "Warm_Plain",
+      "Warm_Desert"
+    ],
     "primary_biome": "Warm_Plain",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Roc",
@@ -321,28 +778,82 @@
     "hit_dice": "18d8+108",
     "hp_avg": 189,
     "initiative": 1,
-    "speed": { "land": 20, "fly": 80 },
-    "armor_class": { "total": 17, "touch": 5, "flat_footed": 17, "components": "+1 Dex, +12 natural, -4 size, -2 Dex penalty" },
+    "speed": {
+      "land": 20,
+      "fly": 80
+    },
+    "armor_class": {
+      "total": 17,
+      "touch": 5,
+      "flat_footed": 17,
+      "components": "+1 Dex, +12 natural, -4 size, -2 Dex penalty"
+    },
     "base_attack": 13,
     "grapple": 37,
     "attacks": [
-      { "name": "2 Talons", "attack_bonus": "+21", "damage": "2d6+12", "damage_type": "Slashing" },
-      { "name": "Bite", "attack_bonus": "+16", "damage": "2d8+6", "damage_type": "Piercing" }
+      {
+        "name": "2 Talons",
+        "attack_bonus": "+21",
+        "damage": "2d6+12",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+16",
+        "damage": "2d8+6",
+        "damage_type": "Piercing"
+      }
     ],
-    "special_attacks": ["Improved Grab"],
-    "special_qualities": ["Low-Light Vision", "Scent"],
-    "saves": { "fort": 17, "ref": 12, "will": 9 },
-    "abilities": { "str": 34, "dex": 10, "con": 22, "int": 2, "wis": 13, "cha": 9 },
-    "skills": { "Listen": 13, "Spot": 18 },
-    "feats": ["Alertness", "Flyby Attack", "Iron Will", "Multiattack", "Snatch", "Wingover"],
+    "special_attacks": [
+      "Improved Grab"
+    ],
+    "special_qualities": [
+      "Low-Light Vision",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 17,
+      "ref": 12,
+      "will": 9
+    },
+    "abilities": {
+      "str": 34,
+      "dex": 10,
+      "con": 22,
+      "int": 2,
+      "wis": 13,
+      "cha": 9
+    },
+    "skills": {
+      "Listen": 13,
+      "Spot": 18
+    },
+    "feats": [
+      "Alertness",
+      "Flyby Attack",
+      "Iron Will",
+      "Multiattack",
+      "Snatch",
+      "Wingover"
+    ],
     "alignment": "Always N",
     "advancement": "19-36 HD Gargantuan, 37-54 HD Colossal",
-    "dr": null, "sr": null, "regen": null, "fast_heal": null,
-    "elemental_weaknesses": [], "alignment_weaknesses": [], "passive_effects": [],
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
     "population_base": 50,
-    "allowed_biomes": ["Warm_Mountain", "Temperate_Mountain", "Warm_Desert"],
+    "allowed_biomes": [
+      "Warm_Mountain",
+      "Temperate_Mountain",
+      "Warm_Desert"
+    ],
     "primary_biome": "Warm_Mountain",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Shark, Large",
@@ -353,27 +864,71 @@
     "hit_dice": "7d8+7",
     "hp_avg": 38,
     "initiative": 2,
-    "speed": { "swim": 60 },
-    "armor_class": { "total": 15, "touch": 10, "flat_footed": 13, "components": "+2 Dex, +4 natural, -1 size" },
+    "speed": {
+      "swim": 60
+    },
+    "armor_class": {
+      "total": 15,
+      "touch": 10,
+      "flat_footed": 13,
+      "components": "+2 Dex, +4 natural, -1 size"
+    },
     "base_attack": 5,
     "grapple": 12,
     "attacks": [
-      { "name": "Bite", "attack_bonus": "+9", "damage": "1d8+4", "damage_type": "Piercing" }
+      {
+        "name": "Bite",
+        "attack_bonus": "+9",
+        "damage": "1d8+4",
+        "damage_type": "Piercing"
+      }
     ],
     "special_attacks": [],
-    "special_qualities": ["Blindsense 30 ft.", "Keen Scent"],
-    "saves": { "fort": 5, "ref": 7, "will": 3 },
-    "abilities": { "str": 17, "dex": 15, "con": 13, "int": 1, "wis": 12, "cha": 2 },
-    "skills": { "Listen": 7, "Spot": 7, "Swim": 11 },
-    "feats": ["Alertness", "Great Fortitude", "Weapon Finesse"],
+    "special_qualities": [
+      "Blindsense 30 ft.",
+      "Keen Scent"
+    ],
+    "saves": {
+      "fort": 5,
+      "ref": 7,
+      "will": 3
+    },
+    "abilities": {
+      "str": 17,
+      "dex": 15,
+      "con": 13,
+      "int": 1,
+      "wis": 12,
+      "cha": 2
+    },
+    "skills": {
+      "Listen": 7,
+      "Spot": 7,
+      "Swim": 11
+    },
+    "feats": [
+      "Alertness",
+      "Great Fortitude",
+      "Weapon Finesse"
+    ],
     "alignment": "Always N",
     "advancement": "8-11 HD Large",
-    "dr": null, "sr": null, "regen": null, "fast_heal": null,
-    "elemental_weaknesses": [], "alignment_weaknesses": [], "passive_effects": [],
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
     "population_base": 600,
-    "allowed_biomes": ["Temperate_Aquatic", "Warm_Aquatic", "Cold_Aquatic"],
+    "allowed_biomes": [
+      "Temperate_Aquatic",
+      "Warm_Aquatic",
+      "Cold_Aquatic"
+    ],
     "primary_biome": "Temperate_Aquatic",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Shark, Huge",
@@ -384,27 +939,70 @@
     "hit_dice": "10d8+20",
     "hp_avg": 65,
     "initiative": 2,
-    "speed": { "swim": 60 },
-    "armor_class": { "total": 15, "touch": 9, "flat_footed": 13, "components": "+2 Dex, +5 natural, -2 size" },
+    "speed": {
+      "swim": 60
+    },
+    "armor_class": {
+      "total": 15,
+      "touch": 9,
+      "flat_footed": 13,
+      "components": "+2 Dex, +5 natural, -2 size"
+    },
     "base_attack": 7,
     "grapple": 18,
     "attacks": [
-      { "name": "Bite", "attack_bonus": "+13", "damage": "2d6+7", "damage_type": "Piercing" }
+      {
+        "name": "Bite",
+        "attack_bonus": "+13",
+        "damage": "2d6+7",
+        "damage_type": "Piercing"
+      }
     ],
     "special_attacks": [],
-    "special_qualities": ["Blindsense 30 ft.", "Keen Scent"],
-    "saves": { "fort": 9, "ref": 9, "will": 4 },
-    "abilities": { "str": 21, "dex": 14, "con": 15, "int": 1, "wis": 12, "cha": 2 },
-    "skills": { "Listen": 10, "Spot": 9, "Swim": 14 },
-    "feats": ["Alertness", "Great Fortitude", "Weapon Finesse"],
+    "special_qualities": [
+      "Blindsense 30 ft.",
+      "Keen Scent"
+    ],
+    "saves": {
+      "fort": 9,
+      "ref": 9,
+      "will": 4
+    },
+    "abilities": {
+      "str": 21,
+      "dex": 14,
+      "con": 15,
+      "int": 1,
+      "wis": 12,
+      "cha": 2
+    },
+    "skills": {
+      "Listen": 10,
+      "Spot": 9,
+      "Swim": 14
+    },
+    "feats": [
+      "Alertness",
+      "Great Fortitude",
+      "Weapon Finesse"
+    ],
     "alignment": "Always N",
     "advancement": "11-16 HD Huge",
-    "dr": null, "sr": null, "regen": null, "fast_heal": null,
-    "elemental_weaknesses": [], "alignment_weaknesses": [], "passive_effects": [],
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
     "population_base": 200,
-    "allowed_biomes": ["Temperate_Aquatic", "Warm_Aquatic"],
+    "allowed_biomes": [
+      "Temperate_Aquatic",
+      "Warm_Aquatic"
+    ],
     "primary_biome": "Temperate_Aquatic",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Shark, Dire",
@@ -415,27 +1013,76 @@
     "hit_dice": "18d8+66",
     "hp_avg": 147,
     "initiative": 2,
-    "speed": { "swim": 60 },
-    "armor_class": { "total": 17, "touch": 9, "flat_footed": 15, "components": "+2 Dex, +7 natural, -2 size" },
+    "speed": {
+      "swim": 60
+    },
+    "armor_class": {
+      "total": 17,
+      "touch": 9,
+      "flat_footed": 15,
+      "components": "+2 Dex, +7 natural, -2 size"
+    },
     "base_attack": 13,
     "grapple": 24,
     "attacks": [
-      { "name": "Bite", "attack_bonus": "+18", "damage": "2d8+9", "damage_type": "Piercing" }
+      {
+        "name": "Bite",
+        "attack_bonus": "+18",
+        "damage": "2d8+9",
+        "damage_type": "Piercing"
+      }
     ],
-    "special_attacks": ["Improved Grab", "Swallow Whole"],
-    "special_qualities": ["Blindsense 30 ft.", "Keen Scent"],
-    "saves": { "fort": 15, "ref": 13, "will": 7 },
-    "abilities": { "str": 23, "dex": 14, "con": 17, "int": 1, "wis": 12, "cha": 2 },
-    "skills": { "Listen": 12, "Spot": 11, "Swim": 14 },
-    "feats": ["Alertness", "Great Fortitude", "Improved Natural Attack (bite)", "Iron Will", "Weapon Finesse"],
+    "special_attacks": [
+      "Improved Grab",
+      "Swallow Whole"
+    ],
+    "special_qualities": [
+      "Blindsense 30 ft.",
+      "Keen Scent"
+    ],
+    "saves": {
+      "fort": 15,
+      "ref": 13,
+      "will": 7
+    },
+    "abilities": {
+      "str": 23,
+      "dex": 14,
+      "con": 17,
+      "int": 1,
+      "wis": 12,
+      "cha": 2
+    },
+    "skills": {
+      "Listen": 12,
+      "Spot": 11,
+      "Swim": 14
+    },
+    "feats": [
+      "Alertness",
+      "Great Fortitude",
+      "Improved Natural Attack (bite)",
+      "Iron Will",
+      "Weapon Finesse"
+    ],
     "alignment": "Always N",
     "advancement": "19-28 HD Huge, 29-54 HD Gargantuan",
-    "dr": null, "sr": null, "regen": null, "fast_heal": null,
-    "elemental_weaknesses": [], "alignment_weaknesses": [], "passive_effects": [],
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
     "population_base": 30,
-    "allowed_biomes": ["Temperate_Aquatic", "Warm_Aquatic", "Cold_Aquatic"],
+    "allowed_biomes": [
+      "Temperate_Aquatic",
+      "Warm_Aquatic",
+      "Cold_Aquatic"
+    ],
     "primary_biome": "Temperate_Aquatic",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Snake, Constrictor",
@@ -446,27 +1093,77 @@
     "hit_dice": "3d8+3",
     "hp_avg": 16,
     "initiative": 3,
-    "speed": { "land": 20, "swim": 20, "climb": 20 },
-    "armor_class": { "total": 15, "touch": 13, "flat_footed": 12, "components": "+3 Dex, +2 natural" },
+    "speed": {
+      "land": 20,
+      "swim": 20,
+      "climb": 20
+    },
+    "armor_class": {
+      "total": 15,
+      "touch": 13,
+      "flat_footed": 12,
+      "components": "+3 Dex, +2 natural"
+    },
     "base_attack": 2,
     "grapple": 6,
     "attacks": [
-      { "name": "Bite", "attack_bonus": "+4", "damage": "1d3+2", "damage_type": "Piercing" }
+      {
+        "name": "Bite",
+        "attack_bonus": "+4",
+        "damage": "1d3+2",
+        "damage_type": "Piercing"
+      }
     ],
-    "special_attacks": ["Constrict 1d3+4", "Improved Grab"],
-    "special_qualities": ["Low-Light Vision", "Scent"],
-    "saves": { "fort": 4, "ref": 6, "will": 2 },
-    "abilities": { "str": 15, "dex": 17, "con": 13, "int": 1, "wis": 12, "cha": 2 },
-    "skills": { "Balance": 11, "Climb": 11, "Hide": 10, "Listen": 6, "Spot": 6, "Swim": 10 },
-    "feats": ["Alertness", "Weapon Finesse"],
+    "special_attacks": [
+      "Constrict 1d3+4",
+      "Improved Grab"
+    ],
+    "special_qualities": [
+      "Low-Light Vision",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 4,
+      "ref": 6,
+      "will": 2
+    },
+    "abilities": {
+      "str": 15,
+      "dex": 17,
+      "con": 13,
+      "int": 1,
+      "wis": 12,
+      "cha": 2
+    },
+    "skills": {
+      "Balance": 11,
+      "Climb": 11,
+      "Hide": 10,
+      "Listen": 6,
+      "Spot": 6,
+      "Swim": 10
+    },
+    "feats": [
+      "Alertness",
+      "Weapon Finesse"
+    ],
     "alignment": "Always N",
     "advancement": "4-5 HD Medium, 6-10 HD Large",
-    "dr": null, "sr": null, "regen": null, "fast_heal": null,
-    "elemental_weaknesses": [], "alignment_weaknesses": [], "passive_effects": [],
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
     "population_base": 600,
-    "allowed_biomes": ["Warm_Forest", "Warm_Swamp"],
+    "allowed_biomes": [
+      "Warm_Forest",
+      "Warm_Swamp"
+    ],
     "primary_biome": "Warm_Forest",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Snake, Constrictor (Giant)",
@@ -477,27 +1174,79 @@
     "hit_dice": "11d8+14",
     "hp_avg": 63,
     "initiative": 3,
-    "speed": { "land": 20, "swim": 20, "climb": 20 },
-    "armor_class": { "total": 15, "touch": 10, "flat_footed": 13, "components": "+3 Dex, +4 natural, -2 size" },
+    "speed": {
+      "land": 20,
+      "swim": 20,
+      "climb": 20
+    },
+    "armor_class": {
+      "total": 15,
+      "touch": 10,
+      "flat_footed": 13,
+      "components": "+3 Dex, +4 natural, -2 size"
+    },
     "base_attack": 8,
     "grapple": 22,
     "attacks": [
-      { "name": "Bite", "attack_bonus": "+12", "damage": "1d8+8", "damage_type": "Piercing" }
+      {
+        "name": "Bite",
+        "attack_bonus": "+12",
+        "damage": "1d8+8",
+        "damage_type": "Piercing"
+      }
     ],
-    "special_attacks": ["Constrict 1d8+8", "Improved Grab"],
-    "special_qualities": ["Low-Light Vision", "Scent"],
-    "saves": { "fort": 8, "ref": 9, "will": 5 },
-    "abilities": { "str": 25, "dex": 17, "con": 13, "int": 1, "wis": 12, "cha": 2 },
-    "skills": { "Balance": 11, "Climb": 11, "Hide": 4, "Listen": 9, "Spot": 9, "Swim": 16 },
-    "feats": ["Alertness", "Endurance", "Skill Focus (Hide)", "Toughness"],
+    "special_attacks": [
+      "Constrict 1d8+8",
+      "Improved Grab"
+    ],
+    "special_qualities": [
+      "Low-Light Vision",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 8,
+      "ref": 9,
+      "will": 5
+    },
+    "abilities": {
+      "str": 25,
+      "dex": 17,
+      "con": 13,
+      "int": 1,
+      "wis": 12,
+      "cha": 2
+    },
+    "skills": {
+      "Balance": 11,
+      "Climb": 11,
+      "Hide": 4,
+      "Listen": 9,
+      "Spot": 9,
+      "Swim": 16
+    },
+    "feats": [
+      "Alertness",
+      "Endurance",
+      "Skill Focus (Hide)",
+      "Toughness"
+    ],
     "alignment": "Always N",
     "advancement": "12-22 HD Huge, 23-33 HD Gargantuan",
-    "dr": null, "sr": null, "regen": null, "fast_heal": null,
-    "elemental_weaknesses": [], "alignment_weaknesses": [], "passive_effects": [],
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
     "population_base": 100,
-    "allowed_biomes": ["Warm_Forest", "Warm_Swamp"],
+    "allowed_biomes": [
+      "Warm_Forest",
+      "Warm_Swamp"
+    ],
     "primary_biome": "Warm_Forest",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Fortress"
   },
   {
     "name": "Snake, Viper (Tiny)",
@@ -508,27 +1257,75 @@
     "hit_dice": "1d8",
     "hp_avg": 4,
     "initiative": 3,
-    "speed": { "land": 15, "swim": 15, "climb": 15 },
-    "armor_class": { "total": 17, "touch": 15, "flat_footed": 15, "components": "+3 Dex, +2 natural, +2 size" },
+    "speed": {
+      "land": 15,
+      "swim": 15,
+      "climb": 15
+    },
+    "armor_class": {
+      "total": 17,
+      "touch": 15,
+      "flat_footed": 15,
+      "components": "+3 Dex, +2 natural, +2 size"
+    },
     "base_attack": 0,
     "grapple": -11,
     "attacks": [
-      { "name": "Bite", "attack_bonus": "+5", "damage": "1 plus poison", "damage_type": "Piercing" }
+      {
+        "name": "Bite",
+        "attack_bonus": "+5",
+        "damage": "1 plus poison",
+        "damage_type": "Piercing"
+      }
     ],
-    "special_attacks": ["Poison (DC 11 Fort, 1d6 CON/1d6 CON)"],
-    "special_qualities": ["Low-Light Vision", "Scent"],
-    "saves": { "fort": 2, "ref": 5, "will": 1 },
-    "abilities": { "str": 4, "dex": 17, "con": 11, "int": 1, "wis": 12, "cha": 2 },
-    "skills": { "Balance": 11, "Climb": 11, "Hide": 15, "Listen": 5, "Spot": 5, "Swim": 8 },
-    "feats": ["Weapon Finesse"],
+    "special_attacks": [
+      "Poison (DC 11 Fort, 1d6 CON/1d6 CON)"
+    ],
+    "special_qualities": [
+      "Low-Light Vision",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 2,
+      "ref": 5,
+      "will": 1
+    },
+    "abilities": {
+      "str": 4,
+      "dex": 17,
+      "con": 11,
+      "int": 1,
+      "wis": 12,
+      "cha": 2
+    },
+    "skills": {
+      "Balance": 11,
+      "Climb": 11,
+      "Hide": 15,
+      "Listen": 5,
+      "Spot": 5,
+      "Swim": 8
+    },
+    "feats": [
+      "Weapon Finesse"
+    ],
     "alignment": "Always N",
     "advancement": null,
-    "dr": null, "sr": null, "regen": null, "fast_heal": null,
-    "elemental_weaknesses": [], "alignment_weaknesses": [], "passive_effects": [],
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
     "population_base": 1500,
-    "allowed_biomes": ["Warm_Forest", "Temperate_Forest"],
+    "allowed_biomes": [
+      "Warm_Forest",
+      "Temperate_Forest"
+    ],
     "primary_biome": "Warm_Forest",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Snake, Viper (Small)",
@@ -539,27 +1336,75 @@
     "hit_dice": "1d8+1",
     "hp_avg": 5,
     "initiative": 3,
-    "speed": { "land": 20, "swim": 20, "climb": 20 },
-    "armor_class": { "total": 16, "touch": 14, "flat_footed": 13, "components": "+3 Dex, +2 natural, +1 size" },
+    "speed": {
+      "land": 20,
+      "swim": 20,
+      "climb": 20
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 14,
+      "flat_footed": 13,
+      "components": "+3 Dex, +2 natural, +1 size"
+    },
     "base_attack": 0,
     "grapple": -5,
     "attacks": [
-      { "name": "Bite", "attack_bonus": "+4", "damage": "1d2-2 plus poison", "damage_type": "Piercing" }
+      {
+        "name": "Bite",
+        "attack_bonus": "+4",
+        "damage": "1d2-2 plus poison",
+        "damage_type": "Piercing"
+      }
     ],
-    "special_attacks": ["Poison (DC 11 Fort, 1d6 CON/1d6 CON)"],
-    "special_qualities": ["Low-Light Vision", "Scent"],
-    "saves": { "fort": 3, "ref": 5, "will": 1 },
-    "abilities": { "str": 6, "dex": 17, "con": 12, "int": 1, "wis": 12, "cha": 2 },
-    "skills": { "Balance": 11, "Climb": 11, "Hide": 11, "Listen": 5, "Spot": 5, "Swim": 7 },
-    "feats": ["Weapon Finesse"],
+    "special_attacks": [
+      "Poison (DC 11 Fort, 1d6 CON/1d6 CON)"
+    ],
+    "special_qualities": [
+      "Low-Light Vision",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 3,
+      "ref": 5,
+      "will": 1
+    },
+    "abilities": {
+      "str": 6,
+      "dex": 17,
+      "con": 12,
+      "int": 1,
+      "wis": 12,
+      "cha": 2
+    },
+    "skills": {
+      "Balance": 11,
+      "Climb": 11,
+      "Hide": 11,
+      "Listen": 5,
+      "Spot": 5,
+      "Swim": 7
+    },
+    "feats": [
+      "Weapon Finesse"
+    ],
     "alignment": "Always N",
     "advancement": null,
-    "dr": null, "sr": null, "regen": null, "fast_heal": null,
-    "elemental_weaknesses": [], "alignment_weaknesses": [], "passive_effects": [],
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
     "population_base": 1200,
-    "allowed_biomes": ["Warm_Forest", "Temperate_Forest"],
+    "allowed_biomes": [
+      "Warm_Forest",
+      "Temperate_Forest"
+    ],
     "primary_biome": "Warm_Forest",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Snake, Viper (Medium)",
@@ -570,27 +1415,75 @@
     "hit_dice": "2d8+2",
     "hp_avg": 11,
     "initiative": 3,
-    "speed": { "land": 20, "swim": 20, "climb": 20 },
-    "armor_class": { "total": 14, "touch": 12, "flat_footed": 12, "components": "+3 Dex, +1 natural" },
+    "speed": {
+      "land": 20,
+      "swim": 20,
+      "climb": 20
+    },
+    "armor_class": {
+      "total": 14,
+      "touch": 12,
+      "flat_footed": 12,
+      "components": "+3 Dex, +1 natural"
+    },
     "base_attack": 1,
     "grapple": 1,
     "attacks": [
-      { "name": "Bite", "attack_bonus": "+4", "damage": "1d4 plus poison", "damage_type": "Piercing" }
+      {
+        "name": "Bite",
+        "attack_bonus": "+4",
+        "damage": "1d4 plus poison",
+        "damage_type": "Piercing"
+      }
     ],
-    "special_attacks": ["Poison (DC 13 Fort, 1d6 CON/1d6 CON)"],
-    "special_qualities": ["Low-Light Vision", "Scent"],
-    "saves": { "fort": 4, "ref": 5, "will": 1 },
-    "abilities": { "str": 11, "dex": 15, "con": 12, "int": 1, "wis": 12, "cha": 2 },
-    "skills": { "Balance": 10, "Climb": 8, "Hide": 10, "Listen": 5, "Spot": 5, "Swim": 8 },
-    "feats": ["Weapon Finesse"],
+    "special_attacks": [
+      "Poison (DC 13 Fort, 1d6 CON/1d6 CON)"
+    ],
+    "special_qualities": [
+      "Low-Light Vision",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 4,
+      "ref": 5,
+      "will": 1
+    },
+    "abilities": {
+      "str": 11,
+      "dex": 15,
+      "con": 12,
+      "int": 1,
+      "wis": 12,
+      "cha": 2
+    },
+    "skills": {
+      "Balance": 10,
+      "Climb": 8,
+      "Hide": 10,
+      "Listen": 5,
+      "Spot": 5,
+      "Swim": 8
+    },
+    "feats": [
+      "Weapon Finesse"
+    ],
     "alignment": "Always N",
     "advancement": null,
-    "dr": null, "sr": null, "regen": null, "fast_heal": null,
-    "elemental_weaknesses": [], "alignment_weaknesses": [], "passive_effects": [],
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
     "population_base": 900,
-    "allowed_biomes": ["Warm_Forest", "Warm_Plain"],
+    "allowed_biomes": [
+      "Warm_Forest",
+      "Warm_Plain"
+    ],
     "primary_biome": "Warm_Forest",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Snake, Viper (Large)",
@@ -601,27 +1494,76 @@
     "hit_dice": "4d8+4",
     "hp_avg": 22,
     "initiative": 7,
-    "speed": { "land": 20, "swim": 20, "climb": 20 },
-    "armor_class": { "total": 15, "touch": 12, "flat_footed": 12, "components": "+3 Dex, +3 natural, -1 size" },
+    "speed": {
+      "land": 20,
+      "swim": 20,
+      "climb": 20
+    },
+    "armor_class": {
+      "total": 15,
+      "touch": 12,
+      "flat_footed": 12,
+      "components": "+3 Dex, +3 natural, -1 size"
+    },
     "base_attack": 3,
     "grapple": 10,
     "attacks": [
-      { "name": "Bite", "attack_bonus": "+6", "damage": "1d4+3 plus poison", "damage_type": "Piercing" }
+      {
+        "name": "Bite",
+        "attack_bonus": "+6",
+        "damage": "1d4+3 plus poison",
+        "damage_type": "Piercing"
+      }
     ],
-    "special_attacks": ["Poison (DC 14 Fort, 1d6 CON/1d6 CON)"],
-    "special_qualities": ["Low-Light Vision", "Scent"],
-    "saves": { "fort": 5, "ref": 7, "will": 2 },
-    "abilities": { "str": 16, "dex": 17, "con": 13, "int": 1, "wis": 12, "cha": 2 },
-    "skills": { "Balance": 11, "Climb": 11, "Hide": 8, "Listen": 6, "Spot": 6, "Swim": 11 },
-    "feats": ["Improved Initiative", "Weapon Finesse"],
+    "special_attacks": [
+      "Poison (DC 14 Fort, 1d6 CON/1d6 CON)"
+    ],
+    "special_qualities": [
+      "Low-Light Vision",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 5,
+      "ref": 7,
+      "will": 2
+    },
+    "abilities": {
+      "str": 16,
+      "dex": 17,
+      "con": 13,
+      "int": 1,
+      "wis": 12,
+      "cha": 2
+    },
+    "skills": {
+      "Balance": 11,
+      "Climb": 11,
+      "Hide": 8,
+      "Listen": 6,
+      "Spot": 6,
+      "Swim": 11
+    },
+    "feats": [
+      "Improved Initiative",
+      "Weapon Finesse"
+    ],
     "alignment": "Always N",
     "advancement": null,
-    "dr": null, "sr": null, "regen": null, "fast_heal": null,
-    "elemental_weaknesses": [], "alignment_weaknesses": [], "passive_effects": [],
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
     "population_base": 500,
-    "allowed_biomes": ["Warm_Forest", "Warm_Swamp"],
+    "allowed_biomes": [
+      "Warm_Forest",
+      "Warm_Swamp"
+    ],
     "primary_biome": "Warm_Forest",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Snake, Viper (Huge)",
@@ -632,27 +1574,77 @@
     "hit_dice": "6d8+6",
     "hp_avg": 33,
     "initiative": 6,
-    "speed": { "land": 20, "swim": 20, "climb": 20 },
-    "armor_class": { "total": 15, "touch": 11, "flat_footed": 13, "components": "+2 Dex, +5 natural, -2 size" },
+    "speed": {
+      "land": 20,
+      "swim": 20,
+      "climb": 20
+    },
+    "armor_class": {
+      "total": 15,
+      "touch": 11,
+      "flat_footed": 13,
+      "components": "+2 Dex, +5 natural, -2 size"
+    },
     "base_attack": 4,
     "grapple": 15,
     "attacks": [
-      { "name": "Bite", "attack_bonus": "+8", "damage": "1d6+6 plus poison", "damage_type": "Piercing" }
+      {
+        "name": "Bite",
+        "attack_bonus": "+8",
+        "damage": "1d6+6 plus poison",
+        "damage_type": "Piercing"
+      }
     ],
-    "special_attacks": ["Poison (DC 16 Fort, 1d6 CON/1d6 CON)"],
-    "special_qualities": ["Low-Light Vision", "Scent"],
-    "saves": { "fort": 6, "ref": 7, "will": 4 },
-    "abilities": { "str": 20, "dex": 15, "con": 13, "int": 1, "wis": 12, "cha": 2 },
-    "skills": { "Balance": 10, "Climb": 11, "Hide": 4, "Listen": 8, "Spot": 8, "Swim": 14 },
-    "feats": ["Alertness", "Improved Initiative", "Weapon Finesse"],
+    "special_attacks": [
+      "Poison (DC 16 Fort, 1d6 CON/1d6 CON)"
+    ],
+    "special_qualities": [
+      "Low-Light Vision",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 6,
+      "ref": 7,
+      "will": 4
+    },
+    "abilities": {
+      "str": 20,
+      "dex": 15,
+      "con": 13,
+      "int": 1,
+      "wis": 12,
+      "cha": 2
+    },
+    "skills": {
+      "Balance": 10,
+      "Climb": 11,
+      "Hide": 4,
+      "Listen": 8,
+      "Spot": 8,
+      "Swim": 14
+    },
+    "feats": [
+      "Alertness",
+      "Improved Initiative",
+      "Weapon Finesse"
+    ],
     "alignment": "Always N",
     "advancement": null,
-    "dr": null, "sr": null, "regen": null, "fast_heal": null,
-    "elemental_weaknesses": [], "alignment_weaknesses": [], "passive_effects": [],
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
     "population_base": 200,
-    "allowed_biomes": ["Warm_Forest", "Warm_Swamp"],
+    "allowed_biomes": [
+      "Warm_Forest",
+      "Warm_Swamp"
+    ],
     "primary_biome": "Warm_Swamp",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Snake, Viper (Giant)",
@@ -663,27 +1655,76 @@
     "hit_dice": "6d8+6",
     "hp_avg": 33,
     "initiative": 6,
-    "speed": { "land": 20, "swim": 20, "climb": 20 },
-    "armor_class": { "total": 15, "touch": 11, "flat_footed": 13, "components": "+2 Dex, +5 natural, -2 size" },
+    "speed": {
+      "land": 20,
+      "swim": 20,
+      "climb": 20
+    },
+    "armor_class": {
+      "total": 15,
+      "touch": 11,
+      "flat_footed": 13,
+      "components": "+2 Dex, +5 natural, -2 size"
+    },
     "base_attack": 4,
     "grapple": 15,
     "attacks": [
-      { "name": "Bite", "attack_bonus": "+8", "damage": "1d4+6 plus poison", "damage_type": "Piercing" }
+      {
+        "name": "Bite",
+        "attack_bonus": "+8",
+        "damage": "1d4+6 plus poison",
+        "damage_type": "Piercing"
+      }
     ],
-    "special_attacks": ["Poison (DC 16 Fort, 1d6 CON/1d6 CON)"],
-    "special_qualities": ["Low-Light Vision", "Scent"],
-    "saves": { "fort": 6, "ref": 7, "will": 3 },
-    "abilities": { "str": 21, "dex": 15, "con": 13, "int": 1, "wis": 12, "cha": 2 },
-    "skills": { "Balance": 10, "Climb": 11, "Hide": 4, "Listen": 8, "Spot": 8, "Swim": 14 },
-    "feats": ["Alertness", "Improved Initiative"],
+    "special_attacks": [
+      "Poison (DC 16 Fort, 1d6 CON/1d6 CON)"
+    ],
+    "special_qualities": [
+      "Low-Light Vision",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 6,
+      "ref": 7,
+      "will": 3
+    },
+    "abilities": {
+      "str": 21,
+      "dex": 15,
+      "con": 13,
+      "int": 1,
+      "wis": 12,
+      "cha": 2
+    },
+    "skills": {
+      "Balance": 10,
+      "Climb": 11,
+      "Hide": 4,
+      "Listen": 8,
+      "Spot": 8,
+      "Swim": 14
+    },
+    "feats": [
+      "Alertness",
+      "Improved Initiative"
+    ],
     "alignment": "Always N",
     "advancement": "7-18 HD Huge",
-    "dr": null, "sr": null, "regen": null, "fast_heal": null,
-    "elemental_weaknesses": [], "alignment_weaknesses": [], "passive_effects": [],
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
     "population_base": 150,
-    "allowed_biomes": ["Warm_Forest", "Warm_Swamp"],
+    "allowed_biomes": [
+      "Warm_Forest",
+      "Warm_Swamp"
+    ],
     "primary_biome": "Warm_Swamp",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Fortress"
   },
   {
     "name": "Snow Leopard",
@@ -694,28 +1735,83 @@
     "hit_dice": "3d8+6",
     "hp_avg": 19,
     "initiative": 4,
-    "speed": { "land": 40, "climb": 20 },
-    "armor_class": { "total": 15, "touch": 13, "flat_footed": 12, "components": "+4 Dex, +1 natural" },
+    "speed": {
+      "land": 40,
+      "climb": 20
+    },
+    "armor_class": {
+      "total": 15,
+      "touch": 13,
+      "flat_footed": 12,
+      "components": "+4 Dex, +1 natural"
+    },
     "base_attack": 2,
     "grapple": 5,
     "attacks": [
-      { "name": "2 Claws", "attack_bonus": "+6", "damage": "1d4+3", "damage_type": "Slashing" },
-      { "name": "Bite", "attack_bonus": "+1", "damage": "1d6+1", "damage_type": "Piercing" }
+      {
+        "name": "2 Claws",
+        "attack_bonus": "+6",
+        "damage": "1d4+3",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+1",
+        "damage": "1d6+1",
+        "damage_type": "Piercing"
+      }
     ],
-    "special_attacks": ["Pounce", "Rake 1d4+1"],
-    "special_qualities": ["Low-Light Vision", "Scent"],
-    "saves": { "fort": 5, "ref": 7, "will": 2 },
-    "abilities": { "str": 16, "dex": 19, "con": 15, "int": 2, "wis": 12, "cha": 6 },
-    "skills": { "Balance": 10, "Climb": 9, "Hide": 12, "Listen": 5, "Move Silently": 9, "Spot": 5 },
-    "feats": ["Alertness", "Weapon Finesse"],
+    "special_attacks": [
+      "Pounce",
+      "Rake 1d4+1"
+    ],
+    "special_qualities": [
+      "Low-Light Vision",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 5,
+      "ref": 7,
+      "will": 2
+    },
+    "abilities": {
+      "str": 16,
+      "dex": 19,
+      "con": 15,
+      "int": 2,
+      "wis": 12,
+      "cha": 6
+    },
+    "skills": {
+      "Balance": 10,
+      "Climb": 9,
+      "Hide": 12,
+      "Listen": 5,
+      "Move Silently": 9,
+      "Spot": 5
+    },
+    "feats": [
+      "Alertness",
+      "Weapon Finesse"
+    ],
     "alignment": "Always N",
     "advancement": "4-5 HD Medium",
-    "dr": null, "sr": null, "regen": null, "fast_heal": null,
-    "elemental_weaknesses": [], "alignment_weaknesses": [], "passive_effects": [],
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
     "population_base": 200,
-    "allowed_biomes": ["Cold_Mountain", "Cold_Forest", "Arctic"],
+    "allowed_biomes": [
+      "Cold_Mountain",
+      "Cold_Forest",
+      "Arctic"
+    ],
     "primary_biome": "Cold_Mountain",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Squid",
@@ -726,28 +1822,77 @@
     "hit_dice": "3d8+3",
     "hp_avg": 16,
     "initiative": 3,
-    "speed": { "swim": 30 },
-    "armor_class": { "total": 13, "touch": 12, "flat_footed": 10, "components": "+3 Dex" },
+    "speed": {
+      "swim": 30
+    },
+    "armor_class": {
+      "total": 13,
+      "touch": 12,
+      "flat_footed": 10,
+      "components": "+3 Dex"
+    },
     "base_attack": 2,
     "grapple": 5,
     "attacks": [
-      { "name": "10 Arms", "attack_bonus": "+3", "damage": "0", "damage_type": "Grapple" },
-      { "name": "Bite", "attack_bonus": "-2", "damage": "1d6", "damage_type": "Piercing" }
+      {
+        "name": "10 Arms",
+        "attack_bonus": "+3",
+        "damage": "0",
+        "damage_type": "Grapple"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "-2",
+        "damage": "1d6",
+        "damage_type": "Piercing"
+      }
     ],
-    "special_attacks": ["Improved Grab"],
-    "special_qualities": ["Ink Cloud", "Jet (swim speed 150 ft.)", "Low-Light Vision"],
-    "saves": { "fort": 4, "ref": 6, "will": 2 },
-    "abilities": { "str": 11, "dex": 17, "con": 13, "int": 1, "wis": 12, "cha": 2 },
-    "skills": { "Listen": 6, "Spot": 6, "Swim": 8 },
-    "feats": ["Weapon Finesse"],
+    "special_attacks": [
+      "Improved Grab"
+    ],
+    "special_qualities": [
+      "Ink Cloud",
+      "Jet (swim speed 150 ft.)",
+      "Low-Light Vision"
+    ],
+    "saves": {
+      "fort": 4,
+      "ref": 6,
+      "will": 2
+    },
+    "abilities": {
+      "str": 11,
+      "dex": 17,
+      "con": 13,
+      "int": 1,
+      "wis": 12,
+      "cha": 2
+    },
+    "skills": {
+      "Listen": 6,
+      "Spot": 6,
+      "Swim": 8
+    },
+    "feats": [
+      "Weapon Finesse"
+    ],
     "alignment": "Always N",
     "advancement": "4-5 HD Medium",
-    "dr": null, "sr": null, "regen": null, "fast_heal": null,
-    "elemental_weaknesses": [], "alignment_weaknesses": [], "passive_effects": [],
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
     "population_base": 2000,
-    "allowed_biomes": ["Temperate_Aquatic", "Cold_Aquatic"],
+    "allowed_biomes": [
+      "Temperate_Aquatic",
+      "Cold_Aquatic"
+    ],
     "primary_biome": "Temperate_Aquatic",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Squid, Giant",
@@ -758,28 +1903,79 @@
     "hit_dice": "12d8+60",
     "hp_avg": 114,
     "initiative": 4,
-    "speed": { "swim": 80 },
-    "armor_class": { "total": 17, "touch": 11, "flat_footed": 14, "components": "+4 Dex, +5 natural, -2 size" },
+    "speed": {
+      "swim": 80
+    },
+    "armor_class": {
+      "total": 17,
+      "touch": 11,
+      "flat_footed": 14,
+      "components": "+4 Dex, +5 natural, -2 size"
+    },
     "base_attack": 9,
     "grapple": 26,
     "attacks": [
-      { "name": "10 Arms", "attack_bonus": "+19", "damage": "1d6+9", "damage_type": "Bludgeoning" },
-      { "name": "Bite", "attack_bonus": "+14", "damage": "2d8+4", "damage_type": "Piercing" }
+      {
+        "name": "10 Arms",
+        "attack_bonus": "+19",
+        "damage": "1d6+9",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+14",
+        "damage": "2d8+4",
+        "damage_type": "Piercing"
+      }
     ],
-    "special_attacks": ["Constrict 1d6+9", "Improved Grab"],
-    "special_qualities": ["Ink Cloud", "Jet (swim speed 200 ft.)", "Low-Light Vision"],
-    "saves": { "fort": 13, "ref": 12, "will": 6 },
-    "abilities": { "str": 28, "dex": 17, "con": 21, "int": 1, "wis": 12, "cha": 2 },
-    "skills": { "Listen": 12, "Spot": 12, "Swim": 18 },
-    "feats": ["Alertness", "Improved Initiative"],
+    "special_attacks": [
+      "Constrict 1d6+9",
+      "Improved Grab"
+    ],
+    "special_qualities": [
+      "Ink Cloud",
+      "Jet (swim speed 200 ft.)",
+      "Low-Light Vision"
+    ],
+    "saves": {
+      "fort": 13,
+      "ref": 12,
+      "will": 6
+    },
+    "abilities": {
+      "str": 28,
+      "dex": 17,
+      "con": 21,
+      "int": 1,
+      "wis": 12,
+      "cha": 2
+    },
+    "skills": {
+      "Listen": 12,
+      "Spot": 12,
+      "Swim": 18
+    },
+    "feats": [
+      "Alertness",
+      "Improved Initiative"
+    ],
     "alignment": "Always N",
     "advancement": "13-24 HD Huge, 25-36 HD Gargantuan",
-    "dr": null, "sr": null, "regen": null, "fast_heal": null,
-    "elemental_weaknesses": [], "alignment_weaknesses": [], "passive_effects": [],
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
     "population_base": 80,
-    "allowed_biomes": ["Temperate_Aquatic", "Cold_Aquatic"],
+    "allowed_biomes": [
+      "Temperate_Aquatic",
+      "Cold_Aquatic"
+    ],
     "primary_biome": "Temperate_Aquatic",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Fortress"
   },
   {
     "name": "Tiger",
@@ -790,28 +1986,83 @@
     "hit_dice": "6d8+18",
     "hp_avg": 45,
     "initiative": 2,
-    "speed": { "land": 40 },
-    "armor_class": { "total": 14, "touch": 11, "flat_footed": 13, "components": "+2 Dex, +3 natural, -1 size" },
+    "speed": {
+      "land": 40
+    },
+    "armor_class": {
+      "total": 14,
+      "touch": 11,
+      "flat_footed": 13,
+      "components": "+2 Dex, +3 natural, -1 size"
+    },
     "base_attack": 4,
     "grapple": 14,
     "attacks": [
-      { "name": "2 Claws", "attack_bonus": "+9", "damage": "1d8+6", "damage_type": "Slashing" },
-      { "name": "Bite", "attack_bonus": "+4", "damage": "2d6+3", "damage_type": "Piercing" }
+      {
+        "name": "2 Claws",
+        "attack_bonus": "+9",
+        "damage": "1d8+6",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+4",
+        "damage": "2d6+3",
+        "damage_type": "Piercing"
+      }
     ],
-    "special_attacks": ["Improved Grab", "Pounce", "Rake 1d8+3"],
-    "special_qualities": ["Low-Light Vision", "Scent"],
-    "saves": { "fort": 8, "ref": 7, "will": 3 },
-    "abilities": { "str": 23, "dex": 15, "con": 17, "int": 2, "wis": 12, "cha": 6 },
-    "skills": { "Balance": 6, "Hide": 6, "Listen": 6, "Move Silently": 9, "Spot": 6, "Swim": 11 },
-    "feats": ["Alertness", "Improved Natural Attack (claw)", "Weapon Finesse"],
+    "special_attacks": [
+      "Improved Grab",
+      "Pounce",
+      "Rake 1d8+3"
+    ],
+    "special_qualities": [
+      "Low-Light Vision",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 8,
+      "ref": 7,
+      "will": 3
+    },
+    "abilities": {
+      "str": 23,
+      "dex": 15,
+      "con": 17,
+      "int": 2,
+      "wis": 12,
+      "cha": 6
+    },
+    "skills": {
+      "Balance": 6,
+      "Hide": 6,
+      "Listen": 6,
+      "Move Silently": 9,
+      "Spot": 6,
+      "Swim": 11
+    },
+    "feats": [
+      "Alertness",
+      "Improved Natural Attack (claw)",
+      "Weapon Finesse"
+    ],
     "alignment": "Always N",
     "advancement": "7-12 HD Large, 13-18 HD Huge",
-    "dr": null, "sr": null, "regen": null, "fast_heal": null,
-    "elemental_weaknesses": [], "alignment_weaknesses": [], "passive_effects": [],
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
     "population_base": 250,
-    "allowed_biomes": ["Warm_Forest", "Warm_Plain"],
+    "allowed_biomes": [
+      "Warm_Forest",
+      "Warm_Plain"
+    ],
     "primary_biome": "Warm_Forest",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Tiger, Dire",
@@ -822,28 +2073,85 @@
     "hit_dice": "16d8+48",
     "hp_avg": 120,
     "initiative": 2,
-    "speed": { "land": 40 },
-    "armor_class": { "total": 17, "touch": 12, "flat_footed": 15, "components": "+2 Dex, +6 natural, -1 size" },
+    "speed": {
+      "land": 40
+    },
+    "armor_class": {
+      "total": 17,
+      "touch": 12,
+      "flat_footed": 15,
+      "components": "+2 Dex, +6 natural, -1 size"
+    },
     "base_attack": 12,
     "grapple": 23,
     "attacks": [
-      { "name": "2 Claws", "attack_bonus": "+18", "damage": "2d4+7", "damage_type": "Slashing" },
-      { "name": "Bite", "attack_bonus": "+13", "damage": "2d6+3", "damage_type": "Piercing" }
+      {
+        "name": "2 Claws",
+        "attack_bonus": "+18",
+        "damage": "2d4+7",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+13",
+        "damage": "2d6+3",
+        "damage_type": "Piercing"
+      }
     ],
-    "special_attacks": ["Improved Grab", "Pounce", "Rake 2d4+3"],
-    "special_qualities": ["Low-Light Vision", "Scent"],
-    "saves": { "fort": 13, "ref": 12, "will": 7 },
-    "abilities": { "str": 25, "dex": 15, "con": 17, "int": 2, "wis": 12, "cha": 10 },
-    "skills": { "Balance": 6, "Hide": 6, "Listen": 8, "Move Silently": 9, "Spot": 8, "Swim": 10 },
-    "feats": ["Alertness", "Improved Initiative", "Improved Natural Attack (claw)", "Run", "Weapon Finesse"],
+    "special_attacks": [
+      "Improved Grab",
+      "Pounce",
+      "Rake 2d4+3"
+    ],
+    "special_qualities": [
+      "Low-Light Vision",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 13,
+      "ref": 12,
+      "will": 7
+    },
+    "abilities": {
+      "str": 25,
+      "dex": 15,
+      "con": 17,
+      "int": 2,
+      "wis": 12,
+      "cha": 10
+    },
+    "skills": {
+      "Balance": 6,
+      "Hide": 6,
+      "Listen": 8,
+      "Move Silently": 9,
+      "Spot": 8,
+      "Swim": 10
+    },
+    "feats": [
+      "Alertness",
+      "Improved Initiative",
+      "Improved Natural Attack (claw)",
+      "Run",
+      "Weapon Finesse"
+    ],
     "alignment": "Always N",
     "advancement": "17-24 HD Large, 25-32 HD Huge",
-    "dr": null, "sr": null, "regen": null, "fast_heal": null,
-    "elemental_weaknesses": [], "alignment_weaknesses": [], "passive_effects": [],
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
     "population_base": 50,
-    "allowed_biomes": ["Warm_Forest", "Warm_Plain"],
+    "allowed_biomes": [
+      "Warm_Forest",
+      "Warm_Plain"
+    ],
     "primary_biome": "Warm_Forest",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Toad",
@@ -854,25 +2162,60 @@
     "hit_dice": "1d8",
     "hp_avg": 1,
     "initiative": 1,
-    "speed": { "land": 5 },
-    "armor_class": { "total": 15, "touch": 15, "flat_footed": 14, "components": "+1 Dex, +4 size" },
+    "speed": {
+      "land": 5
+    },
+    "armor_class": {
+      "total": 15,
+      "touch": 15,
+      "flat_footed": 14,
+      "components": "+1 Dex, +4 size"
+    },
     "base_attack": 0,
     "grapple": -17,
     "attacks": [],
     "special_attacks": [],
-    "special_qualities": ["Low-Light Vision", "Scent"],
-    "saves": { "fort": 2, "ref": 3, "will": 2 },
-    "abilities": { "str": 1, "dex": 12, "con": 11, "int": 1, "wis": 14, "cha": 4 },
-    "skills": { "Hide": 21, "Listen": 3, "Spot": 3 },
+    "special_qualities": [
+      "Low-Light Vision",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 2,
+      "ref": 3,
+      "will": 2
+    },
+    "abilities": {
+      "str": 1,
+      "dex": 12,
+      "con": 11,
+      "int": 1,
+      "wis": 14,
+      "cha": 4
+    },
+    "skills": {
+      "Hide": 21,
+      "Listen": 3,
+      "Spot": 3
+    },
     "feats": [],
     "alignment": "Always N",
     "advancement": null,
-    "dr": null, "sr": null, "regen": null, "fast_heal": null,
-    "elemental_weaknesses": [], "alignment_weaknesses": [], "passive_effects": [],
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
     "population_base": 5000,
-    "allowed_biomes": ["Temperate_Swamp", "Temperate_Forest", "Any_Urban"],
+    "allowed_biomes": [
+      "Temperate_Swamp",
+      "Temperate_Forest",
+      "Any_Urban"
+    ],
     "primary_biome": "Temperate_Swamp",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Weasel",
@@ -883,27 +2226,71 @@
     "hit_dice": "1d8",
     "hp_avg": 4,
     "initiative": 2,
-    "speed": { "land": 20, "climb": 20 },
-    "armor_class": { "total": 14, "touch": 14, "flat_footed": 12, "components": "+2 Dex, +2 size" },
+    "speed": {
+      "land": 20,
+      "climb": 20
+    },
+    "armor_class": {
+      "total": 14,
+      "touch": 14,
+      "flat_footed": 12,
+      "components": "+2 Dex, +2 size"
+    },
     "base_attack": 0,
     "grapple": -8,
     "attacks": [
-      { "name": "Bite", "attack_bonus": "+4", "damage": "1d3-4", "damage_type": "Piercing" }
+      {
+        "name": "Bite",
+        "attack_bonus": "+4",
+        "damage": "1d3-4",
+        "damage_type": "Piercing"
+      }
     ],
     "special_attacks": [],
-    "special_qualities": ["Low-Light Vision", "Scent"],
-    "saves": { "fort": 2, "ref": 4, "will": 2 },
-    "abilities": { "str": 3, "dex": 15, "con": 10, "int": 2, "wis": 12, "cha": 5 },
-    "skills": { "Balance": 10, "Climb": 10, "Hide": 10, "Move Silently": 9, "Spot": 4 },
-    "feats": ["Weapon Finesse"],
+    "special_qualities": [
+      "Low-Light Vision",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 2,
+      "ref": 4,
+      "will": 2
+    },
+    "abilities": {
+      "str": 3,
+      "dex": 15,
+      "con": 10,
+      "int": 2,
+      "wis": 12,
+      "cha": 5
+    },
+    "skills": {
+      "Balance": 10,
+      "Climb": 10,
+      "Hide": 10,
+      "Move Silently": 9,
+      "Spot": 4
+    },
+    "feats": [
+      "Weapon Finesse"
+    ],
     "alignment": "Always N",
     "advancement": null,
-    "dr": null, "sr": null, "regen": null, "fast_heal": null,
-    "elemental_weaknesses": [], "alignment_weaknesses": [], "passive_effects": [],
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
     "population_base": 2000,
-    "allowed_biomes": ["Temperate_Forest", "Temperate_Plain"],
+    "allowed_biomes": [
+      "Temperate_Forest",
+      "Temperate_Plain"
+    ],
     "primary_biome": "Temperate_Forest",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Weasel, Dire",
@@ -914,27 +2301,76 @@
     "hit_dice": "3d8+9",
     "hp_avg": 22,
     "initiative": 4,
-    "speed": { "land": 40, "climb": 20 },
-    "armor_class": { "total": 16, "touch": 12, "flat_footed": 14, "components": "+4 Dex, +2 natural" },
+    "speed": {
+      "land": 40,
+      "climb": 20
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 12,
+      "flat_footed": 14,
+      "components": "+4 Dex, +2 natural"
+    },
     "base_attack": 2,
     "grapple": 6,
     "attacks": [
-      { "name": "Bite", "attack_bonus": "+6", "damage": "1d6+6", "damage_type": "Piercing" }
+      {
+        "name": "Bite",
+        "attack_bonus": "+6",
+        "damage": "1d6+6",
+        "damage_type": "Piercing"
+      }
     ],
-    "special_attacks": ["Blood Drain (1d4 CON/round after bite)", "Improved Grab"],
-    "special_qualities": ["Low-Light Vision", "Scent"],
-    "saves": { "fort": 6, "ref": 7, "will": 2 },
-    "abilities": { "str": 20, "dex": 18, "con": 17, "int": 2, "wis": 12, "cha": 11 },
-    "skills": { "Balance": 12, "Climb": 10, "Hide": 8, "Listen": 7, "Move Silently": 8, "Spot": 5 },
-    "feats": ["Alertness", "Weapon Finesse"],
+    "special_attacks": [
+      "Blood Drain (1d4 CON/round after bite)",
+      "Improved Grab"
+    ],
+    "special_qualities": [
+      "Low-Light Vision",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 6,
+      "ref": 7,
+      "will": 2
+    },
+    "abilities": {
+      "str": 20,
+      "dex": 18,
+      "con": 17,
+      "int": 2,
+      "wis": 12,
+      "cha": 11
+    },
+    "skills": {
+      "Balance": 12,
+      "Climb": 10,
+      "Hide": 8,
+      "Listen": 7,
+      "Move Silently": 8,
+      "Spot": 5
+    },
+    "feats": [
+      "Alertness",
+      "Weapon Finesse"
+    ],
     "alignment": "Always N",
     "advancement": "4-6 HD Medium",
-    "dr": null, "sr": null, "regen": null, "fast_heal": null,
-    "elemental_weaknesses": [], "alignment_weaknesses": [], "passive_effects": [],
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
     "population_base": 300,
-    "allowed_biomes": ["Temperate_Forest", "Cold_Forest"],
+    "allowed_biomes": [
+      "Temperate_Forest",
+      "Cold_Forest"
+    ],
     "primary_biome": "Temperate_Forest",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Whale, Baleen",
@@ -945,27 +2381,71 @@
     "hit_dice": "12d8+69",
     "hp_avg": 123,
     "initiative": -1,
-    "speed": { "swim": 40 },
-    "armor_class": { "total": 16, "touch": 5, "flat_footed": 16, "components": "-1 Dex, +11 natural, -4 size" },
+    "speed": {
+      "swim": 40
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 5,
+      "flat_footed": 16,
+      "components": "-1 Dex, +11 natural, -4 size"
+    },
     "base_attack": 9,
     "grapple": 31,
     "attacks": [
-      { "name": "Tail Slap", "attack_bonus": "+17", "damage": "1d8+14", "damage_type": "Bludgeoning" }
+      {
+        "name": "Tail Slap",
+        "attack_bonus": "+17",
+        "damage": "1d8+14",
+        "damage_type": "Bludgeoning"
+      }
     ],
     "special_attacks": [],
-    "special_qualities": ["Blindsight 120 ft.", "Hold Breath", "Low-Light Vision"],
-    "saves": { "fort": 15, "ref": 7, "will": 5 },
-    "abilities": { "str": 35, "dex": 8, "con": 25, "int": 2, "wis": 11, "cha": 6 },
-    "skills": { "Listen": 13, "Spot": 9, "Swim": 14 },
-    "feats": ["Alertness", "Great Fortitude", "Iron Will"],
+    "special_qualities": [
+      "Blindsight 120 ft.",
+      "Hold Breath",
+      "Low-Light Vision"
+    ],
+    "saves": {
+      "fort": 15,
+      "ref": 7,
+      "will": 5
+    },
+    "abilities": {
+      "str": 35,
+      "dex": 8,
+      "con": 25,
+      "int": 2,
+      "wis": 11,
+      "cha": 6
+    },
+    "skills": {
+      "Listen": 13,
+      "Spot": 9,
+      "Swim": 14
+    },
+    "feats": [
+      "Alertness",
+      "Great Fortitude",
+      "Iron Will"
+    ],
     "alignment": "Always N",
     "advancement": "13-24 HD Gargantuan, 25-36 HD Colossal",
-    "dr": null, "sr": null, "regen": null, "fast_heal": null,
-    "elemental_weaknesses": [], "alignment_weaknesses": [], "passive_effects": [],
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
     "population_base": 100,
-    "allowed_biomes": ["Temperate_Aquatic", "Cold_Aquatic"],
+    "allowed_biomes": [
+      "Temperate_Aquatic",
+      "Cold_Aquatic"
+    ],
     "primary_biome": "Temperate_Aquatic",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Whale, Cachalot",
@@ -976,28 +2456,82 @@
     "hit_dice": "20d8+120",
     "hp_avg": 210,
     "initiative": -1,
-    "speed": { "swim": 40 },
-    "armor_class": { "total": 16, "touch": 5, "flat_footed": 16, "components": "-1 Dex, +11 natural, -4 size" },
+    "speed": {
+      "swim": 40
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 5,
+      "flat_footed": 16,
+      "components": "-1 Dex, +11 natural, -4 size"
+    },
     "base_attack": 15,
     "grapple": 39,
     "attacks": [
-      { "name": "Bite", "attack_bonus": "+23", "damage": "4d6+16", "damage_type": "Piercing" },
-      { "name": "Tail Slap", "attack_bonus": "+18", "damage": "1d8+8", "damage_type": "Bludgeoning" }
+      {
+        "name": "Bite",
+        "attack_bonus": "+23",
+        "damage": "4d6+16",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Tail Slap",
+        "attack_bonus": "+18",
+        "damage": "1d8+8",
+        "damage_type": "Bludgeoning"
+      }
     ],
-    "special_attacks": ["Improved Grab", "Swallow Whole"],
-    "special_qualities": ["Blindsight 120 ft.", "Hold Breath", "Low-Light Vision"],
-    "saves": { "fort": 18, "ref": 11, "will": 8 },
-    "abilities": { "str": 42, "dex": 8, "con": 25, "int": 2, "wis": 11, "cha": 6 },
-    "skills": { "Listen": 18, "Spot": 12, "Swim": 17 },
-    "feats": ["Alertness", "Endurance", "Great Fortitude", "Iron Will", "Lightning Reflexes"],
+    "special_attacks": [
+      "Improved Grab",
+      "Swallow Whole"
+    ],
+    "special_qualities": [
+      "Blindsight 120 ft.",
+      "Hold Breath",
+      "Low-Light Vision"
+    ],
+    "saves": {
+      "fort": 18,
+      "ref": 11,
+      "will": 8
+    },
+    "abilities": {
+      "str": 42,
+      "dex": 8,
+      "con": 25,
+      "int": 2,
+      "wis": 11,
+      "cha": 6
+    },
+    "skills": {
+      "Listen": 18,
+      "Spot": 12,
+      "Swim": 17
+    },
+    "feats": [
+      "Alertness",
+      "Endurance",
+      "Great Fortitude",
+      "Iron Will",
+      "Lightning Reflexes"
+    ],
     "alignment": "Always N",
     "advancement": "21-40 HD Gargantuan, 41-60 HD Colossal",
-    "dr": null, "sr": null, "regen": null, "fast_heal": null,
-    "elemental_weaknesses": [], "alignment_weaknesses": [], "passive_effects": [],
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
     "population_base": 30,
-    "allowed_biomes": ["Temperate_Aquatic", "Cold_Aquatic"],
+    "allowed_biomes": [
+      "Temperate_Aquatic",
+      "Cold_Aquatic"
+    ],
     "primary_biome": "Temperate_Aquatic",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Whale, Orca",
@@ -1008,27 +2542,72 @@
     "hit_dice": "9d8+45",
     "hp_avg": 85,
     "initiative": 2,
-    "speed": { "swim": 50 },
-    "armor_class": { "total": 16, "touch": 8, "flat_footed": 14, "components": "+2 Dex, +6 natural, -2 size" },
+    "speed": {
+      "swim": 50
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 8,
+      "flat_footed": 14,
+      "components": "+2 Dex, +6 natural, -2 size"
+    },
     "base_attack": 6,
     "grapple": 21,
     "attacks": [
-      { "name": "Bite", "attack_bonus": "+11", "damage": "2d6+9", "damage_type": "Piercing" }
+      {
+        "name": "Bite",
+        "attack_bonus": "+11",
+        "damage": "2d6+9",
+        "damage_type": "Piercing"
+      }
     ],
-    "special_attacks": ["Improved Grab"],
-    "special_qualities": ["Blindsense 30 ft.", "Hold Breath", "Low-Light Vision"],
-    "saves": { "fort": 11, "ref": 8, "will": 4 },
-    "abilities": { "str": 27, "dex": 15, "con": 21, "int": 2, "wis": 13, "cha": 6 },
-    "skills": { "Listen": 13, "Spot": 10, "Swim": 11 },
-    "feats": ["Alertness", "Great Fortitude"],
+    "special_attacks": [
+      "Improved Grab"
+    ],
+    "special_qualities": [
+      "Blindsense 30 ft.",
+      "Hold Breath",
+      "Low-Light Vision"
+    ],
+    "saves": {
+      "fort": 11,
+      "ref": 8,
+      "will": 4
+    },
+    "abilities": {
+      "str": 27,
+      "dex": 15,
+      "con": 21,
+      "int": 2,
+      "wis": 13,
+      "cha": 6
+    },
+    "skills": {
+      "Listen": 13,
+      "Spot": 10,
+      "Swim": 11
+    },
+    "feats": [
+      "Alertness",
+      "Great Fortitude"
+    ],
     "alignment": "Always N",
     "advancement": "10-18 HD Huge, 19-27 HD Gargantuan",
-    "dr": null, "sr": null, "regen": null, "fast_heal": null,
-    "elemental_weaknesses": [], "alignment_weaknesses": [], "passive_effects": [],
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
     "population_base": 120,
-    "allowed_biomes": ["Temperate_Aquatic", "Cold_Aquatic"],
+    "allowed_biomes": [
+      "Temperate_Aquatic",
+      "Cold_Aquatic"
+    ],
     "primary_biome": "Cold_Aquatic",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Fortress"
   },
   {
     "name": "Wolf",
@@ -1039,27 +2618,75 @@
     "hit_dice": "2d8+4",
     "hp_avg": 13,
     "initiative": 2,
-    "speed": { "land": 50 },
-    "armor_class": { "total": 14, "touch": 12, "flat_footed": 12, "components": "+2 Dex, +2 natural" },
+    "speed": {
+      "land": 50
+    },
+    "armor_class": {
+      "total": 14,
+      "touch": 12,
+      "flat_footed": 12,
+      "components": "+2 Dex, +2 natural"
+    },
     "base_attack": 1,
     "grapple": 2,
     "attacks": [
-      { "name": "Bite", "attack_bonus": "+3", "damage": "1d6+1", "damage_type": "Piercing" }
+      {
+        "name": "Bite",
+        "attack_bonus": "+3",
+        "damage": "1d6+1",
+        "damage_type": "Piercing"
+      }
     ],
-    "special_attacks": ["Trip"],
-    "special_qualities": ["Low-Light Vision", "Scent"],
-    "saves": { "fort": 5, "ref": 5, "will": 1 },
-    "abilities": { "str": 13, "dex": 15, "con": 15, "int": 2, "wis": 12, "cha": 6 },
-    "skills": { "Hide": 3, "Listen": 3, "Move Silently": 3, "Spot": 3, "Survival": 1 },
-    "feats": ["Alertness", "Track", "Weapon Finesse"],
+    "special_attacks": [
+      "Trip"
+    ],
+    "special_qualities": [
+      "Low-Light Vision",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 5,
+      "ref": 5,
+      "will": 1
+    },
+    "abilities": {
+      "str": 13,
+      "dex": 15,
+      "con": 15,
+      "int": 2,
+      "wis": 12,
+      "cha": 6
+    },
+    "skills": {
+      "Hide": 3,
+      "Listen": 3,
+      "Move Silently": 3,
+      "Spot": 3,
+      "Survival": 1
+    },
+    "feats": [
+      "Alertness",
+      "Track",
+      "Weapon Finesse"
+    ],
     "alignment": "Always N",
     "advancement": "3-4 HD Medium",
-    "dr": null, "sr": null, "regen": null, "fast_heal": null,
-    "elemental_weaknesses": [], "alignment_weaknesses": [], "passive_effects": [],
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
     "population_base": 2500,
-    "allowed_biomes": ["Temperate_Forest", "Cold_Forest", "Temperate_Plain"],
+    "allowed_biomes": [
+      "Temperate_Forest",
+      "Cold_Forest",
+      "Temperate_Plain"
+    ],
     "primary_biome": "Temperate_Forest",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Wolf, Dire",
@@ -1070,27 +2697,75 @@
     "hit_dice": "6d8+18",
     "hp_avg": 45,
     "initiative": 2,
-    "speed": { "land": 50 },
-    "armor_class": { "total": 14, "touch": 11, "flat_footed": 12, "components": "+2 Dex, +3 natural, -1 size" },
+    "speed": {
+      "land": 50
+    },
+    "armor_class": {
+      "total": 14,
+      "touch": 11,
+      "flat_footed": 12,
+      "components": "+2 Dex, +3 natural, -1 size"
+    },
     "base_attack": 4,
     "grapple": 12,
     "attacks": [
-      { "name": "Bite", "attack_bonus": "+9", "damage": "1d8+10", "damage_type": "Piercing" }
+      {
+        "name": "Bite",
+        "attack_bonus": "+9",
+        "damage": "1d8+10",
+        "damage_type": "Piercing"
+      }
     ],
-    "special_attacks": ["Trip"],
-    "special_qualities": ["Low-Light Vision", "Scent"],
-    "saves": { "fort": 8, "ref": 7, "will": 3 },
-    "abilities": { "str": 25, "dex": 15, "con": 17, "int": 2, "wis": 12, "cha": 10 },
-    "skills": { "Hide": 4, "Listen": 5, "Move Silently": 5, "Spot": 5, "Survival": 2 },
-    "feats": ["Alertness", "Run", "Track", "Weapon Focus (bite)"],
+    "special_attacks": [
+      "Trip"
+    ],
+    "special_qualities": [
+      "Low-Light Vision",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 8,
+      "ref": 7,
+      "will": 3
+    },
+    "abilities": {
+      "str": 25,
+      "dex": 15,
+      "con": 17,
+      "int": 2,
+      "wis": 12,
+      "cha": 10
+    },
+    "skills": {
+      "Hide": 4,
+      "Listen": 5,
+      "Move Silently": 5,
+      "Spot": 5,
+      "Survival": 2
+    },
+    "feats": [
+      "Alertness",
+      "Run",
+      "Track",
+      "Weapon Focus (bite)"
+    ],
     "alignment": "Always N",
     "advancement": "7-12 HD Large, 13-18 HD Huge",
-    "dr": null, "sr": null, "regen": null, "fast_heal": null,
-    "elemental_weaknesses": [], "alignment_weaknesses": [], "passive_effects": [],
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
     "population_base": 600,
-    "allowed_biomes": ["Temperate_Forest", "Cold_Forest"],
+    "allowed_biomes": [
+      "Temperate_Forest",
+      "Cold_Forest"
+    ],
     "primary_biome": "Cold_Forest",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Wolverine",
@@ -1101,28 +2776,78 @@
     "hit_dice": "3d8+9",
     "hp_avg": 22,
     "initiative": 2,
-    "speed": { "land": 30, "climb": 10 },
-    "armor_class": { "total": 14, "touch": 12, "flat_footed": 12, "components": "+2 Dex, +2 natural" },
+    "speed": {
+      "land": 30,
+      "climb": 10
+    },
+    "armor_class": {
+      "total": 14,
+      "touch": 12,
+      "flat_footed": 12,
+      "components": "+2 Dex, +2 natural"
+    },
     "base_attack": 2,
     "grapple": 4,
     "attacks": [
-      { "name": "2 Claws", "attack_bonus": "+4", "damage": "1d4+2", "damage_type": "Slashing" },
-      { "name": "Bite", "attack_bonus": "-1", "damage": "1d6+1", "damage_type": "Piercing" }
+      {
+        "name": "2 Claws",
+        "attack_bonus": "+4",
+        "damage": "1d4+2",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "-1",
+        "damage": "1d6+1",
+        "damage_type": "Piercing"
+      }
     ],
-    "special_attacks": ["Rage"],
-    "special_qualities": ["Low-Light Vision", "Scent"],
-    "saves": { "fort": 6, "ref": 5, "will": 2 },
-    "abilities": { "str": 14, "dex": 15, "con": 17, "int": 2, "wis": 12, "cha": 10 },
-    "skills": { "Climb": 8, "Listen": 4, "Spot": 3 },
-    "feats": ["Alertness", "Toughness"],
+    "special_attacks": [
+      "Rage"
+    ],
+    "special_qualities": [
+      "Low-Light Vision",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 6,
+      "ref": 5,
+      "will": 2
+    },
+    "abilities": {
+      "str": 14,
+      "dex": 15,
+      "con": 17,
+      "int": 2,
+      "wis": 12,
+      "cha": 10
+    },
+    "skills": {
+      "Climb": 8,
+      "Listen": 4,
+      "Spot": 3
+    },
+    "feats": [
+      "Alertness",
+      "Toughness"
+    ],
     "alignment": "Always N",
     "advancement": "4-5 HD Medium",
-    "dr": null, "sr": null, "regen": null, "fast_heal": null,
-    "elemental_weaknesses": [], "alignment_weaknesses": [], "passive_effects": [],
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
     "population_base": 400,
-    "allowed_biomes": ["Cold_Forest", "Temperate_Forest"],
+    "allowed_biomes": [
+      "Cold_Forest",
+      "Temperate_Forest"
+    ],
     "primary_biome": "Cold_Forest",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Wolverine, Dire",
@@ -1133,28 +2858,77 @@
     "hit_dice": "10d8+30",
     "hp_avg": 75,
     "initiative": 1,
-    "speed": { "land": 30 },
-    "armor_class": { "total": 16, "touch": 11, "flat_footed": 15, "components": "+1 Dex, +6 natural, -1 size" },
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 11,
+      "flat_footed": 15,
+      "components": "+1 Dex, +6 natural, -1 size"
+    },
     "base_attack": 7,
     "grapple": 15,
     "attacks": [
-      { "name": "2 Claws", "attack_bonus": "+11", "damage": "1d6+4", "damage_type": "Slashing" },
-      { "name": "Bite", "attack_bonus": "+6", "damage": "1d8+2", "damage_type": "Piercing" }
+      {
+        "name": "2 Claws",
+        "attack_bonus": "+11",
+        "damage": "1d6+4",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+6",
+        "damage": "1d8+2",
+        "damage_type": "Piercing"
+      }
     ],
-    "special_attacks": ["Rage"],
-    "special_qualities": ["Low-Light Vision", "Scent"],
-    "saves": { "fort": 10, "ref": 8, "will": 4 },
-    "abilities": { "str": 22, "dex": 13, "con": 16, "int": 2, "wis": 12, "cha": 10 },
-    "skills": { "Listen": 8, "Spot": 8 },
-    "feats": ["Alertness", "Cleave", "Iron Will"],
+    "special_attacks": [
+      "Rage"
+    ],
+    "special_qualities": [
+      "Low-Light Vision",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 10,
+      "ref": 8,
+      "will": 4
+    },
+    "abilities": {
+      "str": 22,
+      "dex": 13,
+      "con": 16,
+      "int": 2,
+      "wis": 12,
+      "cha": 10
+    },
+    "skills": {
+      "Listen": 8,
+      "Spot": 8
+    },
+    "feats": [
+      "Alertness",
+      "Cleave",
+      "Iron Will"
+    ],
     "alignment": "Always N",
     "advancement": "11-20 HD Large",
-    "dr": null, "sr": null, "regen": null, "fast_heal": null,
-    "elemental_weaknesses": [], "alignment_weaknesses": [], "passive_effects": [],
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
     "population_base": 80,
-    "allowed_biomes": ["Cold_Forest", "Temperate_Forest"],
+    "allowed_biomes": [
+      "Cold_Forest",
+      "Temperate_Forest"
+    ],
     "primary_biome": "Cold_Forest",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Yeti",
@@ -1165,26 +2939,74 @@
     "hit_dice": "5d8+10",
     "hp_avg": 32,
     "initiative": 1,
-    "speed": { "land": 40, "climb": 20 },
-    "armor_class": { "total": 14, "touch": 12, "flat_footed": 12, "components": "+1 Dex, +2 natural, +1 size" },
+    "speed": {
+      "land": 40,
+      "climb": 20
+    },
+    "armor_class": {
+      "total": 14,
+      "touch": 12,
+      "flat_footed": 12,
+      "components": "+1 Dex, +2 natural, +1 size"
+    },
     "base_attack": 3,
     "grapple": 9,
     "attacks": [
-      { "name": "2 Claws", "attack_bonus": "+5", "damage": "1d6+4", "damage_type": "Slashing" }
+      {
+        "name": "2 Claws",
+        "attack_bonus": "+5",
+        "damage": "1d6+4",
+        "damage_type": "Slashing"
+      }
     ],
-    "special_attacks": ["Improved Grab"],
-    "special_qualities": ["Darkvision 60 ft.", "Low-Light Vision", "Scent"],
-    "saves": { "fort": 6, "ref": 4, "will": 2 },
-    "abilities": { "str": 20, "dex": 12, "con": 15, "int": 2, "wis": 12, "cha": 8 },
-    "skills": { "Climb": 12, "Listen": 4, "Move Silently": 6, "Spot": 4 },
-    "feats": ["Alertness", "Endurance"],
+    "special_attacks": [
+      "Improved Grab"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Low-Light Vision",
+      "Scent"
+    ],
+    "saves": {
+      "fort": 6,
+      "ref": 4,
+      "will": 2
+    },
+    "abilities": {
+      "str": 20,
+      "dex": 12,
+      "con": 15,
+      "int": 2,
+      "wis": 12,
+      "cha": 8
+    },
+    "skills": {
+      "Climb": 12,
+      "Listen": 4,
+      "Move Silently": 6,
+      "Spot": 4
+    },
+    "feats": [
+      "Alertness",
+      "Endurance"
+    ],
     "alignment": "Always N",
     "advancement": "6-9 HD Large",
-    "dr": null, "sr": null, "regen": null, "fast_heal": null,
-    "elemental_weaknesses": [], "alignment_weaknesses": [], "passive_effects": [],
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
     "population_base": 200,
-    "allowed_biomes": ["Arctic", "Cold_Mountain", "Cold_Forest"],
+    "allowed_biomes": [
+      "Arctic",
+      "Cold_Mountain",
+      "Cold_Forest"
+    ],
     "primary_biome": "Arctic",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   }
 ]

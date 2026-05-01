@@ -67,7 +67,8 @@
       "Any"
     ],
     "primary_biome": "Any",
-    "ecology_notes": "Small air elementals drift on currents of wind, lashing out with blasts of compressed air. Their whirlwind form can engulf and toss smaller creatures."
+    "ecology_notes": "Small air elementals drift on currents of wind, lashing out with blasts of compressed air. Their whirlwind form can engulf and toss smaller creatures.",
+    "lair_type": "Cave"
   },
   {
     "name": "Medium Air Elemental",
@@ -139,7 +140,8 @@
       "Any"
     ],
     "primary_biome": "Any",
-    "ecology_notes": "Medium air elementals are mobile and difficult to hit, darting through combat and using their whirlwind to scatter opponents."
+    "ecology_notes": "Medium air elementals are mobile and difficult to hit, darting through combat and using their whirlwind to scatter opponents.",
+    "lair_type": "Cave"
   },
   {
     "name": "Large Air Elemental",
@@ -211,7 +213,8 @@
       "Any"
     ],
     "primary_biome": "Any",
-    "ecology_notes": "Large air elementals command significant volumes of air, their whirlwinds capable of engulfing Medium creatures and flinging them aside."
+    "ecology_notes": "Large air elementals command significant volumes of air, their whirlwinds capable of engulfing Medium creatures and flinging them aside.",
+    "lair_type": "Cave"
   },
   {
     "name": "Huge Air Elemental",
@@ -284,7 +287,8 @@
       "Any"
     ],
     "primary_biome": "Any",
-    "ecology_notes": "Huge air elementals are living cyclones, their passage heralded by howling winds and debris. Their whirlwinds can menace entire adventuring parties."
+    "ecology_notes": "Huge air elementals are living cyclones, their passage heralded by howling winds and debris. Their whirlwinds can menace entire adventuring parties.",
+    "lair_type": "Cave"
   },
   {
     "name": "Greater Air Elemental",
@@ -358,7 +362,8 @@
       "Any"
     ],
     "primary_biome": "Any",
-    "ecology_notes": "Greater air elementals are ancient tempestuous entities, manifesting as towering pillars of raging wind capable of tearing apart stone structures."
+    "ecology_notes": "Greater air elementals are ancient tempestuous entities, manifesting as towering pillars of raging wind capable of tearing apart stone structures.",
+    "lair_type": "Cave"
   },
   {
     "name": "Elder Air Elemental",
@@ -433,7 +438,8 @@
       "Any"
     ],
     "primary_biome": "Any",
-    "ecology_notes": "Elder air elementals are the oldest and most powerful of their kind, living hurricanes whose very presence distorts weather patterns across hundreds of miles."
+    "ecology_notes": "Elder air elementals are the oldest and most powerful of their kind, living hurricanes whose very presence distorts weather patterns across hundreds of miles.",
+    "lair_type": "Cave"
   },
   {
     "name": "Small Earth Elemental",
@@ -504,7 +510,8 @@
       "Underground"
     ],
     "primary_biome": "Temperate_Mountain",
-    "ecology_notes": "Small earth elementals burst from rocky ground to attack, using their surprising strength to shove opponents aside before retreating underground."
+    "ecology_notes": "Small earth elementals burst from rocky ground to attack, using their surprising strength to shove opponents aside before retreating underground.",
+    "lair_type": "Burrow"
   },
   {
     "name": "Medium Earth Elemental",
@@ -576,7 +583,8 @@
       "Underground"
     ],
     "primary_biome": "Temperate_Mountain",
-    "ecology_notes": "Medium earth elementals are patient hunters, lying dormant within stone until prey walks near. Their great strength allows them to cleave through multiple foes."
+    "ecology_notes": "Medium earth elementals are patient hunters, lying dormant within stone until prey walks near. Their great strength allows them to cleave through multiple foes.",
+    "lair_type": "Burrow"
   },
   {
     "name": "Large Earth Elemental",
@@ -649,7 +657,8 @@
       "Underground"
     ],
     "primary_biome": "Temperate_Mountain",
-    "ecology_notes": "Large earth elementals can move through solid rock as easily as water, making them formidable ambush predators in cavern environments."
+    "ecology_notes": "Large earth elementals can move through solid rock as easily as water, making them formidable ambush predators in cavern environments.",
+    "lair_type": "Burrow"
   },
   {
     "name": "Huge Earth Elemental",
@@ -723,7 +732,8 @@
       "Underground"
     ],
     "primary_biome": "Temperate_Mountain",
-    "ecology_notes": "Huge earth elementals reshape the battlefield, smashing through walls and floors. Their push ability can send even armored warriors flying."
+    "ecology_notes": "Huge earth elementals reshape the battlefield, smashing through walls and floors. Their push ability can send even armored warriors flying.",
+    "lair_type": "Burrow"
   },
   {
     "name": "Greater Earth Elemental",
@@ -798,7 +808,8 @@
       "Underground"
     ],
     "primary_biome": "Temperate_Mountain",
-    "ecology_notes": "Greater earth elementals are ancient forces of geological power, able to trigger minor earthquakes with their movement and topple stone fortifications."
+    "ecology_notes": "Greater earth elementals are ancient forces of geological power, able to trigger minor earthquakes with their movement and topple stone fortifications.",
+    "lair_type": "Burrow"
   },
   {
     "name": "Elder Earth Elemental",
@@ -874,7 +885,8 @@
       "Underground"
     ],
     "primary_biome": "Temperate_Mountain",
-    "ecology_notes": "Elder earth elementals are mountains given life, primordial entities of immeasurable strength whose movements cause avalanches and reshape terrain."
+    "ecology_notes": "Elder earth elementals are mountains given life, primordial entities of immeasurable strength whose movements cause avalanches and reshape terrain.",
+    "lair_type": "Burrow"
   },
   {
     "name": "Small Fire Elemental",
@@ -949,7 +961,8 @@
       "Warm_Plain"
     ],
     "primary_biome": "Warm_Desert",
-    "ecology_notes": "Small fire elementals are sparks of living flame, dancing through combustible environments and setting fires wherever they go. They avoid cold and water."
+    "ecology_notes": "Small fire elementals are sparks of living flame, dancing through combustible environments and setting fires wherever they go. They avoid cold and water.",
+    "lair_type": "Cave"
   },
   {
     "name": "Medium Fire Elemental",
@@ -1026,7 +1039,8 @@
       "Warm_Plain"
     ],
     "primary_biome": "Warm_Desert",
-    "ecology_notes": "Medium fire elementals are roving columns of living fire, capable of igniting entire structures in moments. They pursue fleeing prey with relentless speed."
+    "ecology_notes": "Medium fire elementals are roving columns of living fire, capable of igniting entire structures in moments. They pursue fleeing prey with relentless speed.",
+    "lair_type": "Cave"
   },
   {
     "name": "Large Fire Elemental",
@@ -1103,7 +1117,8 @@
       "Warm_Plain"
     ],
     "primary_biome": "Warm_Desert",
-    "ecology_notes": "Large fire elementals are devastating infernos in living form, capable of reducing entire villages to ash in minutes and melting through iron doors."
+    "ecology_notes": "Large fire elementals are devastating infernos in living form, capable of reducing entire villages to ash in minutes and melting through iron doors.",
+    "lair_type": "Cave"
   },
   {
     "name": "Huge Fire Elemental",
@@ -1181,7 +1196,8 @@
       "Warm_Plain"
     ],
     "primary_biome": "Warm_Desert",
-    "ecology_notes": "Huge fire elementals are massive conflagrations with a personality, drawn to destroy and consume. Their passage leaves scorched wastelands in their wake."
+    "ecology_notes": "Huge fire elementals are massive conflagrations with a personality, drawn to destroy and consume. Their passage leaves scorched wastelands in their wake.",
+    "lair_type": "Cave"
   },
   {
     "name": "Greater Fire Elemental",
@@ -1260,7 +1276,8 @@
       "Warm_Plain"
     ],
     "primary_biome": "Warm_Desert",
-    "ecology_notes": "Greater fire elementals are ancient pillars of living fire whose temperature exceeds the surface of suns. They leave glass where they walk."
+    "ecology_notes": "Greater fire elementals are ancient pillars of living fire whose temperature exceeds the surface of suns. They leave glass where they walk.",
+    "lair_type": "Cave"
   },
   {
     "name": "Elder Fire Elemental",
@@ -1340,7 +1357,8 @@
       "Warm_Plain"
     ],
     "primary_biome": "Warm_Desert",
-    "ecology_notes": "Elder fire elementals are the embodiment of primal flame, entities older than civilization whose very presence can set the sky ablaze."
+    "ecology_notes": "Elder fire elementals are the embodiment of primal flame, entities older than civilization whose very presence can set the sky ablaze.",
+    "lair_type": "Cave"
   },
   {
     "name": "Small Water Elemental",
@@ -1413,7 +1431,8 @@
       "Cold_Aquatic"
     ],
     "primary_biome": "Temperate_Aquatic",
-    "ecology_notes": "Small water elementals are mobile waves of living water, prowling coastlines and rivers. They douse flames and overwhelm swimmers with their powerful slams."
+    "ecology_notes": "Small water elementals are mobile waves of living water, prowling coastlines and rivers. They douse flames and overwhelm swimmers with their powerful slams.",
+    "lair_type": "Cave"
   },
   {
     "name": "Medium Water Elemental",
@@ -1487,7 +1506,8 @@
       "Cold_Aquatic"
     ],
     "primary_biome": "Temperate_Aquatic",
-    "ecology_notes": "Medium water elementals are aquatic terrors that drag prey beneath the surface. On land they are slower, but their slam attacks remain devastating."
+    "ecology_notes": "Medium water elementals are aquatic terrors that drag prey beneath the surface. On land they are slower, but their slam attacks remain devastating.",
+    "lair_type": "Cave"
   },
   {
     "name": "Large Water Elemental",
@@ -1562,7 +1582,8 @@
       "Cold_Aquatic"
     ],
     "primary_biome": "Temperate_Aquatic",
-    "ecology_notes": "Large water elementals can overwhelm entire ships, capsizing vessels and drowning crews. They are near-unstoppable in aquatic environments."
+    "ecology_notes": "Large water elementals can overwhelm entire ships, capsizing vessels and drowning crews. They are near-unstoppable in aquatic environments.",
+    "lair_type": "Cave"
   },
   {
     "name": "Huge Water Elemental",
@@ -1638,7 +1659,8 @@
       "Cold_Aquatic"
     ],
     "primary_biome": "Temperate_Aquatic",
-    "ecology_notes": "Huge water elementals are tsunamis given consciousness, capable of flooding coastal towns and shattering harbor fortifications."
+    "ecology_notes": "Huge water elementals are tsunamis given consciousness, capable of flooding coastal towns and shattering harbor fortifications.",
+    "lair_type": "Cave"
   },
   {
     "name": "Greater Water Elemental",
@@ -1715,7 +1737,8 @@
       "Cold_Aquatic"
     ],
     "primary_biome": "Temperate_Aquatic",
-    "ecology_notes": "Greater water elementals are the spirits of great oceans and deep rivers, their power sufficient to shatter stone seawalls and flood entire valleys."
+    "ecology_notes": "Greater water elementals are the spirits of great oceans and deep rivers, their power sufficient to shatter stone seawalls and flood entire valleys.",
+    "lair_type": "Cave"
   },
   {
     "name": "Elder Water Elemental",
@@ -1793,7 +1816,8 @@
       "Cold_Aquatic"
     ],
     "primary_biome": "Temperate_Aquatic",
-    "ecology_notes": "Elder water elementals are primordial ocean entities that have existed since the seas first formed. Their wrath can raise tidal waves that drown whole coastlines."
+    "ecology_notes": "Elder water elementals are primordial ocean entities that have existed since the seas first formed. Their wrath can raise tidal waves that drown whole coastlines.",
+    "lair_type": "Cave"
   },
   {
     "name": "Mephit, Air",
@@ -1880,7 +1904,8 @@
       "Any"
     ],
     "primary_biome": "Any",
-    "ecology_notes": "Air mephits are mischievous minor elementals that delight in pranks and chaos. They serve more powerful air creatures as scouts and messengers."
+    "ecology_notes": "Air mephits are mischievous minor elementals that delight in pranks and chaos. They serve more powerful air creatures as scouts and messengers.",
+    "lair_type": "Cave"
   },
   {
     "name": "Mephit, Dust",
@@ -1968,7 +1993,8 @@
       "Temperate_Desert"
     ],
     "primary_biome": "Warm_Desert",
-    "ecology_notes": "Dust mephits are creatures of arid, windswept places, their blinding breath weapon making them effective ambushers in desert ruins and dry canyons."
+    "ecology_notes": "Dust mephits are creatures of arid, windswept places, their blinding breath weapon making them effective ambushers in desert ruins and dry canyons.",
+    "lair_type": "Cave"
   },
   {
     "name": "Mephit, Earth",
@@ -2056,7 +2082,8 @@
       "Underground"
     ],
     "primary_biome": "Temperate_Mountain",
-    "ecology_notes": "Earth mephits are squat, heavy-limbed creatures that haunt mines and caverns. Their stone-sharp breath makes them dangerous despite their small stature."
+    "ecology_notes": "Earth mephits are squat, heavy-limbed creatures that haunt mines and caverns. Their stone-sharp breath makes them dangerous despite their small stature.",
+    "lair_type": "Cave"
   },
   {
     "name": "Mephit, Fire",
@@ -2147,7 +2174,8 @@
       "Warm_Plain"
     ],
     "primary_biome": "Warm_Desert",
-    "ecology_notes": "Fire mephits are cruel and boastful creatures that delight in setting things ablaze. Their fiery claws and breath weapon make them dangerous out of proportion to their size."
+    "ecology_notes": "Fire mephits are cruel and boastful creatures that delight in setting things ablaze. Their fiery claws and breath weapon make them dangerous out of proportion to their size.",
+    "lair_type": "Cave"
   },
   {
     "name": "Mephit, Ice",
@@ -2238,7 +2266,8 @@
       "Cold_Plain"
     ],
     "primary_biome": "Arctic",
-    "ecology_notes": "Ice mephits are spiteful creatures of frost and frozen air, native to the border between the Elemental Planes of Air and Water. They inhabit glacial caves and frozen tundras."
+    "ecology_notes": "Ice mephits are spiteful creatures of frost and frozen air, native to the border between the Elemental Planes of Air and Water. They inhabit glacial caves and frozen tundras.",
+    "lair_type": "Cave"
   },
   {
     "name": "Mephit, Magma",
@@ -2329,7 +2358,8 @@
       "Underground"
     ],
     "primary_biome": "Temperate_Mountain",
-    "ecology_notes": "Magma mephits dwell near volcanic vents and lava flows, creatures born from the border between Earth and Fire planes. Their superheated claws can melt stone over time."
+    "ecology_notes": "Magma mephits dwell near volcanic vents and lava flows, creatures born from the border between Earth and Fire planes. Their superheated claws can melt stone over time.",
+    "lair_type": "Cave"
   },
   {
     "name": "Mephit, Ooze",
@@ -2417,7 +2447,8 @@
       "Warm_Swamp"
     ],
     "primary_biome": "Temperate_Swamp",
-    "ecology_notes": "Ooze mephits are creatures of muddy, stagnant water from the border of the Earth and Water planes. They inhabit swamps and bogs, smelling of rot and corrosion."
+    "ecology_notes": "Ooze mephits are creatures of muddy, stagnant water from the border of the Earth and Water planes. They inhabit swamps and bogs, smelling of rot and corrosion.",
+    "lair_type": "Cave"
   },
   {
     "name": "Mephit, Salt",
@@ -2507,7 +2538,8 @@
       "Warm_Desert"
     ],
     "primary_biome": "Warm_Desert",
-    "ecology_notes": "Salt mephits are parched, crystalline creatures from arid borderlands. Their dehydrating breath weapon is particularly lethal in desert environments where water is already scarce."
+    "ecology_notes": "Salt mephits are parched, crystalline creatures from arid borderlands. Their dehydrating breath weapon is particularly lethal in desert environments where water is already scarce.",
+    "lair_type": "Cave"
   },
   {
     "name": "Mephit, Steam",
@@ -2596,7 +2628,8 @@
       "Temperate_Aquatic"
     ],
     "primary_biome": "Warm_Aquatic",
-    "ecology_notes": "Steam mephits haunt volcanic hot springs and geothermal vents, born where fire meets water. Their scalding breath makes them deadly in enclosed spaces."
+    "ecology_notes": "Steam mephits haunt volcanic hot springs and geothermal vents, born where fire meets water. Their scalding breath makes them deadly in enclosed spaces.",
+    "lair_type": "Cave"
   },
   {
     "name": "Mephit, Water",
@@ -2687,6 +2720,7 @@
       "Warm_Aquatic"
     ],
     "primary_biome": "Temperate_Aquatic",
-    "ecology_notes": "Water mephits dwell near coasts, rivers, and bogs. They are obnoxious and vain, collecting shiny objects and lording over smaller aquatic creatures."
+    "ecology_notes": "Water mephits dwell near coasts, rivers, and bogs. They are obnoxious and vain, collecting shiny objects and lording over smaller aquatic creatures.",
+    "lair_type": "Cave"
   }
 ]

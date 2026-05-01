@@ -79,7 +79,8 @@
       "Warm_Swamp"
     ],
     "primary_biome": "Temperate_Swamp",
-    "ecology_notes": "Bullywugs are amphibious frog-like humanoids that lurk in marshes and swamps. They ambush prey from the water and are exceptionally mobile through boggy terrain, able to charge even when the ground would slow others."
+    "ecology_notes": "Bullywugs are amphibious frog-like humanoids that lurk in marshes and swamps. They ambush prey from the water and are exceptionally mobile through boggy terrain, able to charge even when the ground would slow others.",
+    "lair_type": "Fortress"
   },
   {
     "name": "Duergar",
@@ -160,7 +161,8 @@
       "Underdark"
     ],
     "primary_biome": "Underground",
-    "ecology_notes": "Duergar are gray dwarves who dwell deep underground, having been twisted by generations of servitude to mind flayers. They are ruthless slavers and miners who despise their surface-dwelling kin, possessing innate magical abilities to grow large or turn invisible."
+    "ecology_notes": "Duergar are gray dwarves who dwell deep underground, having been twisted by generations of servitude to mind flayers. They are ruthless slavers and miners who despise their surface-dwelling kin, possessing innate magical abilities to grow large or turn invisible.",
+    "lair_type": "Fortress"
   },
   {
     "name": "Goblin",
@@ -239,7 +241,8 @@
       "Any_Ruin"
     ],
     "primary_biome": "Temperate_Forest",
-    "ecology_notes": "Goblins are small, cowardly humanoids that congregate in large tribal bands. They excel at ambush tactics and prefer to strike from hiding, fleeing when outmatched. Goblin tribes frequently raid settlements and are commonly found serving as fodder in hobgoblin and bugbear warbands."
+    "ecology_notes": "Goblins are small, cowardly humanoids that congregate in large tribal bands. They excel at ambush tactics and prefer to strike from hiding, fleeing when outmatched. Goblin tribes frequently raid settlements and are commonly found serving as fodder in hobgoblin and bugbear warbands.",
+    "lair_type": "Fortress"
   },
   {
     "name": "Grimlock",
@@ -316,7 +319,8 @@
       "Underdark"
     ],
     "primary_biome": "Underground",
-    "ecology_notes": "Grimlocks are blind subterranean humanoids who navigate entirely by sound, scent, and touch. Their blindsight makes them immune to all gaze attacks and visual illusions. They are skilled hunters in the deep dark, preying on anything they can detect underground."
+    "ecology_notes": "Grimlocks are blind subterranean humanoids who navigate entirely by sound, scent, and touch. Their blindsight makes them immune to all gaze attacks and visual illusions. They are skilled hunters in the deep dark, preying on anything they can detect underground.",
+    "lair_type": "Fortress"
   },
   {
     "name": "Kuo-Toa",
@@ -406,7 +410,8 @@
       "Underground"
     ],
     "primary_biome": "Temperate_Aquatic",
-    "ecology_notes": "Kuo-toa are degenerate fish-men who dwell in subterranean lakes and coastal sea caves, fanatically devoted to their dark deity Blibdoolpoolp. Their skin exudes a mucus that makes them incredibly hard to grapple, and their keen sight detects invisible intruders. They arm themselves with sticky nets and shields."
+    "ecology_notes": "Kuo-toa are degenerate fish-men who dwell in subterranean lakes and coastal sea caves, fanatically devoted to their dark deity Blibdoolpoolp. Their skin exudes a mucus that makes them incredibly hard to grapple, and their keen sight detects invisible intruders. They arm themselves with sticky nets and shields.",
+    "lair_type": "Fortress"
   },
   {
     "name": "Locathah",
@@ -484,7 +489,8 @@
       "Warm_Aquatic"
     ],
     "primary_biome": "Warm_Aquatic",
-    "ecology_notes": "Locathah are fish-like humanoids who dwell in shallow coastal waters and rivers. They are generally peaceful fisherfolk who trade with surface races but will defend their territories with longspears if threatened. They are poorly suited for land travel, moving slowly out of water."
+    "ecology_notes": "Locathah are fish-like humanoids who dwell in shallow coastal waters and rivers. They are generally peaceful fisherfolk who trade with surface races but will defend their territories with longspears if threatened. They are poorly suited for land travel, moving slowly out of water.",
+    "lair_type": "Fortress"
   },
   {
     "name": "Merfolk",
@@ -563,7 +569,8 @@
       "Cold_Aquatic"
     ],
     "primary_biome": "Temperate_Aquatic",
-    "ecology_notes": "Merfolk are aquatic humanoids with the upper body of a human and the lower body of a fish. They dwell in coastal shallows and shallow seas, building underwater cities and occasionally trading with surface races. They are nearly helpless on land but formidable defenders of their underwater homes."
+    "ecology_notes": "Merfolk are aquatic humanoids with the upper body of a human and the lower body of a fish. They dwell in coastal shallows and shallow seas, building underwater cities and occasionally trading with surface races. They are nearly helpless on land but formidable defenders of their underwater homes.",
+    "lair_type": "Fortress"
   },
   {
     "name": "Svirfneblin",
@@ -651,7 +658,8 @@
       "Underdark"
     ],
     "primary_biome": "Underdark",
-    "ecology_notes": "Svirfneblin, or deep gnomes, are a secretive gnomish people who dwell in the Underdark, carving out small communities in the hostile depths. They are master gem-cutters and stoneshapers. Their innate magical abilities help them hide and confuse enemies, and they are naturally resistant to magic thanks to their deep-stone heritage."
+    "ecology_notes": "Svirfneblin, or deep gnomes, are a secretive gnomish people who dwell in the Underdark, carving out small communities in the hostile depths. They are master gem-cutters and stoneshapers. Their innate magical abilities help them hide and confuse enemies, and they are naturally resistant to magic thanks to their deep-stone heritage.",
+    "lair_type": "Fortress"
   },
   {
     "name": "Troglodyte",
@@ -734,7 +742,8 @@
       "Temperate_Swamp"
     ],
     "primary_biome": "Underground",
-    "ecology_notes": "Troglodytes are primitive reptilian cave-dwellers notorious for the nauseating stench they can emit from their skin. They are territorial and aggressive, attacking intruders on sight. Troglodyte warrens can be detected by smell long before they are seen."
+    "ecology_notes": "Troglodytes are primitive reptilian cave-dwellers notorious for the nauseating stench they can emit from their skin. They are territorial and aggressive, attacking intruders on sight. Troglodyte warrens can be detected by smell long before they are seen.",
+    "lair_type": "Fortress"
   },
   {
     "name": "Yuan-ti Halfblood",
@@ -819,7 +828,8 @@
       "Warm_Swamp"
     ],
     "primary_biome": "Warm_Forest",
-    "ecology_notes": "Yuan-ti halfbloods are a more serpentine blend than purebloods, possessing obvious snake features such as a snake tail instead of legs, snake arms, or a snake head. They serve as warriors and priests within yuan-ti society and can shapeshift to infiltrate humanoid settlements."
+    "ecology_notes": "Yuan-ti halfbloods are a more serpentine blend than purebloods, possessing obvious snake features such as a snake tail instead of legs, snake arms, or a snake head. They serve as warriors and priests within yuan-ti society and can shapeshift to infiltrate humanoid settlements.",
+    "lair_type": "Fortress"
   },
   {
     "name": "Yuan-ti Abomination",
@@ -924,6 +934,7 @@
       "Warm_Swamp"
     ],
     "primary_biome": "Warm_Forest",
-    "ecology_notes": "Yuan-ti abominations are the pinnacle of yuan-ti transformation — massive serpentine creatures with only vestigial humanoid features. They rule yuan-ti society as god-speakers and high priests, possessing formidable spellcasting ability, deadly venom, and the power to constrict prey. Their intelligence and magical ability make them among the most dangerous humanoid-type creatures."
+    "ecology_notes": "Yuan-ti abominations are the pinnacle of yuan-ti transformation \u2014 massive serpentine creatures with only vestigial humanoid features. They rule yuan-ti society as god-speakers and high priests, possessing formidable spellcasting ability, deadly venom, and the power to constrict prey. Their intelligence and magical ability make them among the most dangerous humanoid-type creatures.",
+    "lair_type": "Fortress"
   }
 ]

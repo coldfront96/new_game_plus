@@ -77,7 +77,8 @@
       "Underdark"
     ],
     "primary_biome": "Underground",
-    "ecology_notes": "Carrion crawlers haunt dungeon tunnels, drawn by the scent of carrion and living prey. Their paralyzing tentacles allow them to subdue prey far larger than themselves."
+    "ecology_notes": "Carrion crawlers haunt dungeon tunnels, drawn by the scent of carrion and living prey. Their paralyzing tentacles allow them to subdue prey far larger than themselves.",
+    "lair_type": "Cave"
   },
   {
     "name": "Chuul",
@@ -159,7 +160,8 @@
       "Underground"
     ],
     "primary_biome": "Temperate_Aquatic",
-    "ecology_notes": "Chuuls are cunning predators that haunt coastal waters and flooded dungeons. They are immune to poison and use their paralytic tentacles to subdue prey before consuming it."
+    "ecology_notes": "Chuuls are cunning predators that haunt coastal waters and flooded dungeons. They are immune to poison and use their paralytic tentacles to subdue prey before consuming it.",
+    "lair_type": "Cave"
   },
   {
     "name": "Cloaker",
@@ -250,7 +252,8 @@
       "Underdark"
     ],
     "primary_biome": "Underground",
-    "ecology_notes": "Cloakers disguise themselves as darkened ceiling folds, swooping onto prey. Their haunting moan disorients multiple foes simultaneously."
+    "ecology_notes": "Cloakers disguise themselves as darkened ceiling folds, swooping onto prey. Their haunting moan disorients multiple foes simultaneously.",
+    "lair_type": "Cave"
   },
   {
     "name": "Delver",
@@ -330,7 +333,8 @@
       "Underground"
     ],
     "primary_biome": "Underground",
-    "ecology_notes": "Delvers glide through solid rock using their acidic slime. They are solitary predators that carve their own tunnel networks deep underground."
+    "ecology_notes": "Delvers glide through solid rock using their acidic slime. They are solitary predators that carve their own tunnel networks deep underground.",
+    "lair_type": "Burrow"
   },
   {
     "name": "Destrachan",
@@ -405,7 +409,8 @@
       "Underground"
     ],
     "primary_biome": "Underground",
-    "ecology_notes": "Destrachans are blind but rely on exquisitely sensitive hearing. Their devastating harmonics can selectively destroy organic material, metal, or stone."
+    "ecology_notes": "Destrachans are blind but rely on exquisitely sensitive hearing. Their devastating harmonics can selectively destroy organic material, metal, or stone.",
+    "lair_type": "Cave"
   },
   {
     "name": "Digester",
@@ -481,7 +486,8 @@
       "Warm_Plain"
     ],
     "primary_biome": "Warm_Forest",
-    "ecology_notes": "Digesters are fast bipedal predators that spray acid to dissolve prey before consuming them. Their own bodies are immune to acid."
+    "ecology_notes": "Digesters are fast bipedal predators that spray acid to dissolve prey before consuming them. Their own bodies are immune to acid.",
+    "lair_type": "Cave"
   },
   {
     "name": "Ethereal Filcher",
@@ -554,7 +560,8 @@
       "Ethereal"
     ],
     "primary_biome": "Any_Urban",
-    "ecology_notes": "Ethereal filchers slip between the Material and Ethereal Planes to steal shiny objects and trinkets, retreating to the Ethereal Plane to examine their prizes."
+    "ecology_notes": "Ethereal filchers slip between the Material and Ethereal Planes to steal shiny objects and trinkets, retreating to the Ethereal Plane to examine their prizes.",
+    "lair_type": "Cave"
   },
   {
     "name": "Gibbering Mouther",
@@ -644,7 +651,8 @@
       "Any_Ruin"
     ],
     "primary_biome": "Underground",
-    "ecology_notes": "Gibbering mouthers are masses of mouths, eyes, and pseudopods that gibber incessantly, driving nearby creatures to madness."
+    "ecology_notes": "Gibbering mouthers are masses of mouths, eyes, and pseudopods that gibber incessantly, driving nearby creatures to madness.",
+    "lair_type": "Cave"
   },
   {
     "name": "Grick",
@@ -718,7 +726,8 @@
       "Underdark"
     ],
     "primary_biome": "Underground",
-    "ecology_notes": "Gricks are worm-like ambush predators that lurk in crevices, their natural DR making them difficult to harm with non-magical weapons."
+    "ecology_notes": "Gricks are worm-like ambush predators that lurk in crevices, their natural DR making them difficult to harm with non-magical weapons.",
+    "lair_type": "Cave"
   },
   {
     "name": "Mimic",
@@ -798,7 +807,8 @@
       "Any_Ruin"
     ],
     "primary_biome": "Underground",
-    "ecology_notes": "Mimics are shapechanging predators that imitate dungeon furniture \u2014 chests, doors, walls \u2014 waiting motionlessly for creatures to investigate before striking."
+    "ecology_notes": "Mimics are shapechanging predators that imitate dungeon furniture \u2014 chests, doors, walls \u2014 waiting motionlessly for creatures to investigate before striking.",
+    "lair_type": "Cave"
   },
   {
     "name": "Otyugh",
@@ -882,7 +892,8 @@
       "Any_Urban"
     ],
     "primary_biome": "Underground",
-    "ecology_notes": "Otyughs wallow in heaps of offal, filth, and refuse. They are found in dungeons, sewers, and cesspits, playing a grim ecological role as waste disposal."
+    "ecology_notes": "Otyughs wallow in heaps of offal, filth, and refuse. They are found in dungeons, sewers, and cesspits, playing a grim ecological role as waste disposal.",
+    "lair_type": "Cave"
   },
   {
     "name": "Roper",
@@ -972,7 +983,8 @@
       "Underdark"
     ],
     "primary_biome": "Underdark",
-    "ecology_notes": "Ropers disguise themselves as stalagmites or dungeon columns. They extend sticky strands to drain Strength from prey before biting. They have high spell resistance."
+    "ecology_notes": "Ropers disguise themselves as stalagmites or dungeon columns. They extend sticky strands to drain Strength from prey before biting. They have high spell resistance.",
+    "lair_type": "Cave"
   },
   {
     "name": "Skum",
@@ -1054,7 +1066,8 @@
       "Temperate_Aquatic"
     ],
     "primary_biome": "Temperate_Aquatic",
-    "ecology_notes": "Skum are the debased servants of aboleths, transformed from humanoid stock. They patrol the flooded caves and coasts where their aboleth masters hold dominion."
+    "ecology_notes": "Skum are the debased servants of aboleths, transformed from humanoid stock. They patrol the flooded caves and coasts where their aboleth masters hold dominion.",
+    "lair_type": "Cave"
   },
   {
     "name": "Umber Hulk",
@@ -1135,7 +1148,8 @@
       "Underground"
     ],
     "primary_biome": "Underground",
-    "ecology_notes": "Umber hulks tunnel through rock with their powerful claws. Their disorienting multi-faceted gaze confuses opponents, allowing them to attack with impunity."
+    "ecology_notes": "Umber hulks tunnel through rock with their powerful claws. Their disorienting multi-faceted gaze confuses opponents, allowing them to attack with impunity.",
+    "lair_type": "Burrow"
   },
   {
     "name": "Will-o'-Wisp",
@@ -1218,6 +1232,7 @@
       "Temperate_Forest"
     ],
     "primary_biome": "Temperate_Swamp",
-    "ecology_notes": "Will-o'-wisps haunt swamps and marshes, luring travelers to their deaths. They feed on the fear and despair of dying creatures."
+    "ecology_notes": "Will-o'-wisps haunt swamps and marshes, luring travelers to their deaths. They feed on the fear and despair of dying creatures.",
+    "lair_type": "Cave"
   }
 ]

@@ -1,4 +1,5 @@
-"""
+"""EM-005 — Voxel Carving API (Lair Carver subsystem).
+
 src/terrain/chunk_generator.py
 ------------------------------
 Procedural terrain generation for the New Game Plus voxel engine.
@@ -18,11 +19,15 @@ from __future__ import annotations
 
 import random
 from dataclasses import dataclass
+from typing import TYPE_CHECKING
 
 from opensimplex import OpenSimplex
 
 from src.terrain.block import Block, Material
 from src.terrain.chunk import Chunk, CHUNK_WIDTH, CHUNK_DEPTH, CHUNK_HEIGHT
+
+if TYPE_CHECKING:
+    from src.world_sim.lairs import LairRecord
 
 
 # ---------------------------------------------------------------------------
@@ -137,6 +142,20 @@ class ChunkGenerator:
         chunk.dirty = False
         return chunk
 
+    def generate_chunk_with_lair(self, cx: int, cz: int, lair_record: "LairRecord") -> Chunk:
+        """Generate a terrain chunk and carve a lair cavity into it.
+
+        Args:
+            cx:          Chunk X coordinate.
+            cz:          Chunk Z coordinate.
+            lair_record: Describes the cavity dimensions and type to carve.
+
+        Returns:
+            A :class:`Chunk` with the lair cavity carved out.
+        """
+        chunk = self.generate_chunk(cx, cz)
+        return carve_lair(chunk, lair_record)
+
     @staticmethod
     def _pick_stone_or_ore(y: int, rng: random.Random) -> Material:
         """Determine whether a stone block should be replaced with ore.
@@ -160,3 +179,43 @@ class ChunkGenerator:
                 return Material.IRON_ORE
 
         return Material.STONE
+
+
+# ---------------------------------------------------------------------------
+# EM-005 · Voxel Carving API
+# ---------------------------------------------------------------------------
+
+def carve_lair(chunk: Chunk, lair_record: "LairRecord") -> Chunk:
+    """Carve a rectangular air cavity into *chunk* based on *lair_record* dimensions.
+
+    The cavity is centred horizontally in the chunk and starts just below the
+    surface (y = BASE_HEIGHT - 1 downward).  All coordinates are clamped to
+    valid chunk bounds so oversized lairs never raise IndexError.
+
+    Args:
+        chunk:       The :class:`Chunk` to modify in-place.
+        lair_record: Dimensions and metadata for the cavity.
+
+    Returns:
+        The same *chunk* with the carved region set to air (``None``).
+    """
+    half_w = lair_record.width  // 2
+    half_d = lair_record.depth  // 2
+
+    center_x = CHUNK_WIDTH // 2
+    center_z  = CHUNK_DEPTH  // 2
+
+    x_start = max(0, center_x - half_w)
+    x_end   = min(CHUNK_WIDTH,  center_x + lair_record.width  - half_w)
+    z_start = max(0, center_z  - half_d)
+    z_end   = min(CHUNK_DEPTH,   center_z  + lair_record.depth  - half_d)
+
+    y_top   = min(BASE_HEIGHT - 1, CHUNK_HEIGHT - 1)
+    y_bot   = max(1, y_top - lair_record.height + 1)
+
+    for y in range(y_bot, y_top + 1):
+        for x in range(x_start, x_end):
+            for z in range(z_start, z_end):
+                chunk.set_block(x, y, z, None)
+
+    return chunk

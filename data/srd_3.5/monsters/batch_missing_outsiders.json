@@ -8,13 +8,30 @@
     "hit_dice": "6d8+12",
     "hp_avg": 39,
     "initiative": 1,
-    "speed": {"land": 50},
-    "armor_class": {"total": 20, "touch": 10, "flat_footed": 19, "components": "-1 size, +1 Dex, +10 natural"},
+    "speed": {
+      "land": 50
+    },
+    "armor_class": {
+      "total": 20,
+      "touch": 10,
+      "flat_footed": 19,
+      "components": "-1 size, +1 Dex, +10 natural"
+    },
     "base_attack": 6,
     "grapple": 14,
     "attacks": [
-      {"name": "Claw (×2)", "attack_bonus": "+9", "damage": "2d6+4", "damage_type": "Slashing"},
-      {"name": "Bite", "attack_bonus": "+4", "damage": "4d6+2", "damage_type": "Piercing"}
+      {
+        "name": "Claw (\u00d72)",
+        "attack_bonus": "+9",
+        "damage": "2d6+4",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+4",
+        "damage": "4d6+2",
+        "damage_type": "Piercing"
+      }
     ],
     "special_attacks": [
       "Black Cloud (3/day; 5-ft.-radius cloud lasting 1 round; DC 15 Fort or confused for 1 hour)"
@@ -23,8 +40,19 @@
       "Darkvision 60 ft.",
       "SR 19"
     ],
-    "saves": {"fort": 7, "ref": 6, "will": 7},
-    "abilities": {"str": 19, "dex": 13, "con": 14, "int": 11, "wis": 14, "cha": 16},
+    "saves": {
+      "fort": 7,
+      "ref": 6,
+      "will": 7
+    },
+    "abilities": {
+      "str": 19,
+      "dex": 13,
+      "con": 14,
+      "int": 11,
+      "wis": 14,
+      "cha": 16
+    },
     "skills": {
       "Balance": 10,
       "Climb": 13,
@@ -36,7 +64,11 @@
       "Sense Motive": 11,
       "Spot": 11
     },
-    "feats": ["Dodge", "Mobility", "Spring Attack"],
+    "feats": [
+      "Dodge",
+      "Mobility",
+      "Spring Attack"
+    ],
     "alignment": "Always Lawful Evil",
     "advancement": "7-12 HD (Large)",
     "dr": null,
@@ -47,9 +79,14 @@
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 4,
-    "allowed_biomes": ["Warm_Plain", "Warm_Desert", "Temperate_Plain"],
+    "allowed_biomes": [
+      "Warm_Plain",
+      "Warm_Desert",
+      "Temperate_Plain"
+    ],
     "primary_biome": "Warm_Plain",
-    "ecology_notes": "Achaierais are tall four-legged birds native to the Infernal regions. They serve as shock troops for devil armies, capable of engulfing foes in a maddening black cloud."
+    "ecology_notes": "Achaierais are tall four-legged birds native to the Infernal regions. They serve as shock troops for devil armies, capable of engulfing foes in a maddening black cloud.",
+    "lair_type": "Cave"
   },
   {
     "name": "Avoral",
@@ -60,14 +97,38 @@
     "hit_dice": "7d8+35",
     "hp_avg": 66,
     "initiative": 6,
-    "speed": {"land": 40, "fly": 90, "fly_maneuverability": "good"},
-    "armor_class": {"total": 23, "touch": 16, "flat_footed": 17, "components": "+6 Dex, +7 natural"},
+    "speed": {
+      "land": 40,
+      "fly": 90,
+      "fly_maneuverability": "good"
+    },
+    "armor_class": {
+      "total": 23,
+      "touch": 16,
+      "flat_footed": 17,
+      "components": "+6 Dex, +7 natural"
+    },
     "base_attack": 7,
     "grapple": 8,
     "attacks": [
-      {"name": "Talon (×2)", "attack_bonus": "+9", "damage": "2d6+1", "damage_type": "Slashing"},
-      {"name": "Wing (×2)", "attack_bonus": "+4", "damage": "2d6", "damage_type": "Bludgeoning"},
-      {"name": "Bite", "attack_bonus": "+4", "damage": "1d8", "damage_type": "Piercing"}
+      {
+        "name": "Talon (\u00d72)",
+        "attack_bonus": "+9",
+        "damage": "2d6+1",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Wing (\u00d72)",
+        "attack_bonus": "+4",
+        "damage": "2d6",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+4",
+        "damage": "1d8",
+        "damage_type": "Piercing"
+      }
     ],
     "special_attacks": [
       "Fear Aura (30 ft.; DC 16 Will or shaken)",
@@ -75,13 +136,24 @@
     ],
     "special_qualities": [
       "Darkvision 60 ft.",
-      "Lay on Hands (CHA mod × HD hp per day)",
+      "Lay on Hands (CHA mod \u00d7 HD hp per day)",
       "Low-Light Vision",
       "SR 25",
       "True Seeing (constant)"
     ],
-    "saves": {"fort": 10, "ref": 11, "will": 8},
-    "abilities": {"str": 13, "dex": 23, "con": 20, "int": 15, "wis": 16, "cha": 16},
+    "saves": {
+      "fort": 10,
+      "ref": 11,
+      "will": 8
+    },
+    "abilities": {
+      "str": 13,
+      "dex": 23,
+      "con": 20,
+      "int": 15,
+      "wis": 16,
+      "cha": 16
+    },
     "skills": {
       "Bluff": 13,
       "Concentration": 15,
@@ -97,7 +169,12 @@
       "Sense Motive": 13,
       "Spot": 19
     },
-    "feats": ["Alertness", "Dodge", "Flyby Attack", "Improved Initiative"],
+    "feats": [
+      "Alertness",
+      "Dodge",
+      "Flyby Attack",
+      "Improved Initiative"
+    ],
     "alignment": "Always Neutral Good",
     "advancement": "8-14 HD (Medium)",
     "dr": null,
@@ -106,11 +183,18 @@
     "fast_heal": null,
     "elemental_weaknesses": [],
     "alignment_weaknesses": [],
-    "passive_effects": ["True Seeing (constant)"],
+    "passive_effects": [
+      "True Seeing (constant)"
+    ],
     "population_base": 3,
-    "allowed_biomes": ["Temperate_Mountain", "Cold_Mountain", "Temperate_Plain"],
+    "allowed_biomes": [
+      "Temperate_Mountain",
+      "Cold_Mountain",
+      "Temperate_Plain"
+    ],
     "primary_biome": "Temperate_Mountain",
-    "ecology_notes": "Avorals are guardinal celestials resembling winged humanoids with hawk-like features. They serve as scouts and sentinels of the Upper Planes, blessed with true seeing and powerful spell-like abilities."
+    "ecology_notes": "Avorals are guardinal celestials resembling winged humanoids with hawk-like features. They serve as scouts and sentinels of the Upper Planes, blessed with true seeing and powerful spell-like abilities.",
+    "lair_type": "Cave"
   },
   {
     "name": "Azer",
@@ -121,13 +205,32 @@
     "hit_dice": "2d8+2",
     "hp_avg": 11,
     "initiative": 1,
-    "speed": {"land": 30},
-    "armor_class": {"total": 23, "touch": 11, "flat_footed": 22, "components": "+1 Dex, +8 natural, +4 armor (chain shirt)"},
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 23,
+      "touch": 11,
+      "flat_footed": 22,
+      "components": "+1 Dex, +8 natural, +4 armor (chain shirt)"
+    },
     "base_attack": 2,
     "grapple": 3,
     "attacks": [
-      {"name": "Warhammer", "attack_bonus": "+3", "damage": "1d8+1 plus 1d6 fire", "crit_multiplier": "x3", "damage_type": "Bludgeoning and Fire"},
-      {"name": "Shortspear", "attack_bonus": "+3", "damage": "1d6+1", "damage_type": "Piercing", "range": "20 ft."}
+      {
+        "name": "Warhammer",
+        "attack_bonus": "+3",
+        "damage": "1d8+1 plus 1d6 fire",
+        "crit_multiplier": "x3",
+        "damage_type": "Bludgeoning and Fire"
+      },
+      {
+        "name": "Shortspear",
+        "attack_bonus": "+3",
+        "damage": "1d6+1",
+        "damage_type": "Piercing",
+        "range": "20 ft."
+      }
     ],
     "special_attacks": [
       "Heat (all metal equipment on contact deals +1d6 fire damage)"
@@ -138,8 +241,19 @@
       "SR 13",
       "Vulnerability to Cold"
     ],
-    "saves": {"fort": 4, "ref": 4, "will": 4},
-    "abilities": {"str": 13, "dex": 13, "con": 13, "int": 12, "wis": 12, "cha": 9},
+    "saves": {
+      "fort": 4,
+      "ref": 4,
+      "will": 4
+    },
+    "abilities": {
+      "str": 13,
+      "dex": 13,
+      "con": 13,
+      "int": 12,
+      "wis": 12,
+      "cha": 9
+    },
     "skills": {
       "Appraise": 6,
       "Climb": 6,
@@ -148,20 +262,28 @@
       "Search": 6,
       "Spot": 6
     },
-    "feats": ["Alertness"],
+    "feats": [
+      "Alertness"
+    ],
     "alignment": "Always Lawful Neutral",
     "advancement": "By character class",
     "dr": null,
     "sr": 13,
     "regen": null,
     "fast_heal": null,
-    "elemental_weaknesses": ["Cold"],
+    "elemental_weaknesses": [
+      "Cold"
+    ],
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 8,
-    "allowed_biomes": ["Warm_Mountain", "Underground"],
+    "allowed_biomes": [
+      "Warm_Mountain",
+      "Underground"
+    ],
     "primary_biome": "Warm_Mountain",
-    "ecology_notes": "Azers are dwarven-like fire outsiders from the Elemental Plane of Fire. They are expert craftsmen who work metal with their inherent heat, and serve as warriors and smiths in volcanic regions."
+    "ecology_notes": "Azers are dwarven-like fire outsiders from the Elemental Plane of Fire. They are expert craftsmen who work metal with their inherent heat, and serve as warriors and smiths in volcanic regions.",
+    "lair_type": "Cave"
   },
   {
     "name": "Barghest",
@@ -172,13 +294,30 @@
     "hit_dice": "6d8+6",
     "hp_avg": 33,
     "initiative": 6,
-    "speed": {"land": 30},
-    "armor_class": {"total": 18, "touch": 12, "flat_footed": 16, "components": "+2 Dex, +6 natural"},
+    "speed": {
+      "land": 30
+    },
+    "armor_class": {
+      "total": 18,
+      "touch": 12,
+      "flat_footed": 16,
+      "components": "+2 Dex, +6 natural"
+    },
     "base_attack": 6,
     "grapple": 8,
     "attacks": [
-      {"name": "Bite", "attack_bonus": "+8", "damage": "1d6+3", "damage_type": "Piercing"},
-      {"name": "Claw (×2)", "attack_bonus": "+3", "damage": "1d4+1", "damage_type": "Slashing"}
+      {
+        "name": "Bite",
+        "attack_bonus": "+8",
+        "damage": "1d6+3",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Claw (\u00d72)",
+        "attack_bonus": "+3",
+        "damage": "1d4+1",
+        "damage_type": "Slashing"
+      }
     ],
     "special_attacks": [
       "Spell-Like Abilities (CL 6): blink, levitate, misdirection (DC 14), rage (DC 14)",
@@ -189,8 +328,19 @@
       "Darkvision 60 ft.",
       "SR 16"
     ],
-    "saves": {"fort": 6, "ref": 7, "will": 6},
-    "abilities": {"str": 17, "dex": 15, "con": 13, "int": 14, "wis": 14, "cha": 14},
+    "saves": {
+      "fort": 6,
+      "ref": 7,
+      "will": 6
+    },
+    "abilities": {
+      "str": 17,
+      "dex": 15,
+      "con": 13,
+      "int": 14,
+      "wis": 14,
+      "cha": 14
+    },
     "skills": {
       "Bluff": 11,
       "Diplomacy": 4,
@@ -205,7 +355,11 @@
       "Spot": 11,
       "Survival": 2
     },
-    "feats": ["Improved Initiative", "Stealthy", "Track"],
+    "feats": [
+      "Improved Initiative",
+      "Stealthy",
+      "Track"
+    ],
     "alignment": "Always Lawful Evil",
     "advancement": "7-9 HD (Medium); advances to Greater Barghest",
     "dr": null,
@@ -216,9 +370,14 @@
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 4,
-    "allowed_biomes": ["Any_Urban", "Temperate_Plain", "Cold_Plain"],
+    "allowed_biomes": [
+      "Any_Urban",
+      "Temperate_Plain",
+      "Cold_Plain"
+    ],
     "primary_biome": "Any_Urban",
-    "ecology_notes": "Barghests are outsiders that take the form of large goblin-wolves, infiltrating goblin tribes. They gain power by devouring victims and eventually ascend to become Greater Barghests."
+    "ecology_notes": "Barghests are outsiders that take the form of large goblin-wolves, infiltrating goblin tribes. They gain power by devouring victims and eventually ascend to become Greater Barghests.",
+    "lair_type": "Cave"
   },
   {
     "name": "Barghest, Greater",
@@ -229,13 +388,30 @@
     "hit_dice": "9d8+18",
     "hp_avg": 58,
     "initiative": 6,
-    "speed": {"land": 40},
-    "armor_class": {"total": 20, "touch": 11, "flat_footed": 18, "components": "-1 size, +2 Dex, +9 natural"},
+    "speed": {
+      "land": 40
+    },
+    "armor_class": {
+      "total": 20,
+      "touch": 11,
+      "flat_footed": 18,
+      "components": "-1 size, +2 Dex, +9 natural"
+    },
     "base_attack": 9,
     "grapple": 17,
     "attacks": [
-      {"name": "Bite", "attack_bonus": "+12", "damage": "1d8+6", "damage_type": "Piercing"},
-      {"name": "Claw (×2)", "attack_bonus": "+7", "damage": "1d6+3", "damage_type": "Slashing"}
+      {
+        "name": "Bite",
+        "attack_bonus": "+12",
+        "damage": "1d8+6",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Claw (\u00d72)",
+        "attack_bonus": "+7",
+        "damage": "1d6+3",
+        "damage_type": "Slashing"
+      }
     ],
     "special_attacks": [
       "Spell-Like Abilities (CL 9): blink, charm monster (DC 18), levitate, misdirection (DC 17), pass without trace, rage (DC 17)",
@@ -246,8 +422,19 @@
       "Darkvision 60 ft.",
       "SR 20"
     ],
-    "saves": {"fort": 8, "ref": 8, "will": 8},
-    "abilities": {"str": 23, "dex": 15, "con": 15, "int": 14, "wis": 14, "cha": 18},
+    "saves": {
+      "fort": 8,
+      "ref": 8,
+      "will": 8
+    },
+    "abilities": {
+      "str": 23,
+      "dex": 15,
+      "con": 15,
+      "int": 14,
+      "wis": 14,
+      "cha": 18
+    },
     "skills": {
       "Bluff": 16,
       "Diplomacy": 6,
@@ -262,7 +449,12 @@
       "Spot": 14,
       "Survival": 2
     },
-    "feats": ["Improved Initiative", "Improved Natural Attack (bite)", "Stealthy", "Track"],
+    "feats": [
+      "Improved Initiative",
+      "Improved Natural Attack (bite)",
+      "Stealthy",
+      "Track"
+    ],
     "alignment": "Always Lawful Evil",
     "advancement": "10-18 HD (Large)",
     "dr": null,
@@ -273,9 +465,14 @@
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 2,
-    "allowed_biomes": ["Any_Urban", "Temperate_Plain", "Cold_Plain"],
+    "allowed_biomes": [
+      "Any_Urban",
+      "Temperate_Plain",
+      "Cold_Plain"
+    ],
     "primary_biome": "Any_Urban",
-    "ecology_notes": "Greater Barghests are fully matured barghests who have fed on enough victims to grow to Large size. They lead goblin tribes with an iron will, using charm and illusion to maintain control."
+    "ecology_notes": "Greater Barghests are fully matured barghests who have fed on enough victims to grow to Large size. They lead goblin tribes with an iron will, using charm and illusion to maintain control.",
+    "lair_type": "Cave"
   },
   {
     "name": "Belker",
@@ -286,14 +483,38 @@
     "hit_dice": "7d8+7",
     "hp_avg": 38,
     "initiative": 6,
-    "speed": {"land": 30, "fly": 50, "fly_maneuverability": "perfect"},
-    "armor_class": {"total": 22, "touch": 15, "flat_footed": 16, "components": "-1 size, +6 Dex, +7 natural"},
+    "speed": {
+      "land": 30,
+      "fly": 50,
+      "fly_maneuverability": "perfect"
+    },
+    "armor_class": {
+      "total": 22,
+      "touch": 15,
+      "flat_footed": 16,
+      "components": "-1 size, +6 Dex, +7 natural"
+    },
     "base_attack": 5,
     "grapple": 10,
     "attacks": [
-      {"name": "Wing (×2)", "attack_bonus": "+10", "damage": "1d6+1", "damage_type": "Bludgeoning"},
-      {"name": "Bite", "attack_bonus": "+5", "damage": "1d4", "damage_type": "Piercing"},
-      {"name": "Claw (×2)", "attack_bonus": "+5", "damage": "1d3", "damage_type": "Slashing"}
+      {
+        "name": "Wing (\u00d72)",
+        "attack_bonus": "+10",
+        "damage": "1d6+1",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+5",
+        "damage": "1d4",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Claw (\u00d72)",
+        "attack_bonus": "+5",
+        "damage": "1d3",
+        "damage_type": "Slashing"
+      }
     ],
     "special_attacks": [
       "Smoke Claws (grapple; victim must hold breath or become nauseated; suffocates in 3 rounds if kept inside)",
@@ -304,14 +525,29 @@
       "Elemental Traits",
       "Smoke Form (can become gaseous at will; move through cracks; enter lungs of opponents)"
     ],
-    "saves": {"fort": 3, "ref": 11, "will": 4},
-    "abilities": {"str": 12, "dex": 23, "con": 13, "int": 6, "wis": 11, "cha": 11},
+    "saves": {
+      "fort": 3,
+      "ref": 11,
+      "will": 4
+    },
+    "abilities": {
+      "str": 12,
+      "dex": 23,
+      "con": 13,
+      "int": 6,
+      "wis": 11,
+      "cha": 11
+    },
     "skills": {
       "Listen": 8,
       "Move Silently": 12,
       "Spot": 8
     },
-    "feats": ["Combat Reflexes", "Multiattack", "Weapon Finesse"],
+    "feats": [
+      "Combat Reflexes",
+      "Multiattack",
+      "Weapon Finesse"
+    ],
     "alignment": "Usually Neutral Evil",
     "advancement": "8-10 HD (Large); 11-21 HD (Huge)",
     "dr": null,
@@ -322,9 +558,14 @@
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 3,
-    "allowed_biomes": ["Temperate_Mountain", "Cold_Mountain", "Underground"],
+    "allowed_biomes": [
+      "Temperate_Mountain",
+      "Cold_Mountain",
+      "Underground"
+    ],
     "primary_biome": "Temperate_Mountain",
-    "ecology_notes": "Belkers are smoke-formed elemental predators who drift invisibly through the air before attacking. Their most terrifying ability is flowing into the lungs of opponents as a smoke form."
+    "ecology_notes": "Belkers are smoke-formed elemental predators who drift invisibly through the air before attacking. Their most terrifying ability is flowing into the lungs of opponents as a smoke form.",
+    "lair_type": "Cave"
   },
   {
     "name": "Chaos Beast",
@@ -335,12 +576,25 @@
     "hit_dice": "8d8+8",
     "hp_avg": 44,
     "initiative": 5,
-    "speed": {"land": 20, "climb": 20},
-    "armor_class": {"total": 16, "touch": 15, "flat_footed": 11, "components": "+5 Dex, +1 natural"},
+    "speed": {
+      "land": 20,
+      "climb": 20
+    },
+    "armor_class": {
+      "total": 16,
+      "touch": 15,
+      "flat_footed": 11,
+      "components": "+5 Dex, +1 natural"
+    },
     "base_attack": 8,
     "grapple": 10,
     "attacks": [
-      {"name": "Claw (×2)", "attack_bonus": "+10", "damage": "1d3+2 plus corporeal instability", "damage_type": "Slashing"}
+      {
+        "name": "Claw (\u00d72)",
+        "attack_bonus": "+10",
+        "damage": "1d3+2 plus corporeal instability",
+        "damage_type": "Slashing"
+      }
     ],
     "special_attacks": [
       "Corporeal Instability (touch; DC 15 Fort or lose shape; -4 Str and Dex each round until 0; death or cured by Heal/limited wish/miracle/wish)"
@@ -351,8 +605,19 @@
       "Immunity to Transformation",
       "SR 15"
     ],
-    "saves": {"fort": 7, "ref": 11, "will": 3},
-    "abilities": {"str": 14, "dex": 21, "con": 13, "int": 10, "wis": 12, "cha": 10},
+    "saves": {
+      "fort": 7,
+      "ref": 11,
+      "will": 3
+    },
+    "abilities": {
+      "str": 14,
+      "dex": 21,
+      "con": 13,
+      "int": 10,
+      "wis": 12,
+      "cha": 10
+    },
     "skills": {
       "Climb": 13,
       "Escape Artist": 16,
@@ -363,7 +628,11 @@
       "Survival": 1,
       "Use Rope": 5
     },
-    "feats": ["Dodge", "Improved Initiative", "Lightning Reflexes"],
+    "feats": [
+      "Dodge",
+      "Improved Initiative",
+      "Lightning Reflexes"
+    ],
     "alignment": "Always Chaotic Neutral",
     "advancement": "9-16 HD (Medium)",
     "dr": null,
@@ -374,9 +643,13 @@
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 2,
-    "allowed_biomes": ["Any_Ruin", "Underground"],
+    "allowed_biomes": [
+      "Any_Ruin",
+      "Underground"
+    ],
     "primary_biome": "Underground",
-    "ecology_notes": "Chaos beasts are raw embodiments of entropy from the Plane of Limbo. Their shifting, formless bodies inflict terrifying transformations on anyone they touch, threatening to unmake the victim's physical form."
+    "ecology_notes": "Chaos beasts are raw embodiments of entropy from the Plane of Limbo. Their shifting, formless bodies inflict terrifying transformations on anyone they touch, threatening to unmake the victim's physical form.",
+    "lair_type": "Cave"
   },
   {
     "name": "Couatl",
@@ -387,13 +660,33 @@
     "hit_dice": "9d8+18",
     "hp_avg": 58,
     "initiative": 7,
-    "speed": {"land": 20, "fly": 60, "fly_maneuverability": "good", "swim": 20},
-    "armor_class": {"total": 21, "touch": 12, "flat_footed": 18, "components": "-1 size, +3 Dex, +9 natural"},
+    "speed": {
+      "land": 20,
+      "fly": 60,
+      "fly_maneuverability": "good",
+      "swim": 20
+    },
+    "armor_class": {
+      "total": 21,
+      "touch": 12,
+      "flat_footed": 18,
+      "components": "-1 size, +3 Dex, +9 natural"
+    },
     "base_attack": 9,
     "grapple": 16,
     "attacks": [
-      {"name": "Bite", "attack_bonus": "+11", "damage": "1d3+4 plus poison", "damage_type": "Piercing"},
-      {"name": "Constrict", "attack_bonus": "+11", "damage": "2d8+6", "damage_type": "Bludgeoning"}
+      {
+        "name": "Bite",
+        "attack_bonus": "+11",
+        "damage": "1d3+4 plus poison",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Constrict",
+        "attack_bonus": "+11",
+        "damage": "2d8+6",
+        "damage_type": "Bludgeoning"
+      }
     ],
     "special_attacks": [
       "Constrict 2d8+6",
@@ -406,8 +699,19 @@
       "SR 18",
       "Telepathy 90 ft."
     ],
-    "saves": {"fort": 8, "ref": 9, "will": 10},
-    "abilities": {"str": 18, "dex": 17, "con": 14, "int": 17, "wis": 19, "cha": 20},
+    "saves": {
+      "fort": 8,
+      "ref": 9,
+      "will": 10
+    },
+    "abilities": {
+      "str": 18,
+      "dex": 17,
+      "con": 14,
+      "int": 17,
+      "wis": 19,
+      "cha": 20
+    },
     "skills": {
       "Concentration": 14,
       "Diplomacy": 19,
@@ -423,7 +727,12 @@
       "Spellcraft": 17,
       "Spot": 16
     },
-    "feats": ["Flyby Attack", "Improved Initiative", "Iron Will", "Weapon Focus (bite)"],
+    "feats": [
+      "Flyby Attack",
+      "Improved Initiative",
+      "Iron Will",
+      "Weapon Focus (bite)"
+    ],
     "alignment": "Always Lawful Good",
     "advancement": "10-18 HD (Large)",
     "dr": null,
@@ -432,11 +741,18 @@
     "fast_heal": null,
     "elemental_weaknesses": [],
     "alignment_weaknesses": [],
-    "passive_effects": ["Telepathy 90 ft. (constant)"],
+    "passive_effects": [
+      "Telepathy 90 ft. (constant)"
+    ],
     "population_base": 3,
-    "allowed_biomes": ["Warm_Forest", "Warm_Hill", "Warm_Mountain"],
+    "allowed_biomes": [
+      "Warm_Forest",
+      "Warm_Hill",
+      "Warm_Mountain"
+    ],
     "primary_biome": "Warm_Forest",
-    "ecology_notes": "Couatls are serpentine celestials with brilliant feathered wings. They serve as messengers and guardians of good, possessing divine spellcasting and powerful psionic-like abilities."
+    "ecology_notes": "Couatls are serpentine celestials with brilliant feathered wings. They serve as messengers and guardians of good, possessing divine spellcasting and powerful psionic-like abilities.",
+    "lair_type": "Cave"
   },
   {
     "name": "Howler",
@@ -447,13 +763,30 @@
     "hit_dice": "6d8+12",
     "hp_avg": 39,
     "initiative": 7,
-    "speed": {"land": 60},
-    "armor_class": {"total": 17, "touch": 12, "flat_footed": 14, "components": "-1 size, +3 Dex, +5 natural"},
+    "speed": {
+      "land": 60
+    },
+    "armor_class": {
+      "total": 17,
+      "touch": 12,
+      "flat_footed": 14,
+      "components": "-1 size, +3 Dex, +5 natural"
+    },
     "base_attack": 6,
     "grapple": 14,
     "attacks": [
-      {"name": "Bite", "attack_bonus": "+9", "damage": "2d8+4", "damage_type": "Piercing"},
-      {"name": "Quills (1d4 attacks)", "attack_bonus": "+4", "damage": "1d6+2", "damage_type": "Piercing"}
+      {
+        "name": "Bite",
+        "attack_bonus": "+9",
+        "damage": "2d8+4",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Quills (1d4 attacks)",
+        "attack_bonus": "+4",
+        "damage": "1d6+2",
+        "damage_type": "Piercing"
+      }
     ],
     "special_attacks": [
       "Quills (on full attack, 1d4 additional quill attacks at +4; DC 16 Fort or -1 penalty to all rolls for 24 hrs; cumulative)",
@@ -463,8 +796,19 @@
       "Darkvision 60 ft.",
       "Scent"
     ],
-    "saves": {"fort": 7, "ref": 8, "will": 5},
-    "abilities": {"str": 19, "dex": 17, "con": 15, "int": 6, "wis": 14, "cha": 8},
+    "saves": {
+      "fort": 7,
+      "ref": 8,
+      "will": 5
+    },
+    "abilities": {
+      "str": 19,
+      "dex": 17,
+      "con": 15,
+      "int": 6,
+      "wis": 14,
+      "cha": 8
+    },
     "skills": {
       "Hide": 8,
       "Listen": 13,
@@ -473,7 +817,11 @@
       "Spot": 13,
       "Survival": 9
     },
-    "feats": ["Combat Reflexes", "Improved Initiative", "Track"],
+    "feats": [
+      "Combat Reflexes",
+      "Improved Initiative",
+      "Track"
+    ],
     "alignment": "Always Chaotic Evil",
     "advancement": "7-12 HD (Large); 13-18 HD (Huge)",
     "dr": null,
@@ -484,9 +832,14 @@
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 5,
-    "allowed_biomes": ["Underground", "Any_Ruin", "Temperate_Hill"],
+    "allowed_biomes": [
+      "Underground",
+      "Any_Ruin",
+      "Temperate_Hill"
+    ],
     "primary_biome": "Underground",
-    "ecology_notes": "Howlers are porcupine-like predators from the Outer Planes of chaos and evil. Their constant shrieking drains the will of nearby creatures while their quill-laden attacks weaken victims over time."
+    "ecology_notes": "Howlers are porcupine-like predators from the Outer Planes of chaos and evil. Their constant shrieking drains the will of nearby creatures while their quill-laden attacks weaken victims over time.",
+    "lair_type": "Cave"
   },
   {
     "name": "Imp",
@@ -497,12 +850,26 @@
     "hit_dice": "3d8+3",
     "hp_avg": 16,
     "initiative": 3,
-    "speed": {"land": 20, "fly": 50, "fly_maneuverability": "perfect"},
-    "armor_class": {"total": 20, "touch": 15, "flat_footed": 17, "components": "+2 size, +3 Dex, +5 natural"},
+    "speed": {
+      "land": 20,
+      "fly": 50,
+      "fly_maneuverability": "perfect"
+    },
+    "armor_class": {
+      "total": 20,
+      "touch": 15,
+      "flat_footed": 17,
+      "components": "+2 size, +3 Dex, +5 natural"
+    },
     "base_attack": 3,
     "grapple": -5,
     "attacks": [
-      {"name": "Sting", "attack_bonus": "+8", "damage": "1d4 plus poison", "damage_type": "Piercing"}
+      {
+        "name": "Sting",
+        "attack_bonus": "+8",
+        "damage": "1d4 plus poison",
+        "damage_type": "Piercing"
+      }
     ],
     "special_attacks": [
       "Poison (Sting; DC 13 Fort; 1d4 Dex / 2d4 Dex)",
@@ -518,8 +885,19 @@
       "Resistance to Cold 10",
       "SR 15"
     ],
-    "saves": {"fort": 4, "ref": 6, "will": 5},
-    "abilities": {"str": 10, "dex": 17, "con": 13, "int": 13, "wis": 12, "cha": 14},
+    "saves": {
+      "fort": 4,
+      "ref": 6,
+      "will": 5
+    },
+    "abilities": {
+      "str": 10,
+      "dex": 17,
+      "con": 13,
+      "int": 13,
+      "wis": 12,
+      "cha": 14
+    },
     "skills": {
       "Bluff": 8,
       "Diplomacy": 4,
@@ -533,20 +911,30 @@
       "Spellcraft": 8,
       "Spot": 7
     },
-    "feats": ["Dodge", "Weapon Finesse"],
+    "feats": [
+      "Dodge",
+      "Weapon Finesse"
+    ],
     "alignment": "Always Lawful Evil",
-    "advancement": "—",
+    "advancement": "\u2014",
     "dr": "5/good or silver",
     "sr": 15,
     "regen": 2,
     "fast_heal": null,
     "elemental_weaknesses": [],
-    "alignment_weaknesses": ["Good"],
+    "alignment_weaknesses": [
+      "Good"
+    ],
     "passive_effects": [],
     "population_base": 1,
-    "allowed_biomes": ["Any_Urban", "Any_Ruin", "Underground"],
+    "allowed_biomes": [
+      "Any_Urban",
+      "Any_Ruin",
+      "Underground"
+    ],
     "primary_biome": "Any_Urban",
-    "ecology_notes": "Imps are minor devils who serve as familiars or spies for evil spellcasters. They are excellent at infiltration, capable of changing form and turning invisible."
+    "ecology_notes": "Imps are minor devils who serve as familiars or spies for evil spellcasters. They are excellent at infiltration, capable of changing form and turning invisible.",
+    "lair_type": "Cave"
   },
   {
     "name": "Invisible Stalker",
@@ -557,12 +945,26 @@
     "hit_dice": "8d8+16",
     "hp_avg": 52,
     "initiative": 8,
-    "speed": {"land": 30, "fly": 30, "fly_maneuverability": "perfect"},
-    "armor_class": {"total": 17, "touch": 13, "flat_footed": 13, "components": "-1 size, +4 Dex, +4 natural"},
+    "speed": {
+      "land": 30,
+      "fly": 30,
+      "fly_maneuverability": "perfect"
+    },
+    "armor_class": {
+      "total": 17,
+      "touch": 13,
+      "flat_footed": 13,
+      "components": "-1 size, +4 Dex, +4 natural"
+    },
     "base_attack": 6,
     "grapple": 14,
     "attacks": [
-      {"name": "Slam (×2)", "attack_bonus": "+10", "damage": "2d6+5", "damage_type": "Bludgeoning"}
+      {
+        "name": "Slam (\u00d72)",
+        "attack_bonus": "+10",
+        "damage": "2d6+5",
+        "damage_type": "Bludgeoning"
+      }
     ],
     "special_attacks": [],
     "special_qualities": [
@@ -571,8 +973,19 @@
       "Natural Invisibility (always invisible; True Seeing required to see)",
       "Tracking (extraordinary; effectively 20 ranks in Survival; tracks by air current)"
     ],
-    "saves": {"fort": 4, "ref": 10, "will": 6},
-    "abilities": {"str": 21, "dex": 19, "con": 14, "int": 14, "wis": 15, "cha": 11},
+    "saves": {
+      "fort": 4,
+      "ref": 10,
+      "will": 6
+    },
+    "abilities": {
+      "str": 21,
+      "dex": 19,
+      "con": 14,
+      "int": 14,
+      "wis": 15,
+      "cha": 11
+    },
     "skills": {
       "Listen": 13,
       "Move Silently": 15,
@@ -580,7 +993,11 @@
       "Spot": 15,
       "Survival": 13
     },
-    "feats": ["Combat Reflexes", "Improved Initiative", "Weapon Focus (slam)"],
+    "feats": [
+      "Combat Reflexes",
+      "Improved Initiative",
+      "Weapon Focus (slam)"
+    ],
     "alignment": "Usually Neutral",
     "advancement": "9-16 HD (Large); 17-24 HD (Huge)",
     "dr": null,
@@ -589,11 +1006,18 @@
     "fast_heal": null,
     "elemental_weaknesses": [],
     "alignment_weaknesses": [],
-    "passive_effects": ["Natural Invisibility (always invisible; only True Seeing reveals true form)"],
+    "passive_effects": [
+      "Natural Invisibility (always invisible; only True Seeing reveals true form)"
+    ],
     "population_base": 1,
-    "allowed_biomes": ["Any_Urban", "Any_Ruin", "Temperate_Plain"],
+    "allowed_biomes": [
+      "Any_Urban",
+      "Any_Ruin",
+      "Temperate_Plain"
+    ],
     "primary_biome": "Any_Urban",
-    "ecology_notes": "Invisible stalkers are air elementals conjured and bound to perform specific tasks. They are naturally and permanently invisible, relentless trackers who pursue their quarry across great distances."
+    "ecology_notes": "Invisible stalkers are air elementals conjured and bound to perform specific tasks. They are naturally and permanently invisible, relentless trackers who pursue their quarry across great distances.",
+    "lair_type": "Cave"
   },
   {
     "name": "Leonal",
@@ -604,13 +1028,30 @@
     "hit_dice": "12d8+60",
     "hp_avg": 114,
     "initiative": 4,
-    "speed": {"land": 60},
-    "armor_class": {"total": 31, "touch": 14, "flat_footed": 27, "components": "+4 Dex, +17 natural"},
+    "speed": {
+      "land": 60
+    },
+    "armor_class": {
+      "total": 31,
+      "touch": 14,
+      "flat_footed": 27,
+      "components": "+4 Dex, +17 natural"
+    },
     "base_attack": 12,
     "grapple": 16,
     "attacks": [
-      {"name": "Claw (×2)", "attack_bonus": "+17", "damage": "2d6+4", "damage_type": "Slashing"},
-      {"name": "Bite", "attack_bonus": "+12", "damage": "2d6+2", "damage_type": "Piercing"}
+      {
+        "name": "Claw (\u00d72)",
+        "attack_bonus": "+17",
+        "damage": "2d6+4",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Bite",
+        "attack_bonus": "+12",
+        "damage": "2d6+2",
+        "damage_type": "Piercing"
+      }
     ],
     "special_attacks": [
       "Pounce",
@@ -621,13 +1062,24 @@
     "special_qualities": [
       "Darkvision 60 ft.",
       "DR 10/evil and silver",
-      "Lay on Hands (CHA × HD hp per day)",
+      "Lay on Hands (CHA \u00d7 HD hp per day)",
       "Low-Light Vision",
       "SR 28",
       "True Seeing (constant)"
     ],
-    "saves": {"fort": 13, "ref": 12, "will": 12},
-    "abilities": {"str": 19, "dex": 19, "con": 20, "int": 16, "wis": 20, "cha": 20},
+    "saves": {
+      "fort": 13,
+      "ref": 12,
+      "will": 12
+    },
+    "abilities": {
+      "str": 19,
+      "dex": 19,
+      "con": 20,
+      "int": 16,
+      "wis": 20,
+      "cha": 20
+    },
     "skills": {
       "Concentration": 20,
       "Diplomacy": 22,
@@ -640,7 +1092,13 @@
       "Sense Motive": 20,
       "Spot": 22
     },
-    "feats": ["Alertness", "Combat Casting", "Dodge", "Improved Initiative", "Iron Will"],
+    "feats": [
+      "Alertness",
+      "Combat Casting",
+      "Dodge",
+      "Improved Initiative",
+      "Iron Will"
+    ],
     "alignment": "Always Neutral Good",
     "advancement": "13-24 HD (Medium)",
     "dr": "10/evil and silver",
@@ -648,12 +1106,21 @@
     "regen": null,
     "fast_heal": null,
     "elemental_weaknesses": [],
-    "alignment_weaknesses": ["Evil"],
-    "passive_effects": ["True Seeing (constant)"],
+    "alignment_weaknesses": [
+      "Evil"
+    ],
+    "passive_effects": [
+      "True Seeing (constant)"
+    ],
     "population_base": 2,
-    "allowed_biomes": ["Warm_Plain", "Warm_Forest", "Temperate_Plain"],
+    "allowed_biomes": [
+      "Warm_Plain",
+      "Warm_Forest",
+      "Temperate_Plain"
+    ],
     "primary_biome": "Warm_Plain",
-    "ecology_notes": "Leonals are the most powerful guardinals, resembling lion-headed warrior celestials. They serve as generals and champions of good, combining ferocious physical power with divine spell-like abilities."
+    "ecology_notes": "Leonals are the most powerful guardinals, resembling lion-headed warrior celestials. They serve as generals and champions of good, combining ferocious physical power with divine spell-like abilities.",
+    "lair_type": "Cave"
   },
   {
     "name": "Lillend",
@@ -664,13 +1131,33 @@
     "hit_dice": "7d8+14",
     "hp_avg": 45,
     "initiative": 3,
-    "speed": {"land": 20, "fly": 70, "fly_maneuverability": "average"},
-    "armor_class": {"total": 19, "touch": 12, "flat_footed": 16, "components": "-1 size, +3 Dex, +7 natural"},
+    "speed": {
+      "land": 20,
+      "fly": 70,
+      "fly_maneuverability": "average"
+    },
+    "armor_class": {
+      "total": 19,
+      "touch": 12,
+      "flat_footed": 16,
+      "components": "-1 size, +3 Dex, +7 natural"
+    },
     "base_attack": 7,
     "grapple": 14,
     "attacks": [
-      {"name": "Longsword", "attack_bonus": "+10/+5", "damage": "1d8+5", "crit_range": "19-20", "damage_type": "Slashing"},
-      {"name": "Tail slap", "attack_bonus": "+5", "damage": "1d6+2", "damage_type": "Bludgeoning"}
+      {
+        "name": "Longsword",
+        "attack_bonus": "+10/+5",
+        "damage": "1d8+5",
+        "crit_range": "19-20",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Tail slap",
+        "attack_bonus": "+5",
+        "damage": "1d6+2",
+        "damage_type": "Bludgeoning"
+      }
     ],
     "special_attacks": [
       "Constrict 1d6+2",
@@ -685,8 +1172,19 @@
       "Low-Light Vision",
       "SR 17"
     ],
-    "saves": {"fort": 7, "ref": 8, "will": 9},
-    "abilities": {"str": 18, "dex": 17, "con": 14, "int": 14, "wis": 15, "cha": 19},
+    "saves": {
+      "fort": 7,
+      "ref": 8,
+      "will": 9
+    },
+    "abilities": {
+      "str": 18,
+      "dex": 17,
+      "con": 14,
+      "int": 14,
+      "wis": 15,
+      "cha": 19
+    },
     "skills": {
       "Concentration": 12,
       "Craft (any)": 12,
@@ -699,7 +1197,11 @@
       "Sense Motive": 12,
       "Spot": 14
     },
-    "feats": ["Alertness", "Combat Casting", "Dodge"],
+    "feats": [
+      "Alertness",
+      "Combat Casting",
+      "Dodge"
+    ],
     "alignment": "Always Chaotic Good",
     "advancement": "8-14 HD (Large)",
     "dr": null,
@@ -710,9 +1212,14 @@
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 3,
-    "allowed_biomes": ["Temperate_Forest", "Warm_Forest", "Temperate_Mountain"],
+    "allowed_biomes": [
+      "Temperate_Forest",
+      "Warm_Forest",
+      "Temperate_Mountain"
+    ],
     "primary_biome": "Temperate_Forest",
-    "ecology_notes": "Lillends are muse-like celestial azatas resembling beautiful winged serpent-women. They are patrons of music and art, inspiring mortals to great creative achievements while defending nature and beauty."
+    "ecology_notes": "Lillends are muse-like celestial azatas resembling beautiful winged serpent-women. They are patrons of music and art, inspiring mortals to great creative achievements while defending nature and beauty.",
+    "lair_type": "Cave"
   },
   {
     "name": "Ravid",
@@ -723,13 +1230,32 @@
     "hit_dice": "3d8+3",
     "hp_avg": 16,
     "initiative": 4,
-    "speed": {"land": 20, "fly": 60, "fly_maneuverability": "good"},
-    "armor_class": {"total": 25, "touch": 14, "flat_footed": 21, "components": "+4 Dex, +11 natural"},
+    "speed": {
+      "land": 20,
+      "fly": 60,
+      "fly_maneuverability": "good"
+    },
+    "armor_class": {
+      "total": 25,
+      "touch": 14,
+      "flat_footed": 21,
+      "components": "+4 Dex, +11 natural"
+    },
     "base_attack": 3,
     "grapple": 3,
     "attacks": [
-      {"name": "Tail slap", "attack_bonus": "+3", "damage": "1d6 plus positive energy", "damage_type": "Bludgeoning"},
-      {"name": "Claw", "attack_bonus": "+1", "damage": "1d4", "damage_type": "Slashing"}
+      {
+        "name": "Tail slap",
+        "attack_bonus": "+3",
+        "damage": "1d6 plus positive energy",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Claw",
+        "attack_bonus": "+1",
+        "damage": "1d4",
+        "damage_type": "Slashing"
+      }
     ],
     "special_attacks": [
       "Animate Objects (touch; DC 11 Will or object gains animating positive energy for 1 min and attacks ravid's enemies autonomously)",
@@ -741,8 +1267,19 @@
       "Levitate (at will; as spell)",
       "SR 11"
     ],
-    "saves": {"fort": 4, "ref": 7, "will": 5},
-    "abilities": {"str": 10, "dex": 18, "con": 13, "int": 7, "wis": 14, "cha": 13},
+    "saves": {
+      "fort": 4,
+      "ref": 7,
+      "will": 5
+    },
+    "abilities": {
+      "str": 10,
+      "dex": 18,
+      "con": 13,
+      "int": 7,
+      "wis": 14,
+      "cha": 13
+    },
     "skills": {
       "Escape Artist": 10,
       "Listen": 8,
@@ -750,7 +1287,10 @@
       "Spot": 8,
       "Tumble": 10
     },
-    "feats": ["Lightning Reflexes", "Weapon Finesse"],
+    "feats": [
+      "Lightning Reflexes",
+      "Weapon Finesse"
+    ],
     "alignment": "Always Neutral",
     "advancement": "4-9 HD (Medium)",
     "dr": null,
@@ -761,9 +1301,13 @@
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 2,
-    "allowed_biomes": ["Temperate_Plain", "Any_Ruin"],
+    "allowed_biomes": [
+      "Temperate_Plain",
+      "Any_Ruin"
+    ],
     "primary_biome": "Temperate_Plain",
-    "ecology_notes": "Ravids are mysterious positive-energy plane outsiders that animate objects wherever they wander. They are not malicious but chaotically animate everything they touch, creating bizarre processions of following objects."
+    "ecology_notes": "Ravids are mysterious positive-energy plane outsiders that animate objects wherever they wander. They are not malicious but chaotically animate everything they touch, creating bizarre processions of following objects.",
+    "lair_type": "Cave"
   },
   {
     "name": "Salamander, Flamebrother",
@@ -774,13 +1318,31 @@
     "hit_dice": "4d8",
     "hp_avg": 18,
     "initiative": 1,
-    "speed": {"land": 20},
-    "armor_class": {"total": 18, "touch": 12, "flat_footed": 17, "components": "+1 size, +1 Dex, +6 natural"},
+    "speed": {
+      "land": 20
+    },
+    "armor_class": {
+      "total": 18,
+      "touch": 12,
+      "flat_footed": 17,
+      "components": "+1 size, +1 Dex, +6 natural"
+    },
     "base_attack": 4,
     "grapple": 1,
     "attacks": [
-      {"name": "Spear", "attack_bonus": "+5", "damage": "1d6+1 plus 1d6 fire", "crit_multiplier": "x3", "damage_type": "Piercing and Fire"},
-      {"name": "Tail slap", "attack_bonus": "+0", "damage": "1d4 plus 1d6 fire", "damage_type": "Bludgeoning and Fire"}
+      {
+        "name": "Spear",
+        "attack_bonus": "+5",
+        "damage": "1d6+1 plus 1d6 fire",
+        "crit_multiplier": "x3",
+        "damage_type": "Piercing and Fire"
+      },
+      {
+        "name": "Tail slap",
+        "attack_bonus": "+0",
+        "damage": "1d4 plus 1d6 fire",
+        "damage_type": "Bludgeoning and Fire"
+      }
     ],
     "special_attacks": [
       "Constrict 1d4+1d6 fire",
@@ -792,8 +1354,19 @@
       "Immunity to Fire",
       "Vulnerability to Cold"
     ],
-    "saves": {"fort": 4, "ref": 5, "will": 4},
-    "abilities": {"str": 12, "dex": 13, "con": 11, "int": 14, "wis": 11, "cha": 11},
+    "saves": {
+      "fort": 4,
+      "ref": 5,
+      "will": 4
+    },
+    "abilities": {
+      "str": 12,
+      "dex": 13,
+      "con": 11,
+      "int": 14,
+      "wis": 11,
+      "cha": 11
+    },
     "skills": {
       "Bluff": 7,
       "Craft (metalworking)": 9,
@@ -806,20 +1379,29 @@
       "Move Silently": 8,
       "Spot": 7
     },
-    "feats": ["Alertness", "Multiattack"],
+    "feats": [
+      "Alertness",
+      "Multiattack"
+    ],
     "alignment": "Usually Evil (any)",
     "advancement": "5-8 HD (Small)",
     "dr": null,
     "sr": null,
     "regen": null,
     "fast_heal": null,
-    "elemental_weaknesses": ["Cold"],
+    "elemental_weaknesses": [
+      "Cold"
+    ],
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 6,
-    "allowed_biomes": ["Warm_Mountain", "Underground"],
+    "allowed_biomes": [
+      "Warm_Mountain",
+      "Underground"
+    ],
     "primary_biome": "Warm_Mountain",
-    "ecology_notes": "Flamebrother salamanders are the weakest of their kind, working as slaves or low-ranking troops in the Elemental Plane of Fire. They wrap foes in their fiery tails to constrict them."
+    "ecology_notes": "Flamebrother salamanders are the weakest of their kind, working as slaves or low-ranking troops in the Elemental Plane of Fire. They wrap foes in their fiery tails to constrict them.",
+    "lair_type": "Cave"
   },
   {
     "name": "Salamander, Average",
@@ -830,13 +1412,31 @@
     "hit_dice": "9d8+18",
     "hp_avg": 58,
     "initiative": 1,
-    "speed": {"land": 20},
-    "armor_class": {"total": 18, "touch": 11, "flat_footed": 17, "components": "+1 Dex, +7 natural"},
+    "speed": {
+      "land": 20
+    },
+    "armor_class": {
+      "total": 18,
+      "touch": 11,
+      "flat_footed": 17,
+      "components": "+1 Dex, +7 natural"
+    },
     "base_attack": 9,
     "grapple": 12,
     "attacks": [
-      {"name": "Spear", "attack_bonus": "+12/+7", "damage": "1d8+5 plus 1d6 fire", "crit_multiplier": "x3", "damage_type": "Piercing and Fire"},
-      {"name": "Tail slap", "attack_bonus": "+7", "damage": "2d6+2 plus 1d6 fire", "damage_type": "Bludgeoning and Fire"}
+      {
+        "name": "Spear",
+        "attack_bonus": "+12/+7",
+        "damage": "1d8+5 plus 1d6 fire",
+        "crit_multiplier": "x3",
+        "damage_type": "Piercing and Fire"
+      },
+      {
+        "name": "Tail slap",
+        "attack_bonus": "+7",
+        "damage": "2d6+2 plus 1d6 fire",
+        "damage_type": "Bludgeoning and Fire"
+      }
     ],
     "special_attacks": [
       "Constrict 2d6+2 plus 1d6 fire",
@@ -848,8 +1448,19 @@
       "Immunity to Fire",
       "Vulnerability to Cold"
     ],
-    "saves": {"fort": 8, "ref": 7, "will": 7},
-    "abilities": {"str": 20, "dex": 13, "con": 14, "int": 14, "wis": 13, "cha": 13},
+    "saves": {
+      "fort": 8,
+      "ref": 7,
+      "will": 7
+    },
+    "abilities": {
+      "str": 20,
+      "dex": 13,
+      "con": 14,
+      "int": 14,
+      "wis": 13,
+      "cha": 13
+    },
     "skills": {
       "Bluff": 13,
       "Craft (metalworking)": 14,
@@ -861,20 +1472,31 @@
       "Move Silently": 13,
       "Spot": 13
     },
-    "feats": ["Alertness", "Multiattack", "Power Attack", "Weapon Focus (spear)"],
+    "feats": [
+      "Alertness",
+      "Multiattack",
+      "Power Attack",
+      "Weapon Focus (spear)"
+    ],
     "alignment": "Usually Evil (any)",
     "advancement": "10-16 HD (Medium)",
     "dr": null,
     "sr": null,
     "regen": null,
     "fast_heal": null,
-    "elemental_weaknesses": ["Cold"],
+    "elemental_weaknesses": [
+      "Cold"
+    ],
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 4,
-    "allowed_biomes": ["Warm_Mountain", "Underground"],
+    "allowed_biomes": [
+      "Warm_Mountain",
+      "Underground"
+    ],
     "primary_biome": "Underground",
-    "ecology_notes": "Average salamanders are the warriors and craftsmen of their race. They are expert metalworkers, forging weapons in volcanic heat, and skilled constrictor-fighters who wrap foes in their blazing tails."
+    "ecology_notes": "Average salamanders are the warriors and craftsmen of their race. They are expert metalworkers, forging weapons in volcanic heat, and skilled constrictor-fighters who wrap foes in their blazing tails.",
+    "lair_type": "Cave"
   },
   {
     "name": "Salamander, Noble",
@@ -885,13 +1507,31 @@
     "hit_dice": "15d8+45",
     "hp_avg": 112,
     "initiative": 1,
-    "speed": {"land": 20},
-    "armor_class": {"total": 22, "touch": 10, "flat_footed": 21, "components": "-1 size, +1 Dex, +12 natural"},
+    "speed": {
+      "land": 20
+    },
+    "armor_class": {
+      "total": 22,
+      "touch": 10,
+      "flat_footed": 21,
+      "components": "-1 size, +1 Dex, +12 natural"
+    },
     "base_attack": 15,
     "grapple": 24,
     "attacks": [
-      {"name": "Ranseur", "attack_bonus": "+20/+15/+10", "damage": "2d6+8 plus 1d6 fire", "crit_multiplier": "x3", "damage_type": "Piercing and Fire"},
-      {"name": "Tail slap", "attack_bonus": "+15", "damage": "2d8+4 plus 1d6 fire", "damage_type": "Bludgeoning and Fire"}
+      {
+        "name": "Ranseur",
+        "attack_bonus": "+20/+15/+10",
+        "damage": "2d6+8 plus 1d6 fire",
+        "crit_multiplier": "x3",
+        "damage_type": "Piercing and Fire"
+      },
+      {
+        "name": "Tail slap",
+        "attack_bonus": "+15",
+        "damage": "2d8+4 plus 1d6 fire",
+        "damage_type": "Bludgeoning and Fire"
+      }
     ],
     "special_attacks": [
       "Constrict 2d8+4 plus 1d6 fire",
@@ -905,8 +1545,19 @@
       "SR 28",
       "Vulnerability to Cold"
     ],
-    "saves": {"fort": 12, "ref": 10, "will": 12},
-    "abilities": {"str": 26, "dex": 13, "con": 16, "int": 18, "wis": 15, "cha": 15},
+    "saves": {
+      "fort": 12,
+      "ref": 10,
+      "will": 12
+    },
+    "abilities": {
+      "str": 26,
+      "dex": 13,
+      "con": 16,
+      "int": 18,
+      "wis": 15,
+      "cha": 15
+    },
     "skills": {
       "Bluff": 20,
       "Craft (metalworking)": 22,
@@ -921,20 +1572,33 @@
       "Sense Motive": 20,
       "Spot": 22
     },
-    "feats": ["Alertness", "Cleave", "Dodge", "Multiattack", "Power Attack", "Weapon Focus (ranseur)"],
+    "feats": [
+      "Alertness",
+      "Cleave",
+      "Dodge",
+      "Multiattack",
+      "Power Attack",
+      "Weapon Focus (ranseur)"
+    ],
     "alignment": "Usually Evil (any)",
     "advancement": "16-45 HD (Large)",
     "dr": null,
     "sr": 28,
     "regen": null,
     "fast_heal": null,
-    "elemental_weaknesses": ["Cold"],
+    "elemental_weaknesses": [
+      "Cold"
+    ],
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 2,
-    "allowed_biomes": ["Warm_Mountain", "Underground"],
+    "allowed_biomes": [
+      "Warm_Mountain",
+      "Underground"
+    ],
     "primary_biome": "Underground",
-    "ecology_notes": "Noble salamanders are the rulers and generals of salamander society. They command armies and forge legendary weapons in volcanic forges, wielding powerful fire magic alongside their martial prowess."
+    "ecology_notes": "Noble salamanders are the rulers and generals of salamander society. They command armies and forge legendary weapons in volcanic forges, wielding powerful fire magic alongside their martial prowess.",
+    "lair_type": "Cave"
   },
   {
     "name": "Titan",
@@ -945,13 +1609,32 @@
     "hit_dice": "20d8+140",
     "hp_avg": 230,
     "initiative": 1,
-    "speed": {"land": 60},
-    "armor_class": {"total": 40, "touch": 9, "flat_footed": 39, "components": "-2 size, +1 Dex, +21 natural, +10 divine armor"},
+    "speed": {
+      "land": 60
+    },
+    "armor_class": {
+      "total": 40,
+      "touch": 9,
+      "flat_footed": 39,
+      "components": "-2 size, +1 Dex, +21 natural, +10 divine armor"
+    },
     "base_attack": 20,
     "grapple": 38,
     "attacks": [
-      {"name": "Enormous warhammer", "attack_bonus": "+28/+23/+18/+13", "damage": "4d6+16 plus 1d6 divine", "crit_range": "19-20", "damage_type": "Bludgeoning"},
-      {"name": "Rock", "attack_bonus": "+19", "damage": "2d10+11", "damage_type": "Bludgeoning", "range": "100 ft."}
+      {
+        "name": "Enormous warhammer",
+        "attack_bonus": "+28/+23/+18/+13",
+        "damage": "4d6+16 plus 1d6 divine",
+        "crit_range": "19-20",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Rock",
+        "attack_bonus": "+19",
+        "damage": "2d10+11",
+        "damage_type": "Bludgeoning",
+        "range": "100 ft."
+      }
     ],
     "special_attacks": [
       "Rock Throwing (100 ft.; 2d10+11)",
@@ -962,8 +1645,19 @@
       "Low-Light Vision",
       "SR 32"
     ],
-    "saves": {"fort": 19, "ref": 13, "will": 18},
-    "abilities": {"str": 43, "dex": 12, "con": 25, "int": 21, "wis": 22, "cha": 20},
+    "saves": {
+      "fort": 19,
+      "ref": 13,
+      "will": 18
+    },
+    "abilities": {
+      "str": 43,
+      "dex": 12,
+      "con": 25,
+      "int": 21,
+      "wis": 22,
+      "cha": 20
+    },
     "skills": {
       "Climb": 39,
       "Concentration": 30,
@@ -981,7 +1675,16 @@
       "Sense Motive": 29,
       "Spot": 31
     },
-    "feats": ["Awesome Blow", "Cleave", "Great Cleave", "Improved Bull Rush", "Improved Critical (warhammer)", "Power Attack", "Quicken Spell-Like Ability (chain lightning)", "Weapon Focus (warhammer)"],
+    "feats": [
+      "Awesome Blow",
+      "Cleave",
+      "Great Cleave",
+      "Improved Bull Rush",
+      "Improved Critical (warhammer)",
+      "Power Attack",
+      "Quicken Spell-Like Ability (chain lightning)",
+      "Weapon Focus (warhammer)"
+    ],
     "alignment": "Usually Chaotic Good",
     "advancement": "21-60 HD (Huge)",
     "dr": "15/lawful",
@@ -989,12 +1692,19 @@
     "regen": null,
     "fast_heal": null,
     "elemental_weaknesses": [],
-    "alignment_weaknesses": ["Lawful"],
+    "alignment_weaknesses": [
+      "Lawful"
+    ],
     "passive_effects": [],
     "population_base": 1,
-    "allowed_biomes": ["Cold_Mountain", "Temperate_Mountain", "Warm_Mountain"],
+    "allowed_biomes": [
+      "Cold_Mountain",
+      "Temperate_Mountain",
+      "Warm_Mountain"
+    ],
     "primary_biome": "Temperate_Mountain",
-    "ecology_notes": "Titans are ancient and mighty outsiders who dwelt in the world when it was young. They are colossal warriors and spellcasters with mastery over the elements and a vast repertoire of spell-like abilities."
+    "ecology_notes": "Titans are ancient and mighty outsiders who dwelt in the world when it was young. They are colossal warriors and spellcasters with mastery over the elements and a vast repertoire of spell-like abilities.",
+    "lair_type": "Cave"
   },
   {
     "name": "Vargouille",
@@ -1005,12 +1715,25 @@
     "hit_dice": "1d8+1",
     "hp_avg": 5,
     "initiative": 1,
-    "speed": {"fly": 30, "fly_maneuverability": "average"},
-    "armor_class": {"total": 12, "touch": 12, "flat_footed": 11, "components": "+1 size, +1 Dex"},
+    "speed": {
+      "fly": 30,
+      "fly_maneuverability": "average"
+    },
+    "armor_class": {
+      "total": 12,
+      "touch": 12,
+      "flat_footed": 11,
+      "components": "+1 size, +1 Dex"
+    },
     "base_attack": 1,
     "grapple": -3,
     "attacks": [
-      {"name": "Bite", "attack_bonus": "+3", "damage": "1d4 plus disease", "damage_type": "Piercing"}
+      {
+        "name": "Bite",
+        "attack_bonus": "+3",
+        "damage": "1d4 plus disease",
+        "damage_type": "Piercing"
+      }
     ],
     "special_attacks": [
       "Kiss (kiss a paralyzed humanoid; DC 12 Fort or transform into vargouille in 2d6 hours; DC 15 Fort negates after bite vs. paralysis)",
@@ -1025,15 +1748,28 @@
       "Resistance to Fire 10",
       "Resistance to Lightning 10"
     ],
-    "saves": {"fort": 3, "ref": 3, "will": 2},
-    "abilities": {"str": 10, "dex": 13, "con": 13, "int": 5, "wis": 9, "cha": 8},
+    "saves": {
+      "fort": 3,
+      "ref": 3,
+      "will": 2
+    },
+    "abilities": {
+      "str": 10,
+      "dex": 13,
+      "con": 13,
+      "int": 5,
+      "wis": 9,
+      "cha": 8
+    },
     "skills": {
       "Hide": 9,
       "Listen": 3,
       "Move Silently": 5,
       "Spot": 3
     },
-    "feats": ["Weapon Finesse"],
+    "feats": [
+      "Weapon Finesse"
+    ],
     "alignment": "Always Neutral Evil",
     "advancement": "2-3 HD (Small)",
     "dr": null,
@@ -1044,9 +1780,13 @@
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 6,
-    "allowed_biomes": ["Underground", "Any_Ruin"],
+    "allowed_biomes": [
+      "Underground",
+      "Any_Ruin"
+    ],
     "primary_biome": "Underground",
-    "ecology_notes": "Vargouilles are flying severed-head outsiders native to the Lower Planes. They reproduce by kissing paralyzed victims, whose heads eventually detach and transform into new vargouilles."
+    "ecology_notes": "Vargouilles are flying severed-head outsiders native to the Lower Planes. They reproduce by kissing paralyzed victims, whose heads eventually detach and transform into new vargouilles.",
+    "lair_type": "Cave"
   },
   {
     "name": "Xill",
@@ -1057,13 +1797,30 @@
     "hit_dice": "5d8+10",
     "hp_avg": 32,
     "initiative": 3,
-    "speed": {"land": 40},
-    "armor_class": {"total": 20, "touch": 13, "flat_footed": 17, "components": "+3 Dex, +7 natural"},
+    "speed": {
+      "land": 40
+    },
+    "armor_class": {
+      "total": 20,
+      "touch": 13,
+      "flat_footed": 17,
+      "components": "+3 Dex, +7 natural"
+    },
     "base_attack": 5,
     "grapple": 7,
     "attacks": [
-      {"name": "Claw (×4)", "attack_bonus": "+7", "damage": "1d4+2", "damage_type": "Slashing"},
-      {"name": "Bite (×2)", "attack_bonus": "+2", "damage": "1d4+1", "damage_type": "Piercing"}
+      {
+        "name": "Claw (\u00d74)",
+        "attack_bonus": "+7",
+        "damage": "1d4+2",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Bite (\u00d72)",
+        "attack_bonus": "+2",
+        "damage": "1d4+1",
+        "damage_type": "Piercing"
+      }
     ],
     "special_attacks": [
       "Improved Grab",
@@ -1075,8 +1832,19 @@
       "Planewalk (shift to and from Ethereal Plane as a move action)",
       "SR 21"
     ],
-    "saves": {"fort": 6, "ref": 7, "will": 4},
-    "abilities": {"str": 15, "dex": 16, "con": 15, "int": 12, "wis": 11, "cha": 9},
+    "saves": {
+      "fort": 6,
+      "ref": 7,
+      "will": 4
+    },
+    "abilities": {
+      "str": 15,
+      "dex": 16,
+      "con": 15,
+      "int": 12,
+      "wis": 11,
+      "cha": 9
+    },
     "skills": {
       "Balance": 11,
       "Climb": 10,
@@ -1090,7 +1858,10 @@
       "Tumble": 13,
       "Use Rope": 3
     },
-    "feats": ["Multiattack", "Weapon Finesse"],
+    "feats": [
+      "Multiattack",
+      "Weapon Finesse"
+    ],
     "alignment": "Always Lawful Evil",
     "advancement": "6-10 HD (Medium); 11-15 HD (Large)",
     "dr": null,
@@ -1101,8 +1872,13 @@
     "alignment_weaknesses": [],
     "passive_effects": [],
     "population_base": 4,
-    "allowed_biomes": ["Underground", "Any_Ruin", "Temperate_Plain"],
+    "allowed_biomes": [
+      "Underground",
+      "Any_Ruin",
+      "Temperate_Plain"
+    ],
     "primary_biome": "Underground",
-    "ecology_notes": "Xills are four-armed ethereal hunters that shift between planes to ambush prey. They implant eggs in paralyzed victims, which hatch internally and consume the host from within over months."
+    "ecology_notes": "Xills are four-armed ethereal hunters that shift between planes to ambush prey. They implant eggs in paralyzed victims, which hatch internally and consume the host from within over months.",
+    "lair_type": "Cave"
   }
 ]

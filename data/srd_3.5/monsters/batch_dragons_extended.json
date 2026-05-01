@@ -92,7 +92,8 @@
       "Temperate_Swamp"
     ],
     "primary_biome": "Warm_Swamp",
-    "ecology_notes": "Smallest black dragons, already dangerous with corrosive breath"
+    "ecology_notes": "Smallest black dragons, already dangerous with corrosive breath",
+    "lair_type": "Cave"
   },
   {
     "name": "Dragon, Black (Adult)",
@@ -222,7 +223,8 @@
       "Temperate_Swamp"
     ],
     "primary_biome": "Warm_Swamp",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Dragon, Black (Ancient)",
@@ -356,7 +358,8 @@
       "Temperate_Swamp"
     ],
     "primary_biome": "Warm_Swamp",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Dragon, Black (Great Wyrm)",
@@ -493,7 +496,8 @@
       "Temperate_Swamp"
     ],
     "primary_biome": "Warm_Swamp",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Dragon, Blue (Young)",
@@ -600,7 +604,8 @@
       "Warm_Hill"
     ],
     "primary_biome": "Warm_Desert",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Burrow"
   },
   {
     "name": "Dragon, Blue (Adult)",
@@ -729,7 +734,8 @@
       "Warm_Hill"
     ],
     "primary_biome": "Warm_Desert",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Burrow"
   },
   {
     "name": "Dragon, Blue (Ancient)",
@@ -862,7 +868,8 @@
       "Warm_Hill"
     ],
     "primary_biome": "Warm_Desert",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Burrow"
   },
   {
     "name": "Dragon, Green (Young)",
@@ -971,7 +978,8 @@
       "Warm_Forest"
     ],
     "primary_biome": "Temperate_Forest",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Dragon, Green (Adult)",
@@ -1103,7 +1111,8 @@
       "Warm_Forest"
     ],
     "primary_biome": "Temperate_Forest",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Dragon, Red (Young)",
@@ -1213,7 +1222,8 @@
       "Warm_Hill"
     ],
     "primary_biome": "Warm_Mountain",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Dragon, Red (Adult)",
@@ -1345,7 +1355,8 @@
       "Warm_Hill"
     ],
     "primary_biome": "Warm_Mountain",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Dragon, White (Young)",
@@ -1454,7 +1465,8 @@
       "Arctic"
     ],
     "primary_biome": "Cold_Mountain",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Burrow"
   },
   {
     "name": "Dragon, White (Adult)",
@@ -1587,7 +1599,8 @@
       "Arctic"
     ],
     "primary_biome": "Cold_Mountain",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Burrow"
   },
   {
     "name": "Dragon, Brass (Young)",
@@ -1697,7 +1710,8 @@
       "Warm_Hill"
     ],
     "primary_biome": "Warm_Desert",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Burrow"
   },
   {
     "name": "Dragon, Brass (Adult)",
@@ -1829,7 +1843,8 @@
       "Warm_Hill"
     ],
     "primary_biome": "Warm_Desert",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Burrow"
   },
   {
     "name": "Dragon, Bronze (Young)",
@@ -1940,7 +1955,8 @@
       "Temperate_Hill"
     ],
     "primary_biome": "Temperate_Aquatic",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Dragon, Bronze (Adult)",
@@ -2073,7 +2089,8 @@
       "Temperate_Hill"
     ],
     "primary_biome": "Temperate_Aquatic",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Dragon, Copper (Young)",
@@ -2182,7 +2199,8 @@
       "Warm_Mountain"
     ],
     "primary_biome": "Warm_Hill",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Dragon, Copper (Adult)",
@@ -2313,7 +2331,8 @@
       "Warm_Mountain"
     ],
     "primary_biome": "Warm_Hill",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Dragon, Gold (Young)",
@@ -2428,7 +2447,8 @@
       "Warm_Mountain"
     ],
     "primary_biome": "Warm_Hill",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Dragon, Gold (Adult)",
@@ -2566,7 +2586,8 @@
       "Warm_Mountain"
     ],
     "primary_biome": "Warm_Hill",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Dragon, Gold (Great Wyrm)",
@@ -2708,7 +2729,8 @@
       "Warm_Mountain"
     ],
     "primary_biome": "Warm_Hill",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Dragon, Silver (Young)",
@@ -2820,7 +2842,8 @@
       "Any"
     ],
     "primary_biome": "Cold_Mountain",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Dragon, Silver (Adult)",
@@ -2956,7 +2979,8 @@
       "Any"
     ],
     "primary_biome": "Cold_Mountain",
-    "ecology_notes": null
+    "ecology_notes": null,
+    "lair_type": "Cave"
   },
   {
     "name": "Dragon Turtle",
@@ -3049,7 +3073,8 @@
       "Temperate_Aquatic"
     ],
     "primary_biome": "Aquatic",
-    "ecology_notes": "Dragon turtles are reclusive and mercenary, often extorting tolls from ships passing their territory."
+    "ecology_notes": "Dragon turtles are reclusive and mercenary, often extorting tolls from ships passing their territory.",
+    "lair_type": "Cave"
   },
   {
     "name": "Pseudodragon",
@@ -3138,6 +3163,7 @@
       "Any"
     ],
     "primary_biome": "Temperate_Forest",
-    "ecology_notes": "Pseudodragons are cat-sized true dragons that bond with humanoids as familiars. They communicate telepathically and are playful but fiercely loyal."
+    "ecology_notes": "Pseudodragons are cat-sized true dragons that bond with humanoids as familiars. They communicate telepathically and are playful but fiercely loyal.",
+    "lair_type": "Cave"
   }
 ]

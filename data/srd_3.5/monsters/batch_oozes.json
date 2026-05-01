@@ -72,7 +72,8 @@
       "Any_Ruin"
     ],
     "primary_biome": "Underground",
-    "ecology_notes": "Black puddings dissolve organic and metal matter with their powerful acid. When struck by slashing or cold attacks they split into smaller puddings."
+    "ecology_notes": "Black puddings dissolve organic and metal matter with their powerful acid. When struck by slashing or cold attacks they split into smaller puddings.",
+    "lair_type": "Cave"
   },
   {
     "name": "Gelatinous Cube",
@@ -142,7 +143,8 @@
       "Underground"
     ],
     "primary_biome": "Underground",
-    "ecology_notes": "Gelatinous cubes are nearly transparent, gliding through dungeon corridors sweeping up organic matter. Their near-invisibility makes them a notorious dungeon hazard."
+    "ecology_notes": "Gelatinous cubes are nearly transparent, gliding through dungeon corridors sweeping up organic matter. Their near-invisibility makes them a notorious dungeon hazard.",
+    "lair_type": "Cave"
   },
   {
     "name": "Gray Ooze",
@@ -214,7 +216,8 @@
       "Cold_Swamp"
     ],
     "primary_biome": "Underground",
-    "ecology_notes": "Gray oozes blend seamlessly with wet stone, dissolving metal armor and weapons with their potent acid. They are immune to both cold and fire."
+    "ecology_notes": "Gray oozes blend seamlessly with wet stone, dissolving metal armor and weapons with their potent acid. They are immune to both cold and fire.",
+    "lair_type": "Cave"
   },
   {
     "name": "Ochre Jelly",
@@ -289,6 +292,7 @@
       "Temperate_Swamp"
     ],
     "primary_biome": "Underground",
-    "ecology_notes": "Ochre jellies split when struck by lightning or blades, making them a persistent dungeon menace. Their acid dissolves flesh but not metal or stone."
+    "ecology_notes": "Ochre jellies split when struck by lightning or blades, making them a persistent dungeon menace. Their acid dissolves flesh but not metal or stone.",
+    "lair_type": "Cave"
   }
 ]

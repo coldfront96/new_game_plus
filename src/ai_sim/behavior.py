@@ -1,4 +1,5 @@
-"""
+"""EM-008 — SpellcasterAI (Caster AI subsystem).
+
 src/ai_sim/behavior.py
 -----------------------
 Finite State Machine (FSM) for entity AI behavior in New Game Plus.
@@ -32,9 +33,14 @@ Usage::
 
 from __future__ import annotations
 
+import json
+import os
 from dataclasses import dataclass, field
 from enum import Enum, auto
-from typing import Optional, Tuple
+from typing import Optional, Tuple, TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from src.ai_sim.llm_bridge import LLMClient
 
 
 # ---------------------------------------------------------------------------
@@ -222,3 +228,128 @@ class BehaviorFSM:
             self.current_task.task_type != TaskType.NONE
             and not self.current_task.completed
         )
+
+
+# ---------------------------------------------------------------------------
+# EM-008 · SpellcasterAI
+# ---------------------------------------------------------------------------
+
+@dataclass(slots=True)
+class SpellcasterAI:
+    """AI helper that selects a daily spell loadout for a spellcasting entity.
+
+    Attributes:
+        char_class:      Class name (e.g. "Wizard", "Cleric").
+        level:           Character level — determines max accessible spell level.
+        prepared_spells: Spells selected for the current day (updated by
+                         :meth:`prepare_daily`).
+        llm_client:      Optional LLM client.  When present, the LLM chooses
+                         spells; when absent, a deterministic fallback is used.
+    """
+
+    char_class:      str
+    level:           int
+    prepared_spells: list[str] = field(default_factory=list)
+    llm_client:      Optional["LLMClient"] = field(default=None)
+
+    # Maximum spell level accessible = ceil(level / 2), capped at 9
+    @property
+    def _max_spell_level(self) -> int:
+        return min(9, (self.level + 1) // 2)
+
+    async def prepare_daily(
+        self,
+        chunk_environment: str,
+        spell_data_dir: str = "data/srd_3.5/spells",
+    ) -> list[str]:
+        """Select spells for the day based on current chunk environment.
+
+        If an LLM client is available, it asks the model to choose from the
+        available spell list given the environment description.  Otherwise a
+        deterministic fallback picks the first N spells up to the caster's
+        level from each accessible level file.
+
+        Args:
+            chunk_environment: Free-text description of the current terrain
+                               and biome (e.g. "dense forest, river nearby").
+            spell_data_dir:    Directory containing ``level_0.json`` …
+                               ``level_9.json`` spell data files.
+
+        Returns:
+            The updated list of prepared spell names (also stored in
+            ``self.prepared_spells``).
+        """
+        all_spells: list[dict] = []
+        for lvl in range(0, self._max_spell_level + 1):
+            path = os.path.join(spell_data_dir, f"level_{lvl}.json")
+            if not os.path.exists(path):
+                continue
+            try:
+                with open(path, encoding="utf-8") as fh:
+                    all_spells.extend(json.load(fh))
+            except (json.JSONDecodeError, OSError):
+                pass
+
+        spell_names = [s["name"] for s in all_spells if "name" in s]
+        slots_available = max(1, self.level)
+
+        if self.llm_client is not None and spell_names:
+            spell_list_txt = "\n".join(f"- {n}" for n in spell_names[:80])
+            system_prompt = (
+                f"You are a {self.char_class} of level {self.level} "
+                f"preparing spells for the day."
+            )
+            user_prompt = (
+                f"Current environment: {chunk_environment}\n\n"
+                f"Available spells (up to spell level {self._max_spell_level}):\n"
+                f"{spell_list_txt}\n\n"
+                f"Choose up to {slots_available} spells best suited to this environment. "
+                f"Reply with ONLY a JSON array of spell names, e.g. [\"Fireball\", \"Fly\"]."
+            )
+            raw = await self.llm_client.query_text(system_prompt, user_prompt)
+            chosen = self._parse_spell_names(raw, spell_names, slots_available)
+        else:
+            chosen = spell_names[:slots_available]
+
+        self.prepared_spells = chosen
+        return self.prepared_spells
+
+    @staticmethod
+    def _parse_spell_names(
+        raw_response: str,
+        known_spells: list[str],
+        limit: int,
+    ) -> list[str]:
+        """Extract spell names from the LLM response that match known spells.
+
+        Tries to parse a JSON array first; falls back to line-by-line matching.
+        """
+        known_set = {s.lower(): s for s in known_spells}
+        chosen: list[str] = []
+
+        # Attempt JSON array parse
+        try:
+            start = raw_response.index("[")
+            end   = raw_response.rindex("]") + 1
+            candidates = json.loads(raw_response[start:end])
+            for c in candidates:
+                canonical = known_set.get(str(c).strip().lower())
+                if canonical and canonical not in chosen:
+                    chosen.append(canonical)
+                if len(chosen) >= limit:
+                    break
+            if chosen:
+                return chosen
+        except (ValueError, json.JSONDecodeError):
+            pass
+
+        # Fallback: line-by-line matching
+        for line in raw_response.splitlines():
+            name = line.strip().lstrip("-• ").strip()
+            canonical = known_set.get(name.lower())
+            if canonical and canonical not in chosen:
+                chosen.append(canonical)
+            if len(chosen) >= limit:
+                break
+
+        return chosen

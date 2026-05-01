@@ -81,7 +81,8 @@
       "Underground"
     ],
     "primary_biome": "Any_Ruin",
-    "ecology_notes": "Ghouls are ravenous undead that haunt graveyards and dungeons, feeding on corpses and fresh kills. Their paralytic bite makes them dangerous in groups, and victims who die of ghoul fever rise as ghouls themselves. Elves are uniquely immune to ghoul paralysis."
+    "ecology_notes": "Ghouls are ravenous undead that haunt graveyards and dungeons, feeding on corpses and fresh kills. Their paralytic bite makes them dangerous in groups, and victims who die of ghoul fever rise as ghouls themselves. Elves are uniquely immune to ghoul paralysis.",
+    "lair_type": "Cave"
   },
   {
     "name": "Ghast",
@@ -177,7 +178,8 @@
       "Underground"
     ],
     "primary_biome": "Any_Ruin",
-    "ecology_notes": "Ghasts are more powerful versions of ghouls with a nauseating stench. Unlike regular ghouls, ghast paralysis affects elves as well. They are cunning hunters who lead packs of ghouls and prefer to disable prey before feasting."
+    "ecology_notes": "Ghasts are more powerful versions of ghouls with a nauseating stench. Unlike regular ghouls, ghast paralysis affects elves as well. They are cunning hunters who lead packs of ghouls and prefer to disable prey before feasting.",
+    "lair_type": "Cave"
   },
   {
     "name": "Wight",
@@ -254,7 +256,8 @@
       "Underground"
     ],
     "primary_biome": "Any_Ruin",
-    "ecology_notes": "Wights are intelligent undead that haunt ruins and burial sites. They drain the life force from living creatures and can raise slain victims as spawn under their control. Wights retain the cunning they had in life and sometimes use weapons or tactics from their mortal existence."
+    "ecology_notes": "Wights are intelligent undead that haunt ruins and burial sites. They drain the life force from living creatures and can raise slain victims as spawn under their control. Wights retain the cunning they had in life and sometimes use weapons or tactics from their mortal existence.",
+    "lair_type": "Cave"
   },
   {
     "name": "Allip",
@@ -345,7 +348,8 @@
       "Underground"
     ],
     "primary_biome": "Any_Ruin",
-    "ecology_notes": "Allips are the remnants of those who went insane before or after death, driven mad by dark secrets or terrible trauma. They babble incessantly and drain the sanity of those who approach. Those who meet an allip's gaze or touch often suffer lasting mental damage."
+    "ecology_notes": "Allips are the remnants of those who went insane before or after death, driven mad by dark secrets or terrible trauma. They babble incessantly and drain the sanity of those who approach. Those who meet an allip's gaze or touch often suffer lasting mental damage.",
+    "lair_type": "Cave"
   },
   {
     "name": "Mummy",
@@ -381,7 +385,7 @@
     ],
     "special_qualities": [
       "Darkvision 60 ft.",
-      "Damage Reduction 5/—",
+      "Damage Reduction 5/\u2014",
       "Undead Traits",
       "Vulnerability to Fire"
     ],
@@ -412,7 +416,7 @@
     ],
     "alignment": "Usually Lawful Evil",
     "advancement": "9-16 HD (Medium)",
-    "dr": "5/—",
+    "dr": "5/\u2014",
     "sr": null,
     "regen": null,
     "fast_heal": null,
@@ -438,7 +442,8 @@
       "Underground"
     ],
     "primary_biome": "Warm_Desert",
-    "ecology_notes": "Mummies are preserved undead created through ancient funerary rituals or dark magic. They guard tombs and treasure hordes, striking fear into intruders with their fearsome appearance. Mummy rot is particularly feared as it can only be cured by magic, not natural healing. Mummies are highly flammable and take extra damage from fire."
+    "ecology_notes": "Mummies are preserved undead created through ancient funerary rituals or dark magic. They guard tombs and treasure hordes, striking fear into intruders with their fearsome appearance. Mummy rot is particularly feared as it can only be cured by magic, not natural healing. Mummies are highly flammable and take extra damage from fire.",
+    "lair_type": "Cave"
   },
   {
     "name": "Specter",
@@ -524,7 +529,8 @@
       "Underground"
     ],
     "primary_biome": "Any_Ruin",
-    "ecology_notes": "Specters are powerful incorporeal undead that drain the life force from the living. They are faster and more dangerous than wraiths. Specters are powerless in direct sunlight and animals flee from their unnatural presence. They command spawn they have created, building networks of undead servants."
+    "ecology_notes": "Specters are powerful incorporeal undead that drain the life force from the living. They are faster and more dangerous than wraiths. Specters are powerless in direct sunlight and animals flee from their unnatural presence. They command spawn they have created, building networks of undead servants.",
+    "lair_type": "Cave"
   },
   {
     "name": "Bodak",
@@ -617,7 +623,8 @@
       "Outer_Plane"
     ],
     "primary_biome": "Any_Ruin",
-    "ecology_notes": "Bodaks are horrific undead created when a mortal is destroyed by the power of Orcus or similar dark forces on the lower planes. Their death gaze can slay any living creature that meets their eyes. They burn in direct sunlight and seek dark places to hide. Bodaks retain no memory of their former lives."
+    "ecology_notes": "Bodaks are horrific undead created when a mortal is destroyed by the power of Orcus or similar dark forces on the lower planes. Their death gaze can slay any living creature that meets their eyes. They burn in direct sunlight and seek dark places to hide. Bodaks retain no memory of their former lives.",
+    "lair_type": "Cave"
   },
   {
     "name": "Mohrg",
@@ -708,7 +715,8 @@
       "Any_Urban"
     ],
     "primary_biome": "Any_Urban",
-    "ecology_notes": "Mohrgs are the undead remains of serial killers and mass murderers whose evil was so great they rose without any ritual. They are fast, agile, and difficult to destroy, with fast healing that makes them resilient in combat. A mohrg's tongue attack paralyzes prey that the creature then slays to raise as zombie thralls."
+    "ecology_notes": "Mohrgs are the undead remains of serial killers and mass murderers whose evil was so great they rose without any ritual. They are fast, agile, and difficult to destroy, with fast healing that makes them resilient in combat. A mohrg's tongue attack paralyzes prey that the creature then slays to raise as zombie thralls.",
+    "lair_type": "Cave"
   },
   {
     "name": "Ghost (Human Warrior 5)",
@@ -789,7 +797,8 @@
       "Any_Ruin"
     ],
     "primary_biome": "Any_Ruin",
-    "ecology_notes": "This ghost represents a typical example using a Human Warrior 5 base. Ghosts are incorporeal undead created when a creature dies with strong unfinished business. They retain abilities from life and gain ghost-template powers. The ghost can only be permanently destroyed when its unresolved purpose is fulfilled or by special means. CHA score represents the ghost template bonus (+4 to CHA)."
+    "ecology_notes": "This ghost represents a typical example using a Human Warrior 5 base. Ghosts are incorporeal undead created when a creature dies with strong unfinished business. They retain abilities from life and gain ghost-template powers. The ghost can only be permanently destroyed when its unresolved purpose is fulfilled or by special means. CHA score represents the ghost template bonus (+4 to CHA).",
+    "lair_type": "Cave"
   },
   {
     "name": "Devourer",
@@ -876,7 +885,8 @@
       "Underground"
     ],
     "primary_biome": "Outer_Plane",
-    "ecology_notes": "Devourers are horrific extraplanar undead that consume the souls of the living. They originate on the lower planes and travel to the material plane to harvest souls, which they store in their ribcages as spell energy. A devourer whose soul supply runs out becomes dormant. They are among the most feared undead for their ability to permanently destroy souls."
+    "ecology_notes": "Devourers are horrific extraplanar undead that consume the souls of the living. They originate on the lower planes and travel to the material plane to harvest souls, which they store in their ribcages as spell energy. A devourer whose soul supply runs out becomes dormant. They are among the most feared undead for their ability to permanently destroy souls.",
+    "lair_type": "Cave"
   },
   {
     "name": "Lich (Human Wizard 11)",
@@ -984,6 +994,7 @@
       "Underground"
     ],
     "primary_biome": "Any_Ruin",
-    "ecology_notes": "This lich represents a human wizard of 11th level who achieved undeath through the lich ritual. Liches are among the most powerful undead, retaining their full spellcasting ability and intellect. They are immortal so long as their phylactery survives, reforming within days of destruction. The sample shown uses bracers of armor +7 and a ring of protection +2. Actual lich power varies greatly by base class level and magic items."
+    "ecology_notes": "This lich represents a human wizard of 11th level who achieved undeath through the lich ritual. Liches are among the most powerful undead, retaining their full spellcasting ability and intellect. They are immortal so long as their phylactery survives, reforming within days of destruction. The sample shown uses bracers of armor +7 and a ring of protection +2. Actual lich power varies greatly by base class level and magic items.",
+    "lair_type": "Cave"
   }
 ]

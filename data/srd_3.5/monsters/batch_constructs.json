@@ -63,7 +63,8 @@
       "Any_Ruin"
     ],
     "primary_biome": "Any_Ruin",
-    "ecology_notes": "Tiny animated objects serve as minor guardians or servants, brought to life by Animate Objects. Their small size and hardness make them difficult to destroy outright."
+    "ecology_notes": "Tiny animated objects serve as minor guardians or servants, brought to life by Animate Objects. Their small size and hardness make them difficult to destroy outright.",
+    "lair_type": "Cave"
   },
   {
     "name": "Animated Object, Small",
@@ -129,7 +130,8 @@
       "Any_Ruin"
     ],
     "primary_biome": "Any_Ruin",
-    "ecology_notes": "Small animated objects are common magical sentinels in ancient vaults and wizard towers, activated to defend against intruders."
+    "ecology_notes": "Small animated objects are common magical sentinels in ancient vaults and wizard towers, activated to defend against intruders.",
+    "lair_type": "Cave"
   },
   {
     "name": "Animated Object, Medium",
@@ -195,7 +197,8 @@
       "Any_Ruin"
     ],
     "primary_biome": "Any_Ruin",
-    "ecology_notes": "Medium animated objects are versatile guardian constructs, often taking the form of furniture, statues, or tools in ruin complexes."
+    "ecology_notes": "Medium animated objects are versatile guardian constructs, often taking the form of furniture, statues, or tools in ruin complexes.",
+    "lair_type": "Cave"
   },
   {
     "name": "Animated Object, Large",
@@ -267,7 +270,8 @@
       "Any_Ruin"
     ],
     "primary_biome": "Any_Ruin",
-    "ecology_notes": "Large animated objects guard the halls of mighty spellcasters, their bulk and dual slam attacks making them formidable defenders of arcane vaults."
+    "ecology_notes": "Large animated objects guard the halls of mighty spellcasters, their bulk and dual slam attacks making them formidable defenders of arcane vaults.",
+    "lair_type": "Cave"
   },
   {
     "name": "Animated Object, Huge",
@@ -339,7 +343,8 @@
       "Any_Ruin"
     ],
     "primary_biome": "Any_Ruin",
-    "ecology_notes": "Huge animated objects are colossal magical sentinels capable of devastating whole groups of adventurers. Only powerful casters can create and control them."
+    "ecology_notes": "Huge animated objects are colossal magical sentinels capable of devastating whole groups of adventurers. Only powerful casters can create and control them.",
+    "lair_type": "Cave"
   },
   {
     "name": "Animated Object, Gargantuan",
@@ -411,7 +416,8 @@
       "Any_Ruin"
     ],
     "primary_biome": "Any_Ruin",
-    "ecology_notes": "Gargantuan animated objects are among the most powerful magical constructs, typically animating massive statues or siege equipment in ancient strongholds."
+    "ecology_notes": "Gargantuan animated objects are among the most powerful magical constructs, typically animating massive statues or siege equipment in ancient strongholds.",
+    "lair_type": "Cave"
   },
   {
     "name": "Animated Object, Colossal",
@@ -483,7 +489,8 @@
       "Any_Ruin"
     ],
     "primary_biome": "Any_Ruin",
-    "ecology_notes": "Colossal animated objects are legendary magical constructs of world-shaking power. Their creation requires epic-level magic and is incredibly rare."
+    "ecology_notes": "Colossal animated objects are legendary magical constructs of world-shaking power. Their creation requires epic-level magic and is incredibly rare.",
+    "lair_type": "Cave"
   },
   {
     "name": "Golem, Clay",
@@ -562,7 +569,8 @@
       "Any_Ruin"
     ],
     "primary_biome": "Any_Ruin",
-    "ecology_notes": "Clay golems are powerful guardian constructs crafted from sacred clay. Their cursed wound ability makes them particularly feared, as wounds from their slams resist all natural healing."
+    "ecology_notes": "Clay golems are powerful guardian constructs crafted from sacred clay. Their cursed wound ability makes them particularly feared, as wounds from their slams resist all natural healing.",
+    "lair_type": "Cave"
   },
   {
     "name": "Golem, Flesh",
@@ -641,7 +649,8 @@
       "Any_Ruin"
     ],
     "primary_biome": "Any_Ruin",
-    "ecology_notes": "Flesh golems are grotesque constructs assembled from corpse parts, animated by powerful magic. They are susceptible to fire and electricity affects their behavior."
+    "ecology_notes": "Flesh golems are grotesque constructs assembled from corpse parts, animated by powerful magic. They are susceptible to fire and electricity affects their behavior.",
+    "lair_type": "Cave"
   },
   {
     "name": "Golem, Iron",
@@ -722,7 +731,8 @@
       "Any_Ruin"
     ],
     "primary_biome": "Any_Ruin",
-    "ecology_notes": "Iron golems are nearly indestructible constructs forged from pure iron. Only adamantine weapons can harm them, and their poison breath weapon makes them deadly even at range."
+    "ecology_notes": "Iron golems are nearly indestructible constructs forged from pure iron. Only adamantine weapons can harm them, and their poison breath weapon makes them deadly even at range.",
+    "lair_type": "Cave"
   },
   {
     "name": "Golem, Stone",
@@ -802,7 +812,8 @@
       "Any_Ruin"
     ],
     "primary_biome": "Any_Ruin",
-    "ecology_notes": "Stone golems are enduring magical constructs, carved from solid rock and animated for permanent guardianship. Their slow ability can quickly turn an encounter against unprepared adventurers."
+    "ecology_notes": "Stone golems are enduring magical constructs, carved from solid rock and animated for permanent guardianship. Their slow ability can quickly turn an encounter against unprepared adventurers.",
+    "lair_type": "Cave"
   },
   {
     "name": "Homunculus",
@@ -877,7 +888,8 @@
       "Any_Ruin"
     ],
     "primary_biome": "Any_Ruin",
-    "ecology_notes": "A homunculus is a tiny familiar-like construct created by a wizard from his own blood. It shares an empathic link with its creator and serves as a loyal spy and scout."
+    "ecology_notes": "A homunculus is a tiny familiar-like construct created by a wizard from his own blood. It shares an empathic link with its creator and serves as a loyal spy and scout.",
+    "lair_type": "Cave"
   },
   {
     "name": "Shield Guardian",
@@ -957,6 +969,7 @@
       "Any_Ruin"
     ],
     "primary_biome": "Any_Ruin",
-    "ecology_notes": "Shield guardians are powerful constructs bound to a magical amulet and programmed to protect their master. They intercept attacks and heal rapidly, making them prized bodyguards for wealthy spellcasters."
+    "ecology_notes": "Shield guardians are powerful constructs bound to a magical amulet and programmed to protect their master. They intercept attacks and heal rapidly, making them prized bodyguards for wealthy spellcasters.",
+    "lair_type": "Cave"
   }
 ]

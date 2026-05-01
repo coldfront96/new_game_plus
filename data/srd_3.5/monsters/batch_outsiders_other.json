@@ -95,7 +95,8 @@
       "Warm_Desert"
     ],
     "primary_biome": "Elemental_Air",
-    "ecology_notes": "Djinn are noble genies of the air plane, masters of wind and sky. They view themselves as superior to other genies and often appear in tales as wish-granters bound to service."
+    "ecology_notes": "Djinn are noble genies of the air plane, masters of wind and sky. They view themselves as superior to other genies and often appear in tales as wish-granters bound to service.",
+    "lair_type": "Cave"
   },
   {
     "name": "Efreeti",
@@ -197,7 +198,8 @@
       "Warm_Desert"
     ],
     "primary_biome": "Elemental_Fire",
-    "ecology_notes": "Efreet are the powerful and cruel genies of the Elemental Plane of Fire. They despise all other genies, especially djinn, and keep humanoid slaves in their brass cities."
+    "ecology_notes": "Efreet are the powerful and cruel genies of the Elemental Plane of Fire. They despise all other genies, especially djinn, and keep humanoid slaves in their brass cities.",
+    "lair_type": "Cave"
   },
   {
     "name": "Jann",
@@ -292,7 +294,8 @@
       "Outer_Plane"
     ],
     "primary_biome": "Any",
-    "ecology_notes": "Jann are the weakest of the genie-kin, born of all four elements. They are the only genies who make the Material Plane their primary home, often working as guides, mercenaries, or scouts."
+    "ecology_notes": "Jann are the weakest of the genie-kin, born of all four elements. They are the only genies who make the Material Plane their primary home, often working as guides, mercenaries, or scouts.",
+    "lair_type": "Cave"
   },
   {
     "name": "Marid",
@@ -391,7 +394,8 @@
       "Aquatic"
     ],
     "primary_biome": "Elemental_Water",
-    "ecology_notes": "Marids are the greatest of the water genies, proud and capricious masters of the seas. They rule vast underwater realms and have power over water and weather."
+    "ecology_notes": "Marids are the greatest of the water genies, proud and capricious masters of the seas. They rule vast underwater realms and have power over water and weather.",
+    "lair_type": "Cave"
   },
   {
     "name": "Formian Warrior",
@@ -489,7 +493,8 @@
       "Outer_Plane"
     ],
     "primary_biome": "Underground",
-    "ecology_notes": "Formian Warriors are the soldiers of the hive, equipped with venomous stingers and hardened carapaces. They fight in coordinated groups directed by the hive mind."
+    "ecology_notes": "Formian Warriors are the soldiers of the hive, equipped with venomous stingers and hardened carapaces. They fight in coordinated groups directed by the hive mind.",
+    "lair_type": "Hive"
   },
   {
     "name": "Formian Taskmaster",
@@ -592,7 +597,8 @@
       "Outer_Plane"
     ],
     "primary_biome": "Underground",
-    "ecology_notes": "Formian Taskmasters oversee the labor of enslaved workers and other creatures. They can dominate the minds of powerful creatures to force them into service."
+    "ecology_notes": "Formian Taskmasters oversee the labor of enslaved workers and other creatures. They can dominate the minds of powerful creatures to force them into service.",
+    "lair_type": "Hive"
   },
   {
     "name": "Formian Myrmarch",
@@ -714,7 +720,8 @@
       "Outer_Plane"
     ],
     "primary_biome": "Underground",
-    "ecology_notes": "Formian Myrmarchs serve as generals and commanders of formian armies, guiding strategy and wielding powerful spell-like abilities in addition to formidable physical combat power."
+    "ecology_notes": "Formian Myrmarchs serve as generals and commanders of formian armies, guiding strategy and wielding powerful spell-like abilities in addition to formidable physical combat power.",
+    "lair_type": "Hive"
   },
   {
     "name": "Formian Queen",
@@ -803,7 +810,8 @@
       "Underground"
     ],
     "primary_biome": "Underground",
-    "ecology_notes": "The Formian Queen is the center of the hive. She is immobile and focuses entirely on breeding, directing the hive mind, and protecting the colony. Each hive has exactly one queen."
+    "ecology_notes": "The Formian Queen is the center of the hive. She is immobile and focuses entirely on breeding, directing the hive mind, and protecting the colony. Each hive has exactly one queen.",
+    "lair_type": "Hive"
   },
   {
     "name": "Inevitable, Kolyarut",
@@ -890,7 +898,8 @@
       "Any"
     ],
     "primary_biome": "Any",
-    "ecology_notes": "Kolyaruts enforce contracts and oaths. They hunt those who break their word and will not stop until the contract-breaker has faced justice. They appear as amber-colored metal humanoids."
+    "ecology_notes": "Kolyaruts enforce contracts and oaths. They hunt those who break their word and will not stop until the contract-breaker has faced justice. They appear as amber-colored metal humanoids.",
+    "lair_type": "Cave"
   },
   {
     "name": "Inevitable, Marut",
@@ -986,7 +995,8 @@
       "Any"
     ],
     "primary_biome": "Any",
-    "ecology_notes": "Maruts pursue those who have unnaturally extended their lives past their allotted span, hunting liches, vampires, and others who cheat death. They appear as towering, golden humanoids of imposing mass."
+    "ecology_notes": "Maruts pursue those who have unnaturally extended their lives past their allotted span, hunting liches, vampires, and others who cheat death. They appear as towering, golden humanoids of imposing mass.",
+    "lair_type": "Cave"
   },
   {
     "name": "Inevitable, Zelekhut",
@@ -1078,7 +1088,8 @@
       "Any"
     ],
     "primary_biome": "Any",
-    "ecology_notes": "Zelekhuts hunt escaped criminals and those who flee from justice. They appear as centaur-like constructs of gold and silver with great chained weapons."
+    "ecology_notes": "Zelekhuts hunt escaped criminals and those who flee from justice. They appear as centaur-like constructs of gold and silver with great chained weapons.",
+    "lair_type": "Cave"
   },
   {
     "name": "Night Hag",
@@ -1177,7 +1188,8 @@
       "Outer_Plane"
     ],
     "primary_biome": "Outer_Plane",
-    "ecology_notes": "Night Hags exist on the ethereal plane and haunt the dreams of evil mortals, slowly stealing their souls to sell to the highest bidder in the Lower Planes."
+    "ecology_notes": "Night Hags exist on the ethereal plane and haunt the dreams of evil mortals, slowly stealing their souls to sell to the highest bidder in the Lower Planes.",
+    "lair_type": "Cave"
   },
   {
     "name": "Nightmare",
@@ -1268,7 +1280,8 @@
       "Outer_Plane"
     ],
     "primary_biome": "Outer_Plane",
-    "ecology_notes": "Nightmares are terrifying fiendish horses with flaming hooves and billowing smoke. They serve as mounts for powerful evil creatures and can travel between planes."
+    "ecology_notes": "Nightmares are terrifying fiendish horses with flaming hooves and billowing smoke. They serve as mounts for powerful evil creatures and can travel between planes.",
+    "lair_type": "Cave"
   },
   {
     "name": "Slaad, Red",
@@ -1372,7 +1385,8 @@
       "Outer_Plane"
     ],
     "primary_biome": "Outer_Plane",
-    "ecology_notes": "Red Slaadi are brutish frog-like creatures that implant their eggs in hosts. The least intelligent of the slaadi, they exist mainly to fight and breed."
+    "ecology_notes": "Red Slaadi are brutish frog-like creatures that implant their eggs in hosts. The least intelligent of the slaadi, they exist mainly to fight and breed.",
+    "lair_type": "Cave"
   },
   {
     "name": "Slaad, Blue",
@@ -1477,7 +1491,8 @@
       "Outer_Plane"
     ],
     "primary_biome": "Outer_Plane",
-    "ecology_notes": "Blue Slaadi are larger and more dangerous than red. Their claws carry a disease that transforms victims into red slaadi if not cured."
+    "ecology_notes": "Blue Slaadi are larger and more dangerous than red. Their claws carry a disease that transforms victims into red slaadi if not cured.",
+    "lair_type": "Cave"
   },
   {
     "name": "Slaad, Green",
@@ -1573,7 +1588,8 @@
       "Outer_Plane"
     ],
     "primary_biome": "Outer_Plane",
-    "ecology_notes": "Green Slaadi are more intelligent than their lesser kin and can polymorph into humanoid form to infiltrate societies. They have powerful spell-like abilities and can command red and blue slaadi."
+    "ecology_notes": "Green Slaadi are more intelligent than their lesser kin and can polymorph into humanoid form to infiltrate societies. They have powerful spell-like abilities and can command red and blue slaadi.",
+    "lair_type": "Cave"
   },
   {
     "name": "Slaad, Gray",
@@ -1674,7 +1690,8 @@
       "Outer_Plane"
     ],
     "primary_biome": "Outer_Plane",
-    "ecology_notes": "Gray Slaadi are the most intelligent of the lesser slaadi. They serve as leaders and generals, with powerful magic and the ability to assume any humanoid form at will."
+    "ecology_notes": "Gray Slaadi are the most intelligent of the lesser slaadi. They serve as leaders and generals, with powerful magic and the ability to assume any humanoid form at will.",
+    "lair_type": "Cave"
   },
   {
     "name": "Slaad, Death",
@@ -1776,7 +1793,8 @@
       "Outer_Plane"
     ],
     "primary_biome": "Outer_Plane",
-    "ecology_notes": "Death Slaadi are the most powerful of their kind, barely distinguishable from powerful humanoids in their natural form. They are the true slaad lords and can draw on massive divine-like power."
+    "ecology_notes": "Death Slaadi are the most powerful of their kind, barely distinguishable from powerful humanoids in their natural form. They are the true slaad lords and can draw on massive divine-like power.",
+    "lair_type": "Cave"
   },
   {
     "name": "Tojanida, Juvenile",
@@ -1882,7 +1900,8 @@
       "Elemental_Water"
     ],
     "primary_biome": "Elemental_Water",
-    "ecology_notes": "Tojanida are turtle-like outsiders native to the Elemental Plane of Water. Their hard shells and multiple eyes make them difficult to surprise or flank."
+    "ecology_notes": "Tojanida are turtle-like outsiders native to the Elemental Plane of Water. Their hard shells and multiple eyes make them difficult to surprise or flank.",
+    "lair_type": "Cave"
   },
   {
     "name": "Tojanida, Adult",
@@ -1989,7 +2008,8 @@
       "Elemental_Water"
     ],
     "primary_biome": "Elemental_Water",
-    "ecology_notes": "Adult Tojanida are larger and stronger than juveniles, their shells nearly impenetrable. They are known to be cantankerous and territorial."
+    "ecology_notes": "Adult Tojanida are larger and stronger than juveniles, their shells nearly impenetrable. They are known to be cantankerous and territorial.",
+    "lair_type": "Cave"
   },
   {
     "name": "Tojanida, Elder",
@@ -2099,7 +2119,8 @@
       "Elemental_Water"
     ],
     "primary_biome": "Elemental_Water",
-    "ecology_notes": "Elder Tojanida are ancient and massive, with shells thick enough to deflect most weapons. They are among the oldest creatures of the Elemental Plane of Water."
+    "ecology_notes": "Elder Tojanida are ancient and massive, with shells thick enough to deflect most weapons. They are among the oldest creatures of the Elemental Plane of Water.",
+    "lair_type": "Cave"
   },
   {
     "name": "Xorn, Minor",
@@ -2199,7 +2220,8 @@
       "Elemental_Earth"
     ],
     "primary_biome": "Elemental_Earth",
-    "ecology_notes": "Minor Xorn are the smallest of their kind, sifting through stone for metals and gems. They are not hostile unless threatened or denied their diet of precious minerals."
+    "ecology_notes": "Minor Xorn are the smallest of their kind, sifting through stone for metals and gems. They are not hostile unless threatened or denied their diet of precious minerals.",
+    "lair_type": "Burrow"
   },
   {
     "name": "Xorn, Average",
@@ -2300,7 +2322,8 @@
       "Elemental_Earth"
     ],
     "primary_biome": "Elemental_Earth",
-    "ecology_notes": "Average Xorn are the most commonly encountered size, burrowing through the Elemental Plane of Earth in search of metals and gems for sustenance."
+    "ecology_notes": "Average Xorn are the most commonly encountered size, burrowing through the Elemental Plane of Earth in search of metals and gems for sustenance.",
+    "lair_type": "Burrow"
   },
   {
     "name": "Xorn, Elder",
@@ -2403,6 +2426,7 @@
       "Elemental_Earth"
     ],
     "primary_biome": "Elemental_Earth",
-    "ecology_notes": "Elder Xorn are massive and powerful, capable of consuming entire veins of ore. They are among the most feared creatures of the Earth plane."
+    "ecology_notes": "Elder Xorn are massive and powerful, capable of consuming entire veins of ore. They are among the most feared creatures of the Earth plane.",
+    "lair_type": "Burrow"
   }
 ]
