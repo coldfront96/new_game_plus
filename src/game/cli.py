@@ -163,6 +163,56 @@ def _add_ui_parser(subparsers: "argparse._SubParsersAction") -> None:
     )
 
 
+def _add_level_up_parser(subparsers: "argparse._SubParsersAction") -> None:
+    parser = subparsers.add_parser(
+        "level-up",
+        help="Interactively level up ready characters in a party.",
+        description=(
+            "Load a saved party, detect which characters have enough XP to "
+            "level up, run the interactive level-up wizard for each, and save "
+            "the result."
+        ),
+    )
+    parser.add_argument(
+        "party",
+        nargs="?",
+        default="default",
+        help="Name of the party to level up (default: 'default').",
+    )
+    parser.add_argument("--seed", type=int, default=None)
+
+
+def _add_campaign_parser(subparsers: "argparse._SubParsersAction") -> None:
+    parser = subparsers.add_parser(
+        "campaign",
+        help="Run a multi-quest campaign arc.",
+        description=(
+            "Load a party, chain multiple quests via CampaignSession, "
+            "then save the result.  Each quest generates a settlement "
+            "encounter, NPC dialogue, and a combat session."
+        ),
+    )
+    parser.add_argument(
+        "party",
+        nargs="?",
+        default="default",
+        help="Party name to load (default: 'default').",
+    )
+    parser.add_argument(
+        "--quests",
+        type=int,
+        default=3,
+        help="Number of quests to run (default 3).",
+    )
+    parser.add_argument("--seed", type=int, default=None)
+    parser.add_argument(
+        "--difficulty",
+        choices=("easy", "average", "challenging", "hard", "overwhelming"),
+        default="average",
+    )
+    parser.add_argument("--terrain", default="dungeon")
+
+
 def build_parser() -> argparse.ArgumentParser:
     """Construct the top-level ``argparse`` parser."""
     parser = argparse.ArgumentParser(
@@ -174,6 +224,8 @@ def build_parser() -> argparse.ArgumentParser:
     _add_run_encounter_parser(subparsers)
     _add_play_parser(subparsers)
     _add_ui_parser(subparsers)
+    _add_level_up_parser(subparsers)
+    _add_campaign_parser(subparsers)
     return parser
 
 
@@ -250,34 +302,88 @@ def _cmd_play(
     stdin: Optional[TextIO] = None,
     stdout: Optional[TextIO] = None,
 ) -> int:
-    from src.game.persistence import load_party
-    from src.game.session import play_session
+    from src.game.persistence import load_party_with_state, save_party, xp_manager_from_record
+    from src.game.session import play_session, rest_party
+    from src.rules_engine.progression import XPManager
 
     out = stdout or sys.stdout
+    party_name = args.party
     try:
-        party = load_party(args.party)
+        state = load_party_with_state(party_name)
     except FileNotFoundError as err:
         print(f"error: {err}", file=out)
         return 2
 
+    party = state["party"]
+    records = state["records"]
+
     if not party:
-        print(f"error: party '{args.party}' has no characters", file=out)
+        print(f"error: party '{party_name}' has no characters", file=out)
         return 2
+
+    # Reconstruct XP managers from saved records (create fresh if absent)
+    xp_managers: dict = {}
+    for char, rec in zip(party, records):
+        mgr = xp_manager_from_record(rec)
+        if mgr is None:
+            mgr = XPManager(current_xp=0, current_level=char.level)
+        xp_managers[char.char_id] = mgr
 
     rng = random.Random(args.seed) if args.seed is not None else random.Random()
     apl = args.apl if args.apl is not None else sum(c.level for c in party) // len(party)
 
-    report = play_session(
-        party=party,
-        apl=apl,
-        terrain=args.terrain,
-        difficulty=args.difficulty,
-        rng=rng,
-        max_rounds=args.max_rounds,
-        stdout=out,
-    )
-    print(f"\nOutcome: {report.outcome}", file=out)
-    return 0 if report.outcome == "victory" else 1
+    _difficulty_ladder = ["easy", "average", "challenging", "hard", "overwhelming"]
+    difficulty = args.difficulty
+    final_outcome = "unknown"
+
+    while True:
+        report = play_session(
+            party=party,
+            apl=apl,
+            terrain=args.terrain,
+            difficulty=difficulty,
+            rng=rng,
+            max_rounds=args.max_rounds,
+            stdout=out,
+        )
+        final_outcome = report.outcome
+        print(f"\nOutcome: {report.outcome}", file=out)
+
+        # Award XP and check for level-ups
+        for char in party:
+            xp_gain = report.xp_awarded.get(char.char_id, 0)
+            if xp_gain > 0:
+                xp_managers[char.char_id].award_xp(xp_gain)
+                result = xp_managers[char.char_id].check_level_up()
+                if result.leveled_up:
+                    print(
+                        f"*** {char.name} is ready to level up! "
+                        f"Run: new-game-plus level-up {party_name} ***",
+                        file=out,
+                    )
+
+        # Persist updated party + XP
+        save_party(party_name, party, xp_managers=xp_managers)
+
+        # Offer continuation (only when stdin is a real terminal)
+        in_stream = stdin or sys.stdin
+        if report.outcome != "victory":
+            break
+        if not getattr(in_stream, "isatty", lambda: False)():
+            break
+        print("\nPlay another encounter? [y/N]: ", end="", flush=True, file=out)
+        answer = in_stream.readline().strip().lower()
+        if answer not in ("y", "yes"):
+            break
+
+        # Between encounters: long rest + escalating difficulty
+        rest_party(party)
+        idx = _difficulty_ladder.index(difficulty)
+        difficulty = _difficulty_ladder[min(idx + 1, len(_difficulty_ladder) - 1)]
+        apl = max(1, sum(c.level for c in party) // len(party))
+        print(f"\n--- Party rested. Next encounter: {difficulty} ---\n", file=out)
+
+    return 0 if final_outcome == "victory" else 1
 
 
 def _cmd_ui(args: argparse.Namespace) -> int:
@@ -320,6 +426,99 @@ def _cmd_ui(args: argparse.Namespace) -> int:
     return 0
 
 
+def _cmd_level_up(
+    args: argparse.Namespace,
+    *,
+    stdin: Optional[TextIO] = None,
+    stdout: Optional[TextIO] = None,
+) -> int:
+    import io
+    from src.game.persistence import load_party_with_state, save_party, xp_manager_from_record
+    from src.game.wizard import CharacterWizard, run_level_up_flow
+    from src.rules_engine.progression import XPManager
+
+    out = stdout or sys.stdout
+    in_stream = stdin or sys.stdin
+    party_name = args.party
+    try:
+        state = load_party_with_state(party_name)
+    except FileNotFoundError as err:
+        print(f"error: {err}", file=out)
+        return 2
+
+    party = state["party"]
+    records = state["records"]
+    if not party:
+        print(f"error: party '{party_name}' has no characters", file=out)
+        return 2
+
+    xp_managers: dict = {}
+    for char, rec in zip(party, records):
+        mgr = xp_manager_from_record(rec)
+        if mgr is None:
+            mgr = XPManager(current_xp=0, current_level=char.level)
+        xp_managers[char.char_id] = mgr
+
+    rng = random.Random(args.seed) if args.seed is not None else random.Random()
+    wizard = CharacterWizard(stdin=in_stream, stdout=out, rng=rng)
+    any_leveled = False
+    for char in party:
+        mgr = xp_managers[char.char_id]
+        prog = run_level_up_flow(char, mgr, wizard)
+        if prog is not None:
+            any_leveled = True
+
+    if any_leveled:
+        save_party(party_name, party, xp_managers=xp_managers)
+        print(f"\nParty saved to '{party_name}'.", file=out)
+    else:
+        print("No characters are ready to level up.", file=out)
+    return 0
+
+
+def _cmd_campaign(
+    args: argparse.Namespace,
+    *,
+    stdin: Optional[TextIO] = None,
+    stdout: Optional[TextIO] = None,
+) -> int:
+    from src.game.campaign import CampaignSession
+    from src.game.persistence import load_party, save_party
+
+    out = stdout or sys.stdout
+    party_name = args.party
+    try:
+        party = load_party(party_name)
+    except FileNotFoundError as err:
+        print(f"error: {err}", file=out)
+        return 2
+
+    if not party:
+        print(f"error: party '{party_name}' has no characters", file=out)
+        return 2
+
+    seed = args.seed if args.seed is not None else random.randint(0, 2 ** 32)
+    rng = random.Random(seed)
+
+    camp = CampaignSession(
+        party=party,
+        world_seed=seed,
+        difficulty=args.difficulty,
+        terrain=args.terrain,
+        stdout=out,
+        rng=rng,
+    )
+    report = camp.run(num_quests=args.quests)
+    save_party(party_name, party)
+    print(
+        f"\nCampaign complete — {report.quests_completed} quests completed, "
+        f"{report.quests_failed} failed.  Total XP: {report.total_xp}  "
+        f"Gold: {report.total_gp:.0f} gp.",
+        file=out,
+    )
+    return 0 if report.quests_completed > 0 else 1
+
+
 # ---------------------------------------------------------------------------
 # Entry point
 # ---------------------------------------------------------------------------
@@ -337,6 +536,10 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         return _cmd_play(args)
     if args.command == "ui":
         return _cmd_ui(args)
+    if args.command == "level-up":
+        return _cmd_level_up(args)
+    if args.command == "campaign":
+        return _cmd_campaign(args)
 
     parser.print_help()
     return 1

@@ -28,7 +28,7 @@ from __future__ import annotations
 
 import random
 from dataclasses import dataclass
-from typing import Optional, TYPE_CHECKING
+from typing import List, Optional, TYPE_CHECKING
 
 from src.rules_engine.character_35e import Character35e
 from src.rules_engine.dice import RollResult, roll_d20, roll_dice
@@ -153,6 +153,7 @@ class AttackResolver:
         smite_evil_attack_bonus: int = 0,
         smite_evil_damage_bonus: int = 0,
         favored_enemy_damage_bonus: int = 0,
+        iterative_penalty: int = 0,
     ) -> CombatResult:
         """Resolve a single melee (or ranged) attack.
 
@@ -211,6 +212,9 @@ class AttackResolver:
             attack_bonus = attacker.ranged_attack
         else:
             attack_bonus = attacker.melee_attack
+
+        # Iterative attack penalty (-5 per subsequent attack in a full-attack).
+        attack_bonus -= iterative_penalty
 
         # Smite Evil adds CHA modifier to the attack roll.
         attack_bonus += smite_evil_attack_bonus
@@ -380,6 +384,64 @@ class AttackResolver:
             smite_evil_damage=smite_evil_damage_bonus if smite_evil_damage_bonus else 0,
             favored_enemy_damage=favored_enemy_damage_bonus if favored_enemy_damage_bonus else 0,
         )
+
+    @classmethod
+    def resolve_full_attack(
+        cls,
+        attacker: Character35e,
+        defender: Character35e,
+        *,
+        use_ranged: bool = False,
+        damage_dice_count: int = 0,
+        damage_dice_sides: int = 0,
+        damage_bonus: int = 0,
+        threat_range: int = 20,
+        damage_multiplier: int = 2,
+        target_is_flat_footed: bool = False,
+    ) -> "List[CombatResult]":
+        """Resolve all iterative attacks for a full-attack action.
+
+        Characters with BAB +6 or higher gain additional iterative attacks
+        at −5 per subsequent attack (BAB +6/+1, BAB +11/+6/+1, etc.).
+        This method makes all attacks in sequence and stops early if the
+        defender drops to 0 HP or below (as tracked in their metadata).
+
+        Args:
+            attacker:          The attacking character.
+            defender:          The defending character.
+            use_ranged:        ``True`` for ranged attacks.
+            damage_dice_count: Override damage dice count (0 → unarmed).
+            damage_dice_sides: Override damage die sides (0 → unarmed).
+            damage_bonus:      Extra flat damage bonus.
+            threat_range:      Minimum d20 face for a critical threat.
+            damage_multiplier: Critical-hit damage multiplier.
+            target_is_flat_footed: Pass to each resolve_attack call.
+
+        Returns:
+            Ordered list of :class:`CombatResult` objects, one per attack made.
+        """
+        bab = attacker.base_attack_bonus
+        n_attacks = max(1, min(4, (bab + 4) // 5))
+        results: "List[CombatResult]" = []
+        for i in range(n_attacks):
+            penalty = i * 5
+            result = cls.resolve_attack(
+                attacker,
+                defender,
+                use_ranged=use_ranged,
+                damage_dice_count=damage_dice_count,
+                damage_dice_sides=damage_dice_sides,
+                damage_bonus=damage_bonus,
+                threat_range=threat_range,
+                damage_multiplier=damage_multiplier,
+                target_is_flat_footed=target_is_flat_footed,
+                iterative_penalty=penalty,
+            )
+            results.append(result)
+            defender_hp = int(defender.metadata.get("current_hp", defender.hit_points))
+            if defender_hp <= 0:
+                break
+        return results
 
 
 # ---------------------------------------------------------------------------

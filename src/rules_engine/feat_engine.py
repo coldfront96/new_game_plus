@@ -268,6 +268,316 @@ FEAT_CATALOG: Dict[str, Feat] = {
         prerequisites="None",
         bonus_type=BonusType.UNTYPED,
     ),
+    # ---- Two-weapon fighting chain ------------------------------------------
+    "Two-Weapon Fighting": Feat(
+        name="Two-Weapon Fighting",
+        description=(
+            "Your penalties on attack rolls for fighting with two weapons are "
+            "reduced. The penalty for your primary hand lessens by 2 and the "
+            "one for your off hand lessens by 6."
+        ),
+        prerequisites="DEX 15",
+        bonus_type=BonusType.UNTYPED,
+    ),
+    "Improved Two-Weapon Fighting": Feat(
+        name="Improved Two-Weapon Fighting",
+        description=(
+            "In addition to the standard single extra attack you get with an "
+            "off-hand weapon, you get a second attack with it, albeit at a "
+            "-5 penalty."
+        ),
+        prerequisites="DEX 17, Two-Weapon Fighting, BAB +6",
+        bonus_type=BonusType.UNTYPED,
+    ),
+    "Greater Two-Weapon Fighting": Feat(
+        name="Greater Two-Weapon Fighting",
+        description=(
+            "You get a third attack with your off-hand weapon, albeit at a "
+            "-10 penalty."
+        ),
+        prerequisites="DEX 19, Improved Two-Weapon Fighting, BAB +11",
+        bonus_type=BonusType.UNTYPED,
+    ),
+    # ---- Archery chain -------------------------------------------------------
+    "Point Blank Shot": Feat(
+        name="Point Blank Shot",
+        description=(
+            "You get a +1 bonus on attack and damage rolls with ranged weapons "
+            "at ranges of up to 30 feet."
+        ),
+        prerequisites="None",
+        bonus_type=BonusType.UNTYPED,
+    ),
+    "Rapid Shot": Feat(
+        name="Rapid Shot",
+        description=(
+            "You can get one extra attack per round with a ranged weapon. The "
+            "attack is at your highest base attack bonus, but each attack you "
+            "make in that round (the extra one and the normal ones) takes a -2 "
+            "penalty."
+        ),
+        prerequisites="DEX 13, Point Blank Shot",
+        bonus_type=BonusType.UNTYPED,
+    ),
+    "Precise Shot": Feat(
+        name="Precise Shot",
+        description=(
+            "You can shoot or throw ranged weapons at an opponent engaged in "
+            "melee without taking the standard -4 penalty on your attack roll."
+        ),
+        prerequisites="Point Blank Shot",
+        bonus_type=BonusType.UNTYPED,
+    ),
+    "Far Shot": Feat(
+        name="Far Shot",
+        description=(
+            "When you use a projectile weapon, its range increment increases "
+            "by one half (multiply by 1.5). When you use a thrown weapon, its "
+            "range increment is doubled."
+        ),
+        prerequisites="Point Blank Shot",
+        bonus_type=BonusType.UNTYPED,
+    ),
+    "Shot on the Run": Feat(
+        name="Shot on the Run",
+        description=(
+            "When using the attack action with a ranged weapon, you can move "
+            "both before and after the attack."
+        ),
+        prerequisites="DEX 13, Dodge, Mobility, Point Blank Shot, BAB +4",
+        bonus_type=BonusType.UNTYPED,
+    ),
+    # ---- Unarmed / monk chain ------------------------------------------------
+    "Improved Unarmed Strike": Feat(
+        name="Improved Unarmed Strike",
+        description=(
+            "You are considered to be armed even when unarmed — you do not "
+            "provoke attacks of opportunity when you attack foes while "
+            "unarmed. Your unarmed strikes can deal lethal or nonlethal "
+            "damage."
+        ),
+        prerequisites="None",
+        bonus_type=BonusType.UNTYPED,
+    ),
+    "Stunning Fist": Feat(
+        name="Stunning Fist",
+        description=(
+            "You must declare that you are using this feat before you make "
+            "your attack roll. On a successful hit, the target must make a "
+            "Fortitude save (DC 10 + half your character level + WIS modifier) "
+            "or be stunned for 1 round."
+        ),
+        prerequisites="DEX 13, WIS 13, Improved Unarmed Strike, BAB +8",
+        bonus_type=BonusType.UNTYPED,
+    ),
+    "Deflect Arrows": Feat(
+        name="Deflect Arrows",
+        description=(
+            "You must have at least one hand free. Once per round when you "
+            "would normally be hit with a ranged weapon, you may deflect it "
+            "so that you take no damage from it."
+        ),
+        prerequisites="DEX 13, Improved Unarmed Strike",
+        bonus_type=BonusType.UNTYPED,
+    ),
+    # ---- Combat chain --------------------------------------------------------
+    "Combat Expertise": Feat(
+        name="Combat Expertise",
+        description=(
+            "When you use the attack action or the full-attack action in melee, "
+            "you can take a penalty of as much as -5 on your attack roll and "
+            "add the same number (+5 or less) as a dodge bonus to your Armor "
+            "Class. This number may not exceed your base attack bonus."
+        ),
+        prerequisites="INT 13",
+        bonus_type=BonusType.DODGE,
+    ),
+    "Whirlwind Attack": Feat(
+        name="Whirlwind Attack",
+        description=(
+            "When you use the full-attack action, you can give up your regular "
+            "attacks and instead make one melee attack at your full base attack "
+            "bonus against each opponent within reach."
+        ),
+        prerequisites="DEX 13, INT 13, Combat Expertise, Dodge, Mobility, Spring Attack, BAB +4",
+        bonus_type=BonusType.UNTYPED,
+    ),
+    # ---- General feats -------------------------------------------------------
+    "Alertness": Feat(
+        name="Alertness",
+        description="You get a +2 bonus on all Listen checks and Spot checks.",
+        prerequisites="None",
+        bonus_type=BonusType.UNTYPED,
+    ),
+    "Endurance": Feat(
+        name="Endurance",
+        description=(
+            "You gain a +4 bonus on the following checks and saves: swim "
+            "checks made to resist nonlethal damage, Constitution checks made "
+            "to continue running, Constitution checks made to avoid nonlethal "
+            "damage from a forced march, Constitution checks made to hold your "
+            "breath, Constitution checks made to avoid nonlethal damage from "
+            "starvation or thirst, Fortitude saves made to avoid nonlethal "
+            "damage from hot or cold environments, and Fortitude saves made to "
+            "resist damage from suffocation."
+        ),
+        prerequisites="None",
+        bonus_type=BonusType.UNTYPED,
+    ),
+    "Diehard": Feat(
+        name="Diehard",
+        description=(
+            "When your hit point total is below 0, but you are not dead, you "
+            "automatically become stable. You don't have to roll d% to see if "
+            "you lose 1 hit point each round. You may choose to act as if you "
+            "were disabled, rather than dying."
+        ),
+        prerequisites="Endurance",
+        bonus_type=BonusType.UNTYPED,
+    ),
+    "Run": Feat(
+        name="Run",
+        description=(
+            "When running, you move five times your normal speed (if wearing "
+            "medium, light, or no armor and carrying no more than a medium "
+            "load) or four times your speed (if wearing heavy armor or "
+            "carrying a heavy load). If you make a jump after a running start, "
+            "you receive a +4 bonus on your Jump check."
+        ),
+        prerequisites="None",
+        bonus_type=BonusType.UNTYPED,
+    ),
+    "Blind-Fight": Feat(
+        name="Blind-Fight",
+        description=(
+            "In melee, every time you miss because of concealment, you can "
+            "reroll your miss chance percentile roll one time to see if you "
+            "actually hit. An invisible attacker gets no advantages related "
+            "to hitting you in melee. You take only half the normal penalty "
+            "to speed when moving while unable to see. In darkness, non-elves "
+            "can attack invisible opponents without penalty."
+        ),
+        prerequisites="None",
+        bonus_type=BonusType.UNTYPED,
+    ),
+    "Track": Feat(
+        name="Track",
+        description=(
+            "To find tracks or to follow them for 1 mile requires a Survival "
+            "check. You must make another Survival check every time the tracks "
+            "become difficult to follow."
+        ),
+        prerequisites="None",
+        bonus_type=BonusType.UNTYPED,
+    ),
+    # ---- Spellcaster feats --------------------------------------------------
+    "Spell Focus": Feat(
+        name="Spell Focus",
+        description=(
+            "Add +1 to the Difficulty Class for all saving throws against "
+            "spells from the school of magic you select."
+        ),
+        prerequisites="None",
+        bonus_type=BonusType.UNTYPED,
+    ),
+    "Greater Spell Focus": Feat(
+        name="Greater Spell Focus",
+        description=(
+            "Add +1 to the Difficulty Class for all saving throws against "
+            "spells from the school of magic you select. This bonus stacks "
+            "with the bonus from Spell Focus."
+        ),
+        prerequisites="Spell Focus",
+        bonus_type=BonusType.UNTYPED,
+    ),
+    "Spell Penetration": Feat(
+        name="Spell Penetration",
+        description=(
+            "You get a +2 bonus on caster level checks made to overcome a "
+            "creature's spell resistance."
+        ),
+        prerequisites="None",
+        bonus_type=BonusType.UNTYPED,
+    ),
+    "Greater Spell Penetration": Feat(
+        name="Greater Spell Penetration",
+        description=(
+            "You get a +2 bonus on caster level checks made to overcome a "
+            "creature's spell resistance. This bonus stacks with the one from "
+            "Spell Penetration."
+        ),
+        prerequisites="Spell Penetration",
+        bonus_type=BonusType.UNTYPED,
+    ),
+    "Augment Summoning": Feat(
+        name="Augment Summoning",
+        description=(
+            "Each creature you conjure with any summon spell gains a +4 "
+            "enhancement bonus to Strength and Constitution for the duration "
+            "of the spell that summoned it."
+        ),
+        prerequisites="Spell Focus",
+        bonus_type=BonusType.ENHANCEMENT,
+    ),
+    "Natural Spell": Feat(
+        name="Natural Spell",
+        description=(
+            "You can complete the verbal and somatic components of spells "
+            "while in a wild shape. You substitute various sounds and gestures "
+            "for the normal verbal and somatic components of a spell."
+        ),
+        prerequisites="WIS 13",
+        bonus_type=BonusType.UNTYPED,
+    ),
+    "Extra Turning": Feat(
+        name="Extra Turning",
+        description=(
+            "You may turn or rebuke undead four more times per day than normal."
+        ),
+        prerequisites="Ability to turn or rebuke undead",
+        bonus_type=BonusType.UNTYPED,
+    ),
+    # ---- Mounted feats -------------------------------------------------------
+    "Mounted Combat": Feat(
+        name="Mounted Combat",
+        description=(
+            "Once per round when your mount is hit in combat, you may "
+            "attempt a Ride check (as a reaction) to negate the hit."
+        ),
+        prerequisites="Ride 1 rank",
+        bonus_type=BonusType.UNTYPED,
+    ),
+    "Ride-By Attack": Feat(
+        name="Ride-By Attack",
+        description=(
+            "When you are mounted and use the charge action, you may move and "
+            "attack as if with a standard charge and then continue moving up "
+            "to your remaining movement."
+        ),
+        prerequisites="Mounted Combat",
+        bonus_type=BonusType.UNTYPED,
+    ),
+    # ---- Item creation feats (stubs — effect resolved in crafting system) ----
+    "Brew Potion": Feat(
+        name="Brew Potion",
+        description=(
+            "You can create potions, which are spells stored in liquid form. "
+            "Brewing a potion takes 1 day. When you create a potion, you set "
+            "the caster level."
+        ),
+        prerequisites="Caster level 3",
+        bonus_type=BonusType.UNTYPED,
+    ),
+    "Craft Wondrous Item": Feat(
+        name="Craft Wondrous Item",
+        description=(
+            "You can create any wondrous item whose prerequisites you meet. "
+            "Crafting a wondrous item takes 1 day for each 1,000 gp in its "
+            "price."
+        ),
+        prerequisites="Caster level 3",
+        bonus_type=BonusType.UNTYPED,
+    ),
 }
 
 
@@ -359,6 +669,28 @@ class FeatRegistry:
         "Dodge": 1,
     }
 
+    # Maps feat name → Listen/Spot/skill bonus (Alertness)
+    _SKILL_BONUSES: Dict[str, Dict[str, int]] = {
+        "Alertness": {"Listen": 2, "Spot": 2},
+    }
+
+    # Maps feat name → spell save DC bonus (Spell Focus / Greater Spell Focus)
+    _SPELL_DC_BONUSES: Dict[str, int] = {
+        "Spell Focus": 1,
+        "Greater Spell Focus": 1,
+    }
+
+    # Maps feat name → caster level bonus (Spell Penetration / Greater)
+    _CASTER_LEVEL_BONUSES: Dict[str, int] = {
+        "Spell Penetration": 2,
+        "Greater Spell Penetration": 2,
+    }
+
+    # Maps feat name → extra turning attempts per day
+    _EXTRA_TURNING: Dict[str, int] = {
+        "Extra Turning": 4,
+    }
+
     # Set of feat names that support Power Attack mechanic
     _POWER_ATTACK_FEATS: set = {"Power Attack"}
 
@@ -391,6 +723,55 @@ class FeatRegistry:
             min_class_level=4,
         ),
         "Improved Critical": FeatPrerequisite(min_bab=8),
+        # Two-weapon fighting chain
+        "Two-Weapon Fighting": FeatPrerequisite(min_dex=15),
+        "Improved Two-Weapon Fighting": FeatPrerequisite(
+            min_dex=17,
+            required_feats=("Two-Weapon Fighting",),
+            min_bab=6,
+        ),
+        "Greater Two-Weapon Fighting": FeatPrerequisite(
+            min_dex=19,
+            required_feats=("Improved Two-Weapon Fighting",),
+            min_bab=11,
+        ),
+        # Archery chain
+        "Rapid Shot": FeatPrerequisite(min_dex=13, required_feats=("Point Blank Shot",)),
+        "Precise Shot": FeatPrerequisite(required_feats=("Point Blank Shot",)),
+        "Far Shot": FeatPrerequisite(required_feats=("Point Blank Shot",)),
+        "Shot on the Run": FeatPrerequisite(
+            min_dex=13,
+            required_feats=("Dodge", "Mobility", "Point Blank Shot"),
+            min_bab=4,
+        ),
+        # Unarmed chain
+        "Stunning Fist": FeatPrerequisite(
+            min_dex=13,
+            min_wis=13,
+            required_feats=("Improved Unarmed Strike",),
+            min_bab=8,
+        ),
+        "Deflect Arrows": FeatPrerequisite(
+            min_dex=13,
+            required_feats=("Improved Unarmed Strike",),
+        ),
+        # Combat chain
+        "Combat Expertise": FeatPrerequisite(min_int=13),
+        "Whirlwind Attack": FeatPrerequisite(
+            min_dex=13,
+            min_int=13,
+            required_feats=("Combat Expertise", "Dodge", "Mobility", "Spring Attack"),
+            min_bab=4,
+        ),
+        # General
+        "Diehard": FeatPrerequisite(required_feats=("Endurance",)),
+        # Spellcaster
+        "Greater Spell Focus": FeatPrerequisite(required_feats=("Spell Focus",)),
+        "Greater Spell Penetration": FeatPrerequisite(required_feats=("Spell Penetration",)),
+        "Augment Summoning": FeatPrerequisite(required_feats=("Spell Focus",)),
+        "Natural Spell": FeatPrerequisite(min_wis=13),
+        # Mounted
+        "Ride-By Attack": FeatPrerequisite(required_feats=("Mounted Combat",)),
         # Feats with no prerequisites are intentionally absent from this dict.
     }
 
@@ -767,3 +1148,119 @@ class FeatRegistry:
             return 1
         dex_mod = (character.dexterity - 10) // 2
         return max(1, 1 + dex_mod)
+
+    # ------------------------------------------------------------------
+    # Spell save DC bonus (Spell Focus / Greater Spell Focus)
+    # ------------------------------------------------------------------
+
+    @classmethod
+    def get_spell_dc_bonus(cls, character: "Character35e") -> int:
+        """Return total spell save DC bonus from feats.
+
+        Spell Focus grants +1 and Greater Spell Focus grants an additional
+        +1, for a maximum of +2 from this feat chain.
+
+        Args:
+            character: The character whose feats are checked.
+
+        Returns:
+            Sum of all spell DC bonuses from feats.
+        """
+        bonus = 0
+        for feat_name in character.feats:
+            bonus += cls._SPELL_DC_BONUSES.get(feat_name, 0)
+        return bonus
+
+    # ------------------------------------------------------------------
+    # Caster level bonus (Spell Penetration / Greater)
+    # ------------------------------------------------------------------
+
+    @classmethod
+    def get_caster_level_bonus(cls, character: "Character35e") -> int:
+        """Return total caster level bonus for overcoming spell resistance.
+
+        Spell Penetration grants +2 and Greater Spell Penetration grants
+        an additional +2, for a maximum of +4 from this feat chain.
+
+        Args:
+            character: The character whose feats are checked.
+
+        Returns:
+            Total bonus to caster level checks vs. spell resistance.
+        """
+        bonus = 0
+        for feat_name in character.feats:
+            bonus += cls._CASTER_LEVEL_BONUSES.get(feat_name, 0)
+        return bonus
+
+    # ------------------------------------------------------------------
+    # Skill bonuses (Alertness etc.)
+    # ------------------------------------------------------------------
+
+    @classmethod
+    def get_skill_bonus(cls, character: "Character35e", skill: str) -> int:
+        """Return total feat bonus for a specific skill.
+
+        For example, Alertness grants +2 to both Listen and Spot.
+
+        Args:
+            character: The character whose feats are checked.
+            skill:     The exact skill name (e.g. ``"Listen"``).
+
+        Returns:
+            Sum of all feat bonuses for the specified skill.
+        """
+        bonus = 0
+        for feat_name in character.feats:
+            skill_map = cls._SKILL_BONUSES.get(feat_name, {})
+            bonus += skill_map.get(skill, 0)
+        return bonus
+
+    # ------------------------------------------------------------------
+    # Extra turning attempts (Extra Turning feat)
+    # ------------------------------------------------------------------
+
+    @classmethod
+    def get_extra_turning_attempts(cls, character: "Character35e") -> int:
+        """Return extra turning/rebuking attempts per day from feats.
+
+        Extra Turning grants 4 additional turning attempts per day.
+
+        Args:
+            character: The character whose feats are checked.
+
+        Returns:
+            Total additional turning attempts from feats.
+        """
+        bonus = 0
+        for feat_name in character.feats:
+            bonus += cls._EXTRA_TURNING.get(feat_name, 0)
+        return bonus
+
+    # ------------------------------------------------------------------
+    # Two-weapon fighting
+    # ------------------------------------------------------------------
+
+    @classmethod
+    def has_two_weapon_fighting(cls, character: "Character35e") -> bool:
+        """Return True if the character has the Two-Weapon Fighting feat."""
+        return "Two-Weapon Fighting" in character.feats
+
+    @classmethod
+    def get_twf_penalties(cls, character: "Character35e") -> Tuple[int, int]:
+        """Return ``(primary_penalty, offhand_penalty)`` for two-weapon fighting.
+
+        Without the feat the penalties are -6 (primary) / -10 (offhand) for
+        equal-weight weapons.  Two-Weapon Fighting reduces them to -4/-4 (the
+        SRD light-weapon bonus is handled by the caller).  Without the feat,
+        returns (-6, -10).
+
+        Args:
+            character: The character whose feats are checked.
+
+        Returns:
+            Tuple of ``(primary_penalty, offhand_penalty)``.
+        """
+        if "Two-Weapon Fighting" in character.feats:
+            return (-4, -4)
+        return (-6, -10)
