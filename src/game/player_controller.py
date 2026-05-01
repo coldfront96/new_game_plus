@@ -126,11 +126,21 @@ def dispatch_player_input(
     dx, dy, dz = _ACTION_DELTAS[action]
 
     if entity is not None and (dx, dy, dz) != (0, 0, 0):
-        # PH5-009: apply weather speed multiplier.
+        # PH5-009: apply weather speed multiplier via accumulated movement budget.
+        # The budget accrues at speed_mult per dispatch call; movement requires 1.0.
         speed_mult: float = float(entity.metadata.get("weather_speed_multiplier", 1.0))
-        # If the multiplier reduces budget to zero, skip movement entirely.
         if speed_mult <= 0.0:
             return controller
+
+        if speed_mult < 1.0:
+            # Accumulate fractional budget; spend 1.0 on a successful move.
+            budget = float(entity.metadata.get("_movement_budget", 1.0))
+            if budget < 1.0:
+                # Not enough budget — accrue and skip this step.
+                entity.metadata["_movement_budget"] = min(1.0, budget + speed_mult)
+                return controller
+            # Sufficient budget: spend 1.0, carry over the remainder.
+            entity.metadata["_movement_budget"] = max(0.0, budget - 1.0 + speed_mult)
 
         pos = entity.metadata.setdefault("position", [0, 64, 0])
         pos[0] += dx

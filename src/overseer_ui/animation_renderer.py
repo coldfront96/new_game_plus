@@ -304,9 +304,6 @@ class AnimationRenderer:
         particles: list[tuple[int, int]] = [
             tuple(p) for p in event.payload.get("particles", [])
         ]
-        next_particles: list[tuple[int, int]] = [
-            tuple(p) for p in event.payload.get("next_particles", [])
-        ]
 
         # Build a VP_ROWS × VP_COLS grid; inject rain glyphs at particle positions.
         _VP_ROWS = 24

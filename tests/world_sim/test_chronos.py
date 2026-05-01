@@ -99,7 +99,6 @@ class TestAdvanceChronos:
         assert cr2.is_day is True
 
     def test_weather_unchanged_without_rng(self):
-        cr = chronos_from_world_tick(0)
         cr = ChronosRecord(
             tick=0, hour=0, is_day=False, weather="rain", rain_intensity=0.5, temperature_c=10.0
         )

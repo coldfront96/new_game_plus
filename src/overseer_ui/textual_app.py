@@ -795,7 +795,7 @@ class OverworldScreen(Screen):
         ("d",     "move_east",  "East"),
         ("a",     "move_west",  "West"),
         ("t",     "talk",       "Talk"),
-        ("ctrl+c","quit",       "Quit"),
+        ("ctrl+c", "quit",       "Quit"),
     ]
 
     CSS = """
