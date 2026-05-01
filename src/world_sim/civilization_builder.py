@@ -51,7 +51,7 @@ class TownRecord:
     faction_name: str | None
     population_count: int
     merchant_ids: list[str] = field(default_factory=list)
-    npcs: list = field(default_factory=list)
+    npcs: list[Character35e] = field(default_factory=list)
 
 
 # ---------------------------------------------------------------------------
