@@ -12,6 +12,7 @@ Public surface (Task 10):
 * :class:`LLMTaskRunner` — glue that pulls tasks off the :class:`Scheduler`,
   invokes :class:`~src.ai_sim.llm_bridge.LLMClient`, and parses the
   result, surfacing failures back to the Overseer.
+* :func:`build_llm_pipeline` — one-call factory for the complete wired stack.
 """
 
 from src.agent_orchestration.action_dispatcher import (
@@ -29,6 +30,7 @@ from src.agent_orchestration.result_parser import (
     ResultParser,
     SchemaError,
 )
+from src.agent_orchestration.pipeline import build_llm_pipeline
 from src.agent_orchestration.scheduler import Scheduler
 from src.agent_orchestration.task_runner import LLMTaskRunner
 
@@ -47,5 +49,6 @@ __all__ = [
     "Scheduler",
     "TaskStatus",
     "TaskType",
+    "build_llm_pipeline",
     "decode_action",
 ]

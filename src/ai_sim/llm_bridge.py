@@ -267,6 +267,30 @@ class LLMClient:
 
         return await asyncio.to_thread(self._post, payload)
 
+    async def query_messages(
+        self,
+        messages: List[Dict[str, Any]],
+    ) -> str:
+        """Send a pre-built OpenAI-compatible messages list to the LLM.
+
+        This is the :data:`~src.agent_orchestration.task_runner.CompletionFn`
+        adapter: :class:`~src.agent_orchestration.prompt_builder.PromptBuilder`
+        produces a list of ``{"role", "content"}`` dicts; pass that list
+        directly here rather than re-assembling the prompt.
+
+        Args:
+            messages: List of ``{"role": "system"|"user", "content": str}`` dicts.
+
+        Returns:
+            The model's raw text response, or an empty string on failure.
+        """
+        payload = {
+            "model": self._model,
+            "messages": messages,
+            "stream": False,
+        }
+        return await asyncio.to_thread(self._post, payload)
+
     async def query_text(
         self,
         system_prompt: str,

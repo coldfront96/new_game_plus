@@ -8,6 +8,7 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from src.world_sim.biome import SpeciesBiomeBinding
+    from src.world_sim.food_web import FoodWebEntry
     from src.world_sim.population import PopulationLedger, WorldChunk
     from src.world_sim.migration import MigrationVector
     from src.ai_sim.llm_bridge import LLMClient
@@ -23,6 +24,7 @@ class WorldState:
     ledger: "PopulationLedger"
     species_registry: dict[str, "SpeciesBiomeBinding"]
     pending_vectors: list["MigrationVector"] = field(default_factory=list)
+    food_web_entries: list["FoodWebEntry"] = field(default_factory=list)
     event_bus: "EventBus | None" = None
     tick: int = 0
 
@@ -60,6 +62,12 @@ def run_world_tick(
 
     # Step 1 — Births
     _process_births(world_state, rng)
+
+    # Step 1.5 — Starvation: reduce predator populations when they exceed the
+    # sustainable prey ratio.  Runs after births so same-tick population gains
+    # are visible to the food-web check.
+    if world_state.food_web_entries:
+        _process_starvation(world_state)
 
     # Step 2 — Generate migration vectors for every species
     graph = ChunkAdjacencyGraph(world_state.world_chunks)
@@ -178,6 +186,25 @@ def _trigger_anomaly_lore_tasks(
                         "Anomaly lore skipped for %s at tick %d: no running event loop.",
                         entity_id, tick,
                     )
+
+
+def _process_starvation(world_state: WorldState) -> None:
+    """Apply food-web starvation penalties across all chunks this tick."""
+    from src.world_sim.food_web import calculate_chunk_starvation
+
+    for chunk in world_state.world_chunks:
+        deltas = calculate_chunk_starvation(
+            world_state.ledger,
+            chunk.chunk_id,
+            world_state.food_web_entries,
+        )
+        for species_id, penalty in deltas.items():
+            local = chunk.local_populations.get(species_id, 0)
+            chunk.local_populations[species_id] = max(0, local + penalty)
+            _log.debug(
+                "Starvation: species=%s chunk=%s delta=%d",
+                species_id, chunk.chunk_id, penalty,
+            )
 
 
 def _apply_weather_debuffs(world_state: WorldState) -> None:

@@ -183,3 +183,103 @@ class TestDegradeBiomeQuality:
         result = degrade_biome_quality(CHUNK, entries, ledger, prey_overpopulation_threshold=500)
         assert result["prey_count"] == 550
         assert result["quality_delta"] == -1   # 550 // 500
+
+
+# ---------------------------------------------------------------------------
+# World-tick starvation integration
+# ---------------------------------------------------------------------------
+
+class TestWorldTickStarvation:
+    """run_world_tick applies starvation when food_web_entries are present."""
+
+    def _minimal_world_state(self) -> object:
+        """Build the smallest valid WorldState for a starvation tick test."""
+        import random
+        from src.world_sim.biome import Biome
+        from src.world_sim.population import WorldChunk, SpeciesPopRecord
+        from src.world_sim.world_tick import WorldState
+
+        ledger = {
+            "wolf": SpeciesPopRecord(
+                species_id="wolf",
+                global_count=500,
+                local_counts={CHUNK: 500},
+            ),
+            "deer": SpeciesPopRecord(
+                species_id="deer",
+                global_count=50,
+                local_counts={CHUNK: 50},
+            ),
+        }
+        chunk = WorldChunk(
+            chunk_id=CHUNK,
+            biome=Biome.Temperate_Plain,
+            adjacent_chunks=(),
+            local_populations={"wolf": 500, "deer": 50},
+            carrying_capacity={"wolf": 1000, "deer": 1000},
+        )
+        return WorldState(
+            world_chunks=[chunk],
+            ledger=ledger,
+            species_registry={},
+            food_web_entries=[
+                FoodWebEntry("wolf", TrophicLevel.Predator),
+                FoodWebEntry("deer", TrophicLevel.Prey),
+            ],
+        )
+
+    def test_starvation_fires_when_food_web_entries_present(self):
+        import random
+        from unittest.mock import MagicMock
+        from src.world_sim.world_tick import run_world_tick
+
+        ws = self._minimal_world_state()
+        wolf_before = ws.ledger["wolf"].local_counts[CHUNK]
+
+        rng = random.Random(42)
+        llm = MagicMock()
+        llm.query_text = MagicMock(return_value="")
+
+        run_world_tick(ws, tick=1, rng=rng, llm_client=llm)
+
+        wolf_after = ws.ledger["wolf"].local_counts.get(CHUNK, 0)
+        assert wolf_after < wolf_before, (
+            "Wolves should starve when 500 predators have only 50 prey."
+        )
+
+    def test_no_starvation_without_food_web_entries(self):
+        import random
+        from unittest.mock import MagicMock
+        from src.world_sim.world_tick import WorldState, run_world_tick
+        from src.world_sim.biome import Biome
+        from src.world_sim.population import WorldChunk, SpeciesPopRecord
+
+        ledger = {
+            "wolf": SpeciesPopRecord("wolf", 500, {CHUNK: 500}),
+            "deer": SpeciesPopRecord("deer", 50, {CHUNK: 50}),
+        }
+        chunk = WorldChunk(
+            chunk_id=CHUNK,
+            biome=Biome.Temperate_Plain,
+            adjacent_chunks=(),
+            local_populations={"wolf": 500, "deer": 50},
+            carrying_capacity={"wolf": 1000, "deer": 1000},
+        )
+        # No food_web_entries → starvation step is skipped entirely
+        ws = WorldState(
+            world_chunks=[chunk],
+            ledger=ledger,
+            species_registry={},
+        )
+        wolf_before = ledger["wolf"].local_counts[CHUNK]
+
+        rng = random.Random(42)
+        llm = MagicMock()
+        run_world_tick(ws, tick=1, rng=rng, llm_client=llm)
+
+        wolf_after = ledger["wolf"].local_counts.get(CHUNK, 0)
+        # Without food web entries, population only changes via births
+        # (1% rate with cap), not starvation — wolf count should stay ≥ before
+        assert wolf_after >= wolf_before, (
+            "Without food_web_entries no starvation penalty should apply."
+        )
