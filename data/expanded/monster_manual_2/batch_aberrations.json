@@ -142,7 +142,7 @@
     }
   },
   {
-    "name": "Neogi",
+    "name": "Skeith",
     "cr": 3,
     "size": "Small",
     "type": "Aberration",
@@ -159,7 +159,7 @@
       {"name": "4 Claws", "attack_bonus": "+2", "damage": "1d3", "damage_type": "Slashing"}
     ],
     "special_attacks": [
-      "Enslave (DC 12 Will, 30 ft. range, lasts until dispelled or neogi dies)",
+      "Enslave (DC 12 Will, 30 ft. range, lasts until dispelled or skeith dies)",
       "Poison (Bite: DC 12 Fort, 1d4 Str / 2d4 Str)"
     ],
     "special_qualities": [
@@ -190,17 +190,19 @@
     "population_base": 25,
     "allowed_biomes": ["Underground", "Underdark"],
     "primary_biome": "Underground",
-    "ecology_notes": "Neogi are sadistic spider-eel creatures that enslave any creature they can overpower. Despite their small size, they dominate through psychological terror and poison, keeping thralls many times their own size.",
+    "ecology_notes": "Skeith are compact, eight-limbed aberrations whose compact ovoid bodies bristle with venom-tipped claws and a long articulated neck ending in a wide-jawed maw. They dominate through a combination of paralytic venom and telepathic compulsion, maintaining thralls many times their own mass through sheer psychological force. A skeith alone is merely deadly; a skeith surrounded by enslaved creatures is a walking siege.",
     "lair_type": "Cave",
     "expanded_metadata": {
       "source_book": "Monster Manual II",
       "source_page": null,
       "is_expanded": true,
-      "tags": ["aberration", "neogi", "psionic", "enslaver"]
+      "translated": true,
+      "source_archetype": "aberration",
+      "tags": ["aberration", "skeith", "psionic", "enslaver"]
     }
   },
   {
-    "name": "Neogi, Great Old Master",
+    "name": "Skeith, Bloated Matriarch",
     "cr": 6,
     "size": "Medium",
     "type": "Aberration",
@@ -217,14 +219,14 @@
     ],
     "special_attacks": [
       "Enhanced Enslave (DC 18 Will, 60 ft. range, up to 3 targets simultaneously)",
-      "Larval Burst (on death: 2d6 Neogi larvae erupt from body, each a CR 1/4 threat)",
+      "Larval Burst (on death: 2d6 skeith hatchlings erupt from body, each a CR 1/4 threat)",
       "Poison (Bite: DC 16 Fort, 1d6 Str / 2d6 Str)",
       "Telepathy 200 ft. (can relay orders to all enslaved creatures simultaneously)"
     ],
     "special_qualities": [
-      "Brood Host (body hosts 2d6 neogi larvae at any time)",
+      "Brood Host (body hosts 2d6 skeith hatchlings at any time)",
       "Darkvision 60 ft.",
-      "Immobile (cannot move under own power while hosting larvae)",
+      "Immobile (cannot move under own power while hosting hatchlings)",
       "Spell Resistance 15",
       "Telepathy 200 ft."
     ],
@@ -253,13 +255,15 @@
     "population_base": 5,
     "allowed_biomes": ["Underground", "Underdark"],
     "primary_biome": "Underdark",
-    "ecology_notes": "Great Old Masters are neogi that have grown too large and bloated to move, serving as living brood chambers for the next generation. Despite their helplessness, they command dozens of thralls through telepathy.",
+    "ecology_notes": "Bloated Matriarchs are skeith that have swollen beyond mobility, their bodies repurposed as living brood-chambers for the next clutch. Immobile and grotesque, they nonetheless command entire thrall-networks through telepathy, directing dozens of enslaved creatures across vast stretches of underdark from a single fixed point.",
     "lair_type": "Cave",
     "expanded_metadata": {
       "source_book": "Monster Manual II",
       "source_page": null,
       "is_expanded": true,
-      "tags": ["aberration", "neogi", "psionic", "enslaver", "elder"]
+      "translated": true,
+      "source_archetype": "aberration",
+      "tags": ["aberration", "skeith", "psionic", "enslaver", "elder"]
     }
   },
   {

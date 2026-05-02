@@ -1,6 +1,6 @@
 [
   {
-    "name": "Dracotaur",
+    "name": "Ashhorn Taurian",
     "cr": 7,
     "size": "Large",
     "type": "Dragon",
@@ -49,13 +49,15 @@
     "population_base": 8,
     "allowed_biomes": ["Warm_Mountain", "Warm_Hill"],
     "primary_biome": "Warm_Mountain",
-    "ecology_notes": "Dracotaurs are centaur-like creatures with the upper torso and arms of a humanoid mounted on the body of a wingless dragon. They combine martial prowess with draconic resilience, serving as elite shock troops for chromatic dragons.",
+    "ecology_notes": "Ashhorn Taurians are massive draconic warriors with the lower body of a scaled quadruped and the torso of a heavily armoured humanoid, crowned by a rack of heat-blackened horns that radiate a faint warmth even in cold climates. They serve as shock infantry for chromatic dragon warlords, smashing into fortified positions while the dragon itself attacks from above.",
     "lair_type": "Cave",
     "expanded_metadata": {
       "source_book": "Draconomicon",
       "source_page": null,
       "is_expanded": true,
-      "tags": ["dragon", "dragon_kin", "dracotaur", "fire"]
+      "translated": true,
+      "source_archetype": "dragon",
+      "tags": ["dragon", "dragon_kin", "ashhorn_taurian", "fire"]
     }
   },
   {
@@ -229,7 +231,7 @@
     }
   },
   {
-    "name": "Redspawn Arcaniss",
+    "name": "Ashscale Arcanist",
     "cr": 6,
     "size": "Medium",
     "type": "Dragon",
@@ -280,13 +282,15 @@
     "population_base": 3,
     "allowed_biomes": ["Warm_Mountain", "Warm_Hill"],
     "primary_biome": "Warm_Mountain",
-    "ecology_notes": "Redspawn Arcaniss are the sorcerous offspring of red dragon lairs — draconic humanoids who devote their lives to mastering fire magic in service to their draconic progenitors. They serve as court mages and magical advisors to powerful reds.",
+    "ecology_notes": "Ashscale Arcanists are draconic humanoids born deep within the magma-laced peaks claimed by fire-breathing dragon lords. Their grey-black scales absorb heat from the surrounding rock, and they dedicate their long lives to the study of fire magic as both a devotional practice and a practical art in service to their draconic patrons.",
     "lair_type": "Cave",
     "expanded_metadata": {
       "source_book": "Draconomicon",
       "source_page": null,
       "is_expanded": true,
-      "tags": ["dragon", "dragon_kin", "spawn", "fire", "spellcaster"]
+      "translated": true,
+      "source_archetype": "dragon",
+      "tags": ["dragon", "dragon_kin", "ashscale_arcanist", "fire", "spellcaster"]
     }
   }
 ]
