@@ -205,40 +205,21 @@ def _monster_from_srd(entry: dict, display_name: str) -> Character35e:
 def build_monsters_from_srd(
     blueprint: EncounterBlueprint,
     rng: Optional[random.Random] = None,
-    *,
-    expanded: Optional[Dict[str, Any]] = None,
 ) -> List[Character35e]:
     """Build monster combatants using SRD stat blocks where available.
 
     Looks up each monster by name in the loaded SRD index.  Falls back to
     the Fighter-approximation path when a name is not found.
 
-    When *expanded* is provided, any dicts containing at minimum ``"name"``,
-    ``"cr"``, and ``"hp"`` are built directly from those fields and appended
-    to the result alongside SRD monsters.
-
     Args:
         blueprint: :class:`EncounterBlueprint` describing the encounter.
         rng:       Optional RNG for reproducibility.
-        expanded:  Supplemental monster dicts from :func:`~src.rules_engine.srd_loader.load_expanded_rules`.
     """
     _build_monster_index()
     monsters: List[Character35e] = []
     for name, count, cr in blueprint.monsters:
         key = _normalize_name(name)
         entry = _MONSTER_INDEX.get(key)
-
-        # Check expanded books for a matching entry when not found in core SRD.
-        if entry is None and expanded:
-            for book_entries in expanded.values():
-                for candidate in book_entries:
-                    if isinstance(candidate, dict) and _normalize_name(
-                        candidate.get("name", "")
-                    ) == key:
-                        entry = candidate
-                        break
-                if entry is not None:
-                    break
 
         for idx in range(count):
             display = f"{name} #{idx + 1}" if count > 1 else name
@@ -263,51 +244,6 @@ def build_monsters_from_srd(
             mon.metadata[SIDE_KEY] = "enemy"
             mon.metadata["cr"] = cr
             monsters.append(mon)
-
-# Inject expanded-only monsters (not referenced in the blueprint) when
-    # requested books contain entries with valid stat blocks.
-    if expanded:
-        for book_slug, book_entries in expanded.items():
-            for candidate in book_entries:
-                if not isinstance(candidate, dict):
-                    continue
-                
-                # Support varying JSON schemas safely
-                if "name" not in candidate or "cr" not in candidate:
-                    continue
-                if "hp" not in candidate and "hp_avg" not in candidate:
-                    continue
-
-                cname = str(candidate["name"])
-                
-                # Prevent duplicating monsters already handled by the blueprint
-                if any(m.name == cname for m in monsters):
-                    continue
-                
-                try:
-                    mon = _monster_from_srd(candidate, cname)
-                except Exception:
-                    # Absolute safety net: Fall back to Fighter approximation if JSON fails
-                    cr_val = float(candidate.get("cr", 1))
-                    lvl = max(1, int(round(cr_val)))
-                    mon = Character35e(
-                        name=cname,
-                        char_class="Fighter",
-                        level=lvl,
-                        race="Human",
-                        alignment=Alignment.CHAOTIC_EVIL,
-                        size=Size.MEDIUM,
-                        strength=12 + min(4, lvl),
-                        dexterity=12,
-                        constitution=12 + min(4, lvl),
-                        intelligence=8,
-                        wisdom=10,
-                        charisma=8,
-                    )
-                
-                mon.metadata[SIDE_KEY] = "enemy"
-                mon.metadata["cr"] = candidate.get("cr", 1)
-                monsters.append(mon)
 
     return monsters
 

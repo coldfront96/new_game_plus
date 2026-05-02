@@ -209,7 +209,6 @@ def save_party(
     directory: Optional[Path] = None,
     conditions: Optional[ConditionManager] = None,
     xp_managers: Optional[Dict[str, XPManager]] = None,
-    active_books: Optional[List[str]] = None,
 ) -> Path:
     """Write *party* to ``<directory or saves/>/<name>.json``.
 
@@ -221,10 +220,6 @@ def save_party(
                       saved alongside each character.
         xp_managers:  Mapping of ``char_id → XPManager`` so each character's
                       XP is round-tripped.
-        active_books: List of active supplemental book slugs (PH7).  Saved
-                      under ``"active_books"`` and restored on load so the
-                      engine can re-invoke ``load_expanded_rules()`` when
-                      resuming a session.  Defaults to ``[]``.
 
     Returns:
         The absolute :class:`~pathlib.Path` that was written.
@@ -239,7 +234,7 @@ def save_party(
         )
         for c in party
     ]
-    payload = {"name": name, "party": records, "active_books": active_books or []}
+    payload = {"name": name, "party": records}
     path.write_text(json.dumps(payload, indent=2))
     return path
 
@@ -265,29 +260,6 @@ def load_party(
     ]
 
 
-def load_active_books(
-    name: str,
-    *,
-    directory: Optional[Path] = None,
-) -> List[str]:
-    """Return the ``active_books`` list from a saved party file.
-
-    Returns an empty list when the save file predates PH7 or the key is absent.
-
-    Args:
-        name:      Party name (file stem).
-        directory: Override for the save directory (tests).
-
-    Raises:
-        FileNotFoundError: If no save file exists for *name*.
-    """
-    path = _party_path(name, directory)
-    if not path.exists():
-        raise FileNotFoundError(f"No saved party named {name!r} at {path}")
-    payload = json.loads(path.read_text())
-    return payload.get("active_books", [])
-
-
 def load_party_with_state(
     name: str,
     *,
@@ -298,8 +270,7 @@ def load_party_with_state(
 
     Returns a dict with keys ``party`` (list of characters), ``records``
     (list of per-character record dicts matching :func:`serialize_character`),
-    and ``active_books`` (list of supplemental book slugs, defaults to ``[]``
-    for saves that predate PH7).
+    and ``name`` (the saved party name).
     """
     path = _party_path(name, directory)
     if not path.exists():
@@ -314,7 +285,6 @@ def load_party_with_state(
         "party": characters,
         "records": records,
         "name": payload.get("name", name),
-        "active_books": payload.get("active_books", []),
     }
 
 
