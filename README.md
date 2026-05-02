@@ -47,6 +47,7 @@ The D&D 3.5e SRD is the **single source of truth** for all game mechanics, funct
 - **Autonomous agency** — Local LLM agents make in-world decisions, generate content, and write engine code without constant human direction.
 - **Memory efficiency first** — Every data model (`Block`, `Entity`, `Item`, `AgentTask`, `Character35e`) uses `@dataclass(slots=True)` to handle millions of instances within the 64 GB RAM budget.
 - **Event-driven ECS** — All inter-system communication flows through the `EventBus`; no system imports another directly.
+- **Dynamic Multiverse Data Pipeline** — The engine features an extensible data pipeline capable of ingesting external rulesets and supplemental sourcebooks, automatically translating any protected mechanics and names into original, legally distinct, highly balanced High-Fantasy entities ready for commercial release.
 
 ---
 
