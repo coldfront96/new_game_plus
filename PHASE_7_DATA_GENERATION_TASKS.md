@@ -403,6 +403,52 @@ The following rules apply to every batch file generated in this phase.
 6. **is_expanded flag.** Every entry must set `"is_expanded": true` inside the
    `"expanded_metadata"` block to distinguish it from core SRD data at runtime.
 
+> ---
+> ### ⚠️ RULE #7 — THE CLEAN-ROOM TRANSLATION PROTOCOL (IP SAFETY) ⚠️
+>
+> **This rule is mandatory for any batch file targeting a commercial release.**
+>
+> Not all creatures in the source books are free to reproduce by name. Wizards of the
+> Coast designates certain monsters and lore elements as **Product Identity** — these
+> names and their associated descriptions, artwork, and story are protected and cannot
+> appear in a commercially released product without a licence.
+>
+> **You CANNOT use the following (non-exhaustive examples):**
+> - Monster names that are WotC Product Identity: *Beholder*, *Mind Flayer* (Illithid),
+>   *Displacer Beast*, *Neogi*, *Redspawn Arcaniss*, *Githyanki*, *Githzerai*, etc.
+> - Specific named spells, artefacts, or lore that appear exclusively in WotC supplements
+>   (i.e. are NOT part of the open SRD).
+> - Any flavour text, descriptions, or lore copied or closely paraphrased from a WotC
+>   publication.
+>
+> **What you MUST do instead — the Translation Protocol:**
+>
+> 1. **Extract the pure math.** Pull only the raw 3.5e mechanical stats: CR, HD, HP,
+>    AC, attack bonus, damage dice, saves, speed, special abilities (modelled as pure
+>    numerical effects). This data is functional/mathematical and is not copyrightable.
+>
+> 2. **Discard all protected expression.** Do not carry over the creature's WotC name,
+>    appearance description, habitat lore, society/culture text, or any flavour field
+>    sourced from a WotC publication.
+>
+> 3. **Wrap in 100 % original expression.** Assign a completely new name and write
+>    entirely original lore, description, and flavour text that fits the project's
+>    pure High-Fantasy setting. The resulting entry must be legally distinct — a reader
+>    familiar with the WotC source material should not be able to identify the original
+>    by name or description alone.
+>
+> 4. **Tag the entry.** Add `"translated": true` and `"source_archetype": "<original
+>    creature type>"` (e.g. `"aberration"`) inside the `"expanded_metadata"` block so
+>    the runtime loader and future auditors know the entry passed through this protocol.
+>    Do **not** record the original WotC name in any persisted field.
+>
+> **In practice:** If a task spec lists a creature that falls under WotC Product
+> Identity (e.g. Neogi, Redspawn Arcaniss), do NOT generate an entry with that name.
+> Instead, derive the mechanical stats, invent an original High-Fantasy name and lore,
+> and generate the entry under the new identity. See `data/expanded/AUTHORING_GUIDELINES.md`
+> for worked examples and the full 90/10 Rule breakdown.
+> ---
+
 ---
 
 ## 5. Effort Summary
