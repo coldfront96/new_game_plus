@@ -1,0 +1,1283 @@
+[
+  {
+    "name": "Red Dragon (Ancient)",
+    "cr": 23,
+    "size": "Gargantuan",
+    "type": "Dragon",
+    "subtype": "Fire",
+    "hit_dice": "37d12+222",
+    "hp_avg": 463,
+    "initiative": 4,
+    "speed": {"land": 40, "fly": 200},
+    "armor_class": {"total": 40, "touch": 6, "flat_footed": 40, "components": "+34 natural, -4 size"},
+    "base_attack": 37,
+    "grapple": 57,
+    "attacks": [
+      {"name": "Bite", "attack_bonus": "+42", "damage": "4d6+14", "crit_range": "19-20/x2", "damage_type": "Piercing"},
+      {"name": "2 Claws", "attack_bonus": "+40", "damage": "2d8+7", "damage_type": "Slashing"},
+      {"name": "2 Wings", "attack_bonus": "+37", "damage": "2d6+7", "damage_type": "Bludgeoning"},
+      {"name": "Tail Slap", "attack_bonus": "+37", "damage": "2d8+21", "damage_type": "Bludgeoning"}
+    ],
+    "special_attacks": [
+      "Breath Weapon (60-ft cone fire, 26d10, DC 31 Reflex half)",
+      "Crush (DC 31 Reflex, 4d6+21)",
+      "Frightful Presence (240 ft., DC 31 Will)",
+      "Tail Sweep (DC 31 Reflex, 2d6+21)",
+      "Spells (CL 11)",
+      "Spell-Like Abilities (CL 11: locate object 5/day, suggestion 3/day, find the path 1/day, dominate monster 1/day)"
+    ],
+    "special_qualities": [
+      "Blindsense 60 ft.",
+      "Darkvision 120 ft.",
+      "DR 15/Magic",
+      "Immunity to Fire",
+      "Keen Senses",
+      "Low-Light Vision",
+      "Spell Resistance 28",
+      "Vulnerability to Cold"
+    ],
+    "saves": {"fort": 27, "ref": 18, "will": 26},
+    "abilities": {"str": 39, "dex": 10, "con": 23, "int": 22, "wis": 23, "cha": 22},
+    "skills": {
+      "Bluff": 44,
+      "Concentration": 45,
+      "Intimidate": 44,
+      "Listen": 45,
+      "Move Silently": 40,
+      "Search": 44,
+      "Sense Motive": 44,
+      "Spot": 45
+    },
+    "feats": [
+      "Alertness", "Cleave", "Combat Reflexes", "Flyby Attack",
+      "Great Cleave", "Hover", "Improved Initiative", "Maximize Spell",
+      "Multiattack", "Power Attack", "Quicken Spell", "Snatch"
+    ],
+    "alignment": "Always Chaotic Evil",
+    "advancement": "See Dragon age categories",
+    "dr": "15/Magic",
+    "sr": 28,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": ["Cold"],
+    "alignment_weaknesses": [],
+    "passive_effects": [
+      {
+        "effect_type": "frightful_presence",
+        "range_ft": 240,
+        "save_type": "Will",
+        "save_dc": 31,
+        "effect_on_fail": "Shaken (if <= dragon HD) or Panicked (if < 1/2 dragon HD)",
+        "effect_on_pass": null,
+        "suppress_conditions": ["Shaken", "Frightened", "Panicked"]
+      }
+    ],
+    "population_base": 1,
+    "allowed_biomes": ["Warm_Mountain", "Warm_Hill"],
+    "primary_biome": "Warm_Mountain",
+    "ecology_notes": "Massive ancient reds claim entire mountain ranges as territory, hoarding legendary treasures and demanding tribute from nearby civilizations.",
+    "lair_type": "Cave",
+    "expanded_metadata": {
+      "source_book": "Draconomicon",
+      "source_page": null,
+      "is_expanded": true,
+      "tags": ["dragon", "chromatic", "fire", "ancient"]
+    }
+  },
+  {
+    "name": "Red Dragon (Wyrm)",
+    "cr": 25,
+    "size": "Gargantuan",
+    "type": "Dragon",
+    "subtype": "Fire",
+    "hit_dice": "40d12+280",
+    "hp_avg": 540,
+    "initiative": 4,
+    "speed": {"land": 40, "fly": 200},
+    "armor_class": {"total": 43, "touch": 6, "flat_footed": 43, "components": "+37 natural, -4 size"},
+    "base_attack": 40,
+    "grapple": 61,
+    "attacks": [
+      {"name": "Bite", "attack_bonus": "+46", "damage": "4d6+15", "crit_range": "19-20/x2", "damage_type": "Piercing"},
+      {"name": "2 Claws", "attack_bonus": "+44", "damage": "2d8+7", "damage_type": "Slashing"},
+      {"name": "2 Wings", "attack_bonus": "+41", "damage": "2d6+7", "damage_type": "Bludgeoning"},
+      {"name": "Tail Slap", "attack_bonus": "+41", "damage": "2d8+22", "damage_type": "Bludgeoning"}
+    ],
+    "special_attacks": [
+      "Breath Weapon (70-ft cone fire, 30d10, DC 34 Reflex half)",
+      "Crush (DC 34 Reflex, 4d6+22)",
+      "Frightful Presence (260 ft., DC 34 Will)",
+      "Tail Sweep (DC 34 Reflex, 2d6+22)",
+      "Spells (CL 13)",
+      "Spell-Like Abilities (CL 13: locate object 5/day, suggestion 3/day, find the path 1/day, dominate monster 3/day, delayed blast fireball 1/day)"
+    ],
+    "special_qualities": [
+      "Blindsense 60 ft.",
+      "Darkvision 120 ft.",
+      "DR 15/Magic",
+      "Immunity to Fire",
+      "Keen Senses",
+      "Low-Light Vision",
+      "Spell Resistance 30",
+      "Vulnerability to Cold"
+    ],
+    "saves": {"fort": 29, "ref": 20, "will": 28},
+    "abilities": {"str": 41, "dex": 10, "con": 25, "int": 24, "wis": 25, "cha": 24},
+    "skills": {
+      "Bluff": 47,
+      "Concentration": 48,
+      "Intimidate": 47,
+      "Listen": 48,
+      "Move Silently": 43,
+      "Search": 47,
+      "Sense Motive": 47,
+      "Spot": 48
+    },
+    "feats": [
+      "Alertness", "Cleave", "Combat Reflexes", "Empower Spell",
+      "Flyby Attack", "Great Cleave", "Hover", "Improved Initiative",
+      "Maximize Spell", "Multiattack", "Power Attack", "Quicken Spell", "Snatch"
+    ],
+    "alignment": "Always Chaotic Evil",
+    "advancement": "See Dragon age categories",
+    "dr": "15/Magic",
+    "sr": 30,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": ["Cold"],
+    "alignment_weaknesses": [],
+    "passive_effects": [
+      {
+        "effect_type": "frightful_presence",
+        "range_ft": 260,
+        "save_type": "Will",
+        "save_dc": 34,
+        "effect_on_fail": "Shaken (if <= dragon HD) or Panicked (if < 1/2 dragon HD)",
+        "effect_on_pass": null,
+        "suppress_conditions": ["Shaken", "Frightened", "Panicked"]
+      }
+    ],
+    "population_base": 1,
+    "allowed_biomes": ["Warm_Mountain", "Warm_Hill"],
+    "primary_biome": "Warm_Mountain",
+    "ecology_notes": "Red wyrms are apocalyptic forces; their mere approach withers vegetation and boils rivers. Their hoards span cavern complexes the size of keeps.",
+    "lair_type": "Cave",
+    "expanded_metadata": {
+      "source_book": "Draconomicon",
+      "source_page": null,
+      "is_expanded": true,
+      "tags": ["dragon", "chromatic", "fire", "wyrm"]
+    }
+  },
+  {
+    "name": "Red Dragon (Great Wyrm)",
+    "cr": 27,
+    "size": "Colossal",
+    "type": "Dragon",
+    "subtype": "Fire",
+    "hit_dice": "43d12+387",
+    "hp_avg": 667,
+    "initiative": 4,
+    "speed": {"land": 40, "fly": 250},
+    "armor_class": {"total": 41, "touch": 1, "flat_footed": 41, "components": "+40 natural, -8 size, -1 Dex"},
+    "base_attack": 43,
+    "grapple": 67,
+    "attacks": [
+      {"name": "Bite", "attack_bonus": "+47", "damage": "4d8+16", "crit_range": "19-20/x2", "damage_type": "Piercing"},
+      {"name": "2 Claws", "attack_bonus": "+45", "damage": "4d6+8", "damage_type": "Slashing"},
+      {"name": "2 Wings", "attack_bonus": "+42", "damage": "2d8+8", "damage_type": "Bludgeoning"},
+      {"name": "Tail Slap", "attack_bonus": "+42", "damage": "4d6+24", "damage_type": "Bludgeoning"}
+    ],
+    "special_attacks": [
+      "Breath Weapon (80-ft cone fire, 34d10, DC 38 Reflex half)",
+      "Crush (DC 38 Reflex, 4d8+24)",
+      "Frightful Presence (300 ft., DC 38 Will)",
+      "Tail Sweep (DC 38 Reflex, 2d8+24)",
+      "Spells (CL 15)",
+      "Spell-Like Abilities (CL 15: locate object 5/day, suggestion 3/day, find the path 1/day, dominate monster 3/day, delayed blast fireball 3/day, wish 1/day)"
+    ],
+    "special_qualities": [
+      "Blindsense 60 ft.",
+      "Darkvision 120 ft.",
+      "DR 20/Magic",
+      "Immunity to Fire",
+      "Keen Senses",
+      "Low-Light Vision",
+      "Spell Resistance 32",
+      "Vulnerability to Cold"
+    ],
+    "saves": {"fort": 32, "ref": 22, "will": 31},
+    "abilities": {"str": 43, "dex": 8, "con": 29, "int": 26, "wis": 27, "cha": 26},
+    "skills": {
+      "Bluff": 51,
+      "Concentration": 52,
+      "Intimidate": 51,
+      "Knowledge (arcana)": 51,
+      "Listen": 52,
+      "Move Silently": 46,
+      "Search": 51,
+      "Sense Motive": 51,
+      "Spot": 52
+    },
+    "feats": [
+      "Alertness", "Cleave", "Combat Reflexes", "Empower Spell",
+      "Flyby Attack", "Great Cleave", "Hover", "Improved Critical (Bite)",
+      "Improved Initiative", "Maximize Spell", "Multiattack",
+      "Power Attack", "Quicken Spell", "Snatch", "Spell Penetration"
+    ],
+    "alignment": "Always Chaotic Evil",
+    "advancement": "None",
+    "dr": "20/Magic",
+    "sr": 32,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": ["Cold"],
+    "alignment_weaknesses": [],
+    "passive_effects": [
+      {
+        "effect_type": "frightful_presence",
+        "range_ft": 300,
+        "save_type": "Will",
+        "save_dc": 38,
+        "effect_on_fail": "Shaken (if <= dragon HD) or Panicked (if < 1/2 dragon HD)",
+        "effect_on_pass": null,
+        "suppress_conditions": ["Shaken", "Frightened", "Panicked"]
+      }
+    ],
+    "population_base": 1,
+    "allowed_biomes": ["Warm_Mountain", "Warm_Hill"],
+    "primary_biome": "Warm_Mountain",
+    "ecology_notes": "The pinnacle of chromatic dragonkind. A red great wyrm's lair is a geological feature; its body heat creates permanent volcanic vents in the surrounding rock.",
+    "lair_type": "Cave",
+    "expanded_metadata": {
+      "source_book": "Draconomicon",
+      "source_page": null,
+      "is_expanded": true,
+      "tags": ["dragon", "chromatic", "fire", "great_wyrm"]
+    }
+  },
+  {
+    "name": "Blue Dragon (Ancient)",
+    "cr": 22,
+    "size": "Huge",
+    "type": "Dragon",
+    "subtype": "Earth",
+    "hit_dice": "34d12+170",
+    "hp_avg": 391,
+    "initiative": 4,
+    "speed": {"land": 40, "burrow": 20, "fly": 200},
+    "armor_class": {"total": 37, "touch": 8, "flat_footed": 37, "components": "+29 natural, -2 size"},
+    "base_attack": 34,
+    "grapple": 49,
+    "attacks": [
+      {"name": "Bite", "attack_bonus": "+39", "damage": "2d8+11", "crit_range": "19-20/x2", "damage_type": "Piercing"},
+      {"name": "2 Claws", "attack_bonus": "+37", "damage": "2d6+5", "damage_type": "Slashing"},
+      {"name": "2 Wings", "attack_bonus": "+34", "damage": "1d8+5", "damage_type": "Bludgeoning"},
+      {"name": "Tail Slap", "attack_bonus": "+34", "damage": "2d6+16", "damage_type": "Bludgeoning"}
+    ],
+    "special_attacks": [
+      "Breath Weapon (120-ft line lightning, 22d8, DC 27 Reflex half)",
+      "Frightful Presence (200 ft., DC 27 Will)",
+      "Spells (CL 9)",
+      "Spell-Like Abilities (CL 9: ghost sound 3/day, ventriloquism 3/day, minor image 3/day, hallucinatory terrain 1/day, veil 1/day, sound imitation at will)"
+    ],
+    "special_qualities": [
+      "Blindsense 60 ft.",
+      "Darkvision 120 ft.",
+      "DR 15/Magic",
+      "Immunity to Electricity",
+      "Keen Senses",
+      "Low-Light Vision",
+      "Spell Resistance 27",
+      "Sound Imitation"
+    ],
+    "saves": {"fort": 25, "ref": 19, "will": 24},
+    "abilities": {"str": 33, "dex": 10, "con": 21, "int": 22, "wis": 23, "cha": 22},
+    "skills": {
+      "Bluff": 41,
+      "Concentration": 42,
+      "Hide": 29,
+      "Listen": 43,
+      "Move Silently": 37,
+      "Search": 41,
+      "Sense Motive": 41,
+      "Spot": 43
+    },
+    "feats": [
+      "Alertness", "Cleave", "Combat Reflexes", "Empower Spell",
+      "Flyby Attack", "Great Cleave", "Hover", "Improved Initiative",
+      "Multiattack", "Power Attack", "Quicken Spell", "Snatch"
+    ],
+    "alignment": "Always Lawful Evil",
+    "advancement": "See Dragon age categories",
+    "dr": "15/Magic",
+    "sr": 27,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [
+      {
+        "effect_type": "frightful_presence",
+        "range_ft": 200,
+        "save_type": "Will",
+        "save_dc": 27,
+        "effect_on_fail": "Shaken (if <= dragon HD) or Panicked (if < 1/2 dragon HD)",
+        "effect_on_pass": null,
+        "suppress_conditions": ["Shaken", "Frightened", "Panicked"]
+      }
+    ],
+    "population_base": 1,
+    "allowed_biomes": ["Warm_Desert", "Warm_Hill"],
+    "primary_biome": "Warm_Desert",
+    "ecology_notes": "Ancient blue dragons rule vast desert empires, constructing elaborate underground labyrinths and manipulating humanoid tribes as vassal armies.",
+    "lair_type": "Burrow",
+    "expanded_metadata": {
+      "source_book": "Draconomicon",
+      "source_page": null,
+      "is_expanded": true,
+      "tags": ["dragon", "chromatic", "lightning", "ancient"]
+    }
+  },
+  {
+    "name": "Blue Dragon (Wyrm)",
+    "cr": 23,
+    "size": "Huge",
+    "type": "Dragon",
+    "subtype": "Earth",
+    "hit_dice": "37d12+259",
+    "hp_avg": 499,
+    "initiative": 4,
+    "speed": {"land": 40, "burrow": 20, "fly": 200},
+    "armor_class": {"total": 39, "touch": 8, "flat_footed": 39, "components": "+31 natural, -2 size"},
+    "base_attack": 37,
+    "grapple": 53,
+    "attacks": [
+      {"name": "Bite", "attack_bonus": "+43", "damage": "2d8+12", "crit_range": "19-20/x2", "damage_type": "Piercing"},
+      {"name": "2 Claws", "attack_bonus": "+41", "damage": "2d6+6", "damage_type": "Slashing"},
+      {"name": "2 Wings", "attack_bonus": "+38", "damage": "1d8+6", "damage_type": "Bludgeoning"},
+      {"name": "Tail Slap", "attack_bonus": "+38", "damage": "2d6+18", "damage_type": "Bludgeoning"}
+    ],
+    "special_attacks": [
+      "Breath Weapon (130-ft line lightning, 24d8, DC 29 Reflex half)",
+      "Frightful Presence (220 ft., DC 29 Will)",
+      "Spells (CL 11)",
+      "Spell-Like Abilities (CL 11: ghost sound 3/day, ventriloquism 3/day, minor image 3/day, hallucinatory terrain 3/day, veil 1/day, mirage arcana 1/day, sound imitation at will)"
+    ],
+    "special_qualities": [
+      "Blindsense 60 ft.",
+      "Darkvision 120 ft.",
+      "DR 15/Magic",
+      "Immunity to Electricity",
+      "Keen Senses",
+      "Low-Light Vision",
+      "Spell Resistance 29",
+      "Sound Imitation"
+    ],
+    "saves": {"fort": 27, "ref": 21, "will": 26},
+    "abilities": {"str": 35, "dex": 10, "con": 23, "int": 24, "wis": 25, "cha": 24},
+    "skills": {
+      "Bluff": 44,
+      "Concentration": 45,
+      "Hide": 32,
+      "Listen": 46,
+      "Move Silently": 40,
+      "Search": 44,
+      "Sense Motive": 44,
+      "Spot": 46
+    },
+    "feats": [
+      "Alertness", "Cleave", "Combat Reflexes", "Empower Spell",
+      "Flyby Attack", "Great Cleave", "Hover", "Improved Initiative",
+      "Maximize Spell", "Multiattack", "Power Attack", "Quicken Spell", "Snatch"
+    ],
+    "alignment": "Always Lawful Evil",
+    "advancement": "See Dragon age categories",
+    "dr": "15/Magic",
+    "sr": 29,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [
+      {
+        "effect_type": "frightful_presence",
+        "range_ft": 220,
+        "save_type": "Will",
+        "save_dc": 29,
+        "effect_on_fail": "Shaken (if <= dragon HD) or Panicked (if < 1/2 dragon HD)",
+        "effect_on_pass": null,
+        "suppress_conditions": ["Shaken", "Frightened", "Panicked"]
+      }
+    ],
+    "population_base": 1,
+    "allowed_biomes": ["Warm_Desert", "Warm_Hill"],
+    "primary_biome": "Warm_Desert",
+    "ecology_notes": "Blue wyrms are master strategists, commanding entire orc and hobgoblin nations through a mix of terror and carefully dispensed magical favors.",
+    "lair_type": "Burrow",
+    "expanded_metadata": {
+      "source_book": "Draconomicon",
+      "source_page": null,
+      "is_expanded": true,
+      "tags": ["dragon", "chromatic", "lightning", "wyrm"]
+    }
+  },
+  {
+    "name": "Blue Dragon (Great Wyrm)",
+    "cr": 25,
+    "size": "Gargantuan",
+    "type": "Dragon",
+    "subtype": "Earth",
+    "hit_dice": "40d12+320",
+    "hp_avg": 580,
+    "initiative": 4,
+    "speed": {"land": 40, "burrow": 20, "fly": 250},
+    "armor_class": {"total": 40, "touch": 6, "flat_footed": 40, "components": "+34 natural, -4 size"},
+    "base_attack": 40,
+    "grapple": 59,
+    "attacks": [
+      {"name": "Bite", "attack_bonus": "+44", "damage": "4d6+13", "crit_range": "19-20/x2", "damage_type": "Piercing"},
+      {"name": "2 Claws", "attack_bonus": "+42", "damage": "2d8+6", "damage_type": "Slashing"},
+      {"name": "2 Wings", "attack_bonus": "+39", "damage": "2d6+6", "damage_type": "Bludgeoning"},
+      {"name": "Tail Slap", "attack_bonus": "+39", "damage": "2d8+19", "damage_type": "Bludgeoning"}
+    ],
+    "special_attacks": [
+      "Breath Weapon (140-ft line lightning, 26d8, DC 31 Reflex half)",
+      "Crush (DC 31 Reflex, 4d6+19)",
+      "Frightful Presence (240 ft., DC 31 Will)",
+      "Tail Sweep (DC 31 Reflex, 2d6+19)",
+      "Spells (CL 15)",
+      "Spell-Like Abilities (CL 15: ghost sound 3/day, ventriloquism 3/day, minor image 3/day, hallucinatory terrain 3/day, mirage arcana 3/day, project image 1/day, sound imitation at will)"
+    ],
+    "special_qualities": [
+      "Blindsense 60 ft.",
+      "Darkvision 120 ft.",
+      "DR 15/Magic",
+      "Immunity to Electricity",
+      "Keen Senses",
+      "Low-Light Vision",
+      "Spell Resistance 31",
+      "Sound Imitation"
+    ],
+    "saves": {"fort": 29, "ref": 23, "will": 28},
+    "abilities": {"str": 37, "dex": 10, "con": 25, "int": 26, "wis": 27, "cha": 26},
+    "skills": {
+      "Bluff": 48,
+      "Concentration": 48,
+      "Diplomacy": 52,
+      "Hide": 33,
+      "Listen": 50,
+      "Move Silently": 43,
+      "Search": 48,
+      "Sense Motive": 50,
+      "Spot": 50
+    },
+    "feats": [
+      "Alertness", "Cleave", "Combat Reflexes", "Empower Spell",
+      "Flyby Attack", "Great Cleave", "Hover", "Improved Initiative",
+      "Maximize Spell", "Multiattack", "Power Attack", "Quicken Spell",
+      "Snatch", "Spell Penetration", "Wingover"
+    ],
+    "alignment": "Always Lawful Evil",
+    "advancement": "None",
+    "dr": "15/Magic",
+    "sr": 31,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [
+      {
+        "effect_type": "frightful_presence",
+        "range_ft": 240,
+        "save_type": "Will",
+        "save_dc": 31,
+        "effect_on_fail": "Shaken (if <= dragon HD) or Panicked (if < 1/2 dragon HD)",
+        "effect_on_pass": null,
+        "suppress_conditions": ["Shaken", "Frightened", "Panicked"]
+      }
+    ],
+    "population_base": 1,
+    "allowed_biomes": ["Warm_Desert", "Warm_Hill"],
+    "primary_biome": "Warm_Desert",
+    "ecology_notes": "Blue great wyrms are calculating tyrants whose patience spans centuries. They weave elaborate geopolitical schemes, toppling and founding kingdoms as amusement.",
+    "lair_type": "Burrow",
+    "expanded_metadata": {
+      "source_book": "Draconomicon",
+      "source_page": null,
+      "is_expanded": true,
+      "tags": ["dragon", "chromatic", "lightning", "great_wyrm"]
+    }
+  },
+  {
+    "name": "Green Dragon (Ancient)",
+    "cr": 20,
+    "size": "Huge",
+    "type": "Dragon",
+    "subtype": null,
+    "hit_dice": "32d12+160",
+    "hp_avg": 368,
+    "initiative": 4,
+    "speed": {"land": 40, "fly": 200, "swim": 40},
+    "armor_class": {"total": 36, "touch": 8, "flat_footed": 36, "components": "+28 natural, -2 size"},
+    "base_attack": 32,
+    "grapple": 47,
+    "attacks": [
+      {"name": "Bite", "attack_bonus": "+37", "damage": "2d8+11", "crit_range": "19-20/x2", "damage_type": "Piercing"},
+      {"name": "2 Claws", "attack_bonus": "+35", "damage": "2d6+5", "damage_type": "Slashing"},
+      {"name": "2 Wings", "attack_bonus": "+32", "damage": "1d8+5", "damage_type": "Bludgeoning"},
+      {"name": "Tail Slap", "attack_bonus": "+32", "damage": "2d6+16", "damage_type": "Bludgeoning"}
+    ],
+    "special_attacks": [
+      "Breath Weapon (100-ft cone acid, 20d6, DC 25 Reflex half)",
+      "Frightful Presence (210 ft., DC 25 Will)",
+      "Spells (CL 9)",
+      "Spell-Like Abilities (CL 9: suggestion 3/day, dominate person 3/day, plant growth 3/day, charm monster 3/day)"
+    ],
+    "special_qualities": [
+      "Blindsense 60 ft.",
+      "Darkvision 120 ft.",
+      "DR 15/Magic",
+      "Immunity to Acid",
+      "Keen Senses",
+      "Low-Light Vision",
+      "Spell Resistance 25",
+      "Trackless Step",
+      "Water Breathing"
+    ],
+    "saves": {"fort": 23, "ref": 18, "will": 23},
+    "abilities": {"str": 33, "dex": 10, "con": 21, "int": 22, "wis": 23, "cha": 22},
+    "skills": {
+      "Bluff": 39,
+      "Concentration": 40,
+      "Diplomacy": 43,
+      "Hide": 31,
+      "Listen": 41,
+      "Move Silently": 35,
+      "Search": 39,
+      "Sense Motive": 39,
+      "Spot": 41
+    },
+    "feats": [
+      "Alertness", "Cleave", "Combat Reflexes", "Flyby Attack",
+      "Great Cleave", "Hover", "Improved Initiative",
+      "Multiattack", "Power Attack", "Quicken Spell", "Snatch"
+    ],
+    "alignment": "Always Neutral Evil",
+    "advancement": "See Dragon age categories",
+    "dr": "15/Magic",
+    "sr": 25,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [
+      {
+        "effect_type": "frightful_presence",
+        "range_ft": 210,
+        "save_type": "Will",
+        "save_dc": 25,
+        "effect_on_fail": "Shaken (if <= dragon HD) or Panicked (if < 1/2 dragon HD)",
+        "effect_on_pass": null,
+        "suppress_conditions": ["Shaken", "Frightened", "Panicked"]
+      }
+    ],
+    "population_base": 1,
+    "allowed_biomes": ["Temperate_Forest", "Warm_Forest"],
+    "primary_biome": "Temperate_Forest",
+    "ecology_notes": "Ancient greens are the consummate manipulators of dragonkind, weaving webs of intrigue across entire kingdoms with honeyed words and carefully placed suggestions.",
+    "lair_type": "Cave",
+    "expanded_metadata": {
+      "source_book": "Draconomicon",
+      "source_page": null,
+      "is_expanded": true,
+      "tags": ["dragon", "chromatic", "acid", "ancient"]
+    }
+  },
+  {
+    "name": "Green Dragon (Wyrm)",
+    "cr": 21,
+    "size": "Gargantuan",
+    "type": "Dragon",
+    "subtype": null,
+    "hit_dice": "35d12+210",
+    "hp_avg": 437,
+    "initiative": 4,
+    "speed": {"land": 40, "fly": 200, "swim": 40},
+    "armor_class": {"total": 36, "touch": 6, "flat_footed": 36, "components": "+30 natural, -4 size"},
+    "base_attack": 35,
+    "grapple": 53,
+    "attacks": [
+      {"name": "Bite", "attack_bonus": "+38", "damage": "4d6+12", "crit_range": "19-20/x2", "damage_type": "Piercing"},
+      {"name": "2 Claws", "attack_bonus": "+36", "damage": "2d8+6", "damage_type": "Slashing"},
+      {"name": "2 Wings", "attack_bonus": "+33", "damage": "2d6+6", "damage_type": "Bludgeoning"},
+      {"name": "Tail Slap", "attack_bonus": "+33", "damage": "2d8+18", "damage_type": "Bludgeoning"}
+    ],
+    "special_attacks": [
+      "Breath Weapon (110-ft cone acid, 22d6, DC 27 Reflex half)",
+      "Crush (DC 27 Reflex, 4d6+18)",
+      "Frightful Presence (225 ft., DC 27 Will)",
+      "Tail Sweep (DC 27 Reflex, 2d6+18)",
+      "Spells (CL 11)",
+      "Spell-Like Abilities (CL 11: suggestion 3/day, dominate person 3/day, plant growth 3/day, charm monster 3/day, dominate monster 1/day)"
+    ],
+    "special_qualities": [
+      "Blindsense 60 ft.",
+      "Darkvision 120 ft.",
+      "DR 15/Magic",
+      "Immunity to Acid",
+      "Keen Senses",
+      "Low-Light Vision",
+      "Spell Resistance 27",
+      "Trackless Step",
+      "Water Breathing"
+    ],
+    "saves": {"fort": 25, "ref": 20, "will": 25},
+    "abilities": {"str": 35, "dex": 10, "con": 23, "int": 24, "wis": 25, "cha": 24},
+    "skills": {
+      "Bluff": 42,
+      "Concentration": 43,
+      "Diplomacy": 46,
+      "Hide": 32,
+      "Listen": 44,
+      "Move Silently": 38,
+      "Search": 42,
+      "Sense Motive": 42,
+      "Spot": 44
+    },
+    "feats": [
+      "Alertness", "Cleave", "Combat Reflexes", "Flyby Attack",
+      "Great Cleave", "Hover", "Improved Initiative", "Maximize Spell",
+      "Multiattack", "Power Attack", "Quicken Spell", "Snatch"
+    ],
+    "alignment": "Always Neutral Evil",
+    "advancement": "See Dragon age categories",
+    "dr": "15/Magic",
+    "sr": 27,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [
+      {
+        "effect_type": "frightful_presence",
+        "range_ft": 225,
+        "save_type": "Will",
+        "save_dc": 27,
+        "effect_on_fail": "Shaken (if <= dragon HD) or Panicked (if < 1/2 dragon HD)",
+        "effect_on_pass": null,
+        "suppress_conditions": ["Shaken", "Frightened", "Panicked"]
+      }
+    ],
+    "population_base": 1,
+    "allowed_biomes": ["Temperate_Forest", "Warm_Forest"],
+    "primary_biome": "Temperate_Forest",
+    "ecology_notes": "Green wyrms reshape entire forest ecosystems to their whims, accelerating or halting growth over square miles of canopy.",
+    "lair_type": "Cave",
+    "expanded_metadata": {
+      "source_book": "Draconomicon",
+      "source_page": null,
+      "is_expanded": true,
+      "tags": ["dragon", "chromatic", "acid", "wyrm"]
+    }
+  },
+  {
+    "name": "Green Dragon (Great Wyrm)",
+    "cr": 23,
+    "size": "Gargantuan",
+    "type": "Dragon",
+    "subtype": null,
+    "hit_dice": "38d12+266",
+    "hp_avg": 513,
+    "initiative": 4,
+    "speed": {"land": 40, "fly": 250, "swim": 40},
+    "armor_class": {"total": 39, "touch": 6, "flat_footed": 39, "components": "+33 natural, -4 size"},
+    "base_attack": 38,
+    "grapple": 57,
+    "attacks": [
+      {"name": "Bite", "attack_bonus": "+42", "damage": "4d6+13", "crit_range": "19-20/x2", "damage_type": "Piercing"},
+      {"name": "2 Claws", "attack_bonus": "+40", "damage": "2d8+6", "damage_type": "Slashing"},
+      {"name": "2 Wings", "attack_bonus": "+37", "damage": "2d6+6", "damage_type": "Bludgeoning"},
+      {"name": "Tail Slap", "attack_bonus": "+37", "damage": "2d8+19", "damage_type": "Bludgeoning"}
+    ],
+    "special_attacks": [
+      "Breath Weapon (120-ft cone acid, 24d6, DC 29 Reflex half)",
+      "Crush (DC 29 Reflex, 4d6+19)",
+      "Frightful Presence (240 ft., DC 29 Will)",
+      "Tail Sweep (DC 29 Reflex, 2d6+19)",
+      "Spells (CL 15)",
+      "Spell-Like Abilities (CL 15: suggestion 3/day, dominate person 3/day, plant growth 3/day, charm monster 3/day, dominate monster 3/day, mass suggestion 1/day)"
+    ],
+    "special_qualities": [
+      "Blindsense 60 ft.",
+      "Darkvision 120 ft.",
+      "DR 15/Magic",
+      "Immunity to Acid",
+      "Keen Senses",
+      "Low-Light Vision",
+      "Spell Resistance 29",
+      "Trackless Step",
+      "Water Breathing"
+    ],
+    "saves": {"fort": 27, "ref": 22, "will": 27},
+    "abilities": {"str": 37, "dex": 10, "con": 25, "int": 26, "wis": 27, "cha": 26},
+    "skills": {
+      "Bluff": 46,
+      "Concentration": 47,
+      "Diplomacy": 52,
+      "Hide": 35,
+      "Listen": 48,
+      "Move Silently": 42,
+      "Search": 46,
+      "Sense Motive": 48,
+      "Spot": 48
+    },
+    "feats": [
+      "Alertness", "Cleave", "Combat Reflexes", "Flyby Attack",
+      "Great Cleave", "Hover", "Improved Initiative", "Maximize Spell",
+      "Multiattack", "Power Attack", "Quicken Spell", "Skill Focus (Diplomacy)",
+      "Snatch", "Spell Penetration", "Wingover"
+    ],
+    "alignment": "Always Neutral Evil",
+    "advancement": "None",
+    "dr": "15/Magic",
+    "sr": 29,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [
+      {
+        "effect_type": "frightful_presence",
+        "range_ft": 240,
+        "save_type": "Will",
+        "save_dc": 29,
+        "effect_on_fail": "Shaken (if <= dragon HD) or Panicked (if < 1/2 dragon HD)",
+        "effect_on_pass": null,
+        "suppress_conditions": ["Shaken", "Frightened", "Panicked"]
+      }
+    ],
+    "population_base": 1,
+    "allowed_biomes": ["Temperate_Forest", "Warm_Forest"],
+    "primary_biome": "Temperate_Forest",
+    "ecology_notes": "A green great wyrm is a living legend draped in living wood, its scales encrusted with centuries of moss. Its lair is indistinguishable from a primeval forest.",
+    "lair_type": "Cave",
+    "expanded_metadata": {
+      "source_book": "Draconomicon",
+      "source_page": null,
+      "is_expanded": true,
+      "tags": ["dragon", "chromatic", "acid", "great_wyrm"]
+    }
+  },
+  {
+    "name": "Black Dragon (Ancient)",
+    "cr": 19,
+    "size": "Huge",
+    "type": "Dragon",
+    "subtype": "Water",
+    "hit_dice": "28d12+140",
+    "hp_avg": 322,
+    "initiative": 4,
+    "speed": {"land": 60, "fly": 150, "swim": 60},
+    "armor_class": {"total": 35, "touch": 8, "flat_footed": 35, "components": "+27 natural, -2 size"},
+    "base_attack": 28,
+    "grapple": 42,
+    "attacks": [
+      {"name": "Bite", "attack_bonus": "+32", "damage": "2d8+10", "crit_range": "19-20/x2", "damage_type": "Piercing"},
+      {"name": "2 Claws", "attack_bonus": "+30", "damage": "2d6+5", "damage_type": "Slashing"},
+      {"name": "2 Wings", "attack_bonus": "+27", "damage": "1d8+5", "damage_type": "Bludgeoning"},
+      {"name": "Tail Slap", "attack_bonus": "+27", "damage": "2d6+15", "damage_type": "Bludgeoning"}
+    ],
+    "special_attacks": [
+      "Breath Weapon (100-ft line acid, 18d4, DC 25 Reflex half)",
+      "Corrupt Water",
+      "Frightful Presence (210 ft., DC 25 Will)",
+      "Spells (CL 9)",
+      "Spell-Like Abilities (CL 9: darkness 3/day, insect plague 1/day)"
+    ],
+    "special_qualities": [
+      "Blindsense 60 ft.",
+      "Darkvision 120 ft.",
+      "DR 10/Magic",
+      "Immunity to Acid",
+      "Keen Senses",
+      "Low-Light Vision",
+      "Spell Resistance 23",
+      "Water Breathing"
+    ],
+    "saves": {"fort": 21, "ref": 16, "will": 21},
+    "abilities": {"str": 31, "dex": 10, "con": 21, "int": 18, "wis": 19, "cha": 18},
+    "skills": {
+      "Bluff": 35,
+      "Concentration": 36,
+      "Diplomacy": 10,
+      "Hide": 23,
+      "Listen": 35,
+      "Move Silently": 31,
+      "Search": 35,
+      "Sense Motive": 35,
+      "Spot": 35,
+      "Swim": 46
+    },
+    "feats": [
+      "Alertness", "Cleave", "Combat Reflexes", "Flyby Attack",
+      "Hover", "Improved Initiative", "Multiattack",
+      "Power Attack", "Quicken Spell", "Snatch"
+    ],
+    "alignment": "Always Chaotic Evil",
+    "advancement": "See Dragon age categories",
+    "dr": "10/Magic",
+    "sr": 23,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [
+      {
+        "effect_type": "frightful_presence",
+        "range_ft": 210,
+        "save_type": "Will",
+        "save_dc": 25,
+        "effect_on_fail": "Shaken (if <= dragon HD) or Panicked (if < 1/2 dragon HD)",
+        "effect_on_pass": null,
+        "suppress_conditions": ["Shaken", "Frightened", "Panicked"]
+      }
+    ],
+    "population_base": 1,
+    "allowed_biomes": ["Warm_Swamp", "Temperate_Swamp"],
+    "primary_biome": "Warm_Swamp",
+    "ecology_notes": "Ancient blacks preside over vast fetid swamps, their acid blood seeping into the waterways and turning entire ecosystems toxic to non-draconic life.",
+    "lair_type": "Cave",
+    "expanded_metadata": {
+      "source_book": "Draconomicon",
+      "source_page": null,
+      "is_expanded": true,
+      "tags": ["dragon", "chromatic", "acid", "ancient"]
+    }
+  },
+  {
+    "name": "Black Dragon (Wyrm)",
+    "cr": 21,
+    "size": "Gargantuan",
+    "type": "Dragon",
+    "subtype": "Water",
+    "hit_dice": "31d12+186",
+    "hp_avg": 388,
+    "initiative": 4,
+    "speed": {"land": 60, "fly": 200, "swim": 60},
+    "armor_class": {"total": 36, "touch": 6, "flat_footed": 36, "components": "+30 natural, -4 size"},
+    "base_attack": 31,
+    "grapple": 49,
+    "attacks": [
+      {"name": "Bite", "attack_bonus": "+35", "damage": "4d6+12", "crit_range": "19-20/x2", "damage_type": "Piercing"},
+      {"name": "2 Claws", "attack_bonus": "+33", "damage": "2d8+6", "damage_type": "Slashing"},
+      {"name": "2 Wings", "attack_bonus": "+30", "damage": "2d6+6", "damage_type": "Bludgeoning"},
+      {"name": "Tail Slap", "attack_bonus": "+30", "damage": "2d8+18", "damage_type": "Bludgeoning"}
+    ],
+    "special_attacks": [
+      "Breath Weapon (110-ft line acid, 20d4, DC 27 Reflex half)",
+      "Corrupt Water",
+      "Crush (DC 27 Reflex, 4d6+18)",
+      "Frightful Presence (225 ft., DC 27 Will)",
+      "Tail Sweep (DC 27 Reflex, 2d6+18)",
+      "Spells (CL 12)",
+      "Spell-Like Abilities (CL 12: darkness 3/day, insect plague 3/day, plant growth 1/day)"
+    ],
+    "special_qualities": [
+      "Blindsense 60 ft.",
+      "Darkvision 120 ft.",
+      "DR 15/Magic",
+      "Immunity to Acid",
+      "Keen Senses",
+      "Low-Light Vision",
+      "Spell Resistance 25",
+      "Water Breathing"
+    ],
+    "saves": {"fort": 23, "ref": 17, "will": 23},
+    "abilities": {"str": 35, "dex": 10, "con": 22, "int": 19, "wis": 20, "cha": 19},
+    "skills": {
+      "Bluff": 39,
+      "Concentration": 40,
+      "Hide": 26,
+      "Listen": 39,
+      "Move Silently": 35,
+      "Search": 39,
+      "Sense Motive": 39,
+      "Spot": 39,
+      "Swim": 52
+    },
+    "feats": [
+      "Alertness", "Cleave", "Combat Reflexes", "Flyby Attack",
+      "Great Cleave", "Hover", "Improved Initiative", "Multiattack",
+      "Power Attack", "Quicken Spell", "Snatch", "Spell Focus (Evocation)"
+    ],
+    "alignment": "Always Chaotic Evil",
+    "advancement": "See Dragon age categories",
+    "dr": "15/Magic",
+    "sr": 25,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [
+      {
+        "effect_type": "frightful_presence",
+        "range_ft": 225,
+        "save_type": "Will",
+        "save_dc": 27,
+        "effect_on_fail": "Shaken (if <= dragon HD) or Panicked (if < 1/2 dragon HD)",
+        "effect_on_pass": null,
+        "suppress_conditions": ["Shaken", "Frightened", "Panicked"]
+      }
+    ],
+    "population_base": 1,
+    "allowed_biomes": ["Warm_Swamp", "Temperate_Swamp"],
+    "primary_biome": "Warm_Swamp",
+    "ecology_notes": "Black wyrms are solitary tyrants even among their own kind. Their acidic saliva can dissolve iron in seconds, and their lairs reek of dissolved metal and rotting vegetation.",
+    "lair_type": "Cave",
+    "expanded_metadata": {
+      "source_book": "Draconomicon",
+      "source_page": null,
+      "is_expanded": true,
+      "tags": ["dragon", "chromatic", "acid", "wyrm"]
+    }
+  },
+  {
+    "name": "Black Dragon (Great Wyrm)",
+    "cr": 22,
+    "size": "Gargantuan",
+    "type": "Dragon",
+    "subtype": "Water",
+    "hit_dice": "34d12+204",
+    "hp_avg": 425,
+    "initiative": 4,
+    "speed": {"land": 60, "fly": 200, "swim": 60},
+    "armor_class": {"total": 38, "touch": 6, "flat_footed": 38, "components": "+32 natural, -4 size"},
+    "base_attack": 34,
+    "grapple": 54,
+    "attacks": [
+      {"name": "Bite", "attack_bonus": "+38", "damage": "4d6+14", "crit_range": "19-20/x2", "damage_type": "Piercing"},
+      {"name": "2 Claws", "attack_bonus": "+36", "damage": "2d8+7", "damage_type": "Slashing"},
+      {"name": "2 Wings", "attack_bonus": "+33", "damage": "2d6+7", "damage_type": "Bludgeoning"},
+      {"name": "Tail Slap", "attack_bonus": "+33", "damage": "2d8+21", "damage_type": "Bludgeoning"}
+    ],
+    "special_attacks": [
+      "Breath Weapon (120-ft line acid, 22d4, DC 28 Reflex half)",
+      "Corrupt Water",
+      "Crush (DC 28 Reflex, 4d6+21)",
+      "Frightful Presence (240 ft., DC 28 Will)",
+      "Tail Sweep (DC 28 Reflex, 2d6+21)",
+      "Spells (CL 15)",
+      "Spell-Like Abilities (CL 15: darkness 3/day, insect plague 3/day, plant growth 1/day)"
+    ],
+    "special_qualities": [
+      "Blindsense 60 ft.",
+      "Darkvision 120 ft.",
+      "DR 15/Magic",
+      "Immunity to Acid",
+      "Keen Senses",
+      "Low-Light Vision",
+      "Spell Resistance 27",
+      "Water Breathing"
+    ],
+    "saves": {"fort": 25, "ref": 19, "will": 25},
+    "abilities": {"str": 38, "dex": 10, "con": 23, "int": 20, "wis": 21, "cha": 20},
+    "skills": {
+      "Bluff": 42,
+      "Concentration": 43,
+      "Hide": 25,
+      "Listen": 42,
+      "Move Silently": 37,
+      "Search": 42,
+      "Sense Motive": 42,
+      "Spot": 42,
+      "Swim": 58
+    },
+    "feats": [
+      "Alertness", "Cleave", "Combat Reflexes", "Flyby Attack",
+      "Great Cleave", "Hover", "Improved Initiative", "Multiattack",
+      "Power Attack", "Quicken Spell", "Snatch", "Spell Focus (Evocation)", "Wingover"
+    ],
+    "alignment": "Always Chaotic Evil",
+    "advancement": "None",
+    "dr": "15/Magic",
+    "sr": 27,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [
+      {
+        "effect_type": "frightful_presence",
+        "range_ft": 240,
+        "save_type": "Will",
+        "save_dc": 28,
+        "effect_on_fail": "Shaken (if <= dragon HD) or Panicked (if < 1/2 dragon HD)",
+        "effect_on_pass": null,
+        "suppress_conditions": ["Shaken", "Frightened", "Panicked"]
+      }
+    ],
+    "population_base": 1,
+    "allowed_biomes": ["Warm_Swamp", "Temperate_Swamp"],
+    "primary_biome": "Warm_Swamp",
+    "ecology_notes": "Black great wyrms are patient, malevolent forces that outlast civilizations, corroding kingdoms from the inside with centuries of hateful scheming.",
+    "lair_type": "Cave",
+    "expanded_metadata": {
+      "source_book": "Draconomicon",
+      "source_page": null,
+      "is_expanded": true,
+      "tags": ["dragon", "chromatic", "acid", "great_wyrm"]
+    }
+  },
+  {
+    "name": "White Dragon (Ancient)",
+    "cr": 17,
+    "size": "Huge",
+    "type": "Dragon",
+    "subtype": "Cold",
+    "hit_dice": "29d12+145",
+    "hp_avg": 334,
+    "initiative": 4,
+    "speed": {"land": 60, "burrow": 30, "fly": 200, "swim": 60},
+    "armor_class": {"total": 33, "touch": 8, "flat_footed": 33, "components": "+25 natural, -2 size"},
+    "base_attack": 29,
+    "grapple": 44,
+    "attacks": [
+      {"name": "Bite", "attack_bonus": "+34", "damage": "2d8+11", "crit_range": "19-20/x2", "damage_type": "Piercing"},
+      {"name": "2 Claws", "attack_bonus": "+32", "damage": "2d6+5", "damage_type": "Slashing"},
+      {"name": "2 Wings", "attack_bonus": "+29", "damage": "1d8+5", "damage_type": "Bludgeoning"},
+      {"name": "Tail Slap", "attack_bonus": "+29", "damage": "2d6+16", "damage_type": "Bludgeoning"}
+    ],
+    "special_attacks": [
+      "Breath Weapon (80-ft cone cold, 16d6, DC 23 Reflex half)",
+      "Frightful Presence (190 ft., DC 23 Will)",
+      "Spells (CL 7)",
+      "Spell-Like Abilities (CL 7: fog cloud 3/day, wall of ice 3/day, gust of wind 1/day)"
+    ],
+    "special_qualities": [
+      "Blindsense 60 ft.",
+      "Darkvision 120 ft.",
+      "DR 10/Magic",
+      "Icewalking",
+      "Immunity to Cold",
+      "Keen Senses",
+      "Low-Light Vision",
+      "Spell Resistance 21",
+      "Vulnerability to Fire"
+    ],
+    "saves": {"fort": 21, "ref": 16, "will": 19},
+    "abilities": {"str": 33, "dex": 10, "con": 21, "int": 18, "wis": 19, "cha": 18},
+    "skills": {
+      "Concentration": 37,
+      "Hide": 24,
+      "Listen": 36,
+      "Move Silently": 32,
+      "Search": 36,
+      "Spot": 36,
+      "Swim": 40
+    },
+    "feats": [
+      "Alertness", "Cleave", "Combat Reflexes", "Flyby Attack",
+      "Hover", "Improved Initiative", "Multiattack",
+      "Power Attack", "Snatch"
+    ],
+    "alignment": "Always Chaotic Evil",
+    "advancement": "See Dragon age categories",
+    "dr": "10/Magic",
+    "sr": 21,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": ["Fire"],
+    "alignment_weaknesses": [],
+    "passive_effects": [
+      {
+        "effect_type": "frightful_presence",
+        "range_ft": 190,
+        "save_type": "Will",
+        "save_dc": 23,
+        "effect_on_fail": "Shaken (if <= dragon HD) or Panicked (if < 1/2 dragon HD)",
+        "effect_on_pass": null,
+        "suppress_conditions": ["Shaken", "Frightened", "Panicked"]
+      }
+    ],
+    "population_base": 1,
+    "allowed_biomes": ["Cold_Mountain", "Cold_Plain"],
+    "primary_biome": "Cold_Mountain",
+    "ecology_notes": "Ancient whites are deceptively dangerous. Their dim cunning belies ages of predatory patience; they freeze prey alive and store victims in glacier caches for decades.",
+    "lair_type": "Cave",
+    "expanded_metadata": {
+      "source_book": "Draconomicon",
+      "source_page": null,
+      "is_expanded": true,
+      "tags": ["dragon", "chromatic", "cold", "ancient"]
+    }
+  },
+  {
+    "name": "White Dragon (Wyrm)",
+    "cr": 18,
+    "size": "Huge",
+    "type": "Dragon",
+    "subtype": "Cold",
+    "hit_dice": "32d12+192",
+    "hp_avg": 400,
+    "initiative": 4,
+    "speed": {"land": 60, "burrow": 30, "fly": 200, "swim": 60},
+    "armor_class": {"total": 35, "touch": 8, "flat_footed": 35, "components": "+27 natural, -2 size"},
+    "base_attack": 32,
+    "grapple": 48,
+    "attacks": [
+      {"name": "Bite", "attack_bonus": "+38", "damage": "2d8+12", "crit_range": "19-20/x2", "damage_type": "Piercing"},
+      {"name": "2 Claws", "attack_bonus": "+36", "damage": "2d6+6", "damage_type": "Slashing"},
+      {"name": "2 Wings", "attack_bonus": "+33", "damage": "1d8+6", "damage_type": "Bludgeoning"},
+      {"name": "Tail Slap", "attack_bonus": "+33", "damage": "2d6+18", "damage_type": "Bludgeoning"}
+    ],
+    "special_attacks": [
+      "Breath Weapon (90-ft cone cold, 18d6, DC 25 Reflex half)",
+      "Frightful Presence (205 ft., DC 25 Will)",
+      "Spells (CL 9)",
+      "Spell-Like Abilities (CL 9: fog cloud 3/day, wall of ice 3/day, ice storm 3/day, gust of wind 3/day)"
+    ],
+    "special_qualities": [
+      "Blindsense 60 ft.",
+      "Darkvision 120 ft.",
+      "DR 10/Magic",
+      "Icewalking",
+      "Immunity to Cold",
+      "Keen Senses",
+      "Low-Light Vision",
+      "Spell Resistance 23",
+      "Vulnerability to Fire"
+    ],
+    "saves": {"fort": 23, "ref": 18, "will": 21},
+    "abilities": {"str": 35, "dex": 10, "con": 23, "int": 19, "wis": 20, "cha": 19},
+    "skills": {
+      "Concentration": 40,
+      "Hide": 27,
+      "Listen": 39,
+      "Move Silently": 35,
+      "Search": 39,
+      "Spot": 39,
+      "Swim": 44
+    },
+    "feats": [
+      "Alertness", "Cleave", "Combat Reflexes", "Flyby Attack",
+      "Great Cleave", "Hover", "Improved Initiative", "Multiattack",
+      "Power Attack", "Quicken Spell", "Snatch"
+    ],
+    "alignment": "Always Chaotic Evil",
+    "advancement": "See Dragon age categories",
+    "dr": "10/Magic",
+    "sr": 23,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": ["Fire"],
+    "alignment_weaknesses": [],
+    "passive_effects": [
+      {
+        "effect_type": "frightful_presence",
+        "range_ft": 205,
+        "save_type": "Will",
+        "save_dc": 25,
+        "effect_on_fail": "Shaken (if <= dragon HD) or Panicked (if < 1/2 dragon HD)",
+        "effect_on_pass": null,
+        "suppress_conditions": ["Shaken", "Frightened", "Panicked"]
+      }
+    ],
+    "population_base": 1,
+    "allowed_biomes": ["Cold_Mountain", "Cold_Plain"],
+    "primary_biome": "Cold_Mountain",
+    "ecology_notes": "White wyrms haunt arctic wastelands where they serve as apex predators. Their dim intellect is offset by centuries of refined predatory instinct.",
+    "lair_type": "Cave",
+    "expanded_metadata": {
+      "source_book": "Draconomicon",
+      "source_page": null,
+      "is_expanded": true,
+      "tags": ["dragon", "chromatic", "cold", "wyrm"]
+    }
+  },
+  {
+    "name": "White Dragon (Great Wyrm)",
+    "cr": 20,
+    "size": "Gargantuan",
+    "type": "Dragon",
+    "subtype": "Cold",
+    "hit_dice": "35d12+245",
+    "hp_avg": 472,
+    "initiative": 4,
+    "speed": {"land": 60, "burrow": 30, "fly": 250, "swim": 60},
+    "armor_class": {"total": 36, "touch": 6, "flat_footed": 36, "components": "+30 natural, -4 size"},
+    "base_attack": 35,
+    "grapple": 54,
+    "attacks": [
+      {"name": "Bite", "attack_bonus": "+39", "damage": "4d6+13", "crit_range": "19-20/x2", "damage_type": "Piercing"},
+      {"name": "2 Claws", "attack_bonus": "+37", "damage": "2d8+6", "damage_type": "Slashing"},
+      {"name": "2 Wings", "attack_bonus": "+34", "damage": "2d6+6", "damage_type": "Bludgeoning"},
+      {"name": "Tail Slap", "attack_bonus": "+34", "damage": "2d8+19", "damage_type": "Bludgeoning"}
+    ],
+    "special_attacks": [
+      "Breath Weapon (100-ft cone cold, 20d6, DC 27 Reflex half)",
+      "Crush (DC 27 Reflex, 4d6+19)",
+      "Frightful Presence (220 ft., DC 27 Will)",
+      "Tail Sweep (DC 27 Reflex, 2d6+19)",
+      "Spells (CL 13)",
+      "Spell-Like Abilities (CL 13: fog cloud 3/day, wall of ice 3/day, ice storm 3/day, control weather 1/day, polar ray 3/day)"
+    ],
+    "special_qualities": [
+      "Blindsense 60 ft.",
+      "Darkvision 120 ft.",
+      "DR 15/Magic",
+      "Icewalking",
+      "Immunity to Cold",
+      "Keen Senses",
+      "Low-Light Vision",
+      "Spell Resistance 25",
+      "Vulnerability to Fire"
+    ],
+    "saves": {"fort": 25, "ref": 20, "will": 23},
+    "abilities": {"str": 37, "dex": 10, "con": 25, "int": 20, "wis": 21, "cha": 20},
+    "skills": {
+      "Concentration": 44,
+      "Hide": 29,
+      "Listen": 43,
+      "Move Silently": 39,
+      "Search": 43,
+      "Spot": 43,
+      "Swim": 48
+    },
+    "feats": [
+      "Alertness", "Cleave", "Combat Reflexes", "Flyby Attack",
+      "Great Cleave", "Hover", "Improved Initiative", "Maximize Spell",
+      "Multiattack", "Power Attack", "Quicken Spell", "Snatch", "Wingover"
+    ],
+    "alignment": "Always Chaotic Evil",
+    "advancement": "None",
+    "dr": "15/Magic",
+    "sr": 25,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": ["Fire"],
+    "alignment_weaknesses": [],
+    "passive_effects": [
+      {
+        "effect_type": "frightful_presence",
+        "range_ft": 220,
+        "save_type": "Will",
+        "save_dc": 27,
+        "effect_on_fail": "Shaken (if <= dragon HD) or Panicked (if < 1/2 dragon HD)",
+        "effect_on_pass": null,
+        "suppress_conditions": ["Shaken", "Frightened", "Panicked"]
+      }
+    ],
+    "population_base": 1,
+    "allowed_biomes": ["Cold_Mountain", "Cold_Plain"],
+    "primary_biome": "Cold_Mountain",
+    "ecology_notes": "White great wyrms are forces of elemental winter, capable of lowering regional temperatures over hundreds of miles. They hoard objects of sentimental value alongside treasure.",
+    "lair_type": "Cave",
+    "expanded_metadata": {
+      "source_book": "Draconomicon",
+      "source_page": null,
+      "is_expanded": true,
+      "tags": ["dragon", "chromatic", "cold", "great_wyrm"]
+    }
+  }
+]

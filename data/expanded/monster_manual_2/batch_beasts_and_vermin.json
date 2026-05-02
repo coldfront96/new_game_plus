@@ -1,0 +1,171 @@
+[
+  {
+    "name": "Dire Shark",
+    "cr": 9,
+    "size": "Gargantuan",
+    "type": "Animal",
+    "subtype": "Aquatic",
+    "hit_dice": "18d8+90",
+    "hp_avg": 171,
+    "initiative": 2,
+    "speed": {"swim": 60},
+    "armor_class": {"total": 17, "touch": 8, "flat_footed": 15, "components": "+13 natural, +2 Dex, -4 size"},
+    "base_attack": 13,
+    "grapple": 30,
+    "attacks": [
+      {"name": "Bite", "attack_bonus": "+18", "damage": "4d8+15", "crit_range": "19-20/x2", "damage_type": "Piercing"}
+    ],
+    "special_attacks": [
+      "Improved Grab (on hit with bite, may initiate grapple as free action)",
+      "Swallow Whole (on grapple, Medium or smaller creatures; 4d8+15 bludgeoning per round inside)"
+    ],
+    "special_qualities": [
+      "Aquatic Subtype (cannot survive out of water)",
+      "Blindsense 30 ft.",
+      "Keen Scent (can smell blood at up to 1 mile)",
+      "Low-Light Vision"
+    ],
+    "saves": {"fort": 16, "ref": 13, "will": 7},
+    "abilities": {"str": 30, "dex": 15, "con": 21, "int": 1, "wis": 12, "cha": 2},
+    "skills": {
+      "Listen": 11,
+      "Spot": 11,
+      "Swim": 22
+    },
+    "feats": ["Alertness", "Improved Initiative", "Iron Will", "Weapon Focus (Bite)"],
+    "alignment": "Always Neutral",
+    "advancement": "19-26 HD (Gargantuan)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 3,
+    "allowed_biomes": ["Warm_Aquatic", "Temperate_Aquatic"],
+    "primary_biome": "Warm_Aquatic",
+    "ecology_notes": "Dire sharks are enormous prehistoric predators that dwarf even the largest mundane sharks. They can swallow humanoid creatures whole and are drawn to blood over great distances. Coastal communities that encounter dire sharks rarely escape unscathed.",
+    "lair_type": "None",
+    "expanded_metadata": {
+      "source_book": "Monster Manual II",
+      "source_page": null,
+      "is_expanded": true,
+      "tags": ["animal", "aquatic", "shark", "dire", "swallow_whole"]
+    }
+  },
+  {
+    "name": "Dire Eel",
+    "cr": 5,
+    "size": "Large",
+    "type": "Animal",
+    "subtype": "Aquatic",
+    "hit_dice": "8d8+24",
+    "hp_avg": 60,
+    "initiative": 3,
+    "speed": {"swim": 40},
+    "armor_class": {"total": 16, "touch": 12, "flat_footed": 13, "components": "+5 natural, +3 Dex, -1 size"}
+    ,
+    "base_attack": 6,
+    "grapple": 14,
+    "attacks": [
+      {"name": "Bite", "attack_bonus": "+9", "damage": "2d6+6", "crit_range": "19-20/x2", "damage_type": "Piercing"}
+    ],
+    "special_attacks": [
+      "Constrict (on successful grapple: 2d8+9 Bludgeoning per round)",
+      "Electric Shock (DC 15 Fort, 2d6 electricity on a successful bite, 1/round)"
+    ],
+    "special_qualities": [
+      "Aquatic Subtype",
+      "Electricity Immunity",
+      "Low-Light Vision",
+      "Scent"
+    ],
+    "saves": {"fort": 9, "ref": 9, "will": 3},
+    "abilities": {"str": 18, "dex": 16, "con": 16, "int": 1, "wis": 12, "cha": 2},
+    "skills": {
+      "Escape Artist": 11,
+      "Listen": 8,
+      "Spot": 8,
+      "Swim": 16
+    },
+    "feats": ["Alertness", "Improved Initiative", "Weapon Focus (Bite)"],
+    "alignment": "Always Neutral",
+    "advancement": "9-14 HD (Large)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 8,
+    "allowed_biomes": ["Temperate_Aquatic", "Cold_Aquatic", "Underground"],
+    "primary_biome": "Temperate_Aquatic",
+    "ecology_notes": "Dire eels are massive serpentine fish with powerful electric discharges. They are ambush predators that lurk in underwater caves and coastal reef tunnels, shocking prey into paralysis before constricting them to death.",
+    "lair_type": "Cave",
+    "expanded_metadata": {
+      "source_book": "Monster Manual II",
+      "source_page": null,
+      "is_expanded": true,
+      "tags": ["animal", "aquatic", "eel", "dire", "electricity", "constrict"]
+    }
+  },
+  {
+    "name": "Megapede",
+    "cr": 4,
+    "size": "Large",
+    "type": "Vermin",
+    "subtype": null,
+    "hit_dice": "7d8+21",
+    "hp_avg": 52,
+    "initiative": 1,
+    "speed": {"land": 40, "climb": 30},
+    "armor_class": {"total": 17, "touch": 10, "flat_footed": 16, "components": "+8 natural, +1 Dex, -1 size"}
+    ,
+    "base_attack": 5,
+    "grapple": 11,
+    "attacks": [
+      {"name": "Bite", "attack_bonus": "+6", "damage": "2d6+3", "damage_type": "Piercing"},
+      {"name": "Sting", "attack_bonus": "+1", "damage": "1d8+1", "damage_type": "Piercing"}
+    ],
+    "special_attacks": [
+      "Poison (Bite and Sting: DC 16 Fort, 1d4 Dex / 2d4 Dex)"
+    ],
+    "special_qualities": [
+      "Darkvision 60 ft.",
+      "Mindless (immune to mind-affecting effects)",
+      "Scent",
+      "Tremorsense 30 ft.",
+      "Vermin Traits"
+    ],
+    "saves": {"fort": 8, "ref": 3, "will": 2},
+    "abilities": {"str": 15, "dex": 13, "con": 16, "int": null, "wis": 10, "cha": 2},
+    "skills": {
+      "Climb": 14,
+      "Hide": 5,
+      "Spot": 4
+    },
+    "feats": ["Alertness", "Weapon Focus (Bite)"],
+    "alignment": "Always Neutral",
+    "advancement": "8-13 HD (Large)",
+    "dr": null,
+    "sr": null,
+    "regen": null,
+    "fast_heal": null,
+    "elemental_weaknesses": [],
+    "alignment_weaknesses": [],
+    "passive_effects": [],
+    "population_base": 10,
+    "allowed_biomes": ["Underground", "Underdark", "Temperate_Forest", "Warm_Forest"],
+    "primary_biome": "Underground",
+    "ecology_notes": "Megapedes are giant centipede vermin standing waist-high and stretching over twelve feet long. They hunt using tremorsense and rely on powerful venom to rapidly incapacitate prey. In the underdark they are regarded as major hazards even by experienced delvers.",
+    "lair_type": "Cave",
+    "expanded_metadata": {
+      "source_book": "Monster Manual II",
+      "source_page": null,
+      "is_expanded": true,
+      "tags": ["vermin", "megapede", "centipede", "poison", "underdark"]
+    }
+  }
+]
