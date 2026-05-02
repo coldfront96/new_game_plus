@@ -77,3 +77,67 @@ def test_custom_data_dir_returns_empty_context(tmp_path: Path):
     msgs = builder.build(task)
     # Empty dirs → no SRD content injected at all.
     assert "Reference SRD context" not in msgs[0]["content"]
+
+
+# ---------------------------------------------------------------------------
+# IP-safety mode
+# ---------------------------------------------------------------------------
+
+class TestIpSafeMode:
+    """ip_safe_mode=True injects the Clean-Room Translation Protocol reminder
+    into content-generation prompts but not into non-content tasks."""
+
+    _CONTENT_TYPES = [
+        TaskType.GENERATE_ENCOUNTER.value,
+        TaskType.GENERATE_DUNGEON.value,
+        TaskType.ROLL_NPC_STATS.value,
+        TaskType.WRITE_LORE.value,
+        TaskType.CUSTOM.value,
+    ]
+
+    def test_ip_safe_on_by_default(self):
+        builder = PromptBuilder()
+        assert builder.ip_safe_mode is True
+
+    def test_reminder_injected_for_encounter_task(self):
+        builder = PromptBuilder(ip_safe_mode=True)
+        task = _make_task(task_type=TaskType.GENERATE_ENCOUNTER.value)
+        msgs = builder.build(task)
+        system = msgs[0]["content"]
+        assert "IP SAFETY" in system
+        assert "Mind Flayer" in system
+        assert "Beholder" in system
+
+    def test_reminder_injected_for_npc_stats_task(self):
+        builder = PromptBuilder(ip_safe_mode=True)
+        task = _make_task(task_type=TaskType.ROLL_NPC_STATS.value)
+        system = builder.build(task)[0]["content"]
+        assert "IP SAFETY" in system
+
+    def test_reminder_injected_for_write_lore_task(self):
+        builder = PromptBuilder(ip_safe_mode=True)
+        task = _make_task(task_type=TaskType.WRITE_LORE.value)
+        system = builder.build(task)[0]["content"]
+        assert "IP SAFETY" in system
+
+    def test_reminder_not_injected_when_mode_off(self):
+        builder = PromptBuilder(ip_safe_mode=False)
+        for tt in self._CONTENT_TYPES:
+            task = _make_task(task_type=tt)
+            system = builder.build(task)[0]["content"]
+            assert "IP SAFETY" not in system, f"Unexpected reminder for {tt}"
+
+    def test_reminder_absent_for_code_generation(self):
+        """CODE_GENERATION is not a content-generation task — no reminder."""
+        builder = PromptBuilder(ip_safe_mode=True)
+        task = _make_task(task_type=TaskType.CODE_GENERATION.value)
+        system = builder.build(task)[0]["content"]
+        assert "IP SAFETY" not in system
+
+    def test_srd_context_and_reminder_coexist(self):
+        """Reminder and SRD context block should both appear in the same system message."""
+        builder = PromptBuilder(ip_safe_mode=True)
+        task = _make_task(task_type=TaskType.ROLL_NPC_STATS.value)
+        system = builder.build(task)[0]["content"]
+        assert "IP SAFETY" in system
+        assert "Reference SRD context" in system

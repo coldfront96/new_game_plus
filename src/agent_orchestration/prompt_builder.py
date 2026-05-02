@@ -34,6 +34,33 @@ from src.rules_engine import srd_loader
 # Approximate tokens-per-character ratio for English prose (very rough).
 _TOKENS_PER_CHAR: float = 0.25
 
+# Task types that can generate named creatures/characters — must receive the
+# IP-safety reminder so the model never echoes WotC Product Identity names.
+_IP_SAFE_TASK_TYPES: frozenset[str] = frozenset({
+    TaskType.ROLL_NPC_STATS.value,
+    TaskType.GENERATE_ENCOUNTER.value,
+    TaskType.GENERATE_DUNGEON.value,
+    TaskType.WRITE_LORE.value,
+    TaskType.CUSTOM.value,
+})
+
+# Injected verbatim when ip_safe_mode=True for the above task types.
+# Mirrors Section 3 of data/expanded/AUTHORING_GUIDELINES.md so the LLM
+# receives the same constraint regardless of which data directory is loaded.
+_IP_SAFE_REMINDER: str = (
+    "CONTENT COMPLIANCE — IP SAFETY (mandatory):\n"
+    "Do NOT use WotC Product Identity names: Beholder, Mind Flayer, "
+    "Displacer Beast, Githyanki, Githzerai, Neogi, Illithid, or any other "
+    "name designated as WotC PI in published sourcebooks.\n"
+    "If the requested archetype matches a WotC PI creature, invent a wholly "
+    "original name, appearance, and lore — copy only the mechanical stat "
+    "block — and include "
+    '`"translated": true, "source_archetype": "<type>"` '
+    "inside `expanded_metadata`.\n"
+    "SRD-compliant and public-domain creatures (Dragon, Hydra, Goblin, "
+    "Skeleton, Giant, Griffon, etc.) may keep their canonical names."
+)
+
 
 def _approx_token_count(text: str) -> int:
     """Return an approximate token count for *text* (≈ chars / 4)."""
@@ -70,6 +97,7 @@ class PromptBuilder:
         "Every response must be valid JSON, follow the requested schema "
         "exactly, and stay strictly within D&D 3.5e SRD rules."
     )
+    ip_safe_mode: bool = True
     _context_cache: Dict[str, Any] = field(default_factory=dict)
 
     # ------------------------------------------------------------------
@@ -170,6 +198,8 @@ class PromptBuilder:
         trimmed = self._trim_context_to_budget(context, budget)
 
         system_parts = [self.system_prefix.strip()]
+        if self.ip_safe_mode and task.task_type in _IP_SAFE_TASK_TYPES:
+            system_parts.append(_IP_SAFE_REMINDER)
         if trimmed:
             system_parts.append(
                 "Reference SRD context (JSON):\n"

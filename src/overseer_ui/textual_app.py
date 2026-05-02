@@ -421,6 +421,9 @@ class OverseerApp(App[None]):
         self._dialogue_panel: Optional[DialoguePanel] = None
         self._streaming_task: Optional[asyncio.Task] = None  # type: ignore[type-arg]
         self._world_tick: int = 0
+        # Live queue polling: track last-seen length so we only write a log
+        # line when something actually changes.
+        self._last_queue_len: int = 0
 
     def compose(self) -> ComposeResult:
         yield Header(show_clock=True)
@@ -455,7 +458,11 @@ class OverseerApp(App[None]):
             "[green]play[/green]  chunk <cx> <cz>  quit"
         )
         log.write("")
+        self._last_queue_len = len(self.queue)
         self._display_pending()
+        # Poll the queue every 2 s so LLMTaskRunner-injected tasks surface
+        # automatically without requiring a manual 'l' command.
+        self.set_interval(2.0, self._poll_queue)
 
     # ------------------------------------------------------------------
     # Panel 1 — viewport (PH2-013: Fog-of-War aware rendering)
@@ -498,6 +505,25 @@ class OverseerApp(App[None]):
     # ------------------------------------------------------------------
     # Panel 2 — task display helpers
     # ------------------------------------------------------------------
+
+    async def _poll_queue(self) -> None:
+        """Periodic callback: refresh the pending-task display when the queue changes.
+
+        Called every 2 s by Textual's interval scheduler (set in on_mount).
+        Writes a notification line only when the queue length has changed so
+        the log isn't flooded during quiet periods.
+        """
+        current = len(self.queue)
+        if current != self._last_queue_len:
+            delta = current - self._last_queue_len
+            self._last_queue_len = current
+            log = self.query_one("#log", RichLog)
+            if delta > 0:
+                log.write(
+                    f"[bold yellow]⚡ {delta} new task(s) queued "
+                    f"— {current} pending[/bold yellow]"
+                )
+            self._display_pending()
 
     def _display_pending(self) -> None:
         log = self.query_one("#log", RichLog)
