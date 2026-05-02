@@ -1,6 +1,6 @@
 [
   {
-    "name": "Clockwork Horror, Bronze",
+    "name": "Forge Tyrant, Bronze-Caste",
     "cr": 2,
     "size": "Tiny",
     "type": "Construct",
@@ -18,7 +18,7 @@
     ],
     "special_attacks": [
       "Electric Discharge (ranged touch, 1d6 electricity, 30 ft., DC 11 Reflex half)",
-      "Metal Conversion (can convert 1 lb. of nonmagical metal per round into construction material for new Bronze Horrors)"
+      "Metal Conversion (can convert 1 lb. of nonmagical metal per round into construction material for new Bronze-Caste units)"
     ],
     "special_qualities": [
       "Construct Traits",
@@ -26,7 +26,7 @@
       "DR 2/Adamantine",
       "Immunity to Electricity",
       "Low-Light Vision",
-      "Swarm Coordination (gains +1 morale bonus to attack and damage for each other clockwork horror within 30 ft., max +5)"
+      "Swarm Coordination (gains +1 morale bonus to attack and damage for each other forge tyrant within 30 ft., max +5)"
     ],
     "saves": {"fort": 0, "ref": 3, "will": 0},
     "abilities": {"str": 11, "dex": 17, "con": null, "int": 8, "wis": 11, "cha": 4},
@@ -47,17 +47,19 @@
     "population_base": 40,
     "allowed_biomes": ["Underground", "Any_Ruin"],
     "primary_biome": "Underground",
-    "ecology_notes": "Bronze Horrors are the smallest and most numerous clockwork horrors, serving as scouts and workers. They harvest metal from their environment to fuel the construction of higher-tier horrors.",
+    "ecology_notes": "Bronze-Caste Forge Tyrants are the smallest and most numerous tier in the hive hierarchy, deployed as scouts and harvesting drones. Their primary function is converting salvaged metal from the surrounding environment into raw construction stock for higher-caste fabrication.",
     "lair_type": "Cave",
     "expanded_metadata": {
       "source_book": "Monster Manual II",
       "source_page": null,
       "is_expanded": true,
-      "tags": ["construct", "clockwork_horror", "electricity", "bronze"]
+      "translated": true,
+      "source_archetype": "construct",
+      "tags": ["construct", "forge_tyrant", "electricity", "bronze"]
     }
   },
   {
-    "name": "Clockwork Horror, Silver",
+    "name": "Forge Tyrant, Silver-Caste",
     "cr": 4,
     "size": "Small",
     "type": "Construct",
@@ -83,7 +85,7 @@
       "DR 5/Adamantine",
       "Immunity to Electricity",
       "Low-Light Vision",
-      "Swarm Coordination (+1 morale per clockwork horror within 30 ft., max +5)"
+      "Swarm Coordination (+1 morale per forge tyrant within 30 ft., max +5)"
     ],
     "saves": {"fort": 1, "ref": 3, "will": 1},
     "abilities": {"str": 13, "dex": 15, "con": null, "int": 10, "wis": 12, "cha": 5},
@@ -105,17 +107,19 @@
     "population_base": 20,
     "allowed_biomes": ["Underground", "Any_Ruin"],
     "primary_biome": "Underground",
-    "ecology_notes": "Silver Horrors manage the conversion and refinement of metal ore into usable construction material. They coordinate Bronze Horrors and can generate localized gravity pulses to pin intruders.",
+    "ecology_notes": "Silver-Caste Forge Tyrants oversee the smelting and refinement of harvested ore into construction-grade stock. They direct Bronze-Caste units and can generate localised gravity pulses to pin intruders long enough for the swarm to respond.",
     "lair_type": "Cave",
     "expanded_metadata": {
       "source_book": "Monster Manual II",
       "source_page": null,
       "is_expanded": true,
-      "tags": ["construct", "clockwork_horror", "electricity", "silver"]
+      "translated": true,
+      "source_archetype": "construct",
+      "tags": ["construct", "forge_tyrant", "electricity", "silver"]
     }
   },
   {
-    "name": "Clockwork Horror, Electrum",
+    "name": "Forge Tyrant, Electrum-Caste",
     "cr": 6,
     "size": "Medium",
     "type": "Construct",
@@ -164,17 +168,19 @@
     "population_base": 10,
     "allowed_biomes": ["Underground", "Any_Ruin"],
     "primary_biome": "Underground",
-    "ecology_notes": "Electrum Horrors are mid-level commanders in the clockwork horror hierarchy, directing Bronze and Silver Horrors while also functioning as capable combatants.",
+    "ecology_notes": "Electrum-Caste Forge Tyrants are mid-tier commanders that direct Bronze and Silver-Caste units while serving as capable combatants in their own right. Their chained lightning discharge can sweep corridors of multiple intruders in a single arc.",
     "lair_type": "Cave",
     "expanded_metadata": {
       "source_book": "Monster Manual II",
       "source_page": null,
       "is_expanded": true,
-      "tags": ["construct", "clockwork_horror", "electricity", "electrum"]
+      "translated": true,
+      "source_archetype": "construct",
+      "tags": ["construct", "forge_tyrant", "electricity", "electrum"]
     }
   },
   {
-    "name": "Clockwork Horror, Gold",
+    "name": "Forge Tyrant, Gold-Caste",
     "cr": 8,
     "size": "Medium",
     "type": "Construct",
@@ -225,17 +231,19 @@
     "population_base": 4,
     "allowed_biomes": ["Underground", "Any_Ruin"],
     "primary_biome": "Underground",
-    "ecology_notes": "Gold Horrors serve as master engineers and generals, overseeing entire hive complexes. One Gold Horror can coordinate thousands of lower-tier clockwork horrors simultaneously through mechanical signal pulses.",
+    "ecology_notes": "Gold-Caste Forge Tyrants function as master engineers and battlefield generals, overseeing entire hive complexes. A single Gold-Caste unit can synchronise thousands of lower-caste units simultaneously through mechanical signal pulse networks built into the hive walls.",
     "lair_type": "Cave",
     "expanded_metadata": {
       "source_book": "Monster Manual II",
       "source_page": null,
       "is_expanded": true,
-      "tags": ["construct", "clockwork_horror", "electricity", "gold"]
+      "translated": true,
+      "source_archetype": "construct",
+      "tags": ["construct", "forge_tyrant", "electricity", "gold"]
     }
   },
   {
-    "name": "Clockwork Horror, Adamantine",
+    "name": "Forge Tyrant, Adamantine-Caste",
     "cr": 10,
     "size": "Large",
     "type": "Construct",
@@ -254,7 +262,7 @@
     "special_attacks": [
       "Electric Cannon (ranged touch, 5d6 electricity, 80 ft., DC 21 Reflex half)",
       "Mass Disruption (60-ft radius electricity burst, 6d6, DC 21 Reflex half, usable 1/day)",
-      "Overclock (as Gold Horror, usable 5/day)"
+      "Overclock (as Gold-Caste, usable 5/day)"
     ],
     "special_qualities": [
       "Construct Traits",
@@ -286,13 +294,15 @@
     "population_base": 1,
     "allowed_biomes": ["Underground", "Any_Ruin"],
     "primary_biome": "Underground",
-    "ecology_notes": "The Adamantine Horror is the pinnacle of the clockwork horror hierarchy — a singular intelligence that serves as the living factory-mind for entire clockwork horror civilizations. Destroying one causes all subordinate horrors to enter a frenzied state for 1d4 hours.",
+    "ecology_notes": "The Adamantine-Caste is the singular apex intelligence of the entire Forge Tyrant hierarchy — a living factory-mind whose destruction sends all lower-caste units into a frenzied rampage for 1d4 hours as signal coherence collapses across the hive network.",
     "lair_type": "Cave",
     "expanded_metadata": {
       "source_book": "Monster Manual II",
       "source_page": null,
       "is_expanded": true,
-      "tags": ["construct", "clockwork_horror", "electricity", "adamantine"]
+      "translated": true,
+      "source_archetype": "construct",
+      "tags": ["construct", "forge_tyrant", "electricity", "adamantine"]
     }
   },
   {

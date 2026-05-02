@@ -1,6 +1,6 @@
 [
   {
-    "name": "Death Knight",
+    "name": "Duskfall Warlord",
     "cr": 17,
     "size": "Medium",
     "type": "Undead",
@@ -9,7 +9,7 @@
     "hp_avg": 130,
     "initiative": 1,
     "speed": {"land": 20},
-    "armor_class": {"total": 30, "touch": 11, "flat_footed": 29, "components": "+1 Dex, +19 full plate +5 (death knight)"},
+    "armor_class": {"total": 30, "touch": 11, "flat_footed": 29, "components": "+1 Dex, +19 full plate +5"},
     "base_attack": 10,
     "grapple": 13,
     "attacks": [
@@ -71,17 +71,19 @@
     "population_base": 1,
     "allowed_biomes": ["Underground", "Underdark", "Temperate_Plain", "Warm_Plain"],
     "primary_biome": "Underground",
-    "ecology_notes": "Death Knights are the most feared undead warriors — paladins who fell from grace and were transformed by dark powers into immortal champions of evil. Each retains memories and skills from its mortal life, making them cunning tacticians as well as devastating combatants.",
+    "ecology_notes": "Duskfall Warlords are the most feared of undead champions — warriors who pledged their lives to dark powers and were remade in undeath as immortal instruments of conquest. Each carries the full martial discipline of its former life, making it a cunning tactician as well as an overwhelming combatant.",
     "lair_type": "Dungeon",
     "expanded_metadata": {
       "source_book": "Monster Manual II",
       "source_page": null,
       "is_expanded": true,
-      "tags": ["undead", "death_knight", "champion", "spellcaster", "fear"]
+      "translated": true,
+      "source_archetype": "undead",
+      "tags": ["undead", "duskfall_warlord", "champion", "spellcaster", "fear"]
     }
   },
   {
-    "name": "Bone Naga",
+    "name": "Crypt Naga",
     "cr": 8,
     "size": "Large",
     "type": "Undead",
@@ -90,8 +92,7 @@
     "hp_avg": 97,
     "initiative": 2,
     "speed": {"land": 40},
-    "armor_class": {"total": 16, "touch": 11, "flat_footed": 14, "components": "+7 natural, +2 Dex, -1 size"}
-    ,
+    "armor_class": {"total": 16, "touch": 11, "flat_footed": 14, "components": "+7 natural, +2 Dex, -1 size"},
     "base_attack": 7,
     "grapple": 14,
     "attacks": [
@@ -135,17 +136,19 @@
     "population_base": 3,
     "allowed_biomes": ["Underground", "Underdark", "Temperate_Desert"],
     "primary_biome": "Underground",
-    "ecology_notes": "Bone nagas are the undead remains of dark nagas, slain and risen to serve as sentinels for powerful necromancers. They retain the dark naga's spellcasting ability and cunning but are now driven by servile loyalty to their creator.",
+    "ecology_notes": "Crypt nagas are the risen husks of nagas slain in ancient tomb-complexes, resurrected by residual necromantic energy into servile undeath. They retain the living naga's spellcasting cunning but are now bound by obligation to guard the vault where they fell.",
     "lair_type": "Dungeon",
     "expanded_metadata": {
       "source_book": "Monster Manual II",
       "source_page": null,
       "is_expanded": true,
-      "tags": ["undead", "naga", "bone_naga", "spellcaster", "poison"]
+      "translated": true,
+      "source_archetype": "undead",
+      "tags": ["undead", "naga", "crypt_naga", "spellcaster", "poison"]
     }
   },
   {
-    "name": "Spellstitched Zombie",
+    "name": "Runic Zombie",
     "cr": 3,
     "size": "Medium",
     "type": "Undead",
@@ -186,17 +189,19 @@
     "population_base": 20,
     "allowed_biomes": ["Underground", "Underdark", "Temperate_Plain", "Warm_Plain"],
     "primary_biome": "Underground",
-    "ecology_notes": "Spellstitched zombies are standard zombies that have had magical scrolls and sigils literally stitched into their flesh by a necromancer, granting them limited spell-like abilities. They are more dangerous than ordinary zombies but no more intelligent.",
+    "ecology_notes": "Runic zombies are animated corpses into which a necromancer has carved binding glyphs and channelled residual spell-energy, granting them a handful of magical abilities beyond those of a standard zombie. Their greater threat comes at no cost to the necromancer's control — a rune-bound corpse obeys as mindlessly as any.",
     "lair_type": "Dungeon",
     "expanded_metadata": {
       "source_book": "Monster Manual II",
       "source_page": null,
       "is_expanded": true,
-      "tags": ["undead", "zombie", "spellstitched", "template"]
+      "translated": true,
+      "source_archetype": "undead",
+      "tags": ["undead", "zombie", "runic", "template"]
     }
   },
   {
-    "name": "Spellstitched Skeleton",
+    "name": "Runic Skeleton",
     "cr": 2,
     "size": "Medium",
     "type": "Undead",
@@ -205,8 +210,7 @@
     "hp_avg": 16,
     "initiative": 2,
     "speed": {"land": 40},
-    "armor_class": {"total": 15, "touch": 12, "flat_footed": 13, "components": "+2 natural, +2 Dex, +1 light shield"}
-    ,
+    "armor_class": {"total": 15, "touch": 12, "flat_footed": 13, "components": "+2 natural, +2 Dex, +1 light shield"},
     "base_attack": 1,
     "grapple": 2,
     "attacks": [
@@ -239,13 +243,15 @@
     "population_base": 25,
     "allowed_biomes": ["Underground", "Underdark", "Temperate_Plain", "Warm_Plain"],
     "primary_biome": "Underground",
-    "ecology_notes": "Spellstitched skeletons are ordinary animated skeletons whose bone plates have been carved with arcane runes and reinforced with scrollwork, granting them a handful of spell-like abilities. They are more effective minions than standard skeletons when a necromancer needs a little magical sting in their undead guards.",
+    "ecology_notes": "Runic skeletons are animated bone frames whose plates have been inscribed with arcane sigils and reinforced with channelled spell-energy, granting them minor magical capabilities beyond the standard skeleton. A necromancer who needs a touch of magical threat from cheap minions will invest in a runic skeleton rather than summoning a more costly creature.",
     "lair_type": "Dungeon",
     "expanded_metadata": {
       "source_book": "Monster Manual II",
       "source_page": null,
       "is_expanded": true,
-      "tags": ["undead", "skeleton", "spellstitched", "template"]
+      "translated": true,
+      "source_archetype": "undead",
+      "tags": ["undead", "skeleton", "runic", "template"]
     }
   }
 ]
