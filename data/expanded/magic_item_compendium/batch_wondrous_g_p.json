@@ -1,0 +1,159 @@
+[
+  {
+    "name": "Gauntlets of Weapon Expertise",
+    "category": "wondrous",
+    "slot": "hands",
+    "caster_level": 6,
+    "price_gp": 10000,
+    "weight_lb": 1.0,
+    "bonuses": [
+      {"bonus_type": "competence", "stat": "attack", "value": 1}
+    ],
+    "aura": "moderate transmutation",
+    "description": "These heavy gauntlets grant a +1 competence bonus on all attack rolls. Additionally, once per day as a free action the wearer may designate a specific weapon; for 1 minute, attacks with that weapon deal an additional 1d6 damage.",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": null,
+      "is_expanded": true,
+      "tags": ["wondrous", "hands", "attack", "weapon", "competence"]
+    }
+  },
+  {
+    "name": "Gloves of the Starry Sky",
+    "category": "wondrous",
+    "slot": "hands",
+    "caster_level": 5,
+    "price_gp": 7500,
+    "weight_lb": 0.5,
+    "bonuses": [],
+    "aura": "faint evocation",
+    "description": "These midnight-blue gloves allow the wearer to cast dancing lights and flare at will (CL 1). Three times per day, the wearer can cast faerie fire (CL 5). Once per day, the wearer can cast starfall (as searing light but deals cold damage, CL 5).",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": null,
+      "is_expanded": true,
+      "tags": ["wondrous", "hands", "light", "cold", "spell_like"]
+    }
+  },
+  {
+    "name": "Helm of Brilliance",
+    "category": "wondrous",
+    "slot": "head",
+    "caster_level": 13,
+    "price_gp": 125000,
+    "weight_lb": 3.0,
+    "bonuses": [],
+    "aura": "strong evocation",
+    "description": "This impressive helm is set with 10 diamonds, 20 rubies, 30 fire opals, and 40 opals. When fully charged, the helm grants fire resistance 30, allows the wearer to cast prismatic spray (1/day), daylight (3/day), fireball (3/day at CL 15), and color spray (3/day). The helm loses gems as charges are spent. When all gems are gone, the helm becomes non-magical.",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": null,
+      "is_expanded": true,
+      "tags": ["wondrous", "head", "fire", "light", "gem", "charges"]
+    }
+  },
+  {
+    "name": "Helm of Comprehend Languages and Read Magic",
+    "category": "wondrous",
+    "slot": "head",
+    "caster_level": 4,
+    "price_gp": 5200,
+    "weight_lb": 3.0,
+    "bonuses": [],
+    "aura": "faint divination",
+    "description": "This ornate helm grants its wearer the ability to comprehend languages and read magic as continuous effects (as the spells, both at CL 4).",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": null,
+      "is_expanded": true,
+      "tags": ["wondrous", "head", "language", "divination", "utility"]
+    }
+  },
+  {
+    "name": "Mantle of Spell Resistance",
+    "category": "wondrous",
+    "slot": "shoulders",
+    "caster_level": 9,
+    "price_gp": 90000,
+    "weight_lb": 1.0,
+    "bonuses": [
+      {"bonus_type": "inherent", "stat": "spell_resistance", "value": 21}
+    ],
+    "aura": "strong abjuration",
+    "description": "This elegant silver-thread mantle grants its wearer spell resistance 21.",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": null,
+      "is_expanded": true,
+      "tags": ["wondrous", "shoulders", "spell_resistance", "abjuration"]
+    }
+  },
+  {
+    "name": "Mantle of the Fiery Spirit",
+    "category": "wondrous",
+    "slot": "shoulders",
+    "caster_level": 10,
+    "price_gp": 26000,
+    "weight_lb": 1.0,
+    "bonuses": [],
+    "aura": "moderate evocation",
+    "description": "This crimson mantle grants fire resistance 10 as a continuous effect. Three times per day, the wearer can cause the mantle to erupt in flames, dealing 2d6 fire damage to all creatures within 5 feet (DC 16 Reflex half). Once per day, the wearer can cast fire shield (warm shield variant, CL 10).",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": null,
+      "is_expanded": true,
+      "tags": ["wondrous", "shoulders", "fire", "resistance", "aura"]
+    }
+  },
+  {
+    "name": "Pearl of Power (1st Level)",
+    "category": "wondrous",
+    "slot": "none",
+    "caster_level": 17,
+    "price_gp": 1000,
+    "weight_lb": 0.1,
+    "bonuses": [],
+    "aura": "strong transmutation",
+    "description": "This lustrous white pearl allows a spellcaster to recall any one spell of 1st level or lower that they have already cast that day. Once used, the pearl must be rested overnight before it can be used again.",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": null,
+      "is_expanded": true,
+      "tags": ["wondrous", "spell_recall", "pearl", "caster"]
+    }
+  },
+  {
+    "name": "Pearl of Power (2nd Level)",
+    "category": "wondrous",
+    "slot": "none",
+    "caster_level": 17,
+    "price_gp": 4000,
+    "weight_lb": 0.1,
+    "bonuses": [],
+    "aura": "strong transmutation",
+    "description": "This lustrous pearl allows a spellcaster to recall any one spell of 2nd level or lower that they have already cast that day. Once used, the pearl must be rested overnight before it can be used again.",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": null,
+      "is_expanded": true,
+      "tags": ["wondrous", "spell_recall", "pearl", "caster"]
+    }
+  },
+  {
+    "name": "Pearl of Power (3rd Level)",
+    "category": "wondrous",
+    "slot": "none",
+    "caster_level": 17,
+    "price_gp": 9000,
+    "weight_lb": 0.1,
+    "bonuses": [],
+    "aura": "strong transmutation",
+    "description": "This deep lustrous pearl allows a spellcaster to recall any one spell of 3rd level or lower that they have already cast that day. Once used, the pearl must be rested overnight before it can be used again.",
+    "expanded_metadata": {
+      "source_book": "Magic Item Compendium",
+      "source_page": null,
+      "is_expanded": true,
+      "tags": ["wondrous", "spell_recall", "pearl", "caster"]
+    }
+  }
+]
