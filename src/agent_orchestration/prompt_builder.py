@@ -45,18 +45,13 @@ _IP_SAFE_TASK_TYPES: frozenset[str] = frozenset({
 })
 
 # Injected verbatim when ip_safe_mode=True for the above task types.
-# Mirrors Section 3 of data/expanded/AUTHORING_GUIDELINES.md so the LLM
-# receives the same constraint regardless of which data directory is loaded.
 _IP_SAFE_REMINDER: str = (
     "CONTENT COMPLIANCE — IP SAFETY (mandatory):\n"
     "Do NOT use WotC Product Identity names: Beholder, Mind Flayer, "
     "Displacer Beast, Githyanki, Githzerai, Neogi, Illithid, or any other "
     "name designated as WotC PI in published sourcebooks.\n"
     "If the requested archetype matches a WotC PI creature, invent a wholly "
-    "original name, appearance, and lore — copy only the mechanical stat "
-    "block — and include "
-    '`"translated": true, "source_archetype": "<type>"` '
-    "inside `expanded_metadata`.\n"
+    "original name, appearance, and lore — copy only the mechanical stat block.\n"
     "SRD-compliant and public-domain creatures (Dragon, Hydra, Goblin, "
     "Skeleton, Giant, Griffon, etc.) may keep their canonical names."
 )
