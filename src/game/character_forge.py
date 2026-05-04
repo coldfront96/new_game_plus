@@ -103,12 +103,13 @@ _KEEPSAKES: dict[str, dict[str, Any]] = {
 # UI constants
 # ---------------------------------------------------------------------------
 
-_STANDARD_ARRAY = [15, 14, 13, 12, 10, 8]
 _ABILITY_LABELS = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"]
 _ABILITY_ABBR   = ["STR",      "DEX",       "CON",         "INT",         "WIS",    "CHA"]
 _BUILDS = ["Towering", "Broad", "Athletic", "Lean", "Slight", "Gaunt"]
 
-_SCORE_OPTIONS: list[tuple[str, int]] = [(str(s), s) for s in _STANDARD_ARRAY]
+_STAT_MIN = 8
+_STAT_MAX = 20
+_STAT_BASE = 10
 
 # ---------------------------------------------------------------------------
 # D&D 3.5e stat helpers
@@ -143,12 +144,17 @@ class CharacterForgeApp(App[Optional[Dict[str, Any]]]):
 
     Three-panel layout:
     * **Identity** (left) — Name, Ancestry, Vocation, Keepsake.
-    * **Ability Scores** (centre) — Standard Array [15 14 13 12 10 8] assignment.
+    * **Ability Scores** (centre) — Point Buy System with [+]/[−] buttons.
     * **Mortal Coil** (right) — Physical description for Deep Lore AI context.
 
     The AWAKEN button validates all fields, derives 3.5e stats, calls
     :func:`~src.game.player_persistence.save_new_player`, then exits the app,
     returning the character dict to the caller.
+
+    Args:
+        pool_size: Number of points available to spend above the base of 10.
+        difficulty: Display name of the chosen difficulty tier.
+        permadeath: Whether Iron Path permadeath is active.
     """
 
     TITLE     = "ASHEN CROSSROADS  ·  Character Forge"
@@ -212,10 +218,26 @@ class CharacterForgeApp(App[Optional[Dict[str, Any]]]):
         width: 32;
     }
     #scores-panel {
-        width: 30;
+        width: 36;
     }
     #lore-panel {
         width: 1fr;
+    }
+
+    /* ── Pool display ── */
+    #pool-display {
+        height: 3;
+        color: #c89b5f;
+        text-align: center;
+        text-style: bold;
+        content-align: center middle;
+        margin-bottom: 1;
+    }
+    #pool-display.pool-zero {
+        color: #50c878;
+    }
+    #pool-display.pool-negative {
+        color: #ff6b6b;
     }
 
     /* ── Score rows ── */
@@ -231,8 +253,31 @@ class CharacterForgeApp(App[Optional[Dict[str, Any]]]):
         text-style: bold;
         content-align: left middle;
     }
-    .score-select {
-        width: 1fr;
+    .score-value {
+        width: 4;
+        height: 3;
+        color: #e8d5a0;
+        text-align: center;
+        content-align: center middle;
+        text-style: bold;
+    }
+    .score-btn {
+        width: 3;
+        height: 3;
+        min-width: 3;
+        background: #1c0800;
+        color: #c89b5f;
+        border: solid #3d2b15;
+    }
+    .score-btn:hover {
+        background: #3d2b15;
+    }
+    .score-mod {
+        width: 5;
+        height: 3;
+        color: #7a5a30;
+        content-align: left middle;
+        padding-left: 1;
     }
 
     /* ── Bottom bar ── */
@@ -263,6 +308,21 @@ class CharacterForgeApp(App[Optional[Dict[str, Any]]]):
         color: #0d0d0d;
     }
     """
+
+    def __init__(
+        self,
+        *,
+        pool_size: int = 25,
+        difficulty: str = "Medium",
+        permadeath: bool = False,
+    ) -> None:
+        super().__init__()
+        self._pool_size = pool_size
+        self._difficulty = difficulty
+        self._permadeath = permadeath
+        # Track mutable scores; start every stat at the base value
+        self._scores: dict[str, int] = {ab: _STAT_BASE for ab in _ABILITY_LABELS}
+        self._pool_remaining: int = pool_size
 
     # ------------------------------------------------------------------
     # Compose
@@ -304,19 +364,33 @@ class CharacterForgeApp(App[Optional[Dict[str, Any]]]):
             # ── Ability Scores Panel ────────────────────────────────────
             with Vertical(id="scores-panel", classes="panel"):
                 yield Static("🎲  ABILITY SCORES", classes="panel-title")
+                diff_label = self._difficulty
+                if self._permadeath:
+                    diff_label += "  [bold red]☠ PERMADEATH[/bold red]"
                 yield Static(
-                    "[dim]Standard Array: 15  14  13  12  10  8\n"
-                    "Assign one value to each ability.[/dim]",
+                    f"[dim]Point Buy — Difficulty: [/dim][bold]{diff_label}[/bold]\n"
+                    f"[dim]Base: 10 each  ·  Min: {_STAT_MIN}  ·  Use all points to Awaken.[/dim]",
+                    markup=True,
+                )
+                yield Static(
+                    self._pool_label(),
+                    id="pool-display",
                     markup=True,
                 )
                 for abbr, ability in zip(_ABILITY_ABBR, _ABILITY_LABELS):
                     with Horizontal(classes="score-row"):
                         yield Static(abbr, classes="score-label")
-                        yield Select(
-                            _SCORE_OPTIONS,
-                            prompt="—",
-                            id=f"score-{abbr.lower()}",
-                            classes="score-select",
+                        yield Button("−", id=f"btn-minus-{abbr.lower()}", classes="score-btn")
+                        yield Static(
+                            str(_STAT_BASE),
+                            id=f"score-val-{abbr.lower()}",
+                            classes="score-value",
+                        )
+                        yield Button("+", id=f"btn-plus-{abbr.lower()}",  classes="score-btn")
+                        yield Static(
+                            self._mod_label(_STAT_BASE),
+                            id=f"score-mod-{abbr.lower()}",
+                            classes="score-mod",
                         )
 
             # ── Mortal Coil Panel ───────────────────────────────────────
@@ -356,16 +430,66 @@ class CharacterForgeApp(App[Optional[Dict[str, Any]]]):
                 "[ Awaiting inscription… ]",
                 id="status-container",
             )
-            yield Button("⚡  AWAKEN  ⚡", id="awaken-btn", variant="default")
+            yield Button("⚡  AWAKEN  ⚡", id="awaken-btn", variant="default", disabled=True)
 
         yield Footer()
+
+    # ------------------------------------------------------------------
+    # Helpers
+    # ------------------------------------------------------------------
+
+    def _pool_label(self) -> str:
+        remaining = self._pool_remaining
+        if remaining == 0:
+            return f"[bold green]Pool: {remaining} remaining — Ready to Awaken![/bold green]"
+        elif remaining < 0:
+            return f"[bold red]Pool: {remaining} remaining — Over budget![/bold red]"
+        else:
+            return f"Pool: [bold]{remaining}[/bold] points remaining"
+
+    @staticmethod
+    def _mod_label(score: int) -> str:
+        mod = _mod(score)
+        sign = "+" if mod >= 0 else ""
+        return f"({sign}{mod})"
+
+    def _refresh_pool_display(self) -> None:
+        pool_widget = self.query_one("#pool-display", Static)
+        pool_widget.update(self._pool_label())
+        # Update AWAKEN button disabled state
+        awaken_btn = self.query_one("#awaken-btn", Button)
+        awaken_btn.disabled = (self._pool_remaining != 0)
+
+    def _refresh_score_row(self, ability: str, abbr: str) -> None:
+        score = self._scores[ability]
+        self.query_one(f"#score-val-{abbr.lower()}", Static).update(str(score))
+        self.query_one(f"#score-mod-{abbr.lower()}", Static).update(self._mod_label(score))
 
     # ------------------------------------------------------------------
     # Event handlers
     # ------------------------------------------------------------------
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
-        if event.button.id == "awaken-btn":
+        btn_id = event.button.id or ""
+
+        # ── Score [+] / [−] buttons ────────────────────────────────────
+        for abbr, ability in zip(_ABILITY_ABBR, _ABILITY_LABELS):
+            if btn_id == f"btn-plus-{abbr.lower()}":
+                if self._pool_remaining > 0 and self._scores[ability] < _STAT_MAX:
+                    self._scores[ability] += 1
+                    self._pool_remaining -= 1
+                    self._refresh_score_row(ability, abbr)
+                    self._refresh_pool_display()
+                return
+            if btn_id == f"btn-minus-{abbr.lower()}":
+                if self._scores[ability] > _STAT_MIN:
+                    self._scores[ability] -= 1
+                    self._pool_remaining += 1
+                    self._refresh_score_row(ability, abbr)
+                    self._refresh_pool_display()
+                return
+
+        if btn_id == "awaken-btn":
             self._attempt_awaken()
 
     # ------------------------------------------------------------------
@@ -397,23 +521,15 @@ class CharacterForgeApp(App[Optional[Dict[str, Any]]]):
             )
             return
 
-        # ── Standard Array assignment ──────────────────────────────────
-        scores: dict[str, int] = {}
-        for abbr, ability in zip(_ABILITY_ABBR, _ABILITY_LABELS):
-            val = self.query_one(f"#score-{abbr.lower()}", Select).value
-            if val is Select.BLANK:
-                status.update(
-                    f"[bold red]✗  Assign a score to {ability}.[/bold red]"
-                )
-                return
-            scores[ability] = int(val)
-
-        if sorted(scores.values()) != sorted(_STANDARD_ARRAY):
+        # ── Pool validation ────────────────────────────────────────────
+        if self._pool_remaining != 0:
             status.update(
-                "[bold red]✗  Each value from the Standard Array must be used "
-                "exactly once (15 14 13 12 10 8).[/bold red]"
+                "[bold red]✗  All points must be spent before you can Awaken.[/bold red]"
             )
             return
+
+        # ── Read scores from internal state ───────────────────────────
+        scores: dict[str, int] = dict(self._scores)
 
         # ── Optional Mortal Coil fields ────────────────────────────────
         keepsake_val = self.query_one("#select-keepsake", Select).value
@@ -553,6 +669,11 @@ class CharacterForgeApp(App[Optional[Dict[str, Any]]]):
             "char_class": vocation,
             "level":      1,
 
+            # ── Difficulty / run metadata ──────────────────────────────
+            "difficulty":        self._difficulty,
+            "permadeath_status": self._permadeath,
+            "starting_pool":     self._pool_size,
+
             # ── Physical description (Deep Lore for NPC dialogue AI) ──
             "physical_description": physical_description,
 
@@ -616,9 +737,17 @@ class CharacterForgeApp(App[Optional[Dict[str, Any]]]):
 # Entry point
 # ---------------------------------------------------------------------------
 
-def main() -> None:
+def main(
+    pool_size: int = 25,
+    difficulty: str = "Medium",
+    permadeath: bool = False,
+) -> None:
     """Launch the Character Forge and print a confirmation on exit."""
-    app = CharacterForgeApp()
+    app = CharacterForgeApp(
+        pool_size=pool_size,
+        difficulty=difficulty,
+        permadeath=permadeath,
+    )
     result = app.run()
 
     if result is not None:
