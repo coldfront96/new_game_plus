@@ -51,6 +51,56 @@ class Biome(enum.Enum):
     Outer_Plane        = "outer_plane"
     # Sentinel — non-biome-restricted
     Any                = "any"
+    # Starting area — exists between worlds
+    Ashen_Crossroads   = "ashen_crossroads"
+
+
+@dataclass(slots=True)
+class BiomeTemplate:
+    """Configuration template for a named biome, including feature spawn rules.
+
+    Attributes:
+        biome:               The :class:`Biome` this template describes.
+        display_name:        Human-readable name shown in UI and lore.
+        description:         Flavour text injected into room descriptions.
+        feature_spawn_rates: Mapping of feature tag → spawn probability [0.0–1.0].
+        ambient_mood:        Short string hint for AI lore generators.
+        is_starting_biome:   ``True`` for the player's initial spawn area.
+    """
+    biome: "Biome"
+    display_name: str
+    description: str
+    feature_spawn_rates: dict[str, float]
+    ambient_mood: str
+    is_starting_biome: bool = False
+
+
+# ---------------------------------------------------------------------------
+# Starting Biome — "Ashen Crossroads"
+# Vibe: atmospheric, dark, mysterious. Ancient Ruins feature guaranteed.
+# ---------------------------------------------------------------------------
+
+ASHEN_CROSSROADS: "BiomeTemplate" = BiomeTemplate(
+    biome=Biome.Ashen_Crossroads,
+    display_name="Ashen Crossroads",
+    description=(
+        "A liminal space suspended between life and death. Blackened stone columns "
+        "rise from ash-dusted earth beneath a starless, moonless void. The air "
+        "carries the taste of iron and forgotten oaths. Sound arrives muffled, as "
+        "if the world itself is holding its breath."
+    ),
+    feature_spawn_rates={
+        "ancient_ruins":   1.00,  # guaranteed — iron vault aesthetic
+        "collapsed_wall":  0.70,
+        "iron_vault":      0.50,
+        "crumbling_altar": 0.40,
+        "bone_scatter":    0.30,
+        "ashen_pillar":    0.60,
+        "sealed_door":     0.45,
+    },
+    ambient_mood="dark, atmospheric, mysterious",
+    is_starting_biome=True,
+)
 
 
 @dataclass(slots=True)
