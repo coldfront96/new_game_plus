@@ -117,6 +117,7 @@ _ABILITY_KEY: dict[str, str] = {
     "Charisma":     "charisma",
 }
 
+_COLOR_RACIAL_BONUS = "#c89b5f"
 _STAT_MIN = 8
 _STAT_MAX = 20
 _STAT_BASE = 10
@@ -493,7 +494,7 @@ class CharacterForgeApp(App[Optional[Dict[str, Any]]]):
 
         racial_widget = self.query_one(f"#score-racial-{abbr.lower()}", Static)
         if racial > 0:
-            racial_widget.update(f"[bold #c89b5f]+{racial}[/bold #c89b5f]")
+            racial_widget.update(f"[bold {_COLOR_RACIAL_BONUS}]+{racial}[/bold {_COLOR_RACIAL_BONUS}]")
         elif racial < 0:
             racial_widget.update(f"[bold red]{racial}[/bold red]")
         else:

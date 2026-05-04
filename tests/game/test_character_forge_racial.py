@@ -16,6 +16,7 @@ Covers:
 
 from __future__ import annotations
 
+import io
 import json
 import tempfile
 from pathlib import Path
@@ -264,7 +265,7 @@ class TestRunFirstAwakening:
         from src.game.awakening import run_first_awakening
 
         missing = tmp_path / "nonexistent.json"
-        result = run_first_awakening(player_json_path=missing, stream=open("/dev/null", "w"))
+        result = run_first_awakening(player_json_path=missing, stream=io.StringIO())
         assert result is None
 
     def test_returns_awakening_state_on_success(self, tmp_path):
@@ -273,7 +274,7 @@ class TestRunFirstAwakening:
         path = self._minimal_player(tmp_path)
         result = run_first_awakening(
             player_json_path=path,
-            stream=open("/dev/null", "w"),
+            stream=io.StringIO(),
             seed=42,
         )
         assert result is not None
@@ -287,7 +288,7 @@ class TestRunFirstAwakening:
         path = self._minimal_player(tmp_path)
         result = run_first_awakening(
             player_json_path=path,
-            stream=open("/dev/null", "w"),
+            stream=io.StringIO(),
             seed=0,
         )
         assert result is not None
@@ -299,7 +300,7 @@ class TestRunFirstAwakening:
         path = self._minimal_player(tmp_path)
         result = run_first_awakening(
             player_json_path=path,
-            stream=open("/dev/null", "w"),
+            stream=io.StringIO(),
             seed=7,
         )
         assert result is not None
