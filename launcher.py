@@ -89,10 +89,11 @@ def main_menu():
     time.sleep(1)
 
     try:
-        pygame.mixer.music.load("assets/elven_duet.wav")
+        # Changed to .ogg to respect your compression pipeline!
+        pygame.mixer.music.load("assets/elven_duet.ogg")
         pygame.mixer.music.play(-1)
     except FileNotFoundError:
-        print("SYSTEM WARNING: assets/elven_duet.wav not found. Continuing in silence.")
+        print("SYSTEM WARNING: assets/elven_duet.ogg not found. Continuing in silence.")
 
     title_surface = font_title.render("ECHOES OF THE INFINITE", True, WHITE)
     button_surface = font_button.render("[ Press ENTER to Awaken ]", True, WHITE)
@@ -138,10 +139,11 @@ def main_menu():
     pygame.mixer.music.stop()
 
     try:
-        iron_door = pygame.mixer.Sound("assets/iron_door.wav")
+        # Changed to .ogg here as well!
+        iron_door = pygame.mixer.Sound("assets/iron_door.ogg")
         iron_door.play()
     except FileNotFoundError:
-        print("SYSTEM WARNING: assets/iron_door.wav not found.")
+        print("SYSTEM WARNING: assets/iron_door.ogg not found.")
 
     screen.fill(WHITE)
     pygame.display.flip()
