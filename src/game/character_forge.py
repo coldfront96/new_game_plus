@@ -32,6 +32,7 @@ from rich.console import Console
 
 from textual.app import App, ComposeResult
 from textual.containers import Horizontal, Vertical, VerticalScroll
+from textual.screen import Screen
 from textual.widgets import Button, Footer, Header, Input, Label, Select, Static
 
 # ---------------------------------------------------------------------------
@@ -792,6 +793,636 @@ class CharacterForgeApp(App[Optional[Dict[str, Any]]]):
             },
 
             # ── Starting state ─────────────────────────────────────────
+            "inventory":        [],
+            "gold":             0,
+            "experience_points": 0,
+            "conditions":       [],
+        }
+
+
+# ---------------------------------------------------------------------------
+# CharacterForgeScreen — Screen version for the Master App
+# ---------------------------------------------------------------------------
+
+class CharacterForgeScreen(Screen):
+    """Character Forge as a Textual *Screen* for use inside :class:`MasterApp`.
+
+    Identical UI to :class:`CharacterForgeApp` but instead of calling
+    ``self.exit()`` on AWAKEN it calls
+    ``self.app.push_screen(GameWorldScreen(...))``, keeping the Master App
+    window alive across the forge → world transition.
+
+    Args:
+        pool_size:  Points available to spend above base 10.
+        difficulty: Display name of the chosen difficulty tier.
+        permadeath: Whether Iron Path permadeath is active.
+    """
+
+    TITLE     = "ASHEN CROSSROADS  ·  Character Forge"
+    SUB_TITLE = "Inscribe your legend upon the Mortal Coil"
+
+    CSS = """
+    CharacterForgeScreen {
+        background: #0d0d0d;
+    }
+
+    /* ── Three-panel body ── */
+    #forge-body {
+        height: 1fr;
+        layout: horizontal;
+    }
+
+    .panel {
+        border: solid #3d2b15;
+        padding: 0 1;
+    }
+
+    .panel-title {
+        height: 1;
+        background: #1c0f00;
+        color: #c89b5f;
+        text-align: center;
+        text-style: bold;
+        margin-bottom: 0;
+    }
+
+    .field-label {
+        color: #7a5a30;
+        height: 1;
+        margin-top: 0;
+    }
+
+    /* ── Inputs & Selects ── */
+    Input {
+        background: #141414;
+        border: solid #3d2b15;
+        color: #e8d5a0;
+    }
+    Input:focus {
+        border: solid #c89b5f;
+    }
+
+    Select {
+        background: #141414;
+        border: solid #3d2b15;
+        color: #e8d5a0;
+    }
+    Select:focus {
+        border: solid #c89b5f;
+    }
+    SelectOverlay {
+        background: #1c1000;
+    }
+
+    /* ── Panel widths ── */
+    #identity-panel {
+        width: 32;
+    }
+    #scores-panel {
+        width: 46;
+        overflow-y: auto;
+    }
+    #lore-panel {
+        width: 1fr;
+    }
+
+    /* ── Pool display ── */
+    #pool-display {
+        height: 2;
+        color: #c89b5f;
+        text-align: center;
+        text-style: bold;
+        content-align: center middle;
+        margin-bottom: 0;
+    }
+    #pool-display.pool-zero {
+        color: #50c878;
+    }
+    #pool-display.pool-negative {
+        color: #ff6b6b;
+    }
+
+    /* ── Score rows ── */
+    .score-row {
+        height: 3;
+        layout: horizontal;
+        margin-bottom: 0;
+    }
+    .score-label {
+        width: 5;
+        height: 3;
+        color: #c89b5f;
+        text-style: bold;
+        content-align: left middle;
+    }
+    .score-value {
+        width: 4;
+        height: 3;
+        color: #e8d5a0;
+        text-align: center;
+        content-align: center middle;
+        text-style: bold;
+    }
+    .score-btn {
+        width: 3;
+        height: 3;
+        min-width: 3;
+        background: #1c0800;
+        color: #c89b5f;
+        border: solid #3d2b15;
+    }
+    .score-btn:hover {
+        background: #3d2b15;
+    }
+    .score-mod {
+        width: 5;
+        height: 3;
+        color: #7a5a30;
+        content-align: left middle;
+        padding-left: 1;
+    }
+    .score-racial {
+        width: 4;
+        height: 3;
+        content-align: left middle;
+    }
+    .score-total {
+        width: 4;
+        height: 3;
+        color: #a0d0a0;
+        text-align: center;
+        content-align: center middle;
+        text-style: bold;
+    }
+
+    /* ── Bottom bar ── */
+    #bottom-bar {
+        height: 5;
+        layout: horizontal;
+        padding: 1 2;
+        background: #0a0a0a;
+        border-top: solid #3d2b15;
+    }
+    #status-container {
+        width: 3fr;
+        height: 3;
+        color: #7a5a30;
+        content-align: left middle;
+        padding: 0 1;
+    }
+    #awaken-btn {
+        width: 26;
+        height: 3;
+        background: #1c0800;
+        color: #c89b5f;
+        border: solid #c89b5f;
+        text-style: bold;
+    }
+    #awaken-btn:hover {
+        background: #c89b5f;
+        color: #0d0d0d;
+    }
+    """
+
+    def __init__(
+        self,
+        *,
+        pool_size: int = 25,
+        difficulty: str = "Medium",
+        permadeath: bool = False,
+    ) -> None:
+        super().__init__()
+        self._pool_size      = pool_size
+        self._difficulty     = difficulty
+        self._permadeath     = permadeath
+        self._scores: dict[str, int] = {ab: _STAT_BASE for ab in _ABILITY_LABELS}
+        self._pool_remaining: int    = pool_size
+        self._racial_mods: dict[str, int] = {}
+
+    # ------------------------------------------------------------------
+    # Compose  (identical to CharacterForgeApp)
+    # ------------------------------------------------------------------
+
+    def compose(self) -> ComposeResult:
+        yield Header(show_clock=True)
+
+        with Horizontal(id="forge-body"):
+
+            # ── Identity Panel ──────────────────────────────────────────
+            with Vertical(id="identity-panel", classes="panel"):
+                yield Static("⚔  IDENTITY", classes="panel-title")
+
+                yield Label("Character Name", classes="field-label")
+                yield Input(placeholder="Enter name…", id="input-name")
+
+                yield Label("Ancestry  (Lineage)", classes="field-label")
+                yield Select(
+                    [(r["name"], r["name"]) for r in _RACES],
+                    prompt="Choose ancestry…",
+                    id="select-ancestry",
+                )
+
+                yield Label("Vocation  (Class)", classes="field-label")
+                yield Select(
+                    [(c["name"], c["name"]) for c in _CLASSES],
+                    prompt="Choose vocation…",
+                    id="select-vocation",
+                )
+
+                yield Label("Keepsake  (optional)", classes="field-label")
+                yield Select(
+                    [(k, k) for k in _KEEPSAKES],
+                    prompt="Choose keepsake…",
+                    id="select-keepsake",
+                )
+
+            # ── Ability Scores Panel ────────────────────────────────────
+            with VerticalScroll(id="scores-panel", classes="panel"):
+                yield Static("🎲  ABILITY SCORES", classes="panel-title")
+                diff_label = self._difficulty
+                if self._permadeath:
+                    diff_label += "  [bold red]☠ PERMADEATH[/bold red]"
+                yield Static(
+                    f"[dim]Point Buy — Difficulty: [/dim][bold]{diff_label}[/bold]\n"
+                    f"[dim]Base 10 · Min {_STAT_MIN} · No cap · Spend all to Awaken[/dim]",
+                    markup=True,
+                )
+                yield Static(
+                    self._pool_label(),
+                    id="pool-display",
+                    markup=True,
+                )
+                with Horizontal(classes="score-row"):
+                    yield Static("    ", classes="score-label")
+                    yield Static("  ", classes="score-btn")
+                    yield Static("[dim]Base[/dim]", classes="score-value", markup=True)
+                    yield Static("  ", classes="score-btn")
+                    yield Static("[dim]Mod [/dim]", classes="score-mod", markup=True)
+                    yield Static("[dim]Rac[/dim]", classes="score-racial", markup=True)
+                    yield Static("[dim]Tot[/dim]", classes="score-total", markup=True)
+                for abbr, ability in zip(_ABILITY_ABBR, _ABILITY_LABELS):
+                    with Horizontal(classes="score-row"):
+                        yield Static(abbr, classes="score-label")
+                        yield Button("−", id=f"btn-minus-{abbr.lower()}", classes="score-btn")
+                        yield Static(
+                            str(_STAT_BASE),
+                            id=f"score-val-{abbr.lower()}",
+                            classes="score-value",
+                        )
+                        yield Button("+", id=f"btn-plus-{abbr.lower()}", classes="score-btn")
+                        yield Static(
+                            self._mod_label(_STAT_BASE),
+                            id=f"score-mod-{abbr.lower()}",
+                            classes="score-mod",
+                        )
+                        yield Static(
+                            "",
+                            id=f"score-racial-{abbr.lower()}",
+                            classes="score-racial",
+                            markup=True,
+                        )
+                        yield Static(
+                            str(_STAT_BASE),
+                            id=f"score-total-{abbr.lower()}",
+                            classes="score-total",
+                        )
+
+            # ── Mortal Coil Panel ───────────────────────────────────────
+            with Vertical(id="lore-panel", classes="panel"):
+                yield Static("📜  MORTAL COIL", classes="panel-title")
+                yield Static(
+                    '[dim italic]"What manner of creature crossed the veil?"[/dim italic]',
+                    markup=True,
+                )
+
+                yield Label("Age  (years)", classes="field-label")
+                yield Input(placeholder="e.g. 24", id="input-age")
+
+                yield Label("Build", classes="field-label")
+                yield Select(
+                    [(b, b) for b in _BUILDS],
+                    prompt="Choose build…",
+                    id="select-build",
+                )
+
+                yield Label("Eye Aspect", classes="field-label")
+                yield Input(
+                    placeholder="e.g. Storm-grey, hollow",
+                    id="input-eye-aspect",
+                )
+
+                yield Label("Distinguishing Marks", classes="field-label")
+                yield Input(
+                    placeholder="e.g. Scar across left jaw",
+                    id="input-marks",
+                )
+
+        # ── Bottom bar ──────────────────────────────────────────────────
+        with Horizontal(id="bottom-bar"):
+            yield Static(
+                "[ Awaiting inscription… ]",
+                id="status-container",
+            )
+            yield Button("⚡  AWAKEN  ⚡", id="awaken-btn", variant="default", disabled=True)
+
+        yield Footer()
+
+    # ------------------------------------------------------------------
+    # Helpers  (identical to CharacterForgeApp)
+    # ------------------------------------------------------------------
+
+    def _pool_label(self) -> str:
+        remaining = self._pool_remaining
+        if remaining == 0:
+            return f"[bold green]Pool: {remaining} remaining — Ready to Awaken![/bold green]"
+        elif remaining < 0:
+            return f"[bold red]Pool: {remaining} remaining — Over budget![/bold red]"
+        else:
+            return f"Pool: [bold]{remaining}[/bold] points remaining"
+
+    @staticmethod
+    def _mod_label(score: int) -> str:
+        mod = _mod(score)
+        sign = "+" if mod >= 0 else ""
+        return f"({sign}{mod})"
+
+    def _refresh_pool_display(self) -> None:
+        pool_widget = self.query_one("#pool-display", Static)
+        pool_widget.update(self._pool_label())
+        awaken_btn = self.query_one("#awaken-btn", Button)
+        awaken_btn.disabled = (self._pool_remaining != 0)
+
+    def _refresh_score_row(self, ability: str, abbr: str) -> None:
+        pb_score = self._scores[ability]
+        racial   = self._racial_mods.get(_ABILITY_KEY[ability], 0)
+        total    = pb_score + racial
+
+        self.query_one(f"#score-val-{abbr.lower()}", Static).update(str(pb_score))
+        self.query_one(f"#score-mod-{abbr.lower()}", Static).update(self._mod_label(total))
+        self.query_one(f"#score-total-{abbr.lower()}", Static).update(
+            f"[bold {_COLOR_TOTAL}]{total}[/bold {_COLOR_TOTAL}]"
+        )
+
+        racial_widget = self.query_one(f"#score-racial-{abbr.lower()}", Static)
+        if racial > 0:
+            racial_widget.update(f"[bold {_COLOR_RACIAL_BONUS}]+{racial}[/bold {_COLOR_RACIAL_BONUS}]")
+        elif racial < 0:
+            racial_widget.update(f"[bold red]{racial}[/bold red]")
+        else:
+            racial_widget.update("")
+
+    def _refresh_all_score_rows(self) -> None:
+        for abbr, ability in zip(_ABILITY_ABBR, _ABILITY_LABELS):
+            self._refresh_score_row(ability, abbr)
+
+    # ------------------------------------------------------------------
+    # Event handlers  (identical to CharacterForgeApp)
+    # ------------------------------------------------------------------
+
+    def on_button_pressed(self, event: Button.Pressed) -> None:
+        btn_id = event.button.id or ""
+
+        for abbr, ability in zip(_ABILITY_ABBR, _ABILITY_LABELS):
+            if btn_id == f"btn-plus-{abbr.lower()}":
+                if self._pool_remaining > 0:
+                    self._scores[ability] += 1
+                    self._pool_remaining  -= 1
+                    self._refresh_score_row(ability, abbr)
+                    self._refresh_pool_display()
+                return
+            if btn_id == f"btn-minus-{abbr.lower()}":
+                if self._scores[ability] > _STAT_MIN:
+                    self._scores[ability] -= 1
+                    self._pool_remaining  += 1
+                    self._refresh_score_row(ability, abbr)
+                    self._refresh_pool_display()
+                return
+
+        if btn_id == "awaken-btn":
+            self._attempt_awaken()
+
+    def on_select_changed(self, event: Select.Changed) -> None:
+        if event.select.id == "select-ancestry":
+            if event.value is Select.BLANK:
+                self._racial_mods = {}
+            else:
+                race_data = _RACE_MAP.get(str(event.value), {})
+                self._racial_mods = race_data.get("stat_modifiers", {})
+            self._refresh_all_score_rows()
+
+    # ------------------------------------------------------------------
+    # Validation & character construction
+    # ------------------------------------------------------------------
+
+    def _attempt_awaken(self) -> None:
+        """Validate, build, persist, then push :class:`GameWorldScreen`."""
+        import io
+
+        status = self.query_one("#status-container", Static)
+
+        name         = self.query_one("#input-name",      Input).value.strip()
+        ancestry_val = self.query_one("#select-ancestry", Select).value
+        vocation_val = self.query_one("#select-vocation", Select).value
+
+        if not name:
+            status.update(
+                "[bold red]✗  A name must be inscribed upon the Mortal Coil.[/bold red]"
+            )
+            return
+        if ancestry_val is Select.BLANK:
+            status.update(
+                "[bold red]✗  Choose an Ancestry — your Lineage shapes your flesh.[/bold red]"
+            )
+            return
+        if vocation_val is Select.BLANK:
+            status.update(
+                "[bold red]✗  Choose a Vocation — your calling echoes through the Crossroads.[/bold red]"
+            )
+            return
+        if self._pool_remaining != 0:
+            status.update(
+                "[bold red]✗  All points must be spent before you can Awaken.[/bold red]"
+            )
+            return
+
+        scores: dict[str, int] = dict(self._scores)
+
+        keepsake_val = self.query_one("#select-keepsake", Select).value
+        age_raw      = self.query_one("#input-age",       Input).value.strip()
+        build_val    = self.query_one("#select-build",    Select).value
+        eye_aspect   = self.query_one("#input-eye-aspect",Input).value.strip()
+        marks        = self.query_one("#input-marks",     Input).value.strip()
+
+        try:
+            age = int(age_raw) if age_raw else 0
+        except ValueError:
+            age = 0
+
+        keepsake_name = str(keepsake_val) if keepsake_val is not Select.BLANK else "None"
+        build         = str(build_val)    if build_val    is not Select.BLANK else "Unknown"
+
+        status.update("[yellow]⚙  Inscribing soul upon the Mortal Coil…[/yellow]")
+
+        char_dict = self._build_character_dict(
+            name=name,
+            ancestry=str(ancestry_val),
+            vocation=str(vocation_val),
+            keepsake=keepsake_name,
+            scores=scores,
+            age=age,
+            build=build,
+            eye_aspect=eye_aspect or "Undisclosed",
+            marks=marks or "None noted",
+        )
+
+        try:
+            from src.game.player_persistence import save_new_player
+            save_new_player(char_dict)
+        except Exception as exc:  # noqa: BLE001
+            status.update(f"[bold red]✗  Persistence error: {exc}[/bold red]")
+            return
+
+        status.update("[yellow]⚙  Awakening the world…[/yellow]")
+
+        # Run awakening with suppressed stdout — GameWorldScreen displays the text.
+        from src.game.awakening import run_first_awakening
+        awakening_state = run_first_awakening(stream=io.StringIO())
+
+        if awakening_state is None:
+            status.update(
+                "[bold red]✗  World initialisation failed."
+                " Check data/player.json and logs.[/bold red]"
+            )
+            return
+
+        # Keep the window open: push the game world as the next screen.
+        from src.game.game_world_screen import GameWorldScreen
+        self.app.push_screen(GameWorldScreen(awakening_state, char_dict))
+
+    # ------------------------------------------------------------------
+    # 3.5e character construction  (identical to CharacterForgeApp)
+    # ------------------------------------------------------------------
+
+    def _build_character_dict(
+        self,
+        *,
+        name: str,
+        ancestry: str,
+        vocation: str,
+        keepsake: str,
+        scores: dict[str, int],
+        age: int,
+        build: str,
+        eye_aspect: str,
+        marks: str,
+    ) -> dict[str, Any]:
+        """Derive all 3.5e stats and return a serialisable character dict."""
+        race_data    = _RACE_MAP.get(ancestry, {})
+        class_data   = _CLASS_MAP.get(vocation, {})
+        keepsake_data = _KEEPSAKES.get(keepsake, _KEEPSAKES["None"])
+
+        racial_mods: dict[str, int] = race_data.get("stat_modifiers", {})
+        final_scores: dict[str, int] = {
+            ab: scores[ab] + racial_mods.get(_ABILITY_KEY[ab], 0)
+            for ab in _ABILITY_LABELS
+        }
+
+        str_score = final_scores["Strength"]
+        dex_score = final_scores["Dexterity"]
+        con_score = final_scores["Constitution"]
+        int_score = final_scores["Intelligence"]
+        wis_score = final_scores["Wisdom"]
+        cha_score = final_scores["Charisma"]
+
+        con_mod = _mod(con_score)
+        dex_mod = _mod(dex_score)
+        wis_mod = _mod(wis_score)
+
+        hit_die    = class_data.get("hit_die", 6)
+        bab_prog   = class_data.get("bab_progression", "half")
+        good_saves: list[str] = class_data.get("good_saves", [])
+
+        hp_base  = hit_die + con_mod
+        hp_bonus = keepsake_data["value"] if keepsake_data["effect"] == "max_hp_bonus" else 0
+        hp       = max(1, hp_base + hp_bonus)
+
+        ac_bonus = keepsake_data["value"] if keepsake_data["effect"] == "ac_bonus" else 0
+        ac       = 10 + dex_mod + ac_bonus
+
+        saves_bonus = keepsake_data["value"] if keepsake_data["effect"] == "all_saves_bonus" else 0
+
+        fort   = (_good_save_base() if "fortitude" in good_saves else _poor_save_base()) + con_mod + saves_bonus
+        reflex = (_good_save_base() if "reflex"    in good_saves else _poor_save_base()) + dex_mod + saves_bonus
+        will   = (_good_save_base() if "will"      in good_saves else _poor_save_base()) + wis_mod + saves_bonus
+
+        speed_bonus = keepsake_data["value"] if keepsake_data["effect"] == "speed_bonus" else 0
+        base_speed  = race_data.get("base_speed", 30) + speed_bonus
+
+        deep_lore = (
+            f"{name} is a {age}-year-old {ancestry} of {build.lower()} build. "
+            f"Their eyes are {eye_aspect.lower()}. "
+            f"Notable distinguishing marks: {marks}. "
+            f"Vocation: {vocation}."
+        )
+        physical_description: dict[str, Any] = {
+            "name":               name,
+            "age":                age,
+            "build":              build,
+            "eye_aspect":         eye_aspect,
+            "distinguishing_marks": marks,
+            "deep_lore_context":  deep_lore,
+        }
+
+        return {
+            "version":    "3.5e-srd",
+            "name":       name,
+            "race":       ancestry,
+            "char_class": vocation,
+            "level":      1,
+            "difficulty":        self._difficulty,
+            "permadeath_status": self._permadeath,
+            "starting_pool":     self._pool_size,
+            "physical_description": physical_description,
+            "ability_scores": {
+                "Strength":     str_score,
+                "Dexterity":    dex_score,
+                "Constitution": con_score,
+                "Intelligence": int_score,
+                "Wisdom":       wis_score,
+                "Charisma":     cha_score,
+            },
+            "ability_modifiers": {
+                "Strength":     _mod(str_score),
+                "Dexterity":    dex_mod,
+                "Constitution": con_mod,
+                "Intelligence": _mod(int_score),
+                "Wisdom":       wis_mod,
+                "Charisma":     _mod(cha_score),
+            },
+            "base_ability_scores": dict(scores),
+            "racial_modifiers":    racial_mods,
+            "racial_traits":       race_data.get("special_abilities", []),
+            "size":                race_data.get("size", "Medium"),
+            "hit_die":          hit_die,
+            "hit_points":       hp,
+            "armor_class":      ac,
+            "initiative":       dex_mod,
+            "base_attack_bonus": _bab_at_1(bab_prog),
+            "bab_progression":  bab_prog,
+            "saving_throws": {
+                "fortitude": fort,
+                "reflex":    reflex,
+                "will":      will,
+            },
+            "good_saves": good_saves,
+            "speed":      base_speed,
+            "keepsake": {
+                "name":        keepsake,
+                "description": keepsake_data["description"],
+                "lore":        keepsake_data.get("lore", ""),
+                "effect":      keepsake_data["effect"],
+                "value":       keepsake_data["value"],
+            },
             "inventory":        [],
             "gold":             0,
             "experience_points": 0,
