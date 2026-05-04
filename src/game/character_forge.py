@@ -31,7 +31,7 @@ from typing import Any, Dict, Optional
 from rich.console import Console
 
 from textual.app import App, ComposeResult
-from textual.containers import Horizontal, Vertical
+from textual.containers import Horizontal, Vertical, VerticalScroll
 from textual.widgets import Button, Footer, Header, Input, Label, Select, Static
 
 # ---------------------------------------------------------------------------
@@ -118,8 +118,8 @@ _ABILITY_KEY: dict[str, str] = {
 }
 
 _COLOR_RACIAL_BONUS = "#c89b5f"
-_STAT_MIN = 8
-_STAT_MAX = 20
+_COLOR_TOTAL        = "#a0d0a0"
+_STAT_MIN  = 8
 _STAT_BASE = 10
 
 # ---------------------------------------------------------------------------
@@ -193,13 +193,13 @@ class CharacterForgeApp(App[Optional[Dict[str, Any]]]):
         color: #c89b5f;
         text-align: center;
         text-style: bold;
-        margin-bottom: 1;
+        margin-bottom: 0;
     }
 
     .field-label {
         color: #7a5a30;
         height: 1;
-        margin-top: 1;
+        margin-top: 0;
     }
 
     /* ── Inputs & Selects ── */
@@ -229,7 +229,8 @@ class CharacterForgeApp(App[Optional[Dict[str, Any]]]):
         width: 32;
     }
     #scores-panel {
-        width: 42;
+        width: 46;
+        overflow-y: auto;
     }
     #lore-panel {
         width: 1fr;
@@ -237,12 +238,12 @@ class CharacterForgeApp(App[Optional[Dict[str, Any]]]):
 
     /* ── Pool display ── */
     #pool-display {
-        height: 3;
+        height: 2;
         color: #c89b5f;
         text-align: center;
         text-style: bold;
         content-align: center middle;
-        margin-bottom: 1;
+        margin-bottom: 0;
     }
     #pool-display.pool-zero {
         color: #50c878;
@@ -294,6 +295,14 @@ class CharacterForgeApp(App[Optional[Dict[str, Any]]]):
         width: 4;
         height: 3;
         content-align: left middle;
+    }
+    .score-total {
+        width: 4;
+        height: 3;
+        color: #a0d0a0;
+        text-align: center;
+        content-align: center middle;
+        text-style: bold;
     }
 
     /* ── Bottom bar ── */
@@ -380,14 +389,14 @@ class CharacterForgeApp(App[Optional[Dict[str, Any]]]):
                 )
 
             # ── Ability Scores Panel ────────────────────────────────────
-            with Vertical(id="scores-panel", classes="panel"):
+            with VerticalScroll(id="scores-panel", classes="panel"):
                 yield Static("🎲  ABILITY SCORES", classes="panel-title")
                 diff_label = self._difficulty
                 if self._permadeath:
                     diff_label += "  [bold red]☠ PERMADEATH[/bold red]"
                 yield Static(
                     f"[dim]Point Buy — Difficulty: [/dim][bold]{diff_label}[/bold]\n"
-                    f"[dim]Base: 10 each  ·  Min: {_STAT_MIN}  ·  Use all points to Awaken.[/dim]",
+                    f"[dim]Base 10 · Min {_STAT_MIN} · No cap · Spend all to Awaken[/dim]",
                     markup=True,
                 )
                 yield Static(
@@ -395,6 +404,15 @@ class CharacterForgeApp(App[Optional[Dict[str, Any]]]):
                     id="pool-display",
                     markup=True,
                 )
+                # Column header row
+                with Horizontal(classes="score-row"):
+                    yield Static("    ", classes="score-label")
+                    yield Static("  ", classes="score-btn")
+                    yield Static("[dim]Base[/dim]", classes="score-value", markup=True)
+                    yield Static("  ", classes="score-btn")
+                    yield Static("[dim]Mod [/dim]", classes="score-mod", markup=True)
+                    yield Static("[dim]Rac[/dim]", classes="score-racial", markup=True)
+                    yield Static("[dim]Tot[/dim]", classes="score-total", markup=True)
                 for abbr, ability in zip(_ABILITY_ABBR, _ABILITY_LABELS):
                     with Horizontal(classes="score-row"):
                         yield Static(abbr, classes="score-label")
@@ -416,13 +434,17 @@ class CharacterForgeApp(App[Optional[Dict[str, Any]]]):
                             classes="score-racial",
                             markup=True,
                         )
+                        yield Static(
+                            str(_STAT_BASE),
+                            id=f"score-total-{abbr.lower()}",
+                            classes="score-total",
+                        )
 
             # ── Mortal Coil Panel ───────────────────────────────────────
             with Vertical(id="lore-panel", classes="panel"):
                 yield Static("📜  MORTAL COIL", classes="panel-title")
                 yield Static(
-                    '[dim italic]"What manner of creature stumbled\n'
-                    ' through the veil into the Crossroads?"[/dim italic]',
+                    '[dim italic]"What manner of creature crossed the veil?"[/dim italic]',
                     markup=True,
                 )
 
@@ -491,6 +513,9 @@ class CharacterForgeApp(App[Optional[Dict[str, Any]]]):
 
         self.query_one(f"#score-val-{abbr.lower()}", Static).update(str(pb_score))
         self.query_one(f"#score-mod-{abbr.lower()}", Static).update(self._mod_label(total))
+        self.query_one(f"#score-total-{abbr.lower()}", Static).update(
+            f"[bold {_COLOR_TOTAL}]{total}[/bold {_COLOR_TOTAL}]"
+        )
 
         racial_widget = self.query_one(f"#score-racial-{abbr.lower()}", Static)
         if racial > 0:
@@ -515,7 +540,7 @@ class CharacterForgeApp(App[Optional[Dict[str, Any]]]):
         # ── Score [+] / [−] buttons ────────────────────────────────────
         for abbr, ability in zip(_ABILITY_ABBR, _ABILITY_LABELS):
             if btn_id == f"btn-plus-{abbr.lower()}":
-                if self._pool_remaining > 0 and self._scores[ability] < _STAT_MAX:
+                if self._pool_remaining > 0:
                     self._scores[ability] += 1
                     self._pool_remaining -= 1
                     self._refresh_score_row(ability, abbr)
