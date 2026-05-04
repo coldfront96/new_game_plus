@@ -107,6 +107,16 @@ _ABILITY_LABELS = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wis
 _ABILITY_ABBR   = ["STR",      "DEX",       "CON",         "INT",         "WIS",    "CHA"]
 _BUILDS = ["Towering", "Broad", "Athletic", "Lean", "Slight", "Gaunt"]
 
+# Mapping from display label to JSON key used in race stat_modifiers
+_ABILITY_KEY: dict[str, str] = {
+    "Strength":     "strength",
+    "Dexterity":    "dexterity",
+    "Constitution": "constitution",
+    "Intelligence": "intelligence",
+    "Wisdom":       "wisdom",
+    "Charisma":     "charisma",
+}
+
 _STAT_MIN = 8
 _STAT_MAX = 20
 _STAT_BASE = 10
@@ -218,7 +228,7 @@ class CharacterForgeApp(App[Optional[Dict[str, Any]]]):
         width: 32;
     }
     #scores-panel {
-        width: 36;
+        width: 42;
     }
     #lore-panel {
         width: 1fr;
@@ -279,6 +289,11 @@ class CharacterForgeApp(App[Optional[Dict[str, Any]]]):
         content-align: left middle;
         padding-left: 1;
     }
+    .score-racial {
+        width: 4;
+        height: 3;
+        content-align: left middle;
+    }
 
     /* ── Bottom bar ── */
     #bottom-bar {
@@ -323,6 +338,8 @@ class CharacterForgeApp(App[Optional[Dict[str, Any]]]):
         # Track mutable scores; start every stat at the base value
         self._scores: dict[str, int] = {ab: _STAT_BASE for ab in _ABILITY_LABELS}
         self._pool_remaining: int = pool_size
+        # Racial modifiers for the currently selected ancestry (stat key → int)
+        self._racial_mods: dict[str, int] = {}
 
     # ------------------------------------------------------------------
     # Compose
@@ -391,6 +408,12 @@ class CharacterForgeApp(App[Optional[Dict[str, Any]]]):
                             self._mod_label(_STAT_BASE),
                             id=f"score-mod-{abbr.lower()}",
                             classes="score-mod",
+                        )
+                        yield Static(
+                            "",
+                            id=f"score-racial-{abbr.lower()}",
+                            classes="score-racial",
+                            markup=True,
                         )
 
             # ── Mortal Coil Panel ───────────────────────────────────────
@@ -461,9 +484,25 @@ class CharacterForgeApp(App[Optional[Dict[str, Any]]]):
         awaken_btn.disabled = (self._pool_remaining != 0)
 
     def _refresh_score_row(self, ability: str, abbr: str) -> None:
-        score = self._scores[ability]
-        self.query_one(f"#score-val-{abbr.lower()}", Static).update(str(score))
-        self.query_one(f"#score-mod-{abbr.lower()}", Static).update(self._mod_label(score))
+        pb_score = self._scores[ability]  # base 10 + point-buy
+        racial = self._racial_mods.get(_ABILITY_KEY[ability], 0)
+        total = pb_score + racial
+
+        self.query_one(f"#score-val-{abbr.lower()}", Static).update(str(pb_score))
+        self.query_one(f"#score-mod-{abbr.lower()}", Static).update(self._mod_label(total))
+
+        racial_widget = self.query_one(f"#score-racial-{abbr.lower()}", Static)
+        if racial > 0:
+            racial_widget.update(f"[bold #c89b5f]+{racial}[/bold #c89b5f]")
+        elif racial < 0:
+            racial_widget.update(f"[bold red]{racial}[/bold red]")
+        else:
+            racial_widget.update("")
+
+    def _refresh_all_score_rows(self) -> None:
+        """Refresh every ability score row (e.g. after ancestry change)."""
+        for abbr, ability in zip(_ABILITY_ABBR, _ABILITY_LABELS):
+            self._refresh_score_row(ability, abbr)
 
     # ------------------------------------------------------------------
     # Event handlers
@@ -491,6 +530,15 @@ class CharacterForgeApp(App[Optional[Dict[str, Any]]]):
 
         if btn_id == "awaken-btn":
             self._attempt_awaken()
+
+    def on_select_changed(self, event: Select.Changed) -> None:
+        if event.select.id == "select-ancestry":
+            if event.value is Select.BLANK:
+                self._racial_mods = {}
+            else:
+                race_data = _RACE_MAP.get(str(event.value), {})
+                self._racial_mods = race_data.get("stat_modifiers", {})
+            self._refresh_all_score_rows()
 
     # ------------------------------------------------------------------
     # Validation & character construction
@@ -598,16 +646,8 @@ class CharacterForgeApp(App[Optional[Dict[str, Any]]]):
 
         # ── Apply racial ability modifiers ─────────────────────────────
         racial_mods: dict[str, int] = race_data.get("stat_modifiers", {})
-        _ability_key = {
-            "Strength":     "strength",
-            "Dexterity":    "dexterity",
-            "Constitution": "constitution",
-            "Intelligence": "intelligence",
-            "Wisdom":       "wisdom",
-            "Charisma":     "charisma",
-        }
         final_scores: dict[str, int] = {
-            ab: scores[ab] + racial_mods.get(_ability_key[ab], 0)
+            ab: scores[ab] + racial_mods.get(_ABILITY_KEY[ab], 0)
             for ab in _ABILITY_LABELS
         }
 

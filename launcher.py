@@ -169,7 +169,7 @@ def pygame_intro():
 # Textual Main Menu
 # ---------------------------------------------------------------------------
 
-from typing import Optional, Tuple
+from typing import Any, Optional, Tuple
 from textual.app import App, ComposeResult
 from textual.containers import Vertical, Horizontal
 from textual.widgets import Button, Header, Footer, Static
@@ -346,6 +346,24 @@ class MainMenuApp(App[Optional[Tuple[str, int, bool]]]):
             pass  # Placeholder — settings not yet implemented
 
 
+# ---------------------------------------------------------------------------
+# Main Game Loop — placeholder (Phase 8)
+# ---------------------------------------------------------------------------
+
+
+def _run_main_game_loop(state: Any) -> None:
+    """Entry point for the main game loop.
+
+    Receives the fully-initialised :class:`~src.game.awakening.AwakeningState`
+    from the First Awakening sequence and retains it for the lifetime of the
+    session (preventing garbage collection of WorldState / ChunkManager).
+
+    This is a stub pending Phase 8 implementation.
+    """
+    # ``state`` is kept alive here intentionally — do not discard.
+    pass  # noqa: WPS420
+
+
 if __name__ == "__main__":
     pygame_intro()
 
@@ -398,5 +416,19 @@ if __name__ == "__main__":
             f"Permadeath: {result.get('permadeath_status', False)}[/dim]"
         )
         console.print("   [dim]Saved → data/player.json[/dim]\n")
+
+        # ── First Awakening transition ───────────────────────────────────────
+        from src.game.awakening import run_first_awakening, AwakeningState
+
+        awakening_state: Optional[AwakeningState] = run_first_awakening()
+        if awakening_state is None:
+            console.print(
+                "[bold red]✗  Awakening failed — could not initialise the world.[/bold red]",
+                highlight=False,
+            )
+            sys.exit(1)
+
+        # ── Main Game Loop (placeholder — Phase 8) ───────────────────────────
+        _run_main_game_loop(awakening_state)
     else:
         console.print("\n[dim]Character Forge closed without saving.[/dim]\n")
