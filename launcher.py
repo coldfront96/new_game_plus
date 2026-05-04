@@ -138,27 +138,32 @@ def main_menu():
 
     pygame.mixer.music.stop()
 
+   # 5. THE INTERACTIVE DROP (The Abyssal Iron Vault)
+    pygame.mixer.music.stop()
+    
     try:
-        # Changed to .ogg here as well!
         iron_door = pygame.mixer.Sound("assets/iron_door.ogg")
+        # Start the sound
         iron_door.play()
+        
+        # --- THE FIX: WAIT FOR THE ECHO ---
+        # Get the length of the audio in seconds
+        sound_length = iron_door.get_length()
+        
+        # Blinding White Flash
+        screen.fill(WHITE)
+        pygame.display.flip()
+        time.sleep(0.15)
+        
+        # Back to black while the sound finishes
+        screen.fill(BLACK)
+        pygame.display.flip()
+        
+        # Wait for the remaining duration of the sound plus a tiny buffer for the echo
+        time.sleep(sound_length - 0.15 + 0.5) 
+        
     except FileNotFoundError:
         print("SYSTEM WARNING: assets/iron_door.ogg not found.")
-
-    screen.fill(WHITE)
-    pygame.display.flip()
-    time.sleep(0.15)
-
-    screen.fill(BLACK)
-    pygame.display.flip()
-    time.sleep(1)
-
-    print("TRANSITION TO TERMINAL ENGINE INITIALIZED...")
-    pygame.quit()
-
-    # Hand-off to the main terminal application
-    subprocess.run([sys.executable, "-m", "new_game_plus"])
-    sys.exit()
 
 if __name__ == "__main__":
     main_menu()
