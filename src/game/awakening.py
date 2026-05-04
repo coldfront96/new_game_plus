@@ -315,8 +315,8 @@ def run_first_awakening(
     player_json_path: Optional[Path] = None,
     stream=None,
     seed: Optional[int] = None,
-) -> int:
-    """Execute the First Awakening sequence.
+) -> Optional[AwakeningState]:
+    """Execute the First Awakening sequence and return live engine state.
 
     1. Load player data from ``data/player.json``.
     2. Initialise :class:`~src.world_sim.world_tick.WorldState` with the
@@ -335,7 +335,12 @@ def run_first_awakening(
         seed:             RNG seed for deterministic room generation.
 
     Returns:
-        Exit code — 0 on success, 1 on failure.
+        An :class:`AwakeningState` holding all live engine objects on success,
+        or ``None`` if initialisation failed.  The caller **must** retain a
+        reference to this object for the lifetime of the game session —
+        letting it go out of scope allows Python to garbage-collect the
+        :class:`~src.world_sim.world_tick.WorldState` and
+        :class:`~src.terrain.chunk_manager.ChunkManager`.
     """
     from src.core.event_bus import default_bus
     from src.world_sim.chronos import chronos_from_world_tick
@@ -349,14 +354,14 @@ def run_first_awakening(
             "Run the Character Forge first to create your character.",
             file=sys.stderr,
         )
-        return 1
+        return None
 
     try:
         player_data = _load_player(path)
     except (json.JSONDecodeError, OSError) as exc:
         _log.exception("Failed to load player data: %r", exc)
         print(f"[ERROR] Could not read player file: {exc}", file=sys.stderr)
-        return 1
+        return None
 
     rng = random.Random(seed if seed is not None else int(time.time()))
 
@@ -374,13 +379,13 @@ def run_first_awakening(
     default_bus.publish(
         "PLAYER_AWAKENED",
         {
-            "player":    player_data,
-            "position":  {"x": origin_room.world_x, "y": origin_room.world_y, "z": origin_room.world_z},
-            "biome":     "ashen_crossroads",
-            "features":  origin_room.features,
-            "tick":      chronos.tick,
-            "hour":      chronos.hour,
-            "is_day":    chronos.is_day,
+            "player":      player_data,
+            "position":    {"x": origin_room.world_x, "y": origin_room.world_y, "z": origin_room.world_z},
+            "biome":       "ashen_crossroads",
+            "features":    origin_room.features,
+            "tick":        chronos.tick,
+            "hour":        chronos.hour,
+            "is_day":      chronos.is_day,
             "world_state": world_state,
         },
     )
@@ -393,4 +398,10 @@ def run_first_awakening(
     # Render the atmospheric awakening text
     _print_awakening(origin_room, stream=stream)
 
-    return 0
+    return AwakeningState(
+        player_data=player_data,
+        world_state=world_state,
+        chunk_manager=chunk_manager,
+        origin_room=origin_room,
+        absolute_tick=chronos.tick,
+    )
