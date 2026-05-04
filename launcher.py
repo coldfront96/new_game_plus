@@ -363,79 +363,15 @@ def _run_main_game_loop(state: Any) -> None:
 
 
 if __name__ == "__main__":
+    # ── Phase 1: Pygame intro sequence (door slam) ───────────────────────────
     pygame_intro()
-
-    # Tear down Pygame before handing off to the terminal-based UI.
     pygame.quit()
 
+    # ── Phase 2: Hand off to the Master Window ───────────────────────────────
+    # The window wrapper launches MasterApp — a single persistent Textual
+    # application that manages all subsequent screens (Main Menu → Difficulty →
+    # Character Forge → Game World) without ever closing the window.
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-    # ── Textual Main Menu ────────────────────────────────────────────────────
-    menu = MainMenuApp()
-    menu_result = menu.run()
-
-    if menu_result is None:
-        # User closed the menu without making a selection — exit cleanly.
-        sys.exit(0)
-
-    if menu_result == "__continue__":
-        # Load existing save and drop into the game (forge skipped).
-        from rich.console import Console
-        Console().print("\n[bold #c89b5f]▶  Resuming your chronicle…[/bold #c89b5f]\n")
-        sys.exit(0)
-
-    # ── Difficulty Selector (runs outside MainMenu's event loop) ─────────────
-    # Only the "new_game" branch reaches this point; "continue" already exited.
-    diff_app = DifficultySelectorScreen()
-    diff_result: Optional[Tuple[str, int, bool]] = diff_app.run()
-
-    if diff_result is None:
-        # User pressed Back or closed the difficulty screen — return to nothing.
-        sys.exit(0)
-
-    difficulty_name, pool_size, permadeath = diff_result
-
-    # ── Character Forge (New Game path) ─────────────────────────────────────
-    from src.game.character_forge import CharacterForgeApp
-    from rich.console import Console
-
-    forge = CharacterForgeApp(
-        difficulty=difficulty_name,
-        pool_size=pool_size,
-        permadeath=permadeath,
-    )
-    result = forge.run()
-
-    console = Console()
-    if result is not None:
-        console.print(
-            f"\n[bold #c89b5f]⚡  {result['name']} awakens from the Ashen Crossroads.[/bold #c89b5f]"
-        )
-        console.print(
-            f"   [dim]{result['race']} {result['char_class']}  ·  "
-            f"HP {result['hit_points']}  ·  "
-            f"AC {result['armor_class']}  ·  "
-            f"BAB +{result['base_attack_bonus']}[/dim]"
-        )
-        console.print(
-            f"   [dim]Difficulty: {result.get('difficulty', 'Unknown')}  ·  "
-            f"Pool: {result.get('starting_pool', '?')}  ·  "
-            f"Permadeath: {result.get('permadeath_status', False)}[/dim]"
-        )
-        console.print("   [dim]Saved → data/player.json[/dim]\n")
-
-        # ── First Awakening transition ───────────────────────────────────────
-        from src.game.awakening import run_first_awakening, AwakeningState
-
-        awakening_state: Optional[AwakeningState] = run_first_awakening()
-        if awakening_state is None:
-            console.print(
-                "[bold red]✗  Awakening failed — could not initialise the world.[/bold red]",
-                highlight=False,
-            )
-            sys.exit(1)
-
-        # ── Main Game Loop (placeholder — Phase 8) ───────────────────────────
-        _run_main_game_loop(awakening_state)
-    else:
-        console.print("\n[dim]Character Forge closed without saving.[/dim]\n")
+    from src.launcher.window_wrapper import launch
+    launch()
