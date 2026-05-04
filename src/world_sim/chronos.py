@@ -5,11 +5,17 @@ src/world_sim/chronos.py
 Provides the world clock (ChronosRecord) and procedural weather engine
 (WeatherState) for the New Game Plus simulation.
 
+Also implements the D&D 3.5e Chronos Engine: a full time-management system
+(GameTime + ChronosEngine) that translates combat rounds into world-scale
+hours and days and integrates with the EventBus.
+
 Key types
 ~~~~~~~~~
 * :class:`ChronosRecord` — immutable snapshot of the in-game date/time.
 * :class:`WeatherType`   — enumeration of weather conditions.
 * :class:`WeatherState`  — mutable weather + particle state.
+* :class:`GameTime`      — D&D 3.5e world clock (seconds since Genesis).
+* :class:`ChronosEngine` — event-bus-integrated time manager.
 
 Key functions
 ~~~~~~~~~~~~~
@@ -24,7 +30,11 @@ from __future__ import annotations
 
 import enum
 from dataclasses import dataclass, field
-from typing import Any
+from datetime import datetime, timezone
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from src.core.event_bus import EventBus
 
 # ---------------------------------------------------------------------------
 # PH5-006 · Constants
@@ -296,3 +306,360 @@ def apply_weather_debuffs(
         ]
 
     return character_metadata
+
+
+# ---------------------------------------------------------------------------
+# D&D 3.5e Time Engine · Constants
+# ---------------------------------------------------------------------------
+
+#: Seconds per combat round (D&D 3.5e SRD).
+SECONDS_PER_ROUND: int = 6
+
+#: Rounds per in-game minute.
+ROUNDS_PER_MINUTE: int = 10
+
+#: Minutes per in-game hour.
+MINUTES_PER_HOUR: int = 60
+
+#: Hours per in-game day.
+HOURS_PER_GAME_DAY: int = 24
+
+#: Seconds per in-game minute.
+SECONDS_PER_MINUTE: int = SECONDS_PER_ROUND * ROUNDS_PER_MINUTE  # 60
+
+#: Seconds per in-game hour.
+SECONDS_PER_HOUR: int = SECONDS_PER_MINUTE * MINUTES_PER_HOUR  # 3600
+
+#: Seconds per in-game day.
+SECONDS_PER_DAY: int = SECONDS_PER_HOUR * HOURS_PER_GAME_DAY  # 86400
+
+#: EventBus event name fired by the combat engine after each round.
+EVENT_COMBAT_ROUND_END: str = "COMBAT_ROUND_END"
+
+#: EventBus event name fired by ChronosEngine when an hour or day crosses.
+EVENT_TIME_TICK: str = "TIME_TICK"
+
+
+# ---------------------------------------------------------------------------
+# D&D 3.5e Time Engine · Calendar
+# ---------------------------------------------------------------------------
+
+#: The 12-month fantasy calendar.  Each entry is ``(month_name, days_in_month)``.
+#: The year totals 365 days.
+CALENDAR_MONTHS: List[tuple[str, int]] = [
+    ("Frostborn",    31),  # 1  — deep winter; the year awakens in ice
+    ("Thaw's Wake",  28),  # 2  — winter retreats; rivers begin to move
+    ("Verdant Rise", 31),  # 3  — first sprouts; adventuring season begins
+    ("Bloom's Tide", 30),  # 4  — wildflower bloom; festival of colours
+    ("Suncrest",     31),  # 5  — longest light; high-altitude passes open
+    ("Highsun",      30),  # 6  — peak summer; caravans fill the roads
+    ("Goldmere",     31),  # 7  — harvest preparations; markets overflow
+    ("Harvest's Eve",31),  # 8  — main harvest; grain stored against winter
+    ("Ashfall",      30),  # 9  — leaves turn; first ash-grey skies
+    ("Mourning Moon",31),  # 10 — dark festivals; ancestors remembered
+    ("Deepchill",    30),  # 11 — early frost; gates close at dusk
+    ("Nighthold",    31),  # 12 — solstice; the long dark before Frostborn
+]
+
+#: Total days in one game year, derived from the calendar.
+DAYS_PER_YEAR: int = sum(days for _, days in CALENDAR_MONTHS)  # 365
+
+#: Cumulative day-of-year at the *start* of each month (0-indexed, month 0 = "Frostborn").
+_MONTH_START_DAY: List[int] = []
+_acc = 0
+for _name, _days in CALENDAR_MONTHS:
+    _MONTH_START_DAY.append(_acc)
+    _acc += _days
+del _name, _days, _acc
+
+
+# ---------------------------------------------------------------------------
+# D&D 3.5e Time Engine · GameTime
+# ---------------------------------------------------------------------------
+
+@dataclass
+class GameTime:
+    """In-universe clock for the New Game Plus world.
+
+    Tracks time as an *absolute tick* (total seconds elapsed since the
+    world's Genesis moment).  All calendar fields — second, minute, hour,
+    day, month, year — are derived from :attr:`absolute_tick` on demand.
+
+    Attributes:
+        absolute_tick: Total seconds since Genesis (monotonically increasing).
+    """
+
+    absolute_tick: int = 0
+
+    # ------------------------------------------------------------------
+    # Derived time fields
+    # ------------------------------------------------------------------
+
+    @property
+    def second(self) -> int:
+        """Current second within the current minute (0–59)."""
+        return self.absolute_tick % SECONDS_PER_MINUTE
+
+    @property
+    def minute(self) -> int:
+        """Current minute within the current hour (0–59)."""
+        return (self.absolute_tick // SECONDS_PER_MINUTE) % MINUTES_PER_HOUR
+
+    @property
+    def hour(self) -> int:
+        """Current hour within the current day (0–23)."""
+        return (self.absolute_tick // SECONDS_PER_HOUR) % HOURS_PER_GAME_DAY
+
+    @property
+    def total_days(self) -> int:
+        """Total complete days elapsed since Genesis."""
+        return self.absolute_tick // SECONDS_PER_DAY
+
+    @property
+    def year(self) -> int:
+        """Current game year (0-indexed from Genesis)."""
+        return self.total_days // DAYS_PER_YEAR
+
+    @property
+    def day_of_year(self) -> int:
+        """Current day within the current year (0-indexed, 0 = first day of year)."""
+        return self.total_days % DAYS_PER_YEAR
+
+    @property
+    def month_index(self) -> int:
+        """Current month index (0-indexed; 0 = Frostborn, 11 = Nighthold)."""
+        doy = self.day_of_year
+        for i in range(len(CALENDAR_MONTHS) - 1, -1, -1):
+            if doy >= _MONTH_START_DAY[i]:
+                return i
+        return 0  # pragma: no cover
+
+    @property
+    def month_name(self) -> str:
+        """Human-readable name of the current month."""
+        return CALENDAR_MONTHS[self.month_index][0]
+
+    @property
+    def day_of_month(self) -> int:
+        """Current day within the current month (1-indexed)."""
+        return self.day_of_year - _MONTH_START_DAY[self.month_index] + 1
+
+    # ------------------------------------------------------------------
+    # Serialization
+    # ------------------------------------------------------------------
+
+    def to_dict(self) -> Dict[str, Any]:
+        """Serialise the clock to a plain :class:`dict` (JSON-safe).
+
+        Returns:
+            A dict containing ``absolute_tick`` and a human-readable
+            ``formatted_date`` string, suitable for embedding in
+            ``data/world_state.json``.
+        """
+        return {
+            "absolute_tick": self.absolute_tick,
+            "formatted_date": (
+                f"Year {self.year}, {self.month_name} {self.day_of_month}, "
+                f"{self.hour:02d}:{self.minute:02d}:{self.second:02d}"
+            ),
+        }
+
+    @classmethod
+    def from_dict(cls, data: Dict[str, Any]) -> "GameTime":
+        """Restore a :class:`GameTime` from a serialised dict.
+
+        Args:
+            data: Dict previously produced by :meth:`to_dict`.
+
+        Returns:
+            A new :class:`GameTime` with :attr:`absolute_tick` restored.
+        """
+        return cls(absolute_tick=int(data["absolute_tick"]))
+
+    # ------------------------------------------------------------------
+    # Convenience
+    # ------------------------------------------------------------------
+
+    def __repr__(self) -> str:  # pragma: no cover
+        return (
+            f"GameTime(tick={self.absolute_tick}, "
+            f"Year {self.year} {self.month_name} {self.day_of_month}, "
+            f"{self.hour:02d}:{self.minute:02d}:{self.second:02d})"
+        )
+
+
+# ---------------------------------------------------------------------------
+# D&D 3.5e Time Engine · ChronosEngine
+# ---------------------------------------------------------------------------
+
+class ChronosEngine:
+    """Observable D&D 3.5e time manager that integrates with :class:`EventBus`.
+
+    The engine subscribes to :data:`EVENT_COMBAT_ROUND_END` on an
+    :class:`~src.core.event_bus.EventBus`.  Each time that event fires the
+    clock advances by :data:`SECONDS_PER_ROUND` (6 s).  When a new **hour**
+    or **day** boundary is crossed, a :data:`EVENT_TIME_TICK` event is
+    published so that Biome and Faction systems can respond.
+
+    The current :class:`GameTime` is serialisable via :meth:`to_dict` /
+    :meth:`from_dict` for persistence in ``data/world_state.json``.
+
+    Example::
+
+        from src.core.event_bus import EventBus
+        from src.world_sim.chronos import ChronosEngine
+
+        bus = EventBus()
+        engine = ChronosEngine()
+        engine.attach(bus)
+
+        # Fire 14400 combat rounds — clock should advance by exactly 24 hours.
+        for _ in range(14_400):
+            bus.publish("COMBAT_ROUND_END", {})
+
+        assert engine.game_time.hour == 0  # wrapped back to midnight
+        assert engine.game_time.total_days == 1
+
+    Attributes:
+        game_time:    The current in-universe :class:`GameTime`.
+        real_started: Wall-clock :class:`~datetime.datetime` at which this
+                      engine was created (UTC, for logging / analytics).
+    """
+
+    def __init__(self, initial_tick: int = 0) -> None:
+        self.game_time: GameTime = GameTime(absolute_tick=initial_tick)
+        self.real_started: datetime = datetime.now(tz=timezone.utc)
+        self._bus: Optional["EventBus"] = None
+
+    # ------------------------------------------------------------------
+    # EventBus integration
+    # ------------------------------------------------------------------
+
+    def attach(self, bus: "EventBus") -> None:
+        """Subscribe this engine to *bus* and remember it for publishing.
+
+        Calling :meth:`attach` a second time on a different bus first
+        detaches from the previous bus.
+
+        Args:
+            bus: The :class:`~src.core.event_bus.EventBus` to integrate with.
+        """
+        if self._bus is not None:
+            self._bus.unsubscribe(EVENT_COMBAT_ROUND_END, self._on_combat_round_end)
+        self._bus = bus
+        bus.subscribe(EVENT_COMBAT_ROUND_END, self._on_combat_round_end)
+
+    def detach(self) -> None:
+        """Unsubscribe from the currently attached bus (no-op if not attached)."""
+        if self._bus is not None:
+            self._bus.unsubscribe(EVENT_COMBAT_ROUND_END, self._on_combat_round_end)
+            self._bus = None
+
+    def _on_combat_round_end(self, _payload: Any) -> None:
+        """Handler called on every :data:`EVENT_COMBAT_ROUND_END` event."""
+        self.advance_seconds(SECONDS_PER_ROUND)
+
+    # ------------------------------------------------------------------
+    # Core tick logic
+    # ------------------------------------------------------------------
+
+    def advance_seconds(self, seconds: int) -> None:
+        """Advance the world clock by *seconds* and fire boundary events.
+
+        Fires :data:`EVENT_TIME_TICK` with ``{"type": "hour", ...}`` for
+        every new hour crossed, and with ``{"type": "day", ...}`` for every
+        new day crossed.  Events are published in strict chronological order
+        (by the tick at which each boundary was crossed).
+
+        Args:
+            seconds: Number of real seconds (in-universe) to advance.
+        """
+        old_tick = self.game_time.absolute_tick
+        new_tick = old_tick + seconds
+
+        old_hour_abs = old_tick // SECONDS_PER_HOUR
+        new_hour_abs = new_tick // SECONDS_PER_HOUR
+        hours_crossed = new_hour_abs - old_hour_abs
+
+        old_day = old_tick // SECONDS_PER_DAY
+        new_day = new_tick // SECONDS_PER_DAY
+        days_crossed = new_day - old_day
+
+        self.game_time = GameTime(absolute_tick=new_tick)
+
+        if self._bus is None or hours_crossed == 0:
+            return
+
+        # Build all boundary events sorted by the tick at which they occur.
+        boundary_events: list[tuple[int, dict]] = []
+
+        for h in range(hours_crossed):
+            boundary_tick = (old_hour_abs + h + 1) * SECONDS_PER_HOUR
+            boundary_time = GameTime(absolute_tick=boundary_tick)
+            boundary_events.append((
+                boundary_tick,
+                {
+                    "type": "hour",
+                    "absolute_tick": boundary_tick,
+                    "hour": boundary_time.hour,
+                    "game_time": boundary_time.to_dict(),
+                },
+            ))
+
+        for d in range(days_crossed):
+            boundary_tick = (old_day + d + 1) * SECONDS_PER_DAY
+            boundary_time = GameTime(absolute_tick=boundary_tick)
+            boundary_events.append((
+                boundary_tick,
+                {
+                    "type": "day",
+                    "absolute_tick": boundary_tick,
+                    "total_days": old_day + d + 1,
+                    "game_time": boundary_time.to_dict(),
+                },
+            ))
+
+        # Publish in chronological order.
+        for _, payload in sorted(boundary_events, key=lambda x: x[0]):
+            self._bus.publish(EVENT_TIME_TICK, payload)
+
+    def advance_rounds(self, rounds: int) -> None:
+        """Advance the world clock by *rounds* combat rounds (6 s each).
+
+        Args:
+            rounds: Number of D&D 3.5e combat rounds to simulate.
+        """
+        self.advance_seconds(rounds * SECONDS_PER_ROUND)
+
+    # ------------------------------------------------------------------
+    # Serialisation
+    # ------------------------------------------------------------------
+
+    def to_dict(self) -> Dict[str, Any]:
+        """Serialise engine state for ``data/world_state.json``.
+
+        Returns:
+            A JSON-safe dict containing :attr:`game_time` and
+            :attr:`real_started` metadata.
+        """
+        return {
+            "game_time": self.game_time.to_dict(),
+            "real_started": self.real_started.isoformat(),
+        }
+
+    @classmethod
+    def from_dict(cls, data: Dict[str, Any]) -> "ChronosEngine":
+        """Restore a :class:`ChronosEngine` from a previously saved dict.
+
+        Args:
+            data: Dict previously produced by :meth:`to_dict`.
+
+        Returns:
+            A new :class:`ChronosEngine` with the saved tick restored.
+        """
+        engine = cls(initial_tick=int(data["game_time"]["absolute_tick"]))
+        try:
+            engine.real_started = datetime.fromisoformat(data["real_started"])
+        except (KeyError, ValueError):
+            pass
+        return engine
