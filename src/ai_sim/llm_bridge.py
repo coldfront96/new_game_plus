@@ -40,9 +40,11 @@ from __future__ import annotations
 
 import asyncio
 import json
+import subprocess
 import urllib.error
 import urllib.request
 from dataclasses import dataclass, field
+from pathlib import Path
 from typing import Any, AsyncIterator, Dict, List, Optional, TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -512,3 +514,243 @@ async def generate_npc_dialogue(
                     continue
     except (urllib.error.URLError, OSError):
         yield f"[{name} says nothing.]"
+
+
+# ---------------------------------------------------------------------------
+# Hardware detection helper
+# ---------------------------------------------------------------------------
+
+#: Repo root used to resolve the default model path.
+_REPO_ROOT: Path = Path(__file__).parent.parent.parent
+#: Default GGUF model path expected for the embedded inference engine.
+_DEFAULT_GGUF_PATH: Path = _REPO_ROOT / "assets" / "models" / "default_brain.gguf"
+
+
+def _detect_gpu_layers() -> int:
+    """Return ``-1`` (all layers to GPU) when a CUDA-capable GPU is detected.
+
+    Uses ``nvidia-smi`` so no extra Python dependencies are required.  Falls
+    back to ``0`` (CPU-only) if the tool is absent or reports no GPUs — this
+    keeps the game running on laptops without discrete GPUs.
+
+    Returns:
+        ``-1`` to offload every layer to VRAM, or ``0`` for CPU-only.
+    """
+    try:
+        result = subprocess.run(
+            ["nvidia-smi", "--query-gpu=name", "--format=csv,noheader"],
+            capture_output=True,
+            text=True,
+            timeout=5,
+        )
+        if result.returncode == 0 and result.stdout.strip():
+            return -1  # GPU present — offload all layers
+    except (FileNotFoundError, subprocess.TimeoutExpired, OSError):
+        pass
+    return 0  # CPU fallback
+
+
+# ---------------------------------------------------------------------------
+# SimulatedAIFallback
+# ---------------------------------------------------------------------------
+
+class SimulatedAIFallback:
+    """Template-based response generator used when no GGUF model is present.
+
+    Mirrors the role of :class:`~src.game.awakening.RoomDescriptionEngine` —
+    keeps all callers functional without any inference hardware or model file.
+    The templates are drawn from the same atmospheric lore pool used during the
+    First Awakening sequence so the tone stays consistent.
+    """
+
+    _AMBIENT: List[str] = [
+        "The world holds its breath.",
+        "Silence presses in from all sides.",
+        "Something stirs in the distance, then settles.",
+        "The air carries the weight of unspoken history.",
+        "Nothing is spoken, yet meaning hangs in the cold air.",
+        "Ash drifts in slow spirals through air that smells of cold iron.",
+    ]
+    _NPC_LINES: List[str] = [
+        "I have nothing more to say on that matter.",
+        "Ask me again when the situation changes.",
+        "The answer you seek lies further down this road.",
+        "Some questions are better left unasked out here.",
+        "I'm not sure I can help you with that right now.",
+    ]
+
+    def generate(self, prompt: str = "") -> str:
+        """Return a plausible template line.
+
+        Args:
+            prompt: The original user/game prompt (used to bias pool selection).
+
+        Returns:
+            A random atmospheric or NPC line.
+        """
+        import random
+        pool = self._NPC_LINES if prompt.strip() else self._AMBIENT
+        return random.choice(pool)
+
+
+# ---------------------------------------------------------------------------
+# LocalInferenceEngine
+# ---------------------------------------------------------------------------
+
+class LocalInferenceEngine:
+    """Embedded llama.cpp inference engine with automatic hardware detection.
+
+    Designed for Zero-Step installation on Steam: no Ollama, no external server.
+
+    Startup sequence
+    ~~~~~~~~~~~~~~~~
+    1. Calls :func:`_detect_gpu_layers` to probe for a CUDA-capable GPU.
+       If an NVIDIA card is found, ``n_gpu_layers=-1`` offloads every layer to
+       VRAM; otherwise ``n_gpu_layers=0`` keeps everything on CPU so the game
+       still runs on laptops.
+    2. Checks for ``assets/models/default_brain.gguf``.  If present, loads it
+       via :class:`llama_cpp.Llama`.
+    3. If the file is missing *or* ``llama-cpp-python`` is not installed,
+       silently falls back to :class:`SimulatedAIFallback` — the game never
+       crashes; NPCs reply with atmospheric template lines instead.
+
+    The public interface is intentionally identical to :class:`LLMClient` so
+    callers can swap between the two without any code changes.
+
+    Args:
+        model_path: Override the default GGUF path.  Useful in tests.
+        n_ctx:      Context window size passed to :class:`llama_cpp.Llama`.
+    """
+
+    def __init__(
+        self,
+        model_path: Optional[Path] = None,
+        n_ctx: int = 2048,
+    ) -> None:
+        self._path: Path = Path(model_path) if model_path else _DEFAULT_GGUF_PATH
+        self._n_ctx = n_ctx
+        self._n_gpu_layers: int = _detect_gpu_layers()
+        self._llm: Optional[Any] = None
+        self._fallback = SimulatedAIFallback()
+        self._load()
+
+    # ------------------------------------------------------------------
+    # Internal loading
+    # ------------------------------------------------------------------
+
+    def _load(self) -> None:
+        """Attempt to load the GGUF model; silently degrade on any failure."""
+        if not self._path.exists():
+            return
+        try:
+            from llama_cpp import Llama  # type: ignore[import]
+            self._llm = Llama(
+                model_path=str(self._path),
+                n_ctx=self._n_ctx,
+                n_gpu_layers=self._n_gpu_layers,
+            )
+        except Exception:
+            pass  # llama-cpp-python not installed or model corrupt → fallback
+
+    @property
+    def is_local_model_loaded(self) -> bool:
+        """``True`` when a GGUF model is active; ``False`` in fallback mode."""
+        return self._llm is not None
+
+    @property
+    def n_gpu_layers(self) -> int:
+        """The ``n_gpu_layers`` value chosen by hardware auto-detection."""
+        return self._n_gpu_layers
+
+    # ------------------------------------------------------------------
+    # Public API — mirrors LLMClient
+    # ------------------------------------------------------------------
+
+    async def query_model(
+        self,
+        system_prompt: str,
+        cognitive_state: CognitiveState,
+        user_prompt: str,
+    ) -> str:
+        """Query the local model with a :class:`CognitiveState` game snapshot.
+
+        Serialises *cognitive_state* as JSON and prepends it to *system_prompt*,
+        matching the behaviour of :meth:`LLMClient.query_model`.
+
+        Args:
+            system_prompt:   Role/context description for the model.
+            cognitive_state: Factual game-state snapshot.
+            user_prompt:     Decision prompt (e.g. "Choose your next action.").
+
+        Returns:
+            Model reply text, or a :class:`SimulatedAIFallback` line.
+        """
+        enriched_system = (
+            f"{system_prompt}\n\n"
+            f"CURRENT GAME STATE (JSON):\n"
+            f"{json.dumps(cognitive_state.to_dict(), indent=2)}"
+        )
+        messages: List[Dict[str, Any]] = [
+            {"role": "system", "content": enriched_system},
+            {"role": "user",   "content": user_prompt},
+        ]
+        return await self.query_messages(messages)
+
+    async def query_messages(self, messages: List[Dict[str, Any]]) -> str:
+        """Send a pre-built OpenAI-compatible messages list to the local model.
+
+        Args:
+            messages: List of ``{"role": ..., "content": ...}`` dicts.
+
+        Returns:
+            Model reply text, or a :class:`SimulatedAIFallback` line.
+        """
+        if self._llm is None:
+            user_text = " ".join(
+                m.get("content", "") for m in messages if m.get("role") == "user"
+            )
+            return self._fallback.generate(user_text)
+        return await asyncio.to_thread(self._infer_messages, messages)
+
+    async def query_text(self, system_prompt: str, user_prompt: str) -> str:
+        """Send a simple text query without a :class:`CognitiveState`.
+
+        Args:
+            system_prompt: Role/context description for the model.
+            user_prompt:   The question or instruction for the model.
+
+        Returns:
+            Model reply text, or a :class:`SimulatedAIFallback` line.
+        """
+        messages: List[Dict[str, Any]] = [
+            {"role": "system", "content": system_prompt},
+            {"role": "user",   "content": user_prompt},
+        ]
+        return await self.query_messages(messages)
+
+    # ------------------------------------------------------------------
+    # Blocking inference (executed off the main thread via asyncio.to_thread)
+    # ------------------------------------------------------------------
+
+    def _infer_messages(self, messages: List[Dict[str, Any]]) -> str:
+        """Run llama.cpp chat completion synchronously (off-thread).
+
+        Args:
+            messages: OpenAI-compatible message list.
+
+        Returns:
+            Stripped reply string, or a fallback line on any error.
+        """
+        try:
+            result = self._llm.create_chat_completion(  # type: ignore[union-attr]
+                messages=messages,
+                max_tokens=256,
+            )
+            return (
+                result.get("choices", [{}])[0]
+                .get("message", {})
+                .get("content", "")
+                .strip()
+            )
+        except Exception:
+            return self._fallback.generate()
