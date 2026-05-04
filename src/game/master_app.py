@@ -1,15 +1,16 @@
 """
 src/game/master_app.py
 -----------------------
-MasterApp — the single, persistent Textual application that unifies
-the Character Forge and Game World under one window.
+MasterApp — the single, persistent Textual application that unifies the
+Character Forge (ForgeScreen) and Adventure World (AdventureScreen) under one
+dedicated OS window titled "Echoes of the Infinite".
 
 Screen stack (push order)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
   MainMenuScreen
     → DifficultySelectorScreen
-      → CharacterForgeScreen
-        → GameWorldScreen
+      → CharacterForgeScreen  (ForgeScreen — character creation)
+        → AdventureScreen     (game world — RichLog + command Input)
 
 Because all transitions use ``push_screen`` / ``pop_screen`` the OS window
 never closes between the Pygame door slam and the end of a play session.

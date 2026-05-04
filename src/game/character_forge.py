@@ -1295,9 +1295,9 @@ class CharacterForgeScreen(Screen):
             )
             return
 
-        # Keep the window open: push the game world as the next screen.
-        from src.game.game_world_screen import GameWorldScreen
-        self.app.push_screen(GameWorldScreen(awakening_state, char_dict))
+        # Keep the window open: push the adventure screen as the next screen.
+        from src.game.game_world_screen import AdventureScreen
+        self.app.push_screen(AdventureScreen(awakening_state, char_dict))
 
     # ------------------------------------------------------------------
     # 3.5e character construction  (identical to CharacterForgeApp)

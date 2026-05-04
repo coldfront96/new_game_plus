@@ -2,7 +2,8 @@
 
 Phase 2 — Player Interaction & Civilised Ecology.
 Provides the player controller schema, keyboard input dispatcher, fog of war
-calculator, and dynamic chunk load/unload logic.
+calculator, dynamic chunk load/unload logic, and the Interaction Loop
+CommandProcessor (Path 1).
 """
 from __future__ import annotations
 
@@ -10,7 +11,7 @@ import enum
 import logging
 import math
 from dataclasses import dataclass, field
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any, Dict, List
 
 if TYPE_CHECKING:
     from src.rules_engine.character_35e import Character35e
@@ -461,3 +462,194 @@ def update_loaded_chunks(
             newly_unloaded.append(f"{k[0]}_{k[1]}")
 
     return newly_loaded, newly_unloaded
+
+
+# ---------------------------------------------------------------------------
+# Interaction Loop — CommandProcessor (Path 1)
+# ---------------------------------------------------------------------------
+
+#: Sentinel returned by :meth:`CommandProcessor.process` to signal quit.
+_QUIT_SENTINEL = "__quit__"
+
+#: Aliases for biome feature keys so the player can use natural language.
+_FEATURE_ALIASES: dict[str, str] = {
+    "ruins":        "ancient_ruins",
+    "ancient":      "ancient_ruins",
+    "wall":         "collapsed_wall",
+    "vault":        "iron_vault",
+    "iron door":    "iron_vault",
+    "iron vault":   "iron_vault",
+    "door":         "sealed_door",
+    "altar":        "crumbling_altar",
+    "bones":        "bone_scatter",
+    "bone":         "bone_scatter",
+    "skeleton":     "bone_scatter",
+    "pillar":       "ashen_pillar",
+    "column":       "ashen_pillar",
+    "columns":      "ashen_pillar",
+    "pillars":      "ashen_pillar",
+}
+
+
+class CommandProcessor:
+    """Interaction Loop command parser for the Ashen Crossroads (Path 1).
+
+    Parses free-text player input and returns a list of Rich-markup strings
+    to be written to the :class:`~textual.widgets.RichLog` by the
+    :class:`~src.game.game_world_screen.AdventureScreen`.
+
+    The special string :data:`_QUIT_SENTINEL` (``"__quit__"``) may appear in
+    the returned list to signal that the application should exit.
+
+    Args:
+        origin_room: The :class:`~src.game.awakening.SafeZoneRoom` the player
+                     starts in.  Used for ``look`` and feature lookups.
+        char_dict:   The fully-resolved character dict from the Character Forge.
+    """
+
+    def __init__(self, origin_room: Any, char_dict: Dict[str, Any]) -> None:
+        self._room     = origin_room
+        self._char_dict = char_dict
+
+    # ------------------------------------------------------------------
+    # Public interface
+    # ------------------------------------------------------------------
+
+    def process(self, raw_command: str) -> List[str]:
+        """Parse *raw_command* and return a list of Rich-markup output lines.
+
+        The caller should iterate the list and call ``log.write(line)`` for
+        each entry.  A line equal to :data:`_QUIT_SENTINEL` means the session
+        should end.
+        """
+        command = raw_command.strip().lower()
+        if not command:
+            return []
+
+        if command in ("help", "?", "h"):
+            return self._cmd_help()
+
+        if command in ("look", "l"):
+            return self._cmd_look()
+
+        if command.startswith("examine"):
+            target = command[len("examine"):].strip()
+            return self._cmd_examine(target or "room")
+
+        if command in ("inventory", "i", "inv"):
+            return self._cmd_inventory()
+
+        if command in (
+            "north", "n", "south", "s",
+            "east",  "e", "west",  "w",
+            "up",    "u", "down",  "d",
+        ):
+            return [
+                "[dim italic]The passage is sealed."
+                " The Crossroads will not release you yet.[/dim italic]"
+            ]
+
+        if command in ("quit", "exit", "q"):
+            return [_QUIT_SENTINEL]
+
+        return [
+            f"[dim italic]The word '{command}' dissolves"
+            " into the ash-laden air.[/dim italic]"
+        ]
+
+    # ------------------------------------------------------------------
+    # Command implementations
+    # ------------------------------------------------------------------
+
+    def _cmd_help(self) -> List[str]:
+        return [
+            "Commands: "
+            " [bold]look[/bold]"
+            "  [bold]examine[/bold]"
+            "  [bold]examine [italic]<feature>[/italic][/bold]"
+            "  [bold]inventory[/bold]"
+            "  [bold]north[/bold] / [bold]south[/bold]"
+            " / [bold]east[/bold] / [bold]west[/bold]"
+            "  [bold]quit[/bold]"
+        ]
+
+    def _cmd_look(self) -> List[str]:
+        """Reprint the room description and list all visible features."""
+        lines: List[str] = [self._room.description]
+        if self._room.features:
+            lines.append("")
+            feature_list = ", ".join(self._room.features)
+            lines.append(f"[dim]  [ Visible features: {feature_list} ][/dim]")
+            lines.append(
+                "[dim]  Type [bold]examine [italic]<feature>[/italic][/bold]"
+                " to inspect something.[/dim]"
+            )
+        return lines
+
+    def _cmd_examine(self, target: str) -> List[str]:
+        """Look up *target* in the Ashen Crossroads biome feature descriptions."""
+        from src.world_sim.biome import ASHEN_CROSSROADS
+
+        # Normalise: spaces → underscores for dict key lookup.
+        normalised = target.replace(" ", "_")
+
+        # 1. Direct key match.
+        desc = ASHEN_CROSSROADS.feature_descriptions.get(normalised)
+
+        # 2. Alias table.
+        if desc is None:
+            alias_key = _FEATURE_ALIASES.get(target)
+            if alias_key:
+                desc = ASHEN_CROSSROADS.feature_descriptions.get(alias_key)
+
+        # 3. Partial / substring match against known feature keys.
+        if desc is None:
+            for key, text in ASHEN_CROSSROADS.feature_descriptions.items():
+                if target in key or key in target:
+                    desc = text
+                    break
+
+        if desc:
+            return [f"[dim]{desc}[/dim]"]
+
+        # 4. Generic room-level targets.
+        if target in ("room", "area", "surroundings", "around", "chamber"):
+            features = self._room.features
+            if features:
+                return [
+                    "[dim]You study the chamber carefully."
+                    f" You notice: {', '.join(features)}.[/dim]"
+                ]
+            return [
+                "[dim]You study the chamber."
+                " Crumbling stone. Ash. Silence. Nothing more.[/dim]"
+            ]
+
+        return [
+            f"[dim italic]You see no '{target}'"
+            " here worth examining.[/dim italic]"
+        ]
+
+    def _cmd_inventory(self) -> List[str]:
+        lines: List[str] = []
+        keepsake = self._char_dict.get("keepsake", {})
+        items: list = self._char_dict.get("inventory", [])
+
+        if keepsake.get("name") and keepsake["name"] != "None":
+            lines.append(
+                f"[bold #c89b5f]Keepsake:[/bold #c89b5f] {keepsake['name']}"
+                f" — {keepsake.get('description', '')}"
+            )
+        if items:
+            lines.append("[bold]Inventory:[/bold]")
+            for item in items:
+                lines.append(f"  · {item}")
+        elif not (keepsake.get("name") and keepsake["name"] != "None"):
+            lines.append(
+                "[dim]You carry nothing."
+                " Only scars and the weight of forgotten years.[/dim]"
+            )
+        else:
+            lines.append("[dim]Beyond your keepsake, your pockets are empty.[/dim]")
+
+        return lines

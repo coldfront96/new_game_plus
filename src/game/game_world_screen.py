@@ -1,18 +1,27 @@
 """
 src/game/game_world_screen.py
 ------------------------------
-GameWorldScreen — the Textual terminal UI for the active game world.
+AdventureScreen — the Textual terminal UI for the active game world
+(Interaction Loop, Path 1).
 
 Replaces the raw ``input()`` loop with a persistent Textual Screen so the
 Master App window never closes between the Character Forge and actual play.
 
 Layout
 ~~~~~~
-* **RichLog** (main area) — atmospheric awakening text, room descriptions,
-  and command echoes with Rich markup.
+* **RichLog** (main area, ``height: 1fr``) — atmospheric awakening text,
+  room descriptions, and command echoes with Rich markup.
 * **Status bar** (one line) — player name, HP, AC, and in-world time.
-* **Input** (bottom) — the player types commands here (``look``, ``examine``,
-  ``north``, ``inventory``, ``quit``, …).
+* **Input** (bottom, ``height: 3``) — the player types commands here.
+
+Command routing
+~~~~~~~~~~~~~~~
+All typed commands are forwarded to
+:class:`~src.game.player_controller.CommandProcessor`, which implements the
+``look`` and ``examine`` verbs (Path 1) and returns Rich-markup strings to
+be written to the log.
+
+``GameWorldScreen`` is kept as a backward-compatible alias.
 """
 
 from __future__ import annotations
@@ -23,21 +32,25 @@ from textual.app import ComposeResult
 from textual.screen import Screen
 from textual.widgets import Footer, Header, Input, RichLog, Static
 
+from src.game.player_controller import CommandProcessor, _QUIT_SENTINEL
 
-class GameWorldScreen(Screen):
+
+class AdventureScreen(Screen):
     """Active game-world screen — RichLog display + command Input.
+
+    Typed commands are echoed to the log and forwarded to
+    :class:`~src.game.player_controller.CommandProcessor`.
 
     Args:
         awakening_state: The :class:`~src.game.awakening.AwakeningState`
             produced by :func:`~src.game.awakening.run_first_awakening`.
-        char_dict: The fully-resolved character dict from
-            :meth:`~src.game.character_forge.CharacterForgeScreen._build_character_dict`.
+        char_dict: The fully-resolved character dict from the Character Forge.
     """
 
     TITLE = "ASHEN CROSSROADS  ·  The World Awaits"
 
     CSS = """
-    GameWorldScreen {
+    AdventureScreen {
         background: #0d0d0d;
     }
     #world-log {
@@ -74,8 +87,9 @@ class GameWorldScreen(Screen):
         char_dict: Optional[Dict[str, Any]] = None,
     ) -> None:
         super().__init__()
-        self._state = awakening_state
+        self._state     = awakening_state
         self._char_dict = char_dict or {}
+        self._processor = CommandProcessor(awakening_state.origin_room, self._char_dict)
 
     # ------------------------------------------------------------------
     # Compose
@@ -87,9 +101,9 @@ class GameWorldScreen(Screen):
         yield RichLog(id="world-log", highlight=True, markup=True, wrap=True)
 
         player_name = self._char_dict.get("name", "Traveller")
-        hp = self._char_dict.get("hit_points", "?")
-        ac = self._char_dict.get("armor_class", "?")
-        bab = self._char_dict.get("base_attack_bonus", 0)
+        hp          = self._char_dict.get("hit_points", "?")
+        ac          = self._char_dict.get("armor_class", "?")
+        bab         = self._char_dict.get("base_attack_bonus", 0)
         yield Static(
             f" {player_name}  ·  HP {hp}  ·  AC {ac}  ·  BAB +{bab}"
             "  ·  Hour 0, Day 1  ·  Ashen Crossroads",
@@ -104,8 +118,8 @@ class GameWorldScreen(Screen):
     # ------------------------------------------------------------------
 
     def on_mount(self) -> None:
-        """Display the First Awakening text when the screen appears."""
-        log = self.query_one("#world-log", RichLog)
+        """Display the First Awakening text and print the initial look."""
+        log    = self.query_one("#world-log", RichLog)
         border = "[bold #c89b5f]" + ("=" * 72) + "[/bold #c89b5f]"
 
         log.write(border)
@@ -113,16 +127,11 @@ class GameWorldScreen(Screen):
         log.write(border)
         log.write("")
 
-        for paragraph in self._state.origin_room.description.split("\n\n"):
-            log.write(paragraph.strip())
-            log.write("")
+        # Print full awakening description via CommandProcessor look.
+        for line in self._processor.process("look"):
+            log.write(line)
 
-        if self._state.origin_room.features:
-            log.write(
-                f"[dim]  [ Features: {', '.join(self._state.origin_room.features)} ][/dim]"
-            )
-            log.write("")
-
+        log.write("")
         log.write(border)
         log.write("")
         log.write(
@@ -143,104 +152,14 @@ class GameWorldScreen(Screen):
 
         log = self.query_one("#world-log", RichLog)
         log.write(f"\n[bold #c89b5f]>[/bold #c89b5f] {raw}")
-        self._process_command(raw.lower(), log)
+
+        for line in self._processor.process(raw):
+            if line == _QUIT_SENTINEL:
+                self.app.exit()
+                return
+            log.write(line)
+
         event.input.clear()
-
-    def _process_command(self, command: str, log: RichLog) -> None:
-        if command in ("help", "?", "h"):
-            log.write(
-                "Commands:  [bold]look[/bold]  [bold]examine[/bold]  "
-                "[bold]examine <target>[/bold]  [bold]inventory[/bold]  "
-                "[bold]north[/bold] / [bold]south[/bold] / [bold]east[/bold] / [bold]west[/bold]  "
-                "[bold]quit[/bold]"
-            )
-
-        elif command in ("look", "l"):
-            log.write(self._state.origin_room.description)
-
-        elif command.startswith("examine"):
-            target = command[len("examine"):].strip() or "room"
-            self._examine(target, log)
-
-        elif command in ("inventory", "i", "inv"):
-            self._show_inventory(log)
-
-        elif command in (
-            "north", "n", "south", "s",
-            "east",  "e", "west",  "w",
-            "up",    "u", "down",  "d",
-        ):
-            log.write(
-                "[dim italic]The passage is sealed."
-                " The Crossroads will not release you yet.[/dim italic]"
-            )
-
-        elif command in ("quit", "exit", "q"):
-            self.app.exit()
-
-        else:
-            log.write(
-                f"[dim italic]The word '{command}' dissolves"
-                " into the ash-laden air.[/dim italic]"
-            )
-
-    # ------------------------------------------------------------------
-    # Sub-commands
-    # ------------------------------------------------------------------
-
-    def _examine(self, target: str, log: RichLog) -> None:
-        if target in ("room", "area", "surroundings", "around", "chamber"):
-            features = self._state.origin_room.features
-            if features:
-                log.write(
-                    f"[dim]You study the chamber carefully."
-                    f" You notice: {', '.join(features)}.[/dim]"
-                )
-            else:
-                log.write(
-                    "[dim]You study the chamber. Crumbling stone. Ash. Silence."
-                    " Nothing more.[/dim]"
-                )
-        elif target in ("door", "vault", "iron door", "iron vault"):
-            log.write(
-                "[dim]The iron vault door is etched with runes that shift when you"
-                " stare too long. It is sealed.[/dim]"
-            )
-        elif target in ("columns", "pillars", "carvings", "runes"):
-            log.write(
-                "[dim]The carvings are worn almost smooth."
-                " Faces, perhaps. Or warnings.[/dim]"
-            )
-        elif target in ("floor", "flagstone", "ash", "dust"):
-            log.write(
-                "[dim]The flagstone floor is cold underfoot, worn smooth by"
-                " countless ages. A thin layer of ash coats everything.[/dim]"
-            )
-        else:
-            log.write(
-                f"[dim italic]You see no '{target}' here worth examining.[/dim italic]"
-            )
-
-    def _show_inventory(self, log: RichLog) -> None:
-        keepsake = self._char_dict.get("keepsake", {})
-        items: list = self._char_dict.get("inventory", [])
-
-        if keepsake.get("name") and keepsake["name"] != "None":
-            log.write(
-                f"[bold #c89b5f]Keepsake:[/bold #c89b5f] {keepsake['name']}"
-                f" — {keepsake.get('description', '')}"
-            )
-        if items:
-            log.write("[bold]Inventory:[/bold]")
-            for item in items:
-                log.write(f"  · {item}")
-        elif not (keepsake.get("name") and keepsake["name"] != "None"):
-            log.write(
-                "[dim]You carry nothing."
-                " Only scars and the weight of forgotten years.[/dim]"
-            )
-        else:
-            log.write("[dim]Beyond your keepsake, your pockets are empty.[/dim]")
 
     # ------------------------------------------------------------------
     # Actions
@@ -248,3 +167,8 @@ class GameWorldScreen(Screen):
 
     def action_quit_game(self) -> None:
         self.app.exit()
+
+
+# Backward-compatible alias — existing code importing GameWorldScreen
+# continues to work without modification.
+GameWorldScreen = AdventureScreen
