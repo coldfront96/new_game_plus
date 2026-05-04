@@ -275,7 +275,7 @@ class DifficultySelectorScreen(App[Optional[Tuple[str, int, bool]]]):
             self.exit(result=(diff_name, pool_size, permadeath))
 
 
-class MainMenuApp(App[Optional[Tuple[str, int, bool]]]):
+class MainMenuApp(App[Optional[str]]):
     """Textual Main Menu — entry point after the Pygame intro sequence."""
 
     TITLE = "ASHEN CROSSROADS  ·  Main Menu"
@@ -334,14 +334,12 @@ class MainMenuApp(App[Optional[Tuple[str, int, bool]]]):
         btn_id = event.button.id
         if btn_id == "btn-continue":
             # Signal caller to continue with existing player
-            self.exit(result=("__continue__", 0, False))
+            self.exit(result="__continue__")
         elif btn_id == "btn-new-game":
-            # Launch difficulty selector as a nested Textual app
-            diff_app = DifficultySelectorScreen()
-            result = diff_app.run()
-            if result is not None:
-                self.exit(result=result)
-            # else: user pressed Back, stay on main menu (do nothing)
+            # Exit the main menu and signal the launcher to open the difficulty
+            # selector. Calling another App.run() here would raise
+            # RuntimeError: asyncio.run() cannot be called from a running event loop.
+            self.exit(result="new_game")
         elif btn_id == "btn-settings":
             pass  # Placeholder — settings not yet implemented
 
@@ -380,13 +378,22 @@ if __name__ == "__main__":
         # User closed the menu without making a selection — exit cleanly.
         sys.exit(0)
 
-    difficulty_name, pool_size, permadeath = menu_result
-
-    if difficulty_name == "__continue__":
+    if menu_result == "__continue__":
         # Load existing save and drop into the game (forge skipped).
         from rich.console import Console
         Console().print("\n[bold #c89b5f]▶  Resuming your chronicle…[/bold #c89b5f]\n")
         sys.exit(0)
+
+    # ── Difficulty Selector (runs outside MainMenu's event loop) ─────────────
+    # Only the "new_game" branch reaches this point; "continue" already exited.
+    diff_app = DifficultySelectorScreen()
+    diff_result: Optional[Tuple[str, int, bool]] = diff_app.run()
+
+    if diff_result is None:
+        # User pressed Back or closed the difficulty screen — return to nothing.
+        sys.exit(0)
+
+    difficulty_name, pool_size, permadeath = diff_result
 
     # ── Character Forge (New Game path) ─────────────────────────────────────
     from src.game.character_forge import CharacterForgeApp
