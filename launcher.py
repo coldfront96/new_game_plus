@@ -167,3 +167,13 @@ def main_menu():
 
 if __name__ == "__main__":
     main_menu()
+
+    # Tear down Pygame before handing off to the terminal-based Character Forge.
+    pygame.quit()
+
+    # Launch the Ashen Crossroads Character Forge in this process so the
+    # terminal receives focus naturally after the Pygame window closes.
+    import os
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    from src.game.character_forge import main as run_forge
+    run_forge()
