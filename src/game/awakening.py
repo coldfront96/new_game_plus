@@ -381,7 +381,7 @@ def run_first_awakening(
             "tick":      chronos.tick,
             "hour":      chronos.hour,
             "is_day":    chronos.is_day,
-            "world_state_ref": id(world_state),
+            "world_state": world_state,
         },
     )
 
